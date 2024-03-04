@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://nikolahuang.github.io">
+  <title>Nature子刊：宏基因组中挖掘原核基因组的分析流程 | Anderson Blog</title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="description" content="转载  宏基因组中挖掘原核基因组的分析流程 从宿主相关的短读长鸟枪宏基因组测序数据中恢复原核基因组 Recovering prokaryotic genomes from host-associated, short-read shotgun metagenomic sequencing data Nature Protocols [IF:10.419] 2021-04-16  Articles">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nature子刊：宏基因组中挖掘原核基因组的分析流程">
+<meta property="og:url" content="http://nikolahuang.github.io/2021/11/03/Nature%E5%AD%90%E5%88%8A%EF%BC%9A%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84%E4%B8%AD%E6%8C%96%E6%8E%98%E5%8E%9F%E6%A0%B8%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Anderson Blog">
+<meta property="og:description" content="转载  宏基因组中挖掘原核基因组的分析流程 从宿主相关的短读长鸟枪宏基因组测序数据中恢复原核基因组 Recovering prokaryotic genomes from host-associated, short-read shotgun metagenomic sequencing data Nature Protocols [IF:10.419] 2021-04-16  Articles">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://nikolahuang.github.io/2021/11/03/Nature%E5%AD%90%E5%88%8A%EF%BC%9A%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84%E4%B8%AD%E6%8C%96%E6%8E%98%E5%8E%9F%E6%A0%B8%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/Users/17769/blog/nikolahuang.github.io/source_posts/Nature%E5%AD%90%E5%88%8A%EF%BC%9A%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84%E4%B8%AD%E6%8C%96%E6%8E%98%E5%8E%9F%E6%A0%B8%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/9e15cc4d05399b67f5f105b46393be17.png">
+<meta property="og:image" content="http://nikolahuang.github.io/2021/11/03/Nature%E5%AD%90%E5%88%8A%EF%BC%9A%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84%E4%B8%AD%E6%8C%96%E6%8E%98%E5%8E%9F%E6%A0%B8%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/Users/17769/blog/nikolahuang.github.io/source_posts/Nature%E5%AD%90%E5%88%8A%EF%BC%9A%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84%E4%B8%AD%E6%8C%96%E6%8E%98%E5%8E%9F%E6%A0%B8%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/db32bff30cb64557248e1e8a8293943f.png">
+<meta property="og:image" content="http://nikolahuang.github.io/2021/11/03/Nature%E5%AD%90%E5%88%8A%EF%BC%9A%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84%E4%B8%AD%E6%8C%96%E6%8E%98%E5%8E%9F%E6%A0%B8%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/Users/17769/blog/nikolahuang.github.io/source_posts/Nature%E5%AD%90%E5%88%8A%EF%BC%9A%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84%E4%B8%AD%E6%8C%96%E6%8E%98%E5%8E%9F%E6%A0%B8%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/000c5a1d69f67d745a2bc913a7721c01.png">
+<meta property="og:image" content="http://nikolahuang.github.io/2021/11/03/Nature%E5%AD%90%E5%88%8A%EF%BC%9A%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84%E4%B8%AD%E6%8C%96%E6%8E%98%E5%8E%9F%E6%A0%B8%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/Users/17769/blog/nikolahuang.github.io/source_posts/Nature%E5%AD%90%E5%88%8A%EF%BC%9A%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84%E4%B8%AD%E6%8C%96%E6%8E%98%E5%8E%9F%E6%A0%B8%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/e1cbeccb8c7eb71414d4af41716a9d35.png">
+<meta property="og:image" content="http://nikolahuang.github.io/2021/11/03/Nature%E5%AD%90%E5%88%8A%EF%BC%9A%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84%E4%B8%AD%E6%8C%96%E6%8E%98%E5%8E%9F%E6%A0%B8%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/Users/17769/blog/nikolahuang.github.io/source_posts/Nature%E5%AD%90%E5%88%8A%EF%BC%9A%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84%E4%B8%AD%E6%8C%96%E6%8E%98%E5%8E%9F%E6%A0%B8%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/01a0eeca3b2751a080f8c66bdd6bd9dc.png">
+<meta property="og:image" content="http://nikolahuang.github.io/2021/11/03/Nature%E5%AD%90%E5%88%8A%EF%BC%9A%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84%E4%B8%AD%E6%8C%96%E6%8E%98%E5%8E%9F%E6%A0%B8%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/Users/17769/blog/nikolahuang.github.io/source_posts/Nature%E5%AD%90%E5%88%8A%EF%BC%9A%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84%E4%B8%AD%E6%8C%96%E6%8E%98%E5%8E%9F%E6%A0%B8%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/40910fb02ff1c942c3064f77e640e5b5.png">
+<meta property="article:published_time" content="2021-11-02T16:55:32.000Z">
+<meta property="article:modified_time" content="2024-03-04T17:08:52.419Z">
+<meta property="article:author" content="Anderson">
+<meta property="article:tag" content="BioNews">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://nikolahuang.github.io/2021/11/03/Nature%E5%AD%90%E5%88%8A%EF%BC%9A%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84%E4%B8%AD%E6%8C%96%E6%8E%98%E5%8E%9F%E6%A0%B8%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/Users/17769/blog/nikolahuang.github.io/source_posts/Nature%E5%AD%90%E5%88%8A%EF%BC%9A%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84%E4%B8%AD%E6%8C%96%E6%8E%98%E5%8E%9F%E6%A0%B8%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/9e15cc4d05399b67f5f105b46393be17.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Anderson Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png">
+  
+  <link rel="stylesheet" type="text/css" href="/./main.a5fda8.css">
+  <style type="text/css">
+    
+    #container.show {
+      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+    }
+  </style>
+  
+
+  
+
+  
+    
+ 	  <script src="/lib/clickLove.js"></script>
+  
+  
+
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      
+
+
+<div class="overlay" style="background: #4d4d4d;background: url('/img/biubiubiu.gif') no-repeat ;"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/img/head.jpg" class="js-avatar">
+		</a>
+		<hgroup>
+			<h1 class="header-author"><a href="/">Anderson</a></h1>
+		</hgroup>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/" target="_blank">主页</a></li>
+			
+				<li><a href="/null" target="_blank">技术笔记</a></li>
+			
+				<li><a href="/tags/%E9%9A%8F%E7%AC%94/" target="_blank">随笔</a></li>
+			
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+			
+				
+					<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+				
+			
+				
+					<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
+				
+			
+				
+					<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+				
+			
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					
+						<a class="github" href="https://github.com/nikolahuang/" 
+												title="GitHub" target="_blank"><i class="icon-github"></i></a>
+					
+				
+					
+						<a class="github" href="#" 
+												title="GitHub" target="_blank"><i class="icon-github"></i></a>
+					
+				
+					
+						<a class="gitee" href="https://gitee.com/anderson2/" 
+												title="码云" target="_blank"><i class="icon-gitee"></i></a>
+					
+				
+					
+						<a class="jianshu" href="#" 
+												title="简书" target="_blank"><i class="icon-jianshu"></i></a>
+					
+				
+			</div>
+		
+			
+			
+			
+			
+			<div>
+				<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="240" height="86" src="//music.163.com/outchain/player?type=2&id=1334445174&auto=1&height=66"></iframe>
+			</div>
+			
+				
+				<p style="font-size: 12px;">这似乎是首音乐，请尽情的欣赏它吧！<p>
+			
+		
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      
+      
+      <a class="forkMe" style="position:absolute;z-index:999;top:0;right:0.5em;" 
+        href="https://github.com/JoeyBling/hexo-theme-yilia-plus" target="_blank">
+        <img src="/img/forkme.png"
+          class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+      
+      
+<nav id="mobile-nav">
+  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+	<div class="btnctn js-mobile-btnctn">
+  		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
+	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<a href="/">
+					<img src="/img/head.jpg" class="js-avatar">
+				</a>
+			</div>
+			<hgroup>
+			  <h1 class="header-author js-header-author">Anderson</h1>
+			</hgroup>
+			
+			
+			
+				
+			
+				
+			
+				
+			
+			
+			
+			<nav class="header-nav">
+				<div class="social">
+					
+						
+						<a class="github" target="_blank" 
+							href="https://github.com/nikolahuang/" title="GitHub"><i class="icon-github"></i></a>
+						
+					
+						
+						<a class="github" target="_blank" 
+							href="#" title="GitHub"><i class="icon-github"></i></a>
+						
+					
+						
+						<a class="gitee" target="_blank" 
+							href="https://gitee.com/anderson2/" title="码云"><i class="icon-gitee"></i></a>
+						
+					
+						
+						<a class="jianshu" target="_blank" 
+							href="#" title="简书"><i class="icon-jianshu"></i></a>
+						
+					
+				</div>
+			</nav>
+
+			<nav class="header-menu js-header-menu">
+				<ul style="width: 70%">
+				
+				
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/null">技术笔记</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+		        
+				</ul>
+			</nav>
+		</header>				
+	</div>
+	<div class="mobile-mask" style="display:none" q-show="isShow"></div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1"
+              class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-Nature子刊：宏基因组中挖掘原核基因组的分析流程" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 class="article-title" itemprop="name">
+      Nature子刊：宏基因组中挖掘原核基因组的分析流程
+    </h1>
+  
+
+
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2021/11/03/Nature%E5%AD%90%E5%88%8A%EF%BC%9A%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84%E4%B8%AD%E6%8C%96%E6%8E%98%E5%8E%9F%E6%A0%B8%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/" class="archive-article-date">
+        <time datetime="2021-11-02T16:55:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-03</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">15.7k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">58分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>转载</p>
+<p><img src="Users\17769\blog\nikolahuang.github.io\source_posts\Nature子刊：宏基因组中挖掘原核基因组的分析流程\9e15cc4d05399b67f5f105b46393be17.png" alt="img"></p>
+<p>宏基因组中挖掘原核基因组的分析流程</p>
+<p>从宿主相关的短读长鸟枪宏基因组测序数据中恢复原核基因组</p>
+<p>Recovering prokaryotic genomes from host-associated, short-read shotgun metagenomic sequencing data</p>
+<p>Nature Protocols [IF:10.419]</p>
+<p>2021-04-16  Articles</p>
+<p>DOI: <a target="_blank" rel="noopener" href="https://doi.org/10.1038/s41596-021-00508-2">https://doi.org/10.1038/s41596-021-00508-2</a></p>
+<p>第一作者：Sara Saheb Kashaf1,2</p>
+<p>通讯作者：Robert D. Finn1,2,3*(<a href="mailto:&#114;&#100;&#102;&#64;&#x65;&#x62;&#x69;&#46;&#97;&#99;&#46;&#x75;&#107;">&#114;&#100;&#102;&#64;&#x65;&#x62;&#x69;&#46;&#97;&#99;&#46;&#x75;&#107;</a>)</p>
+<p>其它作者：Alexandre Almeida, Julia A. Segre</p>
+<p>主要研究单位</p>
+<p>欧洲生物信息学研究所，英国欣克斯顿惠康基因组校区(European Bioinformatics Institute (EMBL–EBI), Wellcome Genome Campus, Hinxton, UK)</p>
+<p>美国国立卫生院(Microbial Genomics Section, National Human Genome Research Institute, National Institutes of Health, Bethesda, MD, USA)</p>
+<p>摘要<br>从鸟枪法宏基因组序列数据中恢复基因组可以对微生物群落中的单个物种或菌株进行详细的分类和功能表征。恢复这些宏基因组组装的基因组 (MAG) 涉及七个阶段。首先，去除低质量碱基以及接头和宿主序列。其次，组装重叠序列以创建更长的连续片段。第三，根据序列组成和丰度对这些片段进行聚类。第四，这些序列簇或箱经过多轮质量评估和提纯以产生MAG。可选的第五阶段是 MAG 的去冗余以选择代表。接下来，对每个 MAG 进行物种分类。可选的第七阶段是评估已恢复的多样性比例。该方法的输出是基因组草图，它可以提供有关未培养生物的宝贵线索。该方法需要大约 1 周的时间运行，具体取决于可用的计算资源，并且需要具有高性能计算、shell 脚本编程和 Python 的经验。</p>
+<p>背景<br>从历史上看，细菌群落的调查是通过培养研究进行的，这些研究偏向于在标准实验室条件下易于培养的物种。基于 DNA 的独立于培养的革命性方法为探索微生物群落开辟了新的窗口。直接从样本中提取和测序 DNA，无需事先在培养物中富集，可以减少对细菌群落的偏见调查。最常见的基于 DNA 的方法之一是鸟枪宏基因组测序，它涉及从生物样本中分离和测序 DNA。这反过来又允许推断有关已测序微生物群落的功能和分类信息，这将根据所使用的样本收集、DNA 提取和文库构建方法而有所不同 。对鸟枪法宏基因组序列数据进行分类分析的一种方法涉及将序列读长与来自培养细菌的参考基因组进行比较。这些基于读长的方法受到参考数据库不完整的限制。进一步限制基于读长的比对方法的效用是在不同菌株之间观察到的遗传异质性 ，其中参考菌株的遗传差异导致比对读长属于其他菌株的失败。一种分析鸟枪法宏基因组序列数据的补充方法依赖于从头组装和分箱来重建宏基因组组装的基因组 (MAG)。这种方法的一个主要优点是它允许恢复尚未分离和培养生物体的基因组，因此参考数据库中不存在。此外，基因组草图的重建提供了更广泛的基因组背景，以允许将单个分类群与特定功能联系起来。然而，由于用于生成 MAG 的计算方法的性质，它们可能会受到来自其他相关生物、高度碎片化和&#x2F;或不完整的基因组序列的污染。因此，使用 MAG 需要特殊的方法考虑，不应简单地将其视为分离基因组的替代品。尽管与分离基因组相比，它们的质量较低，但 MAG 重建有助于发现大量新生物和功能。</p>
+<p>方法的开发<br>Development of the protocol</p>
+<p>通过对人类肠道宏基因组数据集的大规模分析，Almeida 等人能够恢复大量新的细菌多样性。更具体地说，通过对 11,850 个人类肠道微生物组样本的分析，可以使用本方法中讨论的一些方法恢复1,952 种未培养的候选细菌物种。这些新的细菌物种在来自世界上研究不足地区的样本中特别丰富，使非洲和南美样本的读取分配改进了 200% 以上。通过结合来自公共人类肠道微生物组数据集的 200,000 多个培养的基因组和 MAG，Almeida 等人创建了统一的人类胃肠基因组 (UHGG)集。这些基因组的功能分析被用于生成统一人类胃肠蛋白 (UHGP)集，这表明新的基因组包含大量未开发的功能多样性。这两种资源可用于推动未来人类肠道微生物组的分类和功能分析。在本方法中，我们使用 Almeida 等人探索的宏基因组数据集的一个子集展示了我们的流程（图 1）。我们还简要讨论了这些方法如何应用于我们对人类皮肤微生物组的研究。我们选择了皮肤和肠道，因为它们各自代表一个具有独特特性的生态位：肠道是一个更加多样化和微生物丰富的环境，而人类皮肤样本通常具有较低的微生物生物量，宿主污染的比例更大。</p>
+<p><strong>图1：从鸟枪法宏基因组中恢复原核 MAG 的工作流程概述</strong><br>Fig. 1: Overview of workflow for recovery of prokaryotic MAGs from shotgun metagenomic sequence data.</p>
+<p><img src="Users\17769\blog\nikolahuang.github.io\source_posts\Nature子刊：宏基因组中挖掘原核基因组的分析流程\db32bff30cb64557248e1e8a8293943f.png" alt="img"></p>
+<p>a，我们的工作流程示意图和用于执行每个步骤的 Snakemake 模块。</p>
+<p><img src="Users\17769\blog\nikolahuang.github.io\source_posts\Nature子刊：宏基因组中挖掘原核基因组的分析流程\000c5a1d69f67d745a2bc913a7721c01.png" alt="img"></p>
+<p>b，运行我们的 Snakemake 流程所期望的目录结构。</p>
+<p><strong>优点和局限性</strong><br>Advantages and limitations</p>
+<p>短读长测序技术，例如来自 Illumina 和 BGI 的技术，具有成本效益和准确度，并且具有高通量。从这些短读长测序技术生成的 MAG 已被证明可以在不同的数据集上重现，并极大地扩展了我们对生命之树的了解。然而，基于短读长测序数据集的方法在解析高度重复的基因组或其他高度保守的序列<strong>（例如在核糖体 RNA 基因中发现的序列）方面受到限制</strong>。长读长测序仪，例如 Pacific Biosciences 的 SMRT或 Oxford Nanopore 的 MinION，可以产生长度为 10 kb 或更长的读段。通过跨越这些重复区域的长度，长读长测序可以显着提高宏基因组组装的质量，但目前以降低核苷酸准确性为代价，这个问题可以通过结合短读长和长读序列数据来部分解决，称为混合组装。随着长读长测序技术在准确性和通量方面的性能不断提高，它们很可能会扩大其在宏基因组研究中的应用。</p>
+<p>从宏基因组数据集重建基因组草图的局限性在于，由于各种技术原因（例如，样本测序深度通常不够高，无法充分覆盖存在的低丰度物种，高完整性和低污染的 MAG 可能仅代表整个宏基因组样本中一小部分）。一项研究检查了测序工作对使用计算机方法从 Illumina 序列数据集中恢复 MAG 的影响。作者发现，恢复中等和高质量 MAG 所需的最小测序阈值在 <del>0.6 到 ~6.1 Gb 之间变化，但随着测序工作的增加，MAG 的数量开始饱和。此外，恢复 MAG 所需的覆盖深度取决于样本的多样性。一项比较不同组装程序的研究表明，×10 的覆盖率足以恢复样本中独特物种的基因组，但当同一样本中存在密切相关的菌株时，需要更高的覆盖率 (</del>×50)。</p>
+<p>MAG 的另一个主要限制是，与分离基因组相比，它们是从假定代表密切相关类群的重叠群的聚类中计算得出的。分箱算法有时无法区分来自不同生物体的重叠群，导致嵌合基因组草图（受污染的基因组）的恢复。他们也经常无法正确地整合来自质粒和其他移动遗传元件的重叠群。</p>
+<p>最后，该方法的一个限制是我们的流程由许多不同的工具组成，每个工具都支持各种不同的输入和输出。本方法的重点主要是这些工具的具体应用，而不是讨论这些工具的所有可能的输入和输出。对于每个步骤，也可以有多种工具可以执行类似的角色。比较不同工具的优点不在本文的一般范围内。在故障排除部分，我们还讨论了可能出现的部分问题，但我们预计其他问题可以在与每个工具关联的 GitHub 问题部分中解决，或者如果适用，在与此方法关联的 GitHub (<a target="_blank" rel="noopener" href="https://github.com/Finn-Lab/MAG_Snakemake_wf">https://github.com/Finn-Lab/MAG_Snakemake_wf</a> ）。</p>
+<p>实验设计<br>该方法的输入是一组宏基因组，在此称为测序批次。更具体地说，输入是之前由 Almeida 等人分析的人类肠道微生物组测序数据。为了展示我们的方法如何适应从其他宿主相关的生物群落中恢复多样性，我们在讨论我们方法的第七阶段时简要讨论了我们对一组人类皮肤运行的分析。该皮肤数据集由 Oh 等人 从 594 个样本生成，可从 SRA 下载，登录号为 PRJNA46333。该方法的步骤 1-9 涉及我们工作流程的设置，包括安装软件和下载必要的数据和数据库。</p>
+<p>阶段 1：预处理（步骤 10-14）<br>在开始分析鸟枪法宏基因组测序数据时，需要进行彻底的质量控制，以确保原始数据具有足够的质量，并且数据不存在可能影响下游分析的偏差或问题。FastQC为数据创建质量报告，可以提供读长质量和接头序列分布的概览（图 2）。此外，根据所研究的样本，鸟枪法宏基因组测序数据可能包含高比例的宿主与微生物读长。在这种情况下，可以使用 KneadData (<a target="_blank" rel="noopener" href="http://huttenhower.sph.harvard.edu/kneaddata">http://huttenhower.sph.harvard.edu/kneaddata</a>) 等工具过滤宿主测序读长，该流程可以执行质量过滤、接头修剪和宿主净化。KneadData 使用 Trimmomatic 修剪接头序列并去除低质量读长。它还使用 Bowtie2 来丢弃与宿主基因组可比对的序列。数据预处理完成后，可以再次使用 FastQC 来可视化变化。</p>
+<p><strong>图 2：预处理后宏基因组序列数据集的 MULTIQC 图</strong><br>Fig. 2: MULTIQC plots of metagenomic sequence datasets after preprocessing.</p>
+<p><img src="Users\17769\blog\nikolahuang.github.io\source_posts\Nature子刊：宏基因组中挖掘原核基因组的分析流程\e1cbeccb8c7eb71414d4af41716a9d35.png" alt="img"></p>
+<p>a，预处理后肠道数据集的 MULTIQC 图显示，对于每个读长文件 (FASTQ)，该位置所有碱基的每个位置的平均质量（Phred 分数）。绿色、橙色和红色的阴影将 y 轴质量值分别划分为质量非常好、质量合理和质量低的得分。每条绿线代表一个不同的读长文件。该图显示，经过预处理后，读长中每个碱基位置的平均质量值具有合理或非常好的质量。b，预处理后肠道数据集的接头含量的 MULTIQC 图。每行显示不同读长文件的接头序列的百分比。接头读长的百分比随着读长长度的增加而增加，因为一旦在读取中检测到接头序列，就假定它一直存在到读长的末尾。鉴于接头序列的百分比 &lt;5%（由绿色阴影表示），下游分析可以继续。</p>
+<p><strong>阶段 2：组装（步骤 15 和 16）</strong><br>下一步是组装，包括将重叠的宏基因组读长合并到更长的连续 DNA 片段（重叠群）中。这些重叠群中的一些被排序并跨间隙合并以形成支架。基于德布鲁因图算法的方法通常用于鸟枪宏基因组序列数据，并且是本方法的重点。德布鲁因图组装软件的选择取决于科学问题和研究人员可用的计算资源。对组装软件的比较将这些工具分为以基因为中心的工具，例如 metaSPAdes 和 IDBA-UD，以及以基因组为中心的工具，例如 SPAdes。SPAdes 最初是为单细胞测序数据开发的，尽管其内存消耗很高，但已成功应用于一些低复杂度宏基因组的研究中。MetaSPAdes 是 SPAdes 工具包的宏基因组学流程，与 SPAdes 相比，它减少了内存使用量并改善了运行时间，因此更适合大型复杂的宏基因组数据集。此外，metaSPAdes 创建一致序列以形成每个重叠群的高质量代表，而不是试图代表每个菌株。MEGAHIT 被发现适用于以基因组和基因为中心的研究，如果可用的计算资源较少，则应使用。一项将不同组装软件应用于 Tara Ocean 宏基因组数据集的研究发现，SPAdes 生成了最长的重叠群，这使其最适合以基因组为中心的研究 。SPAdes 和 IDBA-UD 还导致了与参考基因组不对齐的最大数量的错误组装和重叠群。关于计算资源，同一项研究发现 SPAdes 是“内存最昂贵”的，而 MEGAHIT 是内存效率最高的。此外，IDBA-UD、SPAdes 和 metaSPAdes 需要最长的运行时间。另一项研究评估了个组装器在两个模拟宏基因组数据集上的性能：一个具有低丰度物种的高多样性数据集，类似于土壤等环境，以及一个具有密切相关物种的低多样性数据集，它模拟了生态系统，例如生物膜，以及低复杂度的真实宏基因组。他们根据与组装数量大小、组装精度和组装完整性相关的指标对最终组装进行了评估。对于模拟和真实的低复杂度宏基因组，发现 MaSuRCA 是最好的组装器，其次是 metaSPAdes。对于高度复杂的宏基因组，最好的组装器是 metaSPAdes。MEGAHIT 被发现适用于保守的组装策略，并且被发现具有低错误率和低 N50。鉴于肠道和皮肤是不同的样本，并且有足够的计算资源可用，因此本方法中使用了 metaSPAdes 进行组装。</p>
+<p>第 3 阶段：分箱（第 17 步）<br>宏基因组组装高度碎片化，很难先验地确定重叠群源自哪个基因组，甚至样本中存在多少基因组。“分箱”的目标是对组装软件输出的支架或重叠群进行聚类，以生成分箱或假定的基因组草图。存在许多不同的工具来执行基因组分箱。这些工具可以根据它们提取用于执行分箱的特征的策略进行划分，包括基于序列组成的方法、基于序列丰度的方法和混合方法。基于序列组成的方法依赖于诸如 k-mer 核苷酸频率（样本中检测到的长度为 k 的所有序列组合的频率）和 G&#x2F;C 含量等指标。基于丰度的方法可以处理一个样本或多个样本。适用于多个样本的方法依赖于这样的假设：来自相同基因组的重叠群的覆盖范围应该在不同样本之间相关。混合分箱方法，例如 CONCOCT、MetaBat 2和 MaxBin 2，同时考虑了序列组成和丰度，并且已被证明可以实现更准确的分箱。分箱算法可以显示不同样本甚至一个样本中不同群落的不同性能。DAS Tool 和 MetaWRAP 等 bin 合并工具可用于平衡不同分箱方法的优势和劣势，并通过组合许多不同分箱工具的输出并选择最佳分箱来恢复最佳质量 的分箱。在此方法中，CONCOCT、MetaBat 2 和 MaxBin 2通过 MetaWRAP 流程使用。</p>
+<p>第 4 阶段：质量评估和分箱提纯（步骤 18-26）<br>从宏基因组数据中恢复 MAG 是一个复杂的问题，需要谨慎和仔细的校正。因此，在对分类、系统发育和&#x2F;或功能潜力进行推断之前，评估分箱的质量非常重要。分箱的质量评估包括诸如完整性（包含在 bin 中的基因组的估计比例）、污染率（来自其他生物体的基因组序列的数量，被错误地与基因组草图合并）和菌株异质性等指标。通常通过检测基因组草图中单拷贝标记基因的存在和数量来估计完整性和污染率。未受污染且完整的 MAG 将在基因组中仅存在一次所有这些标记基因。在该方法中，使用了最广泛使用的用于估计原核基因组完整性&#x2F;污染率的工具之一 CheckM（图 3a、b）。CheckM 通过使用一组谱系特异性标记基因来评估基因组的质量，这些标记基因是通过将每个基因组放置在预先计算的系统发育参考树中来确定的。可以在本方法中使用的 CMSeq 流程 中实施的宏基因组读长比对来估计株水平异质性（图 3c）。CMSeq 通过基于比对结果计算 MAG 中检测到的多态率（非同义替换的比例）来估计株异质性。使用这些指标，可以将 MAG 分配到不同的质量级别。根据关于宏基因组组装基因组 (MIMAG) 的最低信息标准，完整性 &gt;90% 和 &lt;5% 污染的 MAG 应报告为高质量的基因组草图。这些高质量的基因组还应包含 5S、16S 和 23S rRNA 基因，以及 20 种可编码氨基酸中至少 18 种的 tRNA。然而，如之前所示rRNA 操纵子是从鸟枪法宏基因组测序数据组装的一个具有挑战性的区域。完整性≥50% 且污染&lt;10% 的MAG 应报告为中等质量。所有其他具有 &lt;50% 完整性和 &lt;10% 污染的 MAG 都应标记为低质量基因组。由于污染估计对于更不完整的基因组不太可靠，因此可以估计一个额外的质量分数 (QS)，计算为完整性 –（5 × 污染）以进行进一步的 MAG 质量过滤。关于株异质性，0.5% 的阈值先前已被证明是区分高质量和中等质量 MAG 的可靠指标。另一种评估 MAG 质量的方法是通过全基因组比对和与参考分离基因组的比较（图 3d、e）。要将 MAG 与 RefSeq 或内部基因组集合进行比较，可以使用 Mash或 MUMmer 等软件工具，本方法中均展示了这些工具。</p>
+<p><strong>图 3：原核 MAG 的质量评估和物种分类</strong><br>Fig. 3: Quality assessment and taxonomic classification of prokaryotic MAGs.</p>
+<p><img src="Users\17769\blog\nikolahuang.github.io\source_posts\Nature子刊：宏基因组中挖掘原核基因组的分析流程\01a0eeca3b2751a080f8c66bdd6bd9dc.png" alt="img"></p>
+<p>a，完整性，b，污染率，c，我们的单样本和共同组装的 MAG 的株异质性。与单样本的 MAG 相比，共同组装的 MAG 具有较低的完整性和较高的株异质性。d，比对的 MAG 百分比与针对不同组装方法和 MAG 质量比对的分离（参考）基因组百分比。鉴于预计 MAG 不如参考基因组完整，预计 MAG 比对的百分比将高于分离物比对的百分比。应使用 Anvi’o 等工具进一步检查违反此预期的 MAG。e，这些 MAG 菌株的 ANI 分布比较。以下对应于所考虑的每种方法的 MAG 数量：单样本：n &#x3D; 422，共同组装：n &#x3D; 175。框长度表示数据的 IQR，并且须延伸到 1.5 × IQR 内的最低和最高值分别来自第一四分位数和第三四分位数。与使用 GTDB-Tk 对我们的 249 个去冗余单样本和共组装的MAG 进行物种分类相比，单样本 MAG 似乎与参考基因组具有更高的比对同一性。分类单元名称代表来自 GTDB r95 的名称。通过我们的分析，可以恢复灰色阴影的新型（未培养的）生物。</p>
+<p>然后可以使用这些质量估计来提高分箱的质量。更具体地说，在当前的工作流程中，我们使用 MetaWRAP分箱 提纯，它使用 CheckM 完整性和污染估计来组合来自多个原始 分箱预测的输出，并使用“bin_refinement”函数生成改进的 分箱集。这个提纯过程首先生成混合分箱集，确保如果两个重叠群在任何原始集中的不同分箱中，它们不会放在混合分箱中。接下来，“bin_refinement”功能会考虑原始分箱 集以及不同的混合变体，以使用 CheckM 完整性和污染率估计来选择最佳质量的分箱。</p>
+<p>虽然本方法中没有描述，但可以使用各种工具通过手动校正和重叠群分类对 MAG 集进行质量控制。MAG 可以使用 Anvi’o 等方法手动管理，该方法允许用户目视检查序列组成和差异覆盖的模式，以手动删除这些指标不同的重叠群。更大规模的研究可以受益于 RefineM 等工具，它可以自动识别具有不同四核苷酸特征、覆盖率或 GC 含量的重叠群。它还对基因组内的重叠群进行分类以去除潜在的异常值。Contig Annotation Tool (CAT) 可以类似地用于对每个重叠群进行分类并去除系统发育不一致的序列。然而，这些方法的应用受到不完整的参考数据库和潜在的不正确标记和&#x2F;或参考基因组污染的限制。</p>
+<p>第 5 阶段：MAG 的去冗余（步骤 27）<br>在对分箱进行质量控制和提纯之后，可选的下一步是基因组去分箱。去分箱是对具有高序列相似性的基因组进行聚类，并为每个聚类确定最高质量的代表性基因组的过程。是否去冗余的选择取决于科学问题和研究人员可用的计算资源。去冗余有很多优点。基因组去冗余减少了下游分析的计算负担。它还提高了下游步骤（例如读长比对）的整体准确性。将测序读数比对回基因组集时，基因组集中的高度冗余会导致读长随机分配给多个冗余基因组，从而导致对冗余基因组的人为低丰度估计。然而，如果分析的目标是更好地了解种群多样性、进化或阐明附属基因组，则考虑整个基因组集很重要。在去冗余的过程中，需要进行成对的基因组比较，并且基因组比较的数量与基因组数量成二次方增加。可以使用各种度量来估计两个基因组之间的相似性，包括通过基因组的核苷酸水平比较估计的平均核苷酸同一性 (ANI) 和通过比较相应氨基酸估计的平均氨基酸同一性 (AAI)。ANI 用于估计密切相关基因组（物种或菌株水平比较）之间的基因组相似性，而 AAI 可用于估计更远相关基因组之间的相似性。本方法中使用的 dRep 等工具首先使用 Mash 对基因组距离进行快速估计，以形成大致相似基因组的主要集群，然后通过计算主要集群的每个成员之间的 ANI 来更准确地测量基因组距离。Mash的准确性对基因组大小和低完整性水平之间的巨大差异很敏感，因此在比较具有相似长度且完整性至少为 50% 的基因组时，该方法最为准确。次级簇的阈值取决于要解决的问题。90,000 个原核基因组的成对 ANI 比较发现细菌物种边界通常位于 ~95% 的 ANI。因此，如果目标是在物种水平上了解 MAG 的多样性，则可以使用 95% 的 ANI 阈值。在比较两个基因组时，比对分数 (AF) 也是一个需要考虑的重要因素。例如，通过水平基因转移，两个基因组可以共享一个小的可移动遗传元件，导致高 ANI 但低比对分数。有人提议 60% 的 AF 可用于物种级别的划分。对于不完整的 MAG，该值可以说是过于严格，因为 MAG 的较低 AF 足以分配物种级别的匹配（例如，Almeida 等人使用了30% 的 AF）。在形成冗余基因组的二级簇后，dRep 使用各种指标（如 N50、基因组长度以及 CheckM 对完整性、污染和菌株异质性的估计）从每个二级簇中选择最佳基因组。</p>
+<p>阶段 6：物种分类（步骤 28）<br>可以使用多种方法对基因组进行准确的分类，其中大部分方法依赖于与参考数据库（如 NCBI GenBank 或基因组分类数据库  (GTDB)）的序列比较。例如，基因组分类数据库工具包 (GTDB-Tk)利用细菌和古菌参考树和多序列比对，以及 GTDB 分类框架为每个基因组分配分类谱系。为了对基因组进行分类，GTDB 流程首先使用 Prodigal 预测蛋白质编码序列，并使用 HMMER 在基因组草图中检测一组 &gt;100 个预定义的细菌和古菌标记基因。然后通过 pplacer 的系统发育放置将基因组分配参考树中的特定区域。分配给基因组的分类法取决于其在 GTDB 参考树中的位置、其相对进化分歧 (RED) 分数及其与最接近的参考基因组相关的 ANI。在该方法中，GTDB 和 GTDB-Tk 用于 MAG 的物种分类（图 3f）。</p>
+<p>阶段 7：瓶颈评估（步骤 29-34）<br>我们可以通过将读长比对回组装和基因组集来估计捕获的基因组多样性的数量。对于每次运行，我们在 y 轴上绘制映射到其各自组装的读数百分比与映射到 x 轴上设置的最终基因组（MAG）的百分比读数（图 4a）。通过以这种方式可视化数据，可以判断映射到 MAG 的低百分比读数是否是由于与组装或分箱相关的问题。结果图中的底部象限代表未组装大部分序列读长的样本。各种因素会影响比对到组装集的读长百分比。一项研究使用 CAMISIM 微生物群落和宏基因组模拟器来创建不同的微生物群落，发现组装性能随着株水平多样性、异常错误分布和不均匀覆盖分布而降低。左上象限代表其中大部分读长已组装但重叠群未分箱或分箱对中等或高质量 MAG 没有贡献的样本。这些样本可能包含大量真核、病毒或质粒序列，这些序列可以组装但可能无法分箱以产生 MAG。右下角代表即使每个样本都没有成功组装的样本，我们可以在对使用其他样本生成的基因组进行比对时招募它们的大部分多样性。最后，右上角代表很好地映射到它们各自的组装集和最终 MAG 集的样本。该象限中的样本通常不太多样化。目标是获得映射到基因组集的高比例读长，例如使用不同的组装和分箱策略，这样无论比对到组装的读长百分比如何，我们都有高百分比的读长比对到最终 MAG 集。增加比对射到基因组集的读长百分比的一种方法是通过共同组装，如本方法所示。在共组装中，相关的宏基因组根据相关的元数据进行组合并组装在一起。此后，所有单独的宏基因组（这里称为运行）都被比对到共组装以执行分箱过程。通过这种方式，可以使用单个运行内的序列丰度和运行之间的差异丰度将重叠群聚类到分箱中。共组装特别有利于回收样品中低丰度存在的物种。</p>
+<p><strong>图 4：使用读长比对来可视化组装和分箱中的瓶颈。</strong><br>Fig. 4: Using read mapping to visualize bottlenecks in assembly and binning.</p>
+<p><img src="Users\17769\blog\nikolahuang.github.io\source_posts\Nature子刊：宏基因组中挖掘原核基因组的分析流程\40910fb02ff1c942c3064f77e640e5b5.png" alt="img"></p>
+<p>a，用于评估从鸟枪法宏基因组测序数据中恢复基因组的组装和分箱方法的框架。对于每次运行，我们绘制比对到我们去冗余的 MAG 的百分比读长与比对到该样本组装集的读长百分比。基于样本相对于四个象限的位置，可以确定从样本中恢复多样性的瓶颈。在左上象限中运行，其中有高百分比的读长比对到组装，但读长比对到 MAG 集的百分比低，是那些可以从不同的 分箱或真核和病毒表征中受益的人。在左下象限中运行，其中组装范围低且该样本中的多样性未捕获到 MAG 集中，例如，分析其他数据集，以便未通过一次样本捕获的生物可以通过另一个样本进行组装和分箱。右下象限中的点表示组装范围较低的样本，但通过其他样本捕获了多样性。右上象限中的运行是那些组装范围很大并且大部分多样性也被捕获到去冗余的 MAG 集中的样本。b，我们用本方法中调查的肠道数据集展示了这个框架，作为一个额外的例子，153 个人皮肤运行来自我们对健康人类皮肤微生物组（本方法未涵盖）的调查，它揭示了在本方法中发现的两个象限皮肤数据集但不在我们的肠道数据集中这与具有大量真核和病毒多样性的皮肤一致。c，在我们的皮肤研究中，共组装、真核和病毒分析对比对到基因组集的百分比读长影响的可视化。d，使用共组装，通过汇集共享相关元数据的样本，以及通过我们的真核和病毒分析，可以在我们的基因组集中加入额外的多样性。因此，即使在读长比对到组装集的百分比很低的情况下，我们也能够实现到 MAG 的高百分比映射。虽然该方法没有详细说明我们的皮肤分析，但数据集可以从 SRA 下载，项目编号 PRJNA46333。</p>
+<p>流程和语言<br>在处理大型数据集时，工作流语言对于确保可重复性和可扩展性至关重要。我们的工作是作为模块化 Snakemake 流程 (<a target="_blank" rel="noopener" href="https://github.com/Finn-Lab/MAG_Snakemake_wf">https://github.com/Finn-Lab/MAG_Snakemake_wf</a>) 提供的，并执行从 SRA 下载数据到生成图片的每一步，所有步骤都无需人工干预。步骤以及相关的 Snakemake 规则如图 1a 所示。运行我们的流程所期望的输出目录树如图 1b 所示。</p>
+<p>材料<br>硬件<br>至少500GB内存的高性能计算机</p>
+<p>软件<br>MAG Snakemake 流程 (<a target="_blank" rel="noopener" href="https://github.com/Finn-Lab/MAG_Snakemake_wf">https://github.com/Finn-Lab/MAG_Snakemake_wf</a>)</p>
+<p>Singularity 3.5.0 (<a target="_blank" rel="noopener" href="https://github.com/hpcng/singularity">https://github.com/hpcng/singularity</a>)</p>
+<p>Snakemake 版本 5.18 (<a target="_blank" rel="noopener" href="https://github.com/snakemake/snakemake">https://github.com/snakemake/snakemake</a>)</p>
+<p>运行 MAG Snakemake 流程将自动从 SRA 下载测序数据。</p>
+<p>测序数据可以通过使用 SRA 运行加入手动下载:</p>
+<p>SRR1761666</p>
+<p>SRR1761673</p>
+<p>SRR1761674</p>
+<p>SRR1761675</p>
+<p>SRR1761698</p>
+<p>SRR1761700</p>
+<p>SRR1761701</p>
+<p>SRR1761702</p>
+<p>SRR1761705</p>
+<p>SRR1761706</p>
+<p>SRR1761708</p>
+<p>SRR1761710</p>
+<p>SRR1761713</p>
+<p>SRR1761714</p>
+<p>SRR1761717</p>
+<p>SRR1761718</p>
+<p>SRR1761719</p>
+<p>SRR1761720</p>
+<p>SRR1927149</p>
+<p>SRR1929484</p>
+<p>SRR1929485</p>
+<p>SRR1929563</p>
+<p>SRR1929574</p>
+<p>SRR1930122</p>
+<p>SRR1930128</p>
+<p>SRR1930132</p>
+<p>SRR1930133</p>
+<p>SRR1930134</p>
+<p>SRR1930138</p>
+<p>SRR1930140</p>
+<p>SRR1930142</p>
+<p>SRR1930143</p>
+<p>SRR1930144</p>
+<p>SRR1930149</p>
+<p>SRR1930176</p>
+<p>SRR1930177</p>
+<p>SRR1930179</p>
+<p>SRR1930187</p>
+<p>SRR1930244</p>
+<p>Snakemake流程还将下载相关的singularity容器，以便可以使用我们流程所需的相关软件。或者，可以从以下位置手动下载这些工具：</p>
+<p>ncbi-genome-download version 0.3.0 (<a target="_blank" rel="noopener" href="https://github.com/kblin/ncbi-genome-download">https://github.com/kblin/ncbi-genome-download</a>)</p>
+<p>Mash version 2.2.1 (<a target="_blank" rel="noopener" href="https://github.com/marbl/Mash">https://github.com/marbl/Mash</a>)</p>
+<p>parallel-fastq-dump version 0.6.6 &amp; fastq-dump version 2.8.0 (<a target="_blank" rel="noopener" href="https://github.com/rvalieris/parallel-fastq-dump">https://github.com/rvalieris/parallel-fastq-dump</a>)</p>
+<p>FastQC &#x3D; 0.11.7 (<a target="_blank" rel="noopener" href="https://github.com/s-andrews/FastQC">https://github.com/s-andrews/FastQC</a>)</p>
+<p>MultiQC &#x3D; 1.3 (<a target="_blank" rel="noopener" href="https://github.com/ewels/MultiQC">https://github.com/ewels/MultiQC</a>)</p>
+<p>kneaddata &#x3D; 0.7.4 with Trimmomatic &#x3D; 0.39 &amp; Bowtie &#x3D; 2.4.2</p>
+<p>metaSPAdes version 3.14.0 (<a target="_blank" rel="noopener" href="https://github.com/ablab/spades">https://github.com/ablab/spades</a>)</p>
+<p>MetaWRAP &#x3D; version 1.2.2 (<a target="_blank" rel="noopener" href="https://github.com/bxlab/metaWRAP">https://github.com/bxlab/metaWRAP</a>)</p>
+<p>CheckM version 1.0.12 (<a target="_blank" rel="noopener" href="https://github.com/Ecogenomics/CheckM">https://github.com/Ecogenomics/CheckM</a>)</p>
+<p>Bowtie version 2.4.1 (<a target="_blank" rel="noopener" href="https://github.com/BenLangmead/bowtie2">https://github.com/BenLangmead/bowtie2</a>)</p>
+<p>Prokka version 1.14.5 (<a target="_blank" rel="noopener" href="https://github.com/tseemann/prokka">https://github.com/tseemann/prokka</a>)</p>
+<p>CMSeq version 1.0 (<a target="_blank" rel="noopener" href="https://bitbucket.org/CibioCM/cmseq">https://bitbucket.org/CibioCM/cmseq</a>)</p>
+<p>MUMmer version 3.23 (<a target="_blank" rel="noopener" href="https://github.com/mummer4/mummer">https://github.com/mummer4/mummer</a>)</p>
+<p>dRep version 2.3.2 (<a target="_blank" rel="noopener" href="https://github.com/MrOlm/drep">https://github.com/MrOlm/drep</a>)</p>
+<p>GTDB-Tk version 1.3.0 (<a target="_blank" rel="noopener" href="https://github.com/Ecogenomics/GTDBTk">https://github.com/Ecogenomics/GTDBTk</a>)</p>
+<p>BWA version 0.7.17 (<a target="_blank" rel="noopener" href="https://github.com/lh3/bwa">https://github.com/lh3/bwa</a>)</p>
+<p>samtools version 1.9 (<a target="_blank" rel="noopener" href="https://github.com/samtools/samtools">https://github.com/samtools/samtools</a>)</p>
+<p>数据库<br>RefSeq完整细菌基因组 (downloaded May 2020; <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/refseq/">https://www.ncbi.nlm.nih.gov/refseq/</a>)</p>
+<p>GTDB数据库，版本95 (<a target="_blank" rel="noopener" href="https://data.ace.uq.edu.au/public/gtdb/data/releases/">https://data.ace.uq.edu.au/public/gtdb/data/releases/</a>)</p>
+<p>CheckM数据库 (<a target="_blank" rel="noopener" href="https://data.ace.uq.edu.au/public/CheckM_databases/">https://data.ace.uq.edu.au/public/CheckM_databases/</a>)</p>
+<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><h5 id="流程安装"><a href="#流程安装" class="headerlink" title="流程安装"></a>流程安装</h5><p><strong>1 下载GTDB数据库95版(33G)</strong></p>
+<p>wget -c <a target="_blank" rel="noopener" href="https://data.ace.uq.edu.au/public/gtdb/data/releases/release95/95.0/auxillary_files/gtdbtk_r95_data.tar.gz">https://data.ace.uq.edu.au/public/gtdb/data/releases/release95/95.0/auxillary_files/gtdbtk_r95_data.tar.gz</a><br>关键步骤：GTDB 目前每两年更新一次，以包括 NCBI 组装数据库中存在的最新基因组</p>
+<p>译者注：GTDB更新很频繁，2019年更新了4次(80&#x2F;83&#x2F;86&#x2F;89)，20年7月更新了95版，21年4月更新了202版(47G)。最新链接如下：</p>
+<p>wget -c <a target="_blank" rel="noopener" href="https://data.ace.uq.edu.au/public/gtdb/data/releases/release202/202.0/auxillary_files/gtdbtk_r202_data.tar.gz">https://data.ace.uq.edu.au/public/gtdb/data/releases/release202/202.0/auxillary_files/gtdbtk_r202_data.tar.gz</a><br><strong>2 下载RefSeq细菌基因组</strong></p>
+<p>ncbi-genome-download bacteria –formats fasta –p refseq –assembly-levels complete<br>其中“bacteria”和参数“-p refseq”确保从 NCBI RefSeq 存储库下载细菌基因组。此外，“-formats fasta”表示基因组应为fasta 格式，“-assembly-level complete”仅下载完整的细菌 RefSeq 基因组。</p>
+<p>关键步骤：如果需要古细菌基因组，同样可以使用“archaea”选项从 RefSeq 下载它们。</p>
+<p>关键步骤：该方法于 2020 年 5 月下载的 RefSeq。</p>
+<p><strong>3 接下来，使用默认 k-mer和sketch大小生成数据库的 Mash sketch：</strong></p>
+<p>mash sketch -o refseq.msh &#x2F;path&#x2F;to&#x2F;RefSeq&#x2F;*fasta<br><strong>4 从 <a target="_blank" rel="noopener" href="https://github.com/Finn-Lab/MAG_Snakemake_wf">https://github.com/Finn-Lab/MAG_Snakemake_wf</a> 将流程的代码下载</strong>到至少有 1.5 TB 磁盘空间的位置。将目录更改为该文件夹。使用以下命令将 GTDB 数据库和 RefSeq Mash 草图移动到子文件夹 &#x2F;data&#x2F;databases：</p>
+<p>cd &#x2F;path&#x2F;to&#x2F;MAG_Snakemake_wf&#x2F;<br>mkdir -p data&#x2F;databases<br>mv &#x2F;path&#x2F;to&#x2F;refseq.msh data&#x2F;databases<br>mv &#x2F;path&#x2F;to&#x2F;gtdbtk_r95_data.tar.gz data&#x2F;databases<br>tar -xvzf data&#x2F;databases&#x2F;gtdbtk_r95_data.tar.gz<br>**5 安装 Python 3 版本的 Miniconda (**<a target="_blank" rel="noopener" href="http://conda.pydata.org/miniconda.html)%E3%80%82%E5%AF%B9%E6%98%AF%E5%90%A6%E5%BA%94%E5%B0%86">http://conda.pydata.org/miniconda.html)。对是否应将</a> conda 放入 PATH 的问题回答“是”。获取 Singularity 版本 3.5.0。</p>
+<p>wget -c <a target="_blank" rel="noopener" href="https://repo.anaconda.com/miniconda/Miniconda3-py39_4.9.2-Linux-x86_64.sh">https://repo.anaconda.com/miniconda/Miniconda3-py39_4.9.2-Linux-x86_64.sh</a><br>bash Miniconda3-py39_4.9.2-Linux-x86_64.sh<br><strong>6 安装snakemake</strong></p>
+<p>conda create -c conda-forge -c bioconda -n snakemake snakemake&#x3D;5.18<br>conda activate snakemake<br><strong>7 使用runs.txt 文件</strong>（我们之前对人类肠道微生物组进行的34 个测序样本）指定要分析的SRA 运行样本，每行都有不同的样本加入。使用 coassembly_runs.txt 文件（两个联合组装样本由 14 次测序样本组成）指定将合并到每个共组装样本中的样本。</p>
+<p><strong>8 运行流程</strong></p>
+<p>LSF作业系统提交任务:</p>
+<p>snakemake –use-singularity –restart-times 3 -k –jobs 50 –cluster-config clusterconfig.yaml –cluster “bsub -n {cluster.nCPU} -M {cluster.mem} -e {cluster.error} -o {cluster.output}”<br>SLURM作业系统提交任务:</p>
+<p>snakemake –use-singularity –restart-times 3 -k -j 50 –cluster-config clusterconfig.yaml –cluster “sbatch -n {cluster.nCPU} –mem {cluster.mem} -e {cluster.error} -o {cluster.output}”<br>关键步骤：运行此流程应自动生成与此协议相关联的数字，而无需人工干预。方法的其余部分将介绍构成流程的不同步骤。</p>
+<p><strong>数据下载</strong><br>计算时间：16小时</p>
+<p><strong>9 要使用 SRA 工具包下载与 SRA样本相关的测序数据</strong>，请使用：</p>
+<p>prefetch {params.run} &amp;&amp; vdb-validate {params.run} &amp;&amp; parallel-fastq-dump –threads {threads} –outdir {params.outdir} –skip-technical –split-3 –sra-id {params.run} –gzip<br>Prefetch将保存与相关的 SRA 文件列表加入 {params.run} 。可以使用 vdb-config -i 设置存储 SRA 数据的路径，并将“location of user-repository”设置为具有足够存储空间的路径，然后通过键入“x”关闭交互窗口。检查 SRA 数据集的完整性以确保数据已成功下载至关重要。这可以使用 vdb-validate 来执行。接下来，使用 parallel-fastq-dump 将 SRA 文件转换为 FASTQ 格式。—split-3 选项将读长分成左右两端，但如果有不匹配的两端，这些将放在第三个单个文件。由于不需要诸如条形码和引物读长之类的技术读长，因此包含 —skip-technical 选项以删除这些技术部分。接下来，使用 —gzip 选项压缩生成的 FASTQ 文件。</p>
+<p><strong>预处理</strong><br>kneaddata计算时间：48小时</p>
+<p><strong>10 评估原始数据的质量以确保它没有任何问题或偏差很重要</strong>。FastQC 生成一个报告，以可视化与测序仪或起始库相关的问题。FastQC 的一个重要警告是，某些模块（例如重复序列和过丰富序列）仅计算数据子集（即每个文件中的前 100,000 个不同序列）的统计数据。可以提供将针对文库进行搜索的附加接头序列。如果未设置此选项，将搜索一组有限的接头。要对样本的正向读长运行 FastQC，请使用：</p>
+<p>fastqc {input.fwd} –outdir {params.outdir}<br>其中 {input.fwd} 是 FASTQ 格式（或 FASTQ gzipped 格式）的正向读长，{params.outdir} 是存储 FastQC 分析输出的文件夹。可以使用相同的程序在反向读长上运行 FastQC。</p>
+<p><strong>11 MultiQC 汇总多个样品的 FastQC 结果并创建单一报告以便于比较</strong>。MultiQC 报告提供有关整个数据集的信息，而 FastQC 报告可用于可视化单个读长的质量。要创建 MultiQC 报告，请使用：</p>
+<p>multiqc {params.indir} -o {params.outdir}<br>在此命令中，{params.outdir} 表示输出目录，而 {params.indir} 是包含要聚合和汇总的所有 FastQC 分析的先前输出目录的目录。</p>
+<p><strong>12 接下来，创建一个净化数据库，KneadData 将在下游预处理分析中使用该数据库</strong>。KneadData 是一种分析 流程，可用于质量控制和去除宿主污染。要使用 KneadData，需要一个 Bowtie2 格式的索引污染物数据库和 FASTQ 格式（或 FASTQ gzipped 格式）的读长。要去除人类宿主污染，请提供人类基因组的参考以比对读长。要以 Bowtie2 格式下载预先编入索引的人类基因组，请使用以下命令：</p>
+<p>kneaddata_database –download human_genome bowtie2 {params.outdir}<br>创建去污数据库时，重要的是要考虑 PhiX (<a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/nuccore/9626372">https://www.ncbi.nlm.nih.gov/nuccore/9626372</a>) 是否作为掺入添加到测序样品中，样品是否从宿主或实验室是否使用可能污染样品的其他生物体的 DNA。接下来，应将 PhiX、宿主和其他潜在污染物的基因组添加到一个文件中，并使用 Bowtie2 进行索引以创建污染物数据库。请注意，特别是对于低微生物生物量样品，例如皮肤拭子，还必须考虑试剂衍生的污染，通常称为“kitome(试剂组)”，因为即使是低水平的污染也会与已经微弱的“真实”信号竞争这些样品。解决试剂衍生污染的一种方法是通过合并和分析“空白”测序对照，其中试剂在不添加样品材料的情况下进行测序。通过阴性对照检测到的污染序列可以添加到污染物数据库中。</p>
+<p><strong>13 进行质控和去污染</strong></p>
+<p>kneaddata –remove-intermediate-output -t {threads} –input {input.fwd} –input {input.rev} –output {params.outdir} –reference-db {input.index} –trimmomatic {input.trimmomatic_path} –trimmomatic-options “ILLUMINACLIP:{input.pathtoadapters}:2:30:10: SLIDINGWINDOW:4:20 MINLEN:50” –bowtie2-options “–very-sensitive –dovetail”<br>其中 {input.fwd} 和 {input.rev} 是输入 FASTQ 文件，它们为双端数据提供了两次。{params.outdir} 是输出目录，{input.index} 是去污数据库文件夹的路径，{input.trimmomatic_path} 是包含 jarfile 的 Trimmomatic 文件夹的路径，{threads} 是分配的线程数.对于 —trimmomatic-options，使用‘ILLUMINACLIP:{input.pathtoadapters}:2:30:10: SLIDINGWINDOW:4:20 MINLEN:50’。ILLUMINACLIP 用于修剪接头和其他特定于Illumina的序列。使用“ILLUMINACLIP:{input.pathtoadapters}:2:30:10”，Trimmomatic 在文件 {input.pathtoadapters} 和每次读长中详述的接头之间搜索种子匹配或短对齐，允许最多两个不匹配。种子将被扩展和剪切，双端读长的分数为 30，单端读长的分数为 10。通常，读取质量在读长结束时会变差。使用选项 ‘SLIDINGWINDOW:4:20 MINLEN:50’ 修剪低质量的末端，当质量（也称为 Phred 分数）在此窗口中低于 20 时，将修剪 4 nt 的滑动窗口。接下来，删除任何序列短于 50 nt。在这里，参数的顺序很重要，因为在 SLIDINGWINDOW 之前添加 MINLEN25 只会在修剪前检查读取的长度，而在 SLIDINGWINDOW 之后添加 MINLEN25 会删除修剪后太短的读取。要使用的 —bowtie2-options 是“—very-sensitive”和“—dovetail”，用于将比对参数设置为非常敏感，并设置配对相互延伸以保持一致的情况。要减少分析所需的存储空间，请添加选项 —remove-intermediate-output 以便删除中间文件，包括大型 FASTQ。</p>
+<p>修剪和过滤后的最终文件将分别作为 {inputname}_1_kneaddata_paired_1.fastq 和 {inputname}_1_kneaddata_paired_2.fastq 存储在输出目录中，用于正向和反向读长。这些文件将用于下游分析。kneaddata 的替代方案是基于 k-mer 的 BBDuk，它是 BBTools 包 (<a target="_blank" rel="noopener" href="http://sourceforge.net/projects/bbmap/">http://sourceforge.net/projects/bbmap/</a>) 的一部分，可用于质量、接头剪切和污染物过滤。</p>
+<p>关键步骤：对测序数据进行彻底的质量控制很重要，因为这一步会影响所有后续的下游分析。</p>
+<p><strong>14 接下来，重新运行 FastQC 和 MultiQC</strong>，如步骤 10 和 11 中所示，以可视化预处理对数据集的影响。图 2 显示了预处理后读长的平均质量分数和接头含量的 MultiQC 报告。</p>
+<p><strong>组装和共组装</strong><br>CPU计算时间：2600i小时</p>
+<p><strong>15 要创建共组装示例，</strong>请按照文件 coassembly_runs.txt 中的详细说明将步骤 13 中预处理的 FASTQ 文件按元数据的分组合并，如下所示：</p>
+<p>cat {input.fwd1_to_fwdN} &gt; {output.coas_fwd}<br>其中 {input.fwd1_to_fwdN} 是属于由空格分隔的感兴趣元数据的运行的所有前向读长，{output.coas_fwd} 是这些运行的前向读长取。重复该过程以生成联合组装反向读长取。尽管本方法在聚合运行以创建联合组装样本时考虑了年龄元数据，但其他样本元数据字段（例如，在欧洲核苷酸档案中可用）也可用于对样本进行分组。</p>
+<p><strong>16 组装读长</strong>。可使用metaSPAdes(A)或MEGAHIT(B)</p>
+<p>(A) MetaSPAdes</p>
+<p>要使用 metaSPAdes，请按如下方式提供单样本和共组装双端读长：</p>
+<p>spades.py –meta -1 {input.fwd} -2 {input.rev} -o {params.outdir} –threads {threads} -m {resources.mem}<br>其中 {threads} 是分配的线程数，-m 指定 SPAdes 的 RAM 限制（以 Gb 为单位），如果超过此限制，SPAdes 将终止。</p>
+<p>(B) MEGAHIT</p>
+<p>要使用 MEGAHIT，类似地指定共组装：</p>
+<p>megahit -1 {input_1.fwd} -2 {input_1.rev} -o {params.outdir} -t {threads}<br>其中 -o 指定输出目录，{threads} 指定分配的线程数。MEGAHIT 生成的 final.contigs.fa 文件在标题（fasta 文件中以“&gt;”开头的行）中有空格和特殊字符。使用以下方法可视化文件头：</p>
+<p>head final.contigs.fa<br>这些序列ID必须在下游分析之前进行格式化。</p>
+<p><strong>分箱</strong><br>CPU时间：100小时</p>
+<p><strong>17 宏基因组组装</strong>可以包含许多短重叠群，这些短重叠群本身在丰度和序列组成方面具有很大的变化。因此，这些短重叠群更有可能被错误地分箱。以前的工作发现，重叠群大小的合适下限是 2.5 kb，但如果组装质量非常好，则可以使用重叠群长度低至 1.5 kb。执行分箱如下：</p>
+<p>metawrap binning -t {threads} -m {resources.mem} -a {input.fasta} –maxbin2 –metabat2 –concoct -l {params.mincontiglength} -o {params.outdir} {input.fwd} {input.rev}<br>其中，{input.fasta} 是通过组装获得的支架文件的路径，{params.mincontiglength} 表示最小重叠群长度并指定为 2500。输出文件夹将具有三个最终 bin 集：concoct_bins、maxbin2_bins、metabat2_bins。对于 co-binning，{input.fwd} 和 {input.rev} 表示正向和反向读长，每个读长取都由一个空格分隔。</p>
+<p>质量评估和分箱提纯：估计 MAG 的完整性和污染率<br>CPU时间：25小时</p>
+<p><strong>18 CheckM 可用于评估分箱的完整性和污染程度</strong>。CheckM 通过几个步骤评估分箱的质量。首先，“tree”命令将基因组分箱放入参考基因组树中。“lineage_set”命令创建一个标记文件，显示可用于评估每个 分箱的特定于谱系的标记集。然后将此标记文件传递给“analyze”，它识别将用于估计每个分箱的完整性和污染率的标记基因。‘qa’命令总结了不同汇总表中每个分箱的质量。使用以下命令执行上述步骤：</p>
+<p>checkm lineage_wf -t {threads} -x {params.ext} –tab_table -f {output} {params.indir} {params.outdir}<br>其中 {threads} 表示线程数，{params.indir} 是包含所有分箱的目录，{params.ext} 表示分箱’fa’ 的扩展名，{params.outdir} 是 CheckM 输出目录和 {output} 是摘要 tsv 文件。</p>
+<p>关键步骤：分箱的质量控制至关重要，因为包含低质量（高度碎片化、不完整和&#x2F;或受污染）的基因组将导致误导性的物种和功能表征。</p>
+<p>质量评估和分箱提纯：估计 MAG 的株异质性<br>CPU时间：700小时</p>
+<p><strong>19 要计算株异质性</strong>，首先按如下方式索引 MAG FASTA 文件：</p>
+<p>bowtie2-build {input.MAG} {params.prefix}<br>其中 {input.MAG} 是 MAG 的 FASTA 文件，{params.prefix} 是为生成的索引文件选择的命名前缀。</p>
+<p><strong>20 接下来，比对读长至MAG索引结果如下：</strong></p>
+<p>bowtie2 –very-sensitive-local -x {params.outprefix} -p {threads} -1 {input.fwd} -2 {input.rev} | samtools view -uS - | samtools sort {threads} - -o {params.outprefix}.bam<br>samtools index -@ {threads} {params.outprefix}.bam<br>其中 {input.fwd} 和 {input.rev} 是正向和反向读长，{threads} 是分配的线程数，{params.outprefix} 是用于命名输出文件的前缀。</p>
+<p><strong>21 细菌MAG运行Prokka</strong>:</p>
+<p>prokka {input} –kingdom Bacteria –outdir {params.outdir} –prefix {params.prefix} –force –locustag {params.prefix} –cpus {threads}<br>其中 {input} 是 MAG FASTA 文件，{params.outdir} 是输出目录的名称，{params.prefix} 是标记输出文件时使用的名称。</p>
+<p>关键步骤：使用选项 —kingdom Archaea 可以对古细菌 MAG 使用类似的程序。</p>
+<p><strong>22 接下来，检查多态位点</strong>并使用CMSeq解析非同义位置、同义位置和比对位置的数量，如下所示：</p>
+<p>scripts&#x2F;polymut.py -c {input.MAG} {params.outprefix}.bam –gff_file {input.gff} –mincov 10 –minqual 30 –dominant_frq_thrsh 0.8 &gt;<br>{params.outprefix}.cmseq.csv<br>其中 {input.MAG} 是 MAG fasta 文件，{input.gff} 是 Prokka 在上一步中输出的扩展名为 gff 的文件，{params.outprefix} 是输出文件的前缀。</p>
+<p>质量评估和分箱提纯；MAG 与 RefSeq 基因组的比较<br>CPU时间：1小时</p>
+<p>23 另一种评估 MAG 质量的方法是将它们与分离基因组（例如 RefSeq 中的基因组）进行比较。为此，首先使用以下方法确定 MAG 与每个参考基因组之间的混合距离：</p>
+<p>mash dist -p {threads} {input.db} {input.MAG} &gt; {output}<br>其中 {threads} 是线程数，{input.db} 是 mash 数据库的路径，{input.MAG} 是将与 RefSeq 数据库进行比较的 MAG。</p>
+<p>24 接下来，对 Mash 结果进行排序以确定最高命中及其 P 值，如下所示：</p>
+<p>sort -gk3 {input} | sed -n 1p &gt; {output}<br>其中 {input} 是来自上一步的 mash 距离文件。{output} 文件是一个制表符分隔的文件，其中的列代表参考基因组的路径、MAG 基因组的路径、混搭距离、相关的 P 值和匹配的哈希值。</p>
+<p>关键步骤：考虑 P 值很重要，因为它们表示偶然看到给定混搭距离的概率。较低的 P 值表示对获得的混合距离估计有更大的信心。</p>
+<p>25 接下来，使用以下方法计算 MAG 和此最佳混合命中之间的对齐百分比 ANI：</p>
+<p>dnadiff {params.reference} {params.MAG} -p {params.name}<br>其中 {params.reference} 和 {params.MAG} 是 MAG fasta 文件和参考基因组 fasta 文件的路径。带有前缀 {paramas.name} 的感兴趣的输出文件具有扩展名“.report”，并总结了比对、差异和 SNP。要使用的值是与参考 (REF) 对齐的碱基百分比、与 MAG (QRY) 和 ANI (AvgIdentity) 对齐的碱基百分比。</p>
+<p>质量评估和分箱提纯；箱提纯<br>CPU时间：260小时</p>
+<p>26 接下来，使用 metaWRAP 细化 bin，如下所示：</p>
+<p>metawrap bin_refinement -o {params.outdir} -t {threads} -A {params.metabat} -B {params.maxbin} -C {params.concoct} -c 50 -x 10<br>其中 {threads} 是线程数，输出目录中的 {params.outdir} 和 {params.metabat}、{params.maxbin} 和 {params.concoct} 是通过获得的 MetaBAT、MaxBin 和 CONCOCT 的路径分别分箱。-c 和 -x 可分别用于指定下游分析中所需的分箱质量。提纯后的分箱 将存储在 {params.outdir}&#x2F;metawrap_50_10_bins 文件夹中。</p>
+<p>关键步骤：此外，每个 pplacer 线程使用 &gt; 40 GB 的内存，因此为了优化资源使用，分配的内存量（以 GB 为单位）应该比线程数大 40 倍。</p>
+<p>MAG 的去冗余（可选）<br>CPU时间：4小时</p>
+<p>27 各种阈值可用于去除基因组目录中的冗余。在这一步中，使用 dRep 以 95% 的 ANI 对基因组进行聚类，这是描述原核物种的常用阈值。首先，dRep 使用 Mash 将 MAG 分组为主要集群（约 90% ANI）。此后，通过比对基因组（默认情况下是通过 ANImf）将来自每个主要集群的 MAG 放入物种级别的次要集群 (95% ANI)。要去冗余 MAG，请使用以下命令：</p>
+<p>dRep dereplicate -p {threads} {params.outdir} -g {params.indir}&#x2F;*.fa -pa 0.90 -sa 0.95 -nc 0.30 -cm larger –genomeInfo {input.checkm} -comp 50 -con 5<br>其中 {params.indir} 是包含要删除的 MAG 的目录，{input.checkm} 是一个.csv 文件，包含四列，包括 bin 名称、完整性、污染和应变异质性以及标题“genome”、“completeness”、 “contamination”和“strain_heterogeneity”。此外，-nc 是二级比较期间基因组之间的最小重叠水平，-cm 是覆盖率方法，“larger”指定覆盖率应计算为两个基因组对齐部分的最大值：max((对齐长度&#x2F;基因组 1)，(aligned_length&#x2F;基因组 2))。</p>
+<p>关键步骤：鉴于 MAG 是不完整的，请使用 0.30 的覆盖阈值（参数 -nc），这不如施加在完整基因组上的 0.60 对齐分数那么严格。值得注意的是，这可能低估了物种代表的数量。</p>
+<p>物种分类<br>CPU时间：3小时</p>
+<p>28 要对细菌和古菌 MAG 进行分类，请使用基因组分类数据库 和基因组分类数据库工具包 (GTDB-Tk)，如下所示。GTDB-Tk 指南建议该工具应用于具有 ≥ 50% 完整性和 ≤ 10% 污染的基因组。</p>
+<p>gtdbtk classify_wf –cpus {threads} –genome_dir {params.indir} –out_dir {params.outdir} -x {params.ext}<br>其中 {params.indir} 是包含基因组的输入目录，{params.outdir} 是 GTDB 分析的输出目录，{params.ext} 是“fa”，因为分箱 具有“fa”扩展名。细菌的分类分析将存储在文件 gtdbtk.bac120.summary.tsv 中，古细菌的分类分析将存储在文件 gtdbtk.ar122.summary.tsv 中。</p>
+<p>关键步骤：GTDB-Tk 需要多个 CPU 和 ≥ 128 GB 的 RAM。</p>
+<p>瓶颈评估<br>CPU时间：120小时</p>
+<p>29 将测序读长比对到参考基因组的过程需要参考的索引文件。要创建参考索引，请使用“bwa index”，如下所示：</p>
+<p>bwa index {params.scaffold}<br>30 接下来，将预处理的测序读长比对到参考索引。BWA 的替代品是 Bowtie2。BWA 和 Bowtie2 的输出是 SAM 格式的比对文件。不是保存 bwa mem 的输出，而是通过“piping”将其重定向到 samtools 程序，立即将其转换为排序（二进制）BAM 格式。排序的过程涉及按照参考序列的顺序对比对进行排序。接下来，索引已排序的 BAM 文件。例如，要计算每个样本的读长比对到组装集的百分比，请使用</p>
+<p>bwa mem -t {threads} {params.scaffold} {input.fwd} {input.rev} | samtools view -bS - | samtools sort -@ {threads} -o {params.alignedsorted} -<br>samtools index {params.alignedsorted}<br>samtools flagstat {params.alignedsorted} &gt; {output.flagstat}<br>其中 {input.fwd} 和 {input.rev} 是正向和反向读取，-bS 表示输入是 SAM 格式，输出将是 BAM 格式，{params.alignedsorted} 是输出对齐方式 排序和索引。两个 samtools 命令的“-”表示输入是来自“标准输入”而不是来自文件。-o 是输出文件的名称。</p>
+<p>31 要计算比对到基因组集的读取百分比，首先连接去冗余每个 MAG 的 fasta 文件：</p>
+<p>cat {input.fasta1_to_fastaN} &gt; {output.catalog}<br>其中 {input.fasta1_to_fastaN} 是 fasta 文件的路径，每个文件用空格分隔，{output.catalog} 是生成的 multifasta 文件。</p>
+<p>32 然后按照与步骤 29 和 30 类似的过程进行操作：</p>
+<p>bwa index {input.catalog}<br>bwa mem -t {threads} {input.catalog} {input.fwd}<br>{input.rev} | samtools view -bS - | samtools sort -@<br>{threads} -o {params.alignedsorted} -<br>samtools index {params.alignedsorted}<br>samtools flagstat {params.alignedsorted} &gt; {output.flagstat}<br>其中 {input.catalog} 是步骤 31 中生成的 multifasta 文件（{output.catalog}）。</p>
+<p>33 要使用步骤 30 和 32 中生成的 flagstat 输出 {output.flagstat} 计算映射到基因组目录或组集的读长百分比，请计算主要比对的数量（比对 - 次要 - 补充）。然后将主要对齐的数量除以正向和反向读取的数量，以获得映射的读长分数。</p>
+<p>34 接下来，绘制比对到基因组数据库的读长百分比和比对到 y 轴上的组装集的读取百分比（参见图 4 中的示例）。</p>
+<h5 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h5><p>步骤	问题	可能原因	解决方法<br>10,14	FastQC报告中‘Per sequence quality scores’ 显示WARNING或FAIL	质量分数均值&lt;27显示WARNING，&lt;20显示FAIL,大量的读长低质量、表明数据存在系统问题	通过质控剪切来缓解此问题<br>10,14	FastQC报告中‘Per base sequence content’ 显示WARNING或FAIL	给定一个随机库，预计碱基比例应该没有差异。如果 C&amp;G 或 A&amp;T 之间的差异在任何位置大于 10%，则发出警告，如果差异大于20%，则发出失败。巨大的差异可能表明存在未修剪的接头或有偏差的文库组成	如果根本原因是未修剪的接头，请将其移除<br>16	MetaSPAdes内存不足	MetaSPAdes 可能由于各种原因而失败，通常是由于内存分配不足。通过在 metaSPAdes 运行失败后运行命令 dmesg -T，我们可以更好地辨别失败的根本原因（例如，如果程序确实由于缺乏内存资源而被杀死）	可以将选项 —continue 或 —restart-from与相同的输出目录一起使用。—continue 选项使用相同的选项从最后一个可用的检查点运行 SPAdes，而 —restart-from 允许您更改某些组装选项<br>18	ls: 无法访问 storage&#x2F;tree&#x2F;concatenated.tre: 没有那个文件或目录	没有足够的 RAM 内存分配给 CheckM	增加对 CheckM 的内存分配<br>26	“运行 CheckM 时出了点问题。退出’	binning_refiner 失败可能是因为 bin 太少了	手动选择具有最佳 CheckM 完整性和污染估计的箱<br>预期结果<br>该方法的输出是包含一组基因组草图的 FASTA 文件，如果不需要去冗余，则由步骤 26 输出，或者在带有去冗余的情况下由步骤 27 输出，就像本方法的情况一样。在使用这些基因组草图进行下游分析之前，应该进行彻底的质量控制。例如，评估我们的 MAG 的一种方法是通过完整性、污染和菌株异质性的指标，如步骤 18-22（图 3）所示。值得注意的是，基于通用单拷贝标记基因的 CheckM 等工具依赖于参考数据库，因此可能无法对尚未纳入这些数据库的新型基因组的完整性提供可靠的估计。此外，并非每个重叠群都包含单拷贝标记基因，因此在某些情况下，污染可能无法检测到。克服这些限制并进一步验证 MAG 的一种方法是将它们与密切相关的分离基因组进行比较，如步骤 23-25（图 3d、e）所示，通过绘制比对的分离株与MAG 的 ANI百分比。鉴于预计 MAG 不如参考基因组完整，因此预计 MAG 比对的百分比通常高于比对的分离株的百分比。通过将 MAG 与分离株基因组对齐，可以确定 MAG 中缺少哪些基因组区域，但很难确定 MAG 或分离株未对齐的部分是由于 MAG 重建问题还是由于生物体的生物变异。完成质量评估后，可以将中等和高质量的单样本和共组装 MAG 一起去冗余以生成非冗余 MAG 集，如步骤 27 所示。使用 GTDB 对我们去冗余 的细菌 MAG 进行物种分类使用步骤 28 执行的操作总结在图 3f 中。</p>
+<p>比对到我们的 MAG 的读长百分比可用于估计从样本中恢复的多样性比例。图 4b、d 中散点图上的每个点表示针对我们整个去冗余 MAG 集（x 轴）的样本比对读长的输出，以及针对该样本的相应宏基因组组装（y 轴）的比对读长。将我们的皮肤数据集与肠道数据集（图 4a）进行比较显示，皮肤有两个象限未被肠道数据集覆盖（左下角和左上角；图 4b）。在皮肤中发现的左下象限可能是由于皮肤中发现的高水平菌株异质性的结果，这导致组装的更大碎片并阻碍这些基因组的恢复，导致组装跨度低（低百分比读长比对到组装集）。左上象限中的样本可能代表那些已组装但质量不足以被招募到基因组集中的运行。左上象限中的运行还可以包括那些包含病毒、质粒或真核生物多样性的样品。这与具有相当大的真核生物种群的皮肤和许多偏向于原核生物基因组的分箱算法一致。为了解决这个问题，VIRify (<a target="_blank" rel="noopener" href="https://github.com/EBI-Metagenomics/emg-viral-pipeline">https://github.com/EBI-Metagenomics/emg-viral-pipeline</a>) 和 EukCC 等流程可分别用于恢复和表征病毒和真核序列。我们对皮肤研究的调查结果如图 4c、d 所示，用于单次组装，然后是共组装，然后是真核和病毒分析。共组装可用于捕获额外的多样性，但重要的是要注意，产生的基因组应被视为群体基因组，与单次运行的 MAG 相比，共组装的 MAG 存在更高的菌株异质性说明了这一点（图3c)。此外，重要的是要考虑根据元数据将哪些样本共同组装在一起，因为组装非常不同的样本可能会降低结果组装的质量。</p>
+<p>该方法概述了从鸟枪宏基因组测序数据中回收和评估 MAG 的方法。可以使用以下指南 (<a target="_blank" rel="noopener" href="https://ena-docs.readthedocs.io/en">https://ena-docs.readthedocs.io/en</a>) 将产生的 QS &gt; 50（质量分数 &#x3D; 完整性 –（5 × 污染））、基因组箱和相关组件的 MAG 存放到 ENA（MAG提交指南） <a target="_blank" rel="noopener" href="https://ena-docs.readthedocs.io/en/latest/submit/assembly/metagenome/mag.html#">https://ena-docs.readthedocs.io/en/latest/submit/assembly/metagenome/mag.html#</a> ）。MAG 可用于各种下游应用。例如，一种应用是对基因组进行分类分析以发现新的生命进化枝（图 3f）。另一个应用是针对 MAG 进行读长比对，以使用Anvi’o 和 inStrain 等工具确定样本内或样本间 MAG 的丰度和基因组异质性。还可以对 MAG 进行功能分析，类似于 Almeida 等人的工作，以深入了解不可培养生物基因组中发现的基因和途径。最后，MAG 可用于补充参考数据库，以创建更全面的基因组集，当读长比对时，可以提供更大的分辨率，了解微生物在健康与疾病中的模式。</p>
+<p>数据<br>图中显示的数据。2 和 3 可在支持的主要研究论文中找到。肠道的原始数据文件在图 3 和图 2-4 可作为项目加入 PRJNA268964 和 PRJNA278393 的一部分。图 4 中皮肤样本的原始数据文件可通过项目登录 PRJNA46333 获得。为该协议生成的数据集 2-4 可在 <a target="_blank" rel="noopener" href="https://github.com/Finn-Lab/MAG_Snakemake_wf">https://github.com/Finn-Lab/MAG_Snakemake_wf</a> 子文件夹 Anticipated_Results 下找到。</p>
+<p>代码<br>本方法中使用的代码可在 <a target="_blank" rel="noopener" href="https://github.com/Finn-Lab/MAG_Snakemake_wf">https://github.com/Finn-Lab/MAG_Snakemake_wf</a> 公开获得。本方法中的代码已经过同行评审。</p>
+<p>参考文献<br>Sara Saheb Kashaf, Alexandre Almeida, Julia A. Segre, Robert D. Finn. (2021). Recovering prokaryotic genomes from host-associated, short-read shotgun metagenomic sequencing data. Nature Protocols 16 2520-2541 doi: 10.1038&#x2F;s41596-021-00508-2</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">BioNews</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://nikolahuang.github.io/2021/11/03/Nature%E5%AD%90%E5%88%8A%EF%BC%9A%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84%E4%B8%AD%E6%8C%96%E6%8E%98%E5%8E%9F%E6%A0%B8%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+
+<nav id="article-nav">
+  
+    <a href="/2022/04/14/%E9%82%93%E5%AE%8F%E9%AD%81%E5%9B%A2%E9%98%9F%E5%8F%91%E8%A1%A8%E9%87%8D%E5%A4%A7%E7%A0%94%E7%A9%B6%E6%88%90%E6%9E%9C-%E5%8C%96%E5%AD%A6%E5%B0%8F%E5%88%86%E5%AD%90%E8%AF%B1%E5%AF%BC%E4%BA%BA%E6%88%90%E4%BD%93%E7%BB%86%E8%83%9E%E8%BD%AC%E5%8F%98%E4%B8%BA%E5%A4%9A%E6%BD%9C%E8%83%BD%E5%B9%B2%E7%BB%86%E8%83%9E-md/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          邓宏魁团队发表重大研究成果--化学小分子诱导人成体细胞转变为多潜能干细胞.md
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2023-2024 <a href="http://nikolahuang.github.io/" target="_blank">Anderson</a>
+    	</div>
+      	<div class="footer-right">
+			
+			
+      		GitHub:<a href="https://github.com/JoeyBling/hexo-theme-yilia-plus" target="_blank">hexo-theme-yilia-plus</a> by Litten
+      	</div>
+    </div>
+  </div>
+  
+  
+	<script src="/lib/busuanzi.pure.js"></script>
+	
+  
+  
+	
+	<span id="busuanzi_container_site_pv" style="display:none">
+		本站总访问量<span id="busuanzi_value_site_pv"></span>次	
+	        <span class="post-meta-divider" >|</span>
+	</span>
+  	<span id="busuanzi_container_site_uv" style='display:none'>
+  		本站访客数<span id="busuanzi_value_site_uv"></span>人
+  	</span>
+  
+</footer>
+
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		toc_hide_index: true,
+		root: "/",
+		innerArchive: true,
+		showTags: true
+	}
+</script>
+
+<script>!function(r){function e(t){if(i[t])return i[t].exports;var n=i[t]={exports:{},id:t,loaded:!1};return r[t].call(n.exports,n,n.exports,e),n.loaded=!0,n.exports}var i={};e.m=r,e.c=i,e.p="./",e(0)}([function(t,n,r){r(208),t.exports=r(205)},function(t,n,r){var d=r(3),y=r(46),g=r(26),b=r(27),x=r(47),m="prototype",S=function(t,n,r){var e,i,o,u,c=t&S.F,f=t&S.G,a=t&S.S,s=t&S.P,l=t&S.B,h=f?d:a?d[n]||(d[n]={}):(d[n]||{})[m],v=f?y:y[n]||(y[n]={}),p=v[m]||(v[m]={});for(e in f&&(r=n),r)o=((i=!c&&h&&void 0!==h[e])?h:r)[e],u=l&&i?x(o,d):s&&"function"==typeof o?x(Function.call,o):o,h&&b(h,e,o,t&S.U),v[e]!=o&&g(v,e,u),s&&p[e]!=o&&(p[e]=o)};d.core=y,S.F=1,S.G=2,S.S=4,S.P=8,S.B=16,S.W=32,S.U=64,S.R=128,t.exports=S},function(t,n,r){var e=r(5);t.exports=function(t){if(!e(t))throw TypeError(t+" is not an object!");return t}},function(t,n){var r=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=r)},function(t,n){t.exports=function(t){try{return!!t()}catch(t){return!0}}},function(t,n){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,n){var r=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=r)},function(t,n,r){var e=r(118)("wks"),i=r(79),o=r(3).Symbol,u="function"==typeof o;(t.exports=function(t){return e[t]||(e[t]=u&&o[t]||(u?o:i)("Symbol."+t))}).store=e},function(t,n,r){var e=r(49),i=Math.min;t.exports=function(t){return 0<t?i(e(t),9007199254740991):0}},function(t,n){var r={}.hasOwnProperty;t.exports=function(t,n){return r.call(t,n)}},function(t,n,r){t.exports=!r(4)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,n,r){var e=r(2),i=r(174),o=r(53),u=Object.defineProperty;n.f=r(10)?Object.defineProperty:function(t,n,r){if(e(t),n=o(n,!0),e(r),i)try{return u(t,n,r)}catch(t){}if("get"in r||"set"in r)throw TypeError("Accessors not supported!");return"value"in r&&(t[n]=r.value),t}},function(t,n,r){t.exports=!r(20)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,n,r){var e=r(14),i=r(24);t.exports=r(12)?function(t,n,r){return e.f(t,n,i(1,r))}:function(t,n,r){return t[n]=r,t}},function(t,n,r){var e=r(22),i=r(60),o=r(42),u=Object.defineProperty;n.f=r(12)?Object.defineProperty:function(t,n,r){if(e(t),n=o(n,!0),e(r),i)try{return u(t,n,r)}catch(t){}if("get"in r||"set"in r)throw TypeError("Accessors not supported!");return"value"in r&&(t[n]=r.value),t}},function(t,n,r){var e=r(96),i=r(34);t.exports=function(t){return e(i(t))}},function(t,n,r){var e=r(40)("wks"),i=r(25),o=r(6).Symbol,u="function"==typeof o;(t.exports=function(t){return e[t]||(e[t]=u&&o[t]||(u?o:i)("Symbol."+t))}).store=e},function(t,n,r){var e=r(51);t.exports=function(t){return Object(e(t))}},function(t,n){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,n){var r=t.exports={version:"2.6.9"};"number"==typeof __e&&(__e=r)},function(t,n){t.exports=function(t){try{return!!t()}catch(t){return!0}}},function(t,n){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,n,r){var e=r(18);t.exports=function(t){if(!e(t))throw TypeError(t+" is not an object!");return t}},function(t,n){t.exports=!0},function(t,n){t.exports=function(t,n){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:n}}},function(t,n){var r=0,e=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++r+e).toString(36))}},function(t,n,r){var e=r(11),i=r(75);t.exports=r(10)?function(t,n,r){return e.f(t,n,i(1,r))}:function(t,n,r){return t[n]=r,t}},function(t,n,r){var o=r(3),u=r(26),c=r(30),f=r(79)("src"),e=r(219),i="toString",a=(""+e).split(i);r(46).inspectSource=function(t){return e.call(t)},(t.exports=function(t,n,r,e){var i="function"==typeof r;i&&(c(r,"name")||u(r,"name",n)),t[n]!==r&&(i&&(c(r,f)||u(r,f,t[n]?""+t[n]:a.join(String(n)))),t===o?t[n]=r:e?t[n]?t[n]=r:u(t,n,r):(delete t[n],u(t,n,r)))})(Function.prototype,i,function(){return"function"==typeof this&&this[f]||e.call(this)})},function(t,n,r){var e=r(1),i=r(4),u=r(51),c=/"/g,o=function(t,n,r,e){var i=String(u(t)),o="<"+n;return""!==r&&(o+=" "+r+'="'+String(e).replace(c,"&quot;")+'"'),o+">"+i+"</"+n+">"};t.exports=function(n,t){var r={};r[n]=t(o),e(e.P+e.F*i(function(){var t=""[n]('"');return t!==t.toLowerCase()||3<t.split('"').length}),"String",r)}},function(t,n,r){var e=r(65),i=r(35);t.exports=Object.keys||function(t){return e(t,i)}},function(t,n){var r={}.hasOwnProperty;t.exports=function(t,n){return r.call(t,n)}},function(t,n,r){var e=r(117),i=r(75),o=r(33),u=r(53),c=r(30),f=r(174),a=Object.getOwnPropertyDescriptor;n.f=r(10)?a:function(t,n){if(t=o(t),n=u(n,!0),f)try{return a(t,n)}catch(t){}if(c(t,n))return i(!e.f.call(t,n),t[n])}},function(t,n,r){var e=r(30),i=r(17),o=r(154)("IE_PROTO"),u=Object.prototype;t.exports=Object.getPrototypeOf||function(t){return t=i(t),e(t,o)?t[o]:"function"==typeof t.constructor&&t instanceof t.constructor?t.constructor.prototype:t instanceof Object?u:null}},function(t,n,r){var e=r(116),i=r(51);t.exports=function(t){return e(i(t))}},function(t,n){t.exports=function(t){if(null==t)throw TypeError("Can't call method on  "+t);return t}},function(t,n){t.exports="constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",")},function(t,n){t.exports={}},function(t,n){n.f={}.propertyIsEnumerable},function(t,n,r){var e=r(14).f,i=r(9),o=r(16)("toStringTag");t.exports=function(t,n,r){t&&!i(t=r?t:t.prototype,o)&&e(t,o,{configurable:!0,value:n})}},function(t,n,r){var e=r(40)("keys"),i=r(25);t.exports=function(t){return e[t]||(e[t]=i(t))}},function(t,n,r){var e=r(19),i=r(6),o="__core-js_shared__",u=i[o]||(i[o]={});(t.exports=function(t,n){return u[t]||(u[t]=void 0!==n?n:{})})("versions",[]).push({version:e.version,mode:r(23)?"pure":"global",copyright:"© 2019 Denis Pushkarev (zloirock.ru)"})},function(t,n){var r=Math.ceil,e=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(0<t?e:r)(t)}},function(t,n,r){var i=r(18);t.exports=function(t,n){if(!i(t))return t;var r,e;if(n&&"function"==typeof(r=t.toString)&&!i(e=r.call(t)))return e;if("function"==typeof(r=t.valueOf)&&!i(e=r.call(t)))return e;if(!n&&"function"==typeof(r=t.toString)&&!i(e=r.call(t)))return e;throw TypeError("Can't convert object to primitive value")}},function(t,n,r){var e=r(6),i=r(19),o=r(23),u=r(44),c=r(14).f;t.exports=function(t){var n=i.Symbol||(i.Symbol=o?{}:e.Symbol||{});"_"==t.charAt(0)||t in n||c(n,t,{value:u.f(t)})}},function(t,n,r){n.f=r(16)},function(t,n){var r={}.toString;t.exports=function(t){return r.call(t).slice(8,-1)}},function(t,n){var r=t.exports={version:"2.6.9"};"number"==typeof __e&&(__e=r)},function(t,n,r){var o=r(21);t.exports=function(e,i,t){if(o(e),void 0===i)return e;switch(t){case 1:return function(t){return e.call(i,t)};case 2:return function(t,n){return e.call(i,t,n)};case 3:return function(t,n,r){return e.call(i,t,n,r)}}return function(){return e.apply(i,arguments)}}},function(t,n,r){"use strict";var e=r(4);t.exports=function(t,n){return!!t&&e(function(){n?t.call(null,function(){},1):t.call(null)})}},function(t,n){var r=Math.ceil,e=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(0<t?e:r)(t)}},function(t,n,r){var x=r(47),m=r(116),S=r(17),w=r(8),e=r(138);t.exports=function(l,t){var h=1==l,v=2==l,p=3==l,d=4==l,y=6==l,g=5==l||y,b=t||e;return function(t,n,r){for(var e,i,o=S(t),u=m(o),c=x(n,r,3),f=w(u.length),a=0,s=h?b(t,f):v?b(t,0):void 0;a<f;a++)if((g||a in u)&&(i=c(e=u[a],a,o),l))if(h)s[a]=i;else if(i)switch(l){case 3:return!0;case 5:return e;case 6:return a;case 2:s.push(e)}else if(d)return!1;return y?-1:p||d?d:s}}},function(t,n){t.exports=function(t){if(null==t)throw TypeError("Can't call method on  "+t);return t}},function(t,n,r){var i=r(1),o=r(46),u=r(4);t.exports=function(t,n){var r=(o.Object||{})[t]||Object[t],e={};e[t]=n(r),i(i.S+i.F*u(function(){r(1)}),"Object",e)}},function(t,n,r){var i=r(5);t.exports=function(t,n){if(!i(t))return t;var r,e;if(n&&"function"==typeof(r=t.toString)&&!i(e=r.call(t)))return e;if("function"==typeof(r=t.valueOf)&&!i(e=r.call(t)))return e;if(!n&&"function"==typeof(r=t.toString)&&!i(e=r.call(t)))return e;throw TypeError("Can't convert object to primitive value")}},function(t,n,r){var d=r(6),y=r(19),g=r(93),b=r(13),x=r(9),m="prototype",S=function(t,n,r){var e,i,o,u=t&S.F,c=t&S.G,f=t&S.S,a=t&S.P,s=t&S.B,l=t&S.W,h=c?y:y[n]||(y[n]={}),v=h[m],p=c?d:f?d[n]:(d[n]||{})[m];for(e in c&&(r=n),r)(i=!u&&p&&void 0!==p[e])&&x(h,e)||(o=i?p[e]:r[e],h[e]=c&&"function"!=typeof p[e]?r[e]:s&&i?g(o,d):l&&p[e]==o?function(e){var t=function(t,n,r){if(this instanceof e){switch(arguments.length){case 0:return new e;case 1:return new e(t);case 2:return new e(t,n)}return new e(t,n,r)}return e.apply(this,arguments)};return t[m]=e[m],t}(o):a&&"function"==typeof o?g(Function.call,o):o,a&&((h.virtual||(h.virtual={}))[e]=o,t&S.R&&v&&!v[e]&&b(v,e,o)))};S.F=1,S.G=2,S.S=4,S.P=8,S.B=16,S.W=32,S.U=64,S.R=128,t.exports=S},function(t,n,r){var e=r(34);t.exports=function(t){return Object(e(t))}},function(t,n,r){var o=r(196),e=r(1),i=r(118)("metadata"),u=i.store||(i.store=new(r(200))),c=function(t,n,r){var e=u.get(t);if(!e){if(!r)return;u.set(t,e=new o)}var i=e.get(n);if(!i){if(!r)return;e.set(n,i=new o)}return i};t.exports={store:u,map:c,has:function(t,n,r){var e=c(n,r,!1);return void 0!==e&&e.has(t)},get:function(t,n,r){var e=c(n,r,!1);return void 0===e?void 0:e.get(t)},set:function(t,n,r,e){c(r,e,!0).set(t,n)},keys:function(t,n){var r=c(t,n,!1),e=[];return r&&r.forEach(function(t,n){e.push(n)}),e},key:function(t){return void 0===t||"symbol"==typeof t?t:String(t)},exp:function(t){e(e.S,"Reflect",t)}}},function(t,n,r){"use strict";if(r(10)){var g=r(68),b=r(3),x=r(4),m=r(1),S=r(132),e=r(159),h=r(47),w=r(70),i=r(75),_=r(26),o=r(76),u=r(49),O=r(8),E=r(194),c=r(78),f=r(53),a=r(30),M=r(81),P=r(5),v=r(17),p=r(145),j=r(72),F=r(32),A=r(73).f,d=r(161),s=r(79),l=r(7),y=r(50),I=r(120),L=r(119),N=r(162),T=r(82),k=r(125),R=r(77),C=r(137),D=r(166),G=r(11),W=r(31),U=G.f,V=W.f,B=b.RangeError,q=b.TypeError,z=b.Uint8Array,K="ArrayBuffer",H="Shared"+K,J="BYTES_PER_ELEMENT",$="prototype",Y=Array[$],X=e.ArrayBuffer,Q=e.DataView,Z=y(0),tt=y(2),nt=y(3),rt=y(4),et=y(5),it=y(6),ot=I(!0),ut=I(!1),ct=N.values,ft=N.keys,at=N.entries,st=Y.lastIndexOf,lt=Y.reduce,ht=Y.reduceRight,vt=Y.join,pt=Y.sort,dt=Y.slice,yt=Y.toString,gt=Y.toLocaleString,bt=l("iterator"),xt=l("toStringTag"),mt=s("typed_constructor"),St=s("def_constructor"),wt=S.CONSTR,_t=S.TYPED,Ot=S.VIEW,Et="Wrong length!",Mt=y(1,function(t,n){return It(L(t,t[St]),n)}),Pt=x(function(){return 1===new z(new Uint16Array([1]).buffer)[0]}),jt=!!z&&!!z[$].set&&x(function(){new z(1).set({})}),Ft=function(t,n){var r=u(t);if(r<0||r%n)throw B("Wrong offset!");return r},At=function(t){if(P(t)&&_t in t)return t;throw q(t+" is not a typed array!")},It=function(t,n){if(!(P(t)&&mt in t))throw q("It is not a typed array constructor!");return new t(n)},Lt=function(t,n){return Nt(L(t,t[St]),n)},Nt=function(t,n){for(var r=0,e=n.length,i=It(t,e);r<e;)i[r]=n[r++];return i},Tt=function(t,n,r){U(t,n,{get:function(){return this._d[r]}})},kt=function(t){var n,r,e,i,o,u,c=v(t),f=arguments.length,a=1<f?arguments[1]:void 0,s=void 0!==a,l=d(c);if(null!=l&&!p(l)){for(u=l.call(c),e=[],n=0;!(o=u.next()).done;n++)e.push(o.value);c=e}for(s&&2<f&&(a=h(a,arguments[2],2)),n=0,r=O(c.length),i=It(this,r);n<r;n++)i[n]=s?a(c[n],n):c[n];return i},Rt=function(){for(var t=0,n=arguments.length,r=It(this,n);t<n;)r[t]=arguments[t++];return r},Ct=!!z&&x(function(){gt.call(new z(1))}),Dt=function(){return gt.apply(Ct?dt.call(At(this)):At(this),arguments)},Gt={copyWithin:function(t,n){return D.call(At(this),t,n,2<arguments.length?arguments[2]:void 0)},every:function(t){return rt(At(this),t,1<arguments.length?arguments[1]:void 0)},fill:function(t){return C.apply(At(this),arguments)},filter:function(t){return Lt(this,tt(At(this),t,1<arguments.length?arguments[1]:void 0))},find:function(t){return et(At(this),t,1<arguments.length?arguments[1]:void 0)},findIndex:function(t){return it(At(this),t,1<arguments.length?arguments[1]:void 0)},forEach:function(t){Z(At(this),t,1<arguments.length?arguments[1]:void 0)},indexOf:function(t){return ut(At(this),t,1<arguments.length?arguments[1]:void 0)},includes:function(t){return ot(At(this),t,1<arguments.length?arguments[1]:void 0)},join:function(t){return vt.apply(At(this),arguments)},lastIndexOf:function(t){return st.apply(At(this),arguments)},map:function(t){return Mt(At(this),t,1<arguments.length?arguments[1]:void 0)},reduce:function(t){return lt.apply(At(this),arguments)},reduceRight:function(t){return ht.apply(At(this),arguments)},reverse:function(){for(var t,n=this,r=At(n).length,e=Math.floor(r/2),i=0;i<e;)t=n[i],n[i++]=n[--r],n[r]=t;return n},some:function(t){return nt(At(this),t,1<arguments.length?arguments[1]:void 0)},sort:function(t){return pt.call(At(this),t)},subarray:function(t,n){var r=At(this),e=r.length,i=c(t,e);return new(L(r,r[St]))(r.buffer,r.byteOffset+i*r.BYTES_PER_ELEMENT,O((void 0===n?e:c(n,e))-i))}},Wt=function(t,n){return Lt(this,dt.call(At(this),t,n))},Ut=function(t){At(this);var n=Ft(arguments[1],1),r=this.length,e=v(t),i=O(e.length),o=0;if(r<i+n)throw B(Et);for(;o<i;)this[n+o]=e[o++]},Vt={entries:function(){return at.call(At(this))},keys:function(){return ft.call(At(this))},values:function(){return ct.call(At(this))}},Bt=function(t,n){return P(t)&&t[_t]&&"symbol"!=typeof n&&n in t&&String(+n)==String(n)},qt=function(t,n){return Bt(t,n=f(n,!0))?i(2,t[n]):V(t,n)},zt=function(t,n,r){return!(Bt(t,n=f(n,!0))&&P(r)&&a(r,"value"))||a(r,"get")||a(r,"set")||r.configurable||a(r,"writable")&&!r.writable||a(r,"enumerable")&&!r.enumerable?U(t,n,r):(t[n]=r.value,t)};wt||(W.f=qt,G.f=zt),m(m.S+m.F*!wt,"Object",{getOwnPropertyDescriptor:qt,defineProperty:zt}),x(function(){yt.call({})})&&(yt=gt=function(){return vt.call(this)});var Kt=o({},Gt);o(Kt,Vt),_(Kt,bt,Vt.values),o(Kt,{slice:Wt,set:Ut,constructor:function(){},toString:yt,toLocaleString:Dt}),Tt(Kt,"buffer","b"),Tt(Kt,"byteOffset","o"),Tt(Kt,"byteLength","l"),Tt(Kt,"length","e"),U(Kt,xt,{get:function(){return this[_t]}}),t.exports=function(t,l,n,o){var h=t+((o=!!o)?"Clamped":"")+"Array",r="get"+t,u="set"+t,v=b[h],c=v||{},e=v&&F(v),i=!v||!S.ABV,f={},a=v&&v[$],p=function(t,i){U(t,i,{get:function(){return t=i,(n=this._d).v[r](t*l+n.o,Pt);var t,n},set:function(t){return n=i,r=t,e=this._d,o&&(r=(r=Math.round(r))<0?0:255<r?255:255&r),void e.v[u](n*l+e.o,r,Pt);var n,r,e},enumerable:!0})};i?(v=n(function(t,n,r,e){w(t,v,h,"_d");var i,o,u,c,f=0,a=0;if(P(n)){if(!(n instanceof X||(c=M(n))==K||c==H))return _t in n?Nt(v,n):kt.call(v,n);i=n,a=Ft(r,l);var s=n.byteLength;if(void 0===e){if(s%l)throw B(Et);if((o=s-a)<0)throw B(Et)}else if(s<(o=O(e)*l)+a)throw B(Et);u=o/l}else u=E(n),i=new X(o=u*l);for(_(t,"_d",{b:i,o:a,l:o,e:u,v:new Q(i)});f<u;)p(t,f++)}),a=v[$]=j(Kt),_(a,"constructor",v)):x(function(){v(1)})&&x(function(){new v(-1)})&&k(function(t){new v,new v(null),new v(1.5),new v(t)},!0)||(v=n(function(t,n,r,e){var i;return w(t,v,h),P(n)?n instanceof X||(i=M(n))==K||i==H?void 0!==e?new c(n,Ft(r,l),e):void 0!==r?new c(n,Ft(r,l)):new c(n):_t in n?Nt(v,n):kt.call(v,n):new c(E(n))}),Z(e!==Function.prototype?A(c).concat(A(e)):A(c),function(t){t in v||_(v,t,c[t])}),v[$]=a,g||(a.constructor=v));var s=a[bt],d=!!s&&("values"==s.name||null==s.name),y=Vt.values;_(v,mt,!0),_(a,_t,h),_(a,Ot,!0),_(a,St,v),(o?new v(1)[xt]==h:xt in a)||U(a,xt,{get:function(){return h}}),f[h]=v,m(m.G+m.W+m.F*(v!=c),f),m(m.S,h,{BYTES_PER_ELEMENT:l}),m(m.S+m.F*x(function(){c.of.call(v,1)}),h,{from:kt,of:Rt}),J in a||_(a,J,l),m(m.P,h,Gt),R(h),m(m.P+m.F*jt,h,{set:Ut}),m(m.P+m.F*!d,h,Vt),g||a.toString==yt||(a.toString=yt),m(m.P+m.F*x(function(){new v(1).slice()}),h,{slice:Wt}),m(m.P+m.F*(x(function(){return[1,2].toLocaleString()!=new v([1,2]).toLocaleString()})||!x(function(){a.toLocaleString.call([1,2])})),h,{toLocaleString:Dt}),T[h]=d?s:y,g||d||_(a,bt,y)}}else t.exports=function(){}},function(t,n){var r={}.toString;t.exports=function(t){return r.call(t).slice(8,-1)}},function(t,n,r){var e=r(18),i=r(6).document,o=e(i)&&e(i.createElement);t.exports=function(t){return o?i.createElement(t):{}}},function(t,n,r){t.exports=!r(12)&&!r(20)(function(){return 7!=Object.defineProperty(r(59)("div"),"a",{get:function(){return 7}}).a})},function(t,n,r){"use strict";var x=r(23),m=r(54),S=r(66),w=r(13),_=r(36),O=r(98),E=r(38),M=r(104),P=r(16)("iterator"),j=!([].keys&&"next"in[].keys()),F="values",A=function(){return this};t.exports=function(t,n,r,e,i,o,u){O(r,n,e);var c,f,a,s=function(t){if(!j&&t in p)return p[t];switch(t){case"keys":case F:return function(){return new r(this,t)}}return function(){return new r(this,t)}},l=n+" Iterator",h=i==F,v=!1,p=t.prototype,d=p[P]||p["@@iterator"]||i&&p[i],y=d||s(i),g=i?h?s("entries"):y:void 0,b="Array"==n&&p.entries||d;if(b&&((a=M(b.call(new t)))!==Object.prototype&&a.next&&(E(a,l,!0),x||"function"==typeof a[P]||w(a,P,A))),h&&d&&d.name!==F&&(v=!0,y=function(){return d.call(this)}),x&&!u||!j&&!v&&p[P]||w(p,P,y),_[n]=y,_[l]=A,i)if(c={values:h?y:s(F),keys:o?y:s("keys"),entries:g},u)for(f in c)f in p||S(p,f,c[f]);else m(m.P+m.F*(j||v),n,c);return c}},function(t,n,e){var i=e(22),o=e(101),u=e(35),c=e(39)("IE_PROTO"),f=function(){},a="prototype",s=function(){var t,n=e(59)("iframe"),r=u.length;for(n.style.display="none",e(95).appendChild(n),n.src="javascript:",(t=n.contentWindow.document).open(),t.write("<script>document.F=Object<\/script>"),t.close(),s=t.F;r--;)delete s[a][u[r]];return s()};t.exports=Object.create||function(t,n){var r;return null!==t?(f[a]=i(t),r=new f,f[a]=null,r[c]=t):r=s(),void 0===n?r:o(r,n)}},function(t,n,r){var e=r(65),i=r(35).concat("length","prototype");n.f=Object.getOwnPropertyNames||function(t){return e(t,i)}},function(t,n){n.f=Object.getOwnPropertySymbols},function(t,n,r){var u=r(9),c=r(15),f=r(92)(!1),a=r(39)("IE_PROTO");t.exports=function(t,n){var r,e=c(t),i=0,o=[];for(r in e)r!=a&&u(e,r)&&o.push(r);for(;n.length>i;)u(e,r=n[i++])&&(~f(o,r)||o.push(r));return o}},function(t,n,r){t.exports=r(13)},function(t,n,r){var e=r(7)("unscopables"),i=Array.prototype;null==i[e]&&r(26)(i,e,{}),t.exports=function(t){i[e][t]=!0}},function(t,n){t.exports=!1},function(t,n,r){var e=r(79)("meta"),i=r(5),o=r(30),u=r(11).f,c=0,f=Object.isExtensible||function(){return!0},a=!r(4)(function(){return f(Object.preventExtensions({}))}),s=function(t){u(t,e,{value:{i:"O"+ ++c,w:{}}})},l=t.exports={KEY:e,NEED:!1,fastKey:function(t,n){if(!i(t))return"symbol"==typeof t?t:("string"==typeof t?"S":"P")+t;if(!o(t,e)){if(!f(t))return"F";if(!n)return"E";s(t)}return t[e].i},getWeak:function(t,n){if(!o(t,e)){if(!f(t))return!0;if(!n)return!1;s(t)}return t[e].w},onFreeze:function(t){return a&&l.NEED&&f(t)&&!o(t,e)&&s(t),t}}},function(t,n){t.exports=function(t,n,r,e){if(!(t instanceof n)||void 0!==e&&e in t)throw TypeError(r+": incorrect invocation!");return t}},function(t,n,r){var h=r(47),v=r(177),p=r(145),d=r(2),y=r(8),g=r(161),b={},x={};(n=t.exports=function(t,n,r,e,i){var o,u,c,f,a=i?function(){return t}:g(t),s=h(r,e,n?2:1),l=0;if("function"!=typeof a)throw TypeError(t+" is not iterable!");if(p(a)){for(o=y(t.length);l<o;l++)if((f=n?s(d(u=t[l])[0],u[1]):s(t[l]))===b||f===x)return f}else for(c=a.call(t);!(u=c.next()).done;)if((f=v(c,s,u.value,n))===b||f===x)return f}).BREAK=b,n.RETURN=x},function(t,n,e){var i=e(2),o=e(183),u=e(141),c=e(154)("IE_PROTO"),f=function(){},a="prototype",s=function(){var t,n=e(140)("iframe"),r=u.length;for(n.style.display="none",e(143).appendChild(n),n.src="javascript:",(t=n.contentWindow.document).open(),t.write("<script>document.F=Object<\/script>"),t.close(),s=t.F;r--;)delete s[a][u[r]];return s()};t.exports=Object.create||function(t,n){var r;return null!==t?(f[a]=i(t),r=new f,f[a]=null,r[c]=t):r=s(),void 0===n?r:o(r,n)}},function(t,n,r){var e=r(185),i=r(141).concat("length","prototype");n.f=Object.getOwnPropertyNames||function(t){return e(t,i)}},function(t,n,r){var e=r(185),i=r(141);t.exports=Object.keys||function(t){return e(t,i)}},function(t,n){t.exports=function(t,n){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:n}}},function(t,n,r){var i=r(27);t.exports=function(t,n,r){for(var e in n)i(t,e,n[e],r);return t}},function(t,n,r){"use strict";var e=r(3),i=r(11),o=r(10),u=r(7)("species");t.exports=function(t){var n=e[t];o&&n&&!n[u]&&i.f(n,u,{configurable:!0,get:function(){return this}})}},function(t,n,r){var e=r(49),i=Math.max,o=Math.min;t.exports=function(t,n){return(t=e(t))<0?i(t+n,0):o(t,n)}},function(t,n){var r=0,e=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++r+e).toString(36))}},function(t,n,r){var e=r(5);t.exports=function(t,n){if(!e(t)||t._t!==n)throw TypeError("Incompatible receiver, "+n+" required!");return t}},function(t,n,r){var i=r(45),o=r(7)("toStringTag"),u="Arguments"==i(function(){return arguments}());t.exports=function(t){var n,r,e;return void 0===t?"Undefined":null===t?"Null":"string"==typeof(r=function(t,n){try{return t[n]}catch(t){}}(n=Object(t),o))?r:u?i(n):"Object"==(e=i(n))&&"function"==typeof n.callee?"Arguments":e}},function(t,n){t.exports={}},function(t,n,r){var e=r(11).f,i=r(30),o=r(7)("toStringTag");t.exports=function(t,n,r){t&&!i(t=r?t:t.prototype,o)&&e(t,o,{configurable:!0,value:n})}},function(t,n,r){var u=r(1),e=r(51),c=r(4),f=r(157),i="["+f+"]",o=RegExp("^"+i+i+"*"),a=RegExp(i+i+"*$"),s=function(t,n,r){var e={},i=c(function(){return!!f[t]()||"​"!="​"[t]()}),o=e[t]=i?n(l):f[t];r&&(e[r]=o),u(u.P+u.F*i,"String",e)},l=s.trim=function(t,n){return t=String(e(t)),1&n&&(t=t.replace(o,"")),2&n&&(t=t.replace(a,"")),t};t.exports=s},function(t,n,r){t.exports={default:r(88),__esModule:!0}},function(t,n,r){t.exports={default:r(89),__esModule:!0}},function(t,n,r){"use strict";function e(t){return t&&t.__esModule?t:{default:t}}n.__esModule=!0;var i=e(r(86)),o=e(r(85)),u="function"==typeof o.default&&"symbol"==typeof i.default?function(t){return typeof t}:function(t){return t&&"function"==typeof o.default&&t.constructor===o.default&&t!==o.default.prototype?"symbol":typeof t};n.default="function"==typeof o.default&&"symbol"===u(i.default)?function(t){return void 0===t?"undefined":u(t)}:function(t){return t&&"function"==typeof o.default&&t.constructor===o.default&&t!==o.default.prototype?"symbol":void 0===t?"undefined":u(t)}},function(t,n,r){r(111),r(109),r(112),r(113),t.exports=r(19).Symbol},function(t,n,r){r(110),r(114),t.exports=r(44).f("iterator")},function(t,n){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,n){t.exports=function(){}},function(t,n,r){var f=r(15),a=r(107),s=r(106);t.exports=function(c){return function(t,n,r){var e,i=f(t),o=a(i.length),u=s(r,o);if(c&&n!=n){for(;u<o;)if((e=i[u++])!=e)return!0}else for(;u<o;u++)if((c||u in i)&&i[u]===n)return c||u||0;return!c&&-1}}},function(t,n,r){var o=r(90);t.exports=function(e,i,t){if(o(e),void 0===i)return e;switch(t){case 1:return function(t){return e.call(i,t)};case 2:return function(t,n){return e.call(i,t,n)};case 3:return function(t,n,r){return e.call(i,t,n,r)}}return function(){return e.apply(i,arguments)}}},function(t,n,r){var c=r(29),f=r(64),a=r(37);t.exports=function(t){var n=c(t),r=f.f;if(r)for(var e,i=r(t),o=a.f,u=0;i.length>u;)o.call(t,e=i[u++])&&n.push(e);return n}},function(t,n,r){var e=r(6).document;t.exports=e&&e.documentElement},function(t,n,r){var e=r(58);t.exports=Object("z").propertyIsEnumerable(0)?Object:function(t){return"String"==e(t)?t.split(""):Object(t)}},function(t,n,r){var e=r(58);t.exports=Array.isArray||function(t){return"Array"==e(t)}},function(t,n,r){"use strict";var e=r(62),i=r(24),o=r(38),u={};r(13)(u,r(16)("iterator"),function(){return this}),t.exports=function(t,n,r){t.prototype=e(u,{next:i(1,r)}),o(t,n+" Iterator")}},function(t,n){t.exports=function(t,n){return{value:n,done:!!t}}},function(t,n,r){var e=r(25)("meta"),i=r(18),o=r(9),u=r(14).f,c=0,f=Object.isExtensible||function(){return!0},a=!r(20)(function(){return f(Object.preventExtensions({}))}),s=function(t){u(t,e,{value:{i:"O"+ ++c,w:{}}})},l=t.exports={KEY:e,NEED:!1,fastKey:function(t,n){if(!i(t))return"symbol"==typeof t?t:("string"==typeof t?"S":"P")+t;if(!o(t,e)){if(!f(t))return"F";if(!n)return"E";s(t)}return t[e].i},getWeak:function(t,n){if(!o(t,e)){if(!f(t))return!0;if(!n)return!1;s(t)}return t[e].w},onFreeze:function(t){return a&&l.NEED&&f(t)&&!o(t,e)&&s(t),t}}},function(t,n,r){var u=r(14),c=r(22),f=r(29);t.exports=r(12)?Object.defineProperties:function(t,n){c(t);for(var r,e=f(n),i=e.length,o=0;o<i;)u.f(t,r=e[o++],n[r]);return t}},function(t,n,r){var e=r(37),i=r(24),o=r(15),u=r(42),c=r(9),f=r(60),a=Object.getOwnPropertyDescriptor;n.f=r(12)?a:function(t,n){if(t=o(t),n=u(n,!0),f)try{return a(t,n)}catch(t){}if(c(t,n))return i(!e.f.call(t,n),t[n])}},function(t,n,r){var e=r(15),i=r(63).f,o={}.toString,u="object"==typeof window&&window&&Object.getOwnPropertyNames?Object.getOwnPropertyNames(window):[];t.exports.f=function(t){return u&&"[object Window]"==o.call(t)?function(t){try{return i(t)}catch(t){return u.slice()}}(t):i(e(t))}},function(t,n,r){var e=r(9),i=r(55),o=r(39)("IE_PROTO"),u=Object.prototype;t.exports=Object.getPrototypeOf||function(t){return t=i(t),e(t,o)?t[o]:"function"==typeof t.constructor&&t instanceof t.constructor?t.constructor.prototype:t instanceof Object?u:null}},function(t,n,r){var f=r(41),a=r(34);t.exports=function(c){return function(t,n){var r,e,i=String(a(t)),o=f(n),u=i.length;return o<0||u<=o?c?"":void 0:(r=i.charCodeAt(o))<55296||56319<r||o+1===u||(e=i.charCodeAt(o+1))<56320||57343<e?c?i.charAt(o):r:c?i.slice(o,o+2):e-56320+(r-55296<<10)+65536}}},function(t,n,r){var e=r(41),i=Math.max,o=Math.min;t.exports=function(t,n){return(t=e(t))<0?i(t+n,0):o(t,n)}},function(t,n,r){var e=r(41),i=Math.min;t.exports=function(t){return 0<t?i(e(t),9007199254740991):0}},function(t,n,r){"use strict";var e=r(91),i=r(99),o=r(36),u=r(15);t.exports=r(61)(Array,"Array",function(t,n){this._t=u(t),this._i=0,this._k=n},function(){var t=this._t,n=this._k,r=this._i++;return!t||r>=t.length?(this._t=void 0,i(1)):i(0,"keys"==n?r:"values"==n?t[r]:[r,t[r]])},"values"),o.Arguments=o.Array,e("keys"),e("values"),e("entries")},function(t,n){},function(t,n,r){"use strict";var e=r(105)(!0);r(61)(String,"String",function(t){this._t=String(t),this._i=0},function(){var t,n=this._t,r=this._i;return r>=n.length?{value:void 0,done:!0}:(t=e(n,r),this._i+=t.length,{value:t,done:!1})})},function(t,n,r){"use strict";var e=r(6),u=r(9),i=r(12),o=r(54),c=r(66),f=r(100).KEY,a=r(20),s=r(40),l=r(38),h=r(25),v=r(16),p=r(44),d=r(43),y=r(94),g=r(97),b=r(22),x=r(18),m=r(55),S=r(15),w=r(42),_=r(24),O=r(62),E=r(103),M=r(102),P=r(64),j=r(14),F=r(29),A=M.f,I=j.f,L=E.f,N=e.Symbol,T=e.JSON,k=T&&T.stringify,R="prototype",C=v("_hidden"),D=v("toPrimitive"),G={}.propertyIsEnumerable,W=s("symbol-registry"),U=s("symbols"),V=s("op-symbols"),B=Object[R],q="function"==typeof N&&!!P.f,z=e.QObject,K=!z||!z[R]||!z[R].findChild,H=i&&a(function(){return 7!=O(I({},"a",{get:function(){return I(this,"a",{value:7}).a}})).a})?function(t,n,r){var e=A(B,n);e&&delete B[n],I(t,n,r),e&&t!==B&&I(B,n,e)}:I,J=function(t){var n=U[t]=O(N[R]);return n._k=t,n},$=q&&"symbol"==typeof N.iterator?function(t){return"symbol"==typeof t}:function(t){return t instanceof N},Y=function(t,n,r){return t===B&&Y(V,n,r),b(t),n=w(n,!0),b(r),u(U,n)?(r.enumerable?(u(t,C)&&t[C][n]&&(t[C][n]=!1),r=O(r,{enumerable:_(0,!1)})):(u(t,C)||I(t,C,_(1,{})),t[C][n]=!0),H(t,n,r)):I(t,n,r)},X=function(t,n){b(t);for(var r,e=y(n=S(n)),i=0,o=e.length;i<o;)Y(t,r=e[i++],n[r]);return t},Q=function(t){var n=G.call(this,t=w(t,!0));return!(this===B&&u(U,t)&&!u(V,t))&&(!(n||!u(this,t)||!u(U,t)||u(this,C)&&this[C][t])||n)},Z=function(t,n){if(t=S(t),n=w(n,!0),t!==B||!u(U,n)||u(V,n)){var r=A(t,n);return!r||!u(U,n)||u(t,C)&&t[C][n]||(r.enumerable=!0),r}},tt=function(t){for(var n,r=L(S(t)),e=[],i=0;r.length>i;)u(U,n=r[i++])||n==C||n==f||e.push(n);return e},nt=function(t){for(var n,r=t===B,e=L(r?V:S(t)),i=[],o=0;e.length>o;)!u(U,n=e[o++])||r&&!u(B,n)||i.push(U[n]);return i};q||(c((N=function(){if(this instanceof N)throw TypeError("Symbol is not a constructor!");var n=h(0<arguments.length?arguments[0]:void 0),r=function(t){this===B&&r.call(V,t),u(this,C)&&u(this[C],n)&&(this[C][n]=!1),H(this,n,_(1,t))};return i&&K&&H(B,n,{configurable:!0,set:r}),J(n)})[R],"toString",function(){return this._k}),M.f=Z,j.f=Y,r(63).f=E.f=tt,r(37).f=Q,P.f=nt,i&&!r(23)&&c(B,"propertyIsEnumerable",Q,!0),p.f=function(t){return J(v(t))}),o(o.G+o.W+o.F*!q,{Symbol:N});for(var rt="hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables".split(","),et=0;rt.length>et;)v(rt[et++]);for(var it=F(v.store),ot=0;it.length>ot;)d(it[ot++]);o(o.S+o.F*!q,"Symbol",{for:function(t){return u(W,t+="")?W[t]:W[t]=N(t)},keyFor:function(t){if(!$(t))throw TypeError(t+" is not a symbol!");for(var n in W)if(W[n]===t)return n},useSetter:function(){K=!0},useSimple:function(){K=!1}}),o(o.S+o.F*!q,"Object",{create:function(t,n){return void 0===n?O(t):X(O(t),n)},defineProperty:Y,defineProperties:X,getOwnPropertyDescriptor:Z,getOwnPropertyNames:tt,getOwnPropertySymbols:nt});var ut=a(function(){P.f(1)});o(o.S+o.F*ut,"Object",{getOwnPropertySymbols:function(t){return P.f(m(t))}}),T&&o(o.S+o.F*(!q||a(function(){var t=N();return"[null]"!=k([t])||"{}"!=k({a:t})||"{}"!=k(Object(t))})),"JSON",{stringify:function(t){for(var n,r,e=[t],i=1;arguments.length>i;)e.push(arguments[i++]);if(r=n=e[1],(x(n)||void 0!==t)&&!$(t))return g(n)||(n=function(t,n){if("function"==typeof r&&(n=r.call(this,t,n)),!$(n))return n}),e[1]=n,k.apply(T,e)}}),N[R][D]||r(13)(N[R],D,N[R].valueOf),l(N,"Symbol"),l(Math,"Math",!0),l(e.JSON,"JSON",!0)},function(t,n,r){r(43)("asyncIterator")},function(t,n,r){r(43)("observable")},function(t,n,r){r(108);for(var e=r(6),i=r(13),o=r(36),u=r(16)("toStringTag"),c="CSSRuleList,CSSStyleDeclaration,CSSValueList,ClientRectList,DOMRectList,DOMStringList,DOMTokenList,DataTransferItemList,FileList,HTMLAllCollection,HTMLCollection,HTMLFormElement,HTMLSelectElement,MediaList,MimeTypeArray,NamedNodeMap,NodeList,PaintRequestList,Plugin,PluginArray,SVGLengthList,SVGNumberList,SVGPathSegList,SVGPointList,SVGStringList,SVGTransformList,SourceBufferList,StyleSheetList,TextTrackCueList,TextTrackList,TouchList".split(","),f=0;f<c.length;f++){var a=c[f],s=e[a],l=s&&s.prototype;l&&!l[u]&&i(l,u,a),o[a]=o.Array}},function(t,n,r){"use strict";var e=r(2);t.exports=function(){var t=e(this),n="";return t.global&&(n+="g"),t.ignoreCase&&(n+="i"),t.multiline&&(n+="m"),t.unicode&&(n+="u"),t.sticky&&(n+="y"),n}},function(t,n,r){var e=r(45);t.exports=Object("z").propertyIsEnumerable(0)?Object:function(t){return"String"==e(t)?t.split(""):Object(t)}},function(t,n){n.f={}.propertyIsEnumerable},function(t,n,r){var e=r(46),i=r(3),o="__core-js_shared__",u=i[o]||(i[o]={});(t.exports=function(t,n){return u[t]||(u[t]=void 0!==n?n:{})})("versions",[]).push({version:e.version,mode:r(68)?"pure":"global",copyright:"© 2019 Denis Pushkarev (zloirock.ru)"})},function(t,n,r){var i=r(2),o=r(21),u=r(7)("species");t.exports=function(t,n){var r,e=i(t).constructor;return void 0===e||null==(r=i(e)[u])?n:o(r)}},function(t,n,r){var f=r(33),a=r(8),s=r(78);t.exports=function(c){return function(t,n,r){var e,i=f(t),o=a(i.length),u=s(r,o);if(c&&n!=n){for(;u<o;)if((e=i[u++])!=e)return!0}else for(;u<o;u++)if((c||u in i)&&i[u]===n)return c||u||0;return!c&&-1}}},function(t,n,r){"use strict";var g=r(3),b=r(1),x=r(27),m=r(76),S=r(69),w=r(71),_=r(70),O=r(5),E=r(4),M=r(125),P=r(83),j=r(144);t.exports=function(e,t,n,r,i,o){var u=g[e],c=u,f=i?"set":"add",a=c&&c.prototype,s={},l=function(t){var r=a[t];x(a,t,"delete"==t?function(t){return!(o&&!O(t))&&r.call(this,0===t?0:t)}:"has"==t?function(t){return!(o&&!O(t))&&r.call(this,0===t?0:t)}:"get"==t?function(t){return o&&!O(t)?void 0:r.call(this,0===t?0:t)}:"add"==t?function(t){return r.call(this,0===t?0:t),this}:function(t,n){return r.call(this,0===t?0:t,n),this})};if("function"==typeof c&&(o||a.forEach&&!E(function(){(new c).entries().next()}))){var h=new c,v=h[f](o?{}:-0,1)!=h,p=E(function(){h.has(1)}),d=M(function(t){new c(t)}),y=!o&&E(function(){for(var t=new c,n=5;n--;)t[f](n,n);return!t.has(-0)});d||(((c=t(function(t,n){_(t,c,e);var r=j(new u,t,c);return null!=n&&w(n,i,r[f],r),r})).prototype=a).constructor=c),(p||y)&&(l("delete"),l("has"),i&&l("get")),(y||v)&&l(f),o&&a.clear&&delete a.clear}else c=r.getConstructor(t,e,i,f),m(c.prototype,n),S.NEED=!0;return P(c,e),s[e]=c,b(b.G+b.W+b.F*(c!=u),s),o||r.setStrong(c,e,i),c}},function(t,n,r){"use strict";r(197);var s=r(27),l=r(26),h=r(4),v=r(51),p=r(7),d=r(152),y=p("species"),g=!h(function(){var t=/./;return t.exec=function(){var t=[];return t.groups={a:"7"},t},"7"!=="".replace(t,"$<a>")}),b=function(){var t=/(?:)/,n=t.exec;t.exec=function(){return n.apply(this,arguments)};var r="ab".split(t);return 2===r.length&&"a"===r[0]&&"b"===r[1]}();t.exports=function(r,t,n){var e=p(r),o=!h(function(){var t={};return t[e]=function(){return 7},7!=""[r](t)}),i=o?!h(function(){var t=!1,n=/a/;return n.exec=function(){return t=!0,null},"split"===r&&(n.constructor={},n.constructor[y]=function(){return n}),n[e](""),!t}):void 0;if(!o||!i||"replace"===r&&!g||"split"===r&&!b){var u=/./[e],c=n(v,e,""[r],function(t,n,r,e,i){return n.exec===d?o&&!i?{done:!0,value:u.call(n,r,e)}:{done:!0,value:t.call(r,n,e)}:{done:!1}}),f=c[0],a=c[1];s(String.prototype,r,f),l(RegExp.prototype,e,2==t?function(t,n){return a.call(t,this,n)}:function(t){return a.call(t,this)})}}},function(t,n,r){var e=r(45);t.exports=Array.isArray||function(t){return"Array"==e(t)}},function(t,n,r){var e=r(5),i=r(45),o=r(7)("match");t.exports=function(t){var n;return e(t)&&(void 0!==(n=t[o])?!!n:"RegExp"==i(t))}},function(t,n,r){var o=r(7)("iterator"),u=!1;try{var e=[7][o]();e.return=function(){u=!0},Array.from(e,function(){throw 2})}catch(t){}t.exports=function(t,n){if(!n&&!u)return!1;var r=!1;try{var e=[7],i=e[o]();i.next=function(){return{done:r=!0}},e[o]=function(){return i},t(e)}catch(t){}return r}},function(t,n,r){"use strict";t.exports=r(68)||!r(4)(function(){var t=Math.random();__defineSetter__.call(null,t,function(){}),delete r(3)[t]})},function(t,n){n.f=Object.getOwnPropertySymbols},function(t,n,r){"use strict";var i=r(81),o=RegExp.prototype.exec;t.exports=function(t,n){var r=t.exec;if("function"==typeof r){var e=r.call(t,n);if("object"!=typeof e)throw new TypeError("RegExp exec method returned something other than an Object or null");return e}if("RegExp"!==i(t))throw new TypeError("RegExp#exec called on incompatible receiver");return o.call(t,n)}},function(t,n,r){"use strict";var e=r(1),u=r(21),c=r(47),f=r(71);t.exports=function(t){e(e.S,t,{from:function(t){var n,r,e,i,o=arguments[1];return u(this),(n=void 0!==o)&&u(o),null==t?new this:(r=[],n?(e=0,i=c(o,arguments[2],2),f(t,!1,function(t){r.push(i(t,e++))})):f(t,!1,r.push,r),new this(r))}})}},function(t,n,r){"use strict";var e=r(1);t.exports=function(t){e(e.S,t,{of:function(){for(var t=arguments.length,n=new Array(t);t--;)n[t]=arguments[t];return new this(n)}})}},function(t,n,r){var f=r(49),a=r(51);t.exports=function(c){return function(t,n){var r,e,i=String(a(t)),o=f(n),u=i.length;return o<0||u<=o?c?"":void 0:(r=i.charCodeAt(o))<55296||56319<r||o+1===u||(e=i.charCodeAt(o+1))<56320||57343<e?c?i.charAt(o):r:c?i.slice(o,o+2):e-56320+(r-55296<<10)+65536}}},function(t,n,r){for(var e,i=r(3),o=r(26),u=r(79),c=u("typed_array"),f=u("view"),a=!(!i.ArrayBuffer||!i.DataView),s=a,l=0,h="Int8Array,Uint8Array,Uint8ClampedArray,Int16Array,Uint16Array,Int32Array,Uint32Array,Float32Array,Float64Array".split(",");l<9;)(e=i[h[l++]])?(o(e.prototype,c,!0),o(e.prototype,f,!0)):s=!1;t.exports={ABV:a,CONSTR:s,TYPED:c,VIEW:f}},function(t,n,r){var e=r(3).navigator;t.exports=e&&e.userAgent||""},function(t,n){"use strict";var r,e={versions:(r=window.navigator.userAgent,{trident:-1<r.indexOf("Trident"),presto:-1<r.indexOf("Presto"),webKit:-1<r.indexOf("AppleWebKit"),gecko:-1<r.indexOf("Gecko")&&-1==r.indexOf("KHTML"),mobile:!!r.match(/AppleWebKit.*Mobile.*/),ios:!!r.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),android:-1<r.indexOf("Android")||-1<r.indexOf("Linux"),iPhone:-1<r.indexOf("iPhone")||-1<r.indexOf("Mac"),iPad:-1<r.indexOf("iPad"),webApp:-1==r.indexOf("Safari"),weixin:-1==r.indexOf("MicroMessenger")})};t.exports=e},function(t,n,r){"use strict";var e,i=r(87),l=(e=i)&&e.__esModule?e:{default:e},h=function(){function n(t,n,r){return n||r?String.fromCharCode(n||r):o[t]||t}function r(t){return s[t]}var e=/&quot;|&lt;|&gt;|&amp;|&nbsp;|&apos;|&#(\d+);|&#(\d+)/g,i=/['<> "&]/g,o={"&quot;":'"',"&lt;":"<","&gt;":">","&amp;":"&","&nbsp;":" "},u=/\u00a0/g,c=/<br\s*\/?>/gi,f=/\r?\n/g,a=/\s/g,s={};for(var t in o)s[o[t]]=t;return o["&apos;"]="'",s["'"]="&#39;",{encode:function(t){return t?(""+t).replace(i,r).replace(f,"<br/>").replace(a,"&nbsp;"):""},decode:function(t){return t?(""+t).replace(c,"\n").replace(e,n).replace(u," "):""},encodeBase16:function(t){if(!t)return t;for(var n=[],r=0,e=(t+="").length;r<e;r++)n.push(t.charCodeAt(r).toString(16).toUpperCase());return n.join("")},encodeBase16forJSON:function(t){if(!t)return t;for(var n=[],r=0,e=(t=t.replace(/[\u4E00-\u9FBF]/gi,function(t){return escape(t).replace("%u","\\u")})).length;r<e;r++)n.push(t.charCodeAt(r).toString(16).toUpperCase());return n.join("")},decodeBase16:function(t){if(!t)return t;for(var n=[],r=0,e=(t+="").length;r<e;r+=2)n.push(String.fromCharCode("0x"+t.slice(r,r+2)));return n.join("")},encodeObject:function(t){if(t instanceof Array)for(var n=0,r=t.length;n<r;n++)t[n]=h.encodeObject(t[n]);else if("object"==(void 0===t?"undefined":(0,l.default)(t)))for(var e in t)t[e]=h.encodeObject(t[e]);else if("string"==typeof t)return h.encode(t);return t},loadScript:function(t){var n=document.createElement("script");document.getElementsByTagName("body")[0].appendChild(n),n.setAttribute("src",t)},addLoadEvent:function(t){var n=window.onload;"function"!=typeof window.onload?window.onload=t:window.onload=function(){n(),t()}}}}();t.exports=h},function(t,n,r){"use strict";var e=r(131)(!0);t.exports=function(t,n,r){return n+(r?e(t,n).length:1)}},function(t,n,r){"use strict";var c=r(17),f=r(78),a=r(8);t.exports=function(t){for(var n=c(this),r=a(n.length),e=arguments.length,i=f(1<e?arguments[1]:void 0,r),o=2<e?arguments[2]:void 0,u=void 0===o?r:f(o,r);i<u;)n[i++]=t;return n}},function(t,n,r){var e=r(215);t.exports=function(t,n){return new(e(t))(n)}},function(t,n,r){"use strict";var e=r(11),i=r(75);t.exports=function(t,n,r){n in t?e.f(t,n,i(0,r)):t[n]=r}},function(t,n,r){var e=r(5),i=r(3).document,o=e(i)&&e(i.createElement);t.exports=function(t){return o?i.createElement(t):{}}},function(t,n){t.exports="constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",")},function(t,n,r){var e=r(7)("match");t.exports=function(n){var r=/./;try{"/./"[n](r)}catch(t){try{return r[e]=!1,!"/./"[n](r)}catch(n){}}return!0}},function(t,n,r){var e=r(3).document;t.exports=e&&e.documentElement},function(t,n,r){var o=r(5),u=r(153).set;t.exports=function(t,n,r){var e,i=n.constructor;return i!==r&&"function"==typeof i&&(e=i.prototype)!==r.prototype&&o(e)&&u&&u(t,e),t}},function(t,n,r){var e=r(82),i=r(7)("iterator"),o=Array.prototype;t.exports=function(t){return void 0!==t&&(e.Array===t||o[i]===t)}},function(t,n,r){"use strict";var e=r(72),i=r(75),o=r(83),u={};r(26)(u,r(7)("iterator"),function(){return this}),t.exports=function(t,n,r){t.prototype=e(u,{next:i(1,r)}),o(t,n+" Iterator")}},function(t,n,r){"use strict";var x=r(68),m=r(1),S=r(27),w=r(26),_=r(82),O=r(146),E=r(83),M=r(32),P=r(7)("iterator"),j=!([].keys&&"next"in[].keys()),F="values",A=function(){return this};t.exports=function(t,n,r,e,i,o,u){O(r,n,e);var c,f,a,s=function(t){if(!j&&t in p)return p[t];switch(t){case"keys":case F:return function(){return new r(this,t)}}return function(){return new r(this,t)}},l=n+" Iterator",h=i==F,v=!1,p=t.prototype,d=p[P]||p["@@iterator"]||i&&p[i],y=d||s(i),g=i?h?s("entries"):y:void 0,b="Array"==n&&p.entries||d;if(b&&((a=M(b.call(new t)))!==Object.prototype&&a.next&&(E(a,l,!0),x||"function"==typeof a[P]||w(a,P,A))),h&&d&&d.name!==F&&(v=!0,y=function(){return d.call(this)}),x&&!u||!j&&!v&&p[P]||w(p,P,y),_[n]=y,_[l]=A,i)if(c={values:h?y:s(F),keys:o?y:s("keys"),entries:g},u)for(f in c)f in p||S(p,f,c[f]);else m(m.P+m.F*(j||v),n,c);return c}},function(t,n){var r=Math.expm1;t.exports=!r||22025.465794806718<r(10)||r(10)<22025.465794806718||-2e-17!=r(-2e-17)?function(t){return 0==(t=+t)?t:-1e-6<t&&t<1e-6?t+t*t/2:Math.exp(t)-1}:r},function(t,n){t.exports=Math.sign||function(t){return 0==(t=+t)||t!=t?t:t<0?-1:1}},function(t,n,r){var c=r(3),f=r(158).set,a=c.MutationObserver||c.WebKitMutationObserver,s=c.process,l=c.Promise,h="process"==r(45)(s);t.exports=function(){var r,e,i,t=function(){var t,n;for(h&&(t=s.domain)&&t.exit();r;){n=r.fn,r=r.next;try{n()}catch(t){throw r?i():e=void 0,t}}e=void 0,t&&t.enter()};if(h)i=function(){s.nextTick(t)};else if(!a||c.navigator&&c.navigator.standalone)if(l&&l.resolve){var n=l.resolve(void 0);i=function(){n.then(t)}}else i=function(){f.call(c,t)};else{var o=!0,u=document.createTextNode("");new a(t).observe(u,{characterData:!0}),i=function(){u.data=o=!o}}return function(t){var n={fn:t,next:void 0};e&&(e.next=n),r||(r=n,i()),e=n}}},function(t,n,r){"use strict";function e(t){var r,e;this.promise=new t(function(t,n){if(void 0!==r||void 0!==e)throw TypeError("Bad Promise constructor");r=t,e=n}),this.resolve=i(r),this.reject=i(e)}var i=r(21);t.exports.f=function(t){return new e(t)}},function(t,n,r){"use strict";var e,i,u=r(115),c=RegExp.prototype.exec,f=String.prototype.replace,o=c,a="lastIndex",s=(e=/a/,i=/b*/g,c.call(e,"a"),c.call(i,"a"),0!==e[a]||0!==i[a]),l=void 0!==/()??/.exec("")[1];(s||l)&&(o=function(t){var n,r,e,i,o=this;return l&&(r=new RegExp("^"+o.source+"$(?!\\s)",u.call(o))),s&&(n=o[a]),e=c.call(o,t),s&&e&&(o[a]=o.global?e.index+e[0].length:n),l&&e&&1<e.length&&f.call(e[0],r,function(){for(i=1;i<arguments.length-2;i++)void 0===arguments[i]&&(e[i]=void 0)}),e}),t.exports=o},function(t,n,i){var r=i(5),e=i(2),o=function(t,n){if(e(t),!r(n)&&null!==n)throw TypeError(n+": can't set as prototype!")};t.exports={set:Object.setPrototypeOf||("__proto__"in{}?function(t,r,e){try{(e=i(47)(Function.call,i(31).f(Object.prototype,"__proto__").set,2))(t,[]),r=!(t instanceof Array)}catch(t){r=!0}return function(t,n){return o(t,n),r?t.__proto__=n:e(t,n),t}}({},!1):void 0),check:o}},function(t,n,r){var e=r(118)("keys"),i=r(79);t.exports=function(t){return e[t]||(e[t]=i(t))}},function(t,n,r){var e=r(124),i=r(51);t.exports=function(t,n,r){if(e(n))throw TypeError("String#"+r+" doesn't accept regex!");return String(i(t))}},function(t,n,r){"use strict";var i=r(49),o=r(51);t.exports=function(t){var n=String(o(this)),r="",e=i(t);if(e<0||e==1/0)throw RangeError("Count can't be negative");for(;0<e;(e>>>=1)&&(n+=n))1&e&&(r+=n);return r}},function(t,n){t.exports="\t\n\v\f\r   ᠎             　\u2028\u2029\ufeff"},function(t,n,r){var e,i,o,u=r(47),c=r(175),f=r(143),a=r(140),s=r(3),l=s.process,h=s.setImmediate,v=s.clearImmediate,p=s.MessageChannel,d=s.Dispatch,y=0,g={},b="onreadystatechange",x=function(){var t=+this;if(g.hasOwnProperty(t)){var n=g[t];delete g[t],n()}},m=function(t){x.call(t.data)};h&&v||(h=function(t){for(var n=[],r=1;arguments.length>r;)n.push(arguments[r++]);return g[++y]=function(){c("function"==typeof t?t:Function(t),n)},e(y),y},v=function(t){delete g[t]},"process"==r(45)(l)?e=function(t){l.nextTick(u(x,t,1))}:d&&d.now?e=function(t){d.now(u(x,t,1))}:p?(o=(i=new p).port2,i.port1.onmessage=m,e=u(o.postMessage,o,1)):s.addEventListener&&"function"==typeof postMessage&&!s.importScripts?(e=function(t){s.postMessage(t+"","*")},s.addEventListener("message",m,!1)):e=b in a("script")?function(t){f.appendChild(a("script"))[b]=function(){f.removeChild(this),x.call(t)}}:function(t){setTimeout(u(x,t,1),0)}),t.exports={set:h,clear:v}},function(t,n,r){"use strict";function e(t,n,r){var e,i,o,u=new Array(r),c=8*r-n-1,f=(1<<c)-1,a=f>>1,s=23===n?W(2,-24)-W(2,-77):0,l=0,h=t<0||0===t&&1/t<0?1:0;for((t=G(t))!=t||t===C?(i=t!=t?1:0,e=f):(e=U(V(t)/B),t*(o=W(2,-e))<1&&(e--,o*=2),2<=(t+=1<=e+a?s/o:s*W(2,1-a))*o&&(e++,o/=2),f<=e+a?(i=0,e=f):1<=e+a?(i=(t*o-1)*W(2,n),e+=a):(i=t*W(2,a-1)*W(2,n),e=0));8<=n;u[l++]=255&i,i/=256,n-=8);for(e=e<<n|i,c+=n;0<c;u[l++]=255&e,e/=256,c-=8);return u[--l]|=128*h,u}function i(t,n,r){var e,i=8*r-n-1,o=(1<<i)-1,u=o>>1,c=i-7,f=r-1,a=t[f--],s=127&a;for(a>>=7;0<c;s=256*s+t[f],f--,c-=8);for(e=s&(1<<-c)-1,s>>=-c,c+=n;0<c;e=256*e+t[f],f--,c-=8);if(0===s)s=1-u;else{if(s===o)return e?NaN:a?-C:C;e+=W(2,n),s-=u}return(a?-1:1)*e*W(2,s-n)}function o(t){return t[3]<<24|t[2]<<16|t[1]<<8|t[0]}function u(t){return[255&t]}function c(t){return[255&t,t>>8&255]}function f(t){return[255&t,t>>8&255,t>>16&255,t>>24&255]}function a(t){return e(t,52,8)}function s(t){return e(t,23,4)}function l(t,n,r){M(t[I],n,{get:function(){return this[r]}})}function h(t,n,r,e){var i=O(+r);if(i+n>t[H])throw R(L);var o=t[K]._b,u=i+t[J],c=o.slice(u,u+n);return e?c:c.reverse()}function v(t,n,r,e,i,o){var u=O(+r);if(u+n>t[H])throw R(L);for(var c=t[K]._b,f=u+t[J],a=e(+i),s=0;s<n;s++)c[f+s]=a[o?s:n-s-1]}var p=r(3),d=r(10),y=r(68),g=r(132),b=r(26),x=r(76),m=r(4),S=r(70),w=r(49),_=r(8),O=r(194),E=r(73).f,M=r(11).f,P=r(137),j=r(83),F="ArrayBuffer",A="DataView",I="prototype",L="Wrong index!",N=p[F],T=p[A],k=p.Math,R=p.RangeError,C=p.Infinity,D=N,G=k.abs,W=k.pow,U=k.floor,V=k.log,B=k.LN2,q="byteLength",z="byteOffset",K=d?"_b":"buffer",H=d?"_l":q,J=d?"_o":z;if(g.ABV){if(!m(function(){N(1)})||!m(function(){new N(-1)})||m(function(){return new N,new N(1.5),new N(NaN),N.name!=F})){for(var $,Y=(N=function(t){return S(this,N),new D(O(t))})[I]=D[I],X=E(D),Q=0;X.length>Q;)($=X[Q++])in N||b(N,$,D[$]);y||(Y.constructor=N)}var Z=new T(new N(2)),tt=T[I].setInt8;Z.setInt8(0,2147483648),Z.setInt8(1,2147483649),!Z.getInt8(0)&&Z.getInt8(1)||x(T[I],{setInt8:function(t,n){tt.call(this,t,n<<24>>24)},setUint8:function(t,n){tt.call(this,t,n<<24>>24)}},!0)}else N=function(t){S(this,N,F);var n=O(t);this._b=P.call(new Array(n),0),this[H]=n},T=function(t,n,r){S(this,T,A),S(t,N,A);var e=t[H],i=w(n);if(i<0||e<i)throw R("Wrong offset!");if(e<i+(r=void 0===r?e-i:_(r)))throw R("Wrong length!");this[K]=t,this[J]=i,this[H]=r},d&&(l(N,q,"_l"),l(T,"buffer","_b"),l(T,q,"_l"),l(T,z,"_o")),x(T[I],{getInt8:function(t){return h(this,1,t)[0]<<24>>24},getUint8:function(t){return h(this,1,t)[0]},getInt16:function(t){var n=h(this,2,t,arguments[1]);return(n[1]<<8|n[0])<<16>>16},getUint16:function(t){var n=h(this,2,t,arguments[1]);return n[1]<<8|n[0]},getInt32:function(t){return o(h(this,4,t,arguments[1]))},getUint32:function(t){return o(h(this,4,t,arguments[1]))>>>0},getFloat32:function(t){return i(h(this,4,t,arguments[1]),23,4)},getFloat64:function(t){return i(h(this,8,t,arguments[1]),52,8)},setInt8:function(t,n){v(this,1,t,u,n)},setUint8:function(t,n){v(this,1,t,u,n)},setInt16:function(t,n){v(this,2,t,c,n,arguments[2])},setUint16:function(t,n){v(this,2,t,c,n,arguments[2])},setInt32:function(t,n){v(this,4,t,f,n,arguments[2])},setUint32:function(t,n){v(this,4,t,f,n,arguments[2])},setFloat32:function(t,n){v(this,4,t,s,n,arguments[2])},setFloat64:function(t,n){v(this,8,t,a,n,arguments[2])}});j(N,F),j(T,A),b(T[I],g.VIEW,!0),n[F]=N,n[A]=T},function(t,n,r){var e=r(3),i=r(46),o=r(68),u=r(195),c=r(11).f;t.exports=function(t){var n=i.Symbol||(i.Symbol=o?{}:e.Symbol||{});"_"==t.charAt(0)||t in n||c(n,t,{value:u.f(t)})}},function(t,n,r){var e=r(81),i=r(7)("iterator"),o=r(82);t.exports=r(46).getIteratorMethod=function(t){if(null!=t)return t[i]||t["@@iterator"]||o[e(t)]}},function(t,n,r){"use strict";var e=r(67),i=r(178),o=r(82),u=r(33);t.exports=r(147)(Array,"Array",function(t,n){this._t=u(t),this._i=0,this._k=n},function(){var t=this._t,n=this._k,r=this._i++;return!t||r>=t.length?(this._t=void 0,i(1)):i(0,"keys"==n?r:"values"==n?t[r]:[r,t[r]])},"values"),o.Arguments=o.Array,e("keys"),e("values"),e("entries")},function(t,n){t.exports=function(t,n){t.classList?t.classList.add(n):t.className+=" "+n}},function(t,n){t.exports=function(t,n){if(t.classList)t.classList.remove(n);else{var r=new RegExp("(^|\\b)"+n.split(" ").join("|")+"(\\b|$)","gi");t.className=t.className.replace(r," ")}}},function(t,n,r){var e=r(45);t.exports=function(t,n){if("number"!=typeof t&&"Number"!=e(t))throw TypeError(n);return+t}},function(t,n,r){"use strict";var a=r(17),s=r(78),l=r(8);t.exports=[].copyWithin||function(t,n){var r=a(this),e=l(r.length),i=s(t,e),o=s(n,e),u=2<arguments.length?arguments[2]:void 0,c=Math.min((void 0===u?e:s(u,e))-o,e-i),f=1;for(o<i&&i<o+c&&(f=-1,o+=c-1,i+=c-1);0<c--;)o in r?r[i]=r[o]:delete r[i],i+=f,o+=f;return r}},function(t,n,r){var e=r(71);t.exports=function(t,n){var r=[];return e(t,!1,r.push,r,n),r}},function(t,n,r){var s=r(21),l=r(17),h=r(116),v=r(8);t.exports=function(t,n,r,e,i){s(n);var o=l(t),u=h(o),c=v(o.length),f=i?c-1:0,a=i?-1:1;if(r<2)for(;;){if(f in u){e=u[f],f+=a;break}if(f+=a,i?f<0:c<=f)throw TypeError("Reduce of empty array with no initial value")}for(;i?0<=f:f<c;f+=a)f in u&&(e=n(e,u[f],f,o));return e}},function(t,n,r){"use strict";var o=r(21),u=r(5),c=r(175),f=[].slice,a={};t.exports=Function.bind||function(n){var r=o(this),e=f.call(arguments,1),i=function(){var t=e.concat(f.call(arguments));return this instanceof i?function(t,n,r){if(!(n in a)){for(var e=[],i=0;i<n;i++)e[i]="a["+i+"]";a[n]=Function("F,a","return new F("+e.join(",")+")")}return a[n](t,r)}(r,t.length,t):c(r,t,n)};return u(r.prototype)&&(i.prototype=r.prototype),i}},function(t,n,r){"use strict";var u=r(11).f,c=r(72),f=r(76),a=r(47),s=r(70),l=r(71),e=r(147),i=r(178),o=r(77),h=r(10),v=r(69).fastKey,p=r(80),d=h?"_s":"size",y=function(t,n){var r,e=v(n);if("F"!==e)return t._i[e];for(r=t._f;r;r=r.n)if(r.k==n)return r};t.exports={getConstructor:function(t,o,r,e){var i=t(function(t,n){s(t,i,o,"_i"),t._t=o,t._i=c(null),t._f=void 0,t._l=void 0,t[d]=0,null!=n&&l(n,r,t[e],t)});return f(i.prototype,{clear:function(){for(var t=p(this,o),n=t._i,r=t._f;r;r=r.n)r.r=!0,r.p&&(r.p=r.p.n=void 0),delete n[r.i];t._f=t._l=void 0,t[d]=0},delete:function(t){var n=p(this,o),r=y(n,t);if(r){var e=r.n,i=r.p;delete n._i[r.i],r.r=!0,i&&(i.n=e),e&&(e.p=i),n._f==r&&(n._f=e),n._l==r&&(n._l=i),n[d]--}return!!r},forEach:function(t){p(this,o);for(var n,r=a(t,1<arguments.length?arguments[1]:void 0,3);n=n?n.n:this._f;)for(r(n.v,n.k,this);n&&n.r;)n=n.p},has:function(t){return!!y(p(this,o),t)}}),h&&u(i.prototype,"size",{get:function(){return p(this,o)[d]}}),i},def:function(t,n,r){var e,i,o=y(t,n);return o?o.v=r:(t._l=o={i:i=v(n,!0),k:n,v:r,p:e=t._l,n:void 0,r:!1},t._f||(t._f=o),e&&(e.n=o),t[d]++,"F"!==i&&(t._i[i]=o)),t},getEntry:y,setStrong:function(t,r,n){e(t,r,function(t,n){this._t=p(t,r),this._k=n,this._l=void 0},function(){for(var t=this,n=t._k,r=t._l;r&&r.r;)r=r.p;return t._t&&(t._l=r=r?r.n:t._t._f)?i(0,"keys"==n?r.k:"values"==n?r.v:[r.k,r.v]):(t._t=void 0,i(1))},n?"entries":"values",!n,!0),o(r)}}},function(t,n,r){var e=r(81),i=r(167);t.exports=function(t){return function(){if(e(this)!=t)throw TypeError(t+"#toJSON isn't generic");return i(this)}}},function(t,n,r){"use strict";var u=r(76),c=r(69).getWeak,i=r(2),f=r(5),a=r(70),s=r(71),e=r(50),l=r(30),h=r(80),o=e(5),v=e(6),p=0,d=function(t){return t._l||(t._l=new y)},y=function(){this.a=[]},g=function(t,n){return o(t.a,function(t){return t[0]===n})};y.prototype={get:function(t){var n=g(this,t);if(n)return n[1]},has:function(t){return!!g(this,t)},set:function(t,n){var r=g(this,t);r?r[1]=n:this.a.push([t,n])},delete:function(n){var t=v(this.a,function(t){return t[0]===n});return~t&&this.a.splice(t,1),!!~t}},t.exports={getConstructor:function(t,r,e,i){var o=t(function(t,n){a(t,o,r,"_i"),t._t=r,t._i=p++,t._l=void 0,null!=n&&s(n,e,t[i],t)});return u(o.prototype,{delete:function(t){if(!f(t))return!1;var n=c(t);return!0===n?d(h(this,r)).delete(t):n&&l(n,this._i)&&delete n[this._i]},has:function(t){if(!f(t))return!1;var n=c(t);return!0===n?d(h(this,r)).has(t):n&&l(n,this._i)}}),o},def:function(t,n,r){var e=c(i(n),!0);return!0===e?d(t).set(n,r):e[t._i]=r,t},ufstore:d}},function(t,n,r){"use strict";var p=r(123),d=r(5),y=r(8),g=r(47),b=r(7)("isConcatSpreadable");t.exports=function t(n,r,e,i,o,u,c,f){for(var a,s,l=o,h=0,v=!!c&&g(c,f,3);h<i;){if(h in e){if(a=v?v(e[h],h,r):e[h],s=!1,d(a)&&(s=void 0!==(s=a[b])?!!s:p(a)),s&&0<u)l=t(n,r,a,y(a.length),l,u-1)-1;else{if(9007199254740991<=l)throw TypeError();n[l]=a}l++}h++}return l}},function(t,n,r){t.exports=!r(10)&&!r(4)(function(){return 7!=Object.defineProperty(r(140)("div"),"a",{get:function(){return 7}}).a})},function(t,n){t.exports=function(t,n,r){var e=void 0===r;switch(n.length){case 0:return e?t():t.call(r);case 1:return e?t(n[0]):t.call(r,n[0]);case 2:return e?t(n[0],n[1]):t.call(r,n[0],n[1]);case 3:return e?t(n[0],n[1],n[2]):t.call(r,n[0],n[1],n[2]);case 4:return e?t(n[0],n[1],n[2],n[3]):t.call(r,n[0],n[1],n[2],n[3])}return t.apply(r,n)}},function(t,n,r){var e=r(5),i=Math.floor;t.exports=function(t){return!e(t)&&isFinite(t)&&i(t)===t}},function(t,n,r){var o=r(2);t.exports=function(t,n,r,e){try{return e?n(o(r)[0],r[1]):n(r)}catch(n){var i=t.return;throw void 0!==i&&o(i.call(t)),n}}},function(t,n){t.exports=function(t,n){return{value:n,done:!!t}}},function(t,n,r){var o=r(149),e=Math.pow,u=e(2,-52),c=e(2,-23),f=e(2,127)*(2-c),a=e(2,-126);t.exports=Math.fround||function(t){var n,r,e=Math.abs(t),i=o(t);return e<a?i*(e/a/c+1/u-1/u)*a*c:f<(r=(n=(1+c/u)*e)-(n-e))||r!=r?i*(1/0):i*r}},function(t,n){t.exports=Math.log1p||function(t){return-1e-8<(t=+t)&&t<1e-8?t-t*t/2:Math.log(1+t)}},function(t,n){t.exports=Math.scale||function(t,n,r,e,i){return 0===arguments.length||t!=t||n!=n||r!=r||e!=e||i!=i?NaN:t===1/0||t===-1/0?t:(t-n)*(i-e)/(r-n)+e}},function(t,n,r){"use strict";var h=r(10),v=r(74),p=r(127),d=r(117),y=r(17),g=r(116),i=Object.assign;t.exports=!i||r(4)(function(){var t={},n={},r=Symbol(),e="abcdefghijklmnopqrst";return t[r]=7,e.split("").forEach(function(t){n[t]=t}),7!=i({},t)[r]||Object.keys(i({},n)).join("")!=e})?function(t,n){for(var r=y(t),e=arguments.length,i=1,o=p.f,u=d.f;i<e;)for(var c,f=g(arguments[i++]),a=o?v(f).concat(o(f)):v(f),s=a.length,l=0;l<s;)c=a[l++],h&&!u.call(f,c)||(r[c]=f[c]);return r}:i},function(t,n,r){var u=r(11),c=r(2),f=r(74);t.exports=r(10)?Object.defineProperties:function(t,n){c(t);for(var r,e=f(n),i=e.length,o=0;o<i;)u.f(t,r=e[o++],n[r]);return t}},function(t,n,r){var e=r(33),i=r(73).f,o={}.toString,u="object"==typeof window&&window&&Object.getOwnPropertyNames?Object.getOwnPropertyNames(window):[];t.exports.f=function(t){return u&&"[object Window]"==o.call(t)?function(t){try{return i(t)}catch(t){return u.slice()}}(t):i(e(t))}},function(t,n,r){var u=r(30),c=r(33),f=r(120)(!1),a=r(154)("IE_PROTO");t.exports=function(t,n){var r,e=c(t),i=0,o=[];for(r in e)r!=a&&u(e,r)&&o.push(r);for(;n.length>i;)u(e,r=n[i++])&&(~f(o,r)||o.push(r));return o}},function(t,n,r){var f=r(10),a=r(74),s=r(33),l=r(117).f;t.exports=function(c){return function(t){for(var n,r=s(t),e=a(r),i=e.length,o=0,u=[];o<i;)n=e[o++],f&&!l.call(r,n)||u.push(c?[n,r[n]]:r[n]);return u}}},function(t,n,r){var e=r(73),i=r(127),o=r(2),u=r(3).Reflect;t.exports=u&&u.ownKeys||function(t){var n=e.f(o(t)),r=i.f;return r?n.concat(r(t)):n}},function(t,n,r){var e=r(3).parseFloat,i=r(84).trim;t.exports=1/e(r(157)+"-0")!=-1/0?function(t){var n=i(String(t),3),r=e(n);return 0===r&&"-"==n.charAt(0)?-0:r}:e},function(t,n,r){var e=r(3).parseInt,i=r(84).trim,o=r(157),u=/^[-+]?0[xX]/;t.exports=8!==e(o+"08")||22!==e(o+"0x16")?function(t,n){var r=i(String(t),3);return e(r,n>>>0||(u.test(r)?16:10))}:e},function(t,n){t.exports=function(t){try{return{e:!1,v:t()}}catch(t){return{e:!0,v:t}}}},function(t,n,r){var e=r(2),i=r(5),o=r(151);t.exports=function(t,n){if(e(t),i(n)&&n.constructor===t)return n;var r=o.f(t);return(0,r.resolve)(n),r.promise}},function(t,n){t.exports=Object.is||function(t,n){return t===n?0!==t||1/t==1/n:t!=t&&n!=n}},function(t,n,r){var s=r(8),l=r(156),h=r(51);t.exports=function(t,n,r,e){var i=String(h(t)),o=i.length,u=void 0===r?" ":String(r),c=s(n);if(c<=o||""==u)return i;var f=c-o,a=l.call(u,Math.ceil(f/u.length));return a.length>f&&(a=a.slice(0,f)),e?a+i:i+a}},function(t,n,r){var e=r(49),i=r(8);t.exports=function(t){if(void 0===t)return 0;var n=e(t),r=i(n);if(n!==r)throw RangeError("Wrong length!");return r}},function(t,n,r){n.f=r(7)},function(t,n,r){"use strict";var e=r(170),i=r(80);t.exports=r(121)("Map",function(t){return function(){return t(this,0<arguments.length?arguments[0]:void 0)}},{get:function(t){var n=e.getEntry(i(this,"Map"),t);return n&&n.v},set:function(t,n){return e.def(i(this,"Map"),0===t?0:t,n)}},e,!0)},function(t,n,r){"use strict";var e=r(152);r(1)({target:"RegExp",proto:!0,forced:e!==/./.exec},{exec:e})},function(t,n,r){r(10)&&"g"!=/./g.flags&&r(11).f(RegExp.prototype,"flags",{configurable:!0,get:r(115)})},function(t,n,r){"use strict";var e=r(170),i=r(80);t.exports=r(121)("Set",function(t){return function(){return t(this,0<arguments.length?arguments[0]:void 0)}},{add:function(t){return e.def(i(this,"Set"),t=0===t?0:t,t)}},e)},function(t,n,r){"use strict";var o,e=r(3),i=r(50)(0),u=r(27),c=r(69),f=r(182),a=r(172),s=r(5),l=r(80),h=r(80),v=!e.ActiveXObject&&"ActiveXObject"in e,p="WeakMap",d=c.getWeak,y=Object.isExtensible,g=a.ufstore,b=function(t){return function(){return t(this,0<arguments.length?arguments[0]:void 0)}},x={get:function(t){if(s(t)){var n=d(t);return!0===n?g(l(this,p)).get(t):n?n[this._i]:void 0}},set:function(t,n){return a.def(l(this,p),t,n)}},m=t.exports=r(121)(p,b,x,a,!0,!0);h&&v&&(f((o=a.getConstructor(b,p)).prototype,x),c.NEED=!0,i(["delete","has","get","set"],function(e){var t=m.prototype,i=t[e];u(t,e,function(t,n){if(!s(t)||y(t))return i.call(this,t,n);this._f||(this._f=new o);var r=this._f[e](t,n);return"set"==e?this:r})}))},,,,function(t,n){"use strict";t.exports={init:function(){var t=document.querySelector("#page-nav");t&&!document.querySelector("#page-nav .extend.prev")&&(t.innerHTML='<a class="extend prev disabled" rel="prev">&laquo; Prev</a>'+t.innerHTML),t&&!document.querySelector("#page-nav .extend.next")&&(t.innerHTML=t.innerHTML+'<a class="extend next disabled" rel="next">Next &raquo;</a>'),yiliaConfig&&yiliaConfig.open_in_new&&document.querySelectorAll(".article-entry a:not(.article-more-a)").forEach(function(t){var n=t.getAttribute("target");n&&""!==n||t.setAttribute("target","_blank")}),yiliaConfig&&yiliaConfig.toc_hide_index&&document.querySelectorAll(".toc-number").forEach(function(t){t.style.display="none"})}}},function(t,n,r){"use strict";function e(t){return t&&t.__esModule?t:{default:t}}function i(t,n,r,e,i){var o=function(t){for(var n=t.offsetLeft,r=t.offsetParent;null!==r;)n+=r.offsetLeft,r=r.offsetParent;return n}(t),u=function(t){for(var n=t.offsetTop,r=t.offsetParent;null!==r;)n+=r.offsetTop,r=r.offsetParent;return n}(t)-n;if(u-r<=i){var c=t.$newDom;c||(c=t.cloneNode(!0),(0,a.default)(t,c),(t.$newDom=c).style.position="fixed",c.style.top=(r||u)+"px",c.style.left=o+"px",c.style.zIndex=e||2,c.style.width="100%",c.style.color="#fff"),c.style.visibility="visible",t.style.visibility="hidden"}else{t.style.visibility="visible";var f=t.$newDom;f&&(f.style.visibility="hidden")}}function o(){var t=document.querySelector(".js-overlay"),n=document.querySelector(".js-header-menu");i(t,document.body.scrollTop,-63,2,0),i(n,document.body.scrollTop,1,3,0)}var f=e(r(163)),a=e((e(r(164)),r(414))),u=e(r(134)),c=e(r(204)),s=r(135);u.default.versions.mobile&&window.screen.width<800&&(function(){for(var t=document.querySelectorAll(".js-header-menu li a"),n=window.location.pathname,r=0,e=t.length;r<e;r++){var i=t[r];o=n,u=i.getAttribute("href"),c=/\/|index.html/g,o.replace(c,"")===u.replace(c,"")&&(0,f.default)(i,"active")}var o,u,c}(),document.querySelector("#container").addEventListener("scroll",function(t){o()}),window.addEventListener("scroll",function(t){o()}),o()),(0,s.addLoadEvent)(function(){c.default.init()}),t.exports={}},,,function(t,n,r){(function(t){"use strict";function n(t,n,r){t[n]||Object.defineProperty(t,n,{writable:!0,configurable:!0,value:r})}if(r(413),r(209),r(211),t._babelPolyfill)throw new Error("only one instance of babel-polyfill is allowed");t._babelPolyfill=!0;n(String.prototype,"padLeft","".padStart),n(String.prototype,"padRight","".padEnd),"pop,reverse,shift,keys,values,entries,indexOf,every,some,forEach,map,filter,find,findIndex,includes,join,slice,concat,push,splice,unshift,sort,lastIndexOf,reduce,reduceRight,copyWithin,fill".split(",").forEach(function(t){[][t]&&n(Array,t,Function.call.bind([][t]))})}).call(n,function(){return this}())},function(L,t){(function(t){!function(t){"use strict";function o(t,n,r,e){var o,u,c,f,i=n&&n.prototype instanceof h?n:h,a=Object.create(i.prototype),s=new p(e||[]);return a._invoke=(o=t,u=r,c=s,f=_,function(t,n){if(f===E)throw new Error("Generator is already running");if(f===M){if("throw"===t)throw n;return d()}for(c.method=t,c.arg=n;;){var r=c.delegate;if(r){var e=v(r,c);if(e){if(e===P)continue;return e}}if("next"===c.method)c.sent=c._sent=c.arg;else if("throw"===c.method){if(f===_)throw f=M,c.arg;c.dispatchException(c.arg)}else"return"===c.method&&c.abrupt("return",c.arg);f=E;var i=l(o,u,c);if("normal"===i.type){if(f=c.done?M:O,i.arg===P)continue;return{value:i.arg,done:c.done}}"throw"===i.type&&(f=M,c.method="throw",c.arg=i.arg)}}),a}function l(t,n,r){try{return{type:"normal",arg:t.call(n,r)}}catch(t){return{type:"throw",arg:t}}}function h(){}function r(){}function n(){}function e(t){["next","throw","return"].forEach(function(n){t[n]=function(t){return this._invoke(n,t)}})}function u(c){function f(t,n,r,e){var i=l(c[t],c,n);if("throw"!==i.type){var o=i.arg,u=o.value;return u&&"object"==typeof u&&y.call(u,"__await")?Promise.resolve(u.__await).then(function(t){f("next",t,r,e)},function(t){f("throw",t,r,e)}):Promise.resolve(u).then(function(t){o.value=t,r(o)},e)}e(i.arg)}var n;"object"==typeof t.process&&t.process.domain&&(f=t.process.domain.bind(f)),this._invoke=function(r,e){function t(){return new Promise(function(t,n){f(r,e,t,n)})}return n=n?n.then(t,t):t()}}function v(t,n){var r=t.iterator[n.method];if(r===a){if(n.delegate=null,"throw"===n.method){if(t.iterator.return&&(n.method="return",n.arg=a,v(t,n),"throw"===n.method))return P;n.method="throw",n.arg=new TypeError("The iterator does not provide a 'throw' method")}return P}var e=l(r,t.iterator,n.arg);if("throw"===e.type)return n.method="throw",n.arg=e.arg,n.delegate=null,P;var i=e.arg;return i?i.done?(n[t.resultName]=i.value,n.next=t.nextLoc,"return"!==n.method&&(n.method="next",n.arg=a),n.delegate=null,P):i:(n.method="throw",n.arg=new TypeError("iterator result is not an object"),n.delegate=null,P)}function i(t){var n={tryLoc:t[0]};1 in t&&(n.catchLoc=t[1]),2 in t&&(n.finallyLoc=t[2],n.afterLoc=t[3]),this.tryEntries.push(n)}function c(t){var n=t.completion||{};n.type="normal",delete n.arg,t.completion=n}function p(t){this.tryEntries=[{tryLoc:"root"}],t.forEach(i,this),this.reset(!0)}function f(n){if(n){var t=n[b];if(t)return t.call(n);if("function"==typeof n.next)return n;if(!isNaN(n.length)){var r=-1,e=function t(){for(;++r<n.length;)if(y.call(n,r))return t.value=n[r],t.done=!1,t;return t.value=a,t.done=!0,t};return e.next=e}}return{next:d}}function d(){return{value:a,done:!0}}var a,s=Object.prototype,y=s.hasOwnProperty,g="function"==typeof Symbol?Symbol:{},b=g.iterator||"@@iterator",x=g.asyncIterator||"@@asyncIterator",m=g.toStringTag||"@@toStringTag",S="object"==typeof L,w=t.regeneratorRuntime;if(w)S&&(L.exports=w);else{(w=t.regeneratorRuntime=S?L.exports:{}).wrap=o;var _="suspendedStart",O="suspendedYield",E="executing",M="completed",P={},j={};j[b]=function(){return this};var F=Object.getPrototypeOf,A=F&&F(F(f([])));A&&A!==s&&y.call(A,b)&&(j=A);var I=n.prototype=h.prototype=Object.create(j);r.prototype=I.constructor=n,n.constructor=r,n[m]=r.displayName="GeneratorFunction",w.isGeneratorFunction=function(t){var n="function"==typeof t&&t.constructor;return!!n&&(n===r||"GeneratorFunction"===(n.displayName||n.name))},w.mark=function(t){return Object.setPrototypeOf?Object.setPrototypeOf(t,n):(t.__proto__=n,m in t||(t[m]="GeneratorFunction")),t.prototype=Object.create(I),t},w.awrap=function(t){return{__await:t}},e(u.prototype),u.prototype[x]=function(){return this},w.AsyncIterator=u,w.async=function(t,n,r,e){var i=new u(o(t,n,r,e));return w.isGeneratorFunction(n)?i:i.next().then(function(t){return t.done?t.value:i.next()})},e(I),I[m]="Generator",I[b]=function(){return this},I.toString=function(){return"[object Generator]"},w.keys=function(r){var e=[];for(var t in r)e.push(t);return e.reverse(),function t(){for(;e.length;){var n=e.pop();if(n in r)return t.value=n,t.done=!1,t}return t.done=!0,t}},w.values=f,p.prototype={constructor:p,reset:function(t){if(this.prev=0,this.next=0,this.sent=this._sent=a,this.done=!1,this.delegate=null,this.method="next",this.arg=a,this.tryEntries.forEach(c),!t)for(var n in this)"t"===n.charAt(0)&&y.call(this,n)&&!isNaN(+n.slice(1))&&(this[n]=a)},stop:function(){this.done=!0;var t=this.tryEntries[0].completion;if("throw"===t.type)throw t.arg;return this.rval},dispatchException:function(r){function t(t,n){return o.type="throw",o.arg=r,e.next=t,n&&(e.method="next",e.arg=a),!!n}if(this.done)throw r;for(var e=this,n=this.tryEntries.length-1;0<=n;--n){var i=this.tryEntries[n],o=i.completion;if("root"===i.tryLoc)return t("end");if(i.tryLoc<=this.prev){var u=y.call(i,"catchLoc"),c=y.call(i,"finallyLoc");if(u&&c){if(this.prev<i.catchLoc)return t(i.catchLoc,!0);if(this.prev<i.finallyLoc)return t(i.finallyLoc)}else if(u){if(this.prev<i.catchLoc)return t(i.catchLoc,!0)}else{if(!c)throw new Error("try statement without catch or finally");if(this.prev<i.finallyLoc)return t(i.finallyLoc)}}}},abrupt:function(t,n){for(var r=this.tryEntries.length-1;0<=r;--r){var e=this.tryEntries[r];if(e.tryLoc<=this.prev&&y.call(e,"finallyLoc")&&this.prev<e.finallyLoc){var i=e;break}}i&&("break"===t||"continue"===t)&&i.tryLoc<=n&&n<=i.finallyLoc&&(i=null);var o=i?i.completion:{};return o.type=t,o.arg=n,i?(this.method="next",this.next=i.finallyLoc,P):this.complete(o)},complete:function(t,n){if("throw"===t.type)throw t.arg;return"break"===t.type||"continue"===t.type?this.next=t.arg:"return"===t.type?(this.rval=this.arg=t.arg,this.method="return",this.next="end"):"normal"===t.type&&n&&(this.next=n),P},finish:function(t){for(var n=this.tryEntries.length-1;0<=n;--n){var r=this.tryEntries[n];if(r.finallyLoc===t)return this.complete(r.completion,r.afterLoc),c(r),P}},catch:function(t){for(var n=this.tryEntries.length-1;0<=n;--n){var r=this.tryEntries[n];if(r.tryLoc===t){var e=r.completion;if("throw"===e.type){var i=e.arg;c(r)}return i}}throw new Error("illegal catch attempt")},delegateYield:function(t,n,r){return this.delegate={iterator:f(t),resultName:n,nextLoc:r},"next"===this.method&&(this.arg=a),P}}}}("object"==typeof t?t:"object"==typeof window?window:"object"==typeof self?self:this)}).call(t,function(){return this}())},,function(t,n,r){r(221),t.exports=r(46).RegExp.escape},,,,function(t,n,r){var e=r(5),i=r(123),o=r(7)("species");t.exports=function(t){var n;return i(t)&&("function"!=typeof(n=t.constructor)||n!==Array&&!i(n.prototype)||(n=void 0),e(n)&&(null===(n=n[o])&&(n=void 0))),void 0===n?Array:n}},function(t,n,r){"use strict";var e=r(4),i=Date.prototype.getTime,o=Date.prototype.toISOString,u=function(t){return 9<t?t:"0"+t};t.exports=e(function(){return"0385-07-25T07:06:39.999Z"!=o.call(new Date(-5e13-1))})||!e(function(){o.call(new Date(NaN))})?function(){if(!isFinite(i.call(this)))throw RangeError("Invalid time value");var t=this,n=t.getUTCFullYear(),r=t.getUTCMilliseconds(),e=n<0?"-":9999<n?"+":"";return e+("00000"+Math.abs(n)).slice(e?-6:-4)+"-"+u(t.getUTCMonth()+1)+"-"+u(t.getUTCDate())+"T"+u(t.getUTCHours())+":"+u(t.getUTCMinutes())+":"+u(t.getUTCSeconds())+"."+(99<r?r:"0"+u(r))+"Z"}:o},function(t,n,r){"use strict";var e=r(2),i=r(53);t.exports=function(t){if("string"!==t&&"number"!==t&&"default"!==t)throw TypeError("Incorrect hint");return i(e(this),"number"!=t)}},function(t,n,r){var c=r(74),f=r(127),a=r(117);t.exports=function(t){var n=c(t),r=f.f;if(r)for(var e,i=r(t),o=a.f,u=0;i.length>u;)o.call(t,e=i[u++])&&n.push(e);return n}},function(t,n,r){t.exports=r(118)("native-function-to-string",Function.toString)},function(t,n){t.exports=function(n,r){var e=r===Object(r)?function(t){return r[t]}:r;return function(t){return String(t).replace(n,e)}}},function(t,n,r){var e=r(1),i=r(220)(/[\\^$*+?.()|[\]{}]/g,"\\$&");e(e.S,"RegExp",{escape:function(t){return i(t)}})},function(t,n,r){var e=r(1);e(e.P,"Array",{copyWithin:r(166)}),r(67)("copyWithin")},function(t,n,r){"use strict";var e=r(1),i=r(50)(4);e(e.P+e.F*!r(48)([].every,!0),"Array",{every:function(t){return i(this,t,arguments[1])}})},function(t,n,r){var e=r(1);e(e.P,"Array",{fill:r(137)}),r(67)("fill")},function(t,n,r){"use strict";var e=r(1),i=r(50)(2);e(e.P+e.F*!r(48)([].filter,!0),"Array",{filter:function(t){return i(this,t,arguments[1])}})},function(t,n,r){"use strict";var e=r(1),i=r(50)(6),o="findIndex",u=!0;o in[]&&Array(1)[o](function(){u=!1}),e(e.P+e.F*u,"Array",{findIndex:function(t){return i(this,t,1<arguments.length?arguments[1]:void 0)}}),r(67)(o)},function(t,n,r){"use strict";var e=r(1),i=r(50)(5),o="find",u=!0;o in[]&&Array(1)[o](function(){u=!1}),e(e.P+e.F*u,"Array",{find:function(t){return i(this,t,1<arguments.length?arguments[1]:void 0)}}),r(67)(o)},function(t,n,r){"use strict";var e=r(1),i=r(50)(0),o=r(48)([].forEach,!0);e(e.P+e.F*!o,"Array",{forEach:function(t){return i(this,t,arguments[1])}})},function(t,n,r){"use strict";var h=r(47),e=r(1),v=r(17),p=r(177),d=r(145),y=r(8),g=r(139),b=r(161);e(e.S+e.F*!r(125)(function(t){Array.from(t)}),"Array",{from:function(t){var n,r,e,i,o=v(t),u="function"==typeof this?this:Array,c=arguments.length,f=1<c?arguments[1]:void 0,a=void 0!==f,s=0,l=b(o);if(a&&(f=h(f,2<c?arguments[2]:void 0,2)),null==l||u==Array&&d(l))for(r=new u(n=y(o.length));s<n;s++)g(r,s,a?f(o[s],s):o[s]);else for(i=l.call(o),r=new u;!(e=i.next()).done;s++)g(r,s,a?p(i,f,[e.value,s],!0):e.value);return r.length=s,r}})},function(t,n,r){"use strict";var e=r(1),i=r(120)(!1),o=[].indexOf,u=!!o&&1/[1].indexOf(1,-0)<0;e(e.P+e.F*(u||!r(48)(o)),"Array",{indexOf:function(t){return u?o.apply(this,arguments)||0:i(this,t,arguments[1])}})},function(t,n,r){var e=r(1);e(e.S,"Array",{isArray:r(123)})},function(t,n,r){"use strict";var e=r(1),i=r(33),o=[].join;e(e.P+e.F*(r(116)!=Object||!r(48)(o)),"Array",{join:function(t){return o.call(i(this),void 0===t?",":t)}})},function(t,n,r){"use strict";var e=r(1),i=r(33),o=r(49),u=r(8),c=[].lastIndexOf,f=!!c&&1/[1].lastIndexOf(1,-0)<0;e(e.P+e.F*(f||!r(48)(c)),"Array",{lastIndexOf:function(t){if(f)return c.apply(this,arguments)||0;var n=i(this),r=u(n.length),e=r-1;for(1<arguments.length&&(e=Math.min(e,o(arguments[1]))),e<0&&(e=r+e);0<=e;e--)if(e in n&&n[e]===t)return e||0;return-1}})},function(t,n,r){"use strict";var e=r(1),i=r(50)(1);e(e.P+e.F*!r(48)([].map,!0),"Array",{map:function(t){return i(this,t,arguments[1])}})},function(t,n,r){"use strict";var e=r(1),i=r(139);e(e.S+e.F*r(4)(function(){function t(){}return!(Array.of.call(t)instanceof t)}),"Array",{of:function(){for(var t=0,n=arguments.length,r=new("function"==typeof this?this:Array)(n);t<n;)i(r,t,arguments[t++]);return r.length=n,r}})},function(t,n,r){"use strict";var e=r(1),i=r(168);e(e.P+e.F*!r(48)([].reduceRight,!0),"Array",{reduceRight:function(t){return i(this,t,arguments.length,arguments[1],!0)}})},function(t,n,r){"use strict";var e=r(1),i=r(168);e(e.P+e.F*!r(48)([].reduce,!0),"Array",{reduce:function(t){return i(this,t,arguments.length,arguments[1],!1)}})},function(t,n,r){"use strict";var e=r(1),i=r(143),a=r(45),s=r(78),l=r(8),h=[].slice;e(e.P+e.F*r(4)(function(){i&&h.call(i)}),"Array",{slice:function(t,n){var r=l(this.length),e=a(this);if(n=void 0===n?r:n,"Array"==e)return h.call(this,t,n);for(var i=s(t,r),o=s(n,r),u=l(o-i),c=new Array(u),f=0;f<u;f++)c[f]="String"==e?this.charAt(i+f):this[i+f];return c}})},function(t,n,r){"use strict";var e=r(1),i=r(50)(3);e(e.P+e.F*!r(48)([].some,!0),"Array",{some:function(t){return i(this,t,arguments[1])}})},function(t,n,r){"use strict";var e=r(1),i=r(21),o=r(17),u=r(4),c=[].sort,f=[1,2,3];e(e.P+e.F*(u(function(){f.sort(void 0)})||!u(function(){f.sort(null)})||!r(48)(c)),"Array",{sort:function(t){return void 0===t?c.call(o(this)):c.call(o(this),i(t))}})},function(t,n,r){r(77)("Array")},function(t,n,r){var e=r(1);e(e.S,"Date",{now:function(){return(new Date).getTime()}})},function(t,n,r){var e=r(1),i=r(216);e(e.P+e.F*(Date.prototype.toISOString!==i),"Date",{toISOString:i})},function(t,n,r){"use strict";var e=r(1),i=r(17),o=r(53);e(e.P+e.F*r(4)(function(){return null!==new Date(NaN).toJSON()||1!==Date.prototype.toJSON.call({toISOString:function(){return 1}})}),"Date",{toJSON:function(t){var n=i(this),r=o(n);return"number"!=typeof r||isFinite(r)?n.toISOString():null}})},function(t,n,r){var e=r(7)("toPrimitive"),i=Date.prototype;e in i||r(26)(i,e,r(217))},function(t,n,r){var e=Date.prototype,i="Invalid Date",o="toString",u=e[o],c=e.getTime;new Date(NaN)+""!=i&&r(27)(e,o,function(){var t=c.call(this);return t==t?u.call(this):i})},function(t,n,r){var e=r(1);e(e.P,"Function",{bind:r(169)})},function(t,n,r){"use strict";var e=r(5),i=r(32),o=r(7)("hasInstance"),u=Function.prototype;o in u||r(11).f(u,o,{value:function(t){if("function"!=typeof this||!e(t))return!1;if(!e(this.prototype))return t instanceof this;for(;t=i(t);)if(this.prototype===t)return!0;return!1}})},function(t,n,r){var e=r(11).f,i=Function.prototype,o=/^\s*function ([^ (]*)/;"name"in i||r(10)&&e(i,"name",{configurable:!0,get:function(){try{return(""+this).match(o)[1]}catch(t){return""}}})},function(t,n,r){var e=r(1),i=r(180),o=Math.sqrt,u=Math.acosh;e(e.S+e.F*!(u&&710==Math.floor(u(Number.MAX_VALUE))&&u(1/0)==1/0),"Math",{acosh:function(t){return(t=+t)<1?NaN:94906265.62425156<t?Math.log(t)+Math.LN2:i(t-1+o(t-1)*o(t+1))}})},function(t,n,r){var e=r(1),i=Math.asinh;e(e.S+e.F*!(i&&0<1/i(0)),"Math",{asinh:function t(n){return isFinite(n=+n)&&0!=n?n<0?-t(-n):Math.log(n+Math.sqrt(n*n+1)):n}})},function(t,n,r){var e=r(1),i=Math.atanh;e(e.S+e.F*!(i&&1/i(-0)<0),"Math",{atanh:function(t){return 0==(t=+t)?t:Math.log((1+t)/(1-t))/2}})},function(t,n,r){var e=r(1),i=r(149);e(e.S,"Math",{cbrt:function(t){return i(t=+t)*Math.pow(Math.abs(t),1/3)}})},function(t,n,r){var e=r(1);e(e.S,"Math",{clz32:function(t){return(t>>>=0)?31-Math.floor(Math.log(t+.5)*Math.LOG2E):32}})},function(t,n,r){var e=r(1),i=Math.exp;e(e.S,"Math",{cosh:function(t){return(i(t=+t)+i(-t))/2}})},function(t,n,r){var e=r(1),i=r(148);e(e.S+e.F*(i!=Math.expm1),"Math",{expm1:i})},function(t,n,r){var e=r(1);e(e.S,"Math",{fround:r(179)})},function(t,n,r){var e=r(1),f=Math.abs;e(e.S,"Math",{hypot:function(t,n){for(var r,e,i=0,o=0,u=arguments.length,c=0;o<u;)c<(r=f(arguments[o++]))?(i=i*(e=c/r)*e+1,c=r):0<r?i+=(e=r/c)*e:i+=r;return c===1/0?1/0:c*Math.sqrt(i)}})},function(t,n,r){var e=r(1),i=Math.imul;e(e.S+e.F*r(4)(function(){return-5!=i(4294967295,5)||2!=i.length}),"Math",{imul:function(t,n){var r=65535,e=+t,i=+n,o=r&e,u=r&i;return 0|o*u+((r&e>>>16)*u+o*(r&i>>>16)<<16>>>0)}})},function(t,n,r){var e=r(1);e(e.S,"Math",{log10:function(t){return Math.log(t)*Math.LOG10E}})},function(t,n,r){var e=r(1);e(e.S,"Math",{log1p:r(180)})},function(t,n,r){var e=r(1);e(e.S,"Math",{log2:function(t){return Math.log(t)/Math.LN2}})},function(t,n,r){var e=r(1);e(e.S,"Math",{sign:r(149)})},function(t,n,r){var e=r(1),i=r(148),o=Math.exp;e(e.S+e.F*r(4)(function(){return-2e-17!=!Math.sinh(-2e-17)}),"Math",{sinh:function(t){return Math.abs(t=+t)<1?(i(t)-i(-t))/2:(o(t-1)-o(-t-1))*(Math.E/2)}})},function(t,n,r){var e=r(1),i=r(148),o=Math.exp;e(e.S,"Math",{tanh:function(t){var n=i(t=+t),r=i(-t);return n==1/0?1:r==1/0?-1:(n-r)/(o(t)+o(-t))}})},function(t,n,r){var e=r(1);e(e.S,"Math",{trunc:function(t){return(0<t?Math.floor:Math.ceil)(t)}})},function(t,n,r){"use strict";var e=r(3),i=r(30),o=r(45),u=r(144),s=r(53),c=r(4),f=r(73).f,a=r(31).f,l=r(11).f,h=r(84).trim,v="Number",p=e[v],d=p,y=p.prototype,g=o(r(72)(y))==v,b="trim"in String.prototype,x=function(t){var n=s(t,!1);if("string"==typeof n&&2<n.length){var r,e,i,o=(n=b?n.trim():h(n,3)).charCodeAt(0);if(43===o||45===o){if(88===(r=n.charCodeAt(2))||120===r)return NaN}else if(48===o){switch(n.charCodeAt(1)){case 66:case 98:e=2,i=49;break;case 79:case 111:e=8,i=55;break;default:return+n}for(var u,c=n.slice(2),f=0,a=c.length;f<a;f++)if((u=c.charCodeAt(f))<48||i<u)return NaN;return parseInt(c,e)}}return+n};if(!p(" 0o1")||!p("0b1")||p("+0x1")){p=function(t){var n=arguments.length<1?0:t,r=this;return r instanceof p&&(g?c(function(){y.valueOf.call(r)}):o(r)!=v)?u(new d(x(n)),r,p):x(n)};for(var m,S=r(10)?f(d):"MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,EPSILON,isFinite,isInteger,isNaN,isSafeInteger,MAX_SAFE_INTEGER,MIN_SAFE_INTEGER,parseFloat,parseInt,isInteger".split(","),w=0;S.length>w;w++)i(d,m=S[w])&&!i(p,m)&&l(p,m,a(d,m));(p.prototype=y).constructor=p,r(27)(e,v,p)}},function(t,n,r){var e=r(1);e(e.S,"Number",{EPSILON:Math.pow(2,-52)})},function(t,n,r){var e=r(1),i=r(3).isFinite;e(e.S,"Number",{isFinite:function(t){return"number"==typeof t&&i(t)}})},function(t,n,r){var e=r(1);e(e.S,"Number",{isInteger:r(176)})},function(t,n,r){var e=r(1);e(e.S,"Number",{isNaN:function(t){return t!=t}})},function(t,n,r){var e=r(1),i=r(176),o=Math.abs;e(e.S,"Number",{isSafeInteger:function(t){return i(t)&&o(t)<=9007199254740991}})},function(t,n,r){var e=r(1);e(e.S,"Number",{MAX_SAFE_INTEGER:9007199254740991})},function(t,n,r){var e=r(1);e(e.S,"Number",{MIN_SAFE_INTEGER:-9007199254740991})},function(t,n,r){var e=r(1),i=r(188);e(e.S+e.F*(Number.parseFloat!=i),"Number",{parseFloat:i})},function(t,n,r){var e=r(1),i=r(189);e(e.S+e.F*(Number.parseInt!=i),"Number",{parseInt:i})},function(t,n,r){"use strict";var e=r(1),a=r(49),s=r(165),l=r(156),i=1..toFixed,o=Math.floor,u=[0,0,0,0,0,0],h="Number.toFixed: incorrect invocation!",v=function(t,n){for(var r=-1,e=n;++r<6;)e+=t*u[r],u[r]=e%1e7,e=o(e/1e7)},p=function(t){for(var n=6,r=0;0<=--n;)r+=u[n],u[n]=o(r/t),r=r%t*1e7},d=function(){for(var t=6,n="";0<=--t;)if(""!==n||0===t||0!==u[t]){var r=String(u[t]);n=""===n?r:n+l.call("0",7-r.length)+r}return n},y=function(t,n,r){return 0===n?r:n%2==1?y(t,n-1,r*t):y(t*t,n/2,r)};e(e.P+e.F*(!!i&&("0.000"!==8e-5.toFixed(3)||"1"!==.9.toFixed(0)||"1.25"!==1.255.toFixed(2)||"1000000000000000128"!==(0xde0b6b3a7640080).toFixed(0))||!r(4)(function(){i.call({})})),"Number",{toFixed:function(t){var n,r,e,i,o=s(this,h),u=a(t),c="",f="0";if(u<0||20<u)throw RangeError(h);if(o!=o)return"NaN";if(o<=-1e21||1e21<=o)return String(o);if(o<0&&(c="-",o=-o),1e-21<o)if(r=(n=function(t){for(var n=0,r=t;4096<=r;)n+=12,r/=4096;for(;2<=r;)n+=1,r/=2;return n}(o*y(2,69,1))-69)<0?o*y(2,-n,1):o/y(2,n,1),r*=4503599627370496,0<(n=52-n)){for(v(0,r),e=u;7<=e;)v(1e7,0),e-=7;for(v(y(10,e,1),0),e=n-1;23<=e;)p(1<<23),e-=23;p(1<<e),v(1,1),p(2),f=d()}else v(0,r),v(1<<-n,0),f=d()+l.call("0",u);return f=0<u?c+((i=f.length)<=u?"0."+l.call("0",u-i)+f:f.slice(0,i-u)+"."+f.slice(i-u)):c+f}})},function(t,n,r){"use strict";var e=r(1),i=r(4),o=r(165),u=1..toPrecision;e(e.P+e.F*(i(function(){return"1"!==u.call(1,void 0)})||!i(function(){u.call({})})),"Number",{toPrecision:function(t){var n=o(this,"Number#toPrecision: incorrect invocation!");return void 0===t?u.call(n):u.call(n,t)}})},function(t,n,r){var e=r(1);e(e.S+e.F,"Object",{assign:r(182)})},function(t,n,r){var e=r(1);e(e.S,"Object",{create:r(72)})},function(t,n,r){var e=r(1);e(e.S+e.F*!r(10),"Object",{defineProperties:r(183)})},function(t,n,r){var e=r(1);e(e.S+e.F*!r(10),"Object",{defineProperty:r(11).f})},function(t,n,r){var e=r(5),i=r(69).onFreeze;r(52)("freeze",function(n){return function(t){return n&&e(t)?n(i(t)):t}})},function(t,n,r){var e=r(33),i=r(31).f;r(52)("getOwnPropertyDescriptor",function(){return function(t,n){return i(e(t),n)}})},function(t,n,r){r(52)("getOwnPropertyNames",function(){return r(184).f})},function(t,n,r){var e=r(17),i=r(32);r(52)("getPrototypeOf",function(){return function(t){return i(e(t))}})},function(t,n,r){var e=r(5);r(52)("isExtensible",function(n){return function(t){return!!e(t)&&(!n||n(t))}})},function(t,n,r){var e=r(5);r(52)("isFrozen",function(n){return function(t){return!e(t)||!!n&&n(t)}})},function(t,n,r){var e=r(5);r(52)("isSealed",function(n){return function(t){return!e(t)||!!n&&n(t)}})},function(t,n,r){var e=r(1);e(e.S,"Object",{is:r(192)})},function(t,n,r){var e=r(17),i=r(74);r(52)("keys",function(){return function(t){return i(e(t))}})},function(t,n,r){var e=r(5),i=r(69).onFreeze;r(52)("preventExtensions",function(n){return function(t){return n&&e(t)?n(i(t)):t}})},function(t,n,r){var e=r(5),i=r(69).onFreeze;r(52)("seal",function(n){return function(t){return n&&e(t)?n(i(t)):t}})},function(t,n,r){var e=r(1);e(e.S,"Object",{setPrototypeOf:r(153).set})},function(t,n,r){"use strict";var e=r(81),i={};i[r(7)("toStringTag")]="z",i+""!="[object z]"&&r(27)(Object.prototype,"toString",function(){return"[object "+e(this)+"]"},!0)},function(t,n,r){var e=r(1),i=r(188);e(e.G+e.F*(parseFloat!=i),{parseFloat:i})},function(t,n,r){var e=r(1),i=r(189);e(e.G+e.F*(parseInt!=i),{parseInt:i})},function(t,n,r){"use strict";var e,i,o,u,c=r(68),f=r(3),a=r(47),s=r(81),l=r(1),h=r(5),v=r(21),p=r(70),d=r(71),y=r(119),g=r(158).set,b=r(150)(),x=r(151),m=r(190),S=r(133),w=r(191),_="Promise",O=f.TypeError,E=f.process,M=E&&E.versions,P=M&&M.v8||"",j=f[_],F="process"==s(E),A=function(){},I=i=x.f,L=!!function(){try{var t=j.resolve(1),n=(t.constructor={})[r(7)("species")]=function(t){t(A,A)};return(F||"function"==typeof PromiseRejectionEvent)&&t.then(A)instanceof n&&0!==P.indexOf("6.6")&&-1===S.indexOf("Chrome/66")}catch(t){}}(),N=function(t){var n;return!(!h(t)||"function"!=typeof(n=t.then))&&n},T=function(s,r){if(!s._n){s._n=!0;var e=s._c;b(function(){for(var f=s._v,a=1==s._s,t=0,n=function(t){var n,r,e,i=a?t.ok:t.fail,o=t.resolve,u=t.reject,c=t.domain;try{i?(a||(2==s._h&&C(s),s._h=1),!0===i?n=f:(c&&c.enter(),n=i(f),c&&(c.exit(),e=!0)),n===t.promise?u(O("Promise-chain cycle")):(r=N(n))?r.call(n,o,u):o(n)):u(f)}catch(t){c&&!e&&c.exit(),u(t)}};e.length>t;)n(e[t++]);s._c=[],s._n=!1,r&&!s._h&&k(s)})}},k=function(o){g.call(f,function(){var t,n,r,e=o._v,i=R(o);if(i&&(t=m(function(){F?E.emit("unhandledRejection",e,o):(n=f.onunhandledrejection)?n({promise:o,reason:e}):(r=f.console)&&r.error&&r.error("Unhandled promise rejection",e)}),o._h=F||R(o)?2:1),o._a=void 0,i&&t.e)throw t.v})},R=function(t){return 1!==t._h&&0===(t._a||t._c).length},C=function(n){g.call(f,function(){var t;F?E.emit("rejectionHandled",n):(t=f.onrejectionhandled)&&t({promise:n,reason:n._v})})},D=function(t){var n=this;n._d||(n._d=!0,(n=n._w||n)._v=t,n._s=2,n._a||(n._a=n._c.slice()),T(n,!0))},G=function(t){var r,e=this;if(!e._d){e._d=!0,e=e._w||e;try{if(e===t)throw O("Promise can't be resolved itself");(r=N(t))?b(function(){var n={_w:e,_d:!1};try{r.call(t,a(G,n,1),a(D,n,1))}catch(t){D.call(n,t)}}):(e._v=t,e._s=1,T(e,!1))}catch(t){D.call({_w:e,_d:!1},t)}}};L||(j=function(t){p(this,j,_,"_h"),v(t),e.call(this);try{t(a(G,this,1),a(D,this,1))}catch(t){D.call(this,t)}},(e=function(t){this._c=[],this._a=void 0,this._s=0,this._d=!1,this._v=void 0,this._h=0,this._n=!1}).prototype=r(76)(j.prototype,{then:function(t,n){var r=I(y(this,j));return r.ok="function"!=typeof t||t,r.fail="function"==typeof n&&n,r.domain=F?E.domain:void 0,this._c.push(r),this._a&&this._a.push(r),this._s&&T(this,!1),r.promise},catch:function(t){return this.then(void 0,t)}}),o=function(){var t=new e;this.promise=t,this.resolve=a(G,t,1),this.reject=a(D,t,1)},x.f=I=function(t){return t===j||t===u?new o(t):i(t)}),l(l.G+l.W+l.F*!L,{Promise:j}),r(83)(j,_),r(77)(_),u=r(46)[_],l(l.S+l.F*!L,_,{reject:function(t){var n=I(this);return(0,n.reject)(t),n.promise}}),l(l.S+l.F*(c||!L),_,{resolve:function(t){return w(c&&this===u?j:this,t)}}),l(l.S+l.F*!(L&&r(125)(function(t){j.all(t).catch(A)})),_,{all:function(t){var u=this,n=I(u),c=n.resolve,f=n.reject,r=m(function(){var e=[],i=0,o=1;d(t,!1,function(t){var n=i++,r=!1;e.push(void 0),o++,u.resolve(t).then(function(t){r||(r=!0,e[n]=t,--o||c(e))},f)}),--o||c(e)});return r.e&&f(r.v),n.promise},race:function(t){var n=this,r=I(n),e=r.reject,i=m(function(){d(t,!1,function(t){n.resolve(t).then(r.resolve,e)})});return i.e&&e(i.v),r.promise}})},function(t,n,r){var e=r(1),o=r(21),u=r(2),c=(r(3).Reflect||{}).apply,f=Function.apply;e(e.S+e.F*!r(4)(function(){c(function(){})}),"Reflect",{apply:function(t,n,r){var e=o(t),i=u(r);return c?c(e,n,i):f.call(e,n,i)}})},function(t,n,r){var e=r(1),c=r(72),f=r(21),a=r(2),s=r(5),i=r(4),l=r(169),h=(r(3).Reflect||{}).construct,v=i(function(){function t(){}return!(h(function(){},[],t)instanceof t)}),p=!i(function(){h(function(){})});e(e.S+e.F*(v||p),"Reflect",{construct:function(t,n){f(t),a(n);var r=arguments.length<3?t:f(arguments[2]);if(p&&!v)return h(t,n,r);if(t==r){switch(n.length){case 0:return new t;case 1:return new t(n[0]);case 2:return new t(n[0],n[1]);case 3:return new t(n[0],n[1],n[2]);case 4:return new t(n[0],n[1],n[2],n[3])}var e=[null];return e.push.apply(e,n),new(l.apply(t,e))}var i=r.prototype,o=c(s(i)?i:Object.prototype),u=Function.apply.call(t,o,n);return s(u)?u:o}})},function(t,n,r){var e=r(11),i=r(1),o=r(2),u=r(53);i(i.S+i.F*r(4)(function(){Reflect.defineProperty(e.f({},1,{value:1}),1,{value:2})}),"Reflect",{defineProperty:function(t,n,r){o(t),n=u(n,!0),o(r);try{return e.f(t,n,r),!0}catch(t){return!1}}})},function(t,n,r){var e=r(1),i=r(31).f,o=r(2);e(e.S,"Reflect",{deleteProperty:function(t,n){var r=i(o(t),n);return!(r&&!r.configurable)&&delete t[n]}})},function(t,n,r){"use strict";var e=r(1),i=r(2),o=function(t){this._t=i(t),this._i=0;var n,r=this._k=[];for(n in t)r.push(n)};r(146)(o,"Object",function(){var t,n=this._k;do{if(this._i>=n.length)return{value:void 0,done:!0}}while(!((t=n[this._i++])in this._t));return{value:t,done:!1}}),e(e.S,"Reflect",{enumerate:function(t){return new o(t)}})},function(t,n,r){var e=r(31),i=r(1),o=r(2);i(i.S,"Reflect",{getOwnPropertyDescriptor:function(t,n){return e.f(o(t),n)}})},function(t,n,r){var e=r(1),i=r(32),o=r(2);e(e.S,"Reflect",{getPrototypeOf:function(t){return i(o(t))}})},function(t,n,r){var u=r(31),c=r(32),f=r(30),e=r(1),a=r(5),s=r(2);e(e.S,"Reflect",{get:function t(n,r){var e,i,o=arguments.length<3?n:arguments[2];return s(n)===o?n[r]:(e=u.f(n,r))?f(e,"value")?e.value:void 0!==e.get?e.get.call(o):void 0:a(i=c(n))?t(i,r,o):void 0}})},function(t,n,r){var e=r(1);e(e.S,"Reflect",{has:function(t,n){return n in t}})},function(t,n,r){var e=r(1),i=r(2),o=Object.isExtensible;e(e.S,"Reflect",{isExtensible:function(t){return i(t),!o||o(t)}})},function(t,n,r){var e=r(1);e(e.S,"Reflect",{ownKeys:r(187)})},function(t,n,r){var e=r(1),i=r(2),o=Object.preventExtensions;e(e.S,"Reflect",{preventExtensions:function(t){i(t);try{return o&&o(t),!0}catch(t){return!1}}})},function(t,n,r){var e=r(1),i=r(153);i&&e(e.S,"Reflect",{setPrototypeOf:function(t,n){i.check(t,n);try{return i.set(t,n),!0}catch(t){return!1}}})},function(t,n,r){var f=r(11),a=r(31),s=r(32),l=r(30),e=r(1),h=r(75),v=r(2),p=r(5);e(e.S,"Reflect",{set:function t(n,r,e){var i,o,u=arguments.length<4?n:arguments[3],c=a.f(v(n),r);if(!c){if(p(o=s(n)))return t(o,r,e,u);c=h(0)}if(l(c,"value")){if(!1===c.writable||!p(u))return!1;if(i=a.f(u,r)){if(i.get||i.set||!1===i.writable)return!1;i.value=e,f.f(u,r,i)}else f.f(u,r,h(0,e));return!0}return void 0!==c.set&&(c.set.call(u,e),!0)}})},function(t,n,r){var e=r(3),o=r(144),i=r(11).f,u=r(73).f,c=r(124),f=r(115),a=e.RegExp,s=a,l=a.prototype,h=/a/g,v=/a/g,p=new a(h)!==h;if(r(10)&&(!p||r(4)(function(){return v[r(7)("match")]=!1,a(h)!=h||a(v)==v||"/a/i"!=a(h,"i")}))){a=function(t,n){var r=this instanceof a,e=c(t),i=void 0===n;return!r&&e&&t.constructor===a&&i?t:o(p?new s(e&&!i?t.source:t,n):s((e=t instanceof a)?t.source:t,e&&i?f.call(t):n),r?this:l,a)};for(var d=function(n){n in a||i(a,n,{configurable:!0,get:function(){return s[n]},set:function(t){s[n]=t}})},y=u(s),g=0;y.length>g;)d(y[g++]);(l.constructor=a).prototype=l,r(27)(e,"RegExp",a)}r(77)("RegExp")},function(t,n,r){"use strict";var l=r(2),h=r(8),v=r(136),p=r(128);r(122)("match",1,function(e,i,a,s){return[function(t){var n=e(this),r=null==t?void 0:t[i];return void 0!==r?r.call(t,n):new RegExp(t)[i](String(n))},function(t){var n=s(a,t,this);if(n.done)return n.value;var r=l(t),e=String(this);if(!r.global)return p(r,e);for(var i,o=r.unicode,u=[],c=r.lastIndex=0;null!==(i=p(r,e));){var f=String(i[0]);""===(u[c]=f)&&(r.lastIndex=v(e,h(r.lastIndex),o)),c++}return 0===c?null:u}]})},function(t,n,r){"use strict";var O=r(2),e=r(17),E=r(8),M=r(49),P=r(136),j=r(128),F=Math.max,A=Math.min,h=Math.floor,v=/\$([$&`']|\d\d?|<[^>]*>)/g,p=/\$([$&`']|\d\d?)/g;r(122)("replace",2,function(i,o,S,w){function _(o,u,c,f,a,t){var s=c+o.length,l=f.length,n=p;return void 0!==a&&(a=e(a),n=v),S.call(t,n,function(t,n){var r;switch(n.charAt(0)){case"$":return"$";case"&":return o;case"`":return u.slice(0,c);case"'":return u.slice(s);case"<":r=a[n.slice(1,-1)];break;default:var e=+n;if(0===e)return t;if(l<e){var i=h(e/10);return 0===i?t:i<=l?void 0===f[i-1]?n.charAt(1):f[i-1]+n.charAt(1):t}r=f[e-1]}return void 0===r?"":r})}return[function(t,n){var r=i(this),e=null==t?void 0:t[o];return void 0!==e?e.call(t,r,n):S.call(String(r),t,n)},function(t,n){var r=w(S,t,this,n);if(r.done)return r.value;var e=O(t),i=String(this),o="function"==typeof n;o||(n=String(n));var u,c=e.global;if(c){var f=e.unicode;e.lastIndex=0}for(var a=[];;){var s=j(e,i);if(null===s)break;if(a.push(s),!c)break;""===String(s[0])&&(e.lastIndex=P(i,E(e.lastIndex),f))}for(var l="",h=0,v=0;v<a.length;v++){s=a[v];for(var p=String(s[0]),d=F(A(M(s.index),i.length),0),y=[],g=1;g<s.length;g++)y.push(void 0===(u=s[g])?u:String(u));var b=s.groups;if(o){var x=[p].concat(y,d,i);void 0!==b&&x.push(b);var m=String(n.apply(void 0,x))}else m=_(p,i,d,y,b,n);h<=d&&(l+=i.slice(h,d)+m,h=d+p.length)}return l+i.slice(h)}]})},function(t,n,r){"use strict";var f=r(2),a=r(192),s=r(128);r(122)("search",1,function(e,i,u,c){return[function(t){var n=e(this),r=null==t?void 0:t[i];return void 0!==r?r.call(t,n):new RegExp(t)[i](String(n))},function(t){var n=c(u,t,this);if(n.done)return n.value;var r=f(t),e=String(this),i=r.lastIndex;a(i,0)||(r.lastIndex=0);var o=s(r,e);return a(r.lastIndex,i)||(r.lastIndex=i),null===o?-1:o.index}]})},function(t,n,r){"use strict";var l=r(124),x=r(2),m=r(119),S=r(136),w=r(8),_=r(128),h=r(152),e=r(4),O=Math.min,v=[].push,u="split",p="length",d="lastIndex",E=4294967295,M=!e(function(){RegExp(E,"y")});r(122)("split",2,function(i,o,y,g){var b;return b="c"=="abbc"[u](/(b)*/)[1]||4!="test"[u](/(?:)/,-1)[p]||2!="ab"[u](/(?:ab)*/)[p]||4!="."[u](/(.?)(.?)/)[p]||1<"."[u](/()()/)[p]||""[u](/.?/)[p]?function(t,n){var r=String(this);if(void 0===t&&0===n)return[];if(!l(t))return y.call(r,t,n);for(var e,i,o,u=[],c=(t.ignoreCase?"i":"")+(t.multiline?"m":"")+(t.unicode?"u":"")+(t.sticky?"y":""),f=0,a=void 0===n?E:n>>>0,s=new RegExp(t.source,c+"g");(e=h.call(s,r))&&!(f<(i=s[d])&&(u.push(r.slice(f,e.index)),1<e[p]&&e.index<r[p]&&v.apply(u,e.slice(1)),o=e[0][p],f=i,u[p]>=a));)s[d]===e.index&&s[d]++;return f===r[p]?!o&&s.test("")||u.push(""):u.push(r.slice(f)),u[p]>a?u.slice(0,a):u}:"0"[u](void 0,0)[p]?function(t,n){return void 0===t&&0===n?[]:y.call(this,t,n)}:y,[function(t,n){var r=i(this),e=null==t?void 0:t[o];return void 0!==e?e.call(t,r,n):b.call(String(r),t,n)},function(t,n){var r=g(b,t,this,n,b!==y);if(r.done)return r.value;var e=x(t),i=String(this),o=m(e,RegExp),u=e.unicode,c=(e.ignoreCase?"i":"")+(e.multiline?"m":"")+(e.unicode?"u":"")+(M?"y":"g"),f=new o(M?e:"^(?:"+e.source+")",c),a=void 0===n?E:n>>>0;if(0===a)return[];if(0===i.length)return null===_(f,i)?[i]:[];for(var s=0,l=0,h=[];l<i.length;){f.lastIndex=M?l:0;var v,p=_(f,M?i:i.slice(l));if(null===p||(v=O(w(f.lastIndex+(M?0:l)),i.length))===s)l=S(i,l,u);else{if(h.push(i.slice(s,l)),h.length===a)return h;for(var d=1;d<=p.length-1;d++)if(h.push(p[d]),h.length===a)return h;l=s=v}}return h.push(i.slice(s)),h}]})},function(t,n,r){"use strict";r(198);var e=r(2),i=r(115),o=r(10),u="toString",c=/./[u],f=function(t){r(27)(RegExp.prototype,u,t,!0)};r(4)(function(){return"/a/b"!=c.call({source:"a",flags:"b"})})?f(function(){var t=e(this);return"/".concat(t.source,"/","flags"in t?t.flags:!o&&t instanceof RegExp?i.call(t):void 0)}):c.name!=u&&f(function(){return c.call(this)})},function(t,n,r){"use strict";r(28)("anchor",function(n){return function(t){return n(this,"a","name",t)}})},function(t,n,r){"use strict";r(28)("big",function(t){return function(){return t(this,"big","","")}})},function(t,n,r){"use strict";r(28)("blink",function(t){return function(){return t(this,"blink","","")}})},function(t,n,r){"use strict";r(28)("bold",function(t){return function(){return t(this,"b","","")}})},function(t,n,r){"use strict";var e=r(1),i=r(131)(!1);e(e.P,"String",{codePointAt:function(t){return i(this,t)}})},function(t,n,r){"use strict";var e=r(1),u=r(8),c=r(155),f="endsWith",a=""[f];e(e.P+e.F*r(142)(f),"String",{endsWith:function(t){var n=c(this,t,f),r=1<arguments.length?arguments[1]:void 0,e=u(n.length),i=void 0===r?e:Math.min(u(r),e),o=String(t);return a?a.call(n,o,i):n.slice(i-o.length,i)===o}})},function(t,n,r){"use strict";r(28)("fixed",function(t){return function(){return t(this,"tt","","")}})},function(t,n,r){"use strict";r(28)("fontcolor",function(n){return function(t){return n(this,"font","color",t)}})},function(t,n,r){"use strict";r(28)("fontsize",function(n){return function(t){return n(this,"font","size",t)}})},function(t,n,r){var e=r(1),o=r(78),u=String.fromCharCode,i=String.fromCodePoint;e(e.S+e.F*(!!i&&1!=i.length),"String",{fromCodePoint:function(t){for(var n,r=[],e=arguments.length,i=0;i<e;){if(n=+arguments[i++],o(n,1114111)!==n)throw RangeError(n+" is not a valid code point");r.push(n<65536?u(n):u(55296+((n-=65536)>>10),n%1024+56320))}return r.join("")}})},function(t,n,r){"use strict";var e=r(1),i=r(155);e(e.P+e.F*r(142)("includes"),"String",{includes:function(t){return!!~i(this,t,"includes").indexOf(t,1<arguments.length?arguments[1]:void 0)}})},function(t,n,r){"use strict";r(28)("italics",function(t){return function(){return t(this,"i","","")}})},function(t,n,r){"use strict";var e=r(131)(!0);r(147)(String,"String",function(t){this._t=String(t),this._i=0},function(){var t,n=this._t,r=this._i;return r>=n.length?{value:void 0,done:!0}:(t=e(n,r),this._i+=t.length,{value:t,done:!1})})},function(t,n,r){"use strict";r(28)("link",function(n){return function(t){return n(this,"a","href",t)}})},function(t,n,r){var e=r(1),u=r(33),c=r(8);e(e.S,"String",{raw:function(t){for(var n=u(t.raw),r=c(n.length),e=arguments.length,i=[],o=0;o<r;)i.push(String(n[o++])),o<e&&i.push(String(arguments[o]));return i.join("")}})},function(t,n,r){var e=r(1);e(e.P,"String",{repeat:r(156)})},function(t,n,r){"use strict";r(28)("small",function(t){return function(){return t(this,"small","","")}})},function(t,n,r){"use strict";var e=r(1),i=r(8),o=r(155),u="startsWith",c=""[u];e(e.P+e.F*r(142)(u),"String",{startsWith:function(t){var n=o(this,t,u),r=i(Math.min(1<arguments.length?arguments[1]:void 0,n.length)),e=String(t);return c?c.call(n,e,r):n.slice(r,r+e.length)===e}})},function(t,n,r){"use strict";r(28)("strike",function(t){return function(){return t(this,"strike","","")}})},function(t,n,r){"use strict";r(28)("sub",function(t){return function(){return t(this,"sub","","")}})},function(t,n,r){"use strict";r(28)("sup",function(t){return function(){return t(this,"sup","","")}})},function(t,n,r){"use strict";r(84)("trim",function(t){return function(){return t(this,3)}})},function(t,n,r){"use strict";var e=r(3),u=r(30),i=r(10),o=r(1),c=r(27),f=r(69).KEY,a=r(4),s=r(118),l=r(83),h=r(79),v=r(7),p=r(195),d=r(160),y=r(218),g=r(123),b=r(2),x=r(5),m=r(17),S=r(33),w=r(53),_=r(75),O=r(72),E=r(184),M=r(31),P=r(127),j=r(11),F=r(74),A=M.f,I=j.f,L=E.f,N=e.Symbol,T=e.JSON,k=T&&T.stringify,R="prototype",C=v("_hidden"),D=v("toPrimitive"),G={}.propertyIsEnumerable,W=s("symbol-registry"),U=s("symbols"),V=s("op-symbols"),B=Object[R],q="function"==typeof N&&!!P.f,z=e.QObject,K=!z||!z[R]||!z[R].findChild,H=i&&a(function(){return 7!=O(I({},"a",{get:function(){return I(this,"a",{value:7}).a}})).a})?function(t,n,r){var e=A(B,n);e&&delete B[n],I(t,n,r),e&&t!==B&&I(B,n,e)}:I,J=function(t){var n=U[t]=O(N[R]);return n._k=t,n},$=q&&"symbol"==typeof N.iterator?function(t){return"symbol"==typeof t}:function(t){return t instanceof N},Y=function(t,n,r){return t===B&&Y(V,n,r),b(t),n=w(n,!0),b(r),u(U,n)?(r.enumerable?(u(t,C)&&t[C][n]&&(t[C][n]=!1),r=O(r,{enumerable:_(0,!1)})):(u(t,C)||I(t,C,_(1,{})),t[C][n]=!0),H(t,n,r)):I(t,n,r)},X=function(t,n){b(t);for(var r,e=y(n=S(n)),i=0,o=e.length;i<o;)Y(t,r=e[i++],n[r]);return t},Q=function(t){var n=G.call(this,t=w(t,!0));return!(this===B&&u(U,t)&&!u(V,t))&&(!(n||!u(this,t)||!u(U,t)||u(this,C)&&this[C][t])||n)},Z=function(t,n){if(t=S(t),n=w(n,!0),t!==B||!u(U,n)||u(V,n)){var r=A(t,n);return!r||!u(U,n)||u(t,C)&&t[C][n]||(r.enumerable=!0),r}},tt=function(t){for(var n,r=L(S(t)),e=[],i=0;r.length>i;)u(U,n=r[i++])||n==C||n==f||e.push(n);return e},nt=function(t){for(var n,r=t===B,e=L(r?V:S(t)),i=[],o=0;e.length>o;)!u(U,n=e[o++])||r&&!u(B,n)||i.push(U[n]);return i};q||(c((N=function(){if(this instanceof N)throw TypeError("Symbol is not a constructor!");var n=h(0<arguments.length?arguments[0]:void 0),r=function(t){this===B&&r.call(V,t),u(this,C)&&u(this[C],n)&&(this[C][n]=!1),H(this,n,_(1,t))};return i&&K&&H(B,n,{configurable:!0,set:r}),J(n)})[R],"toString",function(){return this._k}),M.f=Z,j.f=Y,r(73).f=E.f=tt,r(117).f=Q,P.f=nt,i&&!r(68)&&c(B,"propertyIsEnumerable",Q,!0),p.f=function(t){return J(v(t))}),o(o.G+o.W+o.F*!q,{Symbol:N});for(var rt="hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables".split(","),et=0;rt.length>et;)v(rt[et++]);for(var it=F(v.store),ot=0;it.length>ot;)d(it[ot++]);o(o.S+o.F*!q,"Symbol",{for:function(t){return u(W,t+="")?W[t]:W[t]=N(t)},keyFor:function(t){if(!$(t))throw TypeError(t+" is not a symbol!");for(var n in W)if(W[n]===t)return n},useSetter:function(){K=!0},useSimple:function(){K=!1}}),o(o.S+o.F*!q,"Object",{create:function(t,n){return void 0===n?O(t):X(O(t),n)},defineProperty:Y,defineProperties:X,getOwnPropertyDescriptor:Z,getOwnPropertyNames:tt,getOwnPropertySymbols:nt});var ut=a(function(){P.f(1)});o(o.S+o.F*ut,"Object",{getOwnPropertySymbols:function(t){return P.f(m(t))}}),T&&o(o.S+o.F*(!q||a(function(){var t=N();return"[null]"!=k([t])||"{}"!=k({a:t})||"{}"!=k(Object(t))})),"JSON",{stringify:function(t){for(var n,r,e=[t],i=1;arguments.length>i;)e.push(arguments[i++]);if(r=n=e[1],(x(n)||void 0!==t)&&!$(t))return g(n)||(n=function(t,n){if("function"==typeof r&&(n=r.call(this,t,n)),!$(n))return n}),e[1]=n,k.apply(T,e)}}),N[R][D]||r(26)(N[R],D,N[R].valueOf),l(N,"Symbol"),l(Math,"Math",!0),l(e.JSON,"JSON",!0)},function(t,n,r){"use strict";var e=r(1),i=r(132),o=r(159),a=r(2),s=r(78),l=r(8),u=r(5),c=r(3).ArrayBuffer,h=r(119),v=o.ArrayBuffer,p=o.DataView,f=i.ABV&&c.isView,d=v.prototype.slice,y=i.VIEW,g="ArrayBuffer";e(e.G+e.W+e.F*(c!==v),{ArrayBuffer:v}),e(e.S+e.F*!i.CONSTR,g,{isView:function(t){return f&&f(t)||u(t)&&y in t}}),e(e.P+e.U+e.F*r(4)(function(){return!new v(2).slice(1,void 0).byteLength}),g,{slice:function(t,n){if(void 0!==d&&void 0===n)return d.call(a(this),t);for(var r=a(this).byteLength,e=s(t,r),i=s(void 0===n?r:n,r),o=new(h(this,v))(l(i-e)),u=new p(this),c=new p(o),f=0;e<i;)c.setUint8(f++,u.getUint8(e++));return o}}),r(77)(g)},function(t,n,r){var e=r(1);e(e.G+e.W+e.F*!r(132).ABV,{DataView:r(159).DataView})},function(t,n,r){r(57)("Float32",4,function(e){return function(t,n,r){return e(this,t,n,r)}})},function(t,n,r){r(57)("Float64",8,function(e){return function(t,n,r){return e(this,t,n,r)}})},function(t,n,r){r(57)("Int16",2,function(e){return function(t,n,r){return e(this,t,n,r)}})},function(t,n,r){r(57)("Int32",4,function(e){return function(t,n,r){return e(this,t,n,r)}})},function(t,n,r){r(57)("Int8",1,function(e){return function(t,n,r){return e(this,t,n,r)}})},function(t,n,r){r(57)("Uint16",2,function(e){return function(t,n,r){return e(this,t,n,r)}})},function(t,n,r){r(57)("Uint32",4,function(e){return function(t,n,r){return e(this,t,n,r)}})},function(t,n,r){r(57)("Uint8",1,function(e){return function(t,n,r){return e(this,t,n,r)}})},function(t,n,r){r(57)("Uint8",1,function(e){return function(t,n,r){return e(this,t,n,r)}},!0)},function(t,n,r){"use strict";var e=r(172),i=r(80);r(121)("WeakSet",function(t){return function(){return t(this,0<arguments.length?arguments[0]:void 0)}},{add:function(t){return e.def(i(this,"WeakSet"),t,!0)}},e,!1,!0)},function(t,n,r){"use strict";var e=r(1),i=r(173),o=r(17),u=r(8),c=r(21),f=r(138);e(e.P,"Array",{flatMap:function(t){var n,r,e=o(this);return c(t),n=u(e.length),r=f(e,0),i(r,e,e,n,0,1,t,arguments[1]),r}}),r(67)("flatMap")},function(t,n,r){"use strict";var e=r(1),i=r(173),o=r(17),u=r(8),c=r(49),f=r(138);e(e.P,"Array",{flatten:function(){var t=arguments[0],n=o(this),r=u(n.length),e=f(n,0);return i(e,n,n,r,0,void 0===t?1:c(t)),e}}),r(67)("flatten")},function(t,n,r){"use strict";var e=r(1),i=r(120)(!0);e(e.P,"Array",{includes:function(t){return i(this,t,1<arguments.length?arguments[1]:void 0)}}),r(67)("includes")},function(t,n,r){var e=r(1),i=r(150)(),o=r(3).process,u="process"==r(45)(o);e(e.G,{asap:function(t){var n=u&&o.domain;i(n?n.bind(t):t)}})},function(t,n,r){var e=r(1),i=r(45);e(e.S,"Error",{isError:function(t){return"Error"===i(t)}})},function(t,n,r){var e=r(1);e(e.G,{global:r(3)})},function(t,n,r){r(129)("Map")},function(t,n,r){r(130)("Map")},function(t,n,r){var e=r(1);e(e.P+e.R,"Map",{toJSON:r(171)("Map")})},function(t,n,r){var e=r(1);e(e.S,"Math",{clamp:function(t,n,r){return Math.min(r,Math.max(n,t))}})},function(t,n,r){var e=r(1);e(e.S,"Math",{DEG_PER_RAD:Math.PI/180})},function(t,n,r){var e=r(1),i=180/Math.PI;e(e.S,"Math",{degrees:function(t){return t*i}})},function(t,n,r){var e=r(1),o=r(181),u=r(179);e(e.S,"Math",{fscale:function(t,n,r,e,i){return u(o(t,n,r,e,i))}})},function(t,n,r){var e=r(1);e(e.S,"Math",{iaddh:function(t,n,r,e){var i=t>>>0,o=r>>>0;return(n>>>0)+(e>>>0)+((i&o|(i|o)&~(i+o>>>0))>>>31)|0}})},function(t,n,r){var e=r(1);e(e.S,"Math",{imulh:function(t,n){var r=+t,e=+n,i=65535&r,o=65535&e,u=r>>16,c=e>>16,f=(u*o>>>0)+(i*o>>>16);return u*c+(f>>16)+((i*c>>>0)+(65535&f)>>16)}})},function(t,n,r){var e=r(1);e(e.S,"Math",{isubh:function(t,n,r,e){var i=t>>>0,o=r>>>0;return(n>>>0)-(e>>>0)-((~i&o|~(i^o)&i-o>>>0)>>>31)|0}})},function(t,n,r){var e=r(1);e(e.S,"Math",{RAD_PER_DEG:180/Math.PI})},function(t,n,r){var e=r(1),i=Math.PI/180;e(e.S,"Math",{radians:function(t){return t*i}})},function(t,n,r){var e=r(1);e(e.S,"Math",{scale:r(181)})},function(t,n,r){var e=r(1);e(e.S,"Math",{signbit:function(t){return(t=+t)!=t?t:0==t?1/t==1/0:0<t}})},function(t,n,r){var e=r(1);e(e.S,"Math",{umulh:function(t,n){var r=+t,e=+n,i=65535&r,o=65535&e,u=r>>>16,c=e>>>16,f=(u*o>>>0)+(i*o>>>16);return u*c+(f>>>16)+((i*c>>>0)+(65535&f)>>>16)}})},function(t,n,r){"use strict";var e=r(1),i=r(17),o=r(21),u=r(11);r(10)&&e(e.P+r(126),"Object",{__defineGetter__:function(t,n){u.f(i(this),t,{get:o(n),enumerable:!0,configurable:!0})}})},function(t,n,r){"use strict";var e=r(1),i=r(17),o=r(21),u=r(11);r(10)&&e(e.P+r(126),"Object",{__defineSetter__:function(t,n){u.f(i(this),t,{set:o(n),enumerable:!0,configurable:!0})}})},function(t,n,r){var e=r(1),i=r(186)(!0);e(e.S,"Object",{entries:function(t){return i(t)}})},function(t,n,r){var e=r(1),f=r(187),a=r(33),s=r(31),l=r(139);e(e.S,"Object",{getOwnPropertyDescriptors:function(t){for(var n,r,e=a(t),i=s.f,o=f(e),u={},c=0;o.length>c;)void 0!==(r=i(e,n=o[c++]))&&l(u,n,r);return u}})},function(t,n,r){"use strict";var e=r(1),i=r(17),o=r(53),u=r(32),c=r(31).f;r(10)&&e(e.P+r(126),"Object",{__lookupGetter__:function(t){var n,r=i(this),e=o(t,!0);do{if(n=c(r,e))return n.get}while(r=u(r))}})},function(t,n,r){"use strict";var e=r(1),i=r(17),o=r(53),u=r(32),c=r(31).f;r(10)&&e(e.P+r(126),"Object",{__lookupSetter__:function(t){var n,r=i(this),e=o(t,!0);do{if(n=c(r,e))return n.set}while(r=u(r))}})},function(t,n,r){var e=r(1),i=r(186)(!1);e(e.S,"Object",{values:function(t){return i(t)}})},function(t,n,r){"use strict";var e=r(1),o=r(3),u=r(46),i=r(150)(),c=r(7)("observable"),f=r(21),a=r(2),s=r(70),l=r(76),h=r(26),v=r(71),p=v.RETURN,d=function(t){return null==t?void 0:f(t)},y=function(t){var n=t._c;n&&(t._c=void 0,n())},g=function(t){return void 0===t._o},b=function(t){g(t)||(t._o=void 0,y(t))},x=function(t,n){a(t),this._c=void 0,this._o=t,t=new m(this);try{var r=n(t),e=r;null!=r&&("function"==typeof r.unsubscribe?r=function(){e.unsubscribe()}:f(r),this._c=r)}catch(n){return void t.error(n)}g(this)&&y(this)};x.prototype=l({},{unsubscribe:function(){b(this)}});var m=function(t){this._s=t};m.prototype=l({},{next:function(t){var n=this._s;if(!g(n)){var r=n._o;try{var e=d(r.next);if(e)return e.call(r,t)}catch(t){try{b(n)}finally{throw t}}}},error:function(t){var n=this._s;if(g(n))throw t;var r=n._o;n._o=void 0;try{var e=d(r.error);if(!e)throw t;t=e.call(r,t)}catch(t){try{y(n)}finally{throw t}}return y(n),t},complete:function(t){var n=this._s;if(!g(n)){var r=n._o;n._o=void 0;try{var e=d(r.complete);t=e?e.call(r,t):void 0}catch(t){try{y(n)}finally{throw t}}return y(n),t}}});var S=function(t){s(this,S,"Observable","_f")._f=f(t)};l(S.prototype,{subscribe:function(t){return new x(t,this._f)},forEach:function(e){var i=this;return new(u.Promise||o.Promise)(function(t,n){f(e);var r=i.subscribe({next:function(t){try{return e(t)}catch(t){n(t),r.unsubscribe()}},error:n,complete:t})})}}),l(S,{from:function(t){var n="function"==typeof this?this:S,r=d(a(t)[c]);if(r){var e=a(r.call(t));return e.constructor===n?e:new n(function(t){return e.subscribe(t)})}return new n(function(n){var r=!1;return i(function(){if(!r){try{if(v(t,!1,function(t){if(n.next(t),r)return p})===p)return}catch(t){if(r)throw t;return void n.error(t)}n.complete()}}),function(){r=!0}})},of:function(){for(var t=0,n=arguments.length,e=new Array(n);t<n;)e[t]=arguments[t++];return new("function"==typeof this?this:S)(function(n){var r=!1;return i(function(){if(!r){for(var t=0;t<e.length;++t)if(n.next(e[t]),r)return;n.complete()}}),function(){r=!0}})}}),h(S.prototype,c,function(){return this}),e(e.G,{Observable:S}),r(77)("Observable")},function(t,n,r){"use strict";var e=r(1),i=r(46),o=r(3),u=r(119),c=r(191);e(e.P+e.R,"Promise",{finally:function(n){var r=u(this,i.Promise||o.Promise),t="function"==typeof n;return this.then(t?function(t){return c(r,n()).then(function(){return t})}:n,t?function(t){return c(r,n()).then(function(){throw t})}:n)}})},function(t,n,r){"use strict";var e=r(1),i=r(151),o=r(190);e(e.S,"Promise",{try:function(t){var n=i.f(this),r=o(t);return(r.e?n.reject:n.resolve)(r.v),n.promise}})},function(t,n,r){var e=r(56),i=r(2),o=e.key,u=e.set;e.exp({defineMetadata:function(t,n,r,e){u(t,n,i(r),o(e))}})},function(t,n,r){var e=r(56),o=r(2),u=e.key,c=e.map,f=e.store;e.exp({deleteMetadata:function(t,n){var r=arguments.length<3?void 0:u(arguments[2]),e=c(o(n),r,!1);if(void 0===e||!e.delete(t))return!1;if(e.size)return!0;var i=f.get(n);return i.delete(r),!!i.size||f.delete(n)}})},function(t,n,r){var o=r(199),u=r(167),e=r(56),i=r(2),c=r(32),f=e.keys,a=e.key,s=function(t,n){var r=f(t,n),e=c(t);if(null===e)return r;var i=s(e,n);return i.length?r.length?u(new o(r.concat(i))):i:r};e.exp({getMetadataKeys:function(t){return s(i(t),arguments.length<2?void 0:a(arguments[1]))}})},function(t,n,r){var e=r(56),i=r(2),o=r(32),u=e.has,c=e.get,f=e.key,a=function(t,n,r){if(u(t,n,r))return c(t,n,r);var e=o(n);return null!==e?a(t,e,r):void 0};e.exp({getMetadata:function(t,n){return a(t,i(n),arguments.length<3?void 0:f(arguments[2]))}})},function(t,n,r){var e=r(56),i=r(2),o=e.keys,u=e.key;e.exp({getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var e=r(56),i=r(2),o=e.get,u=e.key;e.exp({getOwnMetadata:function(t,n){return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){var e=r(56),i=r(2),o=r(32),u=e.has,c=e.key,f=function(t,n,r){if(u(t,n,r))return!0;var e=o(n);return null!==e&&f(t,e,r)};e.exp({hasMetadata:function(t,n){return f(t,i(n),arguments.length<3?void 0:c(arguments[2]))}})},function(t,n,r){var e=r(56),i=r(2),o=e.has,u=e.key;e.exp({hasOwnMetadata:function(t,n){return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){var e=r(56),i=r(2),o=r(21),u=e.key,c=e.set;e.exp({metadata:function(r,e){return function(t,n){c(r,e,(void 0!==n?i:o)(t),u(n))}}})},function(t,n,r){r(129)("Set")},function(t,n,r){r(130)("Set")},function(t,n,r){var e=r(1);e(e.P+e.R,"Set",{toJSON:r(171)("Set")})},function(t,n,r){"use strict";var e=r(1),i=r(131)(!0);e(e.P,"String",{at:function(t){return i(this,t)}})},function(t,n,r){"use strict";var e=r(1),i=r(51),o=r(8),u=r(124),c=r(115),f=RegExp.prototype,a=function(t,n){this._r=t,this._s=n};r(146)(a,"RegExp String",function(){var t=this._r.exec(this._s);return{value:t,done:null===t}}),e(e.P,"String",{matchAll:function(t){if(i(this),!u(t))throw TypeError(t+" is not a regexp!");var n=String(this),r="flags"in f?String(t.flags):c.call(t),e=new RegExp(t.source,~r.indexOf("g")?r:"g"+r);return e.lastIndex=o(t.lastIndex),new a(e,n)}})},function(t,n,r){"use strict";var e=r(1),i=r(193),o=r(133),u=/Version\/10\.\d+(\.\d+)?( Mobile\/\w+)? Safari\//.test(o);e(e.P+e.F*u,"String",{padEnd:function(t){return i(this,t,1<arguments.length?arguments[1]:void 0,!1)}})},function(t,n,r){"use strict";var e=r(1),i=r(193),o=r(133),u=/Version\/10\.\d+(\.\d+)?( Mobile\/\w+)? Safari\//.test(o);e(e.P+e.F*u,"String",{padStart:function(t){return i(this,t,1<arguments.length?arguments[1]:void 0,!0)}})},function(t,n,r){"use strict";r(84)("trimLeft",function(t){return function(){return t(this,1)}},"trimStart")},function(t,n,r){"use strict";r(84)("trimRight",function(t){return function(){return t(this,2)}},"trimEnd")},function(t,n,r){r(160)("asyncIterator")},function(t,n,r){r(160)("observable")},function(t,n,r){var e=r(1);e(e.S,"System",{global:r(3)})},function(t,n,r){r(129)("WeakMap")},function(t,n,r){r(130)("WeakMap")},function(t,n,r){r(129)("WeakSet")},function(t,n,r){r(130)("WeakSet")},function(t,n,r){for(var e=r(162),i=r(74),o=r(27),u=r(3),c=r(26),f=r(82),a=r(7),s=a("iterator"),l=a("toStringTag"),h=f.Array,v={CSSRuleList:!0,CSSStyleDeclaration:!1,CSSValueList:!1,ClientRectList:!1,DOMRectList:!1,DOMStringList:!1,DOMTokenList:!0,DataTransferItemList:!1,FileList:!1,HTMLAllCollection:!1,HTMLCollection:!1,HTMLFormElement:!1,HTMLSelectElement:!1,MediaList:!0,MimeTypeArray:!1,NamedNodeMap:!1,NodeList:!0,PaintRequestList:!1,Plugin:!1,PluginArray:!1,SVGLengthList:!1,SVGNumberList:!1,SVGPathSegList:!1,SVGPointList:!1,SVGStringList:!1,SVGTransformList:!1,SourceBufferList:!1,StyleSheetList:!0,TextTrackCueList:!1,TextTrackList:!1,TouchList:!1},p=i(v),d=0;d<p.length;d++){var y,g=p[d],b=v[g],x=u[g],m=x&&x.prototype;if(m&&(m[s]||c(m,s,h),m[l]||c(m,l,g),f[g]=h,b))for(y in e)m[y]||o(m,y,e[y],!0)}},function(t,n,r){var e=r(1),i=r(158);e(e.G+e.B,{setImmediate:i.set,clearImmediate:i.clear})},function(t,n,r){var e=r(3),i=r(1),o=r(133),u=[].slice,c=/MSIE .\./.test(o),f=function(i){return function(t,n){var r=2<arguments.length,e=!!r&&u.call(arguments,2);return i(r?function(){("function"==typeof t?t:Function(t)).apply(this,e)}:t,n)}};i(i.G+i.B+i.F*c,{setTimeout:f(e.setTimeout),setInterval:f(e.setInterval)})},function(t,n,r){r(341),r(280),r(282),r(281),r(284),r(286),r(291),r(285),r(283),r(293),r(292),r(288),r(289),r(287),r(279),r(290),r(294),r(295),r(247),r(249),r(248),r(297),r(296),r(267),r(277),r(278),r(268),r(269),r(270),r(271),r(272),r(273),r(274),r(275),r(276),r(250),r(251),r(252),r(253),r(254),r(255),r(256),r(257),r(258),r(259),r(260),r(261),r(262),r(263),r(264),r(265),r(266),r(328),r(333),r(340),r(331),r(323),r(324),r(329),r(334),r(336),r(319),r(320),r(321),r(322),r(325),r(326),r(327),r(330),r(332),r(335),r(337),r(338),r(339),r(242),r(244),r(243),r(246),r(245),r(231),r(229),r(235),r(232),r(238),r(240),r(228),r(234),r(225),r(239),r(223),r(237),r(236),r(230),r(233),r(222),r(224),r(227),r(226),r(241),r(162),r(313),r(197),r(318),r(198),r(314),r(315),r(316),r(317),r(298),r(196),r(199),r(200),r(353),r(342),r(343),r(348),r(351),r(352),r(346),r(349),r(347),r(350),r(344),r(345),r(299),r(300),r(301),r(302),r(303),r(306),r(304),r(305),r(307),r(308),r(309),r(310),r(312),r(311),r(356),r(354),r(355),r(397),r(400),r(399),r(401),r(402),r(398),r(403),r(404),r(378),r(381),r(377),r(375),r(376),r(379),r(380),r(362),r(396),r(361),r(395),r(407),r(409),r(360),r(394),r(406),r(408),r(359),r(405),r(358),r(363),r(364),r(365),r(366),r(367),r(369),r(368),r(370),r(371),r(372),r(374),r(373),r(383),r(384),r(385),r(386),r(388),r(387),r(390),r(389),r(391),r(392),r(393),r(357),r(382),r(412),r(411),r(410),t.exports=r(46)},function(t,n){t.exports=function(t,n){if("string"==typeof n)return t.insertAdjacentHTML("afterend",n);var r=t.nextSibling;return r?t.parentNode.insertBefore(n,r):t.parentNode.appendChild(n)}}])</script><script src="/./main.a5fda8.js"></script><script>!function(){var e,t;e="/slider.27463f.js",t=document.createElement("script"),document.getElementsByTagName("body")[0].appendChild(t),t.setAttribute("src",e)}()</script>
+
+
+
+<!--  -->
+
+<script>
+  /* 标签页标题切换 */
+  var originTitle = document.title;
+  var titleTime;
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+      document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+      clearTimeout(titleTime);
+    } else {
+      document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+      titleTime = setTimeout(function () {
+        document.title = originTitle;
+      }, 2000);
+    }
+  });
+</script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-nav header-menu">
+    
+    
+      
+      
+      
+    
+      
+      
+      
+    
+      
+      
+      
+    
+    
+
+    <ul style="width: 70%">
+    
+    
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      
+        
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
+      
+        
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      
+        
+    </ul>
+  </div>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文献分析报告：干细胞基因编辑</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">BioNews</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Bio-News</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia-plus根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            3、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: false
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="https://zhousiwei.gitee.io/ibooks/" target="_blank" 
+                class="search-title" title="记录工作和学习过程中的笔记：Java、前端开发、Hexo博客、聚合支付、Linux笔记、ElasticSearch、ELK日志分析">
+                
+                  <img src="https://zhousiwei.gitee.io/ibooks/favicon.ico">
+                
+                技术笔记
+              </a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://github.com/JoeyBling" target="_blank" 
+                class="search-title" >
+                
+                  <i class="icon-link icon"></i>
+                
+                GitHub
+              </a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://gitee.com/zhousiwei" target="_blank" 
+                class="search-title" >
+                
+                  <i class="icon-link icon"></i>
+                
+                码云
+              </a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://www.jianshu.com/u/02cbf31a043a" target="_blank" 
+                class="search-title" >
+                
+                  <i class="icon-link icon"></i>
+                
+                简书
+              </a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://blog.csdn.net/qq_30930805" target="_blank" 
+                class="search-title" >
+                
+                  <i class="icon-link icon"></i>
+                
+                CSDN
+              </a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+        
+          
+  	  		<div class="aboutme-wrap" id="aboutme">主要涉及技术：<br>python R开发、开源爱好者、Linux<br><br>联系QQ:17769680069<br><br>志存高远<br><br>心怀善意<br></div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+
+  
+  
+<script type="text/javascript" src="/plugins/activate-power-mode/activate-power-mode.js"></script>
+<script>
+  POWERMODE.colorful = true; // make power mode colorful
+  POWERMODE.shake = false; // turn off shake
+  document.body.addEventListener('input', POWERMODE);
+</script>
+
+  
+  <!-- <script async type="text/javascript" size="90" alpha="0.2" zIndex="0" src="/plugins/ribbon.js/ribbon.min.js"></script> -->
+  
+  
+    <script type="text/javascript" src="/plugins/live2d-widget.js/L2Dwidget.min.js"></script>
+<script type="text/javascript">
+  /**
+   * 完整配置请参考：https://l2dwidget.js.org/docs/class/src/index.js~L2Dwidget.html#instance-method-init
+   */
+  var pluginModelPath = "assets/", // 模型的文件路径，无需更改
+    pluginRootPath = "/live2d_models/"; // 插件的路径，无需更改
+  //特定的模型json文件名称
+  var modelPathJson = {
+    "epsilon2_1": "Epsilon2.1",
+    "gf": "Gantzert_Felixander",
+    "haru/01": "haru01",
+    "haru/02": "haru02",
+    "nietzsche": "nietzche"
+  }
+
+  
+    var modelName = "hijiki";
+  
+
+  var modelJsonPath = "";
+  if (modelPathJson[modelName]) {
+    modelJsonPath = pluginRootPath + modelName + "/" + pluginModelPath + modelPathJson[modelName] +
+      ".model.json";
+  } else {
+    modelJsonPath = pluginRootPath + modelName + "/" + pluginModelPath + modelName + ".model.json";
+  }
+  L2Dwidget.init({
+    model: {
+      jsonPath: modelJsonPath
+    },
+    display: {
+       position: "right", 
+       width: 145, 
+       height: 315, 
+       hOffset: 50, 
+      
+    },
+    mobile: {
+      
+       scale: 0.6 
+    },
+    react: {
+       opacity: 0.8 
+    }
+  })
+
+</script>
+
+  
+  
+  <script type="text/javascript" src="/lib/snow.js"></script>
+  <script type="text/javascript" src="/lib/jquery-2.1.4.min.js"></script>
+  <script>
+    snow.down();
+    $(window).resize(function() {
+      $("canvas").css("z-index","500").remove();
+      snow.down();
+    });
+  </script>
+  
+</body>
+
+</html>
