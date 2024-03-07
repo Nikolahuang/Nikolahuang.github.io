@@ -17,16 +17,16 @@
 <meta property="og:site_name" content="Anderson Blog">
 <meta property="og:description" content="转载 DrugSCI 前言介绍一篇发表在CellPress上的关于抗体研发的综述。 亮点 基于计算&#x2F;人工智能（AI）的抗体研发方向取得了显著进展 数据库中存储着海量的抗体序列，但结构数据有限；生物物理性质数据也是可用的。 已经有了许多预测抗体不同生物物理和其他属性的工具。 深度学习方法在不断的提高抗体结构预测的性能，包括CDRs，而de novo设计仍然是一个具有挑战性的问题。 蛋白质语">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/nwcDk3jdFRrlG1Mj1EH1MrTu6ywmcPua6g6kkluFD1thtZhdzYwFhzvGKsOTUE1qCDedqv2qrWksI0NKDkMOXQ/640?wx_fmt=jpeg&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/nwcDk3jdFRrlG1Mj1EH1MrTu6ywmcPuaSKoanEsj3Ph6Oram2tichsQogkBTO9lqZB8WXKPJpThf7hryPzibPHBw/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/nwcDk3jdFRrlG1Mj1EH1MrTu6ywmcPua028ia9KbrjqqOEWIvHQrFORkVkOxicQsbc1GLr5qyIuU8DTTREGfFfFQ/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/nwcDk3jdFRrlG1Mj1EH1MrTu6ywmcPuafIFvm0EWOngHZMiaYWK1eJCmNgxskhe2ia6vnPIsg6LHO4ibMowibuXKLg/640?wx_fmt=jpeg&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://gitee.com/anderson2/blogimage/raw/master/img/640.jpeg">
+<meta property="og:image" content="https://gitee.com/anderson2/blogimage/raw/master/img/640-17098164196172.png">
+<meta property="og:image" content="https://gitee.com/anderson2/blogimage/raw/master/img/640-17098164245474.png">
+<meta property="og:image" content="https://gitee.com/anderson2/blogimage/raw/master/img/640-17098164305196.jpeg">
 <meta property="article:published_time" content="2024-03-04T06:55:45.000Z">
-<meta property="article:modified_time" content="2024-03-04T06:57:46.815Z">
+<meta property="article:modified_time" content="2024-03-07T13:01:20.971Z">
 <meta property="article:author" content="Anderson">
 <meta property="article:tag" content="BioNews">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/nwcDk3jdFRrlG1Mj1EH1MrTu6ywmcPua6g6kkluFD1thtZhdzYwFhzvGKsOTUE1qCDedqv2qrWksI0NKDkMOXQ/640?wx_fmt=jpeg&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta name="twitter:image" content="https://gitee.com/anderson2/blogimage/raw/master/img/640.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="Anderson Blog" type="application/atom+xml">
   
@@ -294,7 +294,7 @@
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>治疗性抗体目前是生物疗法中最大的类别，因为它们的靶点特异性较好和结合亲和力较高。传统的抗体开发过程是基于主要的经验性方法，虽然成熟稳健，但繁琐且有显著的缺陷。最近，计算和人工智能（AI）技术的进步开始克服这些限制，被越来越多地整合到抗体开发的流程中。本文提供了与抗体开发相关的AI方法的概述，包括数据库、抗体属性和结构的计算预测模型，以及机器学习（ML）模型为重点的计算抗体设计方法。特别是，重点介绍了对结合至关重要的抗体结构组分，如互补决定区（CDR）环的设计。</p>
 <h2 id="传统抗体工程方法的限制"><a href="#传统抗体工程方法的限制" class="headerlink" title="传统抗体工程方法的限制"></a>传统抗体工程方法的限制</h2><p>传统的抗体工程方法虽然可以通过免疫或定向进化等方法获得binder，但仍然存在着一些较大的局限性。其中一个是很难针对抗原上的特定表位进行靶向。因为大多数筛选活动只能获得与给定表位结合的抗体，达不到所需要的生物活性。另一个缺陷是只有少数抗体具有成为治疗药物可能性，而大多数筛选活动中获得的初始阳性结果，会在后续开发中面临很多困难。此外，一旦获得候选的抗体 binder，抗体&#x2F;抗原复合物的结构解析是非常有用的，但是需要通过X射线晶体学或核磁共振手段，通常耗时且通量较低。</p>
 <h2 id="抗体序列和结构数据库"><a href="#抗体序列和结构数据库" class="headerlink" title="抗体序列和结构数据库"></a>抗体序列和结构数据库</h2><p>在抗体研发过程中，抗原的靶向以及功能，包括：抗原亲和力，靶标特异性，表位分析展示出的生物学功效以及有待开发的其余属性（Fig 1）。以上的能力和性质均由抗体的序列和结构决定。因此，关于抗体序列，结构和相关性质的信息对设计新型抗体是非常重要的。已经有了很多的数据库（Table 1），并且这些数据库对深度学习模型的训练也非常重要。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/nwcDk3jdFRrlG1Mj1EH1MrTu6ywmcPua6g6kkluFD1thtZhdzYwFhzvGKsOTUE1qCDedqv2qrWksI0NKDkMOXQ/640?wx_fmt=jpeg&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://gitee.com/anderson2/blogimage/raw/master/img/640.jpeg" alt="图片"></p>
 <p>Fig 1. 抗体工程中优化功效和功能</p>
 <table>
 <thead>
@@ -397,16 +397,16 @@
 <h3 id="基于ML的抗体结构建模"><a href="#基于ML的抗体结构建模" class="headerlink" title="基于ML的抗体结构建模"></a>基于ML的抗体结构建模</h3><p>抗体结构信息对于理解抗体的特性，如特异性和亲和力，至关重要。六个CDR（H1、H2、L1、L2和L3）中的五个，结构多样性有限，loop通常遵循规范的构象；这些环具有更多的结构约束，更容易预测。而 CDR-H3的构象非常多样，即便在序列相似性高的情况下。因此CDR-H3建模是一个约束较少、更困难的问题。</p>
 <p>许多实验性抗体设计技术产生了与结构无关的序列信息。在进行大规模筛选时，独立确定所有抗体 loop结构及其与抗原的界面是不切实际的。传统上，抗体结构的预测使用基于物理的建模（如分子动力学模拟），同源建模或组合方法（如 MODELLER）。</p>
 <p>相比之下，深度学习模型也被开发用于抗体结构建模。例如，ABodyBuilder是一个自动化的抗体同源建模流程，而ABlooper使用图神经网络预测CDR环的位置。此外，DeepAb从不变特征预测结构，并在预测精度方面取得了成功。然而，由于DeepAb依赖于Rosetta，其预测速度较慢，因此最近引入了更快的模型IgFold。另外，AlphaFold2被证明在从序列预测蛋白质结构方面具有革命性的作用，但由于其依赖同源序列的MSA，因此对于CDR-H3的建模不太适用。深度学习在抗体筛选方面也被证明是有用的，例如DLAB使用神经网络生成结合分数。总体而言，虽然这些方法取得了显著进展，但仍需要进一步研究以解决抗体&#x2F;抗原复合物结构的可靠建模问题，特别是针对CDR-H3的建模。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/nwcDk3jdFRrlG1Mj1EH1MrTu6ywmcPuaSKoanEsj3Ph6Oram2tichsQogkBTO9lqZB8WXKPJpThf7hryPzibPHBw/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://gitee.com/anderson2/blogimage/raw/master/img/640-17098164196172.png" alt="图片"></p>
 <p>Table 2 抗体结构模拟方法</p>
 <h3 id="基于结构的深度学习模型"><a href="#基于结构的深度学习模型" class="headerlink" title="基于结构的深度学习模型"></a>基于结构的深度学习模型</h3><p>最近的研究着重于利用深度学习（DL）技术在抗体设计领域的应用，特别是针对CDR-H3环的设计。这些努力主要分为两类：一类是通过生成3D坐标来设计CDR-H3的backbone，例如IG-VAE模型；另一类是利用学习蛋白质结构图嵌入的模型，预测特定突变引入后的ddG变化。然而，这些基于结构的模型仍然存在局限性，例如依赖外部工具进行序列设计，以及不能针对特定表位进行设计。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/nwcDk3jdFRrlG1Mj1EH1MrTu6ywmcPua028ia9KbrjqqOEWIvHQrFORkVkOxicQsbc1GLr5qyIuU8DTTREGfFfFQ/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://gitee.com/anderson2/blogimage/raw/master/img/640-17098164245474.png" alt="图片"></p>
 <p>Table 3 抗体设计深度学习模型</p>
 <h3 id="基于序列的深度学习模型"><a href="#基于序列的深度学习模型" class="headerlink" title="基于序列的深度学习模型"></a>基于序列的深度学习模型</h3><p>基于序列的深度学习（DL）模型可以分为两类：一类是试图仅从抗体序列中学习整体特征的DL模型；另一类是利用抗原特异性数据的序列方法。第一类模型通过学习抗体序列的相互依赖关系来设计，其中自回归或生成模型的出现使得可以生成类似于抗体的序列。Shin等人利用因果扩张卷积应用于自回归模型中，通过学习序列中的长程关系来生成纳米抗体库。随后，由于Transformer模型（如BERT）的发展，NLP取得了巨大进步，并将这些模型应用到蛋白质序列中，从而产生了ProtBERT和ESM-1b等模型。这些模型在捕获蛋白质序列的许多特性方面都取得了巨大成功。另一方面，另一种仅使用序列的方法则利用抗原特异性数据，例如Mason等人提出的方法可以训练卷积神经网络。未来的模型可能会结合语言模型的特征，并在实验数据上进行训练，以获得针对抗原结合进行优化的实际抗体。然而，目前纯粹基于序列的模型要么与抗原无关，要么需要外部实验数据，并且在生成过程中受益于结构信息的整合。</p>
 <h3 id="结构和序列信息是机器学习的抗体设计的未来"><a href="#结构和序列信息是机器学习的抗体设计的未来" class="headerlink" title="结构和序列信息是机器学习的抗体设计的未来"></a>结构和序列信息是机器学习的抗体设计的未来</h3><p>除了前述的经典工作之外，越来越多基于人工智能的方法开始被开发。例如，Jin等人开发了一个模型，以自回归方式生成CDR-H3环的序列和结构。下一个氨基酸的预测取决于抗体框架的粗粒化表示以及生成的loop中当前氨基酸的结构。他妈的结果展示了可能的针对SARS-CoV-1和SARS-CoV-2的抗体研发。尽管令人兴奋，但该模型并未对特定抗原表位进行调节，为进一步改进模型留下了空间。Kang等人采用了一种更简单的方法，其中抗体和抗原氨基酸被表示为图中的节点，通过界面残基节点之间的边捕获界面结构。尽管在某种程度上取得了成功，但该模型显示出对训练数据的显著的过拟合。未来的CDR-H3环的设计将在能够完全生成序列和结构的模型上，同时适当地对目标表位进行调节。</p>
 <h3 id="将AI设计方法纳入其中可能会改善抗体开发"><a href="#将AI设计方法纳入其中可能会改善抗体开发" class="headerlink" title="将AI设计方法纳入其中可能会改善抗体开发"></a>将AI设计方法纳入其中可能会改善抗体开发</h3><p>观察DL中一般蛋白质设计的发展，将其中成功的技术纳入到抗体设计的任务也很重要。最近，在将幻觉（hallucination）技术应用于一般蛋白质设计方面取得了成功。在这种方法中，随机选择蛋白质序列，然后使用现有的ML模型将其“折叠”成3D结构（通过骨架α-碳距离图预测），提供一个起点，然后通过蒙特卡洛过程引入突变。此外，扩散概率模型已经被成功应用于蛋白质骨架设计的生成。最近，基于打分的生成模型RFdiffusion和Chroma能够为新型蛋白质生成全原子坐标，其中Chroma能够创建含有数千个氨基酸的蛋白质。很明显，这些方法适用于CDR区域的设计，未来的工作有赖于它们。</p>
 <h2 id="总结以及未来展望"><a href="#总结以及未来展望" class="headerlink" title="总结以及未来展望"></a>总结以及未来展望</h2><p>该文总结了当前计算方法在治疗性抗体开发中的应用，包括结构、表位预测以及解决开发问题。这些方法不仅可以提高开发性能，还可以降低成本、减少劳动力。作者提到了AlphaFold2等工具在缩短时间方面的重要性。以新冠疫情为例，许多药物发现研究是通过计算方法进行的。作者强调了结构和序列设计中的DL方法的重要性，并展望了未来的发展方向，包括引入密码子优化和将各种进展整合成端到端的可微分流程。这些进展有望加速抗体开发，特别是在结合预测和结构搜索方面。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/nwcDk3jdFRrlG1Mj1EH1MrTu6ywmcPuafIFvm0EWOngHZMiaYWK1eJCmNgxskhe2ia6vnPIsg6LHO4ibMowibuXKLg/640?wx_fmt=jpeg&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://gitee.com/anderson2/blogimage/raw/master/img/640-17098164305196.jpeg" alt="图片"></p>
 <p>Figure 2 抗体设计的最新计算手段</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>1.<a target="_blank" rel="noopener" href="https://www.cell.com/trends/pharmacological-sciences/fulltext/S0165-6147(22)00279-6">https://www.cell.com/trends/pharmacological-sciences/fulltext/S0165-6147(22)00279-6</a></p>
 

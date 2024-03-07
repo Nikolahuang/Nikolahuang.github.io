@@ -17,16 +17,16 @@
 <meta property="og:site_name" content="Anderson Blog">
 <meta property="og:description" content="第一次发布: 2018年04月05日第8卷第7期     原文DOI: 10.21769&#x2F;BioProtoc.2794   评审: David CisnerosSara E HowdenGanesh Swaminathan cited from：Tidball, A. M., Swaminathan, P., Dang, L. T. and Parent, J. M. (2018). G">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://en-cdn.bio-protocol.org/attached/image/20180330/20180330003756_4615.jpg">
-<meta property="og:image" content="https://en-cdn.bio-protocol.org/attached/image/20180330/20180330004948_3853.jpg">
-<meta property="og:image" content="https://en-cdn.bio-protocol.org/attached/image/20180330/20180330010453_5546.jpg">
-<meta property="og:image" content="https://en-cdn.bio-protocol.org/attached/image/20180330/20180330010607_1796.jpg">
+<meta property="og:image" content="https://gitee.com/anderson2/blogimage/raw/master/img/1.jpg">
+<meta property="og:image" content="https://gitee.com/anderson2/blogimage/raw/master/img/2.jpg">
+<meta property="og:image" content="https://gitee.com/anderson2/blogimage/raw/master/img/3.jpg">
+<meta property="og:image" content="https://gitee.com/anderson2/blogimage/raw/master/img/4.jpg">
 <meta property="article:published_time" content="2024-03-07T05:40:21.000Z">
-<meta property="article:modified_time" content="2024-03-07T06:00:39.923Z">
+<meta property="article:modified_time" content="2024-03-07T12:56:30.933Z">
 <meta property="article:author" content="Anderson">
 <meta property="article:tag" content="BioProtocol">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://en-cdn.bio-protocol.org/attached/image/20180330/20180330003756_4615.jpg">
+<meta name="twitter:image" content="https://gitee.com/anderson2/blogimage/raw/master/img/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Anderson Blog" type="application/atom+xml">
   
@@ -288,7 +288,7 @@
 <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>对于疾病和基础科学研究而言，功能丧失（LOF）突变是非常重要的。 在这里，研究人员提供了一个简单的方法来产生LOF iPSC系列，通过将CRISPR载体与附加型重编程质粒同时引入成纤维细胞，规避了传统基因编辑和已建立的iPSC系的克隆的技术挑战。 研究人员的实验已经产生了常染色体基因中所有3种基因型的几乎偶数。 此外，研究人员提供了一个详细的方法来维护和iPSC克隆的96孔板的基因分型。</p>
 <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>CRISPR &#x2F; Cas9技术允许简单且特异地针对特定基因组位置进行基因编辑。将该技术与诱导性多能干细胞（iPSC）的疾病建模和再生医学潜力相结合将继续对生物医学研究产生前所未有的影响。然而，使CRISPR &#x2F; Cas9系统适应iPSC已经提出了几个挑战。在细胞系中进行基因编辑的传统方法是用表达Cas9蛋白质的质粒和指导RNA（gRNA）转染细胞，然后产生单克隆并筛选所需的遗传改变。不幸的是，iPSC不适用于单细胞克隆。已经开发了几种补充媒介和克隆方法来克服这一困难，但仍然充满昂贵的设备（低氧培养箱），困难的技术步骤（FACS分选的单个iPSC的存活）或劳动密集型方案（亚克隆）（Forsyth ，2006; Miyaoka ，，2014）。此外，单细胞传代与iPSC中增加的基因组异常有关（Bai等人，2015）。已使用荧光或抗生素抗性遗传标记来克服克隆性问题和这些细胞中基因编辑的总体低效率，但需要通过设计有长同源臂（400-800bp）的靶向质粒对大盒进行同源重组， （Hendel等，，2014）。设计这些质粒需要很长时间。</p>
 <p>为了克服这些障碍中的许多障碍，研究人员利用同时重编程和CRISPR &#x2F; Cas9诱变的组合方法产生杂合和纯合丢失功能（LOF）iPSC系。 Howden及其同事首次提出了这种组合方法用于同源重组基因编辑（Howden等人，2015和2016），但是研究人员已经扩展并进一步定义了他们在最近的出版物（Tidball et。，2017）。该程序利用了iPSC重编程中固有的克隆步骤以及成纤维细胞培养物中更容易的转染（图1）。高效地产生大量具有所有三种基因型（ <strong>野生型&#x2F;野生型</strong>，<strong>野生型&#x2F; indel</strong>和 <strong>indel &#x2F; indel</strong>）的相似比例的克隆的能力将允许用于疾病建模的LOF iPSC系的快速发育和基础研究。</p>
-<p><img src="https://en-cdn.bio-protocol.org/attached/image/20180330/20180330003756_4615.jpg" alt="Fig1"></p>
+<p><img src="https://gitee.com/anderson2/blogimage/raw/master/img/1.jpg" alt="Fig1"></p>
 <p><strong>图1.实验工作流程</strong>概述本文中的方案分为4个主要部分，包括：指导RNA和PCR引物设计（步骤1），CRISPR质粒的产生和纯化（步骤2- 6），用CRISPR和重编程质粒（步骤7-8）进行成纤维细胞培养和电穿孔，并分离基因组DNA，然后对目标区域进行PCR并测序（步骤11-15）</p>
 <h3 id="材料和试剂"><a href="#材料和试剂" class="headerlink" title="材料和试剂"></a>材料和试剂</h3><ol>
 <li><h4 id="材料"><a href="#材料" class="headerlink" title="材料"></a>材料</h4><ol>
@@ -452,7 +452,7 @@
 <li>每天更换TeSR-E7</li>
 <li>在电穿孔后15-20天内出现可选择的集落（见图2）。</li>
 </ol>
-<p><img src="https://en-cdn.bio-protocol.org/attached/image/20180330/20180330004948_3853.jpg" alt="Fig2"></p>
+<p><img src="https://gitee.com/anderson2/blogimage/raw/master/img/2.jpg" alt="Fig2"></p>
 <p><strong>图2. iPSC重编程时间表。第21天的图像适合采摘，因为边界清晰，相对圆整，缺少附近的菌落。比例尺&#x3D; 400微米。</strong></p>
 </li>
 <li><h5 id="挑选iPSC菌落"><a href="#挑选iPSC菌落" class="headerlink" title="挑选iPSC菌落"></a>挑选iPSC菌落</h5><p>注意：典型的产量为每孔20-40个菌落。如果数量明显较低，这可能表明起始成纤维细胞培养物是不理想的（晚期传代，染色体异常等）。如果数量大得多，电穿孔过程中可能发生稀释错误，单克隆难以获得。</p>
@@ -556,9 +556,9 @@
 </ol>
 <h4 id="数据分析"><a href="#数据分析" class="headerlink" title="数据分析"></a>数据分析</h4><ol>
 <li><h5 id="Sanger测序分析"><a href="#Sanger测序分析" class="headerlink" title="Sanger测序分析"></a>Sanger测序分析</h5><p>主要数据分析是分析测序数据并执行质量控制。首先，应排除PicoGreen DNA定量（低于检测限）的DNA浓度不足的样本。通常对这些样品进行测序将导致这些样品中出现奇数的indel识别（在其他克隆中未发现大的大量缺失）（数据未显示）。当使用Sanger测序时，也应排除具有3组重叠峰的样品，因为这些样品不是克隆的或可能是PCR之前DNA污染的结果。通过将重叠峰呼叫与indel起点下游的序列（其中峰开始重叠）（图3A）手动鉴定来自Sanger测序的indels。通过使用在线BLAST分析（ https：&#x2F;&#x2F; blast）可轻松识别出野生型或纯合的插入。 ncbi.nlm.nih.gov&#x2F;Blast.cgi ）。一定要使用人类基因组参考序列和“不连续的megablast”选项来允许indel对齐。杂合验证者可以通过Mutation Surveyor（ Softgenetics.com ）等计划来协助杂合子的识别，它根据野生型参考色谱仪并对齐以找到插入位置。不幸的是，这个程序对于复合杂合子插入不是很有效。通常，在Cas9切割位点附近形成插入缺失，其中最常见的是小缺失（表1）。在生成indels表时，使用Courier New。该字体对每个字符使用相同的大小，以便序列对齐。＆nbsp;</p>
-<p><img src="https://en-cdn.bio-protocol.org/attached/image/20180330/20180330010453_5546.jpg" alt="Fig3"></p>
+<p><img src="https://gitee.com/anderson2/blogimage/raw/master/img/3.jpg" alt="Fig3"></p>
 <p><strong>图3.典型的indel形态数据。</strong> ：一种典型的Sanger测序色谱图为杂合2 bp缺失。 B.来自Tidball 等的摘要数据。 （2017）与先前未发布的针对 SCN1B CRISPR &#x2F; reprogramming的数据集相比较。这些数据包括22个WT &#x2F; WT，10个WT &#x2F; Indel和27个Indel &#x2F; Indel线。</p>
-<p><img src="https://en-cdn.bio-protocol.org/attached/image/20180330/20180330010607_1796.jpg" alt="table1"></p>
+<p><img src="https://gitee.com/anderson2/blogimage/raw/master/img/4.jpg" alt="table1"></p>
 <p><strong>表1.通过具有＆gt;的单个实验形成的典型indels  50个克隆</strong></p>
 </li>
 <li><h5 id="NextGneration序列分析"><a href="#NextGneration序列分析" class="headerlink" title="NextGneration序列分析"></a>NextGneration序列分析</h5><p>NG测序将提供样品中发现的每种DNA物种的序列和读数的百分比。如果PCR不是特异性的，也可能存在一小部分脱靶DNA。除了indel鉴定，next-Gen测序的定量性质还允许鉴定异源系（2个或更多个克隆一起培育或挑选）。例如，如果杂合子线与50:50的比例发生偏离，则这可能表明异质性。请注意，大的插入可以稍微偏移该比例（例如59bp缺失杂合线导致几乎&gt; 70％的WT量化）。</p>
