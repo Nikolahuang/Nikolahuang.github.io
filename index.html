@@ -268,7 +268,7 @@
 <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>对于疾病和基础科学研究而言，功能丧失（LOF）突变是非常重要的。 在这里，研究人员提供了一个简单的方法来产生LOF iPSC系列，通过将CRISPR载体与附加型重编程质粒同时引入成纤维细胞，规避了传统基因编辑和已建立的iPSC系的克隆的技术挑战。 研究人员的实验已经产生了常染色体基因中所有3种基因型的几乎偶数。 此外，研究人员提供了一个详细的方法来维护和iPSC克隆的96孔板的基因分型。</p>
 <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>CRISPR &#x2F; Cas9技术允许简单且特异地针对特定基因组位置进行基因编辑。将该技术与诱导性多能干细胞（iPSC）的疾病建模和再生医学潜力相结合将继续对生物医学研究产生前所未有的影响。然而，使CRISPR &#x2F; Cas9系统适应iPSC已经提出了几个挑战。在细胞系中进行基因编辑的传统方法是用表达Cas9蛋白质的质粒和指导RNA（gRNA）转染细胞，然后产生单克隆并筛选所需的遗传改变。不幸的是，iPSC不适用于单细胞克隆。已经开发了几种补充媒介和克隆方法来克服这一困难，但仍然充满昂贵的设备（低氧培养箱），困难的技术步骤（FACS分选的单个iPSC的存活）或劳动密集型方案（亚克隆）（Forsyth ，2006; Miyaoka ，，2014）。此外，单细胞传代与iPSC中增加的基因组异常有关（Bai等人，2015）。已使用荧光或抗生素抗性遗传标记来克服克隆性问题和这些细胞中基因编辑的总体低效率，但需要通过设计有长同源臂（400-800bp）的靶向质粒对大盒进行同源重组， （Hendel等，，2014）。设计这些质粒需要很长时间。</p>
 <p>为了克服这些障碍中的许多障碍，研究人员利用同时重编程和CRISPR &#x2F; Cas9诱变的组合方法产生杂合和纯合丢失功能（LOF）iPSC系。 Howden及其同事首次提出了这种组合方法用于同源重组基因编辑（Howden等人，2015和2016），但是研究人员已经扩展并进一步定义了他们在最近的出版物（Tidball et。，2017）。该程序利用了iPSC重编程中固有的克隆步骤以及成纤维细胞培养物中更容易的转染（图1）。高效地产生大量具有所有三种基因型（ <strong>野生型&#x2F;野生型</strong>，<strong>野生型&#x2F; indel</strong>和 <strong>indel &#x2F; indel</strong>）的相似比例的克隆的能力将允许用于疾病建模的LOF iPSC系的快速发育和基础研究。</p>
-<p><img src="https://gitee.com/anderson2/blogimage/raw/master/img/1.jpg" alt="Fig1"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/1.jpg" alt="Fig1"></p>
 <p><strong>图1.实验工作流程</strong>概述本文中的方案分为4个主要部分，包括：指导RNA和PCR引物设计（步骤1），CRISPR质粒的产生和纯化（步骤2- 6），用CRISPR和重编程质粒（步骤7-8）进行成纤维细胞培养和电穿孔，并分离基因组DNA，然后对目标区域进行PCR并测序（步骤11-15）</p>
 <h3 id="材料和试剂"><a href="#材料和试剂" class="headerlink" title="材料和试剂"></a>材料和试剂</h3><ol>
 <li><h4 id="材料"><a href="#材料" class="headerlink" title="材料"></a>材料</h4><ol>
@@ -432,7 +432,7 @@
 <li>每天更换TeSR-E7</li>
 <li>在电穿孔后15-20天内出现可选择的集落（见图2）。</li>
 </ol>
-<p><img src="https://gitee.com/anderson2/blogimage/raw/master/img/2.jpg" alt="Fig2"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/2.jpg" alt="Fig2"></p>
 <p><strong>图2. iPSC重编程时间表。第21天的图像适合采摘，因为边界清晰，相对圆整，缺少附近的菌落。比例尺&#x3D; 400微米。</strong></p>
 </li>
 <li><h5 id="挑选iPSC菌落"><a href="#挑选iPSC菌落" class="headerlink" title="挑选iPSC菌落"></a>挑选iPSC菌落</h5><p>注意：典型的产量为每孔20-40个菌落。如果数量明显较低，这可能表明起始成纤维细胞培养物是不理想的（晚期传代，染色体异常等）。如果数量大得多，电穿孔过程中可能发生稀释错误，单克隆难以获得。</p>
@@ -536,9 +536,9 @@
 </ol>
 <h4 id="数据分析"><a href="#数据分析" class="headerlink" title="数据分析"></a>数据分析</h4><ol>
 <li><h5 id="Sanger测序分析"><a href="#Sanger测序分析" class="headerlink" title="Sanger测序分析"></a>Sanger测序分析</h5><p>主要数据分析是分析测序数据并执行质量控制。首先，应排除PicoGreen DNA定量（低于检测限）的DNA浓度不足的样本。通常对这些样品进行测序将导致这些样品中出现奇数的indel识别（在其他克隆中未发现大的大量缺失）（数据未显示）。当使用Sanger测序时，也应排除具有3组重叠峰的样品，因为这些样品不是克隆的或可能是PCR之前DNA污染的结果。通过将重叠峰呼叫与indel起点下游的序列（其中峰开始重叠）（图3A）手动鉴定来自Sanger测序的indels。通过使用在线BLAST分析（ https：&#x2F;&#x2F; blast）可轻松识别出野生型或纯合的插入。 ncbi.nlm.nih.gov&#x2F;Blast.cgi ）。一定要使用人类基因组参考序列和“不连续的megablast”选项来允许indel对齐。杂合验证者可以通过Mutation Surveyor（ Softgenetics.com ）等计划来协助杂合子的识别，它根据野生型参考色谱仪并对齐以找到插入位置。不幸的是，这个程序对于复合杂合子插入不是很有效。通常，在Cas9切割位点附近形成插入缺失，其中最常见的是小缺失（表1）。在生成indels表时，使用Courier New。该字体对每个字符使用相同的大小，以便序列对齐。＆nbsp;</p>
-<p><img src="https://gitee.com/anderson2/blogimage/raw/master/img/3.jpg" alt="Fig3"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/3.jpg" alt="Fig3"></p>
 <p><strong>图3.典型的indel形态数据。</strong> ：一种典型的Sanger测序色谱图为杂合2 bp缺失。 B.来自Tidball 等的摘要数据。 （2017）与先前未发布的针对 SCN1B CRISPR &#x2F; reprogramming的数据集相比较。这些数据包括22个WT &#x2F; WT，10个WT &#x2F; Indel和27个Indel &#x2F; Indel线。</p>
-<p><img src="https://gitee.com/anderson2/blogimage/raw/master/img/4.jpg" alt="table1"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/4.jpg" alt="table1"></p>
 <p><strong>表1.通过具有＆gt;的单个实验形成的典型indels  50个克隆</strong></p>
 </li>
 <li><h5 id="NextGneration序列分析"><a href="#NextGneration序列分析" class="headerlink" title="NextGneration序列分析"></a>NextGneration序列分析</h5><p>NG测序将提供样品中发现的每种DNA物种的序列和读数的百分比。如果PCR不是特异性的，也可能存在一小部分脱靶DNA。除了indel鉴定，next-Gen测序的定量性质还允许鉴定异源系（2个或更多个克隆一起培育或挑选）。例如，如果杂合子线与50:50的比例发生偏离，则这可能表明异质性。请注意，大的插入可以稍微偏移该比例（例如59bp缺失杂合线导致几乎&gt; 70％的WT量化）。</p>
@@ -710,9 +710,9 @@
 <p>其他小组已经收集了从AFE &#x2F; LPC单层中萌芽的细胞团块，并将其嵌入基底膜基质中。这些类器官含有肺上皮细胞和间充质细胞的混合群体，但培养需要数月[19]。我们的方案包括上皮细胞和间充质细胞的存在。WLO表达近端上皮细胞标志物p63和KRT5（基底细胞）和SCGB3A2（俱乐部细胞）以及远端上皮细胞标志物HOPX（ATI）和proSPC，SPB和NKX2-1（ATII）。他们还在LPC阶段以及整个肺类器官中表达间充质标志物Vimentin。PDGFRα是成纤维细胞的标志物，在排尿和肺泡化过程中在肺部具有重要功能20，并与远端细胞分化中重要的转录因子SOX9共表达（<strong>图3</strong>）。</p>
 <p>我们的方法使用胎儿肺发育中发生的信号分子有效地生成表达NKX2-1的LPC 3D培养物，以形成早期肺类器官。当将LPC传导到GFR基底膜基质培养基中以诱导肺类器官时，必须不要过度解离成单个细胞悬浮液，而是保留小团块细胞（10个细胞&#x2F;团）。细胞计数将不完全准确，但仍然需要避免在3周肺类器官分化期间过度汇合。</p>
 <p>肺类器官诱导应在诱导的第 6 天（分化的第 23 天）产生小的分支类器官。这些应该在类器官分支步骤和成熟步骤中继续生长。在引入地塞米松，cAMP和IBMX二十四小时后，分支应该扩展到透明球体。可以在分化结束时进行全肺类器官分析，或者WLO可以通过GFR进入新鲜的基底膜基质，或者通过冷冻在10%DMSO中冷冻保存。</p>
-<p><img src="https://gitee.com/anderson2/blogimage/raw/master/img/62456fig1v5.jpg" alt="Figure 1"><br><strong>图1</strong>：全肺类器官（WLO）与hiPSCs的分化总体示意图和代表性数据。<strong>圆圈表示具有识别标记的内胚层细胞类型。分化的时间线以黑条表示。生长因子和&#x2F;或小分子用于诱导内胚层和肺类器官群体。总之，干细胞在大约16天内分化成明确的内胚层，前肠前胚层内胚层和肺祖细胞。然后将这些细胞传入含有培养基插入物的GFR基底膜基质培养基中，并进行肺类器官诱导，分支和成熟。总分化大约需要35天。（</strong>b<strong>）主要内胚层细胞的代表性相差图像和整个肺类器官的3D图像。面板中指示的比例尺大小。（</strong>c<strong>）内胚层期间肺部发育标志物的qRT-PCR分析，以及</strong> (d) 近端和远端细胞标志物的全肺类器官分化。所有数据平均代表3-5个生物重复。误差线表示均值的标准误差，并归一化为肌动蛋白。<a target="_blank" rel="noopener" href="https://www.jove.com/files/ftp_upload/62456/62456fig1v5large.jpg">请点击此处查看此图的放大版本。</a></p>
-<p><img src="https://gitee.com/anderson2/blogimage/raw/master/img/62456fig2v2.jpg" alt="Figure 2"><br><strong>图2</strong>：通过流式细胞术和免疫细胞化学表征内胚层分化。 （<strong>a</strong>）确定性内胚层标志物CXCR4的流式细胞术。左面板显示针对未染色人群的门控，而中间面板显示 CXCR4 阳性人群。右图显示了覆盖有细胞核（蓝色）的 SOX17（红色）的免疫细胞化学图像。（<strong>b</strong>）AFE标志物FOXA2和SOX2覆盖细胞核（蓝色）的免疫细胞化学图像。（<strong>c</strong>）NKX2-1-GFP在3D LPC报告细胞系中的内源性表达。从明场和GFP的活细胞培养物中拍摄的图像。固定和透化后肺祖细胞内标志物NKX2-1的流式细胞术。比例尺尺寸 &#x3D; 50 μM。 <a target="_blank" rel="noopener" href="https://www.jove.com/files/ftp_upload/62456/62456fig2v2large.jpg">请单击此处查看此图的放大版本。</a></p>
-<p><img src="https://gitee.com/anderson2/blogimage/raw/master/img/62456fig3v2.jpg" alt="Figure 3"><br><strong>图3</strong>：通过免疫细胞化学分化3周后3D全肺类器官的表征。<strong>左面板显示由原子核（蓝色）覆盖的 SOX2（白色）和 SOX9（红色）。这些标志物在分支形态发生中很重要，代表近端和远端上皮群体。中间的面板显示P63（红色）和KRT5（红色），两者都是基底细胞的标志物。右图显示了SCGB3A2，这是俱乐部细胞的标志物。（</strong>b<strong>） 远端肺标志物。左图分别描绘了亲SPC（PSPC），（绿色）和HOPX（红色），肺泡II型ad I细胞的标志物，覆盖着细胞核（蓝色）。中间图显示了前SPC（PSPC）（绿色）和SPB（红色），肺泡II型细胞的标志物，覆盖着细胞核（蓝色）。右侧面板显示 NKX2-1（红色）和 ZO1（绿色）覆盖着原子核（蓝色）。</strong> (c） 肺间充质标志物。左图显示 PDGFRA（红色）和 SOX9（白色），代表远端间充质。右图显示Vimentin（红色），它分散在整个肺部。比例尺尺寸 &#x3D; 50 μM。<a target="_blank" rel="noopener" href="https://www.jove.com/files/ftp_upload/62456/62456fig3v2large.jpg">请单击此处查看此图的放大版本。</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/62456fig1v5.jpg" alt="Figure 1"><br><strong>图1</strong>：全肺类器官（WLO）与hiPSCs的分化总体示意图和代表性数据。<strong>圆圈表示具有识别标记的内胚层细胞类型。分化的时间线以黑条表示。生长因子和&#x2F;或小分子用于诱导内胚层和肺类器官群体。总之，干细胞在大约16天内分化成明确的内胚层，前肠前胚层内胚层和肺祖细胞。然后将这些细胞传入含有培养基插入物的GFR基底膜基质培养基中，并进行肺类器官诱导，分支和成熟。总分化大约需要35天。（</strong>b<strong>）主要内胚层细胞的代表性相差图像和整个肺类器官的3D图像。面板中指示的比例尺大小。（</strong>c<strong>）内胚层期间肺部发育标志物的qRT-PCR分析，以及</strong> (d) 近端和远端细胞标志物的全肺类器官分化。所有数据平均代表3-5个生物重复。误差线表示均值的标准误差，并归一化为肌动蛋白。<a target="_blank" rel="noopener" href="https://www.jove.com/files/ftp_upload/62456/62456fig1v5large.jpg">请点击此处查看此图的放大版本。</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/62456fig2v2.jpg" alt="Figure 2"><br><strong>图2</strong>：通过流式细胞术和免疫细胞化学表征内胚层分化。 （<strong>a</strong>）确定性内胚层标志物CXCR4的流式细胞术。左面板显示针对未染色人群的门控，而中间面板显示 CXCR4 阳性人群。右图显示了覆盖有细胞核（蓝色）的 SOX17（红色）的免疫细胞化学图像。（<strong>b</strong>）AFE标志物FOXA2和SOX2覆盖细胞核（蓝色）的免疫细胞化学图像。（<strong>c</strong>）NKX2-1-GFP在3D LPC报告细胞系中的内源性表达。从明场和GFP的活细胞培养物中拍摄的图像。固定和透化后肺祖细胞内标志物NKX2-1的流式细胞术。比例尺尺寸 &#x3D; 50 μM。 <a target="_blank" rel="noopener" href="https://www.jove.com/files/ftp_upload/62456/62456fig2v2large.jpg">请单击此处查看此图的放大版本。</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/62456fig3v2.jpg" alt="Figure 3"><br><strong>图3</strong>：通过免疫细胞化学分化3周后3D全肺类器官的表征。<strong>左面板显示由原子核（蓝色）覆盖的 SOX2（白色）和 SOX9（红色）。这些标志物在分支形态发生中很重要，代表近端和远端上皮群体。中间的面板显示P63（红色）和KRT5（红色），两者都是基底细胞的标志物。右图显示了SCGB3A2，这是俱乐部细胞的标志物。（</strong>b<strong>） 远端肺标志物。左图分别描绘了亲SPC（PSPC），（绿色）和HOPX（红色），肺泡II型ad I细胞的标志物，覆盖着细胞核（蓝色）。中间图显示了前SPC（PSPC）（绿色）和SPB（红色），肺泡II型细胞的标志物，覆盖着细胞核（蓝色）。右侧面板显示 NKX2-1（红色）和 ZO1（绿色）覆盖着原子核（蓝色）。</strong> (c） 肺间充质标志物。左图显示 PDGFRA（红色）和 SOX9（白色），代表远端间充质。右图显示Vimentin（红色），它分散在整个肺部。比例尺尺寸 &#x3D; 50 μM。<a target="_blank" rel="noopener" href="https://www.jove.com/files/ftp_upload/62456/62456fig3v2large.jpg">请单击此处查看此图的放大版本。</a></p>
 <table>
 <thead>
 <tr>
@@ -1404,7 +1404,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>来源： <a href="javascript:;">默克生命科学</a><br>肺类器官是常用的三维(3D)细胞培养模型，用于研究人类肺部发育和呼吸道疾病，包括病毒感染(SARS-CoV、H1N1、MERS)、囊性纤维化、哮喘&#x2F;COPD、空气污染暴露和吸烟的影响。与传统的永生化肺细胞系和原代细胞不同，肺类器官包含各种分化的细胞类型，具有复杂的组织结构，更接近于体内组织和功能。 此外，肺类器官可以从少量患者组织或多能干细胞中提取，以创建有助于个性化生物医学研究的活体生物库。<br>3dGRO™ 人肺类器官培养系统是一种无血清、多阶段培养系统，常用于将人诱导多能干细胞(iPS)有效分化为结构类似于体内分支气道和早期肺泡结构的成熟肺类器官。 使用 3dGRO™ 人肺类器官培养系统，可以生成大量成熟的肺类器官，这些类器官表达适当的标志物，标志着成熟肺和气道中发现的多种细胞类型，包括在中发现的 SFTPB 和 SFTPC（表面活性物质相关蛋白B 和表面活性物质相关蛋白C） II 型肺泡上皮 (ATII) 细胞、MUC5AC（气道杯状细胞）、EpCAM、Sox9 和 Nkx2.1（肺内胚层）、乙酰-α-微管蛋白（纤毛细胞）和间充质标记波形纤维蛋白。<br>此外，肺类器官还表达血管紧张素转换酶 2 (ACE2)，它是导致 COVID-19 的新型 SARS-CoV-2 病毒的受体，以及 TMPRSS2，一种协助SARS-CoV-2 病毒入侵的丝氨酸蛋白酶。<br><img src="https://gitee.com/anderson2/blogimage/raw/master/img/9923919870273171453-14.jpg" alt="img"><br>图 1. 人肺类器官分化实验流程。<br>使用诱导培养基(SCM302)在4天内将人多能干细胞分化成定型内胚层细胞。 在第4-8天，诱导培养基 (SCM305、SCM306) 将人定型内胚层细胞分化为前肠内胚层 (AFE)。 AFE细胞可以冷冻保存 (商业化产品货号SCC301) 或使用 3dGRO™ 肺类器官分支培养基 (SCM307) 进一步分化成分支肺芽型类器官，并使用 3dGRO™ 肺类器官成熟培养基 (SCM308) 进一步成熟为分支型和肺泡型类器官。</p>
+    <p>来源： <a href="javascript:;">默克生命科学</a><br>肺类器官是常用的三维(3D)细胞培养模型，用于研究人类肺部发育和呼吸道疾病，包括病毒感染(SARS-CoV、H1N1、MERS)、囊性纤维化、哮喘&#x2F;COPD、空气污染暴露和吸烟的影响。与传统的永生化肺细胞系和原代细胞不同，肺类器官包含各种分化的细胞类型，具有复杂的组织结构，更接近于体内组织和功能。 此外，肺类器官可以从少量患者组织或多能干细胞中提取，以创建有助于个性化生物医学研究的活体生物库。<br>3dGRO™ 人肺类器官培养系统是一种无血清、多阶段培养系统，常用于将人诱导多能干细胞(iPS)有效分化为结构类似于体内分支气道和早期肺泡结构的成熟肺类器官。 使用 3dGRO™ 人肺类器官培养系统，可以生成大量成熟的肺类器官，这些类器官表达适当的标志物，标志着成熟肺和气道中发现的多种细胞类型，包括在中发现的 SFTPB 和 SFTPC（表面活性物质相关蛋白B 和表面活性物质相关蛋白C） II 型肺泡上皮 (ATII) 细胞、MUC5AC（气道杯状细胞）、EpCAM、Sox9 和 Nkx2.1（肺内胚层）、乙酰-α-微管蛋白（纤毛细胞）和间充质标记波形纤维蛋白。<br>此外，肺类器官还表达血管紧张素转换酶 2 (ACE2)，它是导致 COVID-19 的新型 SARS-CoV-2 病毒的受体，以及 TMPRSS2，一种协助SARS-CoV-2 病毒入侵的丝氨酸蛋白酶。<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/9923919870273171453-14.jpg" alt="img"><br>图 1. 人肺类器官分化实验流程。<br>使用诱导培养基(SCM302)在4天内将人多能干细胞分化成定型内胚层细胞。 在第4-8天，诱导培养基 (SCM305、SCM306) 将人定型内胚层细胞分化为前肠内胚层 (AFE)。 AFE细胞可以冷冻保存 (商业化产品货号SCC301) 或使用 3dGRO™ 肺类器官分支培养基 (SCM307) 进一步分化成分支肺芽型类器官，并使用 3dGRO™ 肺类器官成熟培养基 (SCM308) 进一步成熟为分支型和肺泡型类器官。</p>
 <p><strong>肺类器官分化方案</strong><br><strong>第 1 步：人 iPS 细胞分化为定型内胚层（第 0-4 天）</strong><br>注意：从高品质未分化的人 ES&#x2F;iPS 细胞 (SCC271) 开始，这些细胞汇合度约为 70-80%，且含有 &lt;5% 的分化细胞。以下方案用于六孔组织培养处理板中的一孔。 指示的体积针对单孔。请根据需要调整用量。</p>
 <ol>
 <li>准备单细胞传代培养基。 将 ROCK 抑制剂 (ROCKi) Y-27632 (SCM075) 添加到 7-10 mL 人 ES&#x2F;iPS 细胞扩增培养基 (SCM130) 中，最终浓度为 10μM。</li>
@@ -1431,7 +1431,7 @@
 <li>第 5 天：每孔更换 2 mL AFE 诱导培养基II (SCM306)。在 37 °C 下孵育 24 小时。</li>
 <li>第 6 天：用每孔 2 mL 的 3dGRO™ 肺类器官分支培养基 (SCM307) 更换培养基。在 37 °C 下孵育 24 小时。</li>
 <li>第 7 天：用每孔 2 mL 的 3dGRO™ 肺类器官分支培养基 (SCM307) 更换培养基。在 37 °C 下孵育 24 小时。</li>
-<li>第 8 天：AFE 细胞应表现出形态变化，由细胞簇&#x2F;聚集体散布组成汇合区域。按照方案将进一步分化为成熟的肺类器官。多余的 AFE 细胞可以使用 3dGRO™ 类器官冷冻培养基 (SCM301) 以每管3-6 x 106 个细胞进行冷冻保存。<br><img src="https://gitee.com/anderson2/blogimage/raw/master/img/7889480713614171453-14.jpg" alt="img"><br>图 2. 前肠内胚层 (AFE) 标记表达。 大约 95-100% 的 AFE 细胞对 Sox2（A、C、AB5603A4）和 Pax9（B、C）呈双阳性。 大约 20-30% 的 AFE 细胞对 EpCAM（D、F、MAB4444）和 Pax9（E、F)呈双阳性。</li>
+<li>第 8 天：AFE 细胞应表现出形态变化，由细胞簇&#x2F;聚集体散布组成汇合区域。按照方案将进一步分化为成熟的肺类器官。多余的 AFE 细胞可以使用 3dGRO™ 类器官冷冻培养基 (SCM301) 以每管3-6 x 106 个细胞进行冷冻保存。<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/7889480713614171453-14.jpg" alt="img"><br>图 2. 前肠内胚层 (AFE) 标记表达。 大约 95-100% 的 AFE 细胞对 Sox2（A、C、AB5603A4）和 Pax9（B、C）呈双阳性。 大约 20-30% 的 AFE 细胞对 EpCAM（D、F、MAB4444）和 Pax9（E、F)呈双阳性。</li>
 </ol>
 <p><strong>第 3 步：将 AFE 细胞分化为肺芽类器官（第 8-25 天）</strong></p>
 <ol>
@@ -1442,7 +1442,7 @@
 <li>使用 1 mL 玻璃血清移液器将漂浮的类器官转移到无菌的 15 mL 锥形管中。等待 10 分钟，使类器官沉淀到试管底部。</li>
 <li>将 2 mL 吸液管连接真空泵。在 2 mL 吸气移液器上，连接一个无菌的 20 μL 非屏障移液器枪头。小心地吸出培养基。注意在类器官上方留下少量培养基作为缓冲液，以避免干扰类器官。</li>
 <li>将 0.5 mL 3dGRO™ 肺类器官分支培养基 (SCM307) 添加到含有类器官沉淀的 15 mL 管中。用 1 mL 玻璃移液器上下吹打两次。将类器官转移回超低附着24 孔板中的同一孔中。</li>
-<li>将 0.5 mL 3dGRO™ 肺类器官分支培养基 (SCM307) 添加到 15 mL 锥形管中，冲洗并收集所有剩余的类器官。将冲洗液添加到超低附着24 孔板的同一孔中。总体积 &#x3D; 每孔 1 mL。<br><img src="https://gitee.com/anderson2/blogimage/raw/master/img/3863442821824171453-14.png" alt="img"><br>图3.悬浮培养的人肺芽类器官（LBO）。分化第23天未成熟人iPS细胞衍生LBO的形态学。<br>下图显示了具有折叠结构（箭头）的最佳类器官，可以选择这些类器官在使用 3dGRO™ 肺类器官成熟培养基（步骤 4）的 ECM基质胶包埋夹层培养中进一步成熟。</li>
+<li>将 0.5 mL 3dGRO™ 肺类器官分支培养基 (SCM307) 添加到 15 mL 锥形管中，冲洗并收集所有剩余的类器官。将冲洗液添加到超低附着24 孔板的同一孔中。总体积 &#x3D; 每孔 1 mL。<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/3863442821824171453-14.png" alt="img"><br>图3.悬浮培养的人肺芽类器官（LBO）。分化第23天未成熟人iPS细胞衍生LBO的形态学。<br>下图显示了具有折叠结构（箭头）的最佳类器官，可以选择这些类器官在使用 3dGRO™ 肺类器官成熟培养基（步骤 4）的 ECM基质胶包埋夹层培养中进一步成熟。</li>
 </ol>
 </li>
 </ol>
@@ -1464,7 +1464,7 @@
 <li>在每个培养小室顶部添加 500 µL 3dGRO™ 肺类器官成熟培养基 (SCM308)，并在细胞培养小室下方的孔中加入 500 µL。</li>
 <li>每隔一天更换一次培养基。<ol>
 <li>将 2 mL 吸液管连接到真空泵上。 在 2 mL 吸气移液器上，连接一个无菌的 20 μL 无滤膜的移液器枪头。 小心吸出 ECM基质胶夹层顶部和细胞培养小室下方的培养基。</li>
-<li>在每个细胞培养小室顶部和下方的孔中各加入 500 µL 3dGRO™ 肺类器官成熟培养基 (SCM308)。<br><img src="https://gitee.com/anderson2/blogimage/raw/master/img/3183665057154171453-14.jpg" alt="img"><br>图 4. 肺类器官成熟的时间过程。 在两个单独的孔中追踪人iPS 细胞衍生的肺类器官分化。在第 20-25 天，使用 3dGRO™ 肺类器官成熟培养基将大约 4-6 个未成熟 LBO 嵌入到 ECM基质胶中。 观察到各种形态，包括在顶端的分支结构和&#x2F;或圆形扩张，在中心有类似于肺泡球的致密组织。 当持续培养超过 60-70 天时，一些大的圆形结构可能会破裂，释放出粘液样物质。<br><img src="https://gitee.com/anderson2/blogimage/raw/master/img/5778257521064171453-14.jpg" alt="img"><br>图 5. 肺类器官标记表达。 来自人外周血单核细胞 (PBMC) 和 HFF 人 iPS 细胞的成熟肺类器官在第70天表达产生表面活性物质相关蛋白的 II 型肺泡上皮细胞 (SFTPC 和 SFTPB)、气道杯状细胞 (Muc5AC)、肺内胚层(EPCAM、Sox9,NKX2.1) 和纤毛细胞 (Acetyl-α-Tubulin) 的标志物。 细胞核使用 DAPI 复染。<br><img src="https://gitee.com/anderson2/blogimage/raw/master/img/6896184719264171453-14.jpg" alt="img"><br>图 6. 肺类器官可用于研究 SARS-CoV-2 呼吸道病毒感染。<br>肺芽类器官表达 ACE2、SARS-CoV-2 结合受体 (A) 和丝氨酸蛋白酶 TMPRSS2 (B)，可增加SARS-CoV-2 病毒入侵。</li>
+<li>在每个细胞培养小室顶部和下方的孔中各加入 500 µL 3dGRO™ 肺类器官成熟培养基 (SCM308)。<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/3183665057154171453-14.jpg" alt="img"><br>图 4. 肺类器官成熟的时间过程。 在两个单独的孔中追踪人iPS 细胞衍生的肺类器官分化。在第 20-25 天，使用 3dGRO™ 肺类器官成熟培养基将大约 4-6 个未成熟 LBO 嵌入到 ECM基质胶中。 观察到各种形态，包括在顶端的分支结构和&#x2F;或圆形扩张，在中心有类似于肺泡球的致密组织。 当持续培养超过 60-70 天时，一些大的圆形结构可能会破裂，释放出粘液样物质。<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/5778257521064171453-14.jpg" alt="img"><br>图 5. 肺类器官标记表达。 来自人外周血单核细胞 (PBMC) 和 HFF 人 iPS 细胞的成熟肺类器官在第70天表达产生表面活性物质相关蛋白的 II 型肺泡上皮细胞 (SFTPC 和 SFTPB)、气道杯状细胞 (Muc5AC)、肺内胚层(EPCAM、Sox9,NKX2.1) 和纤毛细胞 (Acetyl-α-Tubulin) 的标志物。 细胞核使用 DAPI 复染。<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/6896184719264171453-14.jpg" alt="img"><br>图 6. 肺类器官可用于研究 SARS-CoV-2 呼吸道病毒感染。<br>肺芽类器官表达 ACE2、SARS-CoV-2 结合受体 (A) 和丝氨酸蛋白酶 TMPRSS2 (B)，可增加SARS-CoV-2 病毒入侵。</li>
 </ol>
 </li>
 </ol>
@@ -1473,7 +1473,7 @@
 <ol>
 <li>3dGRO™ 肺类器官分支培养基 (SCM307) 和 3dGRO™ 肺类器官成熟培养基 (SCM308) 含有对温度和光敏感的成分。 根据实验计划准备等分的试样，避免反复冻融。 请务必遵循手册中“存储和稳定性”部分中的说明。 解冻并使用新的 3dGRO™ 肺类器官分支培养基 (SCM307) 和&#x2F;或 3dGRO™ 肺类器官成熟培养基 (SCM308)。</li>
 <li>选择具有折叠结构的 LBO 进行转移以制作 ECM基质胶夹层。 有关具有折叠结构的 LBO 的示例，请参见图 3。</li>
-<li>悬浮培养开始前第4天和第8天应观察到细胞密度高； 根据细胞类型调整接种密度。<br><strong>问题 2：在悬浮培养过程中，悬浮 LBO 会附着在板的底部。</strong><br>使用超低附着 24 孔板，而不是组织培养处理的 24 孔板或培养皿。<br><strong>问题 3：更换 ECM基质胶夹层的培养基后，顶层显得柔软或塌陷。</strong><br>将 75 µL 的 100%减生长因子(GFR) ECM基质胶添加到夹层的顶层，而不是 50 µL。将 24 孔板放入培养箱中 ≥ 30 分钟，以确保 ECM基质胶 夹层已固化。<br><strong>问题4：第4天c-kit+&#x2F;CXCR4+阳性细胞比例低于80%。</strong><br>应在第 4 天观察到紧凑的 c-kit+&#x2F;CXCR4+ 细胞群，其中阳性细胞为 80-90% 或更高。 不建议在第 4 天没有成功的定型内胚层诱导的情况下继续分化。使用高质量、未分化的人iPS细胞培养物重新开始实验。<br><strong>问题5：在成熟的后期，培养基可能很快变黄。</strong><br>在此期间，嵌入的类器官可能会扩大，有些可能会发展出复杂的过程（图 5）。 将 750 µL 的 3dGRO™ 肺类器官成熟培养基 (SCM308) 添加到细胞培养小室顶部，并在小室下方的孔中添加 500 µL。<br>材料：<br><img src="https://gitee.com/anderson2/blogimage/raw/master/img/3657018393155171453-14.png" alt="img"></li>
+<li>悬浮培养开始前第4天和第8天应观察到细胞密度高； 根据细胞类型调整接种密度。<br><strong>问题 2：在悬浮培养过程中，悬浮 LBO 会附着在板的底部。</strong><br>使用超低附着 24 孔板，而不是组织培养处理的 24 孔板或培养皿。<br><strong>问题 3：更换 ECM基质胶夹层的培养基后，顶层显得柔软或塌陷。</strong><br>将 75 µL 的 100%减生长因子(GFR) ECM基质胶添加到夹层的顶层，而不是 50 µL。将 24 孔板放入培养箱中 ≥ 30 分钟，以确保 ECM基质胶 夹层已固化。<br><strong>问题4：第4天c-kit+&#x2F;CXCR4+阳性细胞比例低于80%。</strong><br>应在第 4 天观察到紧凑的 c-kit+&#x2F;CXCR4+ 细胞群，其中阳性细胞为 80-90% 或更高。 不建议在第 4 天没有成功的定型内胚层诱导的情况下继续分化。使用高质量、未分化的人iPS细胞培养物重新开始实验。<br><strong>问题5：在成熟的后期，培养基可能很快变黄。</strong><br>在此期间，嵌入的类器官可能会扩大，有些可能会发展出复杂的过程（图 5）。 将 750 µL 的 3dGRO™ 肺类器官成熟培养基 (SCM308) 添加到细胞培养小室顶部，并在小室下方的孔中添加 500 µL。<br>材料：<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/3657018393155171453-14.png" alt="img"></li>
 </ol>
 <p><strong>附录：人iPSC操作指南</strong></p>
 <p><strong>人iPSC的解冻</strong></p>
@@ -1491,7 +1491,7 @@
 </ol>
 <p><strong>人iPSC的培养</strong></p>
 <ol>
-<li>良好的作业规范是，在相差显微镜（4x、10x、20x和40x放大倍数）下每天观察iPSC细胞系，以检查iPSC样形态、分化细胞的存在和汇合。典型评分总结如下：<br><img src="https://gitee.com/anderson2/blogimage/raw/master/img/7841151934275171453-14.png" alt="img"><br><img src="https://gitee.com/anderson2/blogimage/raw/master/img/5544190071085171453-14.jpg" alt="img"><br>图 1.iPSC细胞集落的评分<br><img src="https://gitee.com/anderson2/blogimage/raw/master/img/4624870888185171453-14.jpg" alt="img"><br>图 2.<a target="_blank" rel="noopener" href="https://www.biomart.cn/chanpin/1489663.htm">iPSC培养基</a>中的分化水平</li>
+<li>良好的作业规范是，在相差显微镜（4x、10x、20x和40x放大倍数）下每天观察iPSC细胞系，以检查iPSC样形态、分化细胞的存在和汇合。典型评分总结如下：<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/7841151934275171453-14.png" alt="img"><br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/5544190071085171453-14.jpg" alt="img"><br>图 1.iPSC细胞集落的评分<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/4624870888185171453-14.jpg" alt="img"><br>图 2.<a target="_blank" rel="noopener" href="https://www.biomart.cn/chanpin/1489663.htm">iPSC培养基</a>中的分化水平</li>
 <li>用吸移管从孔中除去约95％的培养基，以喂养细胞。请勿完全去除培养基，在细胞层上应覆盖薄薄一层培养基，以免细胞干燥。</li>
 <li>对6孔板的每个孔，顺着孔的侧面轻轻地无菌添加2 mL新鲜培养基。将细胞置于37 ℃、5％ CO2培养箱中孵育。</li>
 <li>通常，七天当中有六天是每天更换培养基，但如果细胞需要更长的培养基更换间隔时间，则需要增加培养基的体积（正常量的1.5x - 2x，取决于细胞密度）。更换培养基的间隔时间请勿超过两天。</li>
@@ -1555,8 +1555,8 @@
 <li>立即将冷冻管放入预冷（2-8 °C）的Mr. Frosty水浴中，然后立即将Mr. Frosty水浴转移到-80 °C的冰箱中。让细胞在-80 °C过夜（16-36小时）。冷冻后，将细胞置于干冰上转移至超低温储存容器（液氮或-150°C冰箱）。</li>
 </ol>
 <p><strong>人iPSC的表征</strong></p>
-<p>iPSC未分化状态的特征在于碱性磷酸酶（SCR004）和干细胞转录因子Nanog、Oct-4和Sox-2的高度表达。这些细胞在其阶段特异性胚胎抗原（SSEA1、3、4）和足细胞标记蛋白（TRA-1-60，TRA-1-81）标记物的表达方面，也显示出与它们的鼠对应物的显著差异。可以使用高细胞表征试剂盒（SCR001、SCR002、SCR078）进行抗体ICC染色或通过PCR分析方法来分析细胞。<br><img src="https://gitee.com/anderson2/blogimage/raw/master/img/2536196458566171453-14.png" alt="img">表1.人iPSC标记物汇总<br><img src="https://gitee.com/anderson2/blogimage/raw/master/img/8784283008376171453-14.jpg" alt="img"><br>图 3.多能 iPS细胞表达多能性标志物。碱性磷酸酶 (40x) (A), Oct-4 Alexa 488 (MAB4401A4, 400x) (B), Sox-2 Cy3 (MAB4423C3, 100x) (C), Nanog Alexa 488 (MABD24A4, 400x) (D), TRA-1-60 Cy3 (MAB4360C3, 100x) (E), 以及TRA-1-81-Cy3 (MAB4381C3, 100x) (F)。细胞核用DAPI（蓝色）（D9542）复染。</p>
-<p><strong>故障排除提示</strong><br><img src="https://gitee.com/anderson2/blogimage/raw/master/img/3156738966217171453-14.png" alt="img"></p>
+<p>iPSC未分化状态的特征在于碱性磷酸酶（SCR004）和干细胞转录因子Nanog、Oct-4和Sox-2的高度表达。这些细胞在其阶段特异性胚胎抗原（SSEA1、3、4）和足细胞标记蛋白（TRA-1-60，TRA-1-81）标记物的表达方面，也显示出与它们的鼠对应物的显著差异。可以使用高细胞表征试剂盒（SCR001、SCR002、SCR078）进行抗体ICC染色或通过PCR分析方法来分析细胞。<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/2536196458566171453-14.png" alt="img">表1.人iPSC标记物汇总<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/8784283008376171453-14.jpg" alt="img"><br>图 3.多能 iPS细胞表达多能性标志物。碱性磷酸酶 (40x) (A), Oct-4 Alexa 488 (MAB4401A4, 400x) (B), Sox-2 Cy3 (MAB4423C3, 100x) (C), Nanog Alexa 488 (MABD24A4, 400x) (D), TRA-1-60 Cy3 (MAB4360C3, 100x) (E), 以及TRA-1-81-Cy3 (MAB4381C3, 100x) (F)。细胞核用DAPI（蓝色）（D9542）复染。</p>
+<p><strong>故障排除提示</strong><br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/3156738966217171453-14.png" alt="img"></p>
 
     
 
@@ -1651,20 +1651,20 @@
 <p>据介绍，所使用的纳米材料 ferumoxytol 是由该团队开发的多聚糖超顺磁氧化铁注射液（商品名为瑞存），临床试验中用作铁剂为缺铁患者补铁，还可作为血管造影剂使核磁信号更强，是目前唯一获得中国食品药品监督管理局获批准的无机纳米材料。</p>
 <p>新型心肌补片能够根据心肌损伤的信号，自主地迁移到损伤区域，并在时间和空间上优化生长因子等营养因子的递送。</p>
 <p>从时间维度，补片能够获取受损心肌的营养延长自身寿命，从而更持久地释放营养因子；从空间维度，它能从心外膜迁移到心肌内部，使得营养物质能直接作用于心脏内部的受损区域。</p>
-<p><img src="https://gitee.com/anderson2/blogimage/raw/master/img/d003bbcc98e34a11bdfaa196d0b4e69d.png" alt="img">  图丨李梅（来源：李梅)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/d003bbcc98e34a11bdfaa196d0b4e69d.png" alt="img">  图丨李梅（来源：李梅)</p>
 <p>该研究成果标志着心肌补片的重要进步。相关论文已在 ACS Nano 上以《利用 Ferumoxytol 实现时空治疗递送的自主迁移和可追踪的心脏补片》（A Self-Homing and Traceable Cardiac Patch Leveraging Ferumoxytol for Spatiotemporal Therapeutic Delivery）为题发表[1]。</p>
 <p>南京医科大学李梅博士为论文第一作者，南京大学顾宁院士和南京医科大学胡本慧教授担任论文通讯作者。</p>
-<p><img src="https://gitee.com/anderson2/blogimage/raw/master/img/0de0f807036d4830a2b08202599b5584.png" alt="img">图丨相关论文（来源：ACS Nano）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/0de0f807036d4830a2b08202599b5584.png" alt="img">图丨相关论文（来源：ACS Nano)</p>
 <p>值得注意的是，铁基纳米材料的高度生物安全性归因于其在体内降解后参与机体铁代谢。该课题组此前通过研究发现，纳米氧化铁被摄入 MSC 后，主要定位于溶酶体中，并随细胞分裂均匀分配到子代细胞中，在细胞内则缓慢释放铁离子[2-3]。</p>
 <p>在该研究中，他们进一步发现，纳米氧化铁有能够促进 MSC 迁移的效果。在实验过程中，研究人员面临将柔软薄弱的无支架细胞补片稳定贴合到跳动心脏表面的挑战。</p>
 <p>并且由于没有胶水，补片需要很平整地贴合到心脏上才能借助自身的细胞外基质与心脏进行贴合，贴得不好的细胞片会随着心脏的跳动而脱落，或在关闭胸腔时被胸腔壁蹭到而脱落。</p>
 <p>“通过大量的动物实验，我们探索了胸腔暴露的最佳大小、角度和时间，并发现在贴上细胞补片后大概 10 分钟是比较理想的动态匹配和粘附时间。”李梅表示。</p>
-<p><img src="https://gitee.com/anderson2/blogimage/raw/master/img/1c40732c75854e7da6cc6f08e84d301e.png" alt="img">图丨该图说明内吞纳米氧化铁促进间充质干细胞补片自主迁移到缺血心肌，并实现长期整合（来源：ACS Nano）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/1c40732c75854e7da6cc6f08e84d301e.png" alt="img">图丨该图说明内吞纳米氧化铁促进间充质干细胞补片自主迁移到缺血心肌，并实现长期整合（来源：ACS Nano）</p>
 <p>这一创新心脏补片的开发，不仅展示了生物医学工程和纳米技术在心脏修复领域的融合潜力，还提出了一种新策略来应对心肌损伤后的治疗挑战。</p>
 <p>目前，心肌补片的植入需通过开胸完成，但未来，通过胸腔内导管递送这种补片，将提供一种更为理想且微创的递送方法，从而使更多心肌疾病患者受益。</p>
 <p>将形状记忆材料与心脏补片结合并附着在导管头部，可使补片在到达心脏的指定位置后，像伞一样自动展开并形状适配至心外膜。据了解，在目前的技术条件下，在进行冠状动脉搭桥手术时，可以同时将多块细胞补片贴附到心肌表面。</p>
 <p>李梅进一步解释说道：“与仅能解决血管堵塞问题的搭桥手术相比，这种联合具有修复受损血管和减少心肌细胞死亡的双重效果。此外，由于口服营养药物无法直达心肌，我们的补片与手术的配合使用，能够持续地为心肌提供药物。”</p>
-<p><img src="https://gitee.com/anderson2/blogimage/raw/master/img/4134fd4bf2824952834ab23b4b947b47.png" alt="img">图丨心肌梗死大鼠植入的间充质干细胞补片向梗死心肌迁移并与之整合（来源：ACS Nano）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/4134fd4bf2824952834ab23b4b947b47.png" alt="img">图丨心肌梗死大鼠植入的间充质干细胞补片向梗死心肌迁移并与之整合（来源：ACS Nano）</p>
 <p>该课题组期望这种补片能尽快实现临床转化。目前，ferumoxytol 作为补铁剂和核磁共振成像造影剂的临床试验已在他们的推动下顺利进行。</p>
 <p>对于心肌补片的研究，他们计划在以下几个方面进一步深入：</p>
 <p>首先，在临床转化方面，将探索制备适合人类使用的大尺寸、含有 ferumoxytol 的间充质干细胞补片的方法，以及适宜的细胞补片存储和运输方式，这可能需要开发新型的冻存液。同时，还将进一步验证 ferumoxytol 的生物安全性以及改善 MSC 治疗功能的最佳剂量。</p>
@@ -1771,7 +1771,7 @@
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>治疗性抗体目前是生物疗法中最大的类别，因为它们的靶点特异性较好和结合亲和力较高。传统的抗体开发过程是基于主要的经验性方法，虽然成熟稳健，但繁琐且有显著的缺陷。最近，计算和人工智能（AI）技术的进步开始克服这些限制，被越来越多地整合到抗体开发的流程中。本文提供了与抗体开发相关的AI方法的概述，包括数据库、抗体属性和结构的计算预测模型，以及机器学习（ML）模型为重点的计算抗体设计方法。特别是，重点介绍了对结合至关重要的抗体结构组分，如互补决定区（CDR）环的设计。</p>
 <h2 id="传统抗体工程方法的限制"><a href="#传统抗体工程方法的限制" class="headerlink" title="传统抗体工程方法的限制"></a>传统抗体工程方法的限制</h2><p>传统的抗体工程方法虽然可以通过免疫或定向进化等方法获得binder，但仍然存在着一些较大的局限性。其中一个是很难针对抗原上的特定表位进行靶向。因为大多数筛选活动只能获得与给定表位结合的抗体，达不到所需要的生物活性。另一个缺陷是只有少数抗体具有成为治疗药物可能性，而大多数筛选活动中获得的初始阳性结果，会在后续开发中面临很多困难。此外，一旦获得候选的抗体 binder，抗体&#x2F;抗原复合物的结构解析是非常有用的，但是需要通过X射线晶体学或核磁共振手段，通常耗时且通量较低。</p>
 <h2 id="抗体序列和结构数据库"><a href="#抗体序列和结构数据库" class="headerlink" title="抗体序列和结构数据库"></a>抗体序列和结构数据库</h2><p>在抗体研发过程中，抗原的靶向以及功能，包括：抗原亲和力，靶标特异性，表位分析展示出的生物学功效以及有待开发的其余属性（Fig 1）。以上的能力和性质均由抗体的序列和结构决定。因此，关于抗体序列，结构和相关性质的信息对设计新型抗体是非常重要的。已经有了很多的数据库（Table 1），并且这些数据库对深度学习模型的训练也非常重要。</p>
-<p><img src="https://gitee.com/anderson2/blogimage/raw/master/img/640.jpeg" alt="图片"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/640.jpeg" alt="图片"></p>
 <p>Fig 1. 抗体工程中优化功效和功能</p>
 <table>
 <thead>
@@ -1874,16 +1874,16 @@
 <h3 id="基于ML的抗体结构建模"><a href="#基于ML的抗体结构建模" class="headerlink" title="基于ML的抗体结构建模"></a>基于ML的抗体结构建模</h3><p>抗体结构信息对于理解抗体的特性，如特异性和亲和力，至关重要。六个CDR（H1、H2、L1、L2和L3）中的五个，结构多样性有限，loop通常遵循规范的构象；这些环具有更多的结构约束，更容易预测。而 CDR-H3的构象非常多样，即便在序列相似性高的情况下。因此CDR-H3建模是一个约束较少、更困难的问题。</p>
 <p>许多实验性抗体设计技术产生了与结构无关的序列信息。在进行大规模筛选时，独立确定所有抗体 loop结构及其与抗原的界面是不切实际的。传统上，抗体结构的预测使用基于物理的建模（如分子动力学模拟），同源建模或组合方法（如 MODELLER）。</p>
 <p>相比之下，深度学习模型也被开发用于抗体结构建模。例如，ABodyBuilder是一个自动化的抗体同源建模流程，而ABlooper使用图神经网络预测CDR环的位置。此外，DeepAb从不变特征预测结构，并在预测精度方面取得了成功。然而，由于DeepAb依赖于Rosetta，其预测速度较慢，因此最近引入了更快的模型IgFold。另外，AlphaFold2被证明在从序列预测蛋白质结构方面具有革命性的作用，但由于其依赖同源序列的MSA，因此对于CDR-H3的建模不太适用。深度学习在抗体筛选方面也被证明是有用的，例如DLAB使用神经网络生成结合分数。总体而言，虽然这些方法取得了显著进展，但仍需要进一步研究以解决抗体&#x2F;抗原复合物结构的可靠建模问题，特别是针对CDR-H3的建模。</p>
-<p><img src="https://gitee.com/anderson2/blogimage/raw/master/img/640-17098164196172.png" alt="图片"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/640-17098164196172.png" alt="图片"></p>
 <p>Table 2 抗体结构模拟方法</p>
 <h3 id="基于结构的深度学习模型"><a href="#基于结构的深度学习模型" class="headerlink" title="基于结构的深度学习模型"></a>基于结构的深度学习模型</h3><p>最近的研究着重于利用深度学习（DL）技术在抗体设计领域的应用，特别是针对CDR-H3环的设计。这些努力主要分为两类：一类是通过生成3D坐标来设计CDR-H3的backbone，例如IG-VAE模型；另一类是利用学习蛋白质结构图嵌入的模型，预测特定突变引入后的ddG变化。然而，这些基于结构的模型仍然存在局限性，例如依赖外部工具进行序列设计，以及不能针对特定表位进行设计。</p>
-<p><img src="https://gitee.com/anderson2/blogimage/raw/master/img/640-17098164245474.png" alt="图片"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/640-17098164245474.png" alt="图片"></p>
 <p>Table 3 抗体设计深度学习模型</p>
 <h3 id="基于序列的深度学习模型"><a href="#基于序列的深度学习模型" class="headerlink" title="基于序列的深度学习模型"></a>基于序列的深度学习模型</h3><p>基于序列的深度学习（DL）模型可以分为两类：一类是试图仅从抗体序列中学习整体特征的DL模型；另一类是利用抗原特异性数据的序列方法。第一类模型通过学习抗体序列的相互依赖关系来设计，其中自回归或生成模型的出现使得可以生成类似于抗体的序列。Shin等人利用因果扩张卷积应用于自回归模型中，通过学习序列中的长程关系来生成纳米抗体库。随后，由于Transformer模型（如BERT）的发展，NLP取得了巨大进步，并将这些模型应用到蛋白质序列中，从而产生了ProtBERT和ESM-1b等模型。这些模型在捕获蛋白质序列的许多特性方面都取得了巨大成功。另一方面，另一种仅使用序列的方法则利用抗原特异性数据，例如Mason等人提出的方法可以训练卷积神经网络。未来的模型可能会结合语言模型的特征，并在实验数据上进行训练，以获得针对抗原结合进行优化的实际抗体。然而，目前纯粹基于序列的模型要么与抗原无关，要么需要外部实验数据，并且在生成过程中受益于结构信息的整合。</p>
 <h3 id="结构和序列信息是机器学习的抗体设计的未来"><a href="#结构和序列信息是机器学习的抗体设计的未来" class="headerlink" title="结构和序列信息是机器学习的抗体设计的未来"></a>结构和序列信息是机器学习的抗体设计的未来</h3><p>除了前述的经典工作之外，越来越多基于人工智能的方法开始被开发。例如，Jin等人开发了一个模型，以自回归方式生成CDR-H3环的序列和结构。下一个氨基酸的预测取决于抗体框架的粗粒化表示以及生成的loop中当前氨基酸的结构。他妈的结果展示了可能的针对SARS-CoV-1和SARS-CoV-2的抗体研发。尽管令人兴奋，但该模型并未对特定抗原表位进行调节，为进一步改进模型留下了空间。Kang等人采用了一种更简单的方法，其中抗体和抗原氨基酸被表示为图中的节点，通过界面残基节点之间的边捕获界面结构。尽管在某种程度上取得了成功，但该模型显示出对训练数据的显著的过拟合。未来的CDR-H3环的设计将在能够完全生成序列和结构的模型上，同时适当地对目标表位进行调节。</p>
 <h3 id="将AI设计方法纳入其中可能会改善抗体开发"><a href="#将AI设计方法纳入其中可能会改善抗体开发" class="headerlink" title="将AI设计方法纳入其中可能会改善抗体开发"></a>将AI设计方法纳入其中可能会改善抗体开发</h3><p>观察DL中一般蛋白质设计的发展，将其中成功的技术纳入到抗体设计的任务也很重要。最近，在将幻觉（hallucination）技术应用于一般蛋白质设计方面取得了成功。在这种方法中，随机选择蛋白质序列，然后使用现有的ML模型将其“折叠”成3D结构（通过骨架α-碳距离图预测），提供一个起点，然后通过蒙特卡洛过程引入突变。此外，扩散概率模型已经被成功应用于蛋白质骨架设计的生成。最近，基于打分的生成模型RFdiffusion和Chroma能够为新型蛋白质生成全原子坐标，其中Chroma能够创建含有数千个氨基酸的蛋白质。很明显，这些方法适用于CDR区域的设计，未来的工作有赖于它们。</p>
 <h2 id="总结以及未来展望"><a href="#总结以及未来展望" class="headerlink" title="总结以及未来展望"></a>总结以及未来展望</h2><p>该文总结了当前计算方法在治疗性抗体开发中的应用，包括结构、表位预测以及解决开发问题。这些方法不仅可以提高开发性能，还可以降低成本、减少劳动力。作者提到了AlphaFold2等工具在缩短时间方面的重要性。以新冠疫情为例，许多药物发现研究是通过计算方法进行的。作者强调了结构和序列设计中的DL方法的重要性，并展望了未来的发展方向，包括引入密码子优化和将各种进展整合成端到端的可微分流程。这些进展有望加速抗体开发，特别是在结合预测和结构搜索方面。</p>
-<p><img src="https://gitee.com/anderson2/blogimage/raw/master/img/640-17098164305196.jpeg" alt="图片"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/640-17098164305196.jpeg" alt="图片"></p>
 <p>Figure 2 抗体设计的最新计算手段</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>1.<a target="_blank" rel="noopener" href="https://www.cell.com/trends/pharmacological-sciences/fulltext/S0165-6147(22)00279-6">https://www.cell.com/trends/pharmacological-sciences/fulltext/S0165-6147(22)00279-6</a></p>
 
@@ -3606,11 +3606,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Paper</a>
+                <a href="javascript:void(0)" class="js-tag color2">BioProtocol</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">BioProtocol</a>
+                <a href="javascript:void(0)" class="js-tag color1">Paper</a>
               </li>
              
               <li class="article-tag-list-item">
