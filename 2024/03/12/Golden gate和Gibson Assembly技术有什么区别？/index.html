@@ -6,27 +6,33 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://nikolahuang.github.io">
-  <title>邓宏魁团队发表重大研究成果--化学小分子诱导人成体细胞转变为多潜能干细胞.md | Anderson Blog</title>
+  <title>Golden gate和Gibson Assembly技术有什么区别？ | Anderson Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="转载  Nature | 邓宏魁团队发表重大研究成果——化学小分子诱导人成体细胞转变为多潜能干细胞日期： 2022-04-14 2022年4月13日，北京大学生命科学学院、北大-清华生命联合中心邓宏魁研究团队在国际学术期刊Nature杂志在线发表了题为“Chemical reprogramming of human somatic cells to pluripotent stem cells”的">
+  <meta name="description" content="无缝克隆技术是时下最流行的质粒构建技术，几乎每个分子生物学实验室都在使用。以下将介绍Gibson Assembly的实验设计和操作流程，以及另外一种无缝克隆方法——Golden Gate Assembly，可以对比两种方法的优缺点和区别，希望能对大家的质粒构建实验有所帮助。  Gibson Assembly过去的十年间，科学家开发了许多不同的克隆方法来代替限制酶克隆，这些新的方法越来越常用，相较于">
 <meta property="og:type" content="article">
-<meta property="og:title" content="邓宏魁团队发表重大研究成果--化学小分子诱导人成体细胞转变为多潜能干细胞.md">
-<meta property="og:url" content="http://nikolahuang.github.io/2022/04/14/%E9%82%93%E5%AE%8F%E9%AD%81%E5%9B%A2%E9%98%9F%E5%8F%91%E8%A1%A8%E9%87%8D%E5%A4%A7%E7%A0%94%E7%A9%B6%E6%88%90%E6%9E%9C-%E5%8C%96%E5%AD%A6%E5%B0%8F%E5%88%86%E5%AD%90%E8%AF%B1%E5%AF%BC%E4%BA%BA%E6%88%90%E4%BD%93%E7%BB%86%E8%83%9E%E8%BD%AC%E5%8F%98%E4%B8%BA%E5%A4%9A%E6%BD%9C%E8%83%BD%E5%B9%B2%E7%BB%86%E8%83%9E-md/index.html">
+<meta property="og:title" content="Golden gate和Gibson Assembly技术有什么区别？">
+<meta property="og:url" content="http://nikolahuang.github.io/2024/03/12/Golden%20gate%E5%92%8CGibson%20Assembly%E6%8A%80%E6%9C%AF%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F/index.html">
 <meta property="og:site_name" content="Anderson Blog">
-<meta property="og:description" content="转载  Nature | 邓宏魁团队发表重大研究成果——化学小分子诱导人成体细胞转变为多潜能干细胞日期： 2022-04-14 2022年4月13日，北京大学生命科学学院、北大-清华生命联合中心邓宏魁研究团队在国际学术期刊Nature杂志在线发表了题为“Chemical reprogramming of human somatic cells to pluripotent stem cells”的">
+<meta property="og:description" content="无缝克隆技术是时下最流行的质粒构建技术，几乎每个分子生物学实验室都在使用。以下将介绍Gibson Assembly的实验设计和操作流程，以及另外一种无缝克隆方法——Golden Gate Assembly，可以对比两种方法的优缺点和区别，希望能对大家的质粒构建实验有所帮助。  Gibson Assembly过去的十年间，科学家开发了许多不同的克隆方法来代替限制酶克隆，这些新的方法越来越常用，相较于">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bio.pku.edu.cn/Uploads/image/20220414/20220414081730_36716.png">
-<meta property="og:image" content="https://bio.pku.edu.cn/Uploads/image/20220414/20220414081750_21107.png">
-<meta property="og:image" content="https://bio.pku.edu.cn/Uploads/image/20220414/20220414081805_22713.png">
-<meta property="og:image" content="https://bio.pku.edu.cn/Uploads/image/20220414/20220414081834_61443.png">
-<meta property="article:published_time" content="2022-04-14T03:44:57.000Z">
-<meta property="article:modified_time" content="2024-03-04T06:51:41.750Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/v2-73fc027db7bf901f5ab3a925ffa06f8b_r.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/v2-9a87cd8b797a2397d7447aac9cae3673_r.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/v2-4b49b71fbb26663524ccd575b7f04571_r.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240312120625394.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240312125045315.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240312130523817.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240312130837865.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240312131055536.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240312131344150.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240312131430477.png">
+<meta property="article:published_time" content="2024-03-12T03:09:22.000Z">
+<meta property="article:modified_time" content="2024-03-12T15:27:40.901Z">
 <meta property="article:author" content="Anderson">
-<meta property="article:tag" content="BioNews">
+<meta property="article:tag" content="BioLearning">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://bio.pku.edu.cn/Uploads/image/20220414/20220414081730_36716.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/v2-73fc027db7bf901f5ab3a925ffa06f8b_r.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Anderson Blog" type="application/atom+xml">
   
@@ -229,14 +235,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-邓宏魁团队发表重大研究成果-化学小分子诱导人成体细胞转变为多潜能干细胞-md" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Golden gate和Gibson Assembly技术有什么区别？" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      邓宏魁团队发表重大研究成果--化学小分子诱导人成体细胞转变为多潜能干细胞.md
+      Golden gate和Gibson Assembly技术有什么区别？
     </h1>
   
 
@@ -248,8 +254,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2022/04/14/%E9%82%93%E5%AE%8F%E9%AD%81%E5%9B%A2%E9%98%9F%E5%8F%91%E8%A1%A8%E9%87%8D%E5%A4%A7%E7%A0%94%E7%A9%B6%E6%88%90%E6%9E%9C-%E5%8C%96%E5%AD%A6%E5%B0%8F%E5%88%86%E5%AD%90%E8%AF%B1%E5%AF%BC%E4%BA%BA%E6%88%90%E4%BD%93%E7%BB%86%E8%83%9E%E8%BD%AC%E5%8F%98%E4%B8%BA%E5%A4%9A%E6%BD%9C%E8%83%BD%E5%B9%B2%E7%BB%86%E8%83%9E-md/" class="archive-article-date">
-        <time datetime="2022-04-14T03:44:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-14</time>
+<a href="/2024/03/12/Golden%20gate%E5%92%8CGibson%20Assembly%E6%8A%80%E6%9C%AF%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F/" class="archive-article-date">
+        <time datetime="2024-03-12T03:09:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-12</time>
 </a>
 
   
@@ -262,7 +268,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">3k字</span>
+      <span class="post-count">4.1k字</span>
     </span>
   </span>
 
@@ -271,7 +277,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">10分</span>
+      <span class="post-count">15分</span>
     </span>
   </span>
 </div>
@@ -282,29 +288,128 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>转载</p>
+    <p>无缝克隆技术是时下最流行的质粒构建技术，几乎每个分子生物学实验室都在使用。以下将介绍Gibson Assembly的实验设计和操作流程，以及另外一种无缝克隆方法——Golden Gate Assembly，可以对比两种方法的优缺点和区别，希望能对大家的质粒构建实验有所帮助。</p>
 <hr>
-<h3 id="Nature-邓宏魁团队发表重大研究成果——化学小分子诱导人成体细胞转变为多潜能干细胞"><a href="#Nature-邓宏魁团队发表重大研究成果——化学小分子诱导人成体细胞转变为多潜能干细胞" class="headerlink" title="Nature | 邓宏魁团队发表重大研究成果——化学小分子诱导人成体细胞转变为多潜能干细胞"></a>Nature | 邓宏魁团队发表重大研究成果——化学小分子诱导人成体细胞转变为多潜能干细胞</h3><p>日期： 2022-04-14</p>
-<p>2022年4月13日，北京大学生命科学学院、北大-清华生命联合中心邓宏魁研究团队在国际学术期刊Nature杂志在线发表了题为“Chemical reprogramming of human somatic cells to pluripotent stem cells”的研究论文，首次在国际上报道了使用化学小分子诱导人成体细胞转变为多潜能干细胞这一突破性研究成果。运用化学小分子重编程细胞命运（化学重编程），是继“细胞核移植”和“转录因子诱导”之后新一代的，由我国自主研发的人多潜能干细胞制备技术，为我国干细胞和再生医学的发展解决了底层技术上的“瓶颈”问题。</p>
-<p>多潜能干细胞具有无限增殖的特性和分化成生物体所有功能细胞类型的能力，这些神奇的特质使其在细胞治疗、药物筛选和疾病模型等领域具有广泛的应用价值，是再生医学领域最为关键的“种子细胞”。在哺乳动物自然发育过程中，多潜能干细胞只短暂存在于胚胎发育的早期阶段，随后便会分化为构成生物体的各种类型的成体细胞，丧失其“种子细胞”的特性。如何逆转这一自然发育过程，使高度分化的成体细胞重新获得类似胚胎发育早期的多潜能状态，一直是干细胞与再生医学领域最重要的科学问题之一。</p>
-<p>上世纪60年代，英国科学家John Gurdon在爪蟾中开发了细胞核移植技术，1997年Ian Wilmut团队利用该技术制备了克隆羊多莉，证明了哺乳动物高度分化的体细胞也可以被逆转为早期胚胎的初始状态，并获得了发育为整个动物个体的能力。2006年，日本科学家Shinya Yamanaka报道了使用转基因的方式可以将小鼠成体细胞重编程为多潜能干细胞，称为诱导多潜能干细胞（induced pluripotent stem cell，iPS细胞）。细胞核移植和导入外源基因的方法，证明了哺乳动物体细胞可以通过重编程逆转为胚胎发育早期状态，重新获得“多潜能性”。这两项技术于2012年荣获诺贝尔生理学或医学奖。iPS技术的建立，打破了传统胚胎干细胞的伦理限制，为构建病人自体特异性干细胞系提供了全新的方法，大大加速了干细胞临床应用的进程。近年来，已开展了针对帕金森、糖尿病和癌症等多种重点疾病的细胞治疗临床试验。然而，目前细胞治疗的技术体系都是国外发展起来的，中国能否拥有原创的底层技术？</p>
-<p>长期以来，邓宏魁团队一直致力于开发调控细胞命运的新方法和建立制备干细胞的底层技术。2013年，邓宏魁团队在Science杂志发表了一项原创性的研究成果，即不依赖卵母细胞和转录因子等细胞内源物质，仅使用外源性化学小分子就可以逆转细胞命运，将小鼠体细胞重编程为多潜能干细胞（chemically induced pluripotent stem cells, CiPS细胞）。相比传统方法，化学小分子操作简便灵活，时空调控性强、作用可逆，可以对细胞重编程过程进行精确操控。另外小分子诱导体细胞重编程技术作为非整合方法，规避了传统转基因操作引发的安全问题，有望成为更安全的临床治疗手段。之后，邓宏魁团队又相继在Cell和Cell Stem Cell等杂志发表文章，详细阐明了化学重编程独特的分子机理，并进一步对小鼠化学重编程体系进行了大幅优化。随后，包括谢欣、姚红杰、裴端卿、刘林、祝赛勇等多个研究组利用相同或类似的化学小分子组合，重复和优化了小鼠化学重编程技术。化学重编程诱导多潜能干细胞的研究开辟了一条全新的体细胞重编程途径，不仅有助于更好地理解细胞命运决定和转变机制，而且为未来再生医学治疗重大疾病带来新的可能。</p>
-<p>本次研究中，邓宏魁团队首次报道了使用化学重编程的方法，成功实现了使用化学小分子将人成体细胞诱导为多潜能干细胞(人CiPS细胞)。这一技术的建立开辟了人多潜能干细胞制备的全新途径，使其向临床应用，迈进了关键一步。</p>
-<p>**<img src="https://bio.pku.edu.cn/Uploads/image/20220414/20220414081730_36716.png" alt="img"><br>**</p>
-<p><strong>图1：新一代诱导多潜能干细胞技术</strong></p>
-<p>作为高等动物，人类成体细胞特性和稳态调控的复杂性远非小鼠成体细胞可比，在表观遗传层面上存在重重障碍，严重限制了在人类成体细胞中激发细胞可塑性的可能。自2013年以来，尽管众多国际团队在小鼠化学重编程工作的启发下进行大量尝试，却一直未能解决人类成体细胞的化学重编程问题。这使得领域内普遍认为：人类成体细胞的表观遗传限制是极其严格的，很可能无法通过化学重编程激发人类成体细胞获得多潜能性。邓宏魁团队经过长期地坚持和不懈努力，突破了这一瓶颈。这一突破的关键步骤受低等动物再生过程启发。蝾螈等低等动物在受到外界损伤后其体细胞会自发的改变本身的特性，进而通过去分化获得一定的可塑性，借助这一可塑的中间状态实现肢体的再生。沿着这一思路，研究团队进行了大量化学小分子的筛选和组合，最终发现高度分化的人成体细胞在特定的化学小分子组合的作<br>用下，同样可以发生类似去分化的现象，获得具有一定可塑性的中间状态。在此基础上，研究团队最终实现了人CiPS细胞的成功诱导。</p>
-<p><img src="https://bio.pku.edu.cn/Uploads/image/20220414/20220414081750_21107.png" alt="img"></p>
-<p><strong>图2 人体细胞化学重编程诱导人CiPS细胞</strong></p>
-<p>与传统的技术体系相比，CiPS细胞诱导技术具有更加安全和简单、易于标准化、易于调控等不可替代的优势，突破了iPS技术面临的限制，具有广阔的临床应用前景。1）安全性方面，之前在小鼠CiPS细胞中已经证明，其携带的遗传突变显著少于传统 iPS 细胞，产生的嵌合体小鼠在长达 6个月的观察期内不产生肿瘤且全部健康存活。同时，人CiPS细胞分化来源的胰岛细胞移植入小鼠和非人灵长类动物模型体内，经过长期观察未发现肿瘤形成；2）在个体化制备方面，研究团队目前已在不同年龄个体来源的体细胞类型上都可实现稳定诱导人CiPS细胞；3）在细胞标准化制备方面，化学小分子具有操作简单，时空调控性强，作用可逆，合成储存方便，易于标准化生产等一系列特点，使得人CiPS细胞在标准化和规模化生产方面有着不可替代的优势。要特别指出的是，人CiPS细胞能高效制备胰岛细胞，且安全有效地改善了糖尿病猴的血糖控制，凸显了人CiPS细胞作为“种子细胞”治疗重大疾病在安全性和有效性上的巨大优势。这一研究的主要结果于今年二月发表在医学杂志Nature Medicine上。</p>
-<p><img src="https://bio.pku.edu.cn/Uploads/image/20220414/20220414081805_22713.png" alt="img"></p>
-<p><strong>图3：人CiPS技术在生物医学领域具有广阔的潜在应用前景</strong></p>
-<p>在此基础上，研究团队还描绘了化学重编程诱导人CiPS细胞的分子路径，揭示了化学重编程与传统转录因子重编程不同的分子机制和独特的调控机理。研究发现人CiPS的诱导以分阶段精确调控的方式发生，在早期阶段产生了特殊的中间状态。通过和低等动物再生去分化过程中细胞性质的详细比较，研究团队确认了人CiPS细胞诱导的早期阶段激活了与低等动物断肢再生早期类似的基因表达特征。更重要的是，研究团队还发现了调控这一类再生状态的关键信号通路，证明抑制过度的炎症反应，对于化学重编程诱导人体细胞重新获得类再生中间态至关重要。这一再生中间态为研究人体细胞重新激活再生基因提供了全新的思路，并且提示将来有仅通过化学小分子组合重新激活人体细胞可塑性和再生潜能的可能性，有望推动化学重编程在组织器官再生方向的应用，为再生医学研究提供新的可能途径。</p>
-<p>**<div align="center"><img src="https://bio.pku.edu.cn/Uploads/image/20220414/20220414081834_61443.png" alt="图4. 化学重编程激活再生相关网络的分子机制"><br>**</div></p>
+<h3 id="Gibson-Assembly"><a href="#Gibson-Assembly" class="headerlink" title="Gibson Assembly"></a>Gibson Assembly</h3><p>过去的十年间，科学家开发了许多不同的克隆方法来代替限制酶克隆，这些新的方法越来越常用，相较于传统的限制克隆有许多优势。</p>
+<h4 id="01简介"><a href="#01简介" class="headerlink" title="01简介"></a>01简介</h4><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/v2-73fc027db7bf901f5ab3a925ffa06f8b_r.jpg" alt="img" style="zoom: 67%;">
+
+<p>Gibson组装技术在2009年首次被Dr.Daniel和其同事提出。Gibson连接因能轻易地组装多个线性DNA片段而著名，也可以用于将一个目的片段插入选择的载体中完成基本克隆。</p>
+<p>简单地说，进行Gibson连接时首先需要获得末端含有同源区域的DNA片段，一般是通过PCR获得，然后这些片段和酶混合物（an enzyme master mix）共孵育完成连接，该酶混合物含有三个不同的酶：</p>
+<p><strong>T5 核酸外切酶：</strong>用于消化片段的5’末端，产生长突出末端，允许同源单链区域退火。</p>
+<p><strong>Phusion聚合酶：</strong>用于填充缺口。</p>
+<p><strong>Taq连接酶：</strong>用于连接切口。</p>
+<p>该酶混合物的一个优点是它们可以在同一温度下工作，所以整个反应在50℃孵育1h或更少的时间即可完成。1h以后，连接产物立即被转化入感受态细胞中。酶混合物可在生物科技公司如NEB或SGI-DNA购买，也可以自己混合。</p>
+<h4 id="02-Gibson连接过程"><a href="#02-Gibson连接过程" class="headerlink" title="02 Gibson连接过程"></a>02 Gibson连接过程</h4><h5 id="Gibson连接步骤："><a href="#Gibson连接步骤：" class="headerlink" title="Gibson连接步骤："></a><strong>Gibson连接步骤：</strong></h5><ol>
+<li><strong>设计引物</strong>：相邻片段的同源区域是通过使用含合适同源序列的引物进行PCR扩增添加上去的。NEB推荐使用15-40bp的重叠区，引物融解温度要高于48℃。Snapgene和NEB都有引物设计工具，可帮助设计含同源区域的引物。</li>
+<li><strong>扩增片段</strong>：可以通过PCR扩增片段和载体，鉴定片段大小并纯化DNA片段；</li>
+<li><strong>连接反应</strong>：只需要混合DNA片段、线性质粒和Gibson assembly master mix，50℃孵育1h后，将连接产物转化到感受态细胞中。</li>
+</ol>
+<h5 id="连接反应过程："><a href="#连接反应过程：" class="headerlink" title="连接反应过程："></a><strong>连接反应过程：</strong></h5><ol>
+<li>T5核酸外切酶以5’到3’的方向消化DNA片段，每条DNA链形成一个单链DNA突出末端。</li>
+<li>两相邻片段的突出末端含同源区域，DNA片段可退火，互补序列配对。</li>
+<li>配对后仍存在缺口，利用DNA聚合酶补全缺口。</li>
+<li>最后DNA连接酶在切口处形成磷酸二酯键，完成连接。</li>
+</ol>
+<p><strong>反应示意图如下</strong>：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/v2-9a87cd8b797a2397d7447aac9cae3673_r.jpg" alt="img"></p>
+<p>该反应的成功率非常高，一般不需要筛选大量的单克隆。除去获取引物的时间，可以在5天内完成克隆。</p>
+<h5 id="实验安排："><a href="#实验安排：" class="headerlink" title="实验安排："></a><strong>实验安排：</strong></h5><p>第一天：摇菌</p>
+<p>第二天：收菌，提基因组，扩片段，胶回收；提质粒，酶切或PCR扩增获取线性质粒，胶回收</p>
+<p>第三天：连接，转化</p>
+<p>第四天：挑取单克隆进行PCR鉴定，取鉴定结果为成功的单克隆摇菌</p>
+<p>第五天：收菌，提质粒，PCR、酶切鉴定，鉴定结果为成功后送测序并保菌</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/v2-4b49b71fbb26663524ccd575b7f04571_r.jpg" alt="img"></p>
+<h5 id="03优缺点"><a href="#03优缺点" class="headerlink" title="03优缺点"></a>03优缺点</h5><p><strong>优点：</strong></p>
+<p>可一步完成多达6个片段的连接</p>
+<p>无痕连接</p>
+<p>相比其它克隆方法利用片段间较短的重复区域，Gibson连接利用的片段间的长重复区域更特异性地确保了连接顺序。</p>
+<p><strong>缺点：</strong></p>
+<p>连接的片段大小最好大于200bp。这可能是因为在退火和聚合步骤之前，核酸外切酶能完全消化小于200bp的片段。</p>
+<p>如果片段的末端含有稳定的单链DNA二级结构如发夹结构或茎环结构（可能发生在终止子序列上），因为抑制了单链退火，阻止了相邻片段的连接，会导致连接效果不好。</p>
+<p>每个片段的长引物必须专门设计，对于每个片段及其相邻片段都是特异性的，所以只能在某一特定的实验中使用。</p>
+<h5 id="04-结合CRISPR技术使用"><a href="#04-结合CRISPR技术使用" class="headerlink" title="04 结合CRISPR技术使用"></a>04 结合CRISPR技术使用</h5><p>Gibson连接能用于更复杂的克隆计划，比如载体片段很大，GC含量高，含有许多重复序列的克隆，以上任何一点都会使PCR步骤变得困难；又比如载体上无限制性位点帮助质粒线性化的克隆。这些情况下可以结合CRISPR技术实现实验目的。</p>
+<p>最新研究案例显示，结合Gibson Assembly和CRISPR技术在基因组编辑方面取得了重要进展。研究表明，CRISPR技术的高效性和简便性使其成为主流，但也有科学家在探索其他基因组编辑技术。例如，南京大学团队开发了结构引导的内切酶FEN1基因组编辑系统，展示了新型编辑技术的潜力<a target="_blank" rel="noopener" href="https://cjb.ijournals.cn/html/cjbcn/2017/3/gc17030343.htm">1</a>。此外，CRISPR系统的Cas9蛋白与特定的DNA结合并切割DNA，已广泛应用于基因研究、疾病模型建立和治疗研究<a target="_blank" rel="noopener" href="https://cjb.ijournals.cn/cjbcn/article/pdf/gc17030343">2</a>。另一项研究指出，CRISPR技术在微生物合成生物学中得到广泛应用，为微生物底盘细胞构建和微生物天然产物生物合成提供了支持<a target="_blank" rel="noopener" href="https://lifescience.sinh.ac.cn/webadmin/upload/20195493.pdf">3</a>。综合来看，结合Gibson Assembly和CRISPR技术在基因组编辑和微生物合成领域展现出巨大潜力，并为未来研究提供了新的可能性。</p>
+<p>结合Gibson Assembly和CRISPR技术的研究案例包括：</p>
+<ol>
+<li>南京大学团队开发了结构引导的内切酶FEN1基因组编辑系统，展示了新型编辑技术的潜力<a target="_blank" rel="noopener" href="https://cjb.ijournals.cn/html/cjbcn/2017/3/gc17030343.htm">2</a></li>
+<li>韩春雨团队发现来源于格氏嗜盐碱杆菌的Argonaute蛋白可以利用磷酸化的ssDNA引导切割特定的双链DNA，可在哺乳动物细胞中进行基因组编辑操作<a target="_blank" rel="noopener" href="https://cjb.ijournals.cn/html/cjbcn/2017/3/gc17030343.htm">2</a></li>
+<li>CRISPR技术在微生物合成生物学中得到广泛应用，为微生物底盘细胞构建和微生物天然产物生物合成提供支持<a target="_blank" rel="noopener" href="https://lifescience.sinh.ac.cn/webadmin/upload/20195493.pdf">5</a></li>
+</ol>
+<p>结合Gibson Assembly和CRISPR技术的组合可用于研究疾病，特别是基因组编辑方面。通过这种组合，可以实现精准的基因编辑和调控，有助于研究疾病相关基因的功能和影响。其中，CRISPR文库是一个基于CRISPR&#x2F;Cas9技术的高通量基因筛选方案，可用于功能性筛选、富集以及深度测序分析，从而挖掘与特定表型相关的基因或筛选药物新靶点<a target="_blank" rel="noopener" href="https://ubigene.com/service/crispr/3108.html">2</a>。此外，结合Gibson Assembly和CRISPR技术可以实现高效的基因组编辑操作，例如利用内切酶FEN1基因组编辑系统进行精准编辑[1](<a target="_blank" rel="noopener" href="https://www.agilent.com/cs/library/brochures/CRISPR">https://www.agilent.com/cs/library/brochures/CRISPR</a> Brochure 5991-9158ZHCN 6.0.pdf)。这种组合技术在疾病研究中具有巨大潜力，可以帮助科学家更好地理解疾病发生机制、寻找治疗方法以及开发新的治疗策略。</p>
 <hr>
-<p>近年来，邓宏魁团队已经将化学重编程的策略拓展到了调控细胞命运的不同方面应用上。该团队利用化学小分子实现了不同体细胞类型间的转变，直接将皮肤细胞重编程为功能神经元（Cell Stem Cell, 2015；Cell Stem Cell, 2017）；建立了具有全能性功能特征的EPS细胞（Cell，2017）；解决了肝脏细胞功能体外难以长期维持的难题（Science, 2019），构建了具有再生能力的新型类器官模型（Cell Research, 2021），实现了体内原位化学重编程（Cell Discovery, 2021）。这一系列工作体现了化学小分子调控细胞命运的普适性。</p>
-<p>综上所述，化学重编程技术体系的建立不仅在多潜能干细胞临床应用领域具有巨大的意义和价值，同时为细胞命运调控及再生生物学理论研究方面提供了全新的视角和平台。化学重编程可以精确调控细胞命运，有望成为高效制备各种功能细胞类型的通用技术，为治疗重大疾病开辟了新的途径。</p>
-<p>北京大学生命科学学院、北大-清华生命联合中心邓宏魁教授领导了此项研究。邓宏魁教授，北京大学王金琳博士和中国人民解放军总医院卢实春教授是这一研究成果的共同通讯作者。北京大学关景洋，王冠，王金琳，张正元，傅瑶，成林，孟高帆，吕钰麟为该研究成果的主要作者。北京大学李程教授为该研究的生物信息分析提供了重要指导。本工作获得了北大-清华生命科学联合中心、国家重点研发计划项目、国家自然科学基金等支持。</p>
-<p>原文链接：<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41586-022-04593-5">https://www.nature.com/articles/s41586-022-04593-5</a></p>
+<h5 id="05-其它基于同源的克隆技术"><a href="#05-其它基于同源的克隆技术" class="headerlink" title="05 其它基于同源的克隆技术"></a>05 其它基于同源的克隆技术</h5><p>之前我们已经介绍过不依赖于序列和连接的克隆（SLIC）。虽然SLIC相比Gbison连接更便宜，但Gibson连接也改善了SLIC方法以下的两个方面：</p>
+<p>一：Gibson连接使用了一种专用的5’核酸外切酶而不是T4DNA聚合酶的核酸外切酶活性，不需要受dNTPs存在情况的调控。</p>
+<p>二：Gibson连接使用的连接酶可体外修复切口，而SLIC是利用大肠杆菌的同源重组系统在体内修复载体，效率较低。</p>
+<p>除了SLIC和Gibson，还有许多其它的基于同源重组的连接方法，如CPEC（circular polymerase extension cloning）和SLiCE（Seamless Ligation Cloning Extract）等。同样地，也有许多基于长重叠区域的克隆试剂盒，不需要限制酶，且为无痕连接。</p>
+<h5 id="06区分几种克隆方法"><a href="#06区分几种克隆方法" class="headerlink" title="06区分几种克隆方法"></a>06区分几种克隆方法</h5><p>有两种常用的克隆方法经常和Gibson连接混淆，但其实工作机制完全不同：</p>
+<p><strong>Golden gate克隆</strong>为无痕连接，但它是利用了Type IIS 限制性内切酶切割识别位点外的DNA序列的特点，需要确保载体和DNA片段上的识别位点在正确的位置且不存在于插入片段内部。</p>
+<p><strong>Gateway克隆</strong>利用了 整合酶催化att位点重组，这个方法需要特异性载体，其上含有整合位点并且会在片段之间留下痕迹，但是该方法可以轻易地将DNA片段从一个载体上移到另一个载体上。</p>
+<p>现在有许多不同的克隆方法。Gibson和其它的基于长同源序列的克隆方法是替代限制克隆、Gateway或者Golden gate克隆的一种好方法。不管是要常规克隆、多片段克隆还是用于合成生物学，都应该尝试着使用一下该方法。</p>
+<hr>
+<h3 id="Golden-gate"><a href="#Golden-gate" class="headerlink" title="Golden gate"></a>Golden gate</h3><p>Golden gate 的方法跟传统的分子克隆的方法的优势相比在于可以实现片段的边切变边连,节省时间，同时可以连个多个片段的连接。</p>
+<p>Golden Gate Assembly是一种新型的酶切连接方法 [1, 2]，与传统的酶切连接方法不同。传统的酶切连接方法采用标准的II型限制性内切酶 (限制酶) (例如<em>Eco</em>RI) 切割DNA，这些限制酶通常识别4~8 bp的回文序列，并在识别序列内部切割产生粘性末端或平末端 (图1A)。<strong>而Golden Gate Assembly采用IIS型限制酶 (例如*Bsa*I) 切割DNA，这些限制酶识别非回文序列，并在识别序列外部切割产生粘性末端</strong> (图1B)。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240312120625394.png" alt="image-20240312120625394"></p>
+<p>IIS型限制酶切割DNA产生的粘性末端通常为2个碱基或4个碱基。在连接反应中，粘性末端的碱基数越多，连接产物的保真度越高，因此Golden Gate Assembly通常采用能够产生4碱基粘性末端的IIS限制酶，**常用的有*Bsa*I、*Bsm*BI和*Bbs*I (图2)<strong>。NEB公司对这三种野生型的限制酶进行了分子改造，得到三种</strong>识别序列不变但特异性更强的限制酶，分别是*Bsa*I-HFv2、*Bsm*BI-v2和*Bbs*I-HF (图2)**。这些限制酶的识别序列长度都是6 bp，因此在DNA序列中出现的概率都是1&#x2F;4096。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240312125045315.png" alt="image-20240312125045315"></p>
+<p>如图2所示，*<em>三种IIS型限制酶的特异性可分别记为：*Bsa*I (GGTCTC 1&#x2F;5),*Bsm*BI (CGTCTC 1&#x2F;5),*Bbs*I (GAAGAC 2&#x2F;6)*<em>。除此之外，能够产生3碱基粘性末端的IIS型限制酶</em>Sap*I (GCTCTTC 1&#x2F;4) 也常被使用 [3]，这个限制酶虽然产生的粘性末端更短，导致连接产物的保真度会略有降低，但是识别序列长度更长 (为7 bp)，因此在DNA序列中出现的概率是1&#x2F;16384。根据切割位点序列的不同，</em>Bsa<em>I、</em>Bsm<em>BI和</em>Bbs<em>I可以产生的粘性末端有256种，</em>Sap*I可以产生的粘性末端有64种。</p>
+<p>市面上有许多基于Golden Gate Assembly的克隆试剂盒，不过价格都很贵，我一向建议大家自己买酶和试剂配制反应体系，只要弄懂Golden Gate Assembly的工作原理和实验设计方法就没有问题。下面我以<em>Bsa</em>I-HFv2为例，讲讲如何使用Golden Gate Assembly构建质粒。</p>
+<ul>
+<li><strong>设计引物</strong></li>
+</ul>
+<p>通过PCR引入<em>Bsa</em>I的识别序列，识别序列加在引物的5’端，为了确保限制酶能稳定结合到DNA双链上并发挥切割作用，需在识别序列末端加上保护碱基。保护碱基的数量和种类不是固定的，为了简化引物设计，大家可以用TTT作为保护碱基(3 bp的保护碱基对于绝大多数限制酶来说是足够的，若是为了保险起见，也可将保护碱基增加至6 bp。由于切割位点在识别序列的下游且可以是任意序列，因此有3种不同的引物设计方法，如图3所示。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240312130523817.png" alt="image-20240312130523817"></p>
+<p>[^图3]: 设计引物的三种策略：N代表任意碱基, 1234和5678代表两个不同的切割位点, N和切割位点既可以利用PCR模板现有的序列，也可以通过引物引入</p>
+<ul>
+<li><strong>实验原理</strong></li>
+</ul>
+<p><strong>(1) 2个DNA片段的连接</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240312130837865.png" alt="image-20240312130837865"></p>
+<p>[^图4]: Golden Gate Assembly连接两个片段</p>
+<p><strong>(2) 4个DNA片段的连接</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240312131055536.png" alt="image-20240312131055536"></p>
+<p>[^图5]: Golden Gate Assembly连接四个片段：1234, 5678, abcd和efgh代表四个不同的切割位点</p>
+<p>上面两个图分别展示了2个片段连接和4个片段连接的工作原理，其他数量片段的连接类似。酶切和连接是在同一个反应体系中进行的，可以用PCR产物作为底物 (如图4和图5)，也可以先将PCR产物分别克隆到质粒载体上，再用质粒作为底物。<strong>在合适的实验条件和实验设计下，利用Golden Gate Assembly可以组装超过20个DNA片段</strong>。下面这个小视频可以帮助大家进一步理解Golden Gate Assembly的工作原理。</p>
+<ul>
+<li><strong>操作流程</strong></li>
+</ul>
+<p><strong>(1) 配制反应体系</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240312131344150.png" alt="image-20240312131344150" style="zoom: 50%;">
+
+<p>① 每个插入片段的加入量可根据载体的加入量与载体和插入片段的长度进行换算，这里提供一个换算工具<a target="_blank" rel="noopener" href="http://nebiocalculator.neb.com/#!/ligation">http://nebiocalculator.neb.com/#!/ligation</a>; ②其他可用的内切酶：BsmBI-v2(NEB #R0739, 10U&#x2F;µl), BbsI-HF (NEB #3539, 10U&#x2F;µl), SapI (NEB #R0569,10U&#x2F;µl); ③若插入片段数量为1<del>10，则用10 units；若插入片段数量大于10，则用20 units; ④ 若插入片段数量为1</del>10，则用500 units；若插入片段数量大于10，则用1000units。</p>
+<p><strong>(2) 反应程序</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240312131430477.png" alt="image-20240312131430477" style="zoom:50%;">
+
+<p>注: 37℃是BsaI-HFv2的最适反应温度，若使用其他限制酶，该温度可能需要调整，比如BsmBI-v2的最适温度为42℃。</p>
+<ul>
+<li><strong>优点</strong></li>
+</ul>
+<p><strong>与传统的酶切连接比较</strong></p>
+<p>(1) IIS型限制酶的切割位点在识别序列外部，因此识别序列在酶切过程中被除去，不会在连接产物中引入不必要的序列。</p>
+<p>(2) IIS型限制酶对切割位点的序列没有要求，因此可以通过设计切割位点的序列产生不同的粘性末端，使得多片段定向组装成为可能。</p>
+<p>(3) 由于识别序列不会残留在连接产物中，因此酶切反应和连接反应可以在同一个反应体系中进行，简化了实验流程。</p>
+<p><strong>与Gibson Assembly比较</strong></p>
+<p>(1) 片段连接过程中不涉及序列的降解和合成，因此连接产物的保真度更高。</p>
+<p>(2) 可以组装的DNA片段数量更多，适用于质粒建库。</p>
+<p>(3) 可以组装带有同源序列或重复序列的DNA片段，比如可用于构建表达多个sgRNA的质粒 [4]。</p>
+<p>(4) 可以构建标准化的合成生物学元件，这一点类似于和BioBricks。</p>
+<ul>
+<li><strong>注意事项</strong></li>
+</ul>
+<p>(1) 需选用合适的限制酶，该限制酶的识别序列在最终的连接产物中不能出现。</p>
+<p>(2) 设计引物时，识别序列和切割位点的取向要正确。</p>
+<p>(3) 当插入片段的数量较多时，为了确保连接的特异性，需要合理设计切割位点的4 bp序列。</p>
+<hr>
+<p>[1] Engler, C., et al. (2008) <em>PLoS One</em> 3, e3647.</p>
+<p><a target="_blank" rel="noopener" href="https://dx.doi.org/10.1371/journal.pone.0003647">A One Pot, One Step, Precision Cloning Method with High Throughput Capabilitydx.doi.org&#x2F;10.1371&#x2F;journal.pone.0003647</a></p>
+<p>[2] Engler, C.,et al.(2009) <em>PLoS One</em> 4, e5553.</p>
+<p><a target="_blank" rel="noopener" href="https://dx.doi.org/10.1371/journal.pone.0005553">Golden Gate Shuffling: A One-Pot DNA Shuffling Method Based on Type IIs Restriction Enzymesdx.doi.org&#x2F;10.1371&#x2F;journal.pone.0005553</a></p>
+<p>[3] Whitman, L., et al. (2013) <em>Genet. Eng. Biotechnol.</em> 33, 42.</p>
+<p><a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/262372605_Rapid_Scarless_Cloning_of_Gene_Fragments_Using_the_Electra_Vector_System">(PDF) Rapid, Scarless Cloning of Gene Fragments Using the Electra Vector System.www.researchgate.net/publication/262372605_Rapid_Scarless_Cloning_of_Gene_Fragments_Using_the_Electra_Vector_System</a></p>
+<p>[4] Vad-Nielsen, J., et al. (2016) <em>Cell Mol. Life Sci.</em> 73, 4315–4325.</p>
+<p><a target="_blank" rel="noopener" href="https://doi.org/10.1007/s00018-016-2271-5">https://doi.org/10.1007/s00018-016-2271-5doi.org/10.1007/s00018-016-2271-5</a></p>
+<p>[5] HamediRad, M., et al. (2019) <em>ACS Synth. Biol.</em> 8, 1047–1054.</p>
+<p><a target="_blank" rel="noopener" href="https://doi.org/10.1021/acssynbio.8b00480">Highly Efficient Single-Pot Scarless Golden Gate Assemblydoi.org&#x2F;10.1021&#x2F;acssynbio.8b00480
+  </a></p>
 
     
 
@@ -321,7 +426,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">BioNews</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioLearning</a>
         		</li>
       		
 		</ul>
@@ -377,7 +482,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://nikolahuang.github.io/2022/04/14/%E9%82%93%E5%AE%8F%E9%AD%81%E5%9B%A2%E9%98%9F%E5%8F%91%E8%A1%A8%E9%87%8D%E5%A4%A7%E7%A0%94%E7%A9%B6%E6%88%90%E6%9E%9C-%E5%8C%96%E5%AD%A6%E5%B0%8F%E5%88%86%E5%AD%90%E8%AF%B1%E5%AF%BC%E4%BA%BA%E6%88%90%E4%BD%93%E7%BB%86%E8%83%9E%E8%BD%AC%E5%8F%98%E4%B8%BA%E5%A4%9A%E6%BD%9C%E8%83%BD%E5%B9%B2%E7%BB%86%E8%83%9E-md/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://nikolahuang.github.io/2024/03/12/Golden%20gate%E5%92%8CGibson%20Assembly%E6%8A%80%E6%9C%AF%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -392,18 +497,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2023/06/01/%E6%96%B0%E4%B8%80%E4%BB%A3%E7%94%9F%E7%89%A9%E6%8A%80%E6%9C%AF%E5%AF%BC%E5%BC%B9-%E7%BA%B3%E7%B1%B3%E6%8A%97%E4%BD%93/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2024/03/14/%E4%BB%8E%E9%AA%86%E9%A9%BC%E5%88%B0%E7%BA%B3%E7%B1%B3%E6%8A%97%E4%BD%93-%E7%94%A8%E4%BA%8E%E7%94%9F%E6%88%90%E5%8A%9F%E8%83%BD%E5%8C%96%20VHH%20%E7%9A%84%E7%AE%80%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          纳米抗体药物研究最新进展
+          从骆驼到纳米抗体：用于生成功能化 VHH 的简化工作流程
         
       </div>
     </a>
   
   
-    <a href="/2021/11/03/Nature%E5%AD%90%E5%88%8A%EF%BC%9A%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84%E4%B8%AD%E6%8C%96%E6%8E%98%E5%8E%9F%E6%A0%B8%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Nature子刊：宏基因组中挖掘原核基因组的分析流程</div>
+    <a href="/2024/03/11/%E5%9C%A8%E5%93%BA%E4%B9%B3%E5%8A%A8%E7%89%A9%E7%BB%86%E8%83%9E%E4%B8%AD%E9%80%9A%E8%BF%87%E5%85%B7%E6%9C%89%203%E7%AA%81%E5%87%BA%E7%AB%AF%E7%9A%84%E9%95%BFdsDNA%E4%BB%8B%E5%AF%BC%E7%9A%84CRISPR%E6%95%B2%E5%85%A5(LOCK)%E5%AE%9E%E7%8E%B0%E9%AB%98%E6%95%88%E7%9A%84%E5%A4%A7DNA%E7%89%87%E6%AE%B5%E6%95%B2%E5%85%A5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">在哺乳动物细胞中通过具有 3&#39;突出端的长dsDNA介导的CRISPR敲入(LOCK)实现高效的大DNA片段敲入</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -430,7 +535,7 @@
 
 
 
-<div id="SOHUCS" sid="邓宏魁团队发表重大研究成果-化学小分子诱导人成体细胞转变为多潜能干细胞-md" ></div> 
+<div id="SOHUCS" sid="Golden gate和Gibson Assembly技术有什么区别？" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
@@ -472,9 +577,9 @@
     <script src="/lib/giteement.browser.js"></script>
   
   <script>
-  <!-- id: "邓宏魁团队发表重大研究成果--化学小分子诱导人成体细胞转变为多潜能干细胞.md" -->
+  <!-- id: "Golden gate和Gibson Assembly技术有什么区别？" -->
   var giteement = new Giteement({
-    id: '20220414114457',
+    id: '20240312110922',
     owner: 'anderson2',
     repo: 'disque',
     backcall_uri: '',
