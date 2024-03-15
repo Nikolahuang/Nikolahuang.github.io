@@ -233,6 +233,137 @@
 
 
   
+    <article id="post-使用Github-picGo搭建图床，保姆级教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/03/15/%E4%BD%BF%E7%94%A8Github-picGo%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A%EF%BC%8C%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/" target="_blank">使用Github+picGo搭建图床，保姆级教程</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/03/15/%E4%BD%BF%E7%94%A8Github-picGo%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A%EF%BC%8C%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/" class="archive-article-date">
+        <time datetime="2024-03-15T06:08:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-15</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="使用Github-picGo搭建图床，保姆级"><a href="#使用Github-picGo搭建图床，保姆级" class="headerlink" title="使用Github+picGo搭建图床，保姆级"></a>使用Github+picGo搭建图床，保姆级</h1><p>转载自<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/xiao-xiao-yu-zi-12-58">小小芋子</a></p>
+<h2 id="1-注册一个Github账号"><a href="#1-注册一个Github账号" class="headerlink" title="1. 注册一个Github账号"></a><strong>1. 注册一个Github账号</strong></h2><p>首先你需要一个github账号，如果没有的话，先注册。</p>
+<p>github官网地址： <a href="https://link.zhihu.com/?target=https://github.com/">https://github.com/</a></p>
+<p>注册过程省略，因为这是保姆都不管的事情。</p>
+<p>友情提示：可能在注册过程中会出现 “Unable to verify your captcha response… …”，一直不能正常注册。</p>
+<p>网上有各种解决方案：换浏览器、换电脑… …</p>
+<h2 id="2-配置Github"><a href="#2-配置Github" class="headerlink" title="2. 配置Github"></a>2. 配置Github</h2><h3 id="2-1-创建一个新仓库，用于存放图片。"><a href="#2-1-创建一个新仓库，用于存放图片。" class="headerlink" title="2.1 创建一个新仓库，用于存放图片。"></a>2.1 创建一个新仓库，用于存放图片。</h3><p><img src="https://pic1.zhimg.com/80/v2-59b7f87b4fbe21a2492e4b9e529fe87c_1440w.webp" alt="img"></p>
+<p>填写仓库名称和描述，且仓库必须是public的，否则存储的图片不能正常访问。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-d3733c14e8c9b53cb5cf9f7607d51c8a_1440w.webp" alt="img"></p>
+<h3 id="2-2-生成一个token，用于picGo访问github"><a href="#2-2-生成一个token，用于picGo访问github" class="headerlink" title="2.2 生成一个token，用于picGo访问github"></a>2.2 生成一个token，用于picGo访问github</h3><p><img src="https://pic4.zhimg.com/80/v2-4d227062bcfa58dba6c0582c982b737b_1440w.webp" alt="img"></p>
+<p>选择左侧菜单的Developer settings</p>
+<p><img src="https://pic4.zhimg.com/80/v2-4d227062bcfa58dba6c0582c982b737b_1440w.webp" alt="img"></p>
+<p>之后选择左侧Personal access tokens，再点击Generate new token</p>
+<p><img src="https://pic1.zhimg.com/80/v2-2d5bcabac97557591c4203009d306750_1440w.webp" alt="img"></p>
+<p>填写Note，勾选repo.</p>
+<p><img src="https://pic2.zhimg.com/80/v2-346da4ccf189eb5997abe2fadadca331_1440w.webp" alt="img"></p>
+<p>注意，生成的token只会在这里显示一次，所以记得单独保存下来哦。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-354ea85a4bd9cfc99157b86cae9a2332_1440w.webp" alt="img"></p>
+<p>至此，Github的配置完成。</p>
+<h2 id="3-下载picGo，并进行配置"><a href="#3-下载picGo，并进行配置" class="headerlink" title="3. 下载picGo，并进行配置"></a>3. 下载picGo，并进行配置</h2><h3 id="3-1-下载"><a href="#3-1-下载" class="headerlink" title="3.1 下载"></a>3.1 下载</h3><p>网络不好的情况下，PicGo下载可能会多次失败，所以我把下载好的应用放在百度网盘了。</p>
+<p>大家按需取用。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-279f576c0dc0861fd7edcf1d43e5675f_1440w.webp" alt="img"></p>
+<p>网盘地址：<a href="https://link.zhihu.com/?target=https://pan.baidu.com/s/1LvkzLJyZcjpflK2Evq3X9A">https://pan.baidu.com/s/1LvkzLJyZcjpflK2Evq3X9A</a> 提取码：s6x7</p>
+<p>下载完成，双击启动安装即可。</p>
+<p>如果安装成功，picGo不能正常使用，则可以用兼容模式启动。【此问题因电脑而异，也是我在配置过程中踩过的坑。】</p>
+<p><img src="https://pic2.zhimg.com/80/v2-3f60ccb549e01c95a1702ceca9bda95d_1440w.webp" alt="img"></p>
+<h3 id="3-2-配置"><a href="#3-2-配置" class="headerlink" title="3.2 配置"></a>3.2 配置</h3><p>仓库名：[github用户名]&#x2F;[第一步新建的仓库名称]</p>
+<p>分支：默认master，从2020.10.01开始，github的默认分支名变更为main</p>
+<p>设定token：第一步创建的token</p>
+<p>指定存储路径：可填可不填，如果填写了，图片就会存储在img文件夹下</p>
+<p>设定自定义域名：<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/[github%E7%94%A8%E6%88%B7%E5%90%8D]/[%E4%BB%93%E5%BA%93%E5%90%8D]@main%EF%BC%8C%E6%B3%A8%E6%84%8F%EF%BC%8C%E6%AD%A4%E5%A4%84%E7%9A%84%E5%88%86%E6%94%AF%E4%B8%80%E5%AE%9A%E8%A6%81%E5%A1%AB%E5%86%99@main%EF%BC%8C%E5%90%A6%E5%88%99%E9%BB%98%E8%AE%A4%E4%BD%BF%E7%94%A8master%E5%88%86%E6%94%AF%E3%80%82%E8%80%8C%E7%8E%B0%E5%9C%A8github%E5%88%9B%E5%BB%BA%E7%9A%84%E9%BB%98%E8%AE%A4%E5%88%86%E6%94%AF%E5%90%8D%E4%B8%BAmain%EF%BC%8C%E5%A6%82%E6%9E%9C%E4%B8%8D%E6%8C%87%E5%AE%9A%EF%BC%8C%E5%88%99%E4%BC%9A%E5%87%BA%E7%8E%B0%E5%9B%BE%E7%89%87%E4%B8%8D%E8%83%BD%E4%B8%8A%E4%BC%A0%E7%9A%84%E6%83%85%E5%86%B5%E3%80%82%E3%80%90%E8%B8%A9%E5%9D%91%E4%B8%A4%E5%B0%8F%E6%97%B6%E3%80%91">https://cdn.jsdelivr.net/gh/[github用户名]/[仓库名]@main，注意，此处的分支一定要填写@main，否则默认使用master分支。而现在github创建的默认分支名为main，如果不指定，则会出现图片不能上传的情况。【踩坑两小时】</a></p>
+<p><img src="https://pic3.zhimg.com/80/v2-62e4faaa7999d1d32fa80aec44b4034e_1440w.webp" alt="img"></p>
+<p>至此，github+picGo的配置完成，可以在上传区进行图片上传了。</p>
+<h3 id="3-3-补充几点"><a href="#3-3-补充几点" class="headerlink" title="3.3 补充几点"></a>3.3 补充几点</h3><p>1.原本github的自定义域名应该是：[<a href="https://raw.githubusercontent.com/[username/]/[%E4%BB%93%E5%BA%93%E5%90%8D]](https://link.zhihu.com/?target=https://raw.githubusercontent.com/%5Busername%5D/%5B%E4%BB%93%E5%BA%93%E5%90%8D%5D)">https://raw.githubusercontent.com/[username\]/[仓库名]](https://link.zhihu.com/?target=https%3A//raw.githubusercontent.com/%5Busername%5D/%5B%E4%BB%93%E5%BA%93%E5%90%8D%5D)</a></p>
+<p>但是使用这种方式访问图片巨慢，所以教程中使用了jsdelivr作为cdn加速。改变域名即可，不需要任何其他配置。</p>
+<p>2.配置完成，可能出现不能上传的情况，请大家耐心检查，也许某一步的配置出现了问题，就像检查bug一样耐心、细心。想象一下图床搭建成功后，写起文章来的丝滑感，是不是又有动力了？</p>
+<h2 id="4-PicGo集成Typora"><a href="#4-PicGo集成Typora" class="headerlink" title="4. PicGo集成Typora"></a>4. PicGo集成Typora</h2><p>使用MarkDown语法写文章，我使用的编辑器是typora，一款超级好用的编辑器。在一个编辑框内，编辑完成后，可以马上显示MarkDown语法效果。</p>
+<p>举个栗子：</p>
+<p><img src="https://pic2.zhimg.com/80/v2-ce0b207c19d6ca32ac22937f1dc6cfcd_1440w.webp" alt="img"></p>
+<p>并且typora可以和picGo联合在一起使用，当你在编辑器中插入、粘贴图片时，typora+picGo的组合方式，可以自动把图片上传至github保存。</p>
+<h3 id="4-1-下载安装"><a href="#4-1-下载安装" class="headerlink" title="4.1 下载安装"></a>4.1 下载安装</h3><p>Typora新版本是收费的，所以建议大家使用旧版本就可以了，完全能满足写作需求。</p>
+<p>旧版本安装包和picGo放在一起了（下载地址见上文），大家按需取用即可。</p>
+<p>下载完成后正常步骤安装即可。</p>
+<h3 id="4-2-配置"><a href="#4-2-配置" class="headerlink" title="4.2 配置"></a>4.2 配置</h3><p>在typora顶部菜单界面，选择“文件” - &gt; “偏好设置”，设置图片存储方式。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-f595cf5c8a0e3b62944c68deb8fb5878_1440w.webp" alt="img"></p>
+<p>选择图片存储方式：上传图片。</p>
+<p>上传服务：PicGo(app)</p>
+<p>PicGo路径：picGo安装的地址</p>
+<p>设置完成，点击“验证图片上传”，提示上传成功，即代表配置成功。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-e27e9f198aef7bdea365549b2257025d_1440w.webp" alt="img"></p>
+<p>注意一点，typora图片验证中的端口，需要与picGo中的server设置内的端口一致，否则typora中不能正常上传。</p>
+<h3 id="4-3-picGo监听端口设置"><a href="#4-3-picGo监听端口设置" class="headerlink" title="4.3 picGo监听端口设置"></a>4.3 picGo监听端口设置</h3><p>选择“PicGo设置”–&gt;“设置server”</p>
+<p><img src="https://pic4.zhimg.com/80/v2-8ff622935a6b0597a21e68e7575e16ef_1440w.webp" alt="img"></p>
+<p>【此处有坑】如果监听端口不是36677，则需要修改为36677。否则会出现picGo能正常上传 图片，而typora上传图片失败的情况。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-304589efaed9a1ba3caf5e8827e77582_1440w.webp" alt="img"></p>
+<p>最后，在苹果电脑中可以使用<strong>Typora+Ipic+Github</strong>的方式，有兴趣的话可以自行尝试</p>
+<p><strong>总结：github+picGo+typora他们三个是好基友。</strong></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/03/15/%E4%BD%BF%E7%94%A8Github-picGo%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A%EF%BC%8C%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-小鼠体外受精" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -3106,167 +3237,6 @@ Essential 6，含100 ng/ml bFGF
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2024/03/14/%E7%94%A8%E4%BA%BA%E5%A4%96%E5%91%A8%E8%A1%80%E6%B6%B2%E4%B8%AD%E7%9A%84%E9%9D%9ET%E6%B7%8B%E5%B7%B4%E7%BB%86%E8%83%9E%E3%80%81B%E7%BB%86%E8%83%9E%E8%AF%B1%E5%AF%BC%E7%94%9F%E6%88%90%E5%85%A8%E8%83%BD%E5%B9%B2%E7%BB%86%E8%83%9E/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-使用Anvi’o进行从质量控制到映射的元基因组组装基因组的操作说明" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/03/14/%E4%BD%BF%E7%94%A8Anvi%E2%80%99o%E8%BF%9B%E8%A1%8C%E4%BB%8E%E8%B4%A8%E9%87%8F%E6%8E%A7%E5%88%B6%E5%88%B0%E6%98%A0%E5%B0%84%E7%9A%84%E5%85%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%BB%84%E8%A3%85%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E/" target="_blank">使用Anvi’o进行从质量控制到映射的宏基因组组装基因组的操作说明</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/03/14/%E4%BD%BF%E7%94%A8Anvi%E2%80%99o%E8%BF%9B%E8%A1%8C%E4%BB%8E%E8%B4%A8%E9%87%8F%E6%8E%A7%E5%88%B6%E5%88%B0%E6%98%A0%E5%B0%84%E7%9A%84%E5%85%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%BB%84%E8%A3%85%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E/" class="archive-article-date">
-        <time datetime="2024-03-14T06:40:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-14</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><a target="_blank" rel="noopener" href="https://bio-protocol.org/exchange/profile?uid=1278590">SS Soumyadev Sarkar</a>，<a target="_blank" rel="noopener" href="https://bio-protocol.org/exchange/profile?uid=1364056">TR Tanner Richie</a>，<a target="_blank" rel="noopener" href="https://bio-protocol.org/exchange/profile?uid=1416629">SL Sonny T. M. Lee <img src="https://cdn.bio-protocol.org/forum/fe/static/icon_email.svg" alt="email"></a></p>
-<p>First Published: May 20, 2023 DOI: 10.21769&#x2F;BioProtoc.4683 </p>
-<p>Reviewed by: <a target="_blank" rel="noopener" href="https://bio-protocol.org/exchange/profile?uid=1010402">Zheng Xu</a></p>
-<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>突触是神经网络中信号转导的主要途径。许多因素调节着突触的关键功能。这些包括预突触的钙通道，触发神经递质的释放，以及后突触的离子型受体，介导兴奋性和抑制性后突触电位。突触传递和可塑性的关键特征可以在原代培养的海马神经元中进行研究。在这里，我们描述了一种制备和对成对海马神经元进行电生理分析的协议。这个模型系统允许在由两个海马神经元形成的一个简单神经网络中对其中一个神经元进行选择性的遗传操作。通过双向分析突触传递和短期突触可塑性，可以分析预突触和后突触对突触传递的影响。例如，通过一对网络突触响应，可以直接比较野生型神经元和一个遗传改造后的神经元。最终，这个协议允许实验调节，从而研究突触机制，并改进之前在体外培养神经元中研究突触传递和可塑性的方法。</p>
-<hr>
-<h3 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h3><p>神经元之间的信号传递是通过神经递质的释放到突触间隙中实现的。预突触和后突触 firing 的时间和空间关系调节了神经元之间突触连接的强度（Deperrois 和 Graupner，2020）。在单细胞水平上可以记录到两种类型的突触活动。首先，微型兴奋性或抑制性后突触电流（mEPSC 或 mIPSC）是由于单个突触小泡自发局部融合的结果。其次，兴奋性和抑制性后突触电流（EPSC 或 IPSC）可以对预突触的谷氨酸能或 GABA 能神经元产生的动作电位进行响应。微型后突触电位的分析提供了关于突触连接的数量和密度（频率）、后突触受体的丰富度（振幅）的信息，从而有助于研究基本突触属性。然而，突触功能的高级层面，包括突触对动作电位放电的反应以及突触强度的短期和长期适应，需要对诱发突触传递进行分析。例如，成对脉冲刺激协议可以作为研究体外短期突触可塑性的基本模型（Bouteiller 等人，2010）。在特定神经通路中的诱发突触传递和可塑性通常可以在脑片（Wang 和 Baudry，2019）中进行研究。或者，可以在培养的神经元中研究突触传递和可塑性，例如通过采用光遗传学激活神经元细胞群（Barral 和 Reyes，2017）。在急性脑片中，这是电生理分析突触功能的标准模型，预突触刺激和后突触响应只能在一个方向上进行分析。然而，由于突触可塑性涉及到预突触和后突触组分的可能变化，单向测量限制了对调节可塑性的机制的研究。</p>
-<p>在这里，我们描述了一种培养简单对数海马神经元的协议，用于进行双向电生理分析突触功能。这个细胞体外模型具有以下优点：首先，它允许轻松识别受神经支配的细胞。在传统使用的分散神经元细胞培养中，这是 inherently 困难的，因为轴突过度分支，目标神经元可能被异源突触支配。其次，由于定义简单的网络，所有突触都是在成对神经元之间形成的。这导致后突触响应的振幅增加，从而允许可靠地检测后突触受体功能的变化。第三，培养的成对网络中的两个细胞都可以作为预突触（刺激）和后突触（支配）神经元。因此，这种方法允许双向记录突触传递。这在遗传操作其中一个成对神经元的情况下特别相关：由于可以在成对神经元中通过过表达或敲低特定蛋白进行遗传改造，双向刺激协议允许在相同的神经网络中比较预突触和后突触后果与野生型突触连接。作为原理证明，我们改变了 α2δ 蛋白的表达，这些蛋白一方面作为电压门控钙通道的辅助亚基（Geisler 等人，2015；Ablinger 等人，2020；Dolphin 和 Obermair，2022），另一方面作为关键的突触组织者（Eroglu 等人，2009；Geisler 等人，2019；Schöpf 等人，2021；Ablinger 等人，2022）。因此，我们使用了培养的成对海马神经元来研究 α2δ-2 异构体的一个剪接变体在跨突触调节突触形成和突触传递中的作用，包括短期突触可塑性。</p>
-<hr>
-<p>材料和试剂<br>动物<br>定时怀孕的野生型小鼠（BALB&#x2F;c，妊娠期16-17天；Charles River Laboratories，Sulzfeld，德国）。<br>生物材料<br>带有编码α2δ-2_ΔE23剪接变体和可溶性eGFP的mRNA的慢病毒颗粒，作为荧光标记（Geisler et al., 2019）。慢病毒颗粒的生成方式如前所述（Nasri et al., 2014; Benskey 和 Manfredsson, 2016）。<br>关键：慢病毒被归类为生物安全级别2（BSL-2）生物。<br>材料<br>手术剪刀 - 尖-钝，直 14.5 cm（Fine Science Tools，目录号：14001-14）<br>组织镊子 - Slim1x2齿 10 cm（Fine Science Tools，目录号：11023-10）<br>细剪刀 - 尖，弯 10.5 cm（Fine Science Tools，目录号：14061-10）<br>细剪刀 - 尖，直 10.5 cm（Fine Science Tools，目录号：14060-10）<br>杜蒙特 #5 标准镊子（Fine Science Tools，目录号：11251-30）<br>杜蒙特 #5 生物学镊子（Fine Science Tools，目录号：11252-30）<br>Vannas-Tübingen 弹簧剪刀（Fine Science Tools，目录号：15004-08）<br>18 mm 玻璃盖玻片（Marienfeld Superior，目录号：0111580）<br>盖玻片架（自定制，因斯布鲁克医科大学生理学研究所，奥地利）<br>PTFE 培养皿（Carl Roth，目录号：K837.1）<br>12.5 cm 滤纸（Carl Roth，目录号：AP86.1）<br>血细胞计数器（Neubauer，目录号：Brand 717805）<br>72 μm 尼龙网（Falcon，目录号：352350）<br>T75 培养瓶（Falcon，目录号：353810）<br>转移注射器 3.5 mL（Sarstedt，目录号：86.1171.001）<br>15 mL 离心管（Falcon，目录号：352070）<br>50 mL 离心管（Falcon，目录号：352096）<br>60 mm 塑料培养皿（Falcon，目录号：353802）<br>60 mm Primaria 塑料培养皿（Falcon，目录号：353004）<br>15 cm 玻璃培养皿（Duran，目录号：237555201）<br>巴斯管（Assistent，目录号：40567002）<br>5 mL 血清注射器（Sarstedt，目录号：86.1253.001）<br>10 mL 血清注射器（Sarstedt，目录号：86.1254.001）<br>25 mL 血清注射器（Sarstedt，目录号：86.1685.001）<br>1.5 mL 小型喷雾器（Rene Lezard）</p>
-<p>硼硅酸盐玻璃带丝（Sutter Instrument公司，型号：BF150-75-10）<br>2.5% 胰蛋白酶（10倍浓缩）（Gibco公司，目录号：15090-046）<br>0.5% 胰蛋白酶-EDTA（10倍浓缩）（Gibco公司，目录号：15400-054）<br>B-27补充剂（50倍浓缩）（Gibco公司，目录号：17504-044）<br>Glutamax（Gibco公司，目录号：35050-038）<br>马血清（Gibco公司，目录号：16050-122）<br>青霉素-链霉素（PenStrep）（Gibco公司，目录号：15140-122）<br>MEM培养基（Gibco公司，目录号：41090-028）<br>神经基础培养基（Neurobasal medium）（Gibco公司，目录号：21103-049）<br>HBSS缓冲液（10倍浓缩）（Gibco公司，目录号：14180-046）<br>HEPES 1M溶液（Gibco公司，目录号：15630-056）<br>聚-L-赖氨酸（Sigma公司，目录号：P2636）<br>阿糖胞苷（Ara-C）（Sigma公司，目录号：C6645）<br>脱氧核糖核酸酶（DNase）（Sigma公司，目录号：DN-25）<br>苹果酸（Sigma公司，目录号：P2256）<br>石蜡（Carl Roth公司，目录号：X880.1）<br>明胶（Fluka公司，目录号：48722）<br>硝酸（Carl Roth公司，目录号：4625.2）<br>葡萄糖（Carl Roth公司，目录号：HN06.3）<br>硼酸（Sigma公司，目录号：B6768）<br>十水合硼酸钠（硼砂）（Sodium tetraborate decahydrate）（Sigma公司，目录号：B9876）<br>氯化钠（NaCl）<br>氯化钾（KCl）<br>二水合氯化钙（CaCl2·2H2O）（Carl Roth公司，目录号：5239.2）<br>六水合氯化镁（MgCl2·6H2O）（Sigma公司，目录号：M0250）<br>氢氧化钠（NaOH）（Carl Roth公司，目录号：6771.3）<br>氢氧化钾（KOH）（Carl Roth公司，目录号：6751.1）<br>葡萄糖酸钾盐（K-gluconate）（Carl Roth公司，目录号：4621.1）<br>HEPES（Carl Roth公司，目录号：6763.1）<br>EGTA（Sigma公司，目录号：E3889）<br>ATP镁盐（Sigma公司，目录号：A9187）<br>GTP钠盐（Sigma公司，目录号：G8877）</p>
-<p>Solutions</p>
-<p>苹果酸溶液，100 mM，50 mL（见配方）<br>1% 明胶溶液，50 mL（见配方）<br>HBSS缓冲液，500 mL（见配方）<br>胶质细胞培养基，500 mL（见配方）<br>神经元维持培养基，200 mL（见配方）<br>神经元种植培养基，200 mL（见配方）<br>1% 脱氧核糖核酸酶溶液，100 mL（见配方）<br>硼酸钠缓冲液，500 mL（见配方）<br>聚-L-赖氨酸溶液，1 mg&#x2F;mL（见配方）<br>EGTA溶液，0.5M，1 mL（见配方）<br>胞外溶液，100 mL，用NaOH调节pH至7.4（见配方）<br>胞内溶液，20 mL，用KOH调节pH至7.2（见配方）</p>
-<hr>
-<p><strong>软件</strong></p>
-<ul>
-<li>Anvi’o v7（<a target="_blank" rel="noopener" href="https://merenlab.org/software/anvio/">https://merenlab.org/software/anvio/</a>）</li>
-<li>Snakemake（<a target="_blank" rel="noopener" href="https://snakemake.readthedocs.io/en/stable/">https://snakemake.readthedocs.io/en/stable/</a>）<br><strong>安装Anvi’o</strong><br><strong>Conda设置：</strong> 如果系统中尚未安装conda，则需要打开一个终端，例如iTerm。<br><strong>命令：</strong><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install</span><br></pre></td></tr></table></figure>
-<strong>要验证您是否已安装conda，请复制并粘贴以下命令到您的终端：</strong><br><strong>命令：</strong><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda --version</span><br></pre></td></tr></table></figure>
-<strong>始终确保您在一个更新后的conda环境中工作，使用以下命令：</strong><br><strong>命令：</strong><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda update conda</span><br></pre></td></tr></table></figure>
-<strong>Anvi’o环境设置</strong><br>使用以下命令创建一个新的conda环境：<br><strong>命令：</strong><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create -y --name anvio-7.1 python=3.6</span><br></pre></td></tr></table></figure>
-<strong>然后，使用以下命令激活它：</strong><br><strong>命令：</strong><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda activate anvio-7.1</span><br></pre></td></tr></table></figure>
-<strong>安装Anvi’o</strong><br>首先，使用以下命令下载Anvi’o发布的python源代码包：<br><strong>命令：</strong><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://github.com/merenlab/anvio/releases/download/v7.1/anvio-7.1.tar.gz \</span><br><span class="line">          --output anvio-7.1.tar.gz</span><br></pre></td></tr></table></figure>
-<strong>然后，使用以下命令安装Anvi’o：</strong><br><strong>命令：</strong><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install anvio-7.1.tar.gz</span><br></pre></td></tr></table></figure>
-<strong>用户应注意，Anvi’o的安装过程用户友好，但可能需要较长时间才能完成，并且计算密集型。</strong><br>请注意，这里的专业术语已经尽量翻译成对应的中文，但对于某些特定产品名称和型号，保留了原英文名称以确保准确性。</li>
-</ul>
-<p>数据可访问于 <a target="_blank" rel="noopener" href="https://figshare.com/s/35ea294e2671d75f1d5c">https://figshare.com/s/35ea294e2671d75f1d5c</a> 和 <a target="_blank" rel="noopener" href="https://github.com/Bio-protocol/bioprotocol_2104071">https://github.com/Bio-protocol/bioprotocol_2104071</a></p>
-<p><strong>输入数据</strong><br>Anvi’o工作流程帮助用户：</p>
-<ul>
-<li><p>流程化标准重复的‘组学数据分析步骤，如组装、映射、映射结果分析、功能&#x2F;分类注释，以及以可扩展形式生成Anvi’o数据库。</p>
-</li>
-<li><p>提出有关数据的生物学问题。</p>
-</li>
-<li><p>容易地向科学界描述数据和结果。<br>Anvi’o使用程序<code>anvi-run-workflow</code>来运行工作流程。对于特定的工作流程，该程序将帮助用户准备配置文件。<br>以下代码询问程序它知道哪些工作流程：<br><strong>命令</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">anvi-run-workflow --list-workflows</span><br></pre></td></tr></table></figure>
-<p><strong>可用的工作流程 ….: contigs, metagenomics, pangenomics, phylogenomics, trnaseq</strong><br>在您决定要使用的流程后，配置文件允许您更改与该流程相关的参数和步骤顺序。即使您对所有默认参数都满意，所有工作流程都需要配置文件。用户应确保配置文件正确，为特定工作流程准备配置文件可能具有挑战性。以下代码将帮助用户生成配置文件：<br><strong>命令</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">anvi-run-workflow -w 工作流程名称 \</span><br><span class="line">                             --get-default-config 输出文件名称</span><br></pre></td></tr></table></figure>
-<p><code>--get-default-config</code>将为您提供一个工作流程的默认配置文件，您可以对其进行修改。可配置的标志和参数将包含在此文件中。对于您不打算更改的参数，您可以保持原样，或者从配置文件中删除您想要更改的参数，以使其更短、更清晰。<br>配置文件中有三种配置：</p>
-</li>
-<li><p>通用工作流程参数：您需要一个项目名称以及您想要采用的工作流程模式。</p>
-</li>
-<li><p>参数：仅适用于单个规则的参数，例如Anvi’o分析步骤的最小contig长度。每个程序都有独特的参数。用户应确保在配置文件中使用的参数与特定程序中使用的名称相同。例如，如果有多种使用可调整参数或参数的方法，用户应使用较长的那个。例如，<code>anvi-run-hmms</code>能够接受带有<code>-H</code>或<code>--hmm-profile-dir</code>的参数，这些参数指定了HMM配置文件的目录路径。然而，在配置文件中，用户只允许使用<code>--hmm-profile-dir</code>。</p>
-</li>
-<li><p>输出目录的名称：这涉及到Anvi’o如何处理输出目录和文件。</p>
-<p><strong>Samples.txt</strong><br>samples.txt文件用于将样本名称与原始测序读段关联。samples.txt应该有三到四列（加上可选的groups列），每列之间由制表符（TAB）分隔。标题中应包括以下列名称：</p>
-</li>
-<li><p>样本：为每个元基因组样本命名。</p>
-</li>
-<li><p>r1和r2：这两列包括与样本对应的FASTQ文件的路径（可以是相对路径或绝对路径；绝对路径总是首选）。<br>它还可以选择性地包括以下列：</p>
-</li>
-<li><p>组别：在从元基因组组装中划分基因组时，一种策略是将多个样本组合在一起。此列的功能是指定哪些样本将进行共同组装。这是一个可选列；如果samples.txt文件中不存在，则每个样本将独立组装。默认情况下，只有用于共同组装的样本才会被映射到结果组装。您可以共同组装样本组，但随后必须将所有样本映射到每个组装。<br>请注意，这里的专业术语已经尽量翻译成对应的中文，但对于某些特定产品名称和型号，保留了原英文名称以确保准确性。</p>
-</li>
-</ul>
-<hr>
-<p><strong>工作流程</strong><br>对于shotgun宏基因组的原始双端测序读段是宏基因组工作流程的默认入口点。工作流程的默认终点是一个合并的轮廓数据库，准备进行细分类，以及一个注释过的Anvi’o contigs数据库。工作流程的步骤如下：</p>
-<ul>
-<li>使用illumina-utils，对宏基因组短读段进行质量检查，并为此步骤的结果生成一份详尽的报告：根据Minoche等人（2011年）提到的标准，通过移除低质量读段来进行质量检查，使用B-tail修剪和通过的纯度过滤器组合，移除含有未调用碱基的读段。</li>
-<li>选择用于生成短读段分类轮廓的程序。这些轮廓被导入到Anvi’o的合并轮廓数据库中可用的个体轮廓数据库中。</li>
-<li>使用megahit和&#x2F;或idba_ud和&#x2F;或metaspades，组装质量过滤的宏基因组读段。</li>
-<li>使用anvi-gen-contigs-database，使用组装的contigs创建Anvi’o contigs数据库。Contigs数据库应该具有功能、分类和HMM的注释。</li>
-<li>使用bowtie2，将宏基因组的短读段映射到contigs上，然后生成索引和排序的BAM文件。</li>
-<li>使用anvi-profile从单个BAM文件生成单个Anvi’o轮廓。</li>
-<li>使用anvi-merge，合并以生成单个Anvi’o轮廓。<br>您只需要一个samples.txt文件和一些FASTQ文件。在本节中，我们将通过一个包含三个小型宏基因组的模拟示例进行讲解。为了创建这些宏基因组，选择了一定数量的读段。以下samples.txt文件可以在您的工作目录中找到：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">samplegroupr1r2</span><br><span class="line">P1G01M-1_S21_L001_R1_001.fastq.gzM-1_S21_L001_R2_001.fastq.gz</span><br><span class="line">P2G02M-2_S22_L001_R1_001.fastq.gzM-2_S22_L001_R2_001.fastq.gz</span><br><span class="line">P3G03M-3_S23_L001_R1_001.fastq.gzM-3_S23_L001_R2_001.fastq.gz</span><br></pre></td></tr></table></figure>
-此文件详细列出了样本和’组’的原始双端读段位置。samples_txt文件的默认名称是samples.txt，但您可以在配置文件中更改它。<br>让我们看一下工作目录中的config-megahit.json配置文件。<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;workflow_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;metagenomics&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;config_version&quot;</span><span class="punctuation">:</span> “<span class="number">2</span>”<span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;samples_txt&quot;</span><span class="punctuation">:</span> <span class="string">&quot;samples.txt&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;megahit&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;--min-contig-len&quot;</span><span class="punctuation">:</span> <span class="number">1000</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;--memory&quot;</span><span class="punctuation">:</span> <span class="number">0.4</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;threads&quot;</span><span class="punctuation">:</span> <span class="number">7</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;run&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-每个可自定义的参数都会有一个默认值。我们通常从一个默认配置文件开始，删除我们不想保留的每一行。现在我们有了开始所需的一切。在这个阶段，让我们生成一个工作流程图。以下代码将生成一个工作流程图：<br><strong>命令</strong><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">anvi-run-workflow -w metagenomics \</span><br><span class="line">                              -c config-megahit.json \</span><br><span class="line">                            --save-workflow-graph</span><br></pre></td></tr></table></figure>
-现在我们可以开始工作流程：<br><strong>命令</strong><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">anvi-run-workflow -w metagenomics \</span><br><span class="line">                              -c config-megahit.json</span><br></pre></td></tr></table></figure>
-在此管道中完成所有步骤后，用户将能够利用这些生成的轮廓进行下游工作，如手动细分类和功能分析。<br>请注意，这里的专业术语已经尽量翻译成对应的中文，但对于某些特定产品名称和型号，保留了原英文名称以确保准确性。</li>
-</ul>
-<p>此工作流程从质量控制到映射的步骤进行了说明，以生成宏基因组组装的基因组。提供了关于配置和samples.txt文件的通用介绍，以将原始测序读段与样本详细信息连接起来。Anvi’o与snakemake工作流程相结合，生成了可以用于下游分析的分析轮廓。</p>
-<hr>
-<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ol>
-<li>Eren, A. M., Esen, O. C., Quince, C., Vineis, J. H., Morrison, H. G., Sogin, M. L. and Delmont, T. O. (2015). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/26500826">Anvi’o: an advanced analysis and visualization platform for ‘omics data.</a> <em>PeerJ</em> 3: e1319.</li>
-<li>Eren, A. M., Kiefl, E., Shaiber, A., Veseli, I., Miller, S. E., Schechter, M. S., Fink, I., Pan, J. N., Yousef, M., Fogarty, E. C., et al. (2021).<a target="_blank" rel="noopener" href="https://pubmed.ncbi.nlm.nih.gov/33349678/"> Community-led, integrated, reproducible multi-omics with anvi’o.</a> <em>Nat Microbiol</em> 6(1): 3-6.</li>
-<li>Köster, J. and Rahmann, S. (2012). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/22908215">Snakemake–a scalable bioinformatics workflow engine.</a> <em>Bioinformatics</em> 28(19): 2520-2522.</li>
-<li>Minoche, A. E., Dohm, J. C. and Himmelbauer, H. (2011). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/22067484">Evaluation of genomic high-throughput sequencing data generated on Illumina HiSeq and genome analyzer systems. </a><em>Genome Biol</em> 12(11): R112.</li>
-<li>Mölder, F., Jablonski, K. P., Letcher, B., Hall, M. B., Tomkins-Tinch, C. H., Sochat, V., Forster, J., Lee, S., Twardziok, S. O., Kanitz, A., et al. (2021). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/34035898">Sustainable data analysis with Snakemake. </a><em>F1000Res</em> 10: 33.</li>
-</ol>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/03/14/%E4%BD%BF%E7%94%A8Anvi%E2%80%99o%E8%BF%9B%E8%A1%8C%E4%BB%8E%E8%B4%A8%E9%87%8F%E6%8E%A7%E5%88%B6%E5%88%B0%E6%98%A0%E5%B0%84%E7%9A%84%E5%85%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%BB%84%E8%A3%85%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E/">展开全文 >></a>
     </p>
     
 
