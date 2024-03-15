@@ -6,17 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://nikolahuang.github.io">
-  <title>Archives: 2024/3 | Anderson Blog</title>
+  <title>解决Github不能下载，下载速度慢的小妙招（转载） | Anderson Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Anderson Blog">
-<meta property="og:url" content="http://nikolahuang.github.io/archives/2024/03/page/3/index.html">
+  <meta name="description" content="原文出处  错误描述今天在github上使用 git clone 某个项目代码的时， git clone https:&#x2F;&#x2F;github.com&#x2F;XXXX&#x2F;xxx-blog.git 下载速度很慢，然后下载一段时间后，总是提示下面的错误信息： 1234567remote: Enumerating objects: 33, done.remote: Counting objects: 100% (33&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决Github不能下载，下载速度慢的小妙招（转载）">
+<meta property="og:url" content="http://nikolahuang.github.io/2024/03/15/%E8%A7%A3%E5%86%B3Github%E4%B8%8D%E8%83%BD%E4%B8%8B%E8%BD%BD%EF%BC%8C%E4%B8%8B%E8%BD%BD%E9%80%9F%E5%BA%A6%E6%85%A2%E7%9A%84%E5%B0%8F%E5%A6%99%E6%8B%9B/index.html">
 <meta property="og:site_name" content="Anderson Blog">
+<meta property="og:description" content="原文出处  错误描述今天在github上使用 git clone 某个项目代码的时， git clone https:&#x2F;&#x2F;github.com&#x2F;XXXX&#x2F;xxx-blog.git 下载速度很慢，然后下载一段时间后，总是提示下面的错误信息： 1234567remote: Enumerating objects: 33, done.remote: Counting objects: 100% (33&#x2F;">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ucc.alicdn.com/images/user-upload-01/11509f94c74d46b28a70b884265addf5.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/5d9c3b2cb1099f4a27c94a53a9c04b8d.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/ab03c6248ee9ba8b0e1ac111bad32294.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/3c717bdc5fe69e4e44f121b7ceb2c36e.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/watermark%2Ctype_d3F5LXplbmhlaQ%2Cshadow_50%2Ctext_Q1NETiBA55Cm5b2m%2Csize_20%2Ccolor_FFFFFF%2Ct_70%2Cg_se%2Cx_16.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/d87dea031623518fcfe19791939dd606.png">
+<meta property="article:published_time" content="2024-03-15T10:19:17.000Z">
+<meta property="article:modified_time" content="2024-03-15T11:02:17.991Z">
 <meta property="article:author" content="Anderson">
+<meta property="article:tag" content="计算机随笔">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ucc.alicdn.com/images/user-upload-01/11509f94c74d46b28a70b884265addf5.png">
   
     <link rel="alternative" href="/atom.xml" title="Anderson Blog" type="application/atom+xml">
   
@@ -219,456 +231,313 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-解决Github不能下载，下载速度慢的小妙招" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/10/%E8%BF%88%E5%90%91%E5%9F%B9%E5%85%BB%E7%9A%BF%E4%B8%AD%E7%9A%84%E7%9D%BE%E4%B8%B8%EF%BC%9A%E7%94%9F%E6%88%90%E6%A6%82%E6%8B%AC%E7%9D%BE%E4%B8%B8%E7%BB%93%E6%9E%84%E5%92%8C%E8%A1%A8%E8%BE%BE%E8%B0%B1%E7%9A%84%E5%B0%8F%E9%BC%A0%E7%9D%BE%E4%B8%B8%E7%B1%BB%E5%99%A8%E5%AE%98/" class="archive-article-date">
-        <time datetime="2024-03-10T02:52:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-10</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/10/%E8%BF%88%E5%90%91%E5%9F%B9%E5%85%BB%E7%9A%BF%E4%B8%AD%E7%9A%84%E7%9D%BE%E4%B8%B8%EF%BC%9A%E7%94%9F%E6%88%90%E6%A6%82%E6%8B%AC%E7%9D%BE%E4%B8%B8%E7%BB%93%E6%9E%84%E5%92%8C%E8%A1%A8%E8%BE%BE%E8%B0%B1%E7%9A%84%E5%B0%8F%E9%BC%A0%E7%9D%BE%E4%B8%B8%E7%B1%BB%E5%99%A8%E5%AE%98/" target="_blank">迈向培养皿中的睾丸：生成概括睾丸结构和表达谱的小鼠睾丸类器官</a>
   
+    <h1 class="article-title" itemprop="name">
+      解决Github不能下载，下载速度慢的小妙招（转载）
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2024/03/15/%E8%A7%A3%E5%86%B3Github%E4%B8%8D%E8%83%BD%E4%B8%8B%E8%BD%BD%EF%BC%8C%E4%B8%8B%E8%BD%BD%E9%80%9F%E5%BA%A6%E6%85%A2%E7%9A%84%E5%B0%8F%E5%A6%99%E6%8B%9B/" class="archive-article-date">
+        <time datetime="2024-03-15T10:19:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-15</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">916字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">4分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/888710">原文出处</a></p>
+<p><img src="https://ucc.alicdn.com/images/user-upload-01/11509f94c74d46b28a70b884265addf5.png" alt="img"></p>
+<h2 id="错误描述"><a href="#错误描述" class="headerlink" title="错误描述"></a>错误描述</h2><p>今天在github上使用 git clone 某个项目代码的时， git clone <a target="_blank" rel="noopener" href="https://github.com/XXXX/xxx-blog.git">https://github.com/XXXX/xxx-blog.git</a> 下载速度很慢，然后下载一段时间后，总是提示下面的错误信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">remote: Enumerating objects: 33, done.</span><br><span class="line">remote: Counting objects: 100% (33/33), done.</span><br><span class="line">remote: Compressing objects: 100% (8/8), done.</span><br><span class="line">error: RPC failed; curl 56 OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054</span><br><span class="line">fatal: the remote end hung up unexpectedly</span><br><span class="line">fatal: early EOF</span><br><span class="line">fatal: index-pack failed </span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a>错误原因</h2><p>由于Http协议错误，当 pull 或者 clone 的时候，或者是 github 某个CDN被屏蔽所致。</p>
+<h2 id="解决办法1"><a href="#解决办法1" class="headerlink" title="解决办法1"></a>解决办法1</h2><p>协议错误</p>
+<p>先执行下列命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.postBuffer 5242880000</span><br></pre></td></tr></table></figure>
+
+<p>再执行<code>git pull</code>或者 <code>git clone</code> 命令</p>
+<h2 id="解决办法2"><a href="#解决办法2" class="headerlink" title="解决办法2"></a>解决办法2</h2><h3 id="修改域名"><a href="#修改域名" class="headerlink" title="修改域名"></a>修改域名</h3><ul>
+<li>访问 <a target="_blank" rel="noopener" href="http://github.global.ssl.fastly.net.ipaddress.com/#ipinfo">http://github.global.ssl.fast…</a>获取cdn域名以及IP地址<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/5d9c3b2cb1099f4a27c94a53a9c04b8d.png" alt="img"></li>
+<li>访问 <a target="_blank" rel="noopener" href="https://github.com.ipaddress.com/#ipinfo">http://github.com.ipaddress.c…</a> 获取cdn域名以及IP地址<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/ab03c6248ee9ba8b0e1ac111bad32294.png" alt="img"></li>
+<li>或者直接访问<a target="_blank" rel="noopener" href="https://www.ipaddress.com/%E7%BD%91%E5%9D%80%E6%9F%A5%E8%AF%A2%E4%B8%8B%E9%9D%A2%E6%89%80%E9%9C%80%E7%9A%84%E5%9C%B0%E5%9D%80%E5%AF%B9%E5%BA%94%E7%9A%84IP">https://www.ipaddress.com/网址查询下面所需的地址对应的IP</a></li>
+</ul>
+<h3 id="修改hosts文件"><a href="#修改hosts文件" class="headerlink" title="修改hosts文件"></a>修改hosts文件</h3><p>将上述获取的IP地址添加到hosts文件中</p>
+<p>Mac在<code>/etc/hosts</code>中；</p>
+<p>windows在<code>C:\Windows\System32\drivers\etc\hosts</code>中；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># fix git clone github project failed</span><br><span class="line">140.82.113.3 github.com</span><br><span class="line">199.232.5.194 github.global.ssl.fastly.net</span><br><span class="line">192.30.253.120  codeload.github.com</span><br></pre></td></tr></table></figure>
+
+<h3 id="刷新DNS缓存"><a href="#刷新DNS缓存" class="headerlink" title="刷新DNS缓存"></a>刷新DNS缓存</h3><p>Mac刷新DNS缓存</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo killall -HUP mDNSResponder</span><br><span class="line">sudo dscacheutil -flushcache</span><br></pre></td></tr></table></figure>
+
+<p>Windows更新DNS缓存</p>
+<p>cmd命令窗口执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig /flushdns</span><br></pre></td></tr></table></figure>
+
+<p>使增加的映射生效。</p>
+<h2 id="解决办法3"><a href="#解决办法3" class="headerlink" title="解决办法3"></a>解决办法3</h2><p>使用chrome浏览器，安装一个插件【Github 加速器】</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/3c717bdc5fe69e4e44f121b7ceb2c36e.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/watermark%2Ctype_d3F5LXplbmhlaQ%2Cshadow_50%2Ctext_Q1NETiBA55Cm5b2m%2Csize_20%2Ccolor_FFFFFF%2Ct_70%2Cg_se%2Cx_16.png" alt="img"></p>
+<p>下载地址： <a target="_blank" rel="noopener" href="https://chrome.zzzmh.cn/info?token=mfnkflidjnladnkldfonnaicljppahpg">https://chrome.zzzmh.cn/info?token=mfnkflidjnladnkldfonnaicljppahpg</a></p>
+<p>安装后见crx文件拖到谷歌的扩展功能里面，然后安装成功。<strong>打开gihub会看到如下界面，多了几个加速地址</strong>.</p>
+<h2 id="解决办法4"><a href="#解决办法4" class="headerlink" title="解决办法4"></a>解决办法4</h2><p>利用socks5代理，配置好后明显加速。用下面两条命令配置好后，保持代理客户端开启就行了。</p>
+<p>设置代理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 可以参考以下配置，这里的127.0.0.1代表的就是你本机的IP地址，因为服务就在你本机上运行</span><br><span class="line"># 10809是代理的客户端本地端口,默认是1080</span><br><span class="line">git config --global https.proxy http://127.0.0.1:10800</span><br><span class="line">git config --global https.proxy http://127.0.0.1:10800</span><br><span class="line">git config --global http.proxy &#x27;socks5://127.0.0.1:10800&#x27;</span><br><span class="line">git config --global https.proxy &#x27;socks5://127.0.0.1:10800&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>上述方法挂了全局代理，但是如果要克隆码云、coding等国内仓库，速度就会很慢。更好的方法是<strong>只对github进行代理</strong>，不会影响国内仓库：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.https://github.com.proxy socks5://127.0.0.1:10800</span><br><span class="line">git config --global https.https://github.com.proxy socks5://127.0.0.1:10800</span><br></pre></td></tr></table></figure>
+
+<p>代理后git clone速度真的快了很多~我这边能到1MB&#x2F;s以上</p>
+<p>查看代理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global -l</span><br></pre></td></tr></table></figure>
+
+<p>取消代理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset http.proxy</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="其他异常问题"><a href="#其他异常问题" class="headerlink" title="其他异常问题"></a>其他异常问题</h1><h2 id="1-解决-curl-7-Failed-to-connect-to-raw-githubusercontent-com-port-443-Connection-refused"><a href="#1-解决-curl-7-Failed-to-connect-to-raw-githubusercontent-com-port-443-Connection-refused" class="headerlink" title="1. 解决 curl: (7) Failed to connect to raw.githubusercontent.com port 443: Connection refused"></a>1. 解决 curl: (7) Failed to connect to raw.githubusercontent.com port 443: Connection refused</h2><p>将下面的IP地址添加到hosts文件中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">199.232.68.133 raw.githubusercontent.com</span><br><span class="line">199.232.68.133 user-images.githubusercontent.com</span><br><span class="line">199.232.68.133 avatars2.githubusercontent.com</span><br><span class="line">199.232.68.133 avatars1.githubusercontent.com</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-解决curl-56-OpenSSL-SSL-read-Connection-was-reset-errno-10054"><a href="#2-解决curl-56-OpenSSL-SSL-read-Connection-was-reset-errno-10054" class="headerlink" title="2. 解决curl: (56) OpenSSL SSL_read: Connection was reset, errno 10054"></a>2. 解决curl: (56) OpenSSL SSL_read: Connection was reset, errno 10054</h2><p>一、问题：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error: RPC failed; curl 56 OpenSSL SSL_read: Connection was reset, errno 10054</span><br></pre></td></tr></table></figure>
+
+<p>如图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/d87dea031623518fcfe19791939dd606.png" alt="img"></p>
+<p>原因：远程仓库的文件过大，需要设置本地仓库大小**</p>
+<p><strong>二、解决步骤：</strong></p>
+<p>1、首先输入如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config http.sslVerify &quot;false&quot;</span><br></pre></td></tr></table></figure>
+
+<p>若出现下列错误：</p>
+<p><strong><code>git config http.sslVerify &quot;false&quot; fatal: not in a git directory</code></strong></p>
+<p>再继续执行 <strong><code>git config --globle http.sslVerify &quot;false&quot;</code></strong> 问题解决</p>
+<p>2、文件大小的上限设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.postBuffer 524288000</span><br></pre></td></tr></table></figure>
+
+<p>fatal: not in a git directory <code>**再继续执行**</code>git config –globle http.sslVerify “false”&#96;** 问题解决</p>
+<p>2、文件大小的上限设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.postBuffer 524288000</span><br></pre></td></tr></table></figure>
+
+<p>3、如果还是git代码还是下载失败，则需要继续修改git缓存的大小</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Paper</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机随笔</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://nikolahuang.github.io/2024/03/15/%E8%A7%A3%E5%86%B3Github%E4%B8%8D%E8%83%BD%E4%B8%8B%E8%BD%BD%EF%BC%8C%E4%B8%8B%E8%BD%BD%E9%80%9F%E5%BA%A6%E6%85%A2%E7%9A%84%E5%B0%8F%E5%A6%99%E6%8B%9B/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/09/%E9%A6%96%E4%B8%AA%E7%9D%BE%E4%B8%B8%E7%B1%BB%E5%99%A8%E5%AE%98%E6%88%90%E5%8A%9F%E6%9E%84%E5%BB%BA%EF%BC%8C%E4%B8%BA%E7%94%B7%E6%80%A7%E4%B8%8D%E8%82%B2%E7%A0%94%E7%A9%B6%E6%8F%90%E4%BE%9B%E6%96%B0%E6%A8%A1%E5%9E%8B/" class="archive-article-date">
-        <time datetime="2024-03-09T13:11:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-09</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2024/03/15/%E4%BD%BF%E7%94%A8Github-picGo%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A%EF%BC%8C%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用Github+picGo搭建图床，保姆级教程</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+<div id="SOHUCS" sid="解决Github不能下载，下载速度慢的小妙招" ></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "true",
+        conf: "true"
+    });
+</script>
+</script>
+
+
+
+<section id="comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname =
+    'true'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+  </script>
+  <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by
+      Disqus.</a></noscript>
+</section>
+
+
+
+
+  <div id="giteement-ctn"></div>
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/09/%E9%A6%96%E4%B8%AA%E7%9D%BE%E4%B8%B8%E7%B1%BB%E5%99%A8%E5%AE%98%E6%88%90%E5%8A%9F%E6%9E%84%E5%BB%BA%EF%BC%8C%E4%B8%BA%E7%94%B7%E6%80%A7%E4%B8%8D%E8%82%B2%E7%A0%94%E7%A9%B6%E6%8F%90%E4%BE%9B%E6%96%B0%E6%A8%A1%E5%9E%8B/" target="_blank">首个睾丸类器官成功构建，为男性不育研究提供新模型</a>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
-    </h1>
-  
+  <script>
+  <!-- id: "解决Github不能下载，下载速度慢的小妙招（转载）" -->
+  var giteement = new Giteement({
+    id: '20240315181917',
+    owner: 'anderson2',
+    repo: 'disque',
+    backcall_uri: '',
+    oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'b7bbbb81c70a80c54b67830b93347418a2add42a2a1f038b58e9f8c1a76754ba',
+      client_secret: '4ccab940fe3153435d3da5a5edbc5214d719cabfd6736c016135223adf4d7fbb'
+    },
+  })
+  giteement.render('giteement-ctn')
+  </script>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">BioNews</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/09/%E5%B0%8F%E9%BC%A0%E8%84%91%E5%AE%A4%E7%AE%A1%E8%86%9C%E7%BB%86%E8%83%9E%E7%BA%A4%E6%AF%9B%E7%BB%84%E7%BB%87%E5%88%86%E6%9E%90%EF%BC%9A%E8%84%91%E5%AE%A4%E7%9A%84%E8%A7%A3%E5%89%96%E5%92%8C%E6%9F%93%E8%89%B2/" class="archive-article-date">
-        <time datetime="2024-03-09T11:54:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-09</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/09/%E5%B0%8F%E9%BC%A0%E8%84%91%E5%AE%A4%E7%AE%A1%E8%86%9C%E7%BB%86%E8%83%9E%E7%BA%A4%E6%AF%9B%E7%BB%84%E7%BB%87%E5%88%86%E6%9E%90%EF%BC%9A%E8%84%91%E5%AE%A4%E7%9A%84%E8%A7%A3%E5%89%96%E5%92%8C%E6%9F%93%E8%89%B2/" target="_blank">小鼠脑室管膜细胞纤毛组织分析：脑室的解剖和染色</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/09/%E5%B0%8F%E9%BC%A0%E5%AE%A4%E7%AE%A1%E8%86%9C%E7%BA%A4%E6%AF%9B%E5%B9%B2%E7%9A%84%E7%BA%AF%E5%8C%96%E5%92%8C%E5%85%8D%E7%96%AB%E6%9F%93%E8%89%B2/" class="archive-article-date">
-        <time datetime="2024-03-09T10:42:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-09</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/09/%E5%B0%8F%E9%BC%A0%E5%AE%A4%E7%AE%A1%E8%86%9C%E7%BA%A4%E6%AF%9B%E5%B9%B2%E7%9A%84%E7%BA%AF%E5%8C%96%E5%92%8C%E5%85%8D%E7%96%AB%E6%9F%93%E8%89%B2/" target="_blank">小鼠室管膜纤毛干的纯化和免疫染色</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/08/%E5%B0%8F%E9%BC%A0ESC%E5%88%86%E5%8C%96%E6%88%90Nkx2-1-%E8%82%BA%E5%92%8C%E7%94%B2%E7%8A%B6%E8%85%BA%E7%A5%96%E7%BB%86%E8%83%9E/" class="archive-article-date">
-        <time datetime="2024-03-08T15:51:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-08</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/08/%E5%B0%8F%E9%BC%A0ESC%E5%88%86%E5%8C%96%E6%88%90Nkx2-1-%E8%82%BA%E5%92%8C%E7%94%B2%E7%8A%B6%E8%85%BA%E7%A5%96%E7%BB%86%E8%83%9E/" target="_blank">小鼠ESC分化成Nkx2.1+肺和甲状腺祖细胞</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/08/%E9%87%87%E7%94%A8%E7%95%B8%E8%83%8E%E7%98%A4%E5%BD%A2%E6%88%90%E5%88%86%E6%9E%90%E6%B3%95%E8%AF%84%E4%BC%B0%E5%A4%9A%E8%83%BD%E5%B9%B2%E7%BB%86%E8%83%9E%E7%9A%84%E5%A4%9A%E8%83%BD%E6%80%A7%E5%92%8C%E8%87%B4%E7%98%A4%E6%80%A7/" class="archive-article-date">
-        <time datetime="2024-03-08T04:37:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-08</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/08/%E9%87%87%E7%94%A8%E7%95%B8%E8%83%8E%E7%98%A4%E5%BD%A2%E6%88%90%E5%88%86%E6%9E%90%E6%B3%95%E8%AF%84%E4%BC%B0%E5%A4%9A%E8%83%BD%E5%B9%B2%E7%BB%86%E8%83%9E%E7%9A%84%E5%A4%9A%E8%83%BD%E6%80%A7%E5%92%8C%E8%87%B4%E7%98%A4%E6%80%A7/" target="_blank">采用畸胎瘤形成分析法评估多能干细胞的多能性和致瘤性</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/07/%E6%8F%92%E5%85%A5%E7%BC%BA%E5%A4%B1%E7%9A%84%E5%BD%A2%E6%88%90%E8%81%94%E5%90%88%E9%87%8D%E7%BC%96%E7%A8%8B%E7%94%9F%E6%88%90%E5%8A%9F%E8%83%BD%E4%B8%A7%E5%A4%B1iPSC%E7%BB%86%E8%83%9E%E7%B3%BB/" class="archive-article-date">
-        <time datetime="2024-03-07T05:40:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-07</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/07/%E6%8F%92%E5%85%A5%E7%BC%BA%E5%A4%B1%E7%9A%84%E5%BD%A2%E6%88%90%E8%81%94%E5%90%88%E9%87%8D%E7%BC%96%E7%A8%8B%E7%94%9F%E6%88%90%E5%8A%9F%E8%83%BD%E4%B8%A7%E5%A4%B1iPSC%E7%BB%86%E8%83%9E%E7%B3%BB/" target="_blank">人成纤维细胞通过CRISPR插入缺失的形成联合重编程生成功能丧失iPSC细胞系</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/07/%E4%BB%8E%E8%AF%B1%E5%AF%BC%E5%A4%9A%E8%83%BD%E5%B9%B2%E7%BB%86%E8%83%9E%E7%94%9F%E6%88%903D%E5%85%A8%E8%82%BA%E7%B1%BB%E5%99%A8%E5%AE%98%EF%BC%8C%E7%94%A8%E4%BA%8E%E6%A8%A1%E6%8B%9F%E8%82%BA%E5%8F%91%E8%82%B2%E7%94%9F%E7%89%A9%E5%AD%A6%E5%92%8C%E7%96%BE%E7%97%85/" class="archive-article-date">
-        <time datetime="2024-03-07T03:07:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-07</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/07/%E4%BB%8E%E8%AF%B1%E5%AF%BC%E5%A4%9A%E8%83%BD%E5%B9%B2%E7%BB%86%E8%83%9E%E7%94%9F%E6%88%903D%E5%85%A8%E8%82%BA%E7%B1%BB%E5%99%A8%E5%AE%98%EF%BC%8C%E7%94%A8%E4%BA%8E%E6%A8%A1%E6%8B%9F%E8%82%BA%E5%8F%91%E8%82%B2%E7%94%9F%E7%89%A9%E5%AD%A6%E5%92%8C%E7%96%BE%E7%97%85/" target="_blank">从诱导多能干细胞生成3D全肺类器官，用于模拟肺发育生物学和疾病</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Paper</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/06/%E7%BB%86%E8%83%9E%E4%BD%93%E5%A4%96%E5%88%86%E5%8C%96%E4%B8%BA%E6%B0%94%E9%81%93%E4%B8%8A%E7%9A%AE%E8%82%BA%E7%B1%BB%E5%99%A8%E5%AE%98%E7%94%A8%E4%BA%8E%E5%91%BC%E5%90%B8%E7%B3%BB%E7%BB%9F%E7%96%BE%E7%97%85%E7%A0%94%E7%A9%B6%E5%BA%94%E7%94%A8%E4%BB%A5%E5%8F%8AiPSC%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/" class="archive-article-date">
-        <time datetime="2024-03-06T03:02:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-06</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/06/%E7%BB%86%E8%83%9E%E4%BD%93%E5%A4%96%E5%88%86%E5%8C%96%E4%B8%BA%E6%B0%94%E9%81%93%E4%B8%8A%E7%9A%AE%E8%82%BA%E7%B1%BB%E5%99%A8%E5%AE%98%E7%94%A8%E4%BA%8E%E5%91%BC%E5%90%B8%E7%B3%BB%E7%BB%9F%E7%96%BE%E7%97%85%E7%A0%94%E7%A9%B6%E5%BA%94%E7%94%A8%E4%BB%A5%E5%8F%8AiPSC%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/" target="_blank">人iPS细胞体外分化为气道上皮肺类器官用于呼吸系统疾病研究应用以及iPSC操作指南</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/05/%E7%A7%91%E5%AD%A6%E5%AE%B6%E5%BC%80%E5%8F%91%E6%96%B0%E5%9E%8B%E9%97%B4%E5%85%85%E8%B4%A8%E5%B9%B2%E7%BB%86%E8%83%9E%E5%BF%83%E8%84%8F%E8%A1%A5%E7%89%87%EF%BC%8C%E8%83%BD%E5%A4%9F%E8%87%AA%E4%B8%BB%E8%BF%81%E7%A7%BB%E5%88%B0%E5%8F%97%E6%8D%9F%E5%BF%83%E8%82%8C/" class="archive-article-date">
-        <time datetime="2024-03-05T06:47:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-05</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/05/%E7%A7%91%E5%AD%A6%E5%AE%B6%E5%BC%80%E5%8F%91%E6%96%B0%E5%9E%8B%E9%97%B4%E5%85%85%E8%B4%A8%E5%B9%B2%E7%BB%86%E8%83%9E%E5%BF%83%E8%84%8F%E8%A1%A5%E7%89%87%EF%BC%8C%E8%83%BD%E5%A4%9F%E8%87%AA%E4%B8%BB%E8%BF%81%E7%A7%BB%E5%88%B0%E5%8F%97%E6%8D%9F%E5%BF%83%E8%82%8C/" target="_blank">科学家开发新型间充质干细胞心脏补片，能够自主迁移到受损心肌</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Bio-News</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2024/03/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/2024/03/">1</a><a class="page-number" href="/archives/2024/03/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/2024/03/page/4/">4</a><a class="extend next" rel="next" href="/archives/2024/03/page/4/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -709,8 +578,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

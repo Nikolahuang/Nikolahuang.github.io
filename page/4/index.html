@@ -233,6 +233,218 @@
 
 
   
+    <article id="post-榕树集-抗体研发过程中的计算以及AI手段" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/03/04/%E6%A6%95%E6%A0%91%E9%9B%86-%E6%8A%97%E4%BD%93%E7%A0%94%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E8%AE%A1%E7%AE%97%E4%BB%A5%E5%8F%8AAI%E6%89%8B%E6%AE%B5/" target="_blank">榕树集--抗体研发过程中的计算以及AI手段</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/03/04/%E6%A6%95%E6%A0%91%E9%9B%86-%E6%8A%97%E4%BD%93%E7%A0%94%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E8%AE%A1%E7%AE%97%E4%BB%A5%E5%8F%8AAI%E6%89%8B%E6%AE%B5/" class="archive-article-date">
+        <time datetime="2024-03-04T06:55:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-04</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>转载 DrugSCI</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>介绍一篇发表在CellPress上的关于抗体研发的综述。</p>
+<h2 id="亮点"><a href="#亮点" class="headerlink" title="亮点"></a>亮点</h2><ul>
+<li>基于计算&#x2F;人工智能（AI）的抗体研发方向取得了显著进展</li>
+<li>数据库中存储着海量的抗体序列，但结构数据有限；生物物理性质数据也是可用的。</li>
+<li>已经有了许多预测抗体不同生物物理和其他属性的工具。</li>
+<li>深度学习方法在不断的提高抗体结构预测的性能，包括CDRs，而de novo设计仍然是一个具有挑战性的问题。</li>
+<li>蛋白质语言模型在这方面显示出非常有吸引力的前景。</li>
+</ul>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>治疗性抗体目前是生物疗法中最大的类别，因为它们的靶点特异性较好和结合亲和力较高。传统的抗体开发过程是基于主要的经验性方法，虽然成熟稳健，但繁琐且有显著的缺陷。最近，计算和人工智能（AI）技术的进步开始克服这些限制，被越来越多地整合到抗体开发的流程中。本文提供了与抗体开发相关的AI方法的概述，包括数据库、抗体属性和结构的计算预测模型，以及机器学习（ML）模型为重点的计算抗体设计方法。特别是，重点介绍了对结合至关重要的抗体结构组分，如互补决定区（CDR）环的设计。</p>
+<h2 id="传统抗体工程方法的限制"><a href="#传统抗体工程方法的限制" class="headerlink" title="传统抗体工程方法的限制"></a>传统抗体工程方法的限制</h2><p>传统的抗体工程方法虽然可以通过免疫或定向进化等方法获得binder，但仍然存在着一些较大的局限性。其中一个是很难针对抗原上的特定表位进行靶向。因为大多数筛选活动只能获得与给定表位结合的抗体，达不到所需要的生物活性。另一个缺陷是只有少数抗体具有成为治疗药物可能性，而大多数筛选活动中获得的初始阳性结果，会在后续开发中面临很多困难。此外，一旦获得候选的抗体 binder，抗体&#x2F;抗原复合物的结构解析是非常有用的，但是需要通过X射线晶体学或核磁共振手段，通常耗时且通量较低。</p>
+<h2 id="抗体序列和结构数据库"><a href="#抗体序列和结构数据库" class="headerlink" title="抗体序列和结构数据库"></a>抗体序列和结构数据库</h2><p>在抗体研发过程中，抗原的靶向以及功能，包括：抗原亲和力，靶标特异性，表位分析展示出的生物学功效以及有待开发的其余属性（Fig 1）。以上的能力和性质均由抗体的序列和结构决定。因此，关于抗体序列，结构和相关性质的信息对设计新型抗体是非常重要的。已经有了很多的数据库（Table 1），并且这些数据库对深度学习模型的训练也非常重要。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/640.jpeg" alt="图片"></p>
+<p>Fig 1. 抗体工程中优化功效和功能</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OAS</td>
+<td>A sequence database containing 1.5 billion paired Fv and unpaired sequences from 80 studies</td>
+</tr>
+<tr>
+<td>PIRD</td>
+<td>A sequence database containing annotated T cell receptor and B cell receptor repertoire sequencing data</td>
+</tr>
+<tr>
+<td>AbDiver</td>
+<td>A bioinformation tool that employs the B cell receptor sequencing data and compared query sequences to natural repertories</td>
+</tr>
+<tr>
+<td>RAPID</td>
+<td>A bioinformation tool that allows users to process and analyze human HC repertoire sequencing data and a large antibody database</td>
+</tr>
+<tr>
+<td>AbDb</td>
+<td>A structure database containing Fv region structures extracted from the RCSB PDB and SACS dataset</td>
+</tr>
+<tr>
+<td>SAbDab</td>
+<td>A bioinformation resource containing all the publicly available antibody structures</td>
+</tr>
+<tr>
+<td>abYsis</td>
+<td>A bioinformation tool including an integrated database of antibody sequence and structure data</td>
+</tr>
+<tr>
+<td>Thera-SAbDab</td>
+<td>A structure database including all antibody- and nanobody-related therapeutics recognized by the World Health Organization (WHO)</td>
+</tr>
+<tr>
+<td>SKEMPI</td>
+<td>A structural database containing more than 3000 binding free energy changes upon mutation from published literature</td>
+</tr>
+<tr>
+<td>AB-Bind</td>
+<td>A database including a diverse set of antibody binding data with experimentally determined binding free energy</td>
+</tr>
+<tr>
+<td>Cov-AbDab</td>
+<td>A focused repository for antibodies targeting SARS-CoV-2, SARS-CoV-1, and MERS-CoV</td>
+</tr>
+<tr>
+<td>sdAb-DB</td>
+<td>A focused repository for single-domain antibodies and related classes of proteins</td>
+</tr>
+<tr>
+<td>TAP</td>
+<td>A comprehensive platform including tools for evaluating five properties of antibody</td>
+</tr>
+<tr>
+<td>Camsol</td>
+<td>A predictor of protein solubility and potential sites to be modified for improvement through sequence- and structure-based algorithm</td>
+</tr>
+<tr>
+<td>SOLart</td>
+<td>A predictor of protein solubility and aggregation through structure-based algorithm</td>
+</tr>
+<tr>
+<td>A3D</td>
+<td>A predictor of aggregation-prone regions through sequence- and structure-based algorithms</td>
+</tr>
+<tr>
+<td>IEDB-AR</td>
+<td>A comprehensive platform including tools for prediction and analysis of immune epitopes</td>
+</tr>
+<tr>
+<td>Hu-mAb</td>
+<td>A classifier that can distinguish between human and non-human antibody Fv sequences</td>
+</tr>
+<tr>
+<td>BioPhi</td>
+<td>A comprehensive platform for antibody design, humanization, and humanness evaluation</td>
+</tr>
+</tbody></table>
+<p>Table 1: 目前的对于抗体结构，序列，属性分析的一些数据库和工具</p>
+<h3 id="抗体序列数据库"><a href="#抗体序列数据库" class="headerlink" title="抗体序列数据库"></a>抗体序列数据库</h3><p>在人类免疫系统中，抗体由B细胞产生，估计约有10^13个独特序列。抗体由两种类型的蛋白链组成，称为重链（heavy chain，HC）和轻链（light chain，LC）。下一代测序（NGS）方法获得抗体库序列的大量信息，有海量的标准化的测试数据以及公开可用的数据库。Observed antibody space （OAS）汇总了可变片段（Fv）序列，包含了来自68个不同研究的近20亿个序列。一些DL模型用OAS的数据进行了训练，用于区分和生成人源的抗体序列。此外，一些新型工具利用这些数据集进行了抗体序列分析。例如，AbDiver是一个利用公开的B细胞受体NGS数据集的工具，可以将设计的序列与天然序列进行比较。该工具有助于庞大的抗体突变空间下进行理性设计研发。此外，开发人员发现它可以为742种治疗性抗体找到合适的配置。</p>
+<h3 id="抗体结构数据库"><a href="#抗体结构数据库" class="headerlink" title="抗体结构数据库"></a>抗体结构数据库</h3><p>抗体的Fv结构由CDRs、高度可变的序列和保守序列的框架组成。六个CDR loop，分别位于重链（VH）和轻链（VL）的可变结构域上，参与抗原的结合。因此，抗体的3D结构决定了它与抗原的相互作用方式。研究人员可以利用从抗体结构中获得的信息来增强结合亲和力，或者开发预测表位的方法。基于结构的方法仍然是抗体设计的最有前景的方向，因此结构数据库对于训练和基准测试至关重要。</p>
+<p>PDB中的抗体结构已经被整理分类为各种数据集。抗体结构数据库（AbDb）中使用来自抗体晶体结构概要（SACS）数据集的信息对Fv区域的注释进行了更新。类似地，结构抗体数据库（SAbDab）中的结构也来自于PDB数据库，这是一个共有12,367个Fv区域结构的数据库（截止于2022年6月），以及abYsis。此外，治疗性结构抗体数据库（Thera-SAbDab）是一个治疗性抗体结构数据库，其中包含的数据有抗体和纳米抗体相关的结构。同时有一些额外的数据库总结了抗体性质和结构的信息，包括一些突变的动力学和能量信息，如SKEMPI。这些数据库都可以直接用于或者其余数据集结合使用，来训练或者优化模型。</p>
+<h2 id="抗体属性的预测"><a href="#抗体属性的预测" class="headerlink" title="抗体属性的预测"></a>抗体属性的预测</h2><p>除了结合特异性和亲和力之外，可发展性（developability）对于开发新型抗体至关重要。可发展性属性影响了抗体候选能否进入临床应用阶段并且保持适当的疗效。可发展性的几个主要属性包括：固有免疫原性、聚集&#x2F;不溶性、粘度和半衰期。为了减少工业应用中的可发展性的相关问题，需要在早期开发阶段就开始考虑抗体的性质。最近，基于经典统计学或机器学习的计算工具或方法已经被开发出来，可以用于预测抗体的可发展性。</p>
+<p>总的来说，抗体的可发展性主要可以通过氨基酸序列的物理化学性质来预测，例如疏水性、静电荷以及拓扑结构中的相互作用。例如，治疗性抗体分析(TAP)模型给出了与可发展性差相关的五个指标的分布：CDR总长度、表面疏水性程度、CDR中的正电荷和负电荷以及重链和轻链表面电荷的不对称性。TAP还为每个指标提供了指导性的截止值，这些截止值被用于过滤具有较差可发展性的抗体。此外，还有一些机器学习模型可以使用抗体序列或结构来预测可发展性。例如，Chen等人建立了一个机器学习pipline，使用来自SAbDab数据库的2400个抗体序列数据集来预测抗体的可发展性。</p>
+<p><strong>聚集</strong>：</p>
+<p>亲水性与聚集倾向、溶解度、粘度、自身相互作用和蛋白稳定性相关。抗体药物的聚集可能导致沉淀，缩短存储期，以及体内聚集可能增加药物的免疫原性。为了预测蛋白质的溶解度和聚集倾向，已开发了几种预测工具，包括Camsol和SOLart等。此外，也有一些机器学习模型可以使用抗体序列或结构来预测聚集倾向，如AGGRESCAN 3D（A3D）。一些机器学习模型可以帮助指导抗体候选药物的工程，避免“可发展性陷阱”。</p>
+<p><strong>免疫原性</strong>：</p>
+<p>抗体药物常来源于非人类生物，因此可能会被免疫系统识别为外源抗原，从而引发免疫原性反应。免疫原性会降低治疗效果，并通过引发不良药物反应影响安全性。为了评估抗体药物的临床安全性和有效性，开发了预测免疫原性的方法。这些方法包括传统技术和基于人工智能的计算工具，可以识别抗体中的 B 和 T 细胞表位。一些研究团队利用机器学习模型对抗体序列进行分类，以预测其人类性和免疫原性风险。此外，还开发了一些工具来人类化抗体序列，以减少其免疫原性风险。</p>
+<p><strong>药代动力学:</strong></p>
+<p>药代动力学（PK）清除确定了抗体的半衰期，因此也确定了抗体药物在给药后在体内停留的时间长度。等电点（pI）、粘度、免疫原性、非特异性、聚集和稳定性是与临床 PK 清除率相关的因素。为了通过对这些因素进行全面评估来预测清除率，Grinshpun 等人收集了已获批准或处于二期和三期临床试验中的 64 种单克隆抗体（mAbs）及其已发表的PK数据，并训练了一个随机森林分类器来区分具有不同清除水平的抗体。他们发现等电点是区分快速和缓慢清除抗体的最关键特征。此外，Labute 等人报道了基于结构的电荷计算来预测 PK 清除率。</p>
+<h2 id="抗体的计算设计"><a href="#抗体的计算设计" class="headerlink" title="抗体的计算设计"></a>抗体的计算设计</h2><h3 id="经典的抗体设计技术"><a href="#经典的抗体设计技术" class="headerlink" title="经典的抗体设计技术"></a>经典的抗体设计技术</h3><p>经典抗体设计技术依赖于传统的采样和评分方法，其中两个典型的例子是RosettaAntibodyDesign（RAbD）和OptMAVEn。RAbD通过外环和内环设计算法循环来进行抗体设计，而OptMAVEn则采用三步工作流程，利用抗原-抗体复合物数据库的结构信息，选择潜在结合位置；将抗体分为6个组成部分，每个部分都有自己的结构参考库；随后根据每个部件的抗原结合能量，通过线性规划选择出最佳的组合。这些方法通常需要生成大量的候选物库（million）和大量的计算资源，采用了先前开发的高并行的筛选策略，并且受限于经典的评分函数的限制。</p>
+<p>然而，这些经典技术存在一些限制，如依赖已知结构的数据库、计算成本高、评分函数的限制等。随着深度学习技术的发展，越来越多的研究开始转向应用机器学习模型进行抗体设计，以克服这些限制。</p>
+<h3 id="基于ML的抗体结构建模"><a href="#基于ML的抗体结构建模" class="headerlink" title="基于ML的抗体结构建模"></a>基于ML的抗体结构建模</h3><p>抗体结构信息对于理解抗体的特性，如特异性和亲和力，至关重要。六个CDR（H1、H2、L1、L2和L3）中的五个，结构多样性有限，loop通常遵循规范的构象；这些环具有更多的结构约束，更容易预测。而 CDR-H3的构象非常多样，即便在序列相似性高的情况下。因此CDR-H3建模是一个约束较少、更困难的问题。</p>
+<p>许多实验性抗体设计技术产生了与结构无关的序列信息。在进行大规模筛选时，独立确定所有抗体 loop结构及其与抗原的界面是不切实际的。传统上，抗体结构的预测使用基于物理的建模（如分子动力学模拟），同源建模或组合方法（如 MODELLER）。</p>
+<p>相比之下，深度学习模型也被开发用于抗体结构建模。例如，ABodyBuilder是一个自动化的抗体同源建模流程，而ABlooper使用图神经网络预测CDR环的位置。此外，DeepAb从不变特征预测结构，并在预测精度方面取得了成功。然而，由于DeepAb依赖于Rosetta，其预测速度较慢，因此最近引入了更快的模型IgFold。另外，AlphaFold2被证明在从序列预测蛋白质结构方面具有革命性的作用，但由于其依赖同源序列的MSA，因此对于CDR-H3的建模不太适用。深度学习在抗体筛选方面也被证明是有用的，例如DLAB使用神经网络生成结合分数。总体而言，虽然这些方法取得了显著进展，但仍需要进一步研究以解决抗体&#x2F;抗原复合物结构的可靠建模问题，特别是针对CDR-H3的建模。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/640-17098164196172.png" alt="图片"></p>
+<p>Table 2 抗体结构模拟方法</p>
+<h3 id="基于结构的深度学习模型"><a href="#基于结构的深度学习模型" class="headerlink" title="基于结构的深度学习模型"></a>基于结构的深度学习模型</h3><p>最近的研究着重于利用深度学习（DL）技术在抗体设计领域的应用，特别是针对CDR-H3环的设计。这些努力主要分为两类：一类是通过生成3D坐标来设计CDR-H3的backbone，例如IG-VAE模型；另一类是利用学习蛋白质结构图嵌入的模型，预测特定突变引入后的ddG变化。然而，这些基于结构的模型仍然存在局限性，例如依赖外部工具进行序列设计，以及不能针对特定表位进行设计。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/640-17098164245474.png" alt="图片"></p>
+<p>Table 3 抗体设计深度学习模型</p>
+<h3 id="基于序列的深度学习模型"><a href="#基于序列的深度学习模型" class="headerlink" title="基于序列的深度学习模型"></a>基于序列的深度学习模型</h3><p>基于序列的深度学习（DL）模型可以分为两类：一类是试图仅从抗体序列中学习整体特征的DL模型；另一类是利用抗原特异性数据的序列方法。第一类模型通过学习抗体序列的相互依赖关系来设计，其中自回归或生成模型的出现使得可以生成类似于抗体的序列。Shin等人利用因果扩张卷积应用于自回归模型中，通过学习序列中的长程关系来生成纳米抗体库。随后，由于Transformer模型（如BERT）的发展，NLP取得了巨大进步，并将这些模型应用到蛋白质序列中，从而产生了ProtBERT和ESM-1b等模型。这些模型在捕获蛋白质序列的许多特性方面都取得了巨大成功。另一方面，另一种仅使用序列的方法则利用抗原特异性数据，例如Mason等人提出的方法可以训练卷积神经网络。未来的模型可能会结合语言模型的特征，并在实验数据上进行训练，以获得针对抗原结合进行优化的实际抗体。然而，目前纯粹基于序列的模型要么与抗原无关，要么需要外部实验数据，并且在生成过程中受益于结构信息的整合。</p>
+<h3 id="结构和序列信息是机器学习的抗体设计的未来"><a href="#结构和序列信息是机器学习的抗体设计的未来" class="headerlink" title="结构和序列信息是机器学习的抗体设计的未来"></a>结构和序列信息是机器学习的抗体设计的未来</h3><p>除了前述的经典工作之外，越来越多基于人工智能的方法开始被开发。例如，Jin等人开发了一个模型，以自回归方式生成CDR-H3环的序列和结构。下一个氨基酸的预测取决于抗体框架的粗粒化表示以及生成的loop中当前氨基酸的结构。他妈的结果展示了可能的针对SARS-CoV-1和SARS-CoV-2的抗体研发。尽管令人兴奋，但该模型并未对特定抗原表位进行调节，为进一步改进模型留下了空间。Kang等人采用了一种更简单的方法，其中抗体和抗原氨基酸被表示为图中的节点，通过界面残基节点之间的边捕获界面结构。尽管在某种程度上取得了成功，但该模型显示出对训练数据的显著的过拟合。未来的CDR-H3环的设计将在能够完全生成序列和结构的模型上，同时适当地对目标表位进行调节。</p>
+<h3 id="将AI设计方法纳入其中可能会改善抗体开发"><a href="#将AI设计方法纳入其中可能会改善抗体开发" class="headerlink" title="将AI设计方法纳入其中可能会改善抗体开发"></a>将AI设计方法纳入其中可能会改善抗体开发</h3><p>观察DL中一般蛋白质设计的发展，将其中成功的技术纳入到抗体设计的任务也很重要。最近，在将幻觉（hallucination）技术应用于一般蛋白质设计方面取得了成功。在这种方法中，随机选择蛋白质序列，然后使用现有的ML模型将其“折叠”成3D结构（通过骨架α-碳距离图预测），提供一个起点，然后通过蒙特卡洛过程引入突变。此外，扩散概率模型已经被成功应用于蛋白质骨架设计的生成。最近，基于打分的生成模型RFdiffusion和Chroma能够为新型蛋白质生成全原子坐标，其中Chroma能够创建含有数千个氨基酸的蛋白质。很明显，这些方法适用于CDR区域的设计，未来的工作有赖于它们。</p>
+<h2 id="总结以及未来展望"><a href="#总结以及未来展望" class="headerlink" title="总结以及未来展望"></a>总结以及未来展望</h2><p>该文总结了当前计算方法在治疗性抗体开发中的应用，包括结构、表位预测以及解决开发问题。这些方法不仅可以提高开发性能，还可以降低成本、减少劳动力。作者提到了AlphaFold2等工具在缩短时间方面的重要性。以新冠疫情为例，许多药物发现研究是通过计算方法进行的。作者强调了结构和序列设计中的DL方法的重要性，并展望了未来的发展方向，包括引入密码子优化和将各种进展整合成端到端的可微分流程。这些进展有望加速抗体开发，特别是在结合预测和结构搜索方面。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/640-17098164305196.jpeg" alt="图片"></p>
+<p>Figure 2 抗体设计的最新计算手段</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>1.<a target="_blank" rel="noopener" href="https://www.cell.com/trends/pharmacological-sciences/fulltext/S0165-6147(22)00279-6">https://www.cell.com/trends/pharmacological-sciences/fulltext/S0165-6147(22)00279-6</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">BioNews</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/03/04/%E6%A6%95%E6%A0%91%E9%9B%86-%E6%8A%97%E4%BD%93%E7%A0%94%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E8%AE%A1%E7%AE%97%E4%BB%A5%E5%8F%8AAI%E6%89%8B%E6%AE%B5/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Cell综述：CRISPR基因组编辑技术的过去、现在和未来" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -2184,129 +2396,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2023/07/04/%E7%8E%8B%E7%9A%93%E6%AF%85%E5%92%8C%E5%BC%A0%E5%8B%87%E5%9B%A2%E9%98%9F%E5%90%88%E4%BD%9C%E5%BC%80%E5%8F%91%E6%96%B0%E5%9E%8BTnpB%E5%BE%AE%E5%9E%8B%E5%9F%BA%E5%9B%A0%E7%BC%96%E8%BE%91%E5%B7%A5%E5%85%B7-md/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-新一代生物技术导弹-纳米抗体" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2023/06/01/%E6%96%B0%E4%B8%80%E4%BB%A3%E7%94%9F%E7%89%A9%E6%8A%80%E6%9C%AF%E5%AF%BC%E5%BC%B9-%E7%BA%B3%E7%B1%B3%E6%8A%97%E4%BD%93/" target="_blank">纳米抗体药物研究最新进展</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2023/06/01/%E6%96%B0%E4%B8%80%E4%BB%A3%E7%94%9F%E7%89%A9%E6%8A%80%E6%9C%AF%E5%AF%BC%E5%BC%B9-%E7%BA%B3%E7%B1%B3%E6%8A%97%E4%BD%93/" class="archive-article-date">
-        <time datetime="2023-06-01T04:19:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-06-01</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="纳米抗体药物研究最新进展"><a href="#纳米抗体药物研究最新进展" class="headerlink" title="纳米抗体药物研究最新进展"></a>纳米抗体药物研究最新进展</h1><p><strong>前言</strong></p>
-<p>纳米抗体（Nanobody，Nb）是1989年比利时科学家在骆驼科动物体内发现的天然缺失轻链的重链抗体（Heavy-chain antibody，HcAb）可变区，分子量仅15KD，是常规抗体分子量的1&#x2F;10，也是目前已知分子质量最小的天然抗体。纳米抗体与传统抗体在结构上存在较大差异，表现出更高的亲和力与稳定性、可微生物表达、免疫原性低、可溶性好、穿透力强（图1）。纳米抗体的优良性能打破了传统抗体因较大的体积和复杂的结构带来的应用桎梏，为抗体药更广泛的应用带来了契机。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/20230620143445454.png" alt="图片1.png"></p>
-<p>图1  纳米抗体的特性与应用</p>
-<p><strong>已获批上市的纳米抗体药物</strong></p>
-<p>相比于研究火热的单抗药物，目前纳米抗体行业关注度较低，但在技术前瞻性、格局颠覆力上不断蓄能。2007年由Ablynx研发的首个纳米抗体进入临床试验；2018年全球首个纳米抗体Caplacizumab欧盟获批上市，2022年Ablynx开发的双特异性纳米抗体Ozoralizumab（英文商品名：Nanozora）在日本获批上市走。纵观国内，康宁杰瑞在该赛道布局紧跟国际步伐，于2016年申报KN-035产品（PD-L1靶点，单链抗体FC融合）临床试验，并在2021年在中国获批上市（全球首个皮下注射的纳米抗体药物）（图2）；2022年传奇生物研发的首款纳米抗体CAR-T细胞获得FDA批准上市，成为中国首个进入美国市场的细胞产品。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/20230620143525673.png" alt="图片2.png"></p>
-<p>图2 纳米抗体药物开发代表性历程</p>
-<p>Ablynx作为纳米抗体药物研发的巨头，拥有40多个候选药物，应用于癌症、自身免疫病、呼吸系统疾病、血液系统疾病等多个不同领域。其研发的全球首个用于治疗“成年获得性血栓性血小板减少性紫癜（aTTP）”的纳米抗体Caplacizumab（图3），已于2018年获欧盟批复上市。Caplacizumab作为一种抗vWF的人源化、仅包含二价可变结构域的免疫球蛋白片段, 能够靶向vWF的A1结构域，因为市场上并无治疗该疾病的药物，所以其在2009年获得孤儿药资格。Ablynx的另一款上市药物Ozoralizumab（图3）含有两个靶向TNF-α的纳米抗体和一个靶向人血清白蛋白（HSA）的纳米抗体，此款药物能够有效抑制肿瘤坏死因子受体与TNF-α的相互作用，IC50值为22.5 pM，且靶向HSA的纳米抗体的引入有效的延长了药物半衰期，单次给药后的平均半衰期达到了18.2天。</p>
-<p>康宁杰瑞自主研发的PD-L1纳米抗体Fc融合蛋白，于2016年申报KN-035产品（PD-L1靶点，单链抗体FC融合）临床试验，并在2021年在中国获批上市，这是全球第一个且目前唯一获批上市的皮下注射的纳米抗体药物。KN035（图3）是一种Fc融合的抗PD-L1纳米抗体，用于治疗既往标准治疗失败的微卫星不稳定(MSI-H)晚期结直肠癌、胃癌&#x2F;错配修复功能缺陷(dMMR)的其他晚期实体瘤。这几款基于纳米抗体的药物（Caplacizumab、KN-035和Ozoralizumab）相继获批上市，将纳米抗体的研发推向新的高度。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/20230620143552610.png" alt="图片3.png"></p>
-<p>图3  Caplacizumab、KN-035的晶体结构和Ozoralizumab的结构示意图</p>
-<p>​    2022年2月28日，传奇生物和Janssen合作的CAR-T疗法-西达基奥仑赛(cilta-cel)获得批准，也成为首款获得FDA批准的国产CAR-T细胞疗法，用于治疗复发性&#x2F;难治性多发性骨髓瘤。</p>
-<p><strong>正在临床中的纳米抗体药物</strong></p>
-<p>目前全球约有二十多种纳米抗体药物正在临床实验的不同阶段，治疗的疾病有软组织肉瘤、胆道癌、多发性骨髓瘤、非小细胞肺癌、B细胞淋巴瘤等肿瘤，也有类风湿关节炎、系统性红斑狼疮、银屑病等自身免疫性疾病 以及病毒导致的腹泻，及呼吸道合胞病毒感染。下表整理了一些进入临床的基于纳米抗体的药物项目：</p>
-<p>表一.正在临床中的纳米抗体药物</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/20230620143759812.png" alt="图片4.png"></p>
-<p><strong>纳米抗体偶联小分子药物（NDC）</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/20230620143858312.png" alt="图片5.png"></p>
-<p>图4. 纳米抗体偶连药物（NDC）具有更深的组织穿透能力，注：m603:传统抗体，n501：纳米抗体</p>
-<p>NDC（Nanobody drug conjugation）类药物也是一个非常有前景的领域，目前尚未有进入临床的项目，但是相关的研发工作正在如火如荼的进行中。例如，2022年4月，复旦大学的应天雷课题组及其合作团队研发了一种针对癌胚抗原5T4的高稳定性、强组织穿透性、高亲和力的全人源纳米抗体偶联药物。该项研究发现NDC相较于传统单抗ADC具有更好的组织穿透深度，能够更有效的在肿瘤中累积，且具备更高效的抗肿瘤活性。2021年9月，浙江大学陈枢青教授与潘利强教授团队合作发表了“多价双表位抗EGFR纳米抗体-药物偶联物，用于恶性肿瘤的靶向治疗。研究人员将两种靶向EGFR的纳米抗体串联，再与细胞毒素定点偶联，制备得到的NDC药物表现出了优秀的内吞效率和更好的递送能力，具有良好的应用前景。</p>
-<p>NDC类药物的主要短板是易被肾脏快速清除，半衰期短，其解决方法主要包括在纳米抗体上连接聚乙二醇，或者将两个或三个纳米抗体串联，此外，还可以采用融合白蛋白或融合Fc结构域的方法。</p>
-<p><strong>纳米抗体在抵抗新型冠状病毒中的应用</strong></p>
-<p>近几年，新冠疫情在全球范围内引起了广泛关注，攻克新冠病毒主要面临两大难题，一是新冠病毒不断变异，使得许多过去开发出的抗体难以用于中和新毒株；二是病毒的主要感染部位是呼吸道和肺部，但抗体主要存在于血液中，很难有效递送到病灶部位。面对这两点挑战，纳米抗体给出了全新的解题方式。纳米抗体分子量小，能够与新冠病毒的保守隐藏表位紧密结合，从而有效的避免免疫逃逸；针对呼吸系统的病毒感染，纳米抗体因较高的溶解性、稳定性和组织渗透性，可以通过吸入给药的方式，有效抵达肺部。例如，复旦大学基础医学院应天雷与吴艳玲课题组与生物医学研究院孙蕾课题组合作在Cell期刊上发表了一篇题为“Broad neutralization of SARS-CoV-2 variants by an inhalable bispecific single-domain antibody”的研究成果（<strong>图****5</strong>）。该项研究发现了两种广谱性的全人源纳米抗体，可以分别和Omicron变体RBD上的两个高度保守区域结合，研究者将这两株纳米抗体串联，通过雾化吸入的方式治疗新冠病毒感染的hACE2人源化轻症和重症模型小鼠，小鼠肺部病理状态明显改善，治疗效果出色。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/20230620144016452.png" alt="图片6.png"></p>
-<p>图5. 双抗bn03的结构及功能示意图</p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a><strong>参考文献</strong></h1><p>[1] Salvador J, Vilaplana L, Marco M. Nanobody: outstanding features for diagnostic and therapeutic applications[J]. Analytical and bioanalytical chemistry, 2019, 411(9): 1703-1713.</p>
-<p>[2] Dong J, Huang B, Jia Z, et al. Development of multi-specific humanized llama antibodies blocking SARS-CoV-2&#x2F;ACE2 interaction with high affinity and avidity[J]. Emerging microbes &amp; infections, 2020, 9(1): 1034-1036.</p>
-<p>[3] Sun S, Ding Z, Yang X, et al. Nanobody: a small antibody with big implications for tumor therapeutic strategy[J]. International Journal of Nanomedicine, 2021, 16: 2337.</p>
-<p>[4] Bao C, Gao Q, Li L L, et al. The application of nanobody in CAR-T therapy[J]. Biomolecules, 2021, 11(2): 238.</p>
-<p>[5] Gai J, Ma L, Li G, Zhu M, Qiao P, Li X, Zhang H, Zhang Y, Chen Y, Ji W, Zhang H, Cao H, Li X, Gong R, Wan Y. A potent neutralizing nanobody against SARS-CoV-2 with inhaled delivery potential. MedComm (2020). 2021 Mar;2(1):101-113.</p>
-<p>[6] Liu M, Li L, Jin D, et al. Nanobody—A versatile tool for cancer diagnosis and therapeutics[J]. Wiley Interdisciplinary Reviews: Nanomedicine and Nanobiotechnology, 2021, 13(4): e1697.</p>
-<p>[7] Verhaar E R, Woodham A W, Ploegh H L. Nanobodies in cancer[C]&#x2F;&#x2F;Seminars in immunology. Academic Press, 2021, 52: 101425.</p>
-<p>[8] Arbabi-Ghahroudi M. Camelid Single-Domain Antibodies: Promises and Challenges as Lifesaving Treatments[J]. International Journal of Molecular Sciences, 2022, 23(9): 5009.</p>
-<p>[9] Li B, Qin X, Mi LZ. Nanobodies: from structure to applications in non-injectable and bispecific biotherapeutic development. Nanoscale. 2022 May 10.</p>
-<p>[10] Yanling Wu, Quanxiao Li, et al. A highly stable human single-domain antibody-drug conjugate exhibits superior penetration and treatment of solid tumors.[J]. Molecular Therapy, 2022.</p>
-<p>[11] Jiansheng Fan, Xinlei Zhuang, et al. A multivalent biparatopic EGFR-targeting nanobody drug conjugate displays potent anticancer activity in solid tumor models.[J]. Signal Transduction and Targeted Therapy, 2021.</p>
-<p>[12] Shohei Oyama, Kosuke Ebina, et al. A novel anti-TNF-α drug ozoralizumab rapidly distributes to inflamed joint tissues in a mouse model of collagen induced arthritis. [J]. Scientific Reports, 2022.</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">BioNews</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/06/01/%E6%96%B0%E4%B8%80%E4%BB%A3%E7%94%9F%E7%89%A9%E6%8A%80%E6%9C%AF%E5%AF%BC%E5%BC%B9-%E7%BA%B3%E7%B1%B3%E6%8A%97%E4%BD%93/">展开全文 >></a>
     </p>
     
 
