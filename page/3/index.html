@@ -233,6 +233,1277 @@
 
 
   
+    <article id="post-在哺乳动物细胞中通过具有 3突出端的长dsDNA介导的CRISPR敲入(LOCK)实现高效的大DNA片段敲入" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/03/11/%E5%9C%A8%E5%93%BA%E4%B9%B3%E5%8A%A8%E7%89%A9%E7%BB%86%E8%83%9E%E4%B8%AD%E9%80%9A%E8%BF%87%E5%85%B7%E6%9C%89%203%E7%AA%81%E5%87%BA%E7%AB%AF%E7%9A%84%E9%95%BFdsDNA%E4%BB%8B%E5%AF%BC%E7%9A%84CRISPR%E6%95%B2%E5%85%A5(LOCK)%E5%AE%9E%E7%8E%B0%E9%AB%98%E6%95%88%E7%9A%84%E5%A4%A7DNA%E7%89%87%E6%AE%B5%E6%95%B2%E5%85%A5/" target="_blank">在哺乳动物细胞中通过具有 3&#39;突出端的长dsDNA介导的CRISPR敲入(LOCK)实现高效的大DNA片段敲入</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/03/11/%E5%9C%A8%E5%93%BA%E4%B9%B3%E5%8A%A8%E7%89%A9%E7%BB%86%E8%83%9E%E4%B8%AD%E9%80%9A%E8%BF%87%E5%85%B7%E6%9C%89%203%E7%AA%81%E5%87%BA%E7%AB%AF%E7%9A%84%E9%95%BFdsDNA%E4%BB%8B%E5%AF%BC%E7%9A%84CRISPR%E6%95%B2%E5%85%A5(LOCK)%E5%AE%9E%E7%8E%B0%E9%AB%98%E6%95%88%E7%9A%84%E5%A4%A7DNA%E7%89%87%E6%AE%B5%E6%95%B2%E5%85%A5/" class="archive-article-date">
+        <time datetime="2024-03-11T09:53:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-11</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1439134">WH Wenjie Han</a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1003475">HL Haojun Liang <img src="https://cdn.bio-protocol.org/forum/fe/static/icon_email.svg" alt="email"></a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1061008">JB Jianqiang Bao <img src="https://cdn.bio-protocol.org/forum/fe/static/icon_email.svg" alt="email"></a></p>
+<p>第一次发布: <a target="_blank" rel="noopener" href="https://bio-protocol.org/cn/archive?vol=13&issid=1331">2023年10月20日第13卷第20期 </a>DOI: <a target="_blank" rel="noopener" href="https://doi.org/10.21769/BioProtoc.4853">10.21769&#x2F;BioProtoc.4853</a> 评审: <a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1224311">Xin Xu</a> 匿名评审</p>
+<hr>
+<h3 id="My-notes"><a href="#My-notes" class="headerlink" title="My notes:"></a>My notes:</h3><p>这项研究主要介绍了一种名为“LOCK”(Long dsDNA with 3′-Overhangs mediated CRISPR Knock-in)的基因组编辑技术，旨在实现高效的大DNA片段敲入。其关键创新点包括：<br><strong>3’悬垂的双链DNA(odsDNA)供体</strong>：在双链DNA供体的3’端设计一段单链DNA悬垂序列，可显著提高基因组敲入的效率。<br><strong>PCV2连接</strong>：通过设计一个含有PCV2蛋白识别序列的连接物，将odsDNA连接到Cas9-PCV2融合蛋白上，进一步提高了敲入效率。<br><strong>长DNA片段敲入</strong>：通过使用odsDNA&#x2F;Cas9-PCV2&#x2F;sgRNA复合物，研究实现了1-3kb长DNA片段的高效敲入，敲入效率显著高于传统dsDNA供体。<br><strong>多种基因位点的敲入验证</strong>：研究在HEK293T细胞的3个不同基因位点进行了敲入验证，证明了该方法的有效性和通用性。<br><strong>优化PCR扩增条件</strong>：研究优化了PCR扩增条件，包括使用高保真酶、调整循环参数等，以确保获取高质量的双链DNA供体。</p>
+<p>简要的实验步骤概括为：<br><strong>目标序列选择和引物设计</strong>：使用在线工具CHOPCHOP选择目标序列，并在PCR引物中设计同源臂序列。<br><strong>双链DNA供体和odsDNA供体制备：</strong>通过PCR扩增双链DNA供体，并通过引物中的硫代磷酸修饰制备odsDNA供体。<br><strong>Cas9和Cas9-PCV2蛋白表达纯化：</strong>在大肠杆菌中表达Cas9和Cas9-PCV2融合蛋白，并进行纯化。<br><strong>sgRNA合成和纯化：</strong>合成针对目标基因的sgRNA，并使用试剂盒进行纯化。<br><strong>RNP复合物制备：</strong>将odsDNA连接到Cas9-PCV2上，制备RNP复合物。<br><strong>核转染RNP复合物：</strong>将RNP复合物核转染到HEK293T细胞中，实现基因组敲入。<br><strong>敲入效率检测：</strong>通过流式细胞仪和PCR检测敲入效率。<br><strong>验证不同长度的DNA片段敲入</strong>：比较不同长度DNA片段的敲入效率。</p>
+<hr>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>在全球分子生物学和细胞生物学实验室中，高效且精准的基因组编辑技术极为重要。尽管目前碱基编辑器(base editors)和主编辑器(prime editors)等精确基因组编辑工具已取得快速发展，但成本效益高、适用于长DNA片段的高效敲入（KI）技术仍不可或缺。我们之前的研究利用微同源性介导的末端连接高效修复双链断裂（DSB），展示了结合CRISPR-Cas9技术的一种特殊设计的带有50个核苷酸同源性臂（HA）的3′-悬垂双链DNA（odsDNA）供体，可实现高效的外源DNA敲入。<strong>odsDNA</strong>供体的3′-悬垂长度可通过五个连续的硫代磷酸（PT）修饰来调控。本指南详细介绍了执行<strong>LOCK</strong>（利用3′-悬垂的长双链DNA进行CRISPR敲入）方法的步骤，该方法适用于在哺乳动物细胞中进行基因大小（约1-3 kb）的敲入。</p>
+<p><strong>Graphical overview</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/20230920204009_6011.jpg" alt="Large image"></p>
+<hr>
+<p>CRISPR及其衍生技术的出现极大地扩展了生物医学研究和创新生物技术开发领域中科学家进行基因组操作的“工具箱”。与高度依赖专门工程化的蛋白阅读器来特异性识别目标基因组DNA（gDNA）序列的<strong>ZFN或TALEN</strong>方法相比，CRISPR-Cas9方法仅需要一个单一的crRNA（约20个核苷酸），它能独特地识别并与特定的gDNA位点配对（Hsu等人，2014年）。这一改进使得基因组编辑技术因其低成本和简化的程序而在任何个人实验室都可采用。</p>
+<p>然而，众所周知，大型供体DNA序列精确整合到宿主基因组依赖于同源定向修复（HDR），这在哺乳动物细胞中发生的频率较低。此外，Cas9切割引起的双链断裂（DSB）位点可能发生在不期望的基因组位点上（脱靶），这可能导致意外的DSB修复结果，例如插入&#x2F;缺失（indels）和易位，这对细胞是有害的。因此，在最小化脱靶效应的同时提高精确靶向效率至关重要（Doudna，2020年）。</p>
+<p>在过去的十年里，科学家们在提高精确CRISPR-Cas9敲入（KI）效率方面取得了巨大成就。<strong>供体DNA序列的磷酸骨架</strong>具有<strong>高度负电荷</strong>，这自然阻碍了它们穿过细胞膜，导致外源DNA供体在局部DSB位点无法获得。这被认为是导致HDR介导KI效率低下的原因之一。因此，迄今为止，已经设计出了多种方法来促进外源修复DNA供体的核内递送或结构稳定性（Yu等人，2020年）。例如，通过<strong>腺相关病毒</strong>（AAV）载体、<strong>Strep-biotin标记</strong>的连接（Gu等人，2018年）或<strong>染色质包装</strong>（Cruz-Becerra和Kadonaga，2020年）可以促进DNA供体的核内进入。</p>
+<p>另一方面，众所周知，虽然经典的非同源末端连接（c-NHEJ）修复在CRISPR-Cas9诱导的DSB位点更为频繁，但通过人为操纵细胞环境，修复途径可以偏向精确的HDR修复结果（Maruyama等人，2015年）。事实上，越来越多的例子表明，长单链DNA（lssDNA，oligo）作为外源HDR供体，在HDR效率和脱靶效应方面比传统的双链DNA（dsDNA）供体具有更大的优势（Quadros等人，2017年；Shy等人，2023年）。利用dsDNA和ssDNA供体的独特优势，我们之前的研究表明，单一的杂交“3′-悬垂dsDNA”供体，称为odsDNA，已被证明可以显著提高HDR效率，最多提高5倍，而脱靶效应较低（Han等人，2023年）。我们将这种方法简称为“LOCK”（Long dsDNA with 3′-Overhangs mediated CRISPR Knock-in）。在本协议中，我们描述了在任何个人实验室操作的这一简单技术的步骤。</p>
+<hr>
+<h2 id="实验操作细则："><a href="#实验操作细则：" class="headerlink" title="实验操作细则："></a>实验操作细则：</h2><h3 id="A-为了在HEK293T细胞的不同基因组位点上实现绿色荧光蛋白的敲入（KI），需要准备dsDNA和带有3′-悬垂的dsDNA（odsDNA）作为DNA供体"><a href="#A-为了在HEK293T细胞的不同基因组位点上实现绿色荧光蛋白的敲入（KI），需要准备dsDNA和带有3′-悬垂的dsDNA（odsDNA）作为DNA供体" class="headerlink" title="A. 为了在HEK293T细胞的不同基因组位点上实现绿色荧光蛋白的敲入（KI），需要准备dsDNA和带有3′-悬垂的dsDNA（odsDNA）作为DNA供体"></a>A. 为了在HEK293T细胞的不同基因组位点上实现绿色荧光蛋白的敲入（KI），需要准备dsDNA和带有3′-悬垂的dsDNA（odsDNA）作为DNA供体</h3><h4 id="1-选取了Lamin-A-C、GAPDH和AAVS1位点的目标序列作为示例。"><a href="#1-选取了Lamin-A-C、GAPDH和AAVS1位点的目标序列作为示例。" class="headerlink" title="1.选取了Lamin A&#x2F;C、GAPDH和AAVS1位点的目标序列作为示例。"></a>1.选取了Lamin A&#x2F;C、GAPDH和AAVS1位点的目标序列作为示例。</h4><h5 id="a-在这些供体DNA序列中，被插入的序列两侧各有50个核苷酸的同源性臂。"><a href="#a-在这些供体DNA序列中，被插入的序列两侧各有50个核苷酸的同源性臂。" class="headerlink" title="a. 在这些供体DNA序列中，被插入的序列两侧各有50个核苷酸的同源性臂。"></a>a. 在这些供体DNA序列中，被插入的序列两侧各有50个核苷酸的同源性臂。</h5><p>Note: 目标序列是使用在线工具CHOPCHOP选择的，选择的标准是序列中错配较少且得分较高。一个具体的示例已在图1中展示。</p>
+<p>[^Fig1]: <strong>Screenshot example of the CHOPCHOP website when selecting the target sequence</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/20230920232228_7331.jpg" alt="Large image" style="zoom:50%;">
+
+<h5 id="b-在本研究中，我们采用了长度为1-010和2-500个碱基对的基因片段作为DNA供体。这些片段按照标准的克隆程序被插入到质粒中，这些质粒包括了必要的启动子区域和EGFP（增强型绿色荧光蛋白）序列。在这些供体DNA序列中，用于同源定向修复（HDR）的50个核苷酸同源性臂（HA）序列已被下划线标出。具体的模板序列详见表1。"><a href="#b-在本研究中，我们采用了长度为1-010和2-500个碱基对的基因片段作为DNA供体。这些片段按照标准的克隆程序被插入到质粒中，这些质粒包括了必要的启动子区域和EGFP（增强型绿色荧光蛋白）序列。在这些供体DNA序列中，用于同源定向修复（HDR）的50个核苷酸同源性臂（HA）序列已被下划线标出。具体的模板序列详见表1。" class="headerlink" title="b. 在本研究中，我们采用了长度为1,010和2,500个碱基对的基因片段作为DNA供体。这些片段按照标准的克隆程序被插入到质粒中，这些质粒包括了必要的启动子区域和EGFP（增强型绿色荧光蛋白）序列。在这些供体DNA序列中，用于同源定向修复（HDR）的50个核苷酸同源性臂（HA）序列已被下划线标出。具体的模板序列详见表1。"></a>b. 在本研究中，我们采用了长度为1,010和2,500个碱基对的基因片段作为DNA供体。这些片段按照标准的克隆程序被插入到质粒中，这些质粒包括了必要的启动子区域和EGFP（增强型绿色荧光蛋白）序列。在这些供体DNA序列中，用于同源定向修复（HDR）的50个核苷酸同源性臂（HA）序列已被下划线标出。具体的模板序列详见表1。</h5><table>
+<thead>
+<tr>
+<th><em>Lamin A&#x2F;C</em> locus donor sequence (EF-1α core promoter-EGFP 1110bp)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ctttggtttttttcttctgtatttgtttttctaagagaagttattttctataggtcttgaaaggagtgggtcaattggctccggtgcccgtcagtgggcagagcgcacatcgcccacagtccccgagaagttggggggaggggtcggcaattgatccggtgcctagagaaggtggcgcggggtaaactgggaaagtgatgtcgtgtactggctccgcctttttcccgagggtgggggagaaccgtatataagtgcagtagtcgccgtgaacgttctttttcgcaacgggtttgccgccagaacacaggaagcttgccaccatggtgagcaagggcgaggagctgttcaccggggtggtgcccatcctggtcgagctggacggcgacgtaaacggccacaagttcagcgtgtccggcgagggcgagggcgatgccacctacggcaagctgaccctgaagttcatctgcaccaccggcaagctgcccgtgccctggcccaccctcgtgaccaccctgacctacggcgtgcagtgcttcagccgctaccccgaccacatgaagcagcacgacttcttcaagtccgccatgcccgaaggctacgtccaggagcgcaccatcttcttcaaggacgacggcaactacaagacccgcgccgaggtgaagttcgagggcgacaccctggtgaaccgcatcgagctgaagggcatcgacttcaaggaggacggcaacatcctggggcacaagctggagtacaactacaacagccacaacgtctatatcatggccgacaagcagaagaacggcatcaaggtgaacttcaagatccgccacaacatcgaggacggcagcgtgcagctcgccgaccactaccagcagaacacccccatcggcgacggccccgtgctgctgcccgacaaccactacctgagcacccagtccgccctgagcaaagaccccaacgagaagcgcgatcacatggtcctgctggagttcgtgaccgccgccgggatcactctcggcatggacgagctgtacaagtaagactctggtcagagatacctcagtggttttatactgaaggaaaaacacaagcaaaaaaaaaaaaaaagca</td>
+</tr>
+<tr>
+<td>*<strong>GAPDH* locus donor sequence (EF-1α core promoter-EGFP 1110bp)</strong></td>
+</tr>
+<tr>
+<td>atggcctccaaggagtaagacccctggaccaccagccccagcaagagcactaggtcttgaaaggagtgggtcaattggctccggtgcccgtcagtgggcagagcgcacatcgcccacagtccccgagaagttggggggaggggtcggcaattgatccggtgcctagagaaggtggcgcggggtaaactgggaaagtgatgtcgtgtactggctccgcctttttcccgagggtgggggagaaccgtatataagtgcagtagtcgccgtgaacgttctttttcgcaacgggtttgccgccagaacacaggaagcttgccaccatggtgagcaagggcgaggagctgttcaccggggtggtgcccatcctggtcgagctggacggcgacgtaaacggccacaagttcagcgtgtccggcgagggcgagggcgatgccacctacggcaagctgaccctgaagttcatctgcaccaccggcaagctgcccgtgccctggcccaccctcgtgaccaccctgacctacggcgtgcagtgcttcagccgctaccccgaccacatgaagcagcacgacttcttcaagtccgccatgcccgaaggctacgtccaggagcgcaccatcttcttcaaggacgacggcaactacaagacccgcgccgaggtgaagttcgagggcgacaccctggtgaaccgcatcgagctgaagggcatcgacttcaaggaggacggcaacatcctggggcacaagctggagtacaactacaacagccacaacgtctatatcatggccgacaagcagaagaacggcatcaaggtgaacttcaagatccgccacaacatcgaggacggcagcgtgcagctcgccgaccactaccagcagaacacccccatcggcgacggccccgtgctgctgcccgacaaccactacctgagcacccagtccgccctgagcaaagaccccaacgagaagcgcgatcacatggtcctgctggagttcgtgaccgccgccgggatcactctcggcatggacgagctgtacaagtaagactctggtcagagatacctaagaggaagagagagaccctcactgctggggagtccctgccacactcagt</td>
+</tr>
+<tr>
+<td>*<strong>AAVS1* locus donor sequence (EF-1α core promoter-EGFP 1110bp)</strong></td>
+</tr>
+<tr>
+<td>gttctgggtacttttatctgtcccctccaccccacagtggggccactaggtaggtcttgaaaggagtgggtcaattggctccggtgcccgtcagtgggcagagcgcacatcgcccacagtccccgagaagttggggggaggggtcggcaattgatccggtgcctagagaaggtggcgcggggtaaactgggaaagtgatgtcgtgtactggctccgcctttttcccgagggtgggggagaaccgtatataagtgcagtagtcgccgtgaacgttctttttcgcaacgggtttgccgccagaacacaggaagcttgccaccatggtgagcaagggcgaggagctgttcaccggggtggtgcccatcctggtcgagctggacggcgacgtaaacggccacaagttcagcgtgtccggcgagggcgagggcgatgccacctacggcaagctgaccctgaagttcatctgcaccaccggcaagctgcccgtgccctggcccaccctcgtgaccaccctgacctacggcgtgcagtgcttcagccgctaccccgaccacatgaagcagcacgacttcttcaagtccgccatgcccgaaggctacgtccaggagcgcaccatcttcttcaaggacgacggcaactacaagacccgcgccgaggtgaagttcgagggcgacaccctggtgaaccgcatcgagctgaagggcatcgacttcaaggaggacggcaacatcctggggcacaagctggagtacaactacaacagccacaacgtctatatcatggccgacaagcagaagaacggcatcaaggtgaacttcaagatccgccacaacatcgaggacggcagcgtgcagctcgccgaccactaccagcagaacacccccatcggcgacggccccgtgctgctgcccgacaaccactacctgagcacccagtccgccctgagcaaagaccccaacgagaagcgcgatcacatggtcctgctggagttcgtgaccgccgccgggatcactctcggcatggacgagctgtacaagtaagactctggtcagagatacctgacaggattggtgacagaaaagcccccatccttaggcctcctccttccta</td>
+</tr>
+<tr>
+<td>*<strong>Lamin A&#x2F;C* locus donor sequence (EF-1α promoter-EGFP 2600bp)</strong></td>
+</tr>
+<tr>
+<td>ctttggtttttttcttctgtatttgtttttctaagagaagttattttctatgcccggcgagagatcacgtggggcgcggaggcggtgctgctggggcacggccgtccagcctcggcggccatatttttgaggggctgttcatctcgttcacacgctctgtccgccatgtttgtgagtggaagcgccattaccccttcaagcgactgaaggctgcagggcctctggtggcccgcatggggagaccagacccgccaggcccgcctttccgcactcagtccgggcttactttattttgtgagacagggtctcgcctagaggctccggtgcccgtcagtgggcagagcgcacatcgcccacagtccccgagaagttggggggaggggtcggcaattgaaccggtgcctagagaaggtggcgcggggtaaactgggaaagtgatgtcgtgtactggctccgcctttttcccgagggtgggggagaaccgtatataagtgcagtagtcgccgtgaacgttctttttcgcaacgggtttgccgccagaacacaggtaagtgccgtgtgtggttcccgcgggcctggcctctttacgggttatggcccttgcgtgccttgaattacttccacgcccctggctgcagtacgtgattcttgatcccgagcttcgggttggaagtgggtgggagagttcgaggccttgcgcttaaggagccccttcgcctcgtgcttgagttgaggcttggcctgggcgctggggccgccgcgtgcgaatctggtggcaccttcgcgcctgtctcgctgctttcgataagtctctagccatttaaaatttttgatgacctgctgcgacgctttttttctggcaagatagtcttgtaaatgcgggccaagatctgcacactggtatttcggtttttggggccgcgggcggcgacggggcccgtgcgtcccagcgcacatgttcggcgaggcggggcctgcgagcgcggccaccgagaatcggacgggggtagtctcaagctggccggcctgctctggtgcctggcctcgcgccgccgtgtatcgccccgccctgggcggcaaggctggcccggtcggcaccagttgcgtgagcggaaagatggccgcttcccggccctgctgcagggagctcaaaatggaggacgcggcgctcgggagagcgggcgggtgagtcacccacacaaaggaaaagggcctttccgtcctcagccgtcgcttcatgtgactccacggagtaccgggcgccgtccaggcacctcgattagttctcgagcttttggagtacgtcgtctttaggttggggggaggggttttatgcgatggagtttccccatactgagtgggtggagactgaagttaggccagcttggcacttgatgtaattctccttggaatttgccctttttgagtttggatcttggttcattctcaagcctcagacagtggttcaaagtttttttcttccatttaaggtgtcgtgaaaactaccccaagctggcctctgaggccaccatggctgtgagcaagggcgaggagctgttcaccggggtggtgcccatcctggtcgagctggacggcgacgtaaacggccacaagttcagcgtgtccggcgagggcgagggcgatgccacctacggcaagctgaccctgaagttcatctgcaccaccggcaagctgcccgtgccctggcccaccctcgtgaccaccctgacctacggcgtgcagtgcttcagccgctaccccgaccacatgaagcagcacgacttcttcaagtccgccatgcccgaaggctacgtccaggagcgcaccatcttcttcaaggacgacggcaactacaagacccgcgccgaggtgaagttcgagggcgacaccctggtgaaccgcatcgagctgaagggcatcgacttcaaggaggacggcaacatcctggggcacaagctggagtacaactacaacagccacaacgtctatatcatggccgacaagcagaagaacggcatcaaggtgaacttcaagatccgccacaacatcgaggacggcagcgtgcagctcgccgaccactaccagcagaacacccccatcggcgacggccccgtgctgctgcccgacaaccactacctgagcacccagtccgccctgagcaaagaccccaacgagaagcgcgatcacatggtcctgctggagttcgtgaccgccgccgggatcactctcggcatggacgagctgtacaagtaaaagcttggggatcaattctctagagctcgctgatcagcctcgactgtgccttctagttgccagccatctgttgtttgcccctcccccgtgccttccttgaccctggaaggtgccactcccactgtcctttcctaataaaatgaggaaattgcatcgcattgtctgagtaggtgtcattctattctggggggtggggtggggcaggacagcaagggggaggattgggaagacaatagcaggcatgctggggatgcggtgggctctatggcttctgaggcggaaagaaccagctgggcccagtggttttatactgaaggaaaaacacaagcaaaaaaaaaaaaaaagca</td>
+</tr>
+</tbody></table>
+<p>[^table1.Sequences of the target insert in donor plasmids used as PCR templates]: </p>
+<p>在进行DNA供体PCR引物设计时，我们遵循以下原则：<br>对于dsDNA供体引物，我们在合成的前向和反向引物的5′端仅设计两个50个核苷酸的同源性臂（HAs）。这样的设计有助于提高同源定向修复（HDR）的效率，但同时较长的HA序列也可能增加PCR的难度。</p>
+<h4 id="2-DNA供体-donor-PCR引物设计和合成"><a href="#2-DNA供体-donor-PCR引物设计和合成" class="headerlink" title="2.DNA供体(donor) PCR引物设计和合成"></a>2.DNA供体(donor) PCR引物设计和合成</h4><p>对于odsDNA供体引物的设计，我们采取以下步骤：</p>
+<h5 id="a-与dsDNA类似，在合成的前向和反向引物的5′端分别设计两条50个核苷酸的同源臂序列-HAs-。"><a href="#a-与dsDNA类似，在合成的前向和反向引物的5′端分别设计两条50个核苷酸的同源臂序列-HAs-。" class="headerlink" title="a. 与dsDNA类似，在合成的前向和反向引物的5′端分别设计两条50个核苷酸的同源臂序列(HAs)。"></a>a. 与dsDNA类似，在合成的前向和反向引物的5′端分别设计两条50个核苷酸的同源臂序列(HAs)。</h5><p><em>注意：较长的HA序列通常导致较高的HDR效率，但也可能增加PCR难度。</em></p>
+<h5 id="b-设计odsDNA供体引物的原则："><a href="#b-设计odsDNA供体引物的原则：" class="headerlink" title="b. 设计odsDNA供体引物的原则："></a>b. 设计odsDNA供体引物的原则：</h5><h6 id="i-同样，在合成的前向和反向引物的5′端分别设计两个50个核苷酸的HA序列。"><a href="#i-同样，在合成的前向和反向引物的5′端分别设计两个50个核苷酸的HA序列。" class="headerlink" title="i.  同样，在合成的前向和反向引物的5′端分别设计两个50个核苷酸的HA序列。"></a>i.  同样，在合成的前向和反向引物的5′端分别设计两个50个核苷酸的HA序列。</h6><h6 id="ii-根据需要，在合成的50-nt引物的指定位置指定5个连续的硫代磷酸酯修饰。“-”表示硫代磷酸酯（PT）修饰。小写字母是HA序列，大写字母描绘外源性KI序列。为了节省引物合成的成本，我们使用第一个PCR产物作为模板-不需要长引物。引物序列如表2所示。"><a href="#ii-根据需要，在合成的50-nt引物的指定位置指定5个连续的硫代磷酸酯修饰。“-”表示硫代磷酸酯（PT）修饰。小写字母是HA序列，大写字母描绘外源性KI序列。为了节省引物合成的成本，我们使用第一个PCR产物作为模板-不需要长引物。引物序列如表2所示。" class="headerlink" title="ii. 根据需要，在合成的50 nt引物的指定位置指定5个连续的硫代磷酸酯修饰。“*”表示硫代磷酸酯（PT）修饰。小写字母是HA序列，大写字母描绘外源性KI序列。为了节省引物合成的成本，我们使用第一个PCR产物作为模板; 不需要长引物。引物序列如表2所示。"></a>ii. 根据需要，在合成的50 nt引物的指定位置指定5个连续的硫代磷酸酯修饰。“*”表示硫代磷酸酯（PT）修饰。小写字母是HA序列，大写字母描绘外源性KI序列。为了节省引物合成的成本，我们使用第一个PCR产物作为模板; 不需要长引物。引物序列如表2所示。</h6><p><strong>Table 2. Synthesis of PCR primer sequences for dsDNA and odsDNA donors</strong></p>
+<table>
+<thead>
+<tr>
+<th><em><strong>Lamin A&#x2F;C</strong></em> <strong>locus</strong></th>
+<th><strong>EF-1α core promoter-EGFP (1,110 bp) primers or****EF-1α promoter-EGFP-ploy A signal (2,600 bp) primers (5′→3′)</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>L-50-F</td>
+<td>ctttggtttttttcttctgtatttgtttttctaagagaagttattttctaTAGGTCTTGAAAGGAGTGGG</td>
+</tr>
+<tr>
+<td>L-50-R</td>
+<td>tgctttttttttttttttgcttgtgtttttccttcagtataaaaccactgAGGTATCTCTGACCAGAGTC</td>
+</tr>
+<tr>
+<td>L-30S-F</td>
+<td>ctttggtttttttcttctgtatttgtttttc<em>t</em>a<em>a</em>g*agaagttattttcta</td>
+</tr>
+<tr>
+<td>L-30S-R</td>
+<td>tgctttttttttttttttgcttgtgtttttc<em>c</em>t<em>t</em>c*agtataaaaccactg</td>
+</tr>
+<tr>
+<td>L-20S-F</td>
+<td>ctttggtttttttcttctgta<em>t</em>t<em>t</em>g*tttttctaagagaag</td>
+</tr>
+<tr>
+<td>L-20S-R</td>
+<td>tgctttttttttttttttgct<em>t</em>g<em>t</em>g*tttttccttcagtat</td>
+</tr>
+<tr>
+<td>L-15S-F</td>
+<td>ctttggtttttttctt<em>c</em>t<em>g</em>t*atttgtttttctaag</td>
+</tr>
+<tr>
+<td>L-15S-R</td>
+<td>tgcttttttttttttt<em>t</em>t<em>g</em>c*ttgtgtttttccttc</td>
+</tr>
+<tr>
+<td>L-10S-F</td>
+<td>ctttggttttt<em>t</em>t<em>c</em>t*tctgtatttgttttt</td>
+</tr>
+<tr>
+<td>L-10S-R</td>
+<td>tgctttttttt<em>t</em>t<em>t</em>t*tttgcttgtgttttt</td>
+</tr>
+<tr>
+<td>L-5S-F</td>
+<td>ctttgg<em>t</em>t<em>t</em>t*tttcttctgtatttg</td>
+</tr>
+<tr>
+<td>L-5S-R</td>
+<td>tgcttt<em>t</em>t<em>t</em>t*ttttttttgcttgtg</td>
+</tr>
+<tr>
+<td><em>GAPDH</em> locus</td>
+<td>EF-1α core promoter-EGFP primers</td>
+</tr>
+<tr>
+<td>G-50-F</td>
+<td>atggcctccaaggagtaagacccctggaccaccagccccagcaagagcacTAGGTCTTGAAAGGAGTGGG</td>
+</tr>
+<tr>
+<td>G-50-R</td>
+<td>actgagtgtggcagggactccccagcagtgagggtctctctcttcctcttAGGTATCTCTGACCAGAGTC</td>
+</tr>
+<tr>
+<td>G-30S-F</td>
+<td>atggcctccaaggagtaagacccctggacca<em>c</em>c<em>a</em>g*ccccagcaagagcac</td>
+</tr>
+<tr>
+<td>G-30S-R</td>
+<td>actgagtgtggcagggactccccagcagtga<em>g</em>g<em>g</em>t*ctctctcttcctctt</td>
+</tr>
+<tr>
+<td>G-20S-F</td>
+<td>atggcctccaaggagtaagac<em>c</em>c<em>c</em>t*ggaccaccagcccca</td>
+</tr>
+<tr>
+<td>G-20S-R</td>
+<td>actgagtgtggcagggactcc<em>c</em>c<em>a</em>g*cagtgagggtctctc</td>
+</tr>
+<tr>
+<td>G-15S-F</td>
+<td>atggcctccaaggagt<em>a</em>a<em>g</em>a*cccctggaccaccag</td>
+</tr>
+<tr>
+<td>G-15S-R</td>
+<td>actgagtgtggcaggg<em>a</em>c<em>t</em>c*cccagcagtgagggt</td>
+</tr>
+<tr>
+<td>G-10S-F</td>
+<td>atggcctccaa<em>g</em>g<em>a</em>g*taagacccctggacc</td>
+</tr>
+<tr>
+<td>G-10S-R</td>
+<td>actgagtgtgg<em>c</em>a<em>g</em>g*gactccccagcagtg</td>
+</tr>
+<tr>
+<td>G-5S-F</td>
+<td>atggcc<em>t</em>c<em>c</em>a*aggagtaagacccct</td>
+</tr>
+<tr>
+<td>G-5S-R</td>
+<td>actgag<em>t</em>g<em>t</em>g*gcagggactccccag</td>
+</tr>
+<tr>
+<td><em>AAVS1</em> locus</td>
+<td>EF-1α core promoter-EGFP primers</td>
+</tr>
+<tr>
+<td>A-50-F</td>
+<td>gttctgggtacttttatctgtcccctccaccccacagtggggccactaggTAGGTCTTGAAAGGAGTGGG</td>
+</tr>
+<tr>
+<td>A-50-R</td>
+<td>taggaaggaggaggcctaaggatgggggcttttctgtcaccaatcctgtcAGGTATCTCTGACCAGAGTC</td>
+</tr>
+<tr>
+<td>A-30S-F</td>
+<td>gttctgggtacttttatctgtcccctccacc<em>c</em>c<em>a</em>c*a</td>
+</tr>
+<tr>
+<td>A-30S-R</td>
+<td>taggaaggaggaggcctaaggatgggggctt<em>t</em>t<em>c</em>t*g</td>
+</tr>
+<tr>
+<td>A-20S-F</td>
+<td>gttctgggtacttttatctgt<em>c</em>c<em>c</em>c*t</td>
+</tr>
+<tr>
+<td>A-20S-R</td>
+<td>taggaaggaggaggcctaagg<em>a</em>t<em>g</em>g*g</td>
+</tr>
+<tr>
+<td>A-15S-F</td>
+<td>gttctgggtactttta<em>t</em>c<em>t</em>g*t</td>
+</tr>
+<tr>
+<td>A-15S-R</td>
+<td>taggaaggaggaggcc<em>t</em>a<em>a</em>g*g</td>
+</tr>
+<tr>
+<td>A-10S-F</td>
+<td>gttctgggtac<em>t</em>t<em>t</em>t*atctg</td>
+</tr>
+<tr>
+<td>A-10S-R</td>
+<td>taggaaggagg<em>a</em>g<em>g</em>c*ctaag</td>
+</tr>
+<tr>
+<td>A-5S-F</td>
+<td>gttctg<em>g</em>g<em>t</em>a*cttttatctg</td>
+</tr>
+<tr>
+<td>A-5S-R</td>
+<td>taggaa<em>g</em>g<em>a</em>g*gaggcctaag</td>
+</tr>
+<tr>
+<td><em>Lamin A&#x2F;C</em> loucs</td>
+<td>EF-1α promoter-EGFP-ploy A signal (2,600 bp) primers for esgRNA</td>
+</tr>
+<tr>
+<td>L-12S-F</td>
+<td>ctttggttttttt<em>c</em>t<em>t</em>c*tgtatttgtttttctaagag</td>
+</tr>
+<tr>
+<td>L-12S-R</td>
+<td>attgagatagatgagatagatgctttttttttt<em>t</em>t<em>t</em>t*t</td>
+</tr>
+</tbody></table>
+<h5 id="c-引物由上海桑戈生物科技有限公司合成。每份引物的干粉首先使用低EDTA-TE缓冲液（10-mM-Tris和0-2-mM-EDTA，pH-8-0）稀释至100-μM（储存液），然后使用无核酸酶的ddH2O稀释至10-μM（工作液）。"><a href="#c-引物由上海桑戈生物科技有限公司合成。每份引物的干粉首先使用低EDTA-TE缓冲液（10-mM-Tris和0-2-mM-EDTA，pH-8-0）稀释至100-μM（储存液），然后使用无核酸酶的ddH2O稀释至10-μM（工作液）。" class="headerlink" title="c. 引物由上海桑戈生物科技有限公司合成。每份引物的干粉首先使用低EDTA TE缓冲液（10 mM Tris和0.2 mM EDTA，pH 8.0）稀释至100 μM（储存液），然后使用无核酸酶的ddH2O稀释至10 μM（工作液）。"></a>c. 引物由上海桑戈生物科技有限公司合成。每份引物的干粉首先使用低EDTA TE缓冲液（10 mM Tris和0.2 mM EDTA，pH 8.0）稀释至100 μM（储存液），然后使用无核酸酶的ddH2O稀释至10 μM（工作液）。</h5><h5 id="d-供体DNA的PCR扩增："><a href="#d-供体DNA的PCR扩增：" class="headerlink" title="d. 供体DNA的PCR扩增："></a>d. 供体DNA的PCR扩增：</h5><h6 id="i-在400-μL主混合液体积中设置以下PCR组装反应。试剂和体积显示在表3中。涡旋5秒，快速离心，并使用0-2-mL的八管条带制备50-μL分装。"><a href="#i-在400-μL主混合液体积中设置以下PCR组装反应。试剂和体积显示在表3中。涡旋5秒，快速离心，并使用0-2-mL的八管条带制备50-μL分装。" class="headerlink" title="i. 在400 μL主混合液体积中设置以下PCR组装反应。试剂和体积显示在表3中。涡旋5秒，快速离心，并使用0.2 mL的八管条带制备50 μL分装。"></a>i. 在400 μL主混合液体积中设置以下PCR组装反应。试剂和体积显示在表3中。涡旋5秒，快速离心，并使用0.2 mL的八管条带制备50 μL分装。</h6><p><strong>Table 3. Components of PCR reaction for DNA donor</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Reagent</strong></th>
+<th><strong>Volume</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Q5 High-Fidelity 2× Master Mix</td>
+<td>200 μL</td>
+</tr>
+<tr>
+<td>10 μM forward primer</td>
+<td>20 μL</td>
+</tr>
+<tr>
+<td>10 μM reverse primer</td>
+<td>20 μL</td>
+</tr>
+<tr>
+<td>Template DNA (plasmids or PCR product)</td>
+<td>80 ng</td>
+</tr>
+<tr>
+<td>Nuclease-free water</td>
+<td>to 400 μL</td>
+</tr>
+</tbody></table>
+<h6 id="ii-根据表3中列出的顺序，将所有反应成分加入到主混合液中。之后，将400-μL的反应溶液分装成50-μL的小份，使用0-2-mL的八连管条带进行分装。"><a href="#ii-根据表3中列出的顺序，将所有反应成分加入到主混合液中。之后，将400-μL的反应溶液分装成50-μL的小份，使用0-2-mL的八连管条带进行分装。" class="headerlink" title="ii. 根据表3中列出的顺序，将所有反应成分加入到主混合液中。之后，将400 μL的反应溶液分装成50 μL的小份，使用0.2 mL的八连管条带进行分装。"></a>ii. 根据表3中列出的顺序，将所有反应成分加入到主混合液中。之后，将400 μL的反应溶液分装成50 μL的小份，使用0.2 mL的八连管条带进行分装。</h6><h6 id="iii-根据表4中提供的循环参数，进行组装PCR反应。这些参数包括变性、退火和延伸的温度以及在每个阶段所需的时间，这些参数对于确保PCR反应的准确性和效率至关重要。"><a href="#iii-根据表4中提供的循环参数，进行组装PCR反应。这些参数包括变性、退火和延伸的温度以及在每个阶段所需的时间，这些参数对于确保PCR反应的准确性和效率至关重要。" class="headerlink" title="iii. 根据表4中提供的循环参数，进行组装PCR反应。这些参数包括变性、退火和延伸的温度以及在每个阶段所需的时间，这些参数对于确保PCR反应的准确性和效率至关重要。"></a>iii. 根据表4中提供的循环参数，进行组装PCR反应。这些参数包括变性、退火和延伸的温度以及在每个阶段所需的时间，这些参数对于确保PCR反应的准确性和效率至关重要。</h6><p><strong>Table 4. PCR reaction for DNA donor preparation</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Cycle step</strong></th>
+<th><strong>Temperature</strong></th>
+<th><strong>Time</strong></th>
+<th><strong>Cycles</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Initial denaturation</td>
+<td>98 °C</td>
+<td>30 s</td>
+<td>1×</td>
+</tr>
+<tr>
+<td>Denaturation</td>
+<td>98 °C</td>
+<td>5 s</td>
+<td>35×</td>
+</tr>
+<tr>
+<td>Annealing</td>
+<td>65 °C</td>
+<td>15 s</td>
+<td></td>
+</tr>
+<tr>
+<td>Final extension</td>
+<td>72 °C</td>
+<td>1 min&#x2F;2 min 20 s</td>
+<td>1×</td>
+</tr>
+<tr>
+<td>Hold</td>
+<td>4 °C</td>
+<td>Hold</td>
+<td>1×</td>
+</tr>
+</tbody></table>
+<!--Note:在进行PCR扩增时，延伸时间需要根据扩增的DNA片段长度进行调整：-->
+<!--对于长度为1,110个碱基对的DNA片段，应将延伸时间设置为1分钟。-->
+<!--对于长度为2,600个碱基对的DNA片段，由于片段较大，需要更长的延伸时间以确保DNA聚合酶能够完全复制整个片段，因此延伸时间应设置为2分钟20秒。-->
+
+<h4 id="3-使用GeneJET-PCR纯化试剂盒对PCR-DNA供体进行纯化"><a href="#3-使用GeneJET-PCR纯化试剂盒对PCR-DNA供体进行纯化" class="headerlink" title="3.使用GeneJET PCR纯化试剂盒对PCR DNA供体进行纯化"></a>3.使用GeneJET PCR纯化试剂盒对PCR DNA供体进行纯化</h4><p>a. 将等体积的结合缓冲液加入已完成的PCR混合物中（对于每400 μL的反应混合物，加入400 μL的结合缓冲液）。轻轻上下吹打混合均匀。</p>
+<p>b. 将步骤A3a中的不超过800 μL的溶液转移到GeneJET纯化柱上。在12,000× g的条件下离心60秒，并丢弃流穿液。</p>
+<p>c. 向GeneJET纯化柱中加入700 μL的洗涤缓冲液。再次在12,000× g的条件下离心60秒，并丢弃流穿液。然后将纯化柱放回收集管中。</p>
+<p>d. 将空的GeneJET纯化柱再次离心1分钟，以确保完全去除残留的洗涤缓冲液。</p>
+<p>e. 将GeneJET纯化柱转移到一个干净的1.5 mL微量离心管中。在GeneJET纯化柱膜的中央加入25 μL的无核酸酶水，并在12,000× g的条件下离心1分钟。为了提高产量，可以将废液加入GeneJET纯化柱膜上，并重复操作。</p>
+<p>f. 使用NanoDrop 2000测量DNA浓度。在每次使用前后，使用Kimwipes一次性擦拭纸擦拭NanoDrop 2000。将纯化的双链DNA供体储存在-20℃的冰箱中。</p>
+<p>注意：经过硫代磷酸（PT）修饰的DNA产物（odsDNA前体）需要经过Lambda外切酶消化处理，以制备用于基因敲入的odsDNA供体模板。</p>
+<h4 id="4-准备odsDNA-供体"><a href="#4-准备odsDNA-供体" class="headerlink" title="4.准备odsDNA 供体"></a>4.准备odsDNA 供体</h4><h5 id="a-在一个干净的1-5-mL微量离心管中，准备一个300-μL体积的消化反应。表5中列出了所需的试剂和各自的体积。"><a href="#a-在一个干净的1-5-mL微量离心管中，准备一个300-μL体积的消化反应。表5中列出了所需的试剂和各自的体积。" class="headerlink" title="a. 在一个干净的1.5 mL微量离心管中，准备一个300 μL体积的消化反应。表5中列出了所需的试剂和各自的体积。"></a>a. 在一个干净的1.5 mL微量离心管中，准备一个300 μL体积的消化反应。表5中列出了所需的试剂和各自的体积。</h5><p><strong>Table 5. Components to odsDNA donor digestion reaction</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Reagent</strong></th>
+<th><strong>Volume</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Lambda exonuclease reaction buffer (10×)</td>
+<td>30 μL</td>
+</tr>
+<tr>
+<td>Lambda exonuclease</td>
+<td>6 μL</td>
+</tr>
+<tr>
+<td>Purified odsDNA precursor (3.f)</td>
+<td>18 μg</td>
+</tr>
+<tr>
+<td>Nuclease-free H2O</td>
+<td>to 300 μL</td>
+</tr>
+</tbody></table>
+<h5 id="b-在干浴孵化器中，将温度设置为37°C，并让消化反应持续进行60分钟。"><a href="#b-在干浴孵化器中，将温度设置为37°C，并让消化反应持续进行60分钟。" class="headerlink" title="b. 在干浴孵化器中，将温度设置为37°C，并让消化反应持续进行60分钟。"></a>b. 在干浴孵化器中，将温度设置为37°C，并让消化反应持续进行60分钟。</h5><h4 id="5-为了纯化经过Lambda外切酶消化处理后的带有3′-悬垂的双链DNA（odsDNA）供体，我们按照以下步骤使用GeneJET-PCR纯化试剂盒进行操作："><a href="#5-为了纯化经过Lambda外切酶消化处理后的带有3′-悬垂的双链DNA（odsDNA）供体，我们按照以下步骤使用GeneJET-PCR纯化试剂盒进行操作：" class="headerlink" title="5.为了纯化经过Lambda外切酶消化处理后的带有3′-悬垂的双链DNA（odsDNA）供体，我们按照以下步骤使用GeneJET PCR纯化试剂盒进行操作："></a>5.为了纯化经过Lambda外切酶消化处理后的带有3′-悬垂的双链DNA（odsDNA）供体，我们按照以下步骤使用GeneJET PCR纯化试剂盒进行操作：</h4><p>a. 将等体积的结合缓冲液加入PCR混合物中（每300 μL反应混合物加入300 μL结合缓冲液），并通过轻轻上下吹打混合均匀。</p>
+<p>b. 将步骤A5a中的不超过600 μL的溶液转移到GeneJET纯化柱上。在离心机中以12,000× g的速率离心60秒，并丢弃流穿液。</p>
+<p>c. 向GeneJET纯化柱中加入700 μL的洗涤缓冲液。再次以12,000× g的速率离心60秒，并丢弃流穿液。然后将纯化柱放回收集管中。</p>
+<p>d. 将空的GeneJET纯化柱再次离心1分钟，以确保完全去除任何残留的洗涤缓冲液。</p>
+<p>e. 将GeneJET纯化柱转移到一个干净的1.5 mL微量离心管中。在GeneJET纯化柱膜的中央加入25 μL的无核酸酶水，并在离心机中离心1分钟。为了提高产量，可以将洗脱液加入GeneJET纯化柱膜上，并再次离心。</p>
+<p>f. 使用NanoDrop 2000测量DNA浓度。将纯化的odsDNA供体储存在-20℃的冰箱中。</p>
+<hr>
+<h3 id="B-在大肠杆菌细胞中表达和纯化Cas9和Cas9-PCV2融合蛋白"><a href="#B-在大肠杆菌细胞中表达和纯化Cas9和Cas9-PCV2融合蛋白" class="headerlink" title="B. 在大肠杆菌细胞中表达和纯化Cas9和Cas9-PCV2融合蛋白"></a>B. 在大肠杆菌细胞中表达和纯化Cas9和Cas9-PCV2融合蛋白</h3><ol>
+<li><p>将能容纳的E. coli（Rosetta）细胞与表达质粒pET28b-3NLS-Cas9-3NLS-His进行转化，并在含有卡那霉素的LB平板上培养过夜。</p>
+</li>
+<li><p>第二天，从含有卡那霉素的LB平板上挑选一个菌落，转移到25 mL的新鲜LB培养基（含卡那霉素）中，然后在37℃下以200 rpm的速度在摇床上培养过夜。</p>
+</li>
+<li><p>将10 mL过夜培养物接种到含有1L新鲜TB培养基（含卡那霉素）的烧瓶中，并在37℃下以200 rpm摇动。培养细菌，直至OD600达到约0.6–0.8。<br><strong>注意：TB培养基的最佳生长时间较长，需要在IPTG诱导前OD600超过1.0–1.5。</strong></p>
+</li>
+<li><p>在冰上或冷室中冷却20分钟后，加入IPTG至终浓度为0.2 mM。然后在18℃下继续摇动培养过夜（18–20小时）。</p>
+</li>
+<li><p>第二天，离心培养液并称量沉淀。用缓冲液A以约6 mL&#x2F;g的比例重新悬浮细胞。</p>
+</li>
+<li><p>向每50 mL细菌悬浮液中加入50 μL β-巯基乙醇。进行超声处理：设置35%振幅，1.5秒开，8.5秒关，总开时间约10分钟，总处理时间约66.7分钟。<br>注意：超声破碎参数可能因设备而异；目标是获得均匀的裂解液（外观更白）。</p>
+</li>
+<li><p>在4℃下以16,000× g离心30分钟，并将上清液转移到新的50 mL管中。</p>
+</li>
+<li><p>通过0.45 μm过滤器过滤上清液。</p>
+</li>
+<li><h4 id="用缓冲液A（至少25-mL）平衡5-mL-His-trap柱（GE）。"><a href="#用缓冲液A（至少25-mL）平衡5-mL-His-trap柱（GE）。" class="headerlink" title="用缓冲液A（至少25 mL）平衡5 mL His-trap柱（GE）。"></a>用缓冲液A（至少25 mL）平衡5 mL His-trap柱（GE）。</h4><p><strong>注意：如果使用过His-trap柱，可以通过NaOH、ddH2O和HCl的洗涤周期来恢复，然后将柱子浸没在5 mL ddH2O中。</strong></p>
+<p>清洗His-trap柱：<br>注意：这一步骤仅适用于恢复旧柱。</p>
+<h5 id="a-使用前，先用10-mL-0-1-M-NiSO4、10-mL-ddH2O进行洗涤，最后用20-mL缓冲液A洗涤。"><a href="#a-使用前，先用10-mL-0-1-M-NiSO4、10-mL-ddH2O进行洗涤，最后用20-mL缓冲液A洗涤。" class="headerlink" title="a. 使用前，先用10 mL 0.1 M NiSO4、10 mL ddH2O进行洗涤，最后用20 mL缓冲液A洗涤。"></a>a. 使用前，先用10 mL 0.1 M NiSO4、10 mL ddH2O进行洗涤，最后用20 mL缓冲液A洗涤。</h5><h5 id="b-使用时：缓慢按压移液管，确保液体是逐滴过滤（而不是形成连续流动）。"><a href="#b-使用时：缓慢按压移液管，确保液体是逐滴过滤（而不是形成连续流动）。" class="headerlink" title="b. 使用时：缓慢按压移液管，确保液体是逐滴过滤（而不是形成连续流动）。"></a>b. 使用时：缓慢按压移液管，确保液体是逐滴过滤（而不是形成连续流动）。</h5><h5 id="c-使用后：用10-mL-ddH2O洗涤"><a href="#c-使用后：用10-mL-ddH2O洗涤" class="headerlink" title="c. 使用后：用10 mL ddH2O洗涤"></a>c. 使用后：用10 mL ddH2O洗涤</h5><p>​    用0.1 M EDTA、1 M NaCl洗涤10 mL<br>​    用ddH2O洗涤10 mL<br>​    用1 M NaOH洗涤10 mL<br>​    用ddH2O洗涤10 mL<br>​    用1 M HCl洗涤10 mL<br>​    用ddH2O洗涤10 mL<br>​    注意：柱子需要保存在水中。过滤以确保柱内无气泡。储存于4℃。</p>
+</li>
+<li><h4 id="使用FPLC协议进行纯化。"><a href="#使用FPLC协议进行纯化。" class="headerlink" title="使用FPLC协议进行纯化。"></a>使用FPLC协议进行纯化。</h4><p>注意：必须提前准备好缓冲液！过滤后的柱子不能被水吸入，也不得接触其他溶液（因此要确保所有连接正确无误）。仪器设置：将起始缓冲液放入A1泵，将洗脱缓冲液放入B1泵，选择位置2的柱连接线路，将A1泵的连接点置于上游，B1泵的连接点置于下游。</p>
+<h5 id="a-洗涤步骤："><a href="#a-洗涤步骤：" class="headerlink" title="a. 洗涤步骤："></a>a. 洗涤步骤：</h5><h6 id="i-打开AKTA-Explorer-UNICORN软件，在手动模式中选择“执行”，选择洗涤中的泵-B，然后点击“入口”。"><a href="#i-打开AKTA-Explorer-UNICORN软件，在手动模式中选择“执行”，选择洗涤中的泵-B，然后点击“入口”。" class="headerlink" title="i. 打开AKTA Explorer UNICORN软件，在手动模式中选择“执行”，选择洗涤中的泵   B，然后点击“入口”。"></a>i. 打开AKTA Explorer UNICORN软件，在手动模式中选择“执行”，选择洗涤中的泵   B，然后点击“入口”。</h6><h6 id="ii-选择中间圆圈的位置2，并为过滤界面选择废液。"><a href="#ii-选择中间圆圈的位置2，并为过滤界面选择废液。" class="headerlink" title="ii. 选择中间圆圈的位置2，并为过滤界面选择废液。"></a>ii. 选择中间圆圈的位置2，并为过滤界面选择废液。</h6><h6 id="iii-在自动停止后选择泵A进行洗涤，步骤同上。"><a href="#iii-在自动停止后选择泵A进行洗涤，步骤同上。" class="headerlink" title="iii. 在自动停止后选择泵A进行洗涤，步骤同上。"></a>iii. 在自动停止后选择泵A进行洗涤，步骤同上。</h6><h6 id="iv-最后，清洁整个系统流程，选择流量为5-mL-min，压力关闭，洗涤10分钟。"><a href="#iv-最后，清洁整个系统流程，选择流量为5-mL-min，压力关闭，洗涤10分钟。" class="headerlink" title="iv. 最后，清洁整个系统流程，选择流量为5 mL&#x2F;min，压力关闭，洗涤10分钟。"></a>iv. 最后，清洁整个系统流程，选择流量为5 mL&#x2F;min，压力关闭，洗涤10分钟。</h6><p>​          注意：使用所有缓冲液A和梯度选项为0%缓冲液B。</p>
+<h5 id="b-在洗脱后，所有试管都需要更换为新的。从第1号开始，大约四十个1-5-mL的试管按顺序放置。提起出流尖端，直接移至第一个试管，并将柱子定位。"><a href="#b-在洗脱后，所有试管都需要更换为新的。从第1号开始，大约四十个1-5-mL的试管按顺序放置。提起出流尖端，直接移至第一个试管，并将柱子定位。" class="headerlink" title="b. 在洗脱后，所有试管都需要更换为新的。从第1号开始，大约四十个1.5 mL的试管按顺序放置。提起出流尖端，直接移至第一个试管，并将柱子定位。"></a>b. 在洗脱后，所有试管都需要更换为新的。从第1号开始，大约四十个1.5 mL的试管按顺序放置。提起出流尖端，直接移至第一个试管，并将柱子定位。</h5><h5 id="c-在手动选项中设置流量和通道。"><a href="#c-在手动选项中设置流量和通道。" class="headerlink" title="c. 在手动选项中设置流量和通道。"></a>c. 在手动选项中设置流量和通道。</h5><p>​    i. 流量：1.5 mL&#x2F;min<br>​    ii. 压力：系统压力<br>​    iii. 梯度：目标4%缓冲液B<br>​    iv. 分部收集-分部体积：5 mL<br>​    v. 报警：报警系统压力-高报警1.00 Mpa<br>​        注意：设置完成后，再次检查洗脱系统是否能够自动按顺序运行。</p>
+<h5 id="d-一旦mAU值稳定，将梯度目标更改为10-缓冲液B，并将时间设置为15分钟，以洗涤可能非特异性结合的蛋白。这个梯度大约需要15分钟从4-缓冲液B增加到10-缓冲液B。"><a href="#d-一旦mAU值稳定，将梯度目标更改为10-缓冲液B，并将时间设置为15分钟，以洗涤可能非特异性结合的蛋白。这个梯度大约需要15分钟从4-缓冲液B增加到10-缓冲液B。" class="headerlink" title="d. 一旦mAU值稳定，将梯度目标更改为10%缓冲液B，并将时间设置为15分钟，以洗涤可能非特异性结合的蛋白。这个梯度大约需要15分钟从4%缓冲液B增加到10%缓冲液B。"></a>d. 一旦mAU值稳定，将梯度目标更改为10%缓冲液B，并将时间设置为15分钟，以洗涤可能非特异性结合的蛋白。这个梯度大约需要15分钟从4%缓冲液B增加到10%缓冲液B。</h5><p>再次等待，直到稳定并且峰消失；然后将梯度更改为20%缓冲液B，并将时间设置为15分钟。<br>注意：Cas9蛋白的安全咪唑浓度范围在50到250 mM之间。达到250 mM后，如果没有峰出现，则表示杂质大量不存在。在咪唑浓度大约在50–250 mM范围内的峰处收集洗脱液。</p>
+</li>
+<li><h4 id="进行SDS-PAGE电泳以验证蛋白质分子量"><a href="#进行SDS-PAGE电泳以验证蛋白质分子量" class="headerlink" title="进行SDS-PAGE电泳以验证蛋白质分子量"></a>进行SDS-PAGE电泳以验证蛋白质分子量</h4><p>a. 在峰流出物中，从每个试管中取8 μL的粗蛋白产物，加入2 μL的SDS-PAGE蛋白上样缓冲液（5×），并在95℃下变性10分钟。<br>注意：第一次流过物作为对照。标记：加入5 μL BeyoColor Prestained Color Protein marker 10–170 kDa。运行条件：150 V，30分钟。<br>b. 完成后，在蛋白质染色溶液中进行染色。<br>注意：微波加热15秒或摇动5分钟。<br>c. 然后，摇动30分钟。<br>d. 检查蛋白质大小：Cas9约为163 kDa，Cas9-PCV2约为179 kDa。凝胶图像展示在图2中。   </p>
+<p>e. 比较结果，找出5-6个最亮的分部，然后按照以下步骤进行蛋白质浓度测定。<br>注意：在运行过程中，台式离心机需预先在4℃下冷却。</p>
+<p><strong>Fig2如下：体外纯化及活性检测Cas9和Cas9-PCV2融合蛋白。(A) 通过SDS-PAGE验证纯化的spCas9蛋白。(B) 通过SDS-PAGE验证纯化的Cas9-PCV2融合蛋白。</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-13-20-4853-g002.jpg" alt="Large image"></p>
+</li>
+<li><h4 id="蛋白质浓度测定："><a href="#蛋白质浓度测定：" class="headerlink" title="蛋白质浓度测定："></a>蛋白质浓度测定：</h4><p>a. 将离心过滤器（预先在冰上冷却10 K 50 mL和3 K 15 mL过滤器）。<br>b. 将选定的5-6个样品分部添加到预先冷却的10 K 50 mL过滤器中。<br>c. 在预先冷却的离心机中离心30分钟，观察上清液，并在剩余体积约为2.5 mL时随时停止离心。</p>
+</li>
+<li><h4 id="使用PD-10柱对浓缩样品进行脱盐"><a href="#使用PD-10柱对浓缩样品进行脱盐" class="headerlink" title="使用PD-10柱对浓缩样品进行脱盐"></a>使用PD-10柱对浓缩样品进行脱盐</h4><p>a. 大约需要10管100 μL的考马斯亮蓝以实时检测洗脱物中是否有蛋白质存在，并比较蛋白质浓度。</p>
+<p>b. 用Cas9储存缓冲液洗涤PD-10柱三次，每次5分钟。</p>
+<p>c. 然后，将2.5 mL的浓缩溶液加入PD10中，随后进行离心。加入500 μL的储存缓冲液，用1.5 mL离心管收集洗脱物，每次加入500 μL，总共加入七次，收集每个500 μL产品的七个试管。</p>
+<p>d. 取出3 μL的产品，与考马斯亮蓝混合，区分蓝色的亮度，选择最亮的五个产品管，转移到已用Cas9缓冲液交换的第二个PD-10中，进行第二次脱盐。</p>
+<p>e. 测量亮度，挑选蓝色染色最深的四个试管，继续进行下一个蛋白质浓度的测定。<br>注意：在冷室中进行这些步骤；向PD-10柱中装载的体积应小于或等于2.5 mL。</p>
+</li>
+<li><h4 id="浓缩脱盐后的蛋白质"><a href="#浓缩脱盐后的蛋白质" class="headerlink" title="浓缩脱盐后的蛋白质"></a>浓缩脱盐后的蛋白质</h4><p>a. 将2 mL脱盐后的产品加入预先在4℃下冷却的3 K 15 mL离心过滤器中，然后在4,000× g的预先冷却的离心机中离心大约30分钟。注意剩余体积，并在剩余体积达到500 μL时停止离心。</p>
+<p>b. 在冷室中，将20 μL分装到1.5 mL试管中。</p>
+<p>c. 储存在-80℃冰箱中。</p>
+<p>d. 保留一管产品用于浓度测定。</p>
+<p>e. 使用NanoDrop 2000测量蛋白质在280 nm处的吸收峰。</p>
+<p>f. 使用Expasy和AAT Bioquest软件计算最终浓度：蛋白质浓度计算器。</p>
+</li>
+<li><h4 id="进行体外酶活性测试。"><a href="#进行体外酶活性测试。" class="headerlink" title="进行体外酶活性测试。"></a>进行体外酶活性测试。</h4><p>a. 通过以下体外切割实验检测Cas9蛋白的活性。<br>i. 在20 μL体积中建立以下切割反应。试剂和体积如表格6所示；按给定的顺序加入反应  组分。<br><strong>Table 6. Reaction mixture for in vitro cleavage assay</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Reagent</strong></th>
+<th><strong>Volume</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cleavage buffer (10×)</td>
+<td>2 μL</td>
+</tr>
+<tr>
+<td>Substrate DNA</td>
+<td>100 ng</td>
+</tr>
+<tr>
+<td>Cas9 (or Cas9-PCV2)</td>
+<td>0.3 μg</td>
+</tr>
+<tr>
+<td>sgRNA</td>
+<td>130 ng</td>
+</tr>
+<tr>
+<td>Nuclease-free water</td>
+<td>up to 20 μL</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<p>​           </p>
+<p>​             ii. 在37°C下孵育30分钟。</p>
+<p>​             iii.使用1× TAE缓冲液的3%琼脂糖凝胶电泳可视化切割带。凝胶图像展示在图3中（如下）。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-13-20-4853-g003.jpg" alt="Large image"></p>
+<p>​       b.测量Cas9-PCV2融合蛋白的酶活性。</p>
+<p>​          i.由Sangon Biotech合成的ssDNA探针：PCV2-linker序列（5′→3′）：BHQ1-TAAGTATTACCAGAAA&#x2F;i6FAMdT&#x2F;cctcttgtcccacagat atccagaaccctgaccctgccgtgtaccagct</p>
+<p>​          ii.分别用ddH2O稀释PCV2连接物至最终浓度为0.02、0.06和0.10 μM。</p>
+<p>​          iii.将ssDNA探针与Cas9-PCV2在37°C下共同孵育，并使用荧光分光光度计F-7000检测0.02 μM Cas9-PCV2蛋白与不同浓度的ssDNA探针共同作用时的荧光素强度。</p>
+<p>注意：当ssDNA探针被Cas9-PCV2融合蛋白切割时，FAM荧光素从猝灭基团BHQ1中释放出来并开始发射荧光，这由荧光光谱仪实时监测。</p>
+<hr>
+<h3 id="C-合成并纯化针对HEK293T细胞中gDNA的sgRNA（GeneArt-Precision-gRNA合成试剂盒）"><a href="#C-合成并纯化针对HEK293T细胞中gDNA的sgRNA（GeneArt-Precision-gRNA合成试剂盒）" class="headerlink" title="C. 合成并纯化针对HEK293T细胞中gDNA的sgRNA（GeneArt Precision gRNA合成试剂盒）"></a><strong>C. 合成并纯化针对HEK293T细胞中gDNA的sgRNA（GeneArt Precision gRNA合成试剂盒）</strong></h3><ol>
+<li><h4 id="设计如下序列，用于合成sgRNA模板组装所需的Target-F1正向和Target-R1反向引物。序列展示在表格7中："><a href="#设计如下序列，用于合成sgRNA模板组装所需的Target-F1正向和Target-R1反向引物。序列展示在表格7中：" class="headerlink" title="设计如下序列，用于合成sgRNA模板组装所需的Target F1正向和Target R1反向引物。序列展示在表格7中："></a>设计如下序列，用于合成sgRNA模板组装所需的Target F1正向和Target R1反向引物。序列展示在表格7中：</h4><p>Target F1：TAATACGACTCACTATAG + 目标序列（20 nt）</p>
+<p>Target R1：TTCTAGCTCTAAAAC + 目标序列的反向互补序列（20 nt）</p>
+<p>注意：如果目标序列中已经包含一个5′ G，您可以保留它，这将导致T7启动子引物中额外添加一个G。或者，您可以从目标序列中移除第一个G，该G将由T7启动子引物添加回来。</p>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240312002518497.png" alt="image-20240312002518497"></p>
+<ol start="2">
+<li><h4 id="引物由Sangon-Biotech合成，并使用无核酸酶的水稀释至最终0-3-μM浓度（工作溶液）"><a href="#引物由Sangon-Biotech合成，并使用无核酸酶的水稀释至最终0-3-μM浓度（工作溶液）" class="headerlink" title="引物由Sangon Biotech合成，并使用无核酸酶的水稀释至最终0.3 μM浓度（工作溶液）."></a>引物由Sangon Biotech合成，并使用无核酸酶的水稀释至最终0.3 μM浓度（工作溶液）.</h4></li>
+<li><h4 id="使用GeneArt-Precision-gRNA合成试剂盒进行体外sgRNA转录："><a href="#使用GeneArt-Precision-gRNA合成试剂盒进行体外sgRNA转录：" class="headerlink" title="使用GeneArt Precision gRNA合成试剂盒进行体外sgRNA转录："></a>使用GeneArt Precision gRNA合成试剂盒进行体外sgRNA转录：</h4><p>a. 在25 μL体积中建立以下PCR组装反应，并按照以下步骤准备反应组分；试剂和体积如表格8所示。</p>
+</li>
+</ol>
+<p><strong>Table 8. Components to make gRNA DNA template</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Reagent</strong></th>
+<th><strong>Volume</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Phusion High-Fidelity PCR Master Mix (2×)</td>
+<td>12.5 μL</td>
+</tr>
+<tr>
+<td>Tracr Fragment + T7 Primer Mix</td>
+<td>1 μL</td>
+</tr>
+<tr>
+<td>0.3 μM Target F1&#x2F;R1 primer mix</td>
+<td>1 μL</td>
+</tr>
+<tr>
+<td>Nuclease-free water</td>
+<td>10.5 μL</td>
+</tr>
+</tbody></table>
+<p>​        b.使用以下循环参数进行组装PCR，如下表9所示。</p>
+<p><strong>Table 9. PCR parameters to generate gRNA DNA template</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Cycle step</strong></th>
+<th><strong>Temperature</strong></th>
+<th><strong>Time</strong></th>
+<th><strong>Cycles</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Initial denaturation</td>
+<td>98 °C</td>
+<td>10 s</td>
+<td>1×</td>
+</tr>
+<tr>
+<td>Denaturation</td>
+<td>98 °C</td>
+<td>5 s</td>
+<td>32×</td>
+</tr>
+<tr>
+<td>Annealing</td>
+<td>55 °C</td>
+<td>15 s</td>
+<td></td>
+</tr>
+<tr>
+<td>Final extension</td>
+<td>72 °C</td>
+<td>1 min</td>
+<td>1×</td>
+</tr>
+<tr>
+<td>Hold</td>
+<td>4 °C</td>
+<td>Hold</td>
+<td>1×</td>
+</tr>
+</tbody></table>
+<p>​          c. 进行gRNAs的体外转录（IVT）；试剂和体积如表格10所示, 彻底混合试管中的内容物， 并快速离心。在37°C下设置IVT反应进行3小时。</p>
+<p>注意：所有操作最好在RNase-free工作台中完成。</p>
+<p><strong>Table 10. Components of IVT reaction</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Reagent</strong></th>
+<th><strong>Volume</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NTP mix (100 mM each of ATP, GTP, CTP, UTP)</td>
+<td>8 μL</td>
+</tr>
+<tr>
+<td>gRNA DNA template (from PCR assembly)</td>
+<td>6 μL</td>
+</tr>
+<tr>
+<td>5× TranscriptAidTM Reaction Buffer</td>
+<td>4 μL</td>
+</tr>
+<tr>
+<td>TranscriptAidTM Enzyme Mix</td>
+<td>2 μL</td>
+</tr>
+</tbody></table>
+<ol start="4">
+<li><h4 id="通过DNase-I消化去除DNA模板："><a href="#通过DNase-I消化去除DNA模板：" class="headerlink" title="通过DNase I消化去除DNA模板："></a>通过DNase I消化去除DNA模板：</h4><p>在IVT反应后立即将IVT反应混合物与1 μL的DNase I（1 U&#x2F;μL）一起孵育，并在37°C下孵育15分钟。</p>
+</li>
+<li><h4 id="使用GeneArt-gRNA清洁试剂盒纯化sgRNA。"><a href="#使用GeneArt-gRNA清洁试剂盒纯化sgRNA。" class="headerlink" title="使用GeneArt gRNA清洁试剂盒纯化sgRNA。"></a>使用GeneArt gRNA清洁试剂盒纯化sgRNA。</h4><p>a. 将IVT反应稀释至200 μL的无核酸酶的水中，并加入100 μL的结合缓冲液。通过抽吸混合。</p>
+<p>b. 加入300 μL的乙醇（&gt; 96%）并通过抽吸混合。</p>
+<p>c. 将混合物转移到预先装有收集管的GeneJET RNA纯化微柱中，并在14,000× g下离心30–60秒。丢弃流过物。</p>
+<p>d. 用700 μL的洗涤缓冲液1和洗涤缓冲液2洗涤结合的RNA。</p>
+<p>e. 在14,000× g下额外离心空纯化柱60秒，以完全去除任何残留的洗涤缓冲液。</p>
+<p>f. 将纯化柱转移到新的1.5 mL RNase-free EP管中。</p>
+<p>g. 在柱过滤器的中心加入10 μL的无核酸酶的水，并在14,000× g下离心60秒以洗脱sgRNA。</p>
+<p>h. 使用NanoDrop 2000测量sgRNA的浓度。</p>
+<p>i. 将sgRNA储存在-80°C。<br>注意：所有操作最好在RNase-free工作台中完成。</p>
+</li>
+</ol>
+<hr>
+<h3 id="D-准备RNP复合物，用于odsDNA附着到Cas9-PCV2融合蛋白上"><a href="#D-准备RNP复合物，用于odsDNA附着到Cas9-PCV2融合蛋白上" class="headerlink" title="D. 准备RNP复合物，用于odsDNA附着到Cas9-PCV2融合蛋白上"></a>D. 准备RNP复合物，用于odsDNA附着到Cas9-PCV2融合蛋白上</h3><ol>
+<li><h4 id="设计和合成PCV2连接物。"><a href="#设计和合成PCV2连接物。" class="headerlink" title="设计和合成PCV2连接物。"></a>设计和合成PCV2连接物。</h4><p>a. 由于PCV2蛋白识别5′至3′方向的DNA序列（AAGTATT^ACCAGAAA），odsDNA具有3′突出端，因此需要一个PCV2连接物作为桥梁来将odsDNA附着到Cas9-PCV2融合蛋白上。<br>注意：“^”代表PCV2蛋白的切割位置。</p>
+<p>b. PCV2连接物分为两部分：5′端是一个固定序列，被PCV2蛋白识别以进行切割，随后与PCV2蛋白形成共价连接，3′端是与odsDNA的3′突出端互补配对的序列。</p>
+<p>c. 用于Lamin A&#x2F;C位点的PCV2连接物序列如表格11所示。</p>
+</li>
+</ol>
+<p><strong>Table 11. PCV2 linker sequence for the *Lamin A&#x2F;C* locus</strong></p>
+<table>
+<thead>
+<tr>
+<th>*<strong>Lamin A&#x2F;C* locus</strong></th>
+<th><strong>Cas9-PCV2 linker sequence（5′→3′）</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PCV2 linker</td>
+<td>AAGTATTACCAGAAAtgcttttttt</td>
+</tr>
+</tbody></table>
+<p>注意：大写字母是PCV2蛋白识别的预设序列，而小写字母是与Lamin A&#x2F;C位点的odsDNA互补配对的序列。</p>
+<p>​         d. PCV2连接物的合成由Sangon Biotech完成，并使用无核酸酶的水稀释至10 μM</p>
+<ol start="2">
+<li><h4 id="PCV2连接物与odsDNA的退火。"><a href="#PCV2连接物与odsDNA的退火。" class="headerlink" title="PCV2连接物与odsDNA的退火。"></a>PCV2连接物与odsDNA的退火。</h4><p>a. 我们使用具有10个碱基突出端的odsDNA与具有10个配对碱基的PCV2连接物进行退火。</p>
+<p>b. 在10 μL体积中建立以下退火反应；试剂和体积如表格12所示。</p>
+</li>
+</ol>
+<p><strong>Table 12. Components of annealing reaction</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Reagent</strong></th>
+<th><strong>Molar amount</strong></th>
+<th><strong>Volume</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PCV2 linker</td>
+<td>7.5 pmol</td>
+<td>0.75 μL</td>
+</tr>
+<tr>
+<td>odsDNA (1 μg&#x2F;μL)</td>
+<td>7.5 pmol</td>
+<td>5 μL</td>
+</tr>
+<tr>
+<td>5× annealing buffer</td>
+<td>-</td>
+<td>2 μL</td>
+</tr>
+<tr>
+<td>Nuclease-free water</td>
+<td>-</td>
+<td>to 10 μL</td>
+</tr>
+</tbody></table>
+<p>​           c. 使用如下表13所示的循环参数进行退火反应。</p>
+<p><strong>Table 13. Annealing reaction to generate odsDNA&#x2F;PCV2 linker complex</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Cycle step</strong></th>
+<th><strong>Temperature</strong></th>
+<th><strong>Time</strong></th>
+<th><strong>Cycles</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Denaturation</td>
+<td>65 °C</td>
+<td>5 min</td>
+<td>1×</td>
+</tr>
+<tr>
+<td>Annealing</td>
+<td>65 °C (-0.1 ℃&#x2F;8 s) to 25 °C</td>
+<td>~60 min</td>
+<td>1×</td>
+</tr>
+<tr>
+<td>Hold</td>
+<td>4 °C</td>
+<td>Hold</td>
+<td>1×</td>
+</tr>
+</tbody></table>
+<ol start="3">
+<li><h4 id="准备由odsDNA-PCV2连接物-Cas9-PCV2融合蛋白组成的RNP复合物。"><a href="#准备由odsDNA-PCV2连接物-Cas9-PCV2融合蛋白组成的RNP复合物。" class="headerlink" title="准备由odsDNA&#x2F;PCV2连接物&#x2F;Cas9-PCV2融合蛋白组成的RNP复合物。"></a>准备由odsDNA&#x2F;PCV2连接物&#x2F;Cas9-PCV2融合蛋白组成的RNP复合物。</h4>a. 为了验证odsDNA&#x2F;PCV2连接物能否有效地附着到Cas9-PCV2蛋白上，将不同摩尔比率的0:1、1:1、2:1、3:1和4:1与Cas9-PCV2蛋白一起孵育，然后通过2%琼脂糖凝胶进行验证。如图4所示，当Cas9-PCV2融合蛋白与odsDNA&#x2F;PCV2连接物的摩尔比率为3:1时，下方的游离odsDNA&#x2F;PCV2连接物几乎完全反应，所有odsDNA&#x2F;PCV2连接物都附着到Cas9-PCV2融合蛋白上。</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-13-20-4853-g004.jpg" alt="Large image"></p>
+<p>[^图4. 验证odsDNA附着到Cas9-PCV2蛋白上的情况。]: 当Cas9-PCV2与预退火的odsDNA&#x2F;PCV2连接物的比例达到&gt; 3:1时，odsDNA供体有效地连接到Cas9-PCV2上。</p>
+<p>​         b. 将30 pmol的Cas9-PCV2融合蛋白添加到来自步骤D2的odsDNA&#x2F;PCV2连接物复合物中。</p>
+<p>​         c. 因为Cas9-PCV2融合蛋白的数量远多于odsDNA，几乎所有的odsDNA都完全反应并附着到Cas9-PCV2融合蛋白上。</p>
+<p>​         d. PCV2蛋白的工作条件要求至少有1 mM的Mg2+存在。由于Cas9-PCV2蛋白的缓冲液C（储存缓冲液）中含有10 mM的MgCl2，因此这里不需要额外添加Mg2+。</p>
+<hr>
+<h3 id="E-将odsDNA-Cas9-PCV2-sgRNA-RNP复合物转染入HEK293T细胞"><a href="#E-将odsDNA-Cas9-PCV2-sgRNA-RNP复合物转染入HEK293T细胞" class="headerlink" title="E. 将odsDNA&#x2F;Cas9-PCV2&#x2F;sgRNA RNP复合物转染入HEK293T细胞"></a>E. 将odsDNA&#x2F;Cas9-PCV2&#x2F;sgRNA RNP复合物转染入HEK293T细胞</h3><ol>
+<li><p>在进行核转染之前，至少在核转染实验前三天，使用Dulbecco改良Eagle培养基和10%胎牛血清对HEK293T细胞进行亚培养。</p>
+</li>
+<li><h4 id="对HEK293T细胞进行odsDNA-Cas9-PCV2-sgRNA的核转染："><a href="#对HEK293T细胞进行odsDNA-Cas9-PCV2-sgRNA的核转染：" class="headerlink" title="对HEK293T细胞进行odsDNA&#x2F;Cas9-PCV2&#x2F;sgRNA的核转染："></a>对HEK293T细胞进行odsDNA&#x2F;Cas9-PCV2&#x2F;sgRNA的核转染：</h4><h5 id="a-细胞准备"><a href="#a-细胞准备" class="headerlink" title="a. 细胞准备"></a>a. 细胞准备</h5><p>​    i. 核转染的最佳细胞密度：80%–90%。更高的细胞密度可能导致核转染效率降低。<br>​    ii. 从培养细胞中移除培养基，并用1× PBS洗涤细胞一次。用至少与培养基等体积的1× PBS洗涤。<br>​    iii. 使用TrypLE Express试剂在37°C下孵育细胞约5分钟以收获细胞。<br>​    iv. 用含有10% FBS的培养基中和胰蛋白酶反应。大多数细胞（&gt;90%）将脱离。打开并密封培养基、PBS和TrypLE，使用PARAFILM密封膜。</p>
+<h5 id="b-准备odsDNA-Cas9-PCV2-sgRNA-RNP复合物"><a href="#b-准备odsDNA-Cas9-PCV2-sgRNA-RNP复合物" class="headerlink" title="b. 准备odsDNA&#x2F;Cas9-PCV2&#x2F;sgRNA RNP复合物"></a>b. 准备odsDNA&#x2F;Cas9-PCV2&#x2F;sgRNA RNP复合物</h5><p>​     i. 为制备Cas9-PCV2 RNPs复合物，将odsDNA&#x2F;PCV2连接物&#x2F;Cas9-PCV2融合蛋白复合物与90 pmol sgRNA混合，并在37°C下孵育10分钟。</p>
+<p>​     ii. 立即按照以下步骤进行核转染。</p>
+<h5 id="c-核转染"><a href="#c-核转染" class="headerlink" title="c. 核转染"></a>c. 核转染</h5><p>​     i. 确保将整个补充剂添加到Nucleofector溶液中。Nucleofector溶液与补充剂的比例为4.5:1。对于单个反应，使用82 μL的Nucleofector溶液加上18 μL的补充剂，总共100 μL的总体积。</p>
+<p>​     ii. 通过填充适当的孔数，用1 mL补充的培养基预热&#x2F;平衡6孔板，并在含5% CO2的湿润条件下，在37°C下预热&#x2F;平衡板。</p>
+<p>​     iii. 通过胰蛋白酶消化收获细胞。</p>
+<p>​     iv. 使用血细胞计数器或自动细胞计数器（视个人喜好）计数细胞数量。</p>
+<p>​      v. 在室温下，以200× g离心10分钟所需的细胞数（每个样本1 × 106细胞）。完全去除上清液。</p>
+<p>​      vi. 小心地将细胞沉淀在每样本100 μL室温Nucleofector溶液中重新悬浮。<br>注意：不要让细胞在Nucleofector溶液中停留过长时间（即超过15分钟），因为这可能会降低细胞存活率和基因转移效率。<br>​        </p>
+<p>​      i. 将100 μL的细胞悬液与odsDNA&#x2F;Cas9-PCV2&#x2F;sgRNA复合物结合。表格14显示了不同的样本。</p>
+</li>
+</ol>
+<p><strong>Table 14. One Nucleofection® sample contains</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>odsDNA sample</strong></th>
+<th><strong>odsDNA sample</strong></th>
+<th><strong>dsDNA sample</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 × 10^6 HEK293T cells</td>
+<td>1 × 10^6 HEK293T cells</td>
+<td>1 × 10^6 HEK293T cells</td>
+</tr>
+<tr>
+<td>odsDNA&#x2F;Cas9-PCV2&#x2F;sgRNA complex</td>
+<td>odsDNA, Cas9&#x2F;sgRNA complex</td>
+<td>dsDNA, Cas9&#x2F;sgRNA complex</td>
+</tr>
+<tr>
+<td>100 μL Cell Line Nucleofector® Solution V</td>
+<td>100 μL Cell Line Nucleofector® Solution V</td>
+<td>100 μL Cell Line Nucleofector® Solution V</td>
+</tr>
+</tbody></table>
+<p>​              ii. 将细胞&#x2F;DNA悬液转移到一个认证过的细胞培养皿（样本必须覆盖皿底而没有气泡）。用盖子关闭培养皿。</p>
+<p>​             iii. 为Nucleofector® 2b设备选择合适的Nucleofector®程序D-032。</p>
+<p>​             iv. 将含有细胞&#x2F;DNA悬液的培养皿插入Nucleofector®培养皿夹持器中，并通过按下X按钮应用所选程序。</p>
+<p>​             v.  一旦程序完成，从夹持器中取出培养皿。</p>
+<p>​             vi. 立即用约500 μL的预平衡培养基补充培养皿，并轻轻将混合物转移到已准备好的6孔板中（每个孔的最终体积为1.5 mL培养基）。使用提供的移液器，并避免对样本进行重复抽吸。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-13-20-4853-g005.jpg" alt="Large image"></p>
+<p>[^图5. 使用不同供体在HEK293T细胞中进行敲入（KI）的效率。]: 选择了三个不同的基因组位点用于1,010 bp odsDNA供体的KI，dsDNA供体作为对照。数据在核转染后15天收集。KI效率是根据总EGFP阳性细胞数（供体KI）除以总RNP电转染细胞数计算得出的平均百分比。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-13-20-4853-g006.jpg" alt="Large image"></p>
+<p>[^图6. 使用odsDNA附着到Cas9-PCV2蛋白策略进行不同长度的DNA片段敲入（KI）的比较。]: (A) 1,010 bp的供体模板，包括Cas9结合的双链DNA和10 nt的单链DNA，以及Cas9-PCV2结合的10 nt单链DNA，被电转染到HEK293T细胞以靶向Lamin A&#x2F;C位点。KI效率被绘制在一起进行比较。数据在核转染后15天收集。(B) 2,500 bp的供体模板，包括Cas9结合的双链DNA和10 nt的单链DNA，以及Cas9-PCV2结合的10 nt单链DNA，被电转染到HEK293T细胞以靶向Lamin A&#x2F;C位点。KI效率被绘制在一起进行比较。数据在核转染后21天收集。</p>
+<hr>
+<h3 id="材料、试剂和配方："><a href="#材料、试剂和配方：" class="headerlink" title="材料、试剂和配方："></a>材料、试剂和配方：</h3><h4 id="配方："><a href="#配方：" class="headerlink" title="配方："></a>配方：</h4><ol>
+<li><p><strong>LB medium (1,000 mL)</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Reagent</strong></th>
+<th><strong>Final concentration</strong></th>
+<th><strong>Quantity</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TryptoneYeast extractNaCl</td>
+<td>10 g&#x2F;L5 g&#x2F;L10 g&#x2F;L</td>
+<td>10 g5 g10 g</td>
+</tr>
+<tr>
+<td>ddH2O</td>
+<td>n&#x2F;a</td>
+<td>~980 mL</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>n&#x2F;a</td>
+<td>1,000 mL</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<p>​      调整pH值至7.4，使用氢氧化钠。在121°C下高压灭菌15分钟。在室温下储存。</p>
+<ol start="2">
+<li><strong>50 mg&#x2F;mL kanamycin (10 mL)</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Reagent</strong></th>
+<th><strong>Final concentration</strong></th>
+<th><strong>Quantity</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Kanamycin</td>
+<td>50 mg&#x2F;mL</td>
+<td>0.5 g</td>
+</tr>
+<tr>
+<td>ddH2O</td>
+<td>n&#x2F;a</td>
+<td>10 mL</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>n&#x2F;a</td>
+<td>10 mL</td>
+</tr>
+</tbody></table>
+<p>​                       使用0.22 μm注射器过滤器对溶液进行无菌过滤。在4°C下储存。</p>
+<ol start="3">
+<li><strong>LB agar plate with kanamycin (1,000 mL)</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Reagent</th>
+<th>Final concentration</th>
+<th>Quantity</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TryptoneYeast extractNaCl</td>
+<td>10 g&#x2F;L5 g&#x2F;L10 g&#x2F;L</td>
+<td>10 g5 g10 g</td>
+</tr>
+<tr>
+<td>Agar</td>
+<td>15 g&#x2F;L</td>
+<td>15 g</td>
+</tr>
+<tr>
+<td>50 mg&#x2F;mL Kanamycin</td>
+<td>50 μg&#x2F;mL</td>
+<td>1 mL</td>
+</tr>
+<tr>
+<td>ddH2O</td>
+<td>n&#x2F;a</td>
+<td>~960 mL</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>n&#x2F;a</td>
+<td>1,000 mL</td>
+</tr>
+</tbody></table>
+<p>a. 调整pH值至7.4，使用氢氧化钠。<br>b. 在121°C下高压灭菌15分钟。灭菌后加入琼脂。<br>c. 在搅拌板上搅拌培养基，并允许其冷却至30–40°C。<br>d. 加入1 mL 50 mg&#x2F;mL卡那霉素溶液。充分搅拌。<br>e. 用无菌移液管将25 mL溶液转移到10 cm的培养皿中。<br>f. 在层流罩中让琼脂平板冷却并干燥30分钟。<br>g. 将平板放入塑料袋中，在4°C下储存。</p>
+<ol start="4">
+<li><strong>Terrific broth medium (1,000 mL)</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Reagent</strong></th>
+<th><strong>Final concentration</strong></th>
+<th><strong>Quantity</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Terrific brothGlycerol</td>
+<td>47.6 g&#x2F;L0.4% (v&#x2F;v)</td>
+<td>47.6 g4 mL</td>
+</tr>
+<tr>
+<td>ddH2O</td>
+<td>n&#x2F;a</td>
+<td>~960 mL</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>n&#x2F;a</td>
+<td>1,000 mL</td>
+</tr>
+</tbody></table>
+<p>调整pH值至大约7.4，使用氢氧化钠。在121°C下高压灭菌15分钟。在室温下储存。</p>
+<ol start="5">
+<li><strong>1 M IPTG (10 mL)</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Reagent</strong></th>
+<th><strong>Final concentration</strong></th>
+<th><strong>Quantity</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IPTG</td>
+<td>1 M</td>
+<td>2.38 g</td>
+</tr>
+<tr>
+<td>ddH2O</td>
+<td>n&#x2F;a</td>
+<td>~9.8 mL</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>n&#x2F;a</td>
+<td>10 mL</td>
+</tr>
+</tbody></table>
+<p>​                       使用0.22 μm注射器过滤器对溶液进行无菌过滤。在-20°C下储存。</p>
+<ol start="6">
+<li><u><strong>Buffer A: start buffer (1,000 mL)</strong></u></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Reagent</strong></th>
+<th><strong>Final concentration</strong></th>
+<th><strong>Quantity</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TrisNaCl</td>
+<td>20 mM500 mM</td>
+<td>2.4228 g29.22 g</td>
+</tr>
+<tr>
+<td>ddH2O</td>
+<td>n&#x2F;a</td>
+<td>~960 mL</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>n&#x2F;a</td>
+<td>1,000 mL</td>
+</tr>
+</tbody></table>
+<p>调整pH值至大约8.0，使用盐酸。使用Nalgene Rapid-Flow对溶液进行无菌过滤。在4°C下储存。</p>
+<ol start="7">
+<li><u><strong>Buffer B: elution buffer (1,000 mL)</strong></u></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Reagent</strong></th>
+<th><strong>Final concentration</strong></th>
+<th><strong>Quantity</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TrisNaCl</td>
+<td>20 mM500 mM</td>
+<td>2.4228 g29.22 g</td>
+</tr>
+<tr>
+<td>imidazole</td>
+<td>500 mM</td>
+<td>34.04 g</td>
+</tr>
+<tr>
+<td>ddH2O</td>
+<td>n&#x2F;a</td>
+<td>~960 mL</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>n&#x2F;a</td>
+<td>1,000 mL</td>
+</tr>
+</tbody></table>
+<p>调整pH值至大约8.0，使用盐酸。使用Nalgene Rapid-Flow对溶液进行无菌过滤。在4°C下储存。</p>
+<ol start="8">
+<li><u><strong>Buffer C: storage buffer (1,000 mL)</strong></u></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Reagent</strong></th>
+<th><strong>Final concentration</strong></th>
+<th><strong>Quantity</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TrisKCl</td>
+<td>20 mM200 mM</td>
+<td>2.4228 g14.91 g</td>
+</tr>
+<tr>
+<td>MgCl2·6H2O</td>
+<td>10 mM</td>
+<td>2.03 g</td>
+</tr>
+<tr>
+<td>Glycerol</td>
+<td>10% (v&#x2F;v)</td>
+<td>100 mL</td>
+</tr>
+<tr>
+<td>ddH2O</td>
+<td>n&#x2F;a</td>
+<td>~860 mL</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>n&#x2F;a</td>
+<td>1,000 mL</td>
+</tr>
+</tbody></table>
+<p>调整pH值至大约8.0，使用盐酸。使用Nalgene Rapid-Flow对溶液进行无菌过滤。在4°C下储存。</p>
+<ol start="9">
+<li><strong>Buffer D: cleavage buffer (1,000 mL)</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Reagent</strong></th>
+<th><strong>Final concentration</strong></th>
+<th><strong>Quantity</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HEPESKCl</td>
+<td>20 mM150 mM</td>
+<td>4.77 g11.18 g</td>
+</tr>
+<tr>
+<td>MgCl2·6H2O</td>
+<td>1 mM</td>
+<td>0.2 g</td>
+</tr>
+<tr>
+<td>TCEP</td>
+<td>1 mM</td>
+<td>0.25 g</td>
+</tr>
+<tr>
+<td>Glycerol</td>
+<td>10% (v&#x2F;v)</td>
+<td>100 mL</td>
+</tr>
+<tr>
+<td>ddH2O</td>
+<td>n&#x2F;a</td>
+<td>~860 mL</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>n&#x2F;a</td>
+<td>1,000 mL</td>
+</tr>
+</tbody></table>
+<p>调整pH值至大约8.0，使用盐酸。使用Nalgene Rapid-Flow对溶液进行无菌过滤。在4°C下储存。</p>
+<ol start="10">
+<li><strong>0.1 M NiSO4 (100 mL)</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Reagent</strong></th>
+<th><strong>Final concentration</strong></th>
+<th><strong>Quantity</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NiSO4·6H2O</td>
+<td>0.1 M</td>
+<td>2.63 g</td>
+</tr>
+<tr>
+<td>ddH2O</td>
+<td>n&#x2F;a</td>
+<td>~96 mL</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>n&#x2F;a</td>
+<td>100 mL</td>
+</tr>
+</tbody></table>
+<p>使用0.22 μm注射器过滤器对溶液进行无菌过滤。在室温下储存。</p>
+<ol start="11">
+<li><strong>0.1 M EDTA, 1M NaCl (100 mL)</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Reagent</strong></th>
+<th><strong>Final concentration</strong></th>
+<th><strong>Quantity</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>EDTA</td>
+<td>0.5 M</td>
+<td>2.92 g</td>
+</tr>
+<tr>
+<td>NaCl</td>
+<td>1 M</td>
+<td>5.84 g</td>
+</tr>
+<tr>
+<td>ddH2O</td>
+<td>n&#x2F;a</td>
+<td>~96 mL</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>n&#x2F;a</td>
+<td>100 mL</td>
+</tr>
+</tbody></table>
+<p>调整pH值至8.0，使用氢氧化钠。使用0.22 μm注射器过滤器对溶液进行无菌过滤。在室温下储存。</p>
+<ol start="12">
+<li><strong>1 M NaOH (100 mL)</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Reagent</strong></th>
+<th><strong>Final concentration</strong></th>
+<th><strong>Quantity</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NaOH</td>
+<td>1 M</td>
+<td>4 g</td>
+</tr>
+<tr>
+<td>ddH2O</td>
+<td>n&#x2F;a</td>
+<td>~96 mL</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>n&#x2F;a</td>
+<td>100 mL</td>
+</tr>
+</tbody></table>
+<p>室温存放。</p>
+<ol start="13">
+<li><strong>1 M HCl (120 mL)</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Reagent</strong></th>
+<th><strong>Final concentration</strong></th>
+<th><strong>Quantity</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>12 M HCl</td>
+<td>1 M</td>
+<td>10 mL</td>
+</tr>
+<tr>
+<td>ddH2O</td>
+<td>n&#x2F;a</td>
+<td>110 mL</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>n&#x2F;a</td>
+<td>120 mL</td>
+</tr>
+</tbody></table>
+<p>室温存放。</p>
+<ol start="14">
+<li><strong>SDS-PAGE running buffer (1,000 mL)</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Reagent</strong></th>
+<th><strong>Final concentration</strong></th>
+<th><strong>Quantity</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TrisGlycine</td>
+<td>125 mM1.25 M</td>
+<td>15.1 g94 g</td>
+</tr>
+<tr>
+<td>SDS</td>
+<td>0.5% (w&#x2F;v)</td>
+<td>5 g</td>
+</tr>
+<tr>
+<td>ddH2O</td>
+<td>n&#x2F;a</td>
+<td>~800 mL</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>n&#x2F;a</td>
+<td>1,000 mL</td>
+</tr>
+</tbody></table>
+<p>室温存放。</p>
+<ol start="15">
+<li><strong>Low-EDTA TE buffer, 1× (for DNA) (100 mL)</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Reagent</strong></th>
+<th><strong>Final concentration</strong></th>
+<th><strong>Quantity</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TrisEDTA</td>
+<td>10 mM0.2 mM</td>
+<td>0.1211 g0.0012 g</td>
+</tr>
+<tr>
+<td>ddH2O</td>
+<td>n&#x2F;a</td>
+<td>~100 mL</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>n&#x2F;a</td>
+<td>100 mL</td>
+</tr>
+</tbody></table>
+<p>调整pH值至8.0，使用盐酸。使用0.22 μm注射器过滤器对溶液进行无菌过滤。在室温下储存。</p>
+<hr>
+<h4 id="试剂："><a href="#试剂：" class="headerlink" title="试剂："></a>试剂：</h4><p>ddH2O，DEPC处理水（Sangon Biotech，目录号：B300592）<br>Lambda外切酶（New England Biolabs，目录号：M0262L）<br>GeneJET PCR纯化试剂盒（Thermo Fisher Scientific，目录号：K0702）<br>SpCas9表达质粒（Addgene，目录号：47327）<br>Dulbecco改良Eagle培养基（DMEM）（Gibco，目录号：C11885500BT）<br>TrypLE Express（Gibco，目录号：12604039）<br>DPBS（无Ca2+或Mg2+）（Gibco，目录号：14190-144）<br>胎牛血清（FBS）（Gibco，目录号：10091148）<br>细胞系核转染试剂盒V（Lonza，目录号：VCA-1003）<br>Q5高保真2×主混合液（New England Biolabs，目录号：M0492L）<br>50× TAE缓冲液（Sangon Biotech，目录号：B548101）<br>6×凝胶上样染液紫色（New England Biolabs，目录号：B7024S）<br>SDS-PAGE蛋白质上样缓冲液，5×（Beyotime，目录号：P0286）<br>BeyoColor预染彩色蛋白质分子量标准，10–170 kDa（Beyotime，目录号：P0077）<br>Imperial蛋白质染色溶液（Thermo Fisher Scientific，目录号：24615）<br>DNA寡核苷酸退火缓冲液，5×（Beyotime，目录号：D0251）<br>LB培养基（见配方）<br>50 mg&#x2F;mL卡那霉素（见配方）<br>含卡那霉素的LB琼脂平板（见配方）<br>Terrific肉汤（TB）培养基（见配方）<br>1 M IPTG（异丙基硫代-β-D-1-半乳糖吡喃糖苷）（见配方）<br>缓冲液A：起始缓冲液（见配方）<br>缓冲液B：洗脱缓冲液（见配方）<br>缓冲液C：储存缓冲液（见配方）<br>缓冲液D：切割缓冲液（见配方）<br>0.1 M NiSO4（硫酸镍）（见配方）<br>0.1 M EDTA，1 M NaCl（乙二胺四乙酸，氯化钠）（见配方）<br>1 M NaOH（氢氧化钠）（见配方）<br>1 M HCl（盐酸）（见配方）<br>SDS-PAGE运行缓冲液（见配方）<br>低EDTA TE缓冲液（见配方）</p>
+<h4 id="材料："><a href="#材料：" class="headerlink" title="材料："></a>材料：</h4><p>移液器吸头：10、200 和 1,000 μL（Yeasen，目录号：83010ES20、83040ES20 和 83070ES08）<br>200 μL延长型移液器吸头，已灭菌（Yeasen，目录号：83061ES50）<br>移液器：2.5、10、20、100、200 和 1,000 μL（Eppendorf，目录号：3120000216、3120000224、3120000232、3120000240、3120000259 和 3120000267）<br>0.2 mL PCR八联管（Yeasen，目录号：83602ES10）<br>1.5 mL微型离心管（Axygen，目录号：MCT-150-C）<br>50 mL锥形管（Thermo Fisher，目录号：339652）<br>DNA寡核苷酸引物和PCV2连接器（Sangon Biotech）<br>6孔细胞培养板（BIOFIL，目录号：TCP011006）<br>60 mm细胞培养皿（BIOFIL，目录号：TCD010060）<br>10 cm细胞培养皿（BIOFIL，目录号：TCD010100）<br>HEK293T细胞（美国型培养物收藏所，目录号：CRL-3216）<br>DH5α感受态细胞（Sangon Biotech，目录号：B528413）<br>大肠杆菌Rosetta 2 (DE3)株（Millipore EMD，目录号：71397）<br>异丙基硫代-β-D-1-半乳糖吡喃糖苷（IPTG）（Invitrogen，目录号：15529019）<br>胰蛋白胨（Gibco，目录号：211705）<br>酵母提取物（Gibco，目录号：211931）<br>硫酸卡那霉素（Sangon Biotech，目录号：A600286）<br>琼脂（Thermo Fisher Scientific，目录号：22700025）<br>Terrific肉汤（Thermo Fisher Scientific，目录号：22711022）<br>甘氨酸（Invitrogen，目录号：15527013）<br>SDS（Sigma-Aldrich，目录号：436143）<br>氯化钠（Sigma-Aldrich，目录号：S9888）<br>氯化钾（Sigma-Aldrich，目录号：P3911）<br>六水合氯化镁（Sigma-Aldrich，目录号：M2670）<br>三羟甲基氨基甲烷（Invitrogen，目录号：A32355）</p>
+<p>盐酸（HCl）（Sigma-Aldrich，目录号：30721）<br>氢氧化钠（NaOH）（Sigma-Aldrich，目录号：221465）<br>咪唑（Imidazole）（Sigma-Aldrich，目录号：I2399）<br>UltraPure甘氨酸（Invitrogen，目录号：15527013）<br>β-巯基乙醇（Gibco，目录号：21985023）<br>EDTA（乙二胺四乙酸）（Thermo Fisher Scientific，目录号：17892）<br>HEPES（Sigma-Aldrich，目录号：54457）<br>TCEP（三（2-羧乙基）膦酸）（Thermo Fisher Scientific，目录号：T2556）<br>甘油（Glycerol）（Thermo Fisher Scientific，目录号：17904）<br>HisTrap快速流动，5 mL（GE Healthcare，目录号：GE17-5255-01）<br>Amicon Ultracel-100再生纤维素膜，50 mL（Millipore，目录号：UFC910008）<br>Amicon Ultracel-30再生纤维素膜，4 mL（Millipore，目录号：UFC803008）<br>0.22 μm注射器过滤器，PES膜，33 mm直径（Millipore，目录号：SLGPR33RS）<br>0.45 μm注射器过滤器，PES膜，33 mm直径（Millipore，目录号：SLHPR33RS）<br>Nalgene Rapid-Flow带PES 500 mL（Thermo Fisher Scientific，目录号：566-0020）<br>PD-10脱盐柱（GE Healthcare，目录号：GE17-0851-01）<br>BeyoGel SDS-PAGE预制凝胶，Tris-Gly，4%–20%，12孔（Beyotime，目录号：P0057A）<br>琼脂糖（Agarose）（Thermo Fisher Scientific，目录号：R0491）<br>GeneArt Precision gRNA合成试剂盒（Invitrogen，目录号：A29377）<br>Invitrogen TrueCut Cas9蛋白 v2（Thermo Fisher Scientific，目录号：A36497）<br>PARAFILM密封膜（Sigma-Aldrich，目录号：HS234526B-1EA）<br>Kimwipes一次性擦拭纸（Sigma-Aldrich，目录号：Z188956）</p>
+<hr>
+<h4 id="设备"><a href="#设备" class="headerlink" title="设备"></a>设备</h4><p>Amaxa Nucleofector IIb设备（Lonza，型号：AAB-1001）<br>BD Accuri C6流式细胞仪（BD Biosciences，目录号：23432）<br>Heracell VIOS 160i CO2铜室培养箱（Thermo Fisher Scientific，目录号：51030476）<br>生物安全柜（Esco Airstream，型号：AB2-4S8-CN）<br>超声波处理器Q125（Qsonica，型号：Q125-220）<br>1&#x2F;4直径超声波探针（Qsonica，目录号：4435）<br>蛋白纯化系统（AKTA pure，目录号：29046665）<br>荧光分光光度计F-7000（HITACHI，型号：F-7000）<br>IX71倒置显微镜（Olympus，型号：IX71）<br>雪花制冰机（XUEKE，型号：IMS-20）<br>水浴锅（EYELA，型号：NTT-2200）<br>迷你凝胶DNA电泳系统（Thermo Fisher，型号：B1）<br>凝胶成像系统（Azure Biosystems，型号：C300）<br>Veriti 96-孔PCR热循环仪（Applied Biosystems，目录号：4375786）<br>TAdvanced双通道PCR热循环仪（Biometra，目录号：2070212）<br>NanoDrop 2000分光光度计（Thermo Fisher Scientific，型号：ND-2000）<br>pH计（Mettle Toledo，目录号：51302807）<br>Milli-Q纯水系统（Millipore，型号：MP0024）<br>Eppendorf离心机5424 R（Eppendorf，目录号：5404000090）<br>Eppendorf高速冷冻离心机5910 R（Eppendorf，目录号：5942000598）<br>Thermo振荡器（Yeasen，目录号：80440ES03）</p>
+<hr>
+<h4 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h4><p>Prism v8，用于统计和数据可视化（GraphPad，版本 8.0.1.244）<br>Snapgene，查看DNA序列和引物设计（版本 4.2.4）<br>NUPACK：核酸包装（<a target="_blank" rel="noopener" href="https://nupack.org/%EF%BC%89">https://nupack.org/）</a><br>Tm计算器（版本 1.16.5，<a target="_blank" rel="noopener" href="https://tmcalculator.neb.com/#!/main%EF%BC%89">https://tmcalculator.neb.com/#!/main）</a><br>CHOPCHOP，一个基于网络的sgRNA设计工具。该网站仅供非盈利和学术使用（<a target="_blank" rel="noopener" href="https://chopchop.cbu.uib.no/%EF%BC%89">https://chopchop.cbu.uib.no/）</a><br>Expasy，将DNA序列转换为氨基酸序列（<a target="_blank" rel="noopener" href="https://web.expasy.org/translate/%EF%BC%89">https://web.expasy.org/translate/）</a><br>AAT Bioquest：蛋白质浓度计算器（<a target="_blank" rel="noopener" href="https://www.aatbio.com/tools/calculate-protein-concentration%EF%BC%89">https://www.aatbio.com/tools/calculate-protein-concentration）</a><br>NEBioCalculator（<a target="_blank" rel="noopener" href="https://nebiocalculator.neb.com/#!/dsdnaamt%EF%BC%89">https://nebiocalculator.neb.com/#!/dsdnaamt）</a></p>
+<hr>
+<h4 id="该协议或其部分内容已在以下研究文章中使用并验证："><a href="#该协议或其部分内容已在以下研究文章中使用并验证：" class="headerlink" title="该协议或其部分内容已在以下研究文章中使用并验证："></a>该协议或其部分内容已在以下研究文章中使用并验证：</h4><ol>
+<li>Han et al. (2023). Efficient precise integration of large DNA sequences with 3′-overhang dsDNA donors using CRISPR&#x2F;Cas9. Proc. Natl. Acad. Sci. U.S.A. (Figure 4, panel B, C and D).</li>
+<li>Tei et al. (2023). Comparable analysis of multiple DNA double-strand break repair pathways in CRISPR-mediated endogenous tagging. bioRxiv. (Figure 3, panel C and D).</li>
+</ol>
+<hr>
+<h4 id="References"><a href="#References" class="headerlink" title="References"></a>References</h4><ol>
+<li>Cruz-Becerra, G. and Kadonaga, J. T. (2020). <a target="_blank" rel="noopener" href="http://dx.doi.org/10.7554/elife.55780">Enhancement of homology-directed repair with chromatin donor templates in cells.</a> <em>eLife</em> 9: e55780.</li>
+<li>Doudna, J. A. (2020). <a target="_blank" rel="noopener" href="http://dx.doi.org/10.1038/s41586-020-1978-5">The promise and challenge of therapeutic genome editing.</a> <em>Nature</em> 578(7794): 229–236.</li>
+<li>Gu, B., Posfai, E. and Rossant, J. (2018). <a target="_blank" rel="noopener" href="http://dx.doi.org/10.1038/nbt.4166">Efficient generation of targeted large insertions by microinjection into two-cell-stage mouse embryos.</a> <em>Nat. Biotechnol.</em> 36(7): 632–637.</li>
+<li>Han, W., Li, Z., Guo, Y., He, K., Li, W., Xu, C., Ge, L., He, M., Yin, X., Zhou, J., et al. (2023). <a target="_blank" rel="noopener" href="http://dx.doi.org/10.1073/pnas.2221127120">Efficient precise integration of large DNA sequences with 3′-overhang dsDNA donors using CRISPR&#x2F;Cas9.</a> <em>Proc. Natl. Acad. Sci. U. S. A.</em> 120(22): e2221127120.</li>
+<li>Hsu, P. D., Lander, E. S. and Zhang, F. (2014). <a target="_blank" rel="noopener" href="http://dx.doi.org/10.1016/j.cell.2014.05.010">Development and Applications of CRISPR-Cas9 for Genome Engineering.</a> <em>Cell</em> 157(6): 1262–1278.</li>
+<li>Maruyama, T., Dougan, S. K., Truttmann, M. C., Bilate, A. M., Ingram, J. R. and Ploegh, H. L. (2015). <a target="_blank" rel="noopener" href="http://dx.doi.org/10.1038/nbt.3190">Increasing the efficiency of precise genome editing with CRISPR-Cas9 by inhibition of nonhomologous end joining.</a> <em>Nat. Biotechnol.</em> 33(5): 538–542.</li>
+<li>Quadros, R. M., Miura, H., Harms, D. W., Akatsuka, H., Sato, T., Aida, T., Redder, R., Richardson, G. P., Inagaki, Y., Sakai, D., et al. (2017). <a target="_blank" rel="noopener" href="http://dx.doi.org/10.1186/s13059-017-1220-4">Easi-CRISPR: a robust method for one-step generation of mice carrying conditional and insertion alleles using long ssDNA donors and CRISPR ribonucleoproteins.</a> <em>Genome Biol.</em> 18(1): e1186&#x2F;s13059-017-1220-4.</li>
+<li>Shy, B. R., Vykunta, V. S., Ha, A., Talbot, A., Roth, T. L., Nguyen, D. N., Pfeifer, W. G., Chen, Y. Y., Blaeschke, F., Shifrut, E., et al. (2023). <a target="_blank" rel="noopener" href="http://dx.doi.org/10.1038/s41587-022-01418-8">High-yield genome engineering in primary cells using a hybrid ssDNA repair template and small-molecule cocktails.</a> <em>Nat. Biotechnol.</em> 41(4): 521–531.</li>
+<li>Yu, Y., Guo, Y., Tian, Q., Lan, Y., Yeh, H., Zhang, M., Tasan, I., Jain, S. and Zhao, H. (2020). <a target="_blank" rel="noopener" href="http://dx.doi.org/10.1038/s41589-019-0432-1">An efficient gene knock-in strategy using 5′-modified double-stranded DNA donors with short homology arms.</a> <em>Nat. Chem. Biol.</em> 16(4): 387–390.</li>
+</ol>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/03/11/%E5%9C%A8%E5%93%BA%E4%B9%B3%E5%8A%A8%E7%89%A9%E7%BB%86%E8%83%9E%E4%B8%AD%E9%80%9A%E8%BF%87%E5%85%B7%E6%9C%89%203%E7%AA%81%E5%87%BA%E7%AB%AF%E7%9A%84%E9%95%BFdsDNA%E4%BB%8B%E5%AF%BC%E7%9A%84CRISPR%E6%95%B2%E5%85%A5(LOCK)%E5%AE%9E%E7%8E%B0%E9%AB%98%E6%95%88%E7%9A%84%E5%A4%A7DNA%E7%89%87%E6%AE%B5%E6%95%B2%E5%85%A5/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-小鼠卵母细胞的分离与体外培养" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -2938,765 +4209,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2024/03/07/%E6%8F%92%E5%85%A5%E7%BC%BA%E5%A4%B1%E7%9A%84%E5%BD%A2%E6%88%90%E8%81%94%E5%90%88%E9%87%8D%E7%BC%96%E7%A8%8B%E7%94%9F%E6%88%90%E5%8A%9F%E8%83%BD%E4%B8%A7%E5%A4%B1iPSC%E7%BB%86%E8%83%9E%E7%B3%BB/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-从诱导多能干细胞生成3D全肺类器官，用于模拟肺发育生物学和疾病" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/03/07/%E4%BB%8E%E8%AF%B1%E5%AF%BC%E5%A4%9A%E8%83%BD%E5%B9%B2%E7%BB%86%E8%83%9E%E7%94%9F%E6%88%903D%E5%85%A8%E8%82%BA%E7%B1%BB%E5%99%A8%E5%AE%98%EF%BC%8C%E7%94%A8%E4%BA%8E%E6%A8%A1%E6%8B%9F%E8%82%BA%E5%8F%91%E8%82%B2%E7%94%9F%E7%89%A9%E5%AD%A6%E5%92%8C%E7%96%BE%E7%97%85/" target="_blank">从诱导多能干细胞生成3D全肺类器官，用于模拟肺发育生物学和疾病</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/03/07/%E4%BB%8E%E8%AF%B1%E5%AF%BC%E5%A4%9A%E8%83%BD%E5%B9%B2%E7%BB%86%E8%83%9E%E7%94%9F%E6%88%903D%E5%85%A8%E8%82%BA%E7%B1%BB%E5%99%A8%E5%AE%98%EF%BC%8C%E7%94%A8%E4%BA%8E%E6%A8%A1%E6%8B%9F%E8%82%BA%E5%8F%91%E8%82%B2%E7%94%9F%E7%89%A9%E5%AD%A6%E5%92%8C%E7%96%BE%E7%97%85/" class="archive-article-date">
-        <time datetime="2024-03-07T03:07:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-07</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>Published: April 12, 2021 doi: <a target="_blank" rel="noopener" href="https://dx.doi.org/10.3791/62456">10.3791&#x2F;62456</a></p>
-<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>本文描述了诱导多能干细胞与含有近端和远端上皮肺细胞以及间充质的三维全肺类器官的逐步定向分化。</p>
-<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>由于缺乏生物学相关的 <strong>体外</strong> 模型系统，人类肺部发育和疾病一直难以研究。人类诱导多能干细胞（hiPSCs）可以逐步分化成3D多细胞肺类器官，由上皮细胞群和间充质细胞群组成。我们通过暂时引入各种生长因子和小分子来概括胚胎发育线索，以有效地产生明确的<strong>内胚层</strong>，<strong>前颈内胚层</strong>，以及随后的<strong>肺祖细胞</strong>。然后将这些细胞嵌入<strong>生长因子减少（GFR）基底膜基质</strong>培养基中，使它们能够响应外部生长因子自发发育成3D肺类器官。这些全肺类器官（WLO）在暴露于<strong>地塞米松</strong>，<strong>环AMP</strong>和<strong>异丁基黄嘌呤</strong>后经历早期肺部发育阶段，包括<strong>分支形态发生</strong>和<strong>成熟</strong>。WLO具有表达<strong>标志物KRT5（基底）</strong>，<strong>SCGB3A2</strong>（俱乐部）和<strong>MUC5AC（杯）</strong>的气道上皮细胞以及表达<strong>HOPX（肺泡I型）</strong>和<strong>SP-C（肺泡II型）</strong>的肺泡上皮细胞。还存在<strong>间充质细胞</strong>，包括<strong>平滑肌肌动蛋白（SMA）</strong>和血小板衍生的<strong>生长因子受体A（PDGFRα）</strong>。iPSC衍生的<strong>WLO</strong>可以在3D培养条件下维持数月，并且可以分类为表面标记物以纯化特定的细胞群。iPSC衍生的WLO也可用于研究人肺发育，包括肺上皮和间充质之间的信号传导，模拟人肺细胞功能和发育的基因突变，并确定感染因子的细胞毒性。</p>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>肺是一个复杂的、异质的、动态的器官，在六个不同的阶段发育 - 胚胎期、假性腺体、小管性、囊状、肺泡和微血管成熟[1，2]。后两个阶段发生在人类发育的前后阶段，而前四个阶段只发生在胎儿发育过程中，除非发生早产[3]。胚胎期从内胚层开始，以气管和肺芽的萌芽结束。肺部发育部分通过上皮细胞和间充质细胞之间的信号传导发生[4]。这些相互作用导致肺分支，增殖，细胞命运决定和发育中肺的细胞分化。肺分为<strong>传导区</strong>（气管到末端细支气管）和<strong>呼吸区</strong>（呼吸道细支气管到肺泡）。每个区域包含独特的上皮细胞类型: 包括传导气道中的<strong>基底细胞</strong>、<strong>分泌细胞</strong>、<strong>纤毛细胞</strong>、<strong>刷状细胞</strong>、<strong>神经内分泌细胞</strong>和<strong>离子细胞</strong>[5]，其次是呼吸道上皮中的<strong>肺泡 I 型</strong>和 <strong>II 型细胞</strong>[6]。关于各种细胞类型的发育和对损伤的反应，还有很多未知数。iPSC衍生的肺类器官模型能够研究驱动人类肺部发育的机制，<strong>基因突变对肺功能的影响</strong>，以及上皮和间充质<strong>对感染因子的反应</strong>，而无需原发性人体肺组织。</p>
-<p>与胚胎分化各个阶段相对应的标志物包括<strong>用于确定性内胚层</strong> （DE）[7] 的 <strong>CXCR4</strong>、<strong>cKit</strong>、<strong>FOXA2</strong> 和 <strong>SOX17</strong>、用于<strong>前肠内胚层前端</strong>（AFE）[8] 的 <strong>FOXA2</strong>、<strong>TBX1</strong> 和 <strong>SOX2</strong>，以及用于<strong>早期肺祖细胞</strong>的 <strong>NKX2-1</strong>[9]。在胚胎肺发育中，前肠分为背食道和腹侧气管。右肺和左肺的芽表现为气管芽周围的两个独立的外垂[10]。在分支形态发生过程中，上皮周围的间充质产生弹性组织、平滑肌、软骨和脉管系统11。上皮和间充质之间的相互作用对于正常的肺部发育至关重要。这包括间充质分泌的<strong>FGF10</strong>[12]和上皮产生的<strong>SHH</strong>[13]。</p>
-<p>在这里，我们描述了一种将<strong>hiPSCs定向分化为三维（3D）全肺类器官（WLO）</strong>的方案。虽然有类似的方法通过LPC阶段的分选分离肺祖细胞，以制造肺泡样[14，15] （远端）类器官或气道[16] （近端）类器官，或产生腹侧前肠球状体，使人肺类器官表达肺泡细胞和间充质标志物以及芽尖祖器官[17]，这种方法的优势在于包括肺上皮细胞和间充质细胞类型，以在 <em>体外</em>模式和协调肺分支形态发生，成熟和扩增。</p>
-<p>该协议使用小分子和生长因子来指导多能干细胞通过确定性内胚层，前叶内胚层和肺祖细胞的分化。然后，这些细胞通过重要的发育步骤（包括分支和成熟）被诱导成3D全肺类器官。分化方案的摘要如图 <strong>1a</strong> 所示，内胚层和类器官分化的代表性明场图像如图 <strong>1b所示</strong>。 <strong>图1c</strong> -<strong>d</strong> 显示了完成分化后内胚层分化的基因表达细节以及肺上皮细胞近端和远端群体的基因表达。</p>
-<h3 id="Protocol"><a href="#Protocol" class="headerlink" title="Protocol"></a>Protocol</h3><p>该研究方案由UCSD人类研究保护计划机构审查委员会批准（181180）。</p>
-<h4 id="1-诱导多能干细胞的确定性内胚层诱导（第1-3天）"><a href="#1-诱导多能干细胞的确定性内胚层诱导（第1-3天）" class="headerlink" title="1. 诱导多能干细胞的确定性内胚层诱导（第1-3天）"></a>1. 诱导多能干细胞的确定性内胚层诱导（第1-3天）</h4><ol>
-<li>使用前30分钟在冰上缓慢解冻生长因子减少（GFR）基底膜（BM）基质培养基。在冷的DMEM&#x2F;F12混合物中，以1∶1的比例稀释GFR BM基质培养基，使其构成该培养基的50%。使用前将 P1000 移液器吸头放入冰箱中冷藏。</li>
-<li>用在冰冷的DMEM &#x2F; F12中制备的500μL50%GFR基底膜基质培养基体涂覆12孔板的每个孔。一旦涂覆了所需数量的孔，从孔中除去任何多余的介质混合物和&#x2F;或气泡，并将板放在4°C的冰或冰箱上20分钟以凝固。然后，将板移至37°C的培养箱过夜以凝胶并干燥。</li>
-<li>一旦hiPSCs达到70-90%汇合度，在解离前一小时加入10μMRho相关激酶（ROCK）抑制剂Y-27632。吸出培养基，用磷酸盐缓冲盐水（PBS）洗涤一次。通过加入细胞分离培养基（0.5 mL &#x2F;孔的12孔板）解离hiPSCs，并在5%CO 2培养箱中在37°C下孵育20 分钟。</li>
-<li>从培养箱中取出板，将0.5mL &#x2F; 12孔的干细胞传代培养基（<strong>表1</strong>）加入孔中;使用P1000尖端轻轻研磨细胞以获得单细胞悬浮液。将解离的细胞转移到15mL锥形离心管中;在300× <em>g</em>下离心5分钟。</li>
-<li>吸出培养基并用1mL mTeSR Plus培养基重悬细胞沉淀，并补充10μM ROCK抑制剂（Y-27632）。执行细胞计数。在1 mL mTeSR中加入2.0 x 105 hiPSCs，每孔12孔GFR基底膜介质包衣板中补充ROCK抑制剂Y-27632。在37°C孵育过夜。<br>注意：必须为每个细胞系优化细胞接种数量。种植培养24小时后，孔应汇合50%-70%。</li>
-<li>在第1天，吸出mTeSR Plus并加入确定性内胚层（DE）诱导培养基（<strong>表1</strong>），并补充100ng &#x2F; mL人激活素A和5μMGSK3β抑制剂&#x2F; Wnt激活剂CHIR99021。<br>注意：具有GSK3β抑制剂&#x2F; Wnt激活剂CHIR99021的DE培养基应在DE诱导第1天的20-24小时内取出，以成功分化。</li>
-<li>在第 2 天和第 3 天，换用仅补充 100 ng&#x2F;mL 的激活素 A 的 DE 诱导培养基。<br>注意：DE分化不应超过72小时，否则疗效会降低。在第4天，如果观察到大细胞死亡，则将总DE培养基暴露时间减少6-12小时。</li>
-<li>为了分析DE效率，通过流式细胞术或FOXA2和&#x2F;或SOX17的免疫荧光分析确认大于90%的CXCR4和&#x2F;或cKit表达（<strong>图2a</strong>）。</li>
-</ol>
-<h4 id="2-前肠前内胚层-（AFE）-诱导-（第-4-6-天）"><a href="#2-前肠前内胚层-（AFE）-诱导-（第-4-6-天）" class="headerlink" title="2. 前肠前内胚层 （AFE） 诱导 （第 4 - 6 天）"></a>2. 前肠前内胚层 （AFE） 诱导 （第 4 - 6 天）</h4><ol>
-<li>在第4天，将培养基换成血清游离基础培养基（SFBM）（<strong>表1</strong>），补充10μM SB431542和2μM背吗啡用于AFE诱导。每天更换AFE介质3天（第4天，第5天和第6天）。</li>
-<li>为了分析AFE效率，通过免疫荧光染色确认SOX2，TBX1和FOXA2的稳健表达（<strong>图2b</strong>）。</li>
-</ol>
-<h4 id="3-肺祖细胞（LPC）分化（第7-16天）"><a href="#3-肺祖细胞（LPC）分化（第7-16天）" class="headerlink" title="3. 肺祖细胞（LPC）分化（第7-16天）"></a>3. 肺祖细胞（LPC）分化（第7-16天）</h4><ol>
-<li>第7天，在冰上解冻GFR基底膜基质培养基。吸出AFE培养基，用1x PBS清洗干净。加入1mL细胞分离溶液，并在37°C下孵育10分钟。</li>
-<li>将1mL淬火培养基（DMEM &#x2F; F12中的2%FBS）加入含有细胞分离溶液的孔中。通过轻轻上下移液将细胞保持为聚集体。确保所有细胞被移位并转移到15mL锥形离心管中。在300× <em>g</em>下离心5分钟。</li>
-<li>除去上清液并将细胞沉淀重悬于补充有10ng &#x2F; mL人重组骨形态蛋白-4（BMP4），0.1μM全反式视黄酸（RA），3μMGSK3β抑制剂&#x2F; Wnt激活剂CHIR99021和10μM岩石抑制剂Y-27632的淬火培养基中。</li>
-<li>执行细胞计数。将2.5×105 个细胞加入100μL冷GFR基底膜基质培养基中，充分混合，并将液滴放入12孔板的孔中。将板在37°C下孵育30-60分钟，以使培养基聚合。每孔加入1 mL LPC培养基，并补充10μM的ROCK抑制剂Y-27632，确保培养基滴完全浸没并在37°C下孵育过夜。</li>
-<li>在LPC诱导后第8天24小时，更换LPC培养基以除去ROCK抑制剂Y-27632。每隔一天更换一次 LPC 介质，总共 9-11 天。<br>注意：如果培养基在24小时内变黄，请每天更换培养基。</li>
-<li>为了分析LPC效率，确认细胞内转录因子NKX2-1的稳健表达或对表面标志物CD47hi &#x2F; CD26low15或CPM18进行流式细胞术（<strong>图2c</strong>）。总的来说，LPC球体应该是圆形和透明的（<strong>图2c</strong>）。<br>注意：如果NKX2-1的效率低于30%，则不要进行肺类器官分化。</li>
-</ol>
-<h4 id="4-3D肺类器官诱导（第16-22天）"><a href="#4-3D肺类器官诱导（第16-22天）" class="headerlink" title="4. 3D肺类器官诱导（第16-22天）"></a>4. 3D肺类器官诱导（第16-22天）</h4><ol>
-<li>在第17天，在冰上解冻GFR基底膜基质介质。吸出LPC诱导培养基。然后向孔中加入2μg&#x2F; mL的分散酶（1mL），并用P1000移液器重悬培养基&#x2F;分离酶混合物。在37°C孵育15分钟。再次研磨混合物并在37°C下再孵育15分钟。</li>
-<li>将分散酶和细胞转移到15mL锥形离心管中。使用冷却的PBS（2-3 mL）洗涤孔并重悬分散酶&#x2F;细胞混合物。在400× <em>g</em>下离心5分钟。手动除去上清液，注意不要对培养基&#x2F;细胞沉淀层进行消毒。重复冷却的PBS洗涤，并在400× <em>g</em>下离心锥形离心管再离心5分钟。</li>
-<li>手动除去上清液，然后将2mL胰蛋白酶基解离溶液加入锥形离心管中。在37°C孵育12分钟。</li>
-<li>孵育后，用P1000移液器吸头重悬细胞。然后将等体积的淬火介质加入锥形离心管中，并以400× <em>g</em> 向下旋转5分钟。吸出上清液并将细胞重悬于淬灭培养基+ 10μM的ROCK抑制剂Y-27632中。<br>注意：当细胞作为聚集体而不是单个细胞嵌入时，会发生成功的肺类器官诱导，相应地调整移液。</li>
-<li>执行细胞计数。计算获得每孔5.0-8.0 x 104 个细胞所需的体积。将LPC细胞等分到1.5mL微量离心管中，并在400× <em>g</em>下离心5分钟。除去多余的上清液，注意不要搅动细胞沉淀。仅留下10μL残留培养基。</li>
-<li>将细胞沉淀重新悬浮在200μL冷GFR基底膜基质培养基质培养基中，并加入细胞培养膜插入物（直径6.5mm，0.4μm孔，聚酯膜）。将板在37°C孵育30-60分钟，以使GFR基底膜基质介质聚合。</li>
-<li>将1mL补充成纤维细胞生长因子-7（FGF7）（10ng &#x2F; mL），FGF10（10ng &#x2F; mL），GSK3β抑制剂&#x2F; Wnt激活剂CHIR（3μM），表皮生长因子（EGF）（10ng &#x2F; mL）和10μMROCK抑制剂Y-27632的3D类器官诱导培养基（<strong>表</strong>1）加入膜插入物的基底外侧腔。每隔一天更换一次培养基，持续 6 天。</li>
-</ol>
-<h4 id="5-3D-肺类器官分支（第23-28天）"><a href="#5-3D-肺类器官分支（第23-28天）" class="headerlink" title="5. 3D 肺类器官分支（第23-28天）"></a>5. 3D 肺类器官分支（第23-28天）</h4><ol>
-<li>在第23天，换用补充FGF7（10 ng &#x2F; mL），FGF10（10ng &#x2F; mL），GSK3β抑制剂&#x2F; Wnt激活剂CHIR99021（3μM），RA（0.1μM），EGF（10ng &#x2F; mL）和血管内皮生长因子（VEGF）&#x2F;胎盘生长因子（PlGF）（10ng &#x2F; mL）的3D支化培养基（<strong>表</strong>1）。每隔一天更换一次培养基，持续 6 天。<br>注意：在3D分支分化的第6天，应该有多个分支类器官（<strong>图2</strong>）。</li>
-</ol>
-<h4 id="6-3D肺类器官成熟-（第29-34天）"><a href="#6-3D肺类器官成熟-（第29-34天）" class="headerlink" title="6.3D肺类器官成熟 （第29- 34天）"></a>6.3D肺类器官成熟 （第29- 34天）</h4><ol>
-<li>在第29天，换用3D成熟培养基（<strong>表1</strong>），其与3D支化培养基相同，但加入地塞米松（50nM），cAMP（100μM）和3-异丁基-1-甲基黄嘌呤（IBMX），磷酸二酯酶抑制剂也称为异丁基黄嘌呤（100μM）。每隔一天更换一次培养基，持续 6 天。<br>注意：在3D成熟后24小时内，分支类器官应膨胀并变成透明球体。</li>
-</ol>
-<h4 id="7-3D-肺类器官免疫细胞化学"><a href="#7-3D-肺类器官免疫细胞化学" class="headerlink" title="7.3D 肺类器官免疫细胞化学"></a>7.3D 肺类器官免疫细胞化学</h4><ol>
-<li>对于3D全肺类器官分析，在4°C下将GFR基底膜基质基质培养基固定在具有4%多聚甲醛（PFA）的膜插入物中1小时。 嵌入石蜡中，并按照标准公布的协议安装到载玻片上。</li>
-<li>染色前进行抗原检索。气道标志物包括 KRT5、MUC5AC 和 SCGB3A2。肺泡标志物包括SP-C，SP-B，HTII-280，HTI-56和HOPX（<strong>图3</strong>）。</li>
-</ol>
-<h4 id="8-从-GFR-基底膜基质培养基中取出全肺类器官，用于传代、FACS-或冷冻保存"><a href="#8-从-GFR-基底膜基质培养基中取出全肺类器官，用于传代、FACS-或冷冻保存" class="headerlink" title="8. 从 GFR 基底膜基质培养基中取出全肺类器官，用于传代、FACS 或冷冻保存"></a>8. 从 GFR 基底膜基质培养基中取出全肺类器官，用于传代、FACS 或冷冻保存</h4><ol>
-<li>要从GFR基底膜基质培养基中解离类器官，请从基底腔中除去培养基，并在顶室中加入2μg&#x2F; mL的分散酶（1 mL）。</li>
-<li>用P1000移液器轻轻研磨培养基&#x2F;分离酶混合物，并置于培养箱中15分钟。再次轻轻研磨混合物，再孵育15分钟。</li>
-<li>加入1mL冷却的PBS（4°C），并将含有基质培养基的类器官转移到15mL锥形离心管中。以400 x <em>g</em> 旋转5分钟。小心除去上清液，不要干扰细胞沉淀。</li>
-<li>用 1 mL 冷藏的 PBS 再次洗涤，然后以 400 x <em>g</em> 离心 5 分钟。小心取出上清液，不要干扰培养基&#x2F;细胞混合物。</li>
-<li>将1mL细胞分离溶液加入锥形离心管中，轻轻研磨重悬GFR-基底膜基质培养基质&#x2F;细胞混合物。置于培养箱中12分钟，将细胞作为聚集体传代或用于冷冻保存），或20分钟用于单细胞悬浮液。</li>
-<li>加入等体积的淬火培养基，以400 x <em>g</em> 离心5分钟。重悬于淬火培养基+ 10μM的ROCK抑制剂Y-27632中。<br>注意：在此步骤中，不应在管中看到残留的基底膜介质。如果残留培养基，请重复步骤8.5和8.6。</li>
-<li>执行细胞计数。计算下游应用所需的体积。</li>
-</ol>
-<h3 id="Representative-Results"><a href="#Representative-Results" class="headerlink" title="Representative Results"></a>Representative Results</h3><p>培养种植后24小时，第1天，iPSCs应为50%-90%汇合。在第 2 天，DE 应为 90%-95% 汇合。在DE诱导期间，通常在第4天观察到显着的细胞死亡，但附着的细胞将保留紧凑的鹅卵石形态（<strong>图2b</strong>）。如果大多数贴壁细胞分离，则停止分化，并考虑将活性素A的DE培养基暴露时间缩短6-12小时。在AFE诱导期间，细胞死亡是最小的，细胞保持贴壁，但会显得更小，更异质。</p>
-<p>只有当双阳性SOX2和FOXA2的产量&gt;80%时，才能在第7天传代细胞。在传代到基底膜基质中进行3D LPC诱导后，小球体将首先出现，然后生长，有些可能开始分支。成功进行内胚层分化的基因表达谱包括 DE 处的 SOX17 增加，FOXA2 和 SOX2 增加，SOX17 减少，NKX2-1 首次出现，NKX2-1 增加，以及 SOX2 和 FOXA2 的存在。</p>
-<p>与早期胚胎发育一致，AFE的腹腔化发生在肺芽发育（NKX2-1 +）和AFE的背侧化发生在胃肠道发育（SOX2 +）。LPC的培养物将混合肺和胃祖。</p>
-<p>LPC的肺类器官诱导已使用各种方法进行。一些小组使用NKX2-1荧光报告基因或表面抗原代理（CPM，CD26lowCD47high）对细胞进行分类。但这些肺类器官含有肺泡II型细胞，如没有肺泡I型细胞或间充质的细胞。</p>
-<p>其他小组已经收集了从AFE &#x2F; LPC单层中萌芽的细胞团块，并将其嵌入基底膜基质中。这些类器官含有肺上皮细胞和间充质细胞的混合群体，但培养需要数月[19]。我们的方案包括上皮细胞和间充质细胞的存在。WLO表达近端上皮细胞标志物p63和KRT5（基底细胞）和SCGB3A2（俱乐部细胞）以及远端上皮细胞标志物HOPX（ATI）和proSPC，SPB和NKX2-1（ATII）。他们还在LPC阶段以及整个肺类器官中表达间充质标志物Vimentin。PDGFRα是成纤维细胞的标志物，在排尿和肺泡化过程中在肺部具有重要功能20，并与远端细胞分化中重要的转录因子SOX9共表达（<strong>图3</strong>）。</p>
-<p>我们的方法使用胎儿肺发育中发生的信号分子有效地生成表达NKX2-1的LPC 3D培养物，以形成早期肺类器官。当将LPC传导到GFR基底膜基质培养基中以诱导肺类器官时，必须不要过度解离成单个细胞悬浮液，而是保留小团块细胞（10个细胞&#x2F;团）。细胞计数将不完全准确，但仍然需要避免在3周肺类器官分化期间过度汇合。</p>
-<p>肺类器官诱导应在诱导的第 6 天（分化的第 23 天）产生小的分支类器官。这些应该在类器官分支步骤和成熟步骤中继续生长。在引入地塞米松，cAMP和IBMX二十四小时后，分支应该扩展到透明球体。可以在分化结束时进行全肺类器官分析，或者WLO可以通过GFR进入新鲜的基底膜基质，或者通过冷冻在10%DMSO中冷冻保存。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/62456fig1v5.jpg" alt="Figure 1"><br><strong>图1</strong>：全肺类器官（WLO）与hiPSCs的分化总体示意图和代表性数据。<strong>圆圈表示具有识别标记的内胚层细胞类型。分化的时间线以黑条表示。生长因子和&#x2F;或小分子用于诱导内胚层和肺类器官群体。总之，干细胞在大约16天内分化成明确的内胚层，前肠前胚层内胚层和肺祖细胞。然后将这些细胞传入含有培养基插入物的GFR基底膜基质培养基中，并进行肺类器官诱导，分支和成熟。总分化大约需要35天。（</strong>b<strong>）主要内胚层细胞的代表性相差图像和整个肺类器官的3D图像。面板中指示的比例尺大小。（</strong>c<strong>）内胚层期间肺部发育标志物的qRT-PCR分析，以及</strong> (d) 近端和远端细胞标志物的全肺类器官分化。所有数据平均代表3-5个生物重复。误差线表示均值的标准误差，并归一化为肌动蛋白。<a target="_blank" rel="noopener" href="https://www.jove.com/files/ftp_upload/62456/62456fig1v5large.jpg">请点击此处查看此图的放大版本。</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/62456fig2v2.jpg" alt="Figure 2"><br><strong>图2</strong>：通过流式细胞术和免疫细胞化学表征内胚层分化。 （<strong>a</strong>）确定性内胚层标志物CXCR4的流式细胞术。左面板显示针对未染色人群的门控，而中间面板显示 CXCR4 阳性人群。右图显示了覆盖有细胞核（蓝色）的 SOX17（红色）的免疫细胞化学图像。（<strong>b</strong>）AFE标志物FOXA2和SOX2覆盖细胞核（蓝色）的免疫细胞化学图像。（<strong>c</strong>）NKX2-1-GFP在3D LPC报告细胞系中的内源性表达。从明场和GFP的活细胞培养物中拍摄的图像。固定和透化后肺祖细胞内标志物NKX2-1的流式细胞术。比例尺尺寸 &#x3D; 50 μM。 <a target="_blank" rel="noopener" href="https://www.jove.com/files/ftp_upload/62456/62456fig2v2large.jpg">请单击此处查看此图的放大版本。</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/62456fig3v2.jpg" alt="Figure 3"><br><strong>图3</strong>：通过免疫细胞化学分化3周后3D全肺类器官的表征。<strong>左面板显示由原子核（蓝色）覆盖的 SOX2（白色）和 SOX9（红色）。这些标志物在分支形态发生中很重要，代表近端和远端上皮群体。中间的面板显示P63（红色）和KRT5（红色），两者都是基底细胞的标志物。右图显示了SCGB3A2，这是俱乐部细胞的标志物。（</strong>b<strong>） 远端肺标志物。左图分别描绘了亲SPC（PSPC），（绿色）和HOPX（红色），肺泡II型ad I细胞的标志物，覆盖着细胞核（蓝色）。中间图显示了前SPC（PSPC）（绿色）和SPB（红色），肺泡II型细胞的标志物，覆盖着细胞核（蓝色）。右侧面板显示 NKX2-1（红色）和 ZO1（绿色）覆盖着原子核（蓝色）。</strong> (c） 肺间充质标志物。左图显示 PDGFRA（红色）和 SOX9（白色），代表远端间充质。右图显示Vimentin（红色），它分散在整个肺部。比例尺尺寸 &#x3D; 50 μM。<a target="_blank" rel="noopener" href="https://www.jove.com/files/ftp_upload/62456/62456fig3v2large.jpg">请单击此处查看此图的放大版本。</a></p>
-<table>
-<thead>
-<tr>
-<th><strong>试剂和解决方案 - 有关公司名称，请参阅材料列表</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><em>3D类器官诱导培养基（第17-22天）</em></td>
-</tr>
-<tr>
-<td>无血清基础培养基（见食谱），辅以：</td>
-</tr>
-<tr>
-<td>FGF7 （10 纳克&#x2F;毫升）</td>
-</tr>
-<tr>
-<td>FGF10 （10 纳克&#x2F;毫升）</td>
-</tr>
-<tr>
-<td>CHIR99021 （3 μM）</td>
-</tr>
-<tr>
-<td>EGF （10 纳克&#x2F;毫升）</td>
-</tr>
-<tr>
-<td><em>3D类器官分支培养基（第23-28天）</em></td>
-</tr>
-<tr>
-<td>无血清基础培养基（见食谱），辅以：</td>
-</tr>
-<tr>
-<td>FGF7 （10 纳克&#x2F;毫升）</td>
-</tr>
-<tr>
-<td>FGF10 （10 纳克&#x2F;毫升）</td>
-</tr>
-<tr>
-<td>CHIR99021 （3 μM）</td>
-</tr>
-<tr>
-<td>全反式视黄酸 （0.1 μM）</td>
-</tr>
-<tr>
-<td>EGF （10 纳克&#x2F;毫升）</td>
-</tr>
-<tr>
-<td>素食&#x2F;猪瘟 （10 纳克&#x2F;毫升）</td>
-</tr>
-<tr>
-<td><em>3D类器官成熟培养基（第29-34天）</em></td>
-</tr>
-<tr>
-<td>无血清基础培养基（见食谱），辅以：</td>
-</tr>
-<tr>
-<td>地塞米松 （50 nM）</td>
-</tr>
-<tr>
-<td>溴-cAMP （100 μM）</td>
-</tr>
-<tr>
-<td>IBMX （100 μM）</td>
-</tr>
-<tr>
-<td><em>AFE 诱导培养基（第 4-6 天）</em></td>
-</tr>
-<tr>
-<td>无血清基础培养基（见食谱），辅以：</td>
-</tr>
-<tr>
-<td>SB431542 （10 μM）</td>
-</tr>
-<tr>
-<td>背吗啡（2μM）</td>
-</tr>
-<tr>
-<td><em>DE 感应培养基（第 1-3 天）</em></td>
-</tr>
-<tr>
-<td>48.5 mL RPMI1640 + 谷氨酰胺</td>
-</tr>
-<tr>
-<td>1 mL B27，不含视黄酸</td>
-</tr>
-<tr>
-<td>500μl肝素（1%）</td>
-</tr>
-<tr>
-<td>500 μl 笔&#x2F;链球菌</td>
-</tr>
-<tr>
-<td>人激活素A（100纳克&#x2F;毫升）</td>
-</tr>
-<tr>
-<td>CHIR99021 （5 μM） - 仅在前 24 小时内</td>
-</tr>
-<tr>
-<td><em>LPC诱导培养基（第7-16天）</em></td>
-</tr>
-<tr>
-<td>无血清基础培养基（见食谱），辅以：</td>
-</tr>
-<tr>
-<td>BMP4 （10 纳克&#x2F;毫升）</td>
-</tr>
-<tr>
-<td>全反式视黄酸 （RA） （0.1 μM）</td>
-</tr>
-<tr>
-<td>CHIR99021 （3 μM）</td>
-</tr>
-<tr>
-<td><em>淬火介质</em></td>
-</tr>
-<tr>
-<td>49 毫升 DMEM&#x2F;F12</td>
-</tr>
-<tr>
-<td>1 毫升前端总线</td>
-</tr>
-<tr>
-<td><em>无血清基础培养基 （SFBM）</em></td>
-</tr>
-<tr>
-<td>375 mL 伊斯科夫改良杜尔贝克培养基 （IMDM） + 谷氨酰胺</td>
-</tr>
-<tr>
-<td>125 毫升火腿 F12</td>
-</tr>
-<tr>
-<td>5 mL B27，不含视黄酸</td>
-</tr>
-<tr>
-<td>2.5 毫升氮气</td>
-</tr>
-<tr>
-<td>500μl抗坏血酸，50毫克&#x2F;毫升</td>
-</tr>
-<tr>
-<td>13μl单硫甘油&#x2F; 1ml IMDM”每100ml血清游离培养基使用300ul 0.4mM单硫甘油</td>
-</tr>
-<tr>
-<td>3.75 mL 牛血清白蛋白 （BSA） V 级分，7.5% 溶液</td>
-</tr>
-<tr>
-<td>500 μl 笔&#x2F;链球菌</td>
-</tr>
-<tr>
-<td><em>干细胞传代培养基（第0天）</em></td>
-</tr>
-<tr>
-<td>500 毫升 DMEM&#x2F;F12</td>
-</tr>
-<tr>
-<td>129 mL 去核血清替代疗法 （KSR）</td>
-</tr>
-<tr>
-<td>6.5 mL 谷氨酰胺</td>
-</tr>
-<tr>
-<td>6.5 毫升新酸氮杂环</td>
-</tr>
-<tr>
-<td>1.3毫升2-巯基乙醇</td>
-</tr>
-<tr>
-<td>6.5 mL 支链球菌</td>
-</tr>
-</tbody></table>
-<p><strong>表1：介质表。</strong></p>
-<table>
-<thead>
-<tr>
-<th><strong>问题</strong></th>
-<th><strong>溶液</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>DE 分化效率不高</td>
-<td>在干细胞培养基中接种24小时后，细胞应融合50-70%</td>
-</tr>
-<tr>
-<td>GSK3β 抑制剂&#x2F;Wnt 激活剂 CHIR99021 应在第 1 天 DE 诱导后 20-24 小时内取出</td>
-<td></td>
-</tr>
-<tr>
-<td>DE 分化不应超过 72 小时</td>
-<td></td>
-</tr>
-<tr>
-<td>AFE 分化效率不高</td>
-<td>确保DE分化成功，细胞表达&gt;80%CXCR4</td>
-</tr>
-<tr>
-<td>确保每天将新鲜的生长因子&#x2F;小分子添加到培养基中</td>
-<td></td>
-</tr>
-<tr>
-<td>LPC 分化效率不高</td>
-<td>确保AFE分化成功，细胞表达&gt;80%FOXA2 &#x2F; SOX2</td>
-</tr>
-<tr>
-<td>确保AFE细胞以4-10个细胞的聚集体而不是单细胞的形式传代</td>
-<td></td>
-</tr>
-<tr>
-<td>3D肺类器官不生长或分化</td>
-<td>确保LPC差异化成功，并且细胞表达&gt;30%NKX2-1</td>
-</tr>
-<tr>
-<td>确保LPC以4-10个细胞的聚集体而不是单细胞递送</td>
-<td></td>
-</tr>
-<tr>
-<td>确保在传代过程中没有来自LPC的残留基质胶</td>
-<td></td>
-</tr>
-<tr>
-<td>每次更换介质时添加岩石抑制剂 Y-27632</td>
-<td></td>
-</tr>
-<tr>
-<td>确保按时更换培养基并添加新鲜的生长因子&#x2F;小分子</td>
-<td></td>
-</tr>
-<tr>
-<td>确保生长因子&#x2F;小分子的浓度正确</td>
-<td></td>
-</tr>
-</tbody></table>
-<p><strong>表 2：故障排除。</strong></p>
-<h3 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h3><p>3D全肺类器官（WLO）的成功分化依赖于多步骤，6周的方案，并注重细节，包括暴露于生长因子和小分子的时间，传代后的细胞密度以及hiPSCs的质量。故障排除请参见 <strong>表2</strong>。hiPSCs 应约为 70%-80% 汇合，解离前自发分化小于 5%。该协议要求”mTeSR+”介质;然而，普通的”mTeSR”培养基也被使用，结果相当，而且价格更便宜。对于细胞外基质，我们使用GFR基底膜基质培养基质。我们使用ReLesR（见 <strong>材料表</strong>）通过hiPSC以减少差异化。</p>
-<p>在内胚层分化过程中，应每天在培养基更换之前和之后观察细胞。指定的生长因子&#x2F;小分子应每天新鲜加入基础培养基中，以防止过早降解。确定性内胚层 （DE） 中的细胞死亡很常见，但在前牙前内胚层 （AFE） 和肺祖细胞 （LPC） 诱导期间应受到限制。如果在DE的第三天（第4天）出现大的死亡，则将DE的总时间减少6-12小时。新的iPSC细胞系可能需要进行优化，以成功进行内胚层分化。在DE处对CXCR4进行流式细胞术以确认成功诱导（&gt;85%CXCR4 +细胞）。细胞在AFE时应该相对稳定，并且形态变化很少。</p>
-<p>传代到LPC是另一个必须针对细胞类型进行优化的过程。以过低的密度（&lt;50%）重镀细胞将导致分化效率低下。通过免疫细胞化学法确认 LPC 诱导 NKX2-1 或流式细胞术对 CPM18 或 CD26low&#x2F;CD47high15 的成功诱导。成功的LPC诱导必须具有&gt;40%的NKX2-1，否则类器官将具有更丰度的背侧AFE。对于LPC诱导，每次培养基更换时，必须将生长因子添加到碱基培养基中。如果培养基在LPC诱导后变黄，请考虑增加新鲜培养基的体积，或每天更换培养基。在3D全肺类器官诱导过程中，电镀数量和维持细胞簇是成功生长器官的关键。GFR基底膜基质介质难以处理且对温度高度敏感，因此请始终将其保持在冰上。如果GFR基底膜基质培养基过早凝胶，则LPC细胞将无法在其中整合。我们建议在传代前30分钟在冰上解冻1 mL等分试样的GFR基层膜基质培养基。一旦细胞&#x2F;簇被计数并制作出适当的等分试样，将细胞沉淀放在冰上。我们建议在GFR基底膜基质培养基处理之前准备板，标记和添加细胞培养膜插入物。</p>
-<p>使用移液器吸头将正确体积的GFR基底膜基质培养基质液体立即加入细胞沉淀中，并保持在冰上。快速但轻柔地上下移液（微妙的处理），以免引入气泡，然后将管子放回冰上。将细胞和GFR-基底膜基质培养基混合物加入到制备的板中转孔的顶端部分。混合物应扩散并涂覆整个横孔;轻轻倾斜板以确保涂层。在培养箱中凝胶化30-60分钟后，GFR-基底膜基质培养基中应有可见的细胞簇。将适当的肺诱导培养基加入补充10μM ROCK抑制剂Y-27632的基底室，并每隔一天监测一次类器官的生长。</p>
-<p>该协议产生的类器官的未来应用包括研究控制早期肺谱系承诺和细胞命运规范的分子途径[21，22，23]。上皮细胞和间充质之间的相互作用可以通过利用基因敲除模型来确定[24]。类器官也可以与内皮细胞共培养，以确定肺上皮、间充质和内皮之间组织特异性共模式信号传导的重要性[25]。肺发育与血管发育同时发生，这种关系可能引发正常肺发育所必需的重要分子机制。我们还表明，在去除GFR-基底膜基质培养基后，然后在超低附着孔中进行短期培养后，这些全肺类器官通过表面活性剂分泌测定具有功能性[26]。其他策略包括对细胞进行分类以用于细胞表面标记物，例如NGFR（基底细胞）[27] 和HTII-280（ATII细胞）[28] ，并在气液相间培养条件下将其替换为均质类器官或单层。整个、近端和远端肺类器官也被用于研究SARS-CoV-2病毒感染的细胞靶标和病理生理学，以便更好地了解和筛查可能抗击COVID-19的药物。</p>
-<p>该协议是健壮且可重复的，但仍然存在许多挑战。已经测试了许多不同的iPSC和ESC谱系（&gt;20系），但必须针对每个细胞系优化方案。</p>
-<p>尽管具有强大的DE和AFE诱导，但LPC诱导可能难以实现&gt;40%的NKX2-1 +细胞。其他方案包括NKX2-1细胞表面标志物的分选步骤[15，18]，但这些方案仅产生肺泡II型，如没有间充质的类器官，尽管纯化了肺祖细胞群，但仍含有胃细胞和肝细胞群[29]。我们还注意到LPC和全肺类器官中都有少量胃细胞和肝细胞，可能是由于背侧前前部细胞污染了LPC。</p>
-<p>因此，纯肺类器官的分化尚未实现，必须完成对人体组织中肺祖细胞发育的更多研究。下游检测必须与原代人肺组织的基因和蛋白表达进行有力的基准测试。</p>
-<p>虽然迄今为止，肺类器官最富有成效的用途是建模疾病和体外药物筛查，但将hiPSC衍生的肺类器官移植到患者体内用于再生医学已被考虑作为一系列疾病的未来疗法。然而，在考虑此类干预措施之前，必须完善大量的质量控制，包括识别和去除污染，不良，潜在致瘤性hiPSC衍生物。此外，还需要开发更好的体外功能测定和更好的肺部疾病动物模型。</p>
-<p>具体而言，必须确认hiPSC衍生细胞的功能和安全性。需要排除未分化的细胞，因为它们具有产生畸胎瘤的能力。确定确定内胚层中未分化干细胞的一种方法是使用多能性标记SSEA4对细胞进行分类。最近使用单细胞RNA测序检测了未分化hiPSCs的标记基因[30]。ESRG，CNMD和SFRP2可用于在任何分化步骤中验证未分化的细胞。一旦纯度得到确认，自体iPSC衍生疗法的好处是移植细胞能够避免排斥反应，因为它们来自患者自身的细胞。缺点包括完全分化细胞，接受严格的临床级测试以及将细胞移植到急性损伤（呼吸窘迫综合征，心肌梗塞或脊柱损伤）的患者中所需的时间。另一种方法是利用银行同种异体iPSC衍生细胞[31]。这些可以储存起来，并且随时可供具有人白细胞抗原（HLA）匹配供体的患者使用，并且他们将接受全面的污染测试。最大的缺点是免疫排斥的可能性。在同种异体细胞移植中可能需要免疫抑制，这是同种异体全组织移植的当前现实。正在设计策略，以允许同种异体iPSC衍生细胞逃避免疫反应，以安全地将其移植到患者体内[32]。</p>
-<p>最终，iPSC衍生的全肺类器官将用于研究患者特异性疾病模型，定制治疗方法，并加强再生医学研究。</p>
-<h3 id="Acknowledgements"><a href="#Acknowledgements" class="headerlink" title="Acknowledgements"></a>Acknowledgements</h3><p>这项研究得到了加州再生医学研究所（CIRM）（DISC2-COVID19-12022）的支持。</p>
-<hr>
-<table>
-<thead>
-<tr>
-<th><strong>Name</strong></th>
-<th><strong>Company</strong></th>
-<th><strong>Catalog Number</strong></th>
-<th><strong>Comments</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>Cell Culture</strong></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>12 well plates</td>
-<td>Corning</td>
-<td>3512</td>
-<td></td>
-</tr>
-<tr>
-<td>12-well inserts, 0.4um, translucent</td>
-<td>VWR</td>
-<td>10769-208</td>
-<td></td>
-</tr>
-<tr>
-<td>2-mercaptoethanol</td>
-<td>Sigma-Aldrich</td>
-<td>M3148</td>
-<td></td>
-</tr>
-<tr>
-<td>Accutase</td>
-<td>Innovative Cell Tech</td>
-<td>AT104</td>
-<td></td>
-</tr>
-<tr>
-<td>ascorbic acid</td>
-<td>Sigma</td>
-<td>A4544</td>
-<td></td>
-</tr>
-<tr>
-<td>B27 without retinoic acid</td>
-<td>ThermoFisher</td>
-<td>12587010</td>
-<td></td>
-</tr>
-<tr>
-<td>Bovine serum albumin (BSA) Fraction V, 7.5% solution</td>
-<td>Gibco</td>
-<td>15260-037</td>
-<td></td>
-</tr>
-<tr>
-<td>Dispase</td>
-<td>StemCellTech</td>
-<td>7913</td>
-<td></td>
-</tr>
-<tr>
-<td>DMEM&#x2F;F12</td>
-<td>Gibco</td>
-<td>10565042</td>
-<td></td>
-</tr>
-<tr>
-<td>FBS</td>
-<td>Gibco</td>
-<td>10082139</td>
-<td></td>
-</tr>
-<tr>
-<td>Glutamax</td>
-<td>Life Technologies</td>
-<td>35050061</td>
-<td></td>
-</tr>
-<tr>
-<td>Ham’s F12</td>
-<td>Invitrogen</td>
-<td>11765-054</td>
-<td></td>
-</tr>
-<tr>
-<td>HEPES</td>
-<td>Gibco</td>
-<td>15630-080</td>
-<td></td>
-</tr>
-<tr>
-<td>Iscove’s Modified Dulbecco’s Medium (IMDM) + Glutamax</td>
-<td>Invitrogen</td>
-<td>31980030</td>
-<td></td>
-</tr>
-<tr>
-<td>Knockout Serum Replacement (KSR)</td>
-<td>Life Technologies</td>
-<td>10828028</td>
-<td></td>
-</tr>
-<tr>
-<td>Matrigel</td>
-<td>Corning</td>
-<td>354230</td>
-<td></td>
-</tr>
-<tr>
-<td>Monothioglycerol</td>
-<td>Sigma</td>
-<td>M6145</td>
-<td></td>
-</tr>
-<tr>
-<td>mTeSR plus Kit (10&#x2F;case)</td>
-<td>Stem Cell Tech</td>
-<td>5825</td>
-<td></td>
-</tr>
-<tr>
-<td>N2</td>
-<td>ThermoFisher</td>
-<td>17502048</td>
-<td></td>
-</tr>
-<tr>
-<td>NEAA</td>
-<td>Life Technologies</td>
-<td>11140050</td>
-<td></td>
-</tr>
-<tr>
-<td>Pen&#x2F;strep</td>
-<td>Lonza</td>
-<td>17-602F</td>
-<td></td>
-</tr>
-<tr>
-<td>ReleSR</td>
-<td>Stem Cell Tech</td>
-<td>5872</td>
-<td></td>
-</tr>
-<tr>
-<td>RPMI1640 + Glutamax</td>
-<td>Life Technologies</td>
-<td>12633012</td>
-<td></td>
-</tr>
-<tr>
-<td>TrypLE</td>
-<td>Gibco</td>
-<td>12605-028</td>
-<td></td>
-</tr>
-<tr>
-<td>Y-27632 (Rock Inhibitor)</td>
-<td>R&amp;D Systems</td>
-<td>1254&#x2F;1</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Growth Factors&#x2F;Small Molecules</strong></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Activin A</td>
-<td>R&amp;D Systems</td>
-<td>338-AC</td>
-<td></td>
-</tr>
-<tr>
-<td>All-trans retinoic acid (RA)</td>
-<td>Sigma-Aldrich</td>
-<td>R2625</td>
-<td></td>
-</tr>
-<tr>
-<td>BMP4</td>
-<td>R&amp;D Systems</td>
-<td>314-BP&#x2F;CF</td>
-<td></td>
-</tr>
-<tr>
-<td>Br-cAMP</td>
-<td>Sigma-Aldrich</td>
-<td>B5386</td>
-<td></td>
-</tr>
-<tr>
-<td>CHIR99021</td>
-<td>Abcam</td>
-<td>ab120890</td>
-<td></td>
-</tr>
-<tr>
-<td>Dexamethasone</td>
-<td>Sigma-Aldrich</td>
-<td>D4902</td>
-<td></td>
-</tr>
-<tr>
-<td>Dorsomorphin</td>
-<td>R&amp;D Systems</td>
-<td>3093</td>
-<td></td>
-</tr>
-<tr>
-<td>EGF</td>
-<td>R&amp;D Systems</td>
-<td>236-EG</td>
-<td></td>
-</tr>
-<tr>
-<td>FGF10</td>
-<td>R&amp;D Systems</td>
-<td>345-FG&#x2F;CF</td>
-<td></td>
-</tr>
-<tr>
-<td>FGF7</td>
-<td>R&amp;D Systems</td>
-<td>251-KG&#x2F;CF</td>
-<td></td>
-</tr>
-<tr>
-<td>IBMX (3-Isobtyl-1-methylxanthine)</td>
-<td>Sigma-Aldrich</td>
-<td>I5879</td>
-<td></td>
-</tr>
-<tr>
-<td>SB431542</td>
-<td>R&amp;D Systems</td>
-<td>1614</td>
-<td></td>
-</tr>
-<tr>
-<td>VEGF&#x2F;PIGF</td>
-<td>R&amp;D Systems</td>
-<td>297-VP&#x2F;CF</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Primary antibodies</strong></td>
-<td></td>
-<td></td>
-<td><strong>Dilution rate</strong></td>
-</tr>
-<tr>
-<td>CXCR4-PE</td>
-<td>R&amp;D Systems</td>
-<td>FAB170P</td>
-<td>1:200 (F)</td>
-</tr>
-<tr>
-<td>HOPX</td>
-<td>Santa Cruz Biotech</td>
-<td>sc-398703</td>
-<td>0.180555556</td>
-</tr>
-<tr>
-<td>HTII-280</td>
-<td>Terrace Biotech</td>
-<td>TB-27AHT2-280</td>
-<td>0.145833333</td>
-</tr>
-<tr>
-<td>KRT5</td>
-<td>Abcam</td>
-<td>ab52635</td>
-<td>0.180555556</td>
-</tr>
-<tr>
-<td>NKX2-1</td>
-<td>Abcam</td>
-<td>ab76013</td>
-<td>0.25</td>
-</tr>
-<tr>
-<td>NKX2-1-APC</td>
-<td>LS-BIO</td>
-<td>LS-C264437</td>
-<td>1:1000 (F)</td>
-</tr>
-<tr>
-<td>proSPC</td>
-<td>Abcam</td>
-<td>ab40871</td>
-<td>0.215277778</td>
-</tr>
-<tr>
-<td>SCGB3A2</td>
-<td>Abcam</td>
-<td>ab181853</td>
-<td>0.25</td>
-</tr>
-<tr>
-<td>SOX2</td>
-<td>Invitrogen</td>
-<td>MA1-014</td>
-<td>0.180555556</td>
-</tr>
-<tr>
-<td>SOX9</td>
-<td>R&amp;D Systems</td>
-<td>AF3075</td>
-<td>0.180555556</td>
-</tr>
-<tr>
-<td>SPB (mature)</td>
-<td>7 Hills</td>
-<td>48604</td>
-<td>1: 1500 (F) 1:500 (W)a</td>
-</tr>
-<tr>
-<td>SPC (mature)</td>
-<td>LS Bio</td>
-<td>LS-B9161</td>
-<td>1:100 (F); 1:500 (W) a</td>
-</tr>
-</tbody></table>
-<h3 id="References"><a href="#References" class="headerlink" title="References"></a><strong>References</strong></h3><ol>
-<li>Ten Have-Opbroek, A. A. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Lung+development+in+the+mouse+embryo.">Lung development in the mouse embryo.</a> <em>Experimental Lung Research</em>. <strong>17</strong> (2), 111-130 (1991).</li>
-<li>Perl, A. K., Whitsett, J. A. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Molecular+mechanisms+controlling+lung+morphogenesis.">Molecular mechanisms controlling lung morphogenesis.</a> <em>Clinical Genetics</em>. <strong>56</strong> (1), 14-27 (1999).</li>
-<li>Leibel, S., Post, M. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Endogenous+and+exogenous+stem/progenitor+cells+in+the+lung+and+their+role+in+the+pathogenesis+and+treatment+of+pediatric+lung+disease.">Endogenous and exogenous stem&#x2F;progenitor cells in the lung and their role in the pathogenesis and treatment of pediatric lung disease.</a> <em>Frontiers in Pediatrics</em>. <strong>4</strong>, 36 (2016).</li>
-<li>Hines, E. A., Sun, X. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Tissue+crosstalk+in+lung+development.">Tissue crosstalk in lung development.</a> <em>Journal of Cellular Biochemistry</em>. <strong>115</strong> (9), 1469-1477 (2014).</li>
-<li>Montoro, D. T., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=A+revised+airway+epithelial+hierarchy+includes+CFTR-expressing+ionocytes.">A revised airway epithelial hierarchy includes CFTR-expressing ionocytes.</a> <em>Nature</em>. <strong>560</strong> (7718), 319-324 (2018).</li>
-<li>Barkauskas, C. E., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Type+2+alveolar+cells+are+stem+cells+in+adult+lung.">Type 2 alveolar cells are stem cells in adult lung.</a> <em>The Journal of Clinical Investigation</em>. <strong>123</strong> (7), 3025-3036 (2013).</li>
-<li>D’Amour, K. A., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Efficient+differentiation+of+human+embryonic+stem+cells+to+definitive+endoderm.">Efficient differentiation of human embryonic stem cells to definitive endoderm.</a> <em>Nature Biotechnology</em>. <strong>23</strong> (12), 1534-1541 (2005).</li>
-<li>Green, M. D., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Generation+of+anterior+foregut+endoderm+from+human+embryonic+and+induced+pluripotent+stem+cells.">Generation of anterior foregut endoderm from human embryonic and induced pluripotent stem cells.</a> <em>Nature Biotechnology</em>. <strong>29</strong> (3), 267-272 (2011).</li>
-<li>Ikeda, K., Shaw-White, J. R., Wert, S. E., Whitsett, J. A. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Hepatocyte+nuclear+factor+3+activates+transcription+of+thyroid+transcription+factor+1+in+respiratory+epithelial+cells.">Hepatocyte nuclear factor 3 activates transcription of thyroid transcription factor 1 in respiratory epithelial cells.</a> <em>Molecular Cell Biology</em>. <strong>16</strong> (7), 3626-3636 (1996).</li>
-<li>Schittny, J. C. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Development+of+the+lung.">Development of the lung.</a> <em>Cell and Tissue Research</em>. <strong>367</strong> (3), 427-444 (2017).</li>
-<li>Mecham, R. P. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Elastin+in+lung+development+and+disease+pathogenesis.">Elastin in lung development and disease pathogenesis.</a> <em>Matrix Biology: Journal of the International Society for Matrix Biology</em>. <strong>73</strong>, 6-20 (2018).</li>
-<li>Bellusci, S., Grindley, J., Emoto, H., Itoh, N., Hogan, B. L. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Fibroblast+growth+factor+10+(FGF10)+and+branching+morphogenesis+in+the+embryonic+mouse+lung.">Fibroblast growth factor 10 (FGF10) and branching morphogenesis in the embryonic mouse lung.</a> <em>Development</em>. <strong>124</strong> (23), 4867-4878 (1997).</li>
-<li>Bellusci, S., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Involvement+of+Sonic+hedgehog+(Shh)+in+mouse+embryonic+lung+growth+and+morphogenesis.">Involvement of Sonic hedgehog (Shh) in mouse embryonic lung growth and morphogenesis.</a> <em>Development</em>. <strong>124</strong> (1), 53-63 (1997).</li>
-<li>Yamamoto, Y., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Long-term+expansion+of+alveolar+stem+cells+derived+from+human+iPS+cells+in+organoids.">Long-term expansion of alveolar stem cells derived from human iPS cells in organoids.</a> <em>Nature Methods</em>. <strong>14</strong> (11), 1097-1106 (2017).</li>
-<li>Hawkins, F., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Prospective+isolation+of+NKX2-1-expressing+human+lung+progenitors+derived+from+pluripotent+stem+cells.">Prospective isolation of NKX2-1-expressing human lung progenitors derived from pluripotent stem cells.</a> <em>The Journal of Clinical Investigation</em>. <strong>127</strong> (6), 2277-2294 (2017).</li>
-<li>McCauley, K. B., Hawkins, F., Kotton, D. N. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Derivation+of+epithelial-only+airway+organoids+from+human+pluripotent+stem+cells.">Derivation of epithelial-only airway organoids from human pluripotent stem cells.</a> <em>Current Protocols in Stem Cell Biology</em>. <strong>45</strong> (1), 51 (2018).</li>
-<li>Miller, A. J., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Generation+of+lung+organoids+from+human+pluripotent+stem+cells+in+vitro.">Generation of lung organoids from human pluripotent stem cells in vitro.</a> <em>Nature Protocols</em>. <strong>14</strong> (2), 518-540 (2019).</li>
-<li>Gotoh, S., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Generation+of+alveolar+epithelial+spheroids+via+isolated+progenitor+cells+from+human+pluripotent+stem+cells.">Generation of alveolar epithelial spheroids via isolated progenitor cells from human pluripotent stem cells.</a> <em>Stem Cell Reports</em>. <strong>3</strong> (3), 394-403 (2014).</li>
-<li>Huang, S. X., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Efficient+generation+of+lung+and+airway+epithelial+cells+from+human+pluripotent+stem+cells.">Efficient generation of lung and airway epithelial cells from human pluripotent stem cells.</a> <em>Nature Biotechnology</em>. <strong>32</strong> (1), 84-91 (2014).</li>
-<li>Endale, M., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Temporal,+spatial,+and+phenotypical+changes+of+PDGFR%CE%B1+expressing+fibroblasts+during+late+lung+development.">Temporal, spatial, and phenotypical changes of PDGFRα expressing fibroblasts during late lung development.</a> <em>Developmental Biology</em>. <strong>425</strong> (2), 161-175 (2017).</li>
-<li>Fatehullah, A., Tan, S. H., Barker, N. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Organoids+as+an+in+vitro+model+of+human+development+and+disease.">Organoids as an in vitro model of human development and disease.</a> <em>Nature Cell Biology</em>. <strong>18</strong> (3), 246-254 (2016).</li>
-<li>Nikolić, M. Z., Rawlins, E. L. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Lung+organoids+and+their+use+to+study+cell-cell+interaction.">Lung organoids and their use to study cell-cell interaction.</a> <em>Current Pathobiology Reports</em>. <strong>5</strong> (2), 223-231 (2017).</li>
-<li>Calvert, B. A., Ryan Firth, A. L. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Application+of+iPSC+to+modelling+of+respiratory+diseases.">Application of iPSC to modelling of respiratory diseases.</a> <em>Advances on Experimental Medicine and Biology</em>. <strong>1237</strong>, 1-16 (2020).</li>
-<li>McCulley, D., Wienhold, M., Sun, X. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=The+pulmonary+mesenchyme+directs+lung+development.">The pulmonary mesenchyme directs lung development.</a> <em>Current Opinion in Genetics and Development</em>. <strong>32</strong>, 98-105 (2015).</li>
-<li>Blume, C., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Cellular+crosstalk+between+airway+epithelial+and+endothelial+cells+regulates+barrier+functions+during+exposure+to+double-stranded+RNA.">Cellular crosstalk between airway epithelial and endothelial cells regulates barrier functions during exposure to double-stranded RNA.</a> <em>Immunity, Inflammation and Disease</em>. <strong>5</strong> (1), 45-56 (2017).</li>
-<li>Leibel, S. L., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Reversal+of+surfactant+protein+B+deficiency+in+patient+specific+human+induced+pluripotent+stem+cell+derived+lung+organoids+by+gene+therapy.">Reversal of surfactant protein B deficiency in patient specific human induced pluripotent stem cell derived lung organoids by gene therapy.</a> <em>Scientific Reports</em>. <strong>9</strong> (1), 13450 (2019).</li>
-<li>Rock, J. R., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Basal+cells+as+stem+cells+of+the+mouse+trachea+and+human+airway+epithelium.">Basal cells as stem cells of the mouse trachea and human airway epithelium.</a> <em>Proceedings of the National Academy of Sciences of the United States of America</em>. <strong>106</strong> (31), 12771-12775 (2009).</li>
-<li>Gonzalez, R. F., Allen, L., Gonzales, L., Ballard, P. L., Dobbs, L. G. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=HTII-280,+a+biomarker+specific+to+the+apical+plasma+membrane+of+human+lung+alveolar+type+II+cells.">HTII-280, a biomarker specific to the apical plasma membrane of human lung alveolar type II cells.</a> <em>The Journal of Histochemistry and Cytochemistry: Official Journal of the Histochemistry Society</em>. <strong>58</strong> (10), 891-901 (2010).</li>
-<li>McCauley, K. B., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Single-cell+transcriptomic+profiling+of+pluripotent+stem+cell-derived+SCGB3A2++airway+epithelium.">Single-cell transcriptomic profiling of pluripotent stem cell-derived SCGB3A2+ airway epithelium.</a> <em>Stem Cell Reports</em>. <strong>10</strong> (5), 1579-1595 (2018).</li>
-<li>Sekine, K., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Robust+detection+of+undifferentiated+iPSC+among+differentiated+cells.">Robust detection of undifferentiated iPSC among differentiated cells.</a> <em>Scientific Reports</em>. <strong>10</strong> (1), 10293 (2020).</li>
-<li>Jacquet, L., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Strategy+for+the+creation+of+clinical+grade+hESC+line+banks+that+HLA-match+a+target+population.">Strategy for the creation of clinical grade hESC line banks that HLA-match a target population.</a> <em>EMBO Molecular Medicine</em>. <strong>5</strong> (1), 10-17 (2013).</li>
-<li>Mattapally, S., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Human+leukocyte+antigen+class+I+and+II+knockout+human+induced+pluripotent+stem+cell-derived+cells:+universal+donor+for+cell+therapy.">Human leukocyte antigen class I and II knockout human induced pluripotent stem cell-derived cells: universal donor for cell therapy.</a> <em>Journal of the American Heart Association</em>. <strong>7</strong> (23), 010239 (2018).</li>
-</ol>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Paper</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/03/07/%E4%BB%8E%E8%AF%B1%E5%AF%BC%E5%A4%9A%E8%83%BD%E5%B9%B2%E7%BB%86%E8%83%9E%E7%94%9F%E6%88%903D%E5%85%A8%E8%82%BA%E7%B1%BB%E5%99%A8%E5%AE%98%EF%BC%8C%E7%94%A8%E4%BA%8E%E6%A8%A1%E6%8B%9F%E8%82%BA%E5%8F%91%E8%82%B2%E7%94%9F%E7%89%A9%E5%AD%A6%E5%92%8C%E7%96%BE%E7%97%85/">展开全文 >></a>
     </p>
     
 
