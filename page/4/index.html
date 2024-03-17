@@ -233,6 +233,389 @@
 
 
   
+    <article id="post-插入缺失的形成联合重编程生成功能丧失iPSC细胞系" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/03/07/%E6%8F%92%E5%85%A5%E7%BC%BA%E5%A4%B1%E7%9A%84%E5%BD%A2%E6%88%90%E8%81%94%E5%90%88%E9%87%8D%E7%BC%96%E7%A8%8B%E7%94%9F%E6%88%90%E5%8A%9F%E8%83%BD%E4%B8%A7%E5%A4%B1iPSC%E7%BB%86%E8%83%9E%E7%B3%BB/" target="_blank">人成纤维细胞通过CRISPR插入缺失的形成联合重编程生成功能丧失iPSC细胞系</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/03/07/%E6%8F%92%E5%85%A5%E7%BC%BA%E5%A4%B1%E7%9A%84%E5%BD%A2%E6%88%90%E8%81%94%E5%90%88%E9%87%8D%E7%BC%96%E7%A8%8B%E7%94%9F%E6%88%90%E5%8A%9F%E8%83%BD%E4%B8%A7%E5%A4%B1iPSC%E7%BB%86%E8%83%9E%E7%B3%BB/" class="archive-article-date">
+        <time datetime="2024-03-07T05:40:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-07</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>第一次发布: <a target="_blank" rel="noopener" href="https://bio-protocol.org/cn/archive?vol=8&issid=1189">2018年04月05日第8卷第7期  </a>   原文DOI: <a target="_blank" rel="noopener" href="https://doi.org/10.21769/BioProtoc.2794">10.21769&#x2F;BioProtoc.2794</a>  </p>
+<p>评审: <a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1007046">David Cisneros</a><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1015281">Sara E Howden</a><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1007232">Ganesh Swaminathan</a></p>
+<p>cited from：Tidball, A. M., Swaminathan, P., Dang, L. T. and Parent, J. M. (2018). Generating Loss-of-function iPSC Lines with Combined CRISPR Indel Formation and Reprogramming from Human Fibroblasts. <em>Bio-protocol</em> 8(7): e2794. DOI: <a target="_blank" rel="noopener" href="https://doi.org/10.21769/BioProtoc.2794">10.21769&#x2F;BioProtoc.2794</a>.</p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>对于疾病和基础科学研究而言，功能丧失（LOF）突变是非常重要的。 在这里，研究人员提供了一个简单的方法来产生LOF iPSC系列，通过将CRISPR载体与附加型重编程质粒同时引入成纤维细胞，规避了传统基因编辑和已建立的iPSC系的克隆的技术挑战。 研究人员的实验已经产生了常染色体基因中所有3种基因型的几乎偶数。 此外，研究人员提供了一个详细的方法来维护和iPSC克隆的96孔板的基因分型。</p>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>CRISPR &#x2F; Cas9技术允许简单且特异地针对特定基因组位置进行基因编辑。将该技术与诱导性多能干细胞（iPSC）的疾病建模和再生医学潜力相结合将继续对生物医学研究产生前所未有的影响。然而，使CRISPR &#x2F; Cas9系统适应iPSC已经提出了几个挑战。在细胞系中进行基因编辑的传统方法是用表达Cas9蛋白质的质粒和指导RNA（gRNA）转染细胞，然后产生单克隆并筛选所需的遗传改变。不幸的是，iPSC不适用于单细胞克隆。已经开发了几种补充媒介和克隆方法来克服这一困难，但仍然充满昂贵的设备（低氧培养箱），困难的技术步骤（FACS分选的单个iPSC的存活）或劳动密集型方案（亚克隆）（Forsyth ，2006; Miyaoka ，，2014）。此外，单细胞传代与iPSC中增加的基因组异常有关（Bai等人，2015）。已使用荧光或抗生素抗性遗传标记来克服克隆性问题和这些细胞中基因编辑的总体低效率，但需要通过设计有长同源臂（400-800bp）的靶向质粒对大盒进行同源重组， （Hendel等，，2014）。设计这些质粒需要很长时间。</p>
+<p>为了克服这些障碍中的许多障碍，研究人员利用同时重编程和CRISPR &#x2F; Cas9诱变的组合方法产生杂合和纯合丢失功能（LOF）iPSC系。 Howden及其同事首次提出了这种组合方法用于同源重组基因编辑（Howden等人，2015和2016），但是研究人员已经扩展并进一步定义了他们在最近的出版物（Tidball et。，2017）。该程序利用了iPSC重编程中固有的克隆步骤以及成纤维细胞培养物中更容易的转染（图1）。高效地产生大量具有所有三种基因型（ <strong>野生型&#x2F;野生型</strong>，<strong>野生型&#x2F; indel</strong>和 <strong>indel &#x2F; indel</strong>）的相似比例的克隆的能力将允许用于疾病建模的LOF iPSC系的快速发育和基础研究。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/1.jpg" alt="Fig1"></p>
+<p><strong>图1.实验工作流程</strong>概述本文中的方案分为4个主要部分，包括：指导RNA和PCR引物设计（步骤1），CRISPR质粒的产生和纯化（步骤2- 6），用CRISPR和重编程质粒（步骤7-8）进行成纤维细胞培养和电穿孔，并分离基因组DNA，然后对目标区域进行PCR并测序（步骤11-15）</p>
+<h3 id="材料和试剂"><a href="#材料和试剂" class="headerlink" title="材料和试剂"></a>材料和试剂</h3><ol>
+<li><h4 id="材料"><a href="#材料" class="headerlink" title="材料"></a>材料</h4><ol>
+<li>1.5 ml Eppendorf管（VWR，目录号：89000-028）</li>
+<li>10μl，200μl和1 ml移液枪头（USA Scientific，产品目录号：1111-3700，1111-0700和1111-2721）</li>
+<li>用于细菌培养的14ml试管（Corning，Falcon ，产品目录号：352059）</li>
+<li>锥形瓶（Corning，PYREX ®，目录号：4980-500）</li>
+<li>10厘米组织培养皿（Corning，Falcon ，目录号：353003）</li>
+<li>6孔板（Corning，Costar ®，产品目录号：3516）</li>
+<li>5ml，10ml和25ml血清移液管（Aikali Scientific，ASI，目录号：SP205，SP210和SP225）</li>
+<li>96孔板（Corning，Falcon ，目录号：353072）</li>
+<li>无菌50毫升一次性移液器盆（Fisher Scientific，目录号：13-681-502）</li>
+<li>PCR管带（USA Scientific，目录号：1402-4700）</li>
+<li>15 ml离心管（Fisher Scientific，目录号：05-539-12）</li>
+<li>Nalgene通用长期储存低温管（Thermo Fisher Scientific，Thermo Scientific TM，目录号：5000-1012）</li>
+</ol>
+</li>
+<li><h4 id="细胞"><a href="#细胞" class="headerlink" title="细胞"></a>细胞</h4><p>​             人类包皮成纤维细胞（MTI-GlobalStem，目录号：GSC-3002）</p>
+</li>
+<li><h4 id="试剂"><a href="#试剂" class="headerlink" title="试剂"></a>试剂</h4><ol>
+<li>CRISPR质粒pX330-U6-Chmeric_BB-CBh-hSpCas9（Addgene，目录号：42230）</li>
+<li>重编程质粒pCXLE-hOCT3 &#x2F; 4-p53shRNA，pCXLE-hUL和pCXLE-hSK（Addgene，目录号：27077,27080,27078）</li>
+<li>亚克隆效率DH5α感受态细胞（Thermo Fisher Scientific，Invitrogen TM，目录号：18265017）</li>
+<li>与NEBuffer 2.1（New England Biolabs，目录号：R3539）一起提供的BbsI限制酶。</li>
+<li>QIAGEN PCR纯化试剂盒（QIAGEN，目录号：28104）</li>
+<li>定制寡核苷酸（赛默飞世尔科技）</li>
+<li>T4 DNA连接酶试剂盒（Thermo Fisher Scientific，Invitrogen TM，目录号：15224017）</li>
+<li>SOC培养基（Thermo Fisher Scientific，Invitrogen TM，目录号：15544034）</li>
+<li>LB肉汤培养基（Thermo Fisher Scientific，Invitrogen TM，产品目录号：12780052）</li>
+<li>LB琼脂（Thermo Fisher Scientific，Invitrogen TM，产品目录号：22700025）</li>
+<li>氨苄青霉素钠盐（Sigma-Aldrich，目录号：A9518-25G）</li>
+<li>QIAGEN Miniprep Kit（QIAGEN，目录号：27104）</li>
+<li>甘油（Sigma-Aldrich，目录号：G5516-100ML）</li>
+<li>LKO.1 5’测序引物（5’-GACTATCATATGCTTACCGT-3’）</li>
+<li>无内切QIAGEN Maxi Prep Kit（QIAGEN，产品目录号：12362）</li>
+<li>磷酸盐缓冲盐水（PBS），pH7.4（Thermo Fisher Scientific，Gibco TM，产品目录号：10010023）</li>
+<li>0.25％胰蛋白酶溶液（Thermo Fisher Scientific，Gibco TM，目录号：25200056）</li>
+<li>生长因子耗尽基质胶（Corning，目录号：356230）</li>
+<li>氖转染系统100μl试剂盒（Thermo Fisher Scientific，Invitrogen TM，目录号：MPK10025）</li>
+<li>TeSR-E7（STEMCELL Technologies，目录号：05910）</li>
+<li>mTeSR1（STEMCELL Technologies，目录号：85850）</li>
+<li>ROCK抑制剂Y-27632（Tocris Bioscience，目录号：1254）</li>
+<li>Accutase（Innovative Cell Technologies，目录号：AT104）</li>
+<li>ZR-96 Quick-gDNA Kit（Zymo Research，目录号：D3010）</li>
+<li>GoTaq绿色主混合物（Promega，目录号：M7122）</li>
+<li>分子生物学级水（Thermo Fisher Scientific，Invitrogen TM，目录号：10977023）</li>
+<li>ZR-96 DNA测序清理试剂盒（Zymo Research，目录号：D4052）</li>
+<li>Gel 6x Loading Dye，Purple（New England Biolabs，目录号：B7024S）</li>
+<li>GeneMate LE快速溶解琼脂糖（BioExpress，GeneMate，目录号：E-3119-500）</li>
+<li>GelRed核酸凝胶染色10,000x在DMSO（Biotium，目录号：41002）</li>
+<li>Accugene 10 TBE缓冲液（Lonza，目录号：50843）</li>
+<li>Quant-IT PicoGreen dsDNA分析试剂盒（Thermo Fisher Scientific，Invitrogen TM，目录号：P7589）</li>
+<li>mFreSR（STEMCELL Technologies，目录号：05855）</li>
+<li>液氮</li>
+<li>Dulbecco modified Eagle培养基（高葡萄糖）（Thermo Fisher Scientific，Gibco TM，目录号：11965118）</li>
+<li>胎牛血清（FBS）（Thermo Fisher Scientific，Gibco TM，目录号：10437010）</li>
+<li>青霉素 - 链霉素溶液（10,000U &#x2F; ml）（Thermo Fisher Scientific，Gibco TM，目录号：15140122）</li>
+<li>MEM非必需氨基酸溶液100x（Thermo Fisher Scientific，Gibco TM，目录号：11140050）</li>
+<li>成纤维细胞生长培养基（见食谱）</li>
+</ol>
+</li>
+</ol>
+<h4 id="4-设备"><a href="#4-设备" class="headerlink" title="4.设备"></a>4.设备</h4><ol>
+<li>便携式移液助剂（德拉蒙德，型号：DP-101，目录号：4-000-101）</li>
+<li>层流罩（Thermo Fisher Scientific，Thermo Scientific TM，型号：1300系列II型A2型，目录号：1335）</li>
+<li>氖电穿孔仪（Thermo Fisher Scientific，Invitrogen TM，目录号：MPK5000）</li>
+<li>Heraguard ECO Clean Bench（Thermo Fisher Scientific，Thermo Scientific TM，型号：Heraguard TM ECO，目录号：51029701）</li>
+<li>NanoDrop 2000分光光度计（Thermo Fisher Scientific，Thermo Scientific TM，型号：NanoDrop TM 2000）</li>
+<li>iCycler热循环仪（Bio-Rad Laboratories，型号：iCycler热循环仪）</li>
+<li>水浴（Thermo Electron Corporation，产品目录号：51221073）</li>
+<li>冰箱（Frigidaire，型号：FFTR2021QW1）</li>
+<li>组织培养孵化器设置在37℃，5％CO 2（Thermo Fisher Scientific，Thermo Scientific TM，型号：Heracell TM 150i，目录号码：51026283）</li>
+<li>带有平板接头的Thermo Scientific Sorvall St8 120v细胞培养离心机（Thermo Fisher Scientific，Thermo Scientific TM，型号：Sorvall TM St 8,120v）</li>
+<li>明线血细胞计数器（Hausser Scientific，目录号：3110）</li>
+<li>带8通道适配器的HandEvac手持式吸气器（Argos Technologies，产品目录号EV500）</li>
+<li>奥林巴斯CKX41倒置细胞培养显微镜（奥林巴斯，型号：CKX41）</li>
+<li>多道移液器（Thermo Fisher Scientific，Thermo Scientific TM，目录号：4662000和4662010）</li>
+<li>Sub-cell GT电泳细胞（Bio-Rad Laboratories，型号：Sub-Cell GT Cell）</li>
+<li>凝胶成像仪</li>
+<li>Beckman Coulter DTX 880多模式检测器微孔板读数器（Beckman Coulter，型号：DTX 880）</li>
+<li>CoolCell LX冷冻容器（Biocision，目录号：BCS-405）</li>
+</ol>
+<h4 id="5-程序"><a href="#5-程序" class="headerlink" title="5. 程序"></a>5. 程序</h4><ol>
+<li><h5 id="设计指南RNA（gRNA）和测序引物"><a href="#设计指南RNA（gRNA）和测序引物" class="headerlink" title="设计指南RNA（gRNA）和测序引物"></a>设计指南RNA（gRNA）和测序引物</h5><ol>
+<li>使用基因组浏览器（ genome.ucsc.edu ），该基因的所有转录本同种型中的第一个保守外显子（除非需要异构体特异性LOF突变）应该被鉴定并且序列被复制。然后可以将此序列插入指南RNA设计工具，例如 crispor.tefor.net 或 crispr.mit.edu 。<br>注：最重要的决定因素是特异性评分。尽可能使用最高分。研究人员之前报道的数据平均得分为88（Tidball等，2017）。记录最有可能脱离目标的网站以及可能筛选iPSC生产线中的脱靶插入。 crispr.mit.edu 未标识关闭 - 具有高度重复序列的目标（三重重复）。要注意的第二个分数是失分得分。这是一个计算出来的概率，任何给定的在切割位置上形成的indel将是不合格的，从而导致移码突变和功能丧失（推测）。研究人员之前报道的数据平均得分为63分。最后，效率得分应该&gt; 50以确保很高的indel形成率。研究人员以前报告的数据平均得分为59分。</li>
+<li>该gRNA可以作为标准脱盐寡核苷酸排序，序列CACCG-位于正向序列的5’端，而AAACC-位于反向序列的5’端。这些提供适当的突出端以插入px330（或相关）质粒以及gRNA开始时的G以启动从U6启动子的转录。<br>注意：不要将PAM序列（NGG）包含在gRNA寡核苷酸设计中。</li>
+<li>如果可能的话，测序引物应该设计成具有〜200bp扩增子大小，几乎均匀地位于CRISPR切割位点的侧翼。 crispor.tefor.net 网站提供了一套很好的测序引物。使用NCBI引物blast site确认这些引物的解链温度和特异性（ www .ncbi.nlm.nih.gov &#x2F; tools &#x2F; primer-blast &#x2F; ）（一定要使用人类基因组参考序列）。＆nbsp;</li>
+</ol>
+</li>
+<li><h5 id="载体质粒的限制性消化"><a href="#载体质粒的限制性消化" class="headerlink" title="载体质粒的限制性消化"></a>载体质粒的限制性消化</h5><ol>
+<li>将以下内容添加到1.5毫升管中：<br>2微克px330<br>5μl缓冲液2.1<br>2微升 Bbs I酶<br>水至50μl（首先加水至管）</li>
+<li>在37°C过夜消化</li>
+<li>在第二天，将混合物在65°C加热灭活20分钟以停止消化反应。</li>
+<li>使用QIAGEN PCR纯化试剂盒纯化切割的质粒。将纯化的质粒洗脱出水。<br>注意：PCR纯化试剂盒在分离切割的质粒时比凝胶提取更有效，并去除大部分小切片。第一次进行连接时，使用BbsI切割不含插入片段的质粒作为对照以确认菌落缺乏或几乎没有。切下的质粒可以在-20°C下保存数月。</li>
+<li>使用NanoDrop分光光度计来确定切割质粒的浓度。</li>
+</ol>
+</li>
+<li><h5 id="退火gRNA寡核苷酸以制备双链插入片段"><a href="#退火gRNA寡核苷酸以制备双链插入片段" class="headerlink" title="退火gRNA寡核苷酸以制备双链插入片段"></a>退火gRNA寡核苷酸以制备双链插入片段</h5><ol>
+<li>将以下内容添加到1.5毫升管中：<br>1μlOligo1（100μM）<br>1μlOligo2（100μM）<br>7μl水<br>1μl缓冲液2</li>
+<li>使用以下程序在PCR热循环仪中退火引物：<br>步骤1：95℃5分钟<br>步骤2：以-0.1°C &#x2F;秒从95°C升温至25°C<br>步骤3：25℃30秒<br>第4步：保持在4°C。</li>
+<li>在进行前，先将水稀释至1：250。</li>
+</ol>
+</li>
+<li><h5 id="切割的载体质粒与退火的gRNA插入物的连接反应。"><a href="#切割的载体质粒与退火的gRNA插入物的连接反应。" class="headerlink" title="切割的载体质粒与退火的gRNA插入物的连接反应。"></a>切割的载体质粒与退火的gRNA插入物的连接反应。</h5><ol>
+<li>将以下组分添加到1.5毫升管中：<br>100ng来自步骤2的切割的px330质粒<br>2μl来自步骤3c的稀释寡聚双链体。<br>4μl的5x T4缓冲液<br>1μlT4连接酶<br>水至20μl。</li>
+<li>在室温下孵育连接混合物2小时。</li>
+</ol>
+</li>
+<li><h5 id="CRISPR-gRNA连接构建体的细菌转化"><a href="#CRISPR-gRNA连接构建体的细菌转化" class="headerlink" title="CRISPR-gRNA连接构建体的细菌转化"></a>CRISPR-gRNA连接构建体的细菌转化</h5><ol>
+<li>轻轻加入2μL连接反应到50μLDH5α热休克蛋白（冰上）。通过轻弹管子几次来混合。</li>
+<li>将试管置于冰上30分钟。</li>
+<li>将管子置于42°C水浴中20秒，热转换混合物</li>
+<li>在冰上孵育2分钟。</li>
+<li>加入950μL的SOC培养基，并将管放置在37℃的振荡器中，200rpm下1小时。</li>
+<li>将40μl和400μl细胞铺在含有50μg&#x2F; ml氨苄青霉素的两个LB平板上。</li>
+<li>在37°C孵育过夜</li>
+</ol>
+</li>
+<li><h5 id="测序克隆"><a href="#测序克隆" class="headerlink" title="测序克隆"></a>测序克隆</h5><ol>
+<li>每个转化反应挑取3个克隆（使用P200移液管吸头）并接种到含有2ml含50μg&#x2F; ml氨苄青霉素的LB肉汤的14ml管中。</li>
+<li>将含有孕育剂的14ml试管置于37℃的振荡器中，并使细菌培养物生长7小时（或直至混浊）。</li>
+<li>根据制造商的说明使用QIAGEN Miniprep试剂盒从1.5 ml细菌中分离质粒。</li>
+<li>将剩余的0.5ml细菌培养物与0.5ml 50％甘油混合并储存在-80℃冰箱中，直到获得测序结果。</li>
+<li>使用NanoDrop分光光度计确定分离的质粒的浓度。浓度应该＆gt; 15 ng &#x2F;μl以确保原料足够进行测序。</li>
+<li>发送样品进行Sanger测序。通常，样品将在ddH 2 O中稀释至1ng &#x2F;μl。使用1μM的LKO.1 5’测序引物（5’-GACTATCATATGCTTACCGT-3’）。</li>
+<li>根据测序结果，挑选一个含有gRNA序列的克隆以建立最大培养。从小量制备培养物（步骤6d）接种0.1ml到锥形瓶中的100ml LB-Amp中，在37℃和200rpm的摇床上过夜培养。</li>
+<li>根据制造商的说明，使用无内毒素的QIAGEN Maxi prep试剂盒从过夜细菌培养物中分离DNA。</li>
+<li>使用NanoDrop确定质粒的浓度。</li>
+</ol>
+</li>
+<li><h5 id="成纤维细胞培养"><a href="#成纤维细胞培养" class="headerlink" title="成纤维细胞培养"></a>成纤维细胞培养</h5><ol>
+<li>每隔一天更换成纤维细胞培养基（请参阅食谱）。</li>
+<li>通过细胞大约每4天完全融合。<ol>
+<li>用10毫升1x PBS洗一次</li>
+<li>每10厘米添加2毫升0.25％胰蛋白酶（10厘米的碟子）。</li>
+<li>放入37°C培养箱中5分钟</li>
+<li>一旦细胞分离，加入8ml成纤维细胞培养基，并将细胞转移到15ml锥形管中。</li>
+<li>在室温下100g离心5分钟。</li>
+<li>加入10ml新鲜的成纤维细胞培养基，并以1：3-1：6稀释倍数将细胞分裂到新的10cm培养皿中，并向每个培养板添加足够的额外培养基，总共10ml。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><h5 id="用CRISPR转染成纤维细胞并重编程质粒"><a href="#用CRISPR转染成纤维细胞并重编程质粒" class="headerlink" title="用CRISPR转染成纤维细胞并重编程质粒"></a>用CRISPR转染成纤维细胞并重编程质粒</h5><ol>
+<li>转染前1-2小时，用在冰冷的DMEM &#x2F; F12中稀释100μg&#x2F; ml的Matrigel包被6孔板。<br>每孔加入1 ml，37°C孵育</li>
+<li>从亚汇合成纤维细胞中吸出培养基（铺满80％或更少）。</li>
+<li>用10毫升1x PBS洗一次</li>
+<li>加入2ml的0.25％胰蛋白酶并在37℃孵育5分钟。</li>
+<li>将8ml成纤维细胞培养基添加到脱离的成纤维细胞中。</li>
+<li>用5毫升血清移液管吸取几次上下，以确保即使是单细胞悬液。</li>
+<li>使用血细胞计数器进行细胞计数。</li>
+<li>将2.5×10 5个细胞转移到15ml锥形管中，并在室温下100×g离心5分钟。</li>
+<li>吸取250μl缓冲液R到无菌1.5 ml试管中。加入三种重编程质粒各2.5μg和2.5μgCRISPR质粒。 （100μl的悬浮液用于电穿孔，50μl用于限制氖尖的气泡形成，如果发生电弧放电，100μl用于额外的电穿孔）。</li>
+<li>重悬在含有重编程序列和CRISPR质粒的250μl缓冲液R中成纤维细胞沉淀。</li>
+<li>在霓虹灯上使用100μl霓虹灯电穿孔电极，电压为1,650 V，10毫秒，3个脉冲。</li>
+<li>如果电穿孔电弧（由闪光和爆裂声音表示），丢弃尖端的细胞悬液并用额外的150μl细胞悬液重复。</li>
+<li>移液器成功从氖尖电穿孔细胞悬液到12毫升温暖的成纤维细胞培养基中。</li>
+<li>从Matrigel包被的6孔板中取出Matrigel溶液，并向每个所需的孔中加入2 ml细胞悬液。</li>
+<li>在37°C孵育板，18-24小时后更换成纤维细胞培养基。</li>
+<li>电镀三天后，将培养基更换为TeSR-E7重新编程培养基。</li>
+<li>每天更换TeSR-E7</li>
+<li>在电穿孔后15-20天内出现可选择的集落（见图2）。</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/2.jpg" alt="Fig2"></p>
+<p><strong>图2. iPSC重编程时间表。第21天的图像适合采摘，因为边界清晰，相对圆整，缺少附近的菌落。比例尺&#x3D; 400微米。</strong></p>
+</li>
+<li><h5 id="挑选iPSC菌落"><a href="#挑选iPSC菌落" class="headerlink" title="挑选iPSC菌落"></a>挑选iPSC菌落</h5><p>注意：典型的产量为每孔20-40个菌落。如果数量明显较低，这可能表明起始成纤维细胞培养物是不理想的（晚期传代，染色体异常等）。如果数量大得多，电穿孔过程中可能发生稀释错误，单克隆难以获得。</p>
+<ol>
+<li>在采摘之前1-2小时，用在冰冷的DMEM &#x2F; F12中稀释100μg&#x2F; ml的Matrigel涂布96孔板。每孔加入60μl，37°C孵育。</li>
+<li>在挑选菌落之前，取出Matrigel溶液并加入100μl含10μMROCK抑制剂（Y-27632）的mTeSR1。</li>
+<li>在含有倒置细胞培养显微镜（4x物镜）的HEPA工作站中，通过在微量移液器上用200μl移液器尖端进行解剖来挑选单个菌落。从皿中提取菌落后，用移液管以50μl体积移出菌落块（或多个），并放入96孔板的一个孔中。<br>注意：使用标准的200μl移液器吸头，凝胶加样吸头或类似小口径的吸头可能会过分剪切菌落。有关此技术的优秀视频，请访问： <a target="_blank" rel="noopener" href="https://www.youtube.com/watch%EF%BC%9F">https://www.youtube.com/watch？</a> v &#x3D; B0lXzsHIcK8 。</li>
+<li>偏向圆形分离的菌落挑选，以降低采集合并菌落导致异质基因型的风险。 （见图2）<br>注意：具有典型的重编程效率，可轻松从每个孔中挑选10-20个菌落。采摘可以连续进行;然而，不要在多天内从6孔板的相同孔中挑选，因为可能会从剩余的挑选菌落中形成次级菌落。</li>
+<li>每天不用Y-27632将媒体更改为mTeSR1。</li>
+</ol>
+<p>注意：步骤10-15使用8通道或12通道多通道移液器。</p>
+<p>使用一次性移液器盆来容纳培养基和溶液以及收集废物。</p>
+</li>
+<li><h5 id="传代iPSC克隆的96孔板"><a href="#传代iPSC克隆的96孔板" class="headerlink" title="传代iPSC克隆的96孔板"></a>传代iPSC克隆的96孔板</h5><ol>
+<li>当大多数孔在100％或接近100％铺满时通过96孔板。</li>
+<li>在每个新板上涂布60μl100μg&#x2F; ml基质胶，每孔用冰冷的DMEM &#x2F; F12培养基稀释。在细胞培养箱中培养1-2小时。</li>
+<li>使用8通道抽吸附件从96孔板吸取所有培养基。</li>
+<li>用150μl1x PBS清洗平板一次</li>
+<li>吸取并加入30μl室温Accutase到板的每个孔中。<br>在细胞培养箱中孵育5分钟</li>
+<li>添加210微升含有10μM ROCK抑制剂，Y-27632的mTeSR1到每个孔中。</li>
+<li>从以前的涂层板吸取Matrigel</li>
+<li>将50μl细胞转移至每个待生成新平板的相应孔中。</li>
+<li>转移细胞后，向每个孔中加入100μl额外的含10μMROCK抑制剂的mTeSR1以进一步稀释Accutase。<br>24小时后细胞汇合度应在10-30％之间</li>
+</ol>
+</li>
+<li><h5 id="使用来自Zymo的ZR-96-Quick-gDNA试剂盒从96孔板中分离基因组DNA"><a href="#使用来自Zymo的ZR-96-Quick-gDNA试剂盒从96孔板中分离基因组DNA" class="headerlink" title="使用来自Zymo的ZR-96 Quick gDNA试剂盒从96孔板中分离基因组DNA"></a>使用来自Zymo的ZR-96 Quick gDNA试剂盒从96孔板中分离基因组DNA</h5><ol>
+<li>移出培养基，用100μlPBS洗一次。</li>
+<li>加入300μl基因组裂解缓冲液并在室温下孵育10分钟。</li>
+<li>将溶胞产物移至收集板上的Silicon-A Plate。</li>
+<li>使用平板转接器，将平板在2,500×g 下离心5分钟。<br>注意：如果只使用1块平板，请务必正确平衡离心机。</li>
+<li>向每个孔中加入200μlDNA预洗涤缓冲液并在2,500×gg下离心5分钟。丢弃流量。</li>
+<li>向每个孔中加入300μlg-DNA洗涤缓冲液并在2,500×gg下离心5分钟。丢弃流量。</li>
+<li>在2,500×g 下离心干燥5分钟以除去任何残留的缓冲液。</li>
+<li>将硅A板放在洗脱板上。</li>
+<li>加入40μlDNA洗脱缓冲液或水，并在室温下孵育5分钟。</li>
+<li>2,500×g 离心5分钟</li>
+<li>检查DNA是否由NanoDrop分光光度计纯化。</li>
+</ol>
+</li>
+<li><h5 id="PCR来扩增目标区域"><a href="#PCR来扩增目标区域" class="headerlink" title="PCR来扩增目标区域"></a>PCR来扩增目标区域</h5><ol>
+<li>对于每个25μl反应混合物，将下列物质混合在1.5 ml Eppendorf管中：<br>12.5μlGoTaq 2x Master Mix<br>0.1μl100μM的每种引物<br>10.3μl分子生物学级水</li>
+<li>在96孔PCR板或8孔PCR试管条的每个孔中加入23μl混合液进行PCR。</li>
+<li>每个PCR孔加2μl模板</li>
+<li>使用优化的PCR退火温度和标准GoTaq方案进行PCR。使用95℃2分钟变性步骤，然后进行以下40个循环：95℃30秒，优化的退火温度30秒和72℃30秒。最后，72℃5分钟的步骤将完成PCR产物的不完全延伸。</li>
+</ol>
+</li>
+<li><h5 id="用ZR-96-DNA测序纯化试剂盒（Zymo）纯化PCR产物"><a href="#用ZR-96-DNA测序纯化试剂盒（Zymo）纯化PCR产物" class="headerlink" title="用ZR-96 DNA测序纯化试剂盒（Zymo）纯化PCR产物"></a>用ZR-96 DNA测序纯化试剂盒（Zymo）纯化PCR产物</h5><ol>
+<li>向PCR反应中加入240μl测序结合缓冲液。</li>
+<li>将混合物转移到收集板上的Zymo-Spin IB-96板上。</li>
+<li>2,500×g 离心5分钟</li>
+<li>每孔加入300μl测序清洗缓冲液。<br>2,500×g 离心5分钟</li>
+<li>每孔加入20μl水，并将平板固定在96孔PCR板上。</li>
+<li>2,500×g 离心5分钟</li>
+<li>在96孔板上纯化的PCR产物可以密封并保存在-20°C。</li>
+<li>在含有1x GelRed核酸染色的2％琼脂糖凝胶上运行5μl与1μl6x上样染料混合的纯化PCR产物。通过在100V 1x TBE缓冲液中电泳1-2h分离条带，并使用凝胶成像仪检查正确的扩增子大小。＆nbsp;</li>
+</ol>
+</li>
+<li><p>使用PicoGreen</p>
+<p>量化DNA浓度 注意：或者，使用NanoDrop分光光度计可以定量多个孔;然而，Zymo试剂盒具有高度230 nm峰的倾向，使DNA定量困难。</p>
+<ol>
+<li>解冻Quant-IT PicoGreen dsDNA检测试剂盒组件。</li>
+<li>加入1ml 20x TE缓冲液和19ml水，准备1x TE缓冲液。</li>
+<li>在1x TE缓冲液（每孔50μl稀释的PicoGreen）中稀释PicoGreen 1：200。</li>
+<li>通过在1x TE缓冲液中连续稀释DNA标准物至5,1,0.2,0.04和0ng &#x2F;μl来制备一套DNA浓度标准品。</li>
+<li>在一个清晰的96孔板中，加入50μl稀释的PicoGreen到15个孔中。</li>
+<li>每个标准品加入50μl，一式三份。</li>
+<li>5分钟后，使用荧光读板仪测量荧光，激发约480 nm，发射约520 nm。</li>
+<li>通过在Excel中将标准DNA浓度和荧光强度输入到并列色谱柱中来制作标准曲线。生成XY散点图，右键单击数据点，然后选择“添加趋势线”。在“选项”标签中，选择“在图表上显示公式”。记录等式。<br>注意：如果图形不是线性的，则删除非线性区域中的数据点，并仅对线性区域中具有荧光读数的样本使用标准曲线方程。</li>
+<li>加入50μl稀释的PicoGreen到96孔板的每个孔中。</li>
+<li>每孔加入45μl1x TE</li>
+<li>加入5μl来自步骤13的DNA。</li>
+<li>阅读读板器，并使用步骤14h中生成的公式并将其乘以10来量化浓度。＆nbsp;</li>
+</ol>
+</li>
+<li><h5 id="Sanger或下一代测序"><a href="#Sanger或下一代测序" class="headerlink" title="Sanger或下一代测序"></a>Sanger或下一代测序</h5><ol>
+<li>现在可以对PCR产物进行测序。 Sanger测序是经济的;但是，插入错误会导致重叠的峰值。这些可用于使用像Mutation Surveyor（ Softgenetics.com ）这样的程序来识别突变，或手动识别突变形成。</li>
+<li>较少劳动力密集型分析解决方案是使用Next-Gen测序。可以将样品提交给MGH（马萨诸塞州总医院）DNA核心进行CRISPR测序分析。简而言之，将条形码化的下一代测序适配器添加到每个样品的末端并复用。进行正向和反向100bp测序读取。然后将每个DNA种类定量为每个条形码总读数的百分比，并为每个样品列出具有百分比的比对序列。</li>
+</ol>
+</li>
+<li><h5 id="建议的表征步骤"><a href="#建议的表征步骤" class="headerlink" title="建议的表征步骤"></a>建议的表征步骤</h5><ol>
+<li>使用质粒DNA的qPCR测试附加型载体整合。</li>
+<li>G带核型分析或SNP芯片检测基因组异常。</li>
+<li>CRISPR脱靶PCR和测序以获得来自gRNA设计工具的最高脱靶位点评分。这可以用于外显子和内含子或仅外显子的脱靶。</li>
+<li>使用myco特异性引物对细胞裂解液进行支原体污染检测。＆nbsp;</li>
+</ol>
+</li>
+<li><h5 id="制作冷冻股票iPSC小瓶"><a href="#制作冷冻股票iPSC小瓶" class="headerlink" title="制作冷冻股票iPSC小瓶"></a>制作冷冻股票iPSC小瓶</h5><p>注意：冷冻iPSC的高生命力最重要的方面是维持大的菌落。尽可能减少移液，并使用更大的刮刀来尽量减少菌落破裂。</p>
+<ol>
+<li>从iPSC培养物中吸出培养基至1孔6孔板，约50％汇合（这比正常传代的最佳值高，但在冷冻时增加生存力）。</li>
+<li>用2毫升37°C的DMEM &#x2F; F12洗涤1次。</li>
+<li>吸出，加入1毫升37°C的DMEM &#x2F; F12，并加入1毫升冷的2U &#x2F; ml Dispase溶液。</li>
+<li>在37°C孵育8分钟</li>
+<li>用2毫升37°C DMEM &#x2F; F12吸取并清洗1次。</li>
+<li>添加2毫升mTesr1培养基和废料</li>
+<li>轻轻吸入15ml离心管中，并在15ml锥形管中以50gxg离心3分钟。</li>
+<li>吸出培养基并加入1毫升mFreSR。</li>
+<li>轻轻移入1.5 ml冷冻管中，置于CoolCell冷冻容器中，然后置于-80°C冷冻箱中过夜。</li>
+<li>第二天将冷冻管转移到液氮储罐中。＆nbsp;</li>
+</ol>
+</li>
+</ol>
+<h4 id="数据分析"><a href="#数据分析" class="headerlink" title="数据分析"></a>数据分析</h4><ol>
+<li><h5 id="Sanger测序分析"><a href="#Sanger测序分析" class="headerlink" title="Sanger测序分析"></a>Sanger测序分析</h5><p>主要数据分析是分析测序数据并执行质量控制。首先，应排除PicoGreen DNA定量（低于检测限）的DNA浓度不足的样本。通常对这些样品进行测序将导致这些样品中出现奇数的indel识别（在其他克隆中未发现大的大量缺失）（数据未显示）。当使用Sanger测序时，也应排除具有3组重叠峰的样品，因为这些样品不是克隆的或可能是PCR之前DNA污染的结果。通过将重叠峰呼叫与indel起点下游的序列（其中峰开始重叠）（图3A）手动鉴定来自Sanger测序的indels。通过使用在线BLAST分析（ https：&#x2F;&#x2F; blast）可轻松识别出野生型或纯合的插入。 ncbi.nlm.nih.gov&#x2F;Blast.cgi ）。一定要使用人类基因组参考序列和“不连续的megablast”选项来允许indel对齐。杂合验证者可以通过Mutation Surveyor（ Softgenetics.com ）等计划来协助杂合子的识别，它根据野生型参考色谱仪并对齐以找到插入位置。不幸的是，这个程序对于复合杂合子插入不是很有效。通常，在Cas9切割位点附近形成插入缺失，其中最常见的是小缺失（表1）。在生成indels表时，使用Courier New。该字体对每个字符使用相同的大小，以便序列对齐。＆nbsp;</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/3.jpg" alt="Fig3"></p>
+<p><strong>图3.典型的indel形态数据。</strong> ：一种典型的Sanger测序色谱图为杂合2 bp缺失。 B.来自Tidball 等的摘要数据。 （2017）与先前未发布的针对 SCN1B CRISPR &#x2F; reprogramming的数据集相比较。这些数据包括22个WT &#x2F; WT，10个WT &#x2F; Indel和27个Indel &#x2F; Indel线。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/4.jpg" alt="table1"></p>
+<p><strong>表1.通过具有＆gt;的单个实验形成的典型indels  50个克隆</strong></p>
+</li>
+<li><h5 id="NextGneration序列分析"><a href="#NextGneration序列分析" class="headerlink" title="NextGneration序列分析"></a>NextGneration序列分析</h5><p>NG测序将提供样品中发现的每种DNA物种的序列和读数的百分比。如果PCR不是特异性的，也可能存在一小部分脱靶DNA。除了indel鉴定，next-Gen测序的定量性质还允许鉴定异源系（2个或更多个克隆一起培育或挑选）。例如，如果杂合子线与50:50的比例发生偏离，则这可能表明异质性。请注意，大的插入可以稍微偏移该比例（例如59bp缺失杂合线导致几乎&gt; 70％的WT量化）。</p>
+</li>
+<li><h5 id="比较基因型的比例"><a href="#比较基因型的比例" class="headerlink" title="比较基因型的比例"></a>比较基因型的比例</h5><p>尽管研究人员以前公布的5种癫痫基因的结果显示出所有三种基因型（Tidball等人，2017和图3B）的比例显着可重复性，但这可能会有所不同。如果鉴定出许多WT &#x2F; indel系，但没有indel &#x2F; indel系，则可能表明完全LOF导致无法复制或变得多能。为了确定这是否属实，应该将实验与另一个基因同时进行的实验进行比较。对于这样的实验，可以使用针对Tidball等人（2017）中突变的基因的指导RNA。可以使用Prism 7（GraphPad Software）中的卡方分析进行3种基因型比例的比较。</p>
+</li>
+</ol>
+<h4 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h4><ol>
+<li>根据目标基因的不同，效率可能会偏离研究人员发表的内容。例如，当基因功能对于多能状态的增殖，存活或维持是必需的，因为LOF使得这些iPSC集落不太可能形成，所以可以预期完整的indel &#x2F; indel LOF系列的数目较少。有趣的是，大量的克隆产生和研究人员的数据的可重复性确实允许基因之间的一些比较。例如，一个基因在每个indel &#x2F; indel iPSC系中至少有一个框内突变。由于这与研究人员以前看到的以及预期的框架外突变百分比（CRISPOR.org）有很大差异，研究人员推测这个基因的表达对于iPSC形成是必需的。</li>
+<li>在研究人员的实验中，研究人员一直小心地使用相同的质粒制剂和电穿孔试剂盒。如果对方案做出改变，导入的质粒数量可能会发生变化，从而导致每个基因型组的百分比发生变化。</li>
+</ol>
+<h5 id="培养基"><a href="#培养基" class="headerlink" title="培养基"></a>培养基</h5><p>成纤维细胞生长培养基<br>       450毫升高糖DMEM<br>       50毫升胎牛血清（FBS）<br>       5毫升非必需氨基酸<br>       2.5毫升Penn &#x2F; Strep</p>
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><ol>
+<li>Bai, Q., Ramirez, J. M., Becker, F., Pantesco, V., Lavabre-Bertrand, T., Hovatta, O., Lemaitre, J. M., Pellestor, F. and De Vos, J. (2015). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/25254421">Temporal analysis of genome alterations induced by single-cell passaging in human embryonic stem cells.</a> <em>Stem Cells Dev</em> 24(5): 653-662.</li>
+<li>Forsyth, N. R., Musio, A., Vezzoni, P., Simpson, A. H., Noble, B. S. and McWhir, J. (2006). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/16571074">Physiologic oxygen enhances human embryonic stem cell clonal recovery and reduces chromosomal abnormalities.</a> <em>Cloning Stem Cells</em> 8(1): 16-23.</li>
+<li>Hendel, A., Kildebeck, E. J., Fine, E. J., Clark, J., Punjya, N., Sebastiano, V., Bao, G. and Porteus, M. H. (2014). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/24685129">Quantifying genome-editing outcomes at endogenous loci with SMRT sequencing.</a> <em>Cell Rep</em> 7(1): 293-305.</li>
+<li>Howden, S. E., Maufort, J. P., Duffin, B. M., Elefanty, A. G., Stanley, E. G. and Thomson, J. A. (2015). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/26584543">Simultaneous reprogramming and gene correction of patient fibroblasts.</a> <em>Stem Cell Reports</em> 5(6): 1109-1118.</li>
+<li>Howden, S. E., McColl, B., Glaser, A., Vadolas, J., Petrou, S., Little, M. H., Elefanty, A. G. and Stanley, E. G. (2016). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/27499201">A Cas9 variant for efficient generation of indel-free knockin or gene-corrected human pluripotent stem cells.</a> <em>Stem Cell Reports</em> 7(3): 508-517.</li>
+<li>Miyaoka, Y., Chan, A. H., Judge, L. M., Yoo, J., Huang, M., Nguyen, T. D., Lizarraga, P. P., So, P. L. and Conklin, B. R. (2014). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/24509632">Isolation of single-base genome-edited human iPS cells without antibiotic selection.</a> <em>Nat Methods</em> 11(3): 291-293.</li>
+<li>Tidball, A. M., Dang, L. T., Glenn, T. W., Kilbane, E. G., Klarr, D. J., Margolis, J. L., Uhler, M. D. and Parent, J. M. (2017). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/28781079">Rapid generation of human genetic loss-of-function iPSC lines by simultaneous reprogramming and gene editing.</a> <em>Stem Cell Reports</em> 9(3): 725-731.</li>
+</ol>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/03/07/%E6%8F%92%E5%85%A5%E7%BC%BA%E5%A4%B1%E7%9A%84%E5%BD%A2%E6%88%90%E8%81%94%E5%90%88%E9%87%8D%E7%BC%96%E7%A8%8B%E7%94%9F%E6%88%90%E5%8A%9F%E8%83%BD%E4%B8%A7%E5%A4%B1iPSC%E7%BB%86%E8%83%9E%E7%B3%BB/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-从诱导多能干细胞生成3D全肺类器官，用于模拟肺发育生物学和疾病" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -3028,125 +3411,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2023/11/13/2023-11-13-%E9%AA%A8%E9%AB%93%E9%97%B4%E5%85%85%E8%B4%A8%E5%B9%B2%E7%BB%86%E8%83%9E%E7%A7%BB%E6%A4%8D%E8%81%94%E5%90%88%E8%BD%AC%E6%9F%93VEGF%E5%9F%BA%E5%9B%A0%E6%B2%BB%E7%96%97%E5%BF%83%E8%82%8C%E6%A2%97%E6%AD%BB%E7%9A%84%E5%AE%9E%E9%AA%8C%E7%A0%94%E7%A9%B6-AI%E5%AF%B9%E8%AF%9D%E7%B3%BB%E7%BB%9F-md/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-RNP用于肝脏靶向的疾病治疗" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2023/10/25/RNP%E7%94%A8%E4%BA%8E%E8%82%9D%E8%84%8F%E9%9D%B6%E5%90%91%E7%9A%84%E7%96%BE%E7%97%85%E6%B2%BB%E7%96%97/" target="_blank">外泌体递送:crispr/cas9--RNP用于肝脏靶向的疾病治疗</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2023/10/25/RNP%E7%94%A8%E4%BA%8E%E8%82%9D%E8%84%8F%E9%9D%B6%E5%90%91%E7%9A%84%E7%96%BE%E7%97%85%E6%B2%BB%E7%96%97/" class="archive-article-date">
-        <time datetime="2023-10-25T08:34:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-25</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="外泌体递送-CRISPR-Cas9-RNP用于肝脏靶向的疾病治疗"><a href="#外泌体递送-CRISPR-Cas9-RNP用于肝脏靶向的疾病治疗" class="headerlink" title="外泌体递送 | CRISPR&#x2F;Cas9 RNP用于肝脏靶向的疾病治疗"></a>外泌体递送 | CRISPR&#x2F;Cas9 RNP用于肝脏靶向的疾病治疗</h1><p>来源：<a target="_blank" rel="noopener" href="https://www.zhihu.com/org/bei-ke-man-ku-er-te">贝克曼库尔特生命科学</a></p>
-<p><strong>CRISPR&#x2F;Cas9基因编辑治疗应用的困境——如何高效递送？</strong></p>
-<p>RNA引导的CRISPR&#x2F;Cas9基因组编辑技术正被开发用于疾病治疗应用。CRISPR&#x2F;Cas9介导的体细胞基因组编辑在动物模型中治疗各种遗传性疾病,甚至最近的转甲状腺素淀粉样变性临床试验中显示出巨大潜力。然而，<strong>CRISPR&#x2F;Cas9系统的高效递送仍然具有挑战性</strong>。CRISPR&#x2F;Cas9基因组编辑的主要障碍包括<strong>低递送效率和缺乏组织特异性</strong>，这严重限制了其临床应用。</p>
-<p>对于治疗性基因组编辑，Cas9核酸酶和sgRNA必须被高效地递送到细胞内，最终进入细胞核。递送成分有三种选择：编码Cas9和sgRNA的质粒DNA、Cas9 mRNA加上sgRNA以及Cas9核糖核蛋白（RNP；与sgRNA结合的蛋白质复合物）。RNP递送避免了DNA和mRNA在转录和翻译过程中遇到的许多问题，使得编辑迅速发生，免疫反应低且脱靶活性弱。然而，由于RNP过大超过了病毒和非病毒载体的装载能力，RNP的治疗递送目前受到限制。此外，在制剂和血液循环过程中的降解或变性进一步阻碍了基于RNP的基因组编辑系统的治疗应用。迄今为止，对体内RNP递送的研究主要集中在两类载体上：基于聚合物的纳米颗粒和脂质体。尽管这些非病毒载体可以保护RNP免受血液中的降解，但系统给药后仍然难以实现组织特异性基因组编辑。</p>
-<p><strong>外泌体是潜在的CRISPR&#x2F;Cas9递送载体</strong></p>
-<p>细胞自然释放的外泌体尺寸在40到160纳米之间。它们具有固有的生物相容性、运输能力、血液稳定性和可工程性，使其成为潜在的治疗用途的递送载体。与其他非病毒载体相比，外泌体引发的免疫原性低，毒性最小。外泌体具有同源组织靶向能力，这取决于源细胞的表型、组成和组织起源。最近，从转染CRISPR-Cas9质粒的特定细胞获得的内源性外泌体已成功用于将Cas9 RNP递送到靶细胞，表明<strong>外泌体在RNP递送方面具有很大潜力</strong>。然而，这些方法通常繁琐且耗时。几项研究表明，通过电穿孔法可以将质粒DNA或mRNA基因编辑器装载到纯化的外泌体中，这代表了一代新型基因组编辑载体，用于安全有效的治疗传递。然而，迄今为止尚未成功报道将大蛋白质（如RNP）通过电穿孔法装载到外泌体中。</p>
-<p>肝脏是治疗基因递送的受欢迎的靶器官，因为它具有丰富的肝血流和纳米载体的高摄取和积累。此外，基因编辑是肝脏疾病的一种合理治疗方法，因为许多与肝脏相关的疾病与单个基因的突变高度相关。例如，美国食品和药物管理局在2017年批准了脂质纳米颗粒用于将小干扰RNA（siRNA）递送到肝脏，以治疗甲状腺激素诱导的淀粉样变性。然而，许多肝脏疾病，包括急性肝损伤、慢性肝纤维化和肝细胞癌（HCC），缺乏令人满意的治疗方法，因此迫切需要替代治疗选择。此外，针对肝脏疾病的肝定向基因治疗是另一个需要解决的问题。对于合成非病毒递送系统，将配体连接到其表面以增强其对特定受体的靶向能力可以实现靶向肝脏的能力，例如嫁接半乳糖或糖结合物以靶向非醛酸型糖蛋白受体。然而，这些方法会引发一定程度的免疫原性和肝毒性。与合成非病毒传递载体相比，天然存在的内源性治疗剂载体可以避免这些问题。由肝细胞产生的外泌体具有靶向肝脏的能力，这是由于其同源组织靶向能力，并且具有将CRISPR-Cas9 RNP在体内递送进行治疗性肝组织基因编辑的潜力。</p>
-<p><strong>外泌体递送CRISPR-Cas9 RNP用于肝脏靶向的疾病治疗</strong></p>
-<p><img src="https://pic3.zhimg.com/v2-682f12c2e19fbb4a4ee065143a22b616_r.jpg" alt="img"></p>
-<p>浙江大学刘祥瑞、平渊和周天华课题组合作在Science Advances杂志上发表文章，报道了外泌体递送CRISPR-Cas9 RNP用于肝脏靶向的疾病治疗研究成果。该研究开发了一种方法，可以将Cas9 RNP装载到肝星状细胞（HSCs; LX-2）的外泌体中，用于治疗不同的肝脏疾病。与使用原代细胞相比，使用免疫细胞系具有均匀性、可重复性和操作性等多个优点，可用于外泌体的生产。此外，作为非转化细胞，LX-2细胞的增殖速率和外泌体产生能力均优于免疫正常肝细胞（如THLE-2）。通过优化的电穿孔法将Cas9 RNP装载到纯化的LX-2外泌体中，获得了基因编辑递送系统exosomeRNP（图1）。正如预期的那样，<strong>exosomeRNP在肝损伤、肝纤维化和原位HCC小鼠模型上显示出强大的肝特异性基因编辑活性和强大的治疗效果</strong>。exosomeRNP代表了一种新一代内源性囊泡，用于高效递送Cas9 RNP，可以产生肝特异性、强大的基因编辑，并实现肝脏疾病的精准治疗 。</p>
-<p><img src="https://pic3.zhimg.com/v2-4807abcd7d34e3d01c2c3136e65a3d5a_r.jpg" alt="img"></p>
-<p>图1：外泌体用于体内递送Cas9 RNP治疗肝脏疾病的示意图。ExosomeRNP通过分别靶向PUMA、CcnE1和KAT5，在急性肝损伤、慢性肝纤维化和原位HCC小鼠模型中显示出强大的治疗潜力。</p>
-<p><strong>Exosome和exosomeRNP的制备</strong></p>
-<p>为了制备去除外泌体的胎牛血清（FBS），将FBS在100,000g、4°C条件下超速离心20小时，然后通过100纳米过滤器过滤。对于外泌体的分离，将LX-2细胞培养在含有去除外泌体的FBS的DMEM中。然后，收集培养基并分别以800g离心5分钟，3000g离心15分钟和10,000g离心1小时。然后，将得到的上清液在<strong>SW32 Ti转子（Beckman）中以100,000g、4°C条件下超速离心2小时</strong>。然后，将纯化的外泌体沉淀物在冷PBS中重新悬浮以再次超速离心。对于电穿孔，将沉淀物在电穿孔缓冲液[1.15 mM potassium phosphate (pH 7.2), 25 mM potassium chloride, and 21% OptiPrep working solution]中重新悬浮。然后，将悬浮的外泌体通过0.22微米过滤器过滤。为了制备外泌体RNP复合物，Cas9蛋白与sgRNA混合形成RNP复合物。然后，以1:5的重量比向外泌体中添加RNP复合物，然后使用Gene Pulser Xcell（Bio-Rad）电穿孔仪电穿孔混合物以形成外泌体RNP复合物。电穿孔后，将外泌体在100,000g、4°C条件下超速离心2小时，然后沉淀物在冷PBS溶液中重新悬浮。</p>
-<p><img src="https://pic2.zhimg.com/v2-76b7905f87c69d94c9c201af7490cb69_r.jpg" alt="img"></p>
-<p>外泌体RNP的表征、基因组编辑活性、生物分布和细胞摄取机制</p>
-<p><strong>exosomeRNP的治疗应用——靶向KAT5的外泌体RNP可改善原位HCC</strong></p>
-<p>由于高复发率和缺乏有效的治疗方法，HCC通常与患者的生存率较低相关。近年来，包括CRISPR技术在内的新的HCC治疗方法受到了广泛关注。K（赖氨酸）乙酰转移酶5（KAT5）对HCC的生长至关重要，而破坏KAT5则能够抑制体外和体内的肿瘤生长。因此，该研究设计了针对KAT5的sgRNA，并开发了exosomeRNP来治疗HCC。在HCC的原位小鼠模型中测试了exosomeRNP靶向KAT5的治疗效果。在肝门静脉注射荧光素转染的Huh-7（Huh-7-luci）细胞一周后，小鼠被静脉注射不同的治疗方案（PBS、RNP、exosome + RNP、exosomeRNP和exosomemock RNP），并使用体内生物发光成像评估肿瘤生长。与其他治疗方案相比，接受exosomeRNP靶向KAT5治疗的小鼠显示出最小的肿瘤体积和最弱的生物发光强度，而其他治疗方案则没有明显的抑制作用。此外，蛋白质分析表明，在exosomeRNP治疗后，KAT5表达水平显著降低，而其他治疗方案则没有变化。此外，与其他组相比，接受exosomeRNP治疗的小鼠的存活时间也显著延长。T7E1和Sanger测序进一步验证了体内基因组编辑，在肝组织中发现了KAT5位点的显著基因组紊乱（21.3%插入&#x2F;缺失突变）。组织学染色也观察到类似趋势。总之，这些结果表明，针对KAT5的exosomeRNP在原位HCC中产生了出色的抗癌活性。</p>
-<p><img src="https://pic1.zhimg.com/v2-7baca80c9cef5d34c3d7c9604313fb68_r.jpg" alt="img"></p>
-<p>用于原位HCC治疗的外泌体RNP介导的基因组编辑。</p>
-<p>(A)用于体内递送Cas9 RNP治疗原位HCC的外泌体示意图。Huh-7-luci细胞通过肝门静脉注射给药，外泌体RNP复合物通过尾静脉注射。(B) KAT5表达的蛋白质印迹分析。(C) 整只小鼠中原位HCC的体内荧光素酶表达。(D)治疗后的存活率。(E)治疗后通过T7E1测定从肝组织中检测到的插入缺失突变的频率。(F)小鼠肝脏切片的H&amp;E染色。</p>
-<p><strong>总结</strong></p>
-<p>该研究开发了<strong>一种基于外泌体的纳米平台，实现了RNP基因组编辑治疗肝病</strong>。通过电穿孔，RNP可以有效地装载到LX-2衍生的外泌体中，并通过外泌体RNP特异性地递送到肝脏。通过靶向PUMA、CcnE1和KAT5，<strong>外泌体RNP在急性肝损伤、慢性肝纤维化和HCC小鼠模型中表现出强大的治疗潜力</strong>。该发现不仅提供了一种克服RNP递送障碍的实用策略，而且为肝病的精确和组织特异性基因治疗开辟了一个有前途的途径。</p>
-<p><strong>Tips:</strong></p>
-<p>文献中使用贝克曼库尔特生命科学SW 32Ti插入式水平转头:</p>
-<ul>
-<li>告别水平吊桶悬挂安全隐患和焦虑，能插入即挂好。</li>
-<li>旋转90°即可轻松关闭吊桶盖。</li>
-<li>转头置于离心机（主机）中，也可方便插入和取出吊桶。</li>
-<li>离心容量高达 6 X 38.5mL。</li>
-</ul>
-<p><img src="https://pic3.zhimg.com/v2-67c3f0be1d962de39a738913547f4c52_r.jpg" alt="img"></p>
-<p>● 参考文献：</p>
-<p>Wan T, Zhong J, Pan Q, Zhou T, Ping Y, Liu X. Exosome-mediated delivery of Cas9 ribonucleoprotein complexes for tissue-specific gene therapy of liver diseases. Sci Adv. 2022 Sep 16;8(37):eabp9435. doi: 10.1126&#x2F;sciadv.abp9435. Epub 2022 Sep 14. PMID: 36103526; PMCID: PMC9473578.</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">BioNews</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/10/25/RNP%E7%94%A8%E4%BA%8E%E8%82%9D%E8%84%8F%E9%9D%B6%E5%90%91%E7%9A%84%E7%96%BE%E7%97%85%E6%B2%BB%E7%96%97/">展开全文 >></a>
     </p>
     
 

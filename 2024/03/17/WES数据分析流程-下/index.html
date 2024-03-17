@@ -6,21 +6,42 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://nikolahuang.github.io">
-  <title>Anderson Blog</title>
+  <title>WES数据分析流程(下)--可视化 | Anderson Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    
-    <!-- <meta name="keywords" content="">
-    <meta name="description" content=""> -->
-  
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Anderson Blog">
-<meta property="og:url" content="http://nikolahuang.github.io/index.html">
+  <meta name="description" content="转自Die Linke MyNotes：总体概括为：全外显子测序的标准分析流程通常包括以下步骤： 质量控制（Quality Control，QC） 对原始测序数据进行质量控制，包括去除低质量的序列片段、过滤掉低质量的碱基和低覆盖度的测序片段等。 读取比对（Read Alignment） 将过滤后的测序数据比对到参考基因组上，以确定每个片段的位置和方向。 变异检测（Variant Calling）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WES数据分析流程(下)--可视化">
+<meta property="og:url" content="http://nikolahuang.github.io/2024/03/17/WES%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B-%E4%B8%8B/index.html">
 <meta property="og:site_name" content="Anderson Blog">
+<meta property="og:description" content="转自Die Linke MyNotes：总体概括为：全外显子测序的标准分析流程通常包括以下步骤： 质量控制（Quality Control，QC） 对原始测序数据进行质量控制，包括去除低质量的序列片段、过滤掉低质量的碱基和低覆盖度的测序片段等。 读取比对（Read Alignment） 将过滤后的测序数据比对到参考基因组上，以确定每个片段的位置和方向。 变异检测（Variant Calling）">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-8111d0db8f7f9825dd9b1e50e8838f78_b.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/v2-93f49395e5d0c2147f7287f37e7b7485_b.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-f1c0fc836b2974bb1e039a656ad3cc17_b.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-9703758821f41b86bfa57ed16c315d27_b.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-b216223c5c2756b90f70edaf521b5f28_b.png">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-4f78fbccb367a64b7a57531bd386ce1b_b.png">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-3804e06f71efc568efbefce3e3786d9e_b.png">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-32f56b62fbe940b13b82537ce6542244_b.png">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-b3f3afce179cbcf85e1a27f1aa631a43_b.png">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-a621573119dd0df2c15dd293d469d9df_b.png">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-4a973d12b5754a8aafac5ce6e22913cc_b.png">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-edb807163059c83846400ed378457922_b.png">
+<meta property="og:image" content="https://pic2.zhimg.com/v2-a731b92c8c2fe25660cdc6fe1a71b2b1_b.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/v2-77bad2eefbf63f30555d5127f8a5fd4d_b.png">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-4ae5313aef5006834c505a4738709c3e_b.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-0af7b94649de8f5025e4e4b815e2a5c7_b.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-d2403cc08e122cc8961f30bbedfb7e3f_b.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-015b406c0f4b81f31bfd5c180b32798c_b.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-bae7e95a80a91430a351d587f163290f_b.jpg">
+<meta property="article:published_time" content="2024-03-17T06:53:33.000Z">
+<meta property="article:modified_time" content="2024-03-17T07:17:11.247Z">
 <meta property="article:author" content="Anderson">
+<meta property="article:tag" content="BioInfo">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic1.zhimg.com/v2-8111d0db8f7f9825dd9b1e50e8838f78_b.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Anderson Blog" type="application/atom+xml">
   
@@ -223,32 +244,25 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <script src="/lib/oauthcallback.browser.js"></script>
-  
-  <script>
-    Oauthcallback();
-  </script>
-
-
-  
-    <article id="post-WES数据分析流程-下" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-WES数据分析流程-下" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/03/17/WES%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B-%E4%B8%8B/" target="_blank">WES数据分析流程(下)--可视化</a>
-  
+    <h1 class="article-title" itemprop="name">
+      WES数据分析流程(下)--可视化
     </h1>
   
 
 
   
   
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
 <a href="/2024/03/17/WES%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B-%E4%B8%8B/" class="archive-article-date">
         <time datetime="2024-03-17T06:53:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-17</time>
 </a>
@@ -256,6 +270,27 @@
   
   
     
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">7.1k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">36分</span>
+    </span>
+  </span>
+</div>
+
 
   
   </header>
@@ -527,16 +562,76 @@
     
 
     
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/03/17/WES%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B-%E4%B8%8B/">展开全文 >></a>
-    </p>
+
     
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://nikolahuang.github.io/2024/03/17/WES%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B-%E4%B8%8B/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
 
     
     <div class="clearfix"></div>
   </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2024/03/17/WES%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B-%E4%B8%8A/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">WES数据分析流程(上)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -557,2014 +652,69 @@
 
 
 
-  
-    <article id="post-WES数据分析流程-上" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/03/17/WES%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B-%E4%B8%8A/" target="_blank">WES数据分析流程(上)</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/03/17/WES%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B-%E4%B8%8A/" class="archive-article-date">
-        <time datetime="2024-03-17T05:09:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-17</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>来源：<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/ma-pan-13-72">多啦A梦詹</a>；<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/432826287/answer/3080622038">菩年</a>;<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/380684876">Die Linke</a></p>
-<hr>
-<ol>
-<li>WES，WGS和WGRS的区别和联系是什么？</li>
-</ol>
-<ul>
-<li><strong>WES (whole exome sequencing, <a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%85%A8%E5%A4%96%E6%98%BE%E5%AD%90%E7%BB%84%E6%B5%8B%E5%BA%8F&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:%22380684876%22%7D">全外显子组测序</a>)</strong>: 是指利用序列捕获技术将【全基因组的外显子区域DNA】捕获富集后进行高通量测序，能够直接发现与蛋白质功能变异相关的遗传变异SNP(单核苷酸多态性)。以<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E4%BA%BA%E7%B1%BB%E5%9F%BA%E5%9B%A0%E7%BB%84&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:%22380684876%22%7D">人类基因组</a>为例，虽然外显子(蛋白质编码区)只占基因组的1%，但人类基因组85%的致病突变都在外显子区域，因此具有重要意义。</li>
-<li><strong>WGS (whole genome sequencing, 全基因组测序)</strong>: 是指对基因组整体进行<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E9%AB%98%E9%80%9A%E9%87%8F%E6%B5%8B%E5%BA%8F&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:%22380684876%22%7D">高通量测序</a>，分析不同个体间的差异，同时完成SNP及基因组结构注释。</li>
-<li><strong>WGRS (whole genome re-sequencing, <a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%85%A8%E5%9F%BA%E5%9B%A0%E7%BB%84%E9%87%8D%E6%B5%8B%E5%BA%8F&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:%22380684876%22%7D">全基因组重测序</a>)</strong>: 是指对已知参考基因组和注释的物种进行不同个体间的全基因组测序(WGS)<strong>，</strong>并在此基础上对个体或群体进行<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%B7%AE%E5%BC%82%E6%80%A7%E5%88%86%E6%9E%90&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:%22380684876%22%7D">差异性分析</a>，鉴定出与某类表型相关的SNP.</li>
-</ul>
-<p>通过比较可以发现，这三个测序技术<strong>其实都是在找基因组上的SNP(<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%8D%95%E6%A0%B8%E8%8B%B7%E9%85%B8%E5%A4%9A%E6%80%81%E6%80%A7&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:%22380684876%22%7D">单核苷酸多态性</a>)</strong>, SNP分为四种：</p>
-<ol>
-<li>SNV(单核苷酸变异)</li>
-<li>InDel(插入缺失)</li>
-<li>SV(结构变异)</li>
-<li>CNV(<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%8B%B7%E8%B4%9D%E6%95%B0%E5%8F%98%E5%BC%82&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:%22380684876%22%7D">拷贝数变异</a>)</li>
-</ol>
-<p>只是这三个技术的<strong>覆盖程度不同</strong>：</p>
-<ul>
-<li>WES：覆盖全基因组上的外显子区域</li>
-<li>WGS：覆盖全基因组</li>
-<li>WGRS：覆盖全基因组，是WGS在不同样本上的重复</li>
-</ul>
-<p>只要你掌握了其中一种的<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%B5%8B%E5%BA%8F%E5%88%86%E6%9E%90&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:%22380684876%22%7D">测序分析</a>与可视化，剩下的两种其实是一样的，本文就以WES测序分析与可视化为例（原因是手头只有RNA-Seq的转录组数据，勉强可以用来做WES数据的替代品吧），进行WES&#x2F;WGS&#x2F;WGRS的分析教学。</p>
-<p>外显子是基因组中能够转录组出成熟RNA的部分。一个基因组中所有外显子的集合，即为<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%A4%96%E6%98%BE%E5%AD%90%E7%BB%84&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:%223080622038%22%7D">外显子组</a>。值得注意的是，通常所说的全外显子组测序，是指针对蛋白编码基因的外显子，很少涉及非编码基因。</p>
-<p>基因(gene)是DNA中含有特定遗传信息的一段<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%A0%B8%E8%8B%B7%E9%85%B8%E5%BA%8F%E5%88%97&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:%223080622038%22%7D">核苷酸序列</a>的总称，是具有遗传效应的DNA分子片段,是控制生物性状的基本遗传单位。人类基因区间的大小可从数百个bp至超过200万个bp不等。根据<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E4%BA%BA%E7%B1%BB%E5%9F%BA%E5%9B%A0%E7%BB%84%E8%AE%A1%E5%88%92&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:%223080622038%22%7D">人类基因组计划</a>(The Human Genome Project)估计，人类拥有20000-25000个蛋白编码基因。</p>
-<p>基因组(genome)指一个生物体所包含DNA的全部遗传信息。基因组由基因区域和非编码区域组成。**人类的基因组大小约为30亿个碱基对(bp)(3GB)**，其中非编码区域占到绝大多数，编码蛋白质的区域仅占约2%左右。</p>
-<p>外显子组(exome)是基因组中所有外显子的集合。人类拥有约18万个外显子，约占人类基因组的1%，即<strong>约3000万个bp(30MB)。</strong></p>
-<p><img src="https://pica.zhimg.com/80/v2-0aa2c0929b7fc072f415fb3e52f9321a_1440w.webp" alt="img"></p>
-<p>图：蛋白编码基因由内含子(非编码序列)和外显子(包括编码序列以及UTR区域)组成。要翻译有功能的蛋白，要进行以下步骤：基因从DNA转录为RNA前体，通过剪接形成成熟RNA，成熟RNA序列翻译成氨基酸链，以及蛋白质分子的翻译后修饰。</p>
-<p>关于外显子，需要注意的一个特殊情况是非翻译区(UTR)。在mRNA的两侧分别存在5’UTR(前导序列)和3’UTR(尾部序列)，它们的作用分别是调控翻译的启动和终止。它们由外显子序列构成，但不会被翻译成氨基酸。 所以，并非所有外显子序列都会被翻译成氨基酸。</p>
-<p><img src="https://pica.zhimg.com/80/v2-d72f78f1b03486e21ddc1bc10ccb5d68_1440w.webp" alt="img"></p>
-<p>图：信使RNA前体(pre-mRNA)中的外显子。外显子既包括编码氨基酸的序列(红色)，也包括不被翻译的序列(灰色)。</p>
-<p>对外显子组(基因组里的所有外显子)进行测序的方法，即为 全外显子组测序 (Whole-Exome Sequencing，WES)，也称为 外显子组测序、全<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%A4%96%E6%98%BE%E5%AD%90%E6%B5%8B%E5%BA%8F&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:%223080622038%22%7D">外显子测序</a>，全外测序 等。</p>
-<p>全基因组测序(Whole-Genome Sequencing, WGS)是对整个基因组进行测序。靶向测序(Targeted-sequencing，也称Panel sequencing)是对选定的基因进行测序，通常有几十个至一千个基因不等。因而，从覆盖基因组的范围来说，全基因组测序&gt;全外显子组测序&gt;靶向测序。</p>
-<p>全外测序可以视作一种特殊的靶向测序——它靶向的区域是基因组上的所有外显子。</p>
-<p><img src="https://pic1.zhimg.com/80/v2-29a4d2c84fbc1e7621f1239b79b8f1ea_1440w.webp" alt="img"></p>
-<p>panel测序有两种技术原理：杂交捕获测序和多重扩增子测序。全外是基于序列杂交原理实现的</p>
-<p>需要特别说明的是对CNV的检测。使用全外检测CNV时，在杂交捕获过程中，由于各个外显子的杂交效率不同，故不同外显子的覆盖率差异会较大。当出现阳性结果时，无法判断是由于杂交未捕获到，还是由于缺失。 故使用全外检测CNV容易出现假阳性结果。一般情况下，全外测序不用于CNV的检测 ，但在癌症研究中，利用癌组织和癌旁组织对照，可以检测体细胞CNV。</p>
-<p>人类全外显子组所占基因组比例不超过2%，但它包含了约85%与疾病相关的变异，因此在研究编码基因变异层面，全外测序是比全基因组测序更为经济高效的替代方法。全外测序适用于<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%AD%9F%E5%BE%B7%E5%B0%94&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:%223080622038%22%7D">孟德尔</a>疾病、肿瘤、复杂疾病等多个研究领域。对于表现出异质性的疾病，或者患者表现出多个系统受累的复杂疾病症状时，尤为适合使用全外测序。</p>
-<p>例如在肿瘤临床检测中，寻求肺癌靶向治疗的患者通常会先做panel测序，因为与肺癌靶向治疗相关的基因是比较明确的，几十至一百多个基因的panel测序通常就可以满足需求。而对于寻求免疫治疗的患者，通常会使用全外或大panel测序，来评估肿瘤突变负荷(Tumor Mutational Burden, TMB)，TMB高的患者通常对免疫治疗有更好的响应。全外测序是业内公认的评估TMB的金标准。</p>
-<p>*<strong>WES检测流程*</strong></p>
-<p>一个WES测序的工作流程，大体可以分为这3个部分：文库制备，测序，生信分析。</p>
-<p>文库制备通常包含这些步骤：样本处理，DNA提取，定量，建库，杂交捕获，扩增，质控。</p>
-<p>测序，目前的仪器包括国外Illumina公司测序平台，以及<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%8D%8E%E5%A4%A7%E6%99%BA%E9%80%A0&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:%223080622038%22%7D">华大智造</a>国产测序平台等。</p>
-<p>生信分析的流程通常包含这些步骤：质控，拼接比对，去重和重排，变异检测，降噪和过滤，注释等。常用的软件有FastQC，BWA，GATK，ANNOVAR等。</p>
-<p>一个完整的全外显子组测序，从样本处理到完成数据分析，通常需要10天左右时间。</p>
-<p><em><strong>捕获探针性能的评估指标</strong></em></p>
-<p>市面上的厂商会提供现成的全外探针，我们可以根据自己的需要来选择，也可以定制更为符合自己需要的“全外+”探针。</p>
-<p>如果选择现成的探针产品，除了关注下面的探针评价指标外，也需要考虑探针大小、探针长度、探针设计等是否符合我们的样品和研究需求。</p>
-<p>如果选择定制的产品，则可以在现成的探针产品上加入自己感兴趣的区域，也可以完全自主设计。在设计探针时常用的参考数据库有RefSeq、CCDS、Ensembl、GENCODE和ClinVar等。除了设计捕获区域外，还可以要求对某些特别的区域增加探针密度以提高捕获效率。</p>
-<p><strong>中靶率</strong></p>
-<p>中靶率(On-target rate)是一个百分数，用来表示测序数据中有多少能够比对到目标区域上。</p>
-<p>在基因组上有许多与外显子有同源性的部分(比如内含子和<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%9F%BA%E5%9B%A0%E9%97%B4%E5%8C%BA&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:%223080622038%22%7D">基因间区</a>)，在实际工作中，这些并不属于目标(外显子)的部分在杂交过程中也会被捕获下来。这种探针捕获到非目标区域片段的情况称为脱靶(off target)。脱靶的数据是无效的，不能用于后续分析，即这部分测序数据被浪费了。</p>
-<p>同等情况下，中靶率越高，由于脱靶产生的浪费越少，这款探针越好。</p>
-<p><strong>覆盖度</strong></p>
-<p>覆盖度(coverage)经常是和深度一起出现的，比如“10X覆盖度”、“30X覆盖度”。比如，“10X覆盖度为90%”指测序数据比对到目标区域后，有90%的区域被覆盖了至少10次，或者说有90%的区域有至少10条reads覆盖。</p>
-<p>如果覆盖度没有和深度一起出现，则可以理解为“1X覆盖度”。比如“覆盖度为95%”，指95%的目标区域有至少1条reads覆盖到。换言之，有5%的目标区域连1条覆盖到的reads都没有，它们在这次测序中完全没被测到，被漏掉了。</p>
-<p>同等情况下，覆盖度越高，越少比例的目标区域被漏掉，这款探针越好。</p>
-<p><strong>均一性</strong></p>
-<p>目标区域内不同的位点被覆盖的情况是不同的。比如一次WES测序的平均深度是60X，很有可能有的位点深度为10X，有的为40X，有的为90X这样的情况。均一性(uniformity)越好，即这些位点各自的深度越接近平均深度。</p>
-<p>在实际工作中，我们根据期望达到的目标测序深度来分配数据量，即决定了这次测序的平均深度(平均深度&#x3D;数据量&#x2F;探针大小)。当某个区域的实际测序深度高于目标深度时，造成数据的浪费;而当某个区域的实际测序深度低于目标深度时，我们可能会认为这部分数据质量不好而丢弃它，导致这一区域无测序数据。均一性优良的探针可以帮助减少这两种情况的发生。</p>
-<p>Fold-80是用来评价均一性的指标。它的定义是，为确保80%的目标碱基达到平均深度所需的额外测序的倍数。Fold-80越低，捕获效率越高，测序浪费越少。理想情况下的Fold-80为1。</p>
-<p>Fold-80越低，均一性越好，越能节约测序成本，这款探针越好。</p>
-<p><strong>重复率</strong></p>
-<p>重复率(Dup rate)指的是<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E9%87%8D%E5%A4%8D%E5%BA%8F%E5%88%97&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:%223080622038%22%7D">重复序列</a>(Duplicate reads)在总测序序列中的占比。由于这些重复序列不能带来额外信息，相反会影响变异检测结果准确性，因此需要在下游生信分析中去除这些重复序列。Dup rate越高，数据利用率越低，浪费的测序成本也就越多。</p>
-<p>同等情况下，重复率越低，越能节省测序成本，这款探针越好</p>
-<p><strong>WES对于涉及<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%8B%B7%E8%B4%9D%E6%95%B0%E5%8F%98%E5%BC%82&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:%223080622038%22%7D">拷贝数变异</a>、非编码区变异和结构变异的疾病研究不适用。其次，在对目标区域进行捕获时, 存在捕获不均、捕获偏差等现象, 可以通过增加测序深度, 获得更多的序列信息进行统计分析, 以尽可能弥补这些偏差。</strong></p>
-<p>首先创建一个项目目录wes和存放每个步骤生成文件的子目录raw, clean, align, genome, hg19_VCF</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir &#123;raw,clean,align,genome,hg19_VCF&#125;</span><br></pre></td></tr></table></figure>
-
-<p>此流程包含两个raw外显子测序文件：wes.1.fq.gz，wes.2.fq.gz；存放于raw目录</p>
-<h3 id="原始数据质控，用fastp"><a href="#原始数据质控，用fastp" class="headerlink" title="原始数据质控，用fastp"></a>原始数据质控，用fastp</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 项目主目录下运行，在clean目录下生成两个过滤的fq文件</span><br><span class="line">nohup fastp -i raw/wes.1.fq.gz -o clean/wes.1.clean.fq.gz -I raw/wes.2.fq.gz -O clean/wes.2.clean.fq.gz &amp;</span><br></pre></td></tr></table></figure>
-
-<h3 id="下载参考基因组（hg19）文件，存放于genome目录，并建立索引："><a href="#下载参考基因组（hg19）文件，存放于genome目录，并建立索引：" class="headerlink" title="下载参考基因组（hg19）文件，存放于genome目录，并建立索引："></a>下载参考基因组（hg19）文件，存放于genome目录，并建立索引：</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">for i in $(seq 1 22) X Y M;</span><br><span class="line">do </span><br><span class="line">nohup wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/chr$&#123;i&#125;.fa.gz &amp; </span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for i in $(seq 1 22) X Y M;</span><br><span class="line">do cat chr$&#123;i&#125;.fa &gt;&gt; hg19.fa;</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">nohup bwa index -a bwtsw -p hg19 hg19.fa  &amp;</span><br></pre></td></tr></table></figure>
-
-<h3 id="比对"><a href="#比对" class="headerlink" title="比对"></a>比对</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># clean目录下运行此命令，在align目录下生成sam文件</span><br><span class="line">nohup bwa mem -t 4 -M -R &quot;@RG\tID:lane1\tPL:illumina\tLB:library\tSM:wes&quot; ../genome/hg19  wes.1.clean.fq.gz  wes.2.clean.fq.gz &gt;../align/wes.sam 2&gt;wes.bwa.align.log &amp;</span><br><span class="line">-t，线程数；</span><br><span class="line">  -M , -M 将 shorter split hits 标记为次优，以兼容 Picard markDuplicates 软件;</span><br><span class="line">  -R 接的是 Read Group的字符串信息，它是用来将比对的read进行分组的，这个信息对于我们后续对比对数据进行错误率分析和Mark duplicate时非常重要。</span><br><span class="line">  (1) ID，这是Read Group的分组ID，一般设置为测序的lane ID</span><br><span class="line">  (2) PL，指的是所用的测序平台</span><br><span class="line">  (3) SM，样本ID</span><br><span class="line">  (4) LB，测序文库的名字</span><br><span class="line">这些信息设置好之后，在RG字符串中要用制表符（\t）将它们分开</span><br><span class="line">samtools view -b -S wes.sam &gt; wes.bam  #sam2bam,便于存储</span><br><span class="line">samtools sort wes.bam -o wes.sorted.bam    #有顺序的排序，便于后面的操作</span><br><span class="line">samtools flagstat wes.sorted.bam &gt; wes.sorted.bam.flagstat    #统计比对信息</span><br><span class="line">1. QC pass的reads的数量为5002344 ，未通过QC的reads数量为0，意味着一共有5002344条reads；</span><br><span class="line">2.标记为secondary的read</span><br><span class="line">3. 嵌合体reads</span><br><span class="line">4.PCR 重复引起的reads</span><br><span class="line">5.  比对到参考基因组上的reads数量；</span><br><span class="line">6.  paired reads数据数量；</span><br><span class="line">7.  read1的数量；</span><br><span class="line">8.  read2 的数量；</span><br><span class="line">9.  正确地匹配到参考序列的reads数量；</span><br><span class="line">10.  一对reads都比对到了参考序列上的数量，但是并不一定比对到同一条染色体上；</span><br><span class="line">11. 一对reads中只有一条与参考序列相匹配的数量； </span><br><span class="line">12.  一对reads比对到不同染色体的数量；</span><br><span class="line">13.  一对reads比对到不同染色体的且比对质量值大于5的数量。</span><br></pre></td></tr></table></figure>
-
-<h3 id="外显子区域覆盖度"><a href="#外显子区域覆盖度" class="headerlink" title="外显子区域覆盖度"></a>外显子区域覆盖度</h3><p>需要生成外显子interval文件，生成这个文件的前提又需要dict文件和外显子bed文件（此处用的是安捷伦外显子bed文件，也可以去UCSC下载）。</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gatk CreateSequenceDictionary -R hg19.fa -O hg19.dict</span><br><span class="line">gatk BedToIntervalList -I S31285117_Regions.bed -O Exon.Interval.bed -SD ./genome/hg19.dict</span><br><span class="line">gatk CollectHsMetrics -BI Exon.Interval.bed -TI Exon.Interval.bed -I wes.sorted.bam -O wes.stat.txt</span><br></pre></td></tr></table></figure>
-
-<h3 id="标记PCR重复序列并建立索引"><a href="#标记PCR重复序列并建立索引" class="headerlink" title="标记PCR重复序列并建立索引"></a>标记PCR重复序列并建立索引</h3><p>以前用picard标记重复序列，现在这个工具全部整合到gatk中了</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nohup gatk --java-options &quot;-Xmx10G -Djava.io.tmpdir=./&quot; MarkDuplicates -I wes.sorted.bam -O wes.sorted.MarkDuplicates.bam -M wes.sorted.bam.metrics &gt; log.mark 2&gt;&amp;1 &amp;</span><br><span class="line">samtools view -f 1024 wes.sorted.MarkDuplicates.bam | less</span><br><span class="line">samtools index wes.sorted.MarkDuplicates.bam</span><br></pre></td></tr></table></figure>
-
-<p>wes.sorted.bam.metrics有统计信息 wes.sorted.MarkDuplicates.bam创建索引文件，他的作用能够让我们可以随机访问这个文件中的任意位置，而且后面的步骤也要求这个bam文件一定要有索引。</p>
-<h3 id="变异检测"><a href="#变异检测" class="headerlink" title="变异检测"></a>变异检测</h3><h3 id="重新校正碱基质量值（BQSR）"><a href="#重新校正碱基质量值（BQSR）" class="headerlink" title="重新校正碱基质量值（BQSR）"></a>重新校正碱基质量值（BQSR）</h3><p><strong>变异检测是一个极度依赖测序碱基质量值，因为这个质量值是衡量我们测序出来的这个碱基到底有多正确的重要指标</strong>。它来自于测序图像数据的base calling，因此，基本上是由测序仪和测序系统来决定的，计算出来的碱基质量值未必与真实结果统一。 BQSR（Base Quality Score Recalibration）这个步骤主要是通过机器学习的方法构建测序碱基的错误率模型，然后对这些碱基的质量值进行相应的调整。 这里包含了两个步骤： 第一步，BaseRecalibrator，这里计算出了所有需要进行重校正的read和特征值，然后把这些信息输出为一份校准表文件（wes.recal_data.table） 第二步，ApplyBQSR，这一步利用第一步得到的校准表文件（wes.recal_data.table）重新调整原来BAM文件中的碱基质量值，并使用这个新的质量值重新输出一份新的BAM文件。</p>
-<h3 id="首先下载变异注释文件"><a href="#首先下载变异注释文件" class="headerlink" title="首先下载变异注释文件"></a>首先下载变异注释文件</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">wget  -c -r -nd -np -k -L -p ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/hg19</span><br><span class="line">下载文件均为压缩文件，需要解压才能使用</span><br><span class="line">samtools faidx hg19.fa</span><br><span class="line">GENOME=./genome/hg19.fa</span><br><span class="line">hg19_VCF=./hg19_VCF/</span><br><span class="line">gatk --java-options &quot;-Xmx10G -Djava.io.tmpdir=./&quot; BaseRecalibrator \</span><br><span class="line">-R $GENOME -I ./align/wes.sorted.MarkDuplicates.bam \</span><br><span class="line">--known-sites $hg19_VCF/1000G_phase1.indels.hg19.sites.vcf \</span><br><span class="line">--known-sites $hg19_VCF/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf \</span><br><span class="line">--known-sites $hg19_VCF/dbsnp_138.hg19.vcf \</span><br><span class="line">-L S31285117_Regions.bed -O wes.recal_data.table</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">gatk --java-options &quot;-Xmx10G -Djava.io.tmpdir=./&quot; ApplyBQSR \</span><br><span class="line">-R $GENOME -I ./align/wes.sorted.MarkDuplicates.bam \</span><br><span class="line">-bqsr wes.recal_data.table -L S31285117_Regions.bed  \</span><br><span class="line">-O wes.sorted.MarkDuplicates.BQSR.bam</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># gatk AnalyzeCovariates -bqsr wes.recal_data.table -plots wes.recal_data.table.plot</span><br></pre></td></tr></table></figure>
-
-<h3 id="变异检测-1"><a href="#变异检测-1" class="headerlink" title="变异检测"></a>变异检测</h3><p>HaplotypeCaller的应用有两种做法，差别只在于要不要在中间生成一个gVCF： （1）直接进行HaplotypeCaller，这适合于单样本，或者那种固定样本数量的情况，也就是只执行一次HaplotypeCaller。如果增加一个样本就得重新运行这个HaplotypeCaller，而这个时候算法需要重新去读取所有人的BAM文件，浪费大量时间； （2）每个样本先各自生成gVCF，然后再进行群体joint-genotype。gVCF全称是genome VCF，是每个样本用于变异检测的中间文件，格式类似于VCF，它把joint-genotype过程中所需的所有信息都记录在这里面，文件无论是大小还是数据量都远远小于原来的BAM文件。这样一旦新增加样本也不需要再重新去读取所有人的BAM文件了，只需为新样本生成一份gVCF，然后重新执行这个joint-genotype就行了。</p>
-<p>推荐使用第二种，<strong>变异检测不是一个样本的事情，有越多的同类样本放在一起joint calling结果将会越准确，而如果样本足够多的话，在低测序深度的情况下也同样可以获得完整并且准确的结果。</strong></p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">第一种方法</span><br><span class="line">gatk --java-options &quot;-Xmx8G -Djava.io.tmpdir=./&quot; HaplotypeCaller \</span><br><span class="line">-R $GENOME -I wes.sorted.MarkDuplicates.BQSR.bam \</span><br><span class="line">-D $hg19_VCF/dbsnp_138.hg19.vcf -L S31285117_Regions.bed \</span><br><span class="line">-O wes.raw1.vcf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">第二种方法</span><br><span class="line"># 1.生成中间文件gvcf</span><br><span class="line">gatk --java-options &quot;-Xmx8G -Djava.io.tmpdir=./&quot; HaplotypeCaller -R $GENOME \</span><br><span class="line">--emit-ref-confidence GVCF -I wes.sorted.MarkDuplicates.BQSR.bam \</span><br><span class="line">-D $hg19_VCF/dbsnp_138.hg19.vcf -L S31285117_Regions.bed  -O wes.gvcf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 2.通过gvcf检测变异</span><br><span class="line">gatk --java-options &quot;-Xmx8G -Djava.io.tmpdir=./&quot; GenotypeGVCFs \</span><br><span class="line">-R $GENOME -V wes.gvcf -L S31285117_Regions.bed  \</span><br><span class="line">-O wes.raw.vcf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">若有多个样本的gvcf文件，运行gatk CombineGVCFs  \</span><br><span class="line">-V 1.gvcf –V 2.gvcf ……  -O final.gvcf ，再用final.gvcf运行第二步</span><br></pre></td></tr></table></figure>
-
-<h3 id="变异质控与过滤"><a href="#变异质控与过滤" class="headerlink" title="变异质控与过滤"></a>变异质控与过滤</h3><p><strong>质控的含义和目的是指通过一定的标准，最大可能地剔除假阳性的结果，并尽可能地保留最多的正确数据。 第一种方法 GATK VQSR</strong>，它通过机器学习的方法利用多个不同的数据特征训练一个模型（高斯混合模型）对变异数据进行质控，使用VQSR需要具备以下两个条件： 第一，需要一个精心准备的已知变异集，它将作为训练质控模型的真集。比如，Hapmap、OMNI，1000G和dbsnp等这些国际性项目的数据，这些可以作为高质量的已知变异集。 第二，要求新检测的结果中有足够多的变异，不然VQSR在进行模型训练的时候会因为可用的变异位点数目不足而无法进行。</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">gatk --java-options &quot;-Xmx8G -Djava.io.tmpdir=./&quot; VariantRecalibrator -R $GENOME -V wes.raw.vcf \</span><br><span class="line">-resource hapmap,known=false,training=true,truth=true,prior=15.0:$hg19_VCF/hapmap_3.3.hg19.sites.vcf \</span><br><span class="line">-resource omini,known=false,training=true,truth=false,prior=12.0:$hg19_VCF/1000G_omni2.5.hg19.sites.vcf \ </span><br><span class="line">-resource 1000G,known=false,training=true,truth=false,prior=10.0:$hg19_VCF/1000G_phase1.snps.high_confidence.hg19.sites.vcf \</span><br><span class="line">-resource dbsnp,known=true,training=false,truth=false,prior=6.0:$hg19_VCF/dbsnp_138.hg19.vcf \</span><br><span class="line">-an QD -an MQ -an MQRankSum -an ReadPosRankSum -an FS -an SOR -an DP -mode SNP \</span><br><span class="line">-O wes.snps.recal.vcf --tranches-file wes.snps.tranches --rscript-file wes.snps.plots.R &amp; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">gatk  ApplyRecalibration  -V wes.raw.vcf -O wes.VQSR.vcf --recal-file wes.snps.recal.vcf  \</span><br><span class="line">--tranches-file wes.snps.tranches  -mode SNP</span><br></pre></td></tr></table></figure>
-
-<p>此方法要求新检测的结果中有足够多的变异，不然VQSR在进行模型训练的时候会因为可用的变异位点数目不足而无法进行。可能很多非人的物种在完成变异检测之后没法使用GATK VQSR的方法进行质控，一些小panel、外显子测序，由于最后的变异位点不够，也无法使用VQSR。全基因组分析或多个样本的全外显子组分析适合用此方法。</p>
-<p><strong>第二种方法通过过滤指标过滤。</strong> QualByDepth（QD）：QD是变异质量值（Quality）除以覆盖深度（Depth）得到的比值。 FisherStrand (FS)：FS是一个通过Fisher检验的p-value转换而来的值，它要描述的是测序或者比对时对于只含有变异的read以及只含有参考序列碱基的read是否存在着明显的正负链特异性（Strand bias，或者说是差异性） StrandOddsRatio (SOR)：对链特异（Strand bias）的一种描述. RMSMappingQuality (MQ)：MQ这个值是所有比对至该位点上的read的比对质量值的均方根. MappingQualityRankSumTest (MQRankSum) ReadPosRankSumTest (ReadPosRankSum) <strong>通过过滤指标过滤</strong></p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">使用SelectVariants，选出SNP</span><br><span class="line">gatk SelectVariants -select-type SNP -V wes.raw.vcf -O wes.snp.vcf</span><br><span class="line"># 为SNP作过滤</span><br><span class="line">gatk VariantFiltration -V wes.snp.vcf --filter-expression &quot;QD &lt; 2.0 || MQ &lt; 40.0 || FS &gt; 60.0 || SOR &gt; 3.0 || MQRankSum &lt; -12.5 || ReadPosRankSum &lt; -8.0&quot; --filter-name &quot;PASS&quot; -O wes.snp.filter.vcf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">使用SelectVariants，选出Indel</span><br><span class="line">gatk SelectVariants -select-type INDEL -V wes.raw.vcf -O wes.indel.vcf</span><br><span class="line"># 为Indel作过滤</span><br><span class="line">gatk VariantFiltration -V wes.indel.vcf --filter-expression &quot;QD &lt; 2.0 || FS &gt; 200.0 || SOR &gt; 10.0 || MQRankSum &lt; -12.5 || ReadPosRankSum &lt; -8.0&quot; --filter-name &quot;PASS&quot; -O wes.indel.filter.vcf</span><br></pre></td></tr></table></figure>
-
-<h3 id="突变注释"><a href="#突变注释" class="headerlink" title="突变注释"></a>突变注释</h3><p>ANNOVAR是一个perl编写的命令行工具，能在安装了perl解释器的多种操作系统上执行。允许多种输入文件格式，包括最常被使用的VCF格式。输出文件也有多种格式，包括注释过的VCF文件、用tab或者逗号分隔的txt文件，ANNOVAR能快速注释遗传变异并预测其功能。这个软件需要edu邮箱注册才能下载。 ANNOVAR website</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">数据库下载</span><br><span class="line">perl annotate_variation.pl -buildver hg19 -downdb -webfrom annovar refGene humandb/</span><br><span class="line"> # -buildver 表示version </span><br><span class="line"> # -downdb 下载数据库的指令</span><br><span class="line"> # -webfrom annovar 从annovar提供的镜像下载，不加此参数将寻找数据库本身的源</span><br><span class="line"> # humandb/ 存放于humandb/目录下</span><br><span class="line">其它数据库下载</span><br><span class="line">perl annotate_variation.pl --buildver hg19 --downdb gwascatalog humandb/ &amp;</span><br><span class="line">perl annotate_variation.pl --buildver hg19 --downdb ljb26_all --webfrom annovar humandb/ &amp;</span><br><span class="line">perl annotate_variation.pl --buildver hg19 --downdb esp6500siv2_ea --webfrom annovar humandb/ &amp;</span><br><span class="line">perl annotate_variation.pl --buildver hg19 --downdb esp6500siv2_all --webfrom annovar humandb/ &amp;</span><br><span class="line">perl annotate_variation.pl --buildver hg19 --downdb 1000g2014oct humandb/ &amp;</span><br><span class="line">perl annotate_variation.pl --buildver hg19 --downdb cytoBand humandb/ &amp;</span><br><span class="line">perl annotate_variation.pl --buildver hg19 --downdb avsift -webfrom annovar humandb/ &amp;</span><br><span class="line">perl annotate_variation.pl --buildver hg19 --downdb snp138 humandb/ &amp;</span><br><span class="line">perl annotate_variation.pl --buildver hg19 --downdb genomicSuperDups humandb/ &amp;</span><br><span class="line">perl annotate_variation.pl --buildver hg19 --downdb phastConsElements46way humandb/ &amp;</span><br><span class="line">perl annotate_variation.pl --buildver hg19 --downdb tfbs humandb/</span><br></pre></td></tr></table></figure>
-
-<h3 id="三种注释方式"><a href="#三种注释方式" class="headerlink" title="三种注释方式"></a>三种注释方式</h3><p>**Gene-based Annotation(基于基因的注释)**：基于基因的注释（gene-based annotation）揭示variant与已知基因直接的关系以及对其产生的功能性影响。 <strong>Region-based Annotation（基于区域的注释）</strong>：基于过滤的注释精确匹配查询变异与数据库中的记录：如果它们有相同的染色体，起始位置，结束位置，REF的等位基因和ALT的等位基因，才能认为匹配。基于区域的注释看起来更像一个区域的查询（这个区域也可以是一个单一的位点），在一个数据库中，它不在乎位置的精确匹配，它不在乎核苷酸的识别。基于区域的注释（region-based annotation）揭示variant与不同基因组特定段的关系。 <strong>Filter-based Annotation（基于过滤的注释）</strong>：filter-based和region-based主要的区别是，filter-based针对mutation（核苷酸的变化）而region-based针对染色体上的位置。如在全基因组数据中的变异频率，可使用1000g2015aug、kaviar_20150923等数据库；在全外显组数据中的变异频率，可使用exac03、esp6500siv2等；在孤立的或者低代表人群中的变异频率，可使用ajews等数据库。 <strong>用table_annovar.pl进行注释，可一次性完成三种类型的注释。</strong></p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">convert2annovar.pl # 将多种格式转为.avinput的程序</span><br><span class="line">convert2annovar.pl -format vcf4   wes.snp.filter.vcf &gt;snp.avinput</span><br><span class="line">格式如下：</span><br><span class="line">chr1    69511   69511   A       G       hom     1736.03 53</span><br><span class="line">chr1    877831  877831  T       C       hom     85.10   4</span><br><span class="line">chr1    881627  881627  G       A       het     399.60  37</span><br><span class="line">chr1    887801  887801  A       G       hom     1623.03 39</span><br><span class="line">chr1    888639  888639  T       C       hom     3991.03 106</span><br><span class="line">chr1    888659  888659  T       C       hom     4114.03 109</span><br><span class="line">chr1    897325  897325  G       C       hom     3998.03 113</span><br><span class="line">chr1    898852  898852  C       T       het     647.60  38</span><br><span class="line">chr1    900505  900505  G       C       het     478.60  35</span><br><span class="line">chr1    906272  906272  A       C       het     540.60  30</span><br></pre></td></tr></table></figure>
-
-<p>avinput文件由tab分割，最重要的地方为前5列，分别是: 1. 染色体(Chromosome) 2. 起始位置(Start) 3. 结束位置(End) 4. 参考等位基因(Reference Allele) 5. 替代等位基因(Alternative Allele) ANNOVAR主要也是利用前五列信息对数据库进行比对，注释变异。</p>
-<h3 id="SNP注释："><a href="#SNP注释：" class="headerlink" title="SNP注释："></a>SNP注释：</h3><p><strong>用table_annovar.pl进行注释，可一次性完成三种类型的注释。</strong></p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">table_annovar.pl snp.avinput $humandb -buildver hg19 -out snpanno \</span><br><span class="line">-remove -protocol refGene,cytoBand,genomicSuperDups,esp6500siv2_all \</span><br><span class="line">-operation g,r,r,f -nastring . -csvout</span><br></pre></td></tr></table></figure>
-
-<p>-buildver hg19 表示使用hg19版本 -out snpanno 表示输出文件的前缀为snpanno -remove 表示删除注释过程中的临时文件 -protocol 表示注释使用的数据库，用逗号隔开，且要注意顺序 -operation 表示对应顺序的数据库的类型（g代表gene-based、r代表region-based、f代表filter-based），用逗号隔开，注意顺序 -nastring . 表示用点号替代缺省的值 -csvout 表示最后输出.csv文件</p>
-<h3 id="Indel注释同上"><a href="#Indel注释同上" class="headerlink" title="Indel注释同上"></a>Indel注释同上</h3><p>测试数据：链接：<a href="https://link.zhihu.com/?target=https://pan.baidu.com/s/16tX5GrCLBAov9k_GjYYOyA">https://pan.baidu.com/s/16tX5GrCLBAov9k_GjYYOyA</a> 提取码：9pab</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">BioInfo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/03/17/WES%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B-%E4%B8%8A/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-使用CRISPR-Cas9的人类B细胞基因组工程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/03/16/%E4%BD%BF%E7%94%A8CRISPR-Cas9%E7%9A%84%E4%BA%BA%E7%B1%BBB%E7%BB%86%E8%83%9E%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%B7%A5%E7%A8%8B/" target="_blank">使用CRISPR/Cas9的人类B细胞基因组工程</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/03/16/%E4%BD%BF%E7%94%A8CRISPR-Cas9%E7%9A%84%E4%BA%BA%E7%B1%BBB%E7%BB%86%E8%83%9E%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%B7%A5%E7%A8%8B/" class="archive-article-date">
-        <time datetime="2024-03-16T15:09:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-16</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>First Published: November 3rd, 2020</p>
-<p>DOI:<a target="_blank" rel="noopener" href="https://dx.doi.org/10.3791/61855">10.3791&#x2F;61855</a></p>
-<iframe src="//player.bilibili.com/player.html?aid=1101771635&bvid=BV14w4m1o7fh&cid=1472242106&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<hr>
-<h2 id="MyNotes"><a href="#MyNotes" class="headerlink" title="MyNotes:"></a>MyNotes:</h2><p>本文作者的研究工作集中于运用CRISPR&#x2F;Cas9基因编辑技术在人类B细胞中进行基因敲除（KO）和敲入（KI）操作，以便深入研究B细胞中特定基因的功能，并将其应用于B细胞疗法的开发。这项研究创新性地优化了从<strong>外周血单核细胞</strong>（PBMCs）中分离、扩增B细胞的流程，同时改进了CRISPR&#x2F;Cas9系统的转染效率和安全性。</p>
-<p>实验过程中，作者首先采用了一套高效且标准化的步骤分离并大量扩增B细胞，使其能在7天内增加44倍，这对于后续基因编辑的成功至关重要。然后，利用<strong>电穿孔技术</strong>将CRISPR&#x2F;Cas9 mRNA与针对CD19基因的sgRNA导入B细胞，以实现CD19基因的精准敲除。实验结果显示，这种方法成功诱导了预期的双链断裂（DSB），并通过非同源末端连接（NHEJ）机制引起了<strong>CD19基因</strong>的失活，其有效性通过流式细胞术和TIDE（Tracking of Indels by Decomposition）分析得到验证，结果显示CD19蛋白的表达显著减少。</p>
-<p>此外，作者还展示了如何利用CRISPR&#x2F;Cas9与重组腺相关病毒（rAAV6）载体结合，将绿色荧光蛋白（EGFP）基因特异整合到AAVS1位点，实现了高效的基因敲入。实验结果显示，经过工程化的B细胞在12天后能稳定表达EGFP，并且通过PCR和流式细胞术证实了基因整合的发生。</p>
-<p>尽管如此，研究也指出CRISPR&#x2F;Cas9技术存在潜在的脱靶效应和染色体易位风险，因此作者强调了优化实验条件的重要性，比如选择合适的sgRNA以降低脱靶效应，并探讨了使用碱基编辑器作为更为精确的基因编辑手段的可能性。</p>
-<p>具体实验步骤流程概括可以如下：</p>
-<ol>
-<li><p><strong>B细胞分离与激活</strong>：</p>
-<ul>
-<li>从外周血单核细胞（PBMCs）中分离B细胞，通过密度梯度离心法和负选择试剂盒进行纯化。</li>
-<li>对分离出的B细胞进行体外扩增，每两天更换新鲜的激活因子，并严格控制细胞密度。</li>
-</ul>
-</li>
-<li><p><strong>CRISPR&#x2F;Cas9介导的基因敲除（KO）</strong>：</p>
-<ul>
-<li>设计并合成针对目标基因（如CD19）的sgRNA。</li>
-<li>制备CRISPR&#x2F;Cas9-sgRNA复合物，通过电穿孔技术将复合物导入B细胞。</li>
-<li>经过电穿孔后的细胞在特定时间内静置和恢复，随后进行细胞培养。</li>
-<li>在转染后的第5天，使用流式细胞术检测CD19表达水平，并通过TIDE分析确定DNA双链断裂后引发的Indel形成。</li>
-</ul>
-</li>
-<li><p><strong>基因敲入（KI）实验</strong>：</p>
-<ul>
-<li>使用重组腺相关病毒（rAAV6）载体携带目的基因（如EGFP）和同源臂。</li>
-<li>将CRISPR&#x2F;Cas9系统与rAAV6载体一同导入B细胞，诱导同源定向修复（HDR）介导的敲入。</li>
-<li>工程化后的第12天，通过流式细胞术和PCR分析评估EGFP基因是否成功整合及表达。</li>
-</ul>
-</li>
-</ol>
-<p>整个实验流程旨在通过精细调控B细胞的分离、激活和基因编辑过程，高效地实现对B细胞基因组的精准工程改造，进而研究基因功能及其在B细胞治疗中的应用潜力。同时，实验关注了优化细胞健康和基因编辑效率的关键步骤，以及对可能存在的脱靶效应和染色体易位等问题的考量。</p>
-<hr>
-<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>在这里，我们为CRISPR&#x2F;Cas9基础基因组工程提供详细的分步协议，用于基因敲除（KO）和敲击（KI），以研究B细胞中基因的生物功能和B细胞治疗的开发。</p>
-<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>B细胞是从造血干细胞中提取的淋巴细胞，是适应性免疫系统幽默手臂的关键组成部分。他们之所以成为细胞疗法的候选者，是因为它们容易与周围血液隔离，体外扩张能力，以及体内寿命。此外，它们的正常生物功能——产生大量的抗体——可以用来表达大量的治疗性蛋白质，如抗感染的重组抗体，或用于治疗酶病变的酶。在这里，我们提供详细的方法，将原人类B细胞从外周血单核细胞（PBMCs）中分离，并在体外激活&#x2F;扩大分离的B细胞。然后，我们演示了使用CRISPR&#x2F;Cas9系统在B细胞中针对内源基因的部位特定KO所涉及的步骤。这种方法可以有效地利用各种基因的KO，用于研究感兴趣的基因的生物功能。然后，我们演示了使用CRISPR&#x2F;Cas9系统以及重组的、与腺相关的病毒（rAAV）载体的步骤，以有效实现B细胞中转基因表达盒的现场特定集成。该协议共同提供了一个分步工程平台，可用于人类B细胞的初级研究基因的生物功能以及B细胞治疗的开发。</p>
-<hr>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>B细胞是来自造血干细胞的淋巴细胞系的子群。他们在适应性幽默免疫系统中发挥关键作用，产生大量的抗体来应对免疫挑战[1]。B细胞也是记忆B细胞和最终分化的长寿血浆细胞的前体，从而提供持久的幽默免疫力[2]。特别是等离子体细胞，在免疫细胞中独一无二，它们能够产生大量的特定抗体，同时存活多年或几十年。此外，从外周血液隔离的便利性使B细胞血统成为新细胞疗法[4]的极好候选者。</p>
-<p>以前，随机整合方法，如那些使用扁桃体载体或<em>睡美人</em>转子，已经被用来工程B细胞的转基因传递和表达[5，6，7，8]。然而，这些方法的非特异性使得研究B细胞中特定基因的生物功能变得困难，并具有在治疗环境中插入突变和可变转基因表达和&#x2F;或沉默的固有风险。</p>
-<p>CRISPR&#x2F;Cas9系统是一个强大的基因组工程工具，使研究人员能够精确编辑许多物种中各种细胞的基因组。最近，包括我们自己的两组已经成功地开发出了原始人类B细胞[9,10]的外活扩张和靶向基因组工程方法。我们将描述从白血病样本中净化原人类B细胞的过程。之后，我们将描述我们更新的 B 细胞扩展和激活孤立 B 细胞的协议。然后，我们将描述一个通过电波将CRISPR&#x2F;Cas9 mRNA与CD19 sgRNA一起引入激活的B细胞，从而敲除分化19（CD19）的簇、特定的B细胞受体和B细胞的标志的过程。</p>
-<p>Cas9 mRNA 被翻译并绑定到 CD19 sgRNA，以形成 CRISPR&#x2F;Cas9-sgRNA 核糖核蛋白复合物 （RNP）。随后，复合物中的sgRNA导致Cas9在基因exon2上的目标序列中产生双链断裂（DSB）。细胞将通过引入或删除核苷酸来修复DSB，导致帧移位突变并导致基因被消灭。然后，我们将用流细胞测量测量CD19的损失，并通过分解（TIDE）分析对英德尔的形成进行跟踪分析。</p>
-<hr>
-<h3 id="代表结果解读"><a href="#代表结果解读" class="headerlink" title="代表结果解读"></a>代表结果解读</h3><p>更新的扩增和激活协议能够在7天内将B细胞快速扩增至44倍（图1；n &#x3D; 3个捐赠者）。在KO实验中，使用 Trypan 蓝染色测定的B细胞计数显示，电穿孔后24小时，对照组和CD19 KO样本的存活率均超过80%，但细胞回收略有下降（图2A；p ≥ 0.05，n &#x3D; 3个捐赠者）。这一结果表明，电穿孔对B细胞的整体健康略有影响。在转染后的第5天收集B细胞进行流式细胞术和TIDE分析。对照组和KO样本的代表性散点图显示，分别为14%和95%的CD19阴性细胞（图2B）。流式细胞术图的定量分析显示，与对照组相比，KO样本的CD19表达显著降低（图2B；p ≤ 0.0001，n &#x3D; 3个捐赠者）。</p>
-<p>基因组测序的色谱图（见表3中的引物序列）在CD19 KO B细胞中显示双峰，表明在CRISPR&#x2F;Cas9介导的DSB后发生了核苷酸的插入&#x2F;缺失，而在对照组中观察到单峰，表明此样本中未发生DSB（图3A）。KO样本的Indel分析色谱图（使用一个免费的在线TIDE分析工具）在CD19位点上的Indel形成百分比很高（&gt;90%），这与流式细胞术检测到的CD19蛋白损失百分比一致（图3B；p ≥ 0.05，n &#x3D; 3个捐赠者）。这些结果表明，CRISPR&#x2F;Cas9有效地在B细胞中产生了CD19 KO。</p>
-<p>KI实验的B细胞在工程化后的第12天收集，用于流式细胞术和连接PCR分析（表4）。接收rAAV6载体的样本的散点图显示EGFP阳性细胞占64%（图4），而在对照组中没有观察到EGFP阳性细胞；仅接收AAV载体的样本中观察到最小的EGFP阳性（图5A）。连接PCR扩增（见表3中的引物序列）在KI样本中显示出1.5 Kbps的扩增子（图5B），而在对照组或仅接收载体的样本中没有观察到PCR产物。细胞计数显示，工程化过程对KI样本的细胞回收影响大于对照组或仅接收载体的样本（图5B）。然而，所有样本在工程化后的3天内迅速恢复（图5B）。这些结果表明，成功在AAVS1位点整合EGFP至少在工程化后的12天内能够稳定表达EGFP。</p>
-<hr>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/61855fig01.jpg" alt="Figure 1" style="zoom:50%;">
-
-<p>[^图1：体外B细胞扩张]: B细胞在第0天（零）在1个×106 个细胞播种，密度为5×每mL105， 并在7天内扩大44倍（n&#x3D;3独立捐赠者）。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/61855fig02a.jpg" alt="Figure 2A" style="zoom:50%;">
-
-<p>[^图2A]: </p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/61855fig02b.jpg" alt="Figure 2B" style="zoom:50%;">
-
-<p>[^图2B]: </p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/61855fig02c.jpg" alt="Figure 2C" style="zoom:50%;">
-
-
-
-<p>[^图2C]: <strong>CRISPR&#x2F;Cas9介质CD19淘汰赛（KO）在B细胞中。</strong>（<strong>A</strong>） 条形图显示 &amp; gt;70% 细胞恢复（左面板）和 &gt;80% 的存活率 （右面板） 细胞在输电后 24 小时在控制和 CD19 KO 样本中观察到。（<strong>B</strong>） 活细胞CD19门控的代表流动图分别显示对照样本和CD19 KO样本中84.3%和3.43%的CD19阳性细胞。（<strong>C</strong>） 条形图显示 CRISPR&#x2F;Cas9 介控 CD19 KO 组 CD19 显著减少（p ≤ 0.0001）。</p>
-<p>然后，我们将描述使用CRISPR&#x2F;Cas9与重组AAV6载体（rAAV6，同源定向修复（HDR）的捐赠模板）一起，以调解在腺相关病毒集成站点1（AAVS1）基因中插入增强型绿色荧光蛋白<em>（EGFP）</em> 的现场特定插入过程。AAVS1基因是一种没有已知生物功能的活性球体，也是人类基因组上的AAV病毒整合站点：因此，它被认为是基因组工程的”安全港”。在这里，我们报告说，B细胞的膨胀和激活允许在7天的培养中扩大44倍（<strong>图1）。</strong>B细胞的电扩散显示，在24小时后，整体细胞健康（<strong>图2A）</strong>略有下降。对 CD19 标记（<strong>图 2B）</strong>的分散图分析显示编辑的单元块（<strong>图 2C）减少高达</strong>83%。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/61855fig03a.jpg" alt="Figure 3A" style="zoom:50%;">
-
-<p>[^图3A]: </p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/61855fig03b.jpg" alt="Figure 3B" style="zoom:50%;">
-
-<p>[^图3B]: <strong>CD19蛋白质损失与英德尔形成。</strong>（<strong>A</strong>） 色谱图描绘了控制和 CD19 淘汰 （KO） 样本的测序峰值。控制峰值上的灰色框突出显示 CD19 gRNA 的目标序列，并带有箭头指示的预测切割位置。CD19 KO 显示”双峰”测序围绕预测的切割点，指示在双链断裂后插入&#x2F;删除核苷酸。（<strong>B</strong>） 条形图显示 CD19 蛋白质损失百分比与 CD19 轨迹（p ≥ 0.05）的英德尔形成之间的一致结果。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/61855fig04.jpg" alt="Figure 4" style="zoom:50%;">
-
-<p>[^图4：rAAV6 AAVS1 MND-GFP矢量构造。]: ****表达盒包含一个强大的合成促进器 （MND） 序列，紧接着是增强的绿色荧光蛋白 （EGFP） 编码序列和聚腺素化 （Poly A） 序列。AAVS1 同源臂侧翼在 MND 发起器上游和聚 A 序列的下游。EGFP 将根据 MND 发起人的法规进行表达。在构造的每个组件上方指示序列长度。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/61855fig05a.jpg" alt="Figure 5A"></p>
-<p>[^图5A]: </p>
-<img src="/2024/03/16/%E4%BD%BF%E7%94%A8CRISPR-Cas9%E7%9A%84%E4%BA%BA%E7%B1%BBB%E7%BB%86%E8%83%9E%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%B7%A5%E7%A8%8B/61855fig05b.jpg" alt="Figure 5B" style="zoom:50%;">
-
-<p>[^图5B]: </p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/61855fig05c.jpg" alt="Figure 5C"></p>
-<p>[^图5C]: <strong>CRISPR&#x2F;Cas9-和rAAV6在工程后第12天将EGFP记者录音带在B单元中的具体集成。</strong>（<strong>A</strong>） 代表流图显示控制或仅矢量样本中无EGFP阳性 B 细胞，而敲击 （KI） 样本中 EGFP 阳性 B 细胞为 64.4%。（<strong>B</strong>） KI样品的交界聚合酶链反应显示预测的1.5 Kbps波段：在控制或仅矢量样本中未发现带。在 PCR 过程中，水用于确保无污染。（<strong>C</strong>） 条形图描绘了在工程后 3 天内控制、仅矢量和 EGFP-KI 样本的细胞生长。断线表示 1 × 106 单元输入。</p>
-<p>TIDE对色谱仪（<strong>图3A）</strong>的分析显示，英德尔的百分比与流动细胞仪（<strong>图3B）</strong>所导致的蛋白质损失相似。KI实验的流动细胞学分析表明，接受AAV载体（<strong>图4）</strong>的细胞与RNP一起表示高达64%的EGFP阳性细胞（<strong>图5A），</strong>随后通过结点聚合酶链反应（PCR）（<strong>图5B）</strong>显示成功整合。细胞计数显示，所有样本在工程后3天内迅速恢复（<strong>图5C）。</strong></p>
-<hr>
-<h3 id="protocol"><a href="#protocol" class="headerlink" title="protocol"></a><strong>protocol</strong></h3><p>从当地血库获得了健康捐赠者的白细胞分离样本。在此描述的所有实验均被明尼苏达大学的机构审查委员会（IRB）认定为研究豁免，并获得了机构生物安全委员会（IBC）的批准。<br>注意：所有实验均按照血源性病原体的通用预防措施进行，使用无菌&#x2F;无菌技术和适当的生物安全二级设备。</p>
-<ol>
-<li><h4 id="一、准备B细胞扩增培养基的补充剂"><a href="#一、准备B细胞扩增培养基的补充剂" class="headerlink" title="一、准备B细胞扩增培养基的补充剂"></a>一、准备B细胞扩增培养基的补充剂</h4></li>
-</ol>
-<p>  将CpG寡核苷酸复溶至1 mg&#x2F;mL的浓度。<br>  将CD40配体（CD40L）复溶至100 μg&#x2F;mL的浓度。<br>  将重组人IL-10（rhIL-10）复溶至50 μg&#x2F;mL的浓度。<br>  将重组人IL-15（rhIL-15）复溶至10 μg&#x2F;mL的浓度。<br>  注意：将每种补充剂分装成小份，在-20°C至-80°C下保存，最多可保存6个月。</p>
-<ol start="2">
-<li><h4 id="二、准备基础培养基"><a href="#二、准备基础培养基" class="headerlink" title="二、准备基础培养基"></a>二、准备基础培养基</h4></li>
-</ol>
-<p>  将B细胞基础培养基与5%（体积&#x2F;体积）的体外免疫细胞扩增培养基补充剂（例如，CTS免疫细胞SR）和1%（体积&#x2F;体积）的青霉素和链霉素混合。<br>  使用0.22 µm过滤器适配器对基础培养基进行过滤灭菌，装入已灭菌的瓶子中。<br>  将基础培养基在4°C下保存，最多可保存1个月。</p>
-<ol start="3">
-<li><h4 id="三、准备B细胞扩增培养基"><a href="#三、准备B细胞扩增培养基" class="headerlink" title="三、准备B细胞扩增培养基"></a>三、准备B细胞扩增培养基</h4></li>
-</ol>
-<p>  将所需量的基础培养基转移到无菌容器中，以5 × 10^5细胞&#x2F;mL的密度培养B细胞。<br>  用1 μg&#x2F;mL CpG、100 ng&#x2F;mL CD40L、50 ng&#x2F;mL rhIL-10和10 ng&#x2F;mL rhIL-15补充基础培养基。<br>  使用0.22 µm过滤器过滤B细胞扩增培养基。<br>  在使用前，将B细胞扩增培养基在37°C、5% CO2、湿度条件下在组织培养孵箱中平衡至少30分钟。<br>  注意：准备新鲜的B细胞扩增培养基以供当天使用。不要准备用于多天的B细胞扩增培养基。此培养基配方鼓励记忆B细胞和激活的原代人B细胞的增殖。</p>
-<ol start="4">
-<li><h4 id="四、人B细胞的纯化和扩增"><a href="#四、人B细胞的纯化和扩增" class="headerlink" title="四、人B细胞的纯化和扩增"></a>四、人B细胞的纯化和扩增</h4></li>
-</ol>
-<p>  注意：按照制造商的说明，在开始第4.1步之前，向温控冷冻容器中加入99-100%异丙醇，并将冷冻容器在4°C下冷却。</p>
-<ol>
-<li><h5 id="从白细胞分离样本中分离出外周血单核细胞（PBMC）"><a href="#从白细胞分离样本中分离出外周血单核细胞（PBMC）" class="headerlink" title="从白细胞分离样本中分离出外周血单核细胞（PBMC）"></a>从白细胞分离样本中分离出外周血单核细胞（PBMC）</h5><ol>
-<li>将大约8-10 mL的白细胞分离样本转移到无菌的50 mL锥形管中。</li>
-<li>用无菌的1x磷酸盐缓冲液（PBS）将体积补至35 mL。</li>
-<li>小心地将35 mL白细胞分离样本层叠在15 mL密度梯度介质上。</li>
-<li>在500 × g下离心25分钟，不使用制动，去除血浆层，不要扰动富含单核细胞的层（PBMC层），从界面收集PBMCs，并转移到新的无菌50 mL锥形管中。</li>
-<li>用1x PBS将PBMCs的体积补至50 mL。</li>
-<li>在500 × g下离心5分钟，不使用制动。去除上清液，不要扰动可能呈现红色的PBMC沉淀。</li>
-<li>加入7 mL的氯化铵-氯化钾溶胞缓冲液，用移液管轻轻吹打混合3次，并在室温（RT）下孵育3分钟。</li>
-<li>用1x PBS将体积补至50 mL。</li>
-<li>在400 × g、低阻力制动的条件下离心5分钟。去除上清液，不要扰动沉淀。沉淀应呈粉红色或白色。<br>注意：为了继续培养新鲜分离的B细胞，请在开始B细胞分离（第4.2步）之前准备B细胞扩增培养基。</li>
-</ol>
-</li>
-<li><h5 id="使用人原代B细胞负选试剂盒从PBMCs中分离B细胞"><a href="#使用人原代B细胞负选试剂盒从PBMCs中分离B细胞" class="headerlink" title="使用人原代B细胞负选试剂盒从PBMCs中分离B细胞"></a>使用人原代B细胞负选试剂盒从PBMCs中分离B细胞</h5><ol>
-<li>用隔离缓冲液将PBMCs重新悬浮至5 × 10^7细胞&#x2F;mL的浓度。<br>注意：如果PBMC总数少于5 × 10^7细胞，则减少隔离缓冲液的体积以保持5 × 107细胞&#x2F;mL。细胞悬浮液的最小和最大体积分别为0.25 mL和8 mL。</li>
-<li>将最多8 mL（5 × 10^7细胞&#x2F;mL）转移到带有盖子的无菌、聚丙烯、圆底试管中。</li>
-<li>向PBMCs中加入50 μL&#x2F;mL的Cocktail增强剂。</li>
-<li>向PBMCs中加入50 μL&#x2F;mL的隔离鸡尾酒，盖上试管盖，倒置2-3次以混合。</li>
-<li>在RT下孵育5分钟；在孵育的第4分钟，至少30秒涡旋磁性微球。</li>
-<li>每1 mL PBMCs转移50 μL磁性微球，盖上试管盖，倒置2-3次以混合。</li>
-<li>用隔离缓冲液补至10 mL，并轻轻上下吸液2-3次。</li>
-<li>将试管放在磁性站中，在RT下孵育3分钟。</li>
-<li>握住磁铁和试管，将磁铁和试管一起倒置，将细胞悬浮液倒入新试管中。丢弃旧试管。</li>
-<li>重复步骤4.2.8（将孵育时间减少至2分钟），并将B细胞悬浮液倒入干净的锥形管中。</li>
-<li>富集的B细胞准备使用。如果立即使用细胞，请继续第4.3节（人B细胞扩增）。通过流式细胞术（可选）检查分离的B细胞的纯度。如果在使用前需要冷冻细胞，请继续步骤4.2.12。</li>
-<li>为了冷冻B细胞，在400 × g下离心5分钟，去除上清液，不要扰动沉淀。</li>
-<li>用冷冻培养基以10^7细胞&#x2F;mL的浓度重新悬浮细胞，并分装到1 mL&#x2F;冻存管中。</li>
-<li>将冻存管放入冷却的冷冻容器中，在-80°C下储存过夜；然后，将冷冻的冻存管转移到液氮罐中；可保存冻结细胞长达1年。<br>注意：预计分离的B细胞产量为总PBMC的2%-8%，存活率为95%-99%。</li>
-</ol>
-</li>
-<li><h4 id="人B细胞扩增"><a href="#人B细胞扩增" class="headerlink" title="人B细胞扩增"></a>人B细胞扩增</h4><p>注意：如果使用新鲜分离的B细胞，请跳过步骤4.3.1-4.3.5。计数细胞，并将所需数量的细胞转移到无菌锥形管中，然后继续进行步骤4.3.6。</p>
-<ol>
-<li>在使用前，将胎牛血清（FBS）在温水浴中预温。准备20 mL的B细胞扩增培养基，转移到T25烧瓶中，并在使用前至少15分钟在组织培养孵箱中预平衡培养基（在37°C、5% CO2、湿度的条件下）。</li>
-<li>在37°C水浴中解冻B细胞。等待期间，将2 mL预热的FBS转移到无菌的15 mL锥形管中。</li>
-<li>B细胞完全解冻后，立即向样本中逐滴加入1 mL预热的FBS，并在RT下孵育1分钟。</li>
-<li>轻轻吸液以重新悬浮样本，并将整个体积逐滴转移到含有2 mL预热的FBS的锥形管中。</li>
-<li>用无菌的1x PBS将体积补至15 mL，盖上试管盖，轻轻倒置2-3次。</li>
-<li>在400 × g下离心5分钟。</li>
-<li>去除上清液，不要扰动细胞沉淀，用1 mL预平衡的B细胞扩增培养基重新悬浮细胞沉淀，并计数细胞。总细胞数应约为10^7细胞。</li>
-<li>将细胞转移到含有20 mL预平衡的B细胞扩增培养基的烧瓶中。细胞的最终浓度应约为5 × 10^5细胞&#x2F;mL。</li>
-<li>垂直将烧瓶放入组织培养孵箱中孵育。</li>
-<li>每2天通过将B细胞的全部体积转移到无菌锥形管中并重复步骤4.3.6-4.3.9来完全更换扩增培养基。<br>注意：T25烧瓶可以容纳10-20 mL的培养基；T75烧瓶可以容纳多达20-60 mL的培养基。</li>
-</ol>
-</li>
-<li><h4 id="五、人原代B细胞的工程化处理"><a href="#五、人原代B细胞的工程化处理" class="headerlink" title="五、人原代B细胞的工程化处理"></a>五、人原代B细胞的工程化处理</h4></li>
-</ol>
-<p>为了获得最佳结果，在扩增&#x2F;激活后的48 ± 2小时对B细胞进行工程化处理。准备B细胞扩增培养基，将1 mL培养基分装到48孔组织培养板中，并在使用前至少15分钟在组织培养孵箱中预平衡。<br>注意：在设计CRISPR&#x2F;Cas9 sgRNA进行基因编辑时，请遵循以下步骤。</p>
-<p>   1）使用在线工具设计sgRNAs。</p>
-<p>   2）在所有蛋白质变体的共有外显子上设计sgRNAs。</p>
-<p>   3）从信誉良好的公司订购化学修饰的sgRNA。</p>
-<p>  4）sgRNA通常以冻干形式提供；用无菌的DNase&#x2F;RNase-free Tris-EDTA（TE）缓冲液复溶sgRNA，浓度为1 μg&#x2F;μL。</p>
-<pre><code>1. 通过将每个转染反应中的1 μL（1 μg/μL）化学修饰的sgRNA与1.5 μL（1 μg/μL）化学修饰的链球菌Cas9（S.p. Cas9）核酸酶混合来准备CRISPR/Cas9转染底物。对于对照组，使用1 μL TE缓冲液代替sgRNA。
- 注意：当使用CD19 sgRNA进行基因敲除（KO）实验时，请参阅图2的结果。当使用AAVS1 sgRNA进行基因敲入（KI）实验时，请参阅图5的结果。
- **将所有组分保持在冰上。**
-2. 轻轻混合，并将每个反应的2.5 μL CRISPR/Cas9转染底物转移到0.2 mL 8管条的管中；在室温下放置备用。
-3. 打开核转染仪（电穿孔仪），并准备转染试剂，如表格1所示。
- 注意：如果需要，这是一个暂停的好步骤，将所有试剂放在冰上。准备好继续实验时，从冰上取下所有试剂。使用S.p. Cas9蛋白时，研究者必须通过将1 μg sgRNA与5 μg SpCas9蛋白混合，避免产生气泡，并在使用前在室温下孵育至少20分钟以获得最佳结果。
-4. 计数并将每10^6个B细胞转移到无菌锥形管中进行转染反应。
-5. 用无菌的1x PBS将体积补至15 mL，并在400 × g下离心5分钟。等待时，准备主要细胞转染试剂（表格2）并在室温下放置备用。
-6. 去除上清液，不要扰动细胞沉淀。
-7. 用10 mL无菌的1x PBS重新悬浮细胞沉淀，并在400 × g下离心5分钟。
-8. 完全去除上清液，不要扰动细胞沉淀。
-9. 向每10^6个B细胞的细胞沉淀中转移0.5 μg化学修饰的GFP mRNA（作为转染报告物，可选）。
-10. 用每10^6个B细胞的20 μL主要细胞转染试剂重新悬浮细胞沉淀；轻轻通过吸液5-6次混合。将每个反应的20.5 μL转移到含有2.5 μL CRISPR/Cas9转染底物的0.2 mL管中。
-11. 上下吸液一次以混合，并将整个体积（23 μL）转移到转染槽中。盖上盖子，轻轻在台面上敲打试管，以确保液体覆盖槽的底部。
-12. 使用核转染仪的人原代B细胞协议进行转染。
-    注意：核转染仪（电穿孔仪）可以放在组织培养罩外使用。盖上盖子以确保无菌。
-13. 让电穿孔后的细胞在室温下静置15分钟。
-14. 从组织培养板中转移80 μL预平衡的B细胞扩增培养基到转染反应的试管中。将试管放入组织培养孵箱中孵育30分钟。
-15. 轻轻吸液几次以混合，并将试管中的样本整体转移到48孔组织培养板中适当孔内，含有1 mL B细胞扩增培养基的孔中。细胞的最终浓度应为10^6细胞/mL。
-16. 如果进行基因敲入实验，则在电穿孔后大约45分钟，将rAAV6载体以500,000感染复数转移到含有电穿孔细胞的适当孔中。请参阅图4A的rAAV6载体构建示例。
-    注意：例如：对照样本将不使用CRISPR/Cas9或rAAV6载体进行电穿孔。仅载体样本将不使用CRISPR/Cas9进行电穿孔，然后使用rAAV6载体进行转导。敲入（KI）样本将使用CRISPR/Cas9进行电穿孔，然后使用rAAV6载体进行转导。rAAV6必须在其靶向DSB位点上下游含有同源臂，以进行同源定向修复（HDR）。
-17. 将培养板放入37°C、5% CO2湿度的组织培养孵箱中。
-18. 在工程化处理后的第1天计数细胞并记录存活率。
-19. 每2天通过计数细胞并将细胞的全部体积转移到干净的1.5 mL微量离心管中，然后离心以400 ×g离心5分钟，去除上清液，不要扰动沉淀。用100 µL新鲜的B细胞扩增培养基重新悬浮细胞，并转移到24孔组织培养板的孔中。将培养基体积补至最终细胞浓度达到5 × 10^5细胞/mL。
-    注意：48孔板每孔最多可容纳1 mL培养基；24孔板每孔最多可容纳2 mL培养基；12孔板每孔最多可容纳4 mL培养基；6孔板每孔最多可容纳8 mL培养基。
-20. 在至少扩增5天后再进行下游分析，如流式细胞术分析、TIDE分析和连接PCR。
-</code></pre>
-<hr>
-<h3 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h3><p>直到最近，对原代人B细胞进行精确的基因组工程仍然是一个挑战。我们之前发表的协议使用了CRISPR&#x2F;Cas9来工程化原代人B细胞。在这里，我们概述了改进的B细胞分离、扩增和工程化协议，以实现对CD19的快速KO或对EGFP的敲入。</p>
-<p>我们证明，我们的扩增协议可以在7天内将B细胞快速扩增至44倍（图1）。这个协议的扩增速率比Johnson等人和Hung等人的报告更快。确保原代人B细胞健康快速扩增的关键步骤是每两天用新鲜的激活因子替换培养基，并确保培养中的总B细胞数不超过2 × 106细胞&#x2F;mL。</p>
-<p>我们还发现，我们改进的CRISPR&#x2F;Cas9转染协议对CD19 KO结果在效率上很高（图2和图3）。与之前的研究一样，我们观察到电穿孔后24小时细胞回收和存活率略有下降。这表明电穿孔会影响原代人B细胞的整体健康；然而，细胞最终在48小时内恢复（数据未显示）。</p>
-<p>使用这种电穿孔器协议的好处是，我们可以以更快的速度（16个反应在1分钟内完成），而之前的协议（9，10）完成16个反应大约需要10-12分钟。此外，这个转染系统消除了之前研究中观察到的电穿孔器可能产生的电弧（9，10）。此外，这个工程化方法可以扩大规模，用于更大数量的B细胞，使用更大型的、商业上可获得的槽（数据未显示）。</p>
-<p>为了确保最佳的细胞整体健康和KO效率，有几个关键步骤：首先，确保B细胞扩增培养基制备并预平衡至少15分钟后使用。其次，转染底物的总体积不应超过核转染试剂的20%（体积&#x2F;体积）。第三，必须扩增&#x2F;激活48 ± 2小时以获得最佳结果。第四，在将电穿孔槽放入电穿孔器之前，轻轻敲打电穿孔槽，以确保转染反应溶液覆盖槽底。第五，确保电穿孔后的细胞在电穿孔槽中仅静置15分钟；电穿孔后长时间留在核转染试剂中可能会损害整体细胞存活率。第六，确保将细胞与培养基在电穿孔槽中的孵育时间不超过30分钟。第七，将106个电穿孔细胞放入1 mL中，在最初的48小时内，这有助于细胞更快恢复，而不是在较低的密度下培养（数据未显示）。最后，使用Cas9 mRNA或Cas9蛋白将导致类似的编辑效率（数据未显示）；然而，我们为了方便和成本效益使用了Cas9 mRNA。</p>
-<p>在使用CRISPR&#x2F;Cas9时，有两个主要担忧：脱靶效应和染色体易位。由于sgRNA与目标序列不匹配的碱基对引起的脱靶效应，导致基因组上可能存在许多可能的结合位点，并产生多个不需要的基因KO。因此，应同时考虑预测的脱靶评分和on-target评分，以尽量减少这个问题。染色体易位可能由于脱靶效应或在敲除多个基因时发生。这可能在实验和临床上造成灾难性事件。碱基编辑器（12种：两种类型的胞嘧啶碱基编辑器和腺嘌呤碱基编辑器）改变一个核苷酸（破坏剪接元件、创建过早终止密码子或创建点突变），导致目标基因KO而不产生DSB（在其他地方详细回顾）。因此，碱基编辑方法可用于单基因或多基因KO，以规避染色体易位问题。</p>
-<p>我们还证明，CRISPR&#x2F;Cas9与rAAV6一起，可以用于高效介导特异性KI，并在AAVS1位点表达EGFP。我们在工程化后的至少12天内观察到EGFP表达。我们还观察到KI样本在第12天有两个EGFP阳性群体：一个高表达群体和一个中表达群体（图5A），而仅接收载体的样本显示出最小比例的细胞中存在中表达EGFP。我们推测这种“高和中表达群体”的现象是由于载体双等位基因整合造成的。进一步使用跨越PCR对中和高表达EGFP细胞进行调查可以确认这个假设。使用AAV作为载体的两个注意事项：首先，AAV载体具有有限的货物容量，高达4.7千字节，当敲入大基因时会引起问题。减少同源臂的大小将允许容纳更大的基因，从而降低KI效率（数据未显示）。或者，可以使用多个基因装载载体的同时或顺序整合。研究报道了在免疫健全的动物模型中AAV转导细胞会产生免疫反应并清除这些细胞。作为替代方案，可以探索非病毒基础的供体HDR模板，以规避这个问题。</p>
-<p>总之，我们已经证明了从分离、扩增到B细胞工程化的全面、分步过程，这些过程导致了高基因修改效率。这种工程化方法可以用于基因敲除，并研究B细胞中基因的功能。此外，这种方法可以用于工程化B细胞以表达重组抗体，用于对抗感染。最后，这种方法可以应用于工程化B细胞以表达和分泌治疗酶，这些酶可以作为自体细胞为基础的治疗方法，用于治疗酶病。</p>
-<p>在未来的研究中，我们可以进一步优化这些协议，提高基因编辑的效率和特异性，并探索新的方法来减少脱靶效应和染色体易位的风险。此外，我们还可以研究如何将这些工程化的B细胞用于临床应用，例如作为免疫治疗或基因治疗的工具。通过不断改进和探索新的技术，我们有望在不久的将来实现更高效、更安全的人B细胞基因组工程。</p>
-<hr>
-<table>
-<thead>
-<tr>
-<th><strong>Name</strong></th>
-<th><strong>gRNA sequence</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>CD19</td>
-<td>5’-GCTGTGCTGCAGTGCCTCAA-3’</td>
-</tr>
-<tr>
-<td>AAVS1</td>
-<td>5’-GTCACCAATCCTGTCCCTAG-3’</td>
-</tr>
-</tbody></table>
-<p><strong>Table 1: gRNA sequences.</strong></p>
-<table>
-<thead>
-<tr>
-<th><strong>Reagents</strong></th>
-<th><strong>Volume per 1 reaction</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>P3 Primary Cell solution</td>
-<td>16.4 mL</td>
-</tr>
-<tr>
-<td>Supplement 1</td>
-<td>3.6 mL</td>
-</tr>
-<tr>
-<td><strong>Total</strong></td>
-<td>20 mL</td>
-</tr>
-</tbody></table>
-<p><strong>Table 2: Preparation of Nucleofection reagent mix.</strong></p>
-<table>
-<thead>
-<tr>
-<th><strong>Description</strong></th>
-<th><strong>Sequence</strong></th>
-<th><strong>Purpose</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>CD19 forward primers</td>
-<td>5’-AAATTCAGGAAAGGGTTGGAAG-3’</td>
-<td>Amplify the CD19 locus for Indel analysis</td>
-</tr>
-<tr>
-<td>CD19 Reverse primer</td>
-<td>5’-GCGGACCTCTTCTGTCCATG-3’</td>
-<td>Amplify the CD19 locus for Indel analysis</td>
-</tr>
-<tr>
-<td>Junction PCR forward primer</td>
-<td>5’-GGACGAGCTGTACAAGTAACG-3’</td>
-<td>Junction PCR</td>
-</tr>
-<tr>
-<td>Junction PCR Reverse primer</td>
-<td>5’-GAGACAGTGACCAACCATCC-3</td>
-<td>Junction PCR</td>
-</tr>
-</tbody></table>
-<p><strong>Table 3: Primers used.</strong></p>
-<table>
-<thead>
-<tr>
-<th><strong>Description</strong></th>
-<th><strong>Fluorophore</strong></th>
-<th><strong>Clone</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Anti-human CD19</td>
-<td>PerCP</td>
-<td>HIB19</td>
-</tr>
-<tr>
-<td>Viability Dye</td>
-<td>eFlour 780</td>
-<td>-</td>
-</tr>
-</tbody></table>
-<p><strong>Table 4: Flow cytometry antibody and viability dye.</strong></p>
-<hr>
-<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ol>
-<li>LeBien, T. W., Thomas, T. F. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=B+lymphocytes:+how+they+develop+and+function.">B lymphocytes: how they develop and function.</a> <em>Blood</em>. <strong>112</strong> (5), 1570-1580 (2008).</li>
-<li>Nutt, S. L., Hodgkin, P. D., Tarlinton, D. M., Corcoran, L. M. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=The+generation+of+antibody-secreting+plasma+cells.">The generation of antibody-secreting plasma cells.</a> <em>Nature Reviews Immunology</em>. <strong>15</strong>, 160-171 (2015).</li>
-<li>Slifka, M. K., Antia, R., Whitmire, J. K., Ahmed, R. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Humoral+immunity+due+to+long-lived+plasma+cells.">Humoral immunity due to long-lived plasma cells.</a> <em>Immunity</em>. <strong>8</strong> (3), 363-372 (1998).</li>
-<li>Spriggs, M. K., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Recombinant+human+CD40+ligand+stimulates+B+cell+proliferation+and+immunoglobulin+E+secretion.">Recombinant human CD40 ligand stimulates B cell proliferation and immunoglobulin E secretion.</a> <em>Journal of Experimental Medicines</em>. <strong>176</strong> (6), 1543-1550 (1992).</li>
-<li>Fusil, F., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=A+lentiviral+vector+allowing+physiologically+regulated+membrane-anchored+and+secreted+antibody+expression+depending+on+B-cell+maturation+status.">A lentiviral vector allowing physiologically regulated membrane-anchored and secreted antibody expression depending on B-cell maturation status.</a> <em>Molecular Therapy</em>. <strong>23</strong> (11), 1734-1747 (2015).</li>
-<li>Luo, X. M., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Engineering+human+hematopoietic+stem/progenitor+cells+to+produce+a+broadly+neutralizing+anti-HIV+antibody+after+in+vitro+maturation+to+human+B+lymphocytes.">Engineering human hematopoietic stem&#x2F;progenitor cells to produce a broadly neutralizing anti-HIV antibody after in vitro maturation to human B lymphocytes.</a> <em>Blood</em>. <strong>113</strong> (7), 1422-1431 (2008).</li>
-<li>Mock, U., Thiele, R., Uhde, A., Fehse, B., Horn, S. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Efficient+lentiviral+transduction+and+transgene+expression+in+primary+human+B+cells.">Efficient lentiviral transduction and transgene expression in primary human B cells.</a> <em>Human Gene Therapy Methods</em>. <strong>23</strong> (6), 408-415 (2012).</li>
-<li>Heltemes-Harris, L. M., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Sleeping+Beauty+transposon+screen+identifies+signaling+modules+that+cooperate+with+STAT5+activation+to+induce+B-cell+acute+lymphoblastic+leukemia.">Sleeping Beauty transposon screen identifies signaling modules that cooperate with STAT5 activation to induce B-cell acute lymphoblastic leukemia.</a> <em>Oncogene</em>. <strong>35</strong> (26), 3454-3464 (2016).</li>
-<li>Johnson, M. J., Laoharawee, K., Lahr, W. S., Webber, B. R., Moriarity, B. S. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Engineering+of+primary+human+B+cells+with+CRISPR/Cas9+targeted+nuclease.">Engineering of primary human B cells with CRISPR&#x2F;Cas9 targeted nuclease.</a> <em>Scientific Reports</em>. <strong>8</strong>, 12144 (2018).</li>
-<li>Hung, K. L., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Engineering+protein-secreting+plasma+cells+by+homology-directed+repair+in+primary+human+B+cells.">Engineering protein-secreting plasma cells by homology-directed repair in primary human B cells.</a> <em>Molecular Therapy</em>. <strong>26</strong> (2), 456-467 (2018).</li>
-<li>Cui, Y., Xu, J., Cheng, M., Liao, X., Peng, S. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Review+of+CRISPR/Cas9+sgRNA+design+tools.">Review of CRISPR&#x2F;Cas9 sgRNA design tools.</a> <em>Interdisciplinary Sciences</em>. <strong>10</strong> (2), 455-465 (2018).</li>
-<li>Rees, H. A., Liu, D. R. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Base+editing:+precision+chemistry+on+the+genome+and+transcriptome+of+living+cells.">Base editing: precision chemistry on the genome and transcriptome of living cells.</a> <em>Nature Reviews Genetics</em>. <strong>19</strong> (12), 770-788 (2018).</li>
-<li>Spiegel, A., Bachmann, M., Jurado Jiménez, G., Sarov, M. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=CRISPR/Cas9-based+knockout+pipeline+for+reverse+genetics+in+mammalian+cell+culture.">CRISPR&#x2F;Cas9-based knockout pipeline for reverse genetics in mammalian cell culture.</a> <em>Methods</em>. <strong>164-165</strong>, 49-58 (2019).</li>
-<li>Suzuki, T., Kazuki, Y., Oshimura, M., Hara, T. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=A+novel+system+for+simultaneous+or+sequential+integration+of+multiple+gene-loading+vectors+into+a+defined+site+of+a+human+artificial+chromosome.">A novel system for simultaneous or sequential integration of multiple gene-loading vectors into a defined site of a human artificial chromosome.</a> <em>PLoS One</em>. <strong>9</strong>, 110404 (2014).</li>
-<li>Bak, R. O., Porteus, M. H. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=CRISPR-mediated+integration+of+large+gene+cassettes+using+AAV+donor+vectors.">CRISPR-mediated integration of large gene cassettes using AAV donor vectors.</a> <em>Cell Reports</em>. <strong>20</strong> (3), 750-756 (2017).</li>
-<li>Shirley, J. L., de Jong, Y. P., Terhorst, C., Herzog, R. W. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Immune+responses+to+viral+gene+therapy+vectors.">Immune responses to viral gene therapy vectors.</a> <em>Molecular Therapy</em>. <strong>28</strong> (3), 709-722 (2020).</li>
-<li>Martino, A. T., Markusic, D. M. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Immune+response+mechanisms+against+AAV+vectors+in+animal+models.">Immune response mechanisms against AAV vectors in animal models.</a> <em>Molecular Therapy - Methods and Clinical Development</em>. <strong>17</strong>, 198-208 (2020).</li>
-</ol>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/03/16/%E4%BD%BF%E7%94%A8CRISPR-Cas9%E7%9A%84%E4%BA%BA%E7%B1%BBB%E7%BB%86%E8%83%9E%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%B7%A5%E7%A8%8B/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-强化学习在生物信息学与基因编辑领域的应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/03/16/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9C%A8%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E4%B8%8E%E5%9F%BA%E5%9B%A0%E7%BC%96%E8%BE%91%E9%A2%86%E5%9F%9F%E7%9A%84%E5%BA%94%E7%94%A8/" target="_blank">强化学习在生物信息学与基因编辑领域的应用</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/03/16/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9C%A8%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E4%B8%8E%E5%9F%BA%E5%9B%A0%E7%BC%96%E8%BE%91%E9%A2%86%E5%9F%9F%E7%9A%84%E5%BA%94%E7%94%A8/" class="archive-article-date">
-        <time datetime="2024-03-16T13:21:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-16</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="1-背景介绍"><a href="#1-背景介绍" class="headerlink" title="1.背景介绍"></a>1.背景介绍</h1><p>生物信息学和基因编辑是生物科学和生物技术的重要领域，它们在近年来取得了显著的进展。生物信息学涉及对生物数据的分析和解释，包括基因组学、蛋白质结构和功能等。基因编辑则是对基因组的直接修改，用于治疗疾病和改善生物质量。强化学习（Reinforcement Learning，RL）是一种人工智能技术，它可以帮助机器学习从环境中获取反馈，以优化行为策略。在这篇文章中，我们将探讨如何将强化学习应用于生物信息学和基因编辑领域，以及其潜在的应用和挑战。</p>
-<h1 id="2-核心概念与联系"><a href="#2-核心概念与联系" class="headerlink" title="2.核心概念与联系"></a>2.核心概念与联系</h1><h1 id="2-1生物信息学"><a href="#2-1生物信息学" class="headerlink" title="2.1生物信息学"></a>2.1生物信息学</h1><p>生物信息学是一门集生物学、计算机科学、数学、信息论等多学科知识的 intersection 领域。生物信息学家利用计算机科学的方法来分析和解释生物数据，例如基因组数据、蛋白质序列数据、微阵列数据等。生物信formatio学家的任务包括：</p>
-<ul>
-<li>发现新的基因和蛋白质功能</li>
-<li>研究基因组的演化和多样性</li>
-<li>研究基因表达和控制机制</li>
-<li>研究蛋白质结构和功能</li>
-<li>研究生物网络和路径径</li>
-</ul>
-<h1 id="2-2基因编辑"><a href="#2-2基因编辑" class="headerlink" title="2.2基因编辑"></a>2.2基因编辑</h1><p>基因编辑是一种对基因组进行直接修改的技术，用于治疗疾病和改善生物质量。基因编辑技术包括：</p>
-<ul>
-<li>CRISPR&#x2F;Cas9：一种基因剪接技术，可以精确地修改基因组。</li>
-<li>TALEN：一种基因剪接技术，类似于 CRISPR&#x2F;Cas9。</li>
-<li>ZFN：一种基因剪接技术，类似于 CRISPR&#x2F;Cas9 和 TALEN。</li>
-</ul>
-<p>基因编辑技术的应用包括：</p>
-<ul>
-<li>治疗遗传性疾病，如患血症、癌症等。</li>
-<li>改善农业产品，如增加农作物的抗病毒性、增加粮食产量等。</li>
-<li>研究基因组的功能和表达。</li>
-</ul>
-<h1 id="2-3强化学习"><a href="#2-3强化学习" class="headerlink" title="2.3强化学习"></a>2.3强化学习</h1><p>强化学习是一种人工智能技术，它可以帮助机器学习从环境中获取反馈，以优化行为策略。强化学习的核心概念包括：</p>
-<ul>
-<li>状态（State）：环境的描述。</li>
-<li>动作（Action）：机器可以执行的操作。</li>
-<li>奖励（Reward）：环境给予的反馈。</li>
-<li>策略（Policy）：机器选择动作的规则。</li>
-<li>价值函数（Value Function）：预测状态下策略下的累积奖励。</li>
-</ul>
-<h1 id="3-核心算法原理和具体操作步骤以及数学模型公式详细讲解"><a href="#3-核心算法原理和具体操作步骤以及数学模型公式详细讲解" class="headerlink" title="3.核心算法原理和具体操作步骤以及数学模型公式详细讲解"></a>3.核心算法原理和具体操作步骤以及数学模型公式详细讲解</h1><h1 id="3-1Q-Learning算法"><a href="#3-1Q-Learning算法" class="headerlink" title="3.1Q-Learning算法"></a>3.1Q-Learning算法</h1><p>Q-Learning是一种常用的强化学习算法，它可以帮助机器学习如何在环境中取得最佳的行为策略。Q-Learning的核心思想是通过迭代地更新价值函数，以优化策略。Q-Learning的具体操作步骤如下：</p>
-<ol>
-<li>初始化状态值和动作值。</li>
-<li>选择一个初始状态。</li>
-<li>从初始状态中选择一个动作。</li>
-<li>执行动作并得到环境的反馈。</li>
-<li>更新动作值。</li>
-<li>重复步骤3-5，直到收敛。</li>
-</ol>
-<p>Q-Learning的数学模型公式如下：</p>
-<p>Q(s,a)&#x3D;E[∑t&#x3D;0∞γtRt+1∣s0&#x3D;s,a0&#x3D;a]Q(s, a) &#x3D; E[\sum_{t&#x3D;0}^{\infty} \gamma^t R_{t+1} | s_0 &#x3D; s, a_0 &#x3D; a]Q(s,a)&#x3D;E[t&#x3D;0∑∞γtRt+1∣s0&#x3D;s,a0&#x3D;a]</p>
-<p>其中，Q(s,a)Q(s, a)Q(s,a) 表示状态 sss 下执行动作 aaa 的累积奖励，Rt+1R_{t+1}Rt+1 表示时间 t+1t+1t+1 的奖励，γ\gammaγ 是折扣因子。</p>
-<h1 id="3-2应用到生物信息学和基因编辑领域"><a href="#3-2应用到生物信息学和基因编辑领域" class="headerlink" title="3.2应用到生物信息学和基因编辑领域"></a>3.2应用到生物信息学和基因编辑领域</h1><p>在生物信息学和基因编辑领域，强化学习可以用于优化多种任务，例如：</p>
-<ul>
-<li>优化基因剪接技术，以提高治疗疾病的效果。</li>
-<li>优化基因编辑任务，以提高农业产品的质量。</li>
-<li>优化基因组分析任务，以提高基因组数据的解释率。</li>
-</ul>
-<p>具体的，强化学习可以用于优化以下任务：</p>
-<ul>
-<li>优化基因剪接技术的精确性和特异性。</li>
-<li>优化基因编辑任务的效率和准确性。</li>
-<li>优化基因组分析任务的准确性和速度。</li>
-</ul>
-<h1 id="4-具体代码实例和详细解释说明"><a href="#4-具体代码实例和详细解释说明" class="headerlink" title="4.具体代码实例和详细解释说明"></a>4.具体代码实例和详细解释说明</h1><h1 id="4-1Python实现Q-Learning算法"><a href="#4-1Python实现Q-Learning算法" class="headerlink" title="4.1Python实现Q-Learning算法"></a>4.1Python实现Q-Learning算法</h1><p>以下是一个简单的 Python 代码实例，用于实现 Q-Learning 算法。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">python复制代码<span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">QLearning</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, state_space, action_space, learning_rate, discount_factor</span>):</span><br><span class="line">        self.state_space = state_space</span><br><span class="line">        self.action_space = action_space</span><br><span class="line">        self.learning_rate = learning_rate</span><br><span class="line">        self.discount_factor = discount_factor</span><br><span class="line">        self.q_table = np.zeros((state_space, action_space))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">choose_action</span>(<span class="params">self, state</span>):</span><br><span class="line">        <span class="comment"># 选择一个动作</span></span><br><span class="line">        <span class="keyword">return</span> np.argmax(self.q_table[state])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">update_q_value</span>(<span class="params">self, state, action, reward, next_state</span>):</span><br><span class="line">        <span class="comment"># 更新动作值</span></span><br><span class="line">        old_value = self.q_table[state, action]</span><br><span class="line">        new_value = reward + self.discount_factor * np.<span class="built_in">max</span>(self.q_table[next_state])</span><br><span class="line">        self.q_table[state, action] = old_value + self.learning_rate * (new_value - old_value)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">train</span>(<span class="params">self, state_transition_tuples, rewards, learning_epochs</span>):</span><br><span class="line">        <span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(learning_epochs):</span><br><span class="line">            <span class="keyword">for</span> state, action, reward, next_state <span class="keyword">in</span> state_transition_tuples:</span><br><span class="line">                self.update_q_value(state, action, reward, next_state)</span><br></pre></td></tr></table></figure>
-
-<h1 id="4-2应用到生物信息学和基因编辑领域"><a href="#4-2应用到生物信息学和基因编辑领域" class="headerlink" title="4.2应用到生物信息学和基因编辑领域"></a>4.2应用到生物信息学和基因编辑领域</h1><p>在生物信息学和基因编辑领域，可以使用 Q-Learning 算法来优化多种任务。以下是一个简单的 Python 代码实例，用于实现优化基因剪接技术的精确性和特异性的任务。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">python复制代码<span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GeneEditing</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, state_space, action_space, learning_rate, discount_factor</span>):</span><br><span class="line">        self.state_space = state_space</span><br><span class="line">        self.action_space = action_space</span><br><span class="line">        self.learning_rate = learning_rate</span><br><span class="line">        self.discount_factor = discount_factor</span><br><span class="line">        self.q_table = np.zeros((state_space, action_space))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">choose_action</span>(<span class="params">self, state</span>):</span><br><span class="line">        <span class="comment"># 选择一个动作</span></span><br><span class="line">        <span class="keyword">return</span> np.argmax(self.q_table[state])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">update_q_value</span>(<span class="params">self, state, action, reward, next_state</span>):</span><br><span class="line">        <span class="comment"># 更新动作值</span></span><br><span class="line">        old_value = self.q_table[state, action]</span><br><span class="line">        new_value = reward + self.discount_factor * np.<span class="built_in">max</span>(self.q_table[next_state])</span><br><span class="line">        self.q_table[state, action] = old_value + self.learning_rate * (new_value - old_value)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">train</span>(<span class="params">self, state_transition_tuples, rewards, learning_epochs</span>):</span><br><span class="line">        <span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(learning_epochs):</span><br><span class="line">            <span class="keyword">for</span> state, action, reward, next_state <span class="keyword">in</span> state_transition_tuples:</span><br><span class="line">                self.update_q_value(state, action, reward, next_state)</span><br></pre></td></tr></table></figure>
-
-<h1 id="5-未来发展趋势与挑战"><a href="#5-未来发展趋势与挑战" class="headerlink" title="5.未来发展趋势与挑战"></a>5.未来发展趋势与挑战</h1><h1 id="5-1未来发展趋势"><a href="#5-1未来发展趋势" class="headerlink" title="5.1未来发展趋势"></a>5.1未来发展趋势</h1><p>未来，强化学习在生物信息学和基因编辑领域的应用将面临以下挑战：</p>
-<ul>
-<li>数据收集和处理：生物信息学和基因编辑领域产生的数据量巨大，需要开发高效的数据收集和处理方法。</li>
-<li>算法优化：需要开发更高效、更准确的强化学习算法，以应对生物信息学和基因编辑领域的复杂性。</li>
-<li>多模态学习：需要开发可以处理多种类型数据的强化学习算法，以便在生物信息学和基因编辑领域进行更广泛的应用。</li>
-<li>解释性：需要开发可以解释强化学习模型决策的方法，以便在生物信息学和基因编辑领域进行更有说服力的研究。</li>
-</ul>
-<h1 id="5-2挑战"><a href="#5-2挑战" class="headerlink" title="5.2挑战"></a>5.2挑战</h1><p>在强化学习应用于生物信息学和基因编辑领域面临的挑战包括：</p>
-<ul>
-<li>数据质量和可靠性：生物信息学和基因编辑领域的数据质量和可靠性可能受到实验条件和技术限制的影响。</li>
-<li>算法复杂性：强化学习算法的复杂性可能导致计算成本和时间成本较高。</li>
-<li>解释性和可解释性：强化学习模型的决策过程可能难以解释，导致在生物信息学和基因编辑领域的研究难以验证和传播。</li>
-</ul>
-<h1 id="6-附录常见问题与解答"><a href="#6-附录常见问题与解答" class="headerlink" title="6.附录常见问题与解答"></a>6.附录常见问题与解答</h1><p>Q：强化学习在生物信息学和基因编辑领域的应用有哪些？</p>
-<p>A：强化学习可以用于优化多种任务，例如：</p>
-<ul>
-<li>优化基因剪接技术，以提高治疗疾病的效果。</li>
-<li>优化基因编辑任务，以提高农业产品的质量。</li>
-<li>优化基因组分析任务，以提高基因组数据的解释率。</li>
-</ul>
-<p>Q：强化学习在生物信息学和基因编辑领域的挑战有哪些？</p>
-<p>A：强化学习在生物信息学和基因编辑领域面临的挑战包括：</p>
-<ul>
-<li>数据质量和可靠性：生物信息学和基因编辑领域的数据质量和可靠性可能受到实验条件和技术限制的影响。</li>
-<li>算法复杂性：强化学习算法的复杂性可能导致计算成本和时间成本较高。</li>
-<li>解释性和可解释性：强化学习模型的决策过程可能难以解释，导致在生物信息学和基因编辑领域的研究难以验证和传播。</li>
-</ul>
-<p>来源：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7315461377258504242">稀土掘金</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">BioInfo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/03/16/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9C%A8%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E4%B8%8E%E5%9F%BA%E5%9B%A0%E7%BC%96%E8%BE%91%E9%A2%86%E5%9F%9F%E7%9A%84%E5%BA%94%E7%94%A8/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-解决Github不能下载，下载速度慢的小妙招" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/03/15/%E8%A7%A3%E5%86%B3Github%E4%B8%8D%E8%83%BD%E4%B8%8B%E8%BD%BD%EF%BC%8C%E4%B8%8B%E8%BD%BD%E9%80%9F%E5%BA%A6%E6%85%A2%E7%9A%84%E5%B0%8F%E5%A6%99%E6%8B%9B/" target="_blank">解决Github不能下载，下载速度慢的小妙招（转载）</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/03/15/%E8%A7%A3%E5%86%B3Github%E4%B8%8D%E8%83%BD%E4%B8%8B%E8%BD%BD%EF%BC%8C%E4%B8%8B%E8%BD%BD%E9%80%9F%E5%BA%A6%E6%85%A2%E7%9A%84%E5%B0%8F%E5%A6%99%E6%8B%9B/" class="archive-article-date">
-        <time datetime="2024-03-15T10:19:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-15</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/888710">原文出处</a></p>
-<p><img src="https://ucc.alicdn.com/images/user-upload-01/11509f94c74d46b28a70b884265addf5.png" alt="img"></p>
-<h2 id="错误描述"><a href="#错误描述" class="headerlink" title="错误描述"></a>错误描述</h2><p>今天在github上使用 git clone 某个项目代码的时， git clone <a target="_blank" rel="noopener" href="https://github.com/XXXX/xxx-blog.git">https://github.com/XXXX/xxx-blog.git</a> 下载速度很慢，然后下载一段时间后，总是提示下面的错误信息：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">remote: Enumerating objects: 33, done.</span><br><span class="line">remote: Counting objects: 100% (33/33), done.</span><br><span class="line">remote: Compressing objects: 100% (8/8), done.</span><br><span class="line">error: RPC failed; curl 56 OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054</span><br><span class="line">fatal: the remote end hung up unexpectedly</span><br><span class="line">fatal: early EOF</span><br><span class="line">fatal: index-pack failed </span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a>错误原因</h2><p>由于Http协议错误，当 pull 或者 clone 的时候，或者是 github 某个CDN被屏蔽所致。</p>
-<h2 id="解决办法1"><a href="#解决办法1" class="headerlink" title="解决办法1"></a>解决办法1</h2><p>协议错误</p>
-<p>先执行下列命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.postBuffer 5242880000</span><br></pre></td></tr></table></figure>
-
-<p>再执行<code>git pull</code>或者 <code>git clone</code> 命令</p>
-<h2 id="解决办法2"><a href="#解决办法2" class="headerlink" title="解决办法2"></a>解决办法2</h2><h3 id="修改域名"><a href="#修改域名" class="headerlink" title="修改域名"></a>修改域名</h3><ul>
-<li>访问 <a target="_blank" rel="noopener" href="http://github.global.ssl.fastly.net.ipaddress.com/#ipinfo">http://github.global.ssl.fast…</a>获取cdn域名以及IP地址<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/5d9c3b2cb1099f4a27c94a53a9c04b8d.png" alt="img"></li>
-<li>访问 <a target="_blank" rel="noopener" href="https://github.com.ipaddress.com/#ipinfo">http://github.com.ipaddress.c…</a> 获取cdn域名以及IP地址<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/ab03c6248ee9ba8b0e1ac111bad32294.png" alt="img"></li>
-<li>或者直接访问<a target="_blank" rel="noopener" href="https://www.ipaddress.com/%E7%BD%91%E5%9D%80%E6%9F%A5%E8%AF%A2%E4%B8%8B%E9%9D%A2%E6%89%80%E9%9C%80%E7%9A%84%E5%9C%B0%E5%9D%80%E5%AF%B9%E5%BA%94%E7%9A%84IP">https://www.ipaddress.com/网址查询下面所需的地址对应的IP</a></li>
-</ul>
-<h3 id="修改hosts文件"><a href="#修改hosts文件" class="headerlink" title="修改hosts文件"></a>修改hosts文件</h3><p>将上述获取的IP地址添加到hosts文件中</p>
-<p>Mac在<code>/etc/hosts</code>中；</p>
-<p>windows在<code>C:\Windows\System32\drivers\etc\hosts</code>中；</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># fix git clone github project failed</span><br><span class="line">140.82.113.3 github.com</span><br><span class="line">199.232.5.194 github.global.ssl.fastly.net</span><br><span class="line">192.30.253.120  codeload.github.com</span><br></pre></td></tr></table></figure>
-
-<h3 id="刷新DNS缓存"><a href="#刷新DNS缓存" class="headerlink" title="刷新DNS缓存"></a>刷新DNS缓存</h3><p>Mac刷新DNS缓存</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo killall -HUP mDNSResponder</span><br><span class="line">sudo dscacheutil -flushcache</span><br></pre></td></tr></table></figure>
-
-<p>Windows更新DNS缓存</p>
-<p>cmd命令窗口执行：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig /flushdns</span><br></pre></td></tr></table></figure>
-
-<p>使增加的映射生效。</p>
-<h2 id="解决办法3"><a href="#解决办法3" class="headerlink" title="解决办法3"></a>解决办法3</h2><p>使用chrome浏览器，安装一个插件【Github 加速器】</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/3c717bdc5fe69e4e44f121b7ceb2c36e.png" alt="img"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/watermark%2Ctype_d3F5LXplbmhlaQ%2Cshadow_50%2Ctext_Q1NETiBA55Cm5b2m%2Csize_20%2Ccolor_FFFFFF%2Ct_70%2Cg_se%2Cx_16.png" alt="img"></p>
-<p>下载地址： <a target="_blank" rel="noopener" href="https://chrome.zzzmh.cn/info?token=mfnkflidjnladnkldfonnaicljppahpg">https://chrome.zzzmh.cn/info?token=mfnkflidjnladnkldfonnaicljppahpg</a></p>
-<p>安装后见crx文件拖到谷歌的扩展功能里面，然后安装成功。<strong>打开gihub会看到如下界面，多了几个加速地址</strong>.</p>
-<h2 id="解决办法4"><a href="#解决办法4" class="headerlink" title="解决办法4"></a>解决办法4</h2><p>利用socks5代理，配置好后明显加速。用下面两条命令配置好后，保持代理客户端开启就行了。</p>
-<p>设置代理</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 可以参考以下配置，这里的127.0.0.1代表的就是你本机的IP地址，因为服务就在你本机上运行</span><br><span class="line"># 10809是代理的客户端本地端口,默认是1080</span><br><span class="line">git config --global https.proxy http://127.0.0.1:10800</span><br><span class="line">git config --global https.proxy http://127.0.0.1:10800</span><br><span class="line">git config --global http.proxy &#x27;socks5://127.0.0.1:10800&#x27;</span><br><span class="line">git config --global https.proxy &#x27;socks5://127.0.0.1:10800&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>上述方法挂了全局代理，但是如果要克隆码云、coding等国内仓库，速度就会很慢。更好的方法是<strong>只对github进行代理</strong>，不会影响国内仓库：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.https://github.com.proxy socks5://127.0.0.1:10800</span><br><span class="line">git config --global https.https://github.com.proxy socks5://127.0.0.1:10800</span><br></pre></td></tr></table></figure>
-
-<p>代理后git clone速度真的快了很多~我这边能到1MB&#x2F;s以上</p>
-<p>查看代理</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global -l</span><br></pre></td></tr></table></figure>
-
-<p>取消代理</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset http.proxy</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="其他异常问题"><a href="#其他异常问题" class="headerlink" title="其他异常问题"></a>其他异常问题</h1><h2 id="1-解决-curl-7-Failed-to-connect-to-raw-githubusercontent-com-port-443-Connection-refused"><a href="#1-解决-curl-7-Failed-to-connect-to-raw-githubusercontent-com-port-443-Connection-refused" class="headerlink" title="1. 解决 curl: (7) Failed to connect to raw.githubusercontent.com port 443: Connection refused"></a>1. 解决 curl: (7) Failed to connect to raw.githubusercontent.com port 443: Connection refused</h2><p>将下面的IP地址添加到hosts文件中</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">199.232.68.133 raw.githubusercontent.com</span><br><span class="line">199.232.68.133 user-images.githubusercontent.com</span><br><span class="line">199.232.68.133 avatars2.githubusercontent.com</span><br><span class="line">199.232.68.133 avatars1.githubusercontent.com</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-解决curl-56-OpenSSL-SSL-read-Connection-was-reset-errno-10054"><a href="#2-解决curl-56-OpenSSL-SSL-read-Connection-was-reset-errno-10054" class="headerlink" title="2. 解决curl: (56) OpenSSL SSL_read: Connection was reset, errno 10054"></a>2. 解决curl: (56) OpenSSL SSL_read: Connection was reset, errno 10054</h2><p>一、问题：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error: RPC failed; curl 56 OpenSSL SSL_read: Connection was reset, errno 10054</span><br></pre></td></tr></table></figure>
 
-<p>如图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/d87dea031623518fcfe19791939dd606.png" alt="img"></p>
-<p>原因：远程仓库的文件过大，需要设置本地仓库大小**</p>
-<p><strong>二、解决步骤：</strong></p>
-<p>1、首先输入如下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config http.sslVerify &quot;false&quot;</span><br></pre></td></tr></table></figure>
+<div id="SOHUCS" sid="WES数据分析流程-下" ></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "true",
+        conf: "true"
+    });
+</script>
+</script>
 
-<p>若出现下列错误：</p>
-<p><strong><code>git config http.sslVerify &quot;false&quot; fatal: not in a git directory</code></strong></p>
-<p>再继续执行 <strong><code>git config --globle http.sslVerify &quot;false&quot;</code></strong> 问题解决</p>
-<p>2、文件大小的上限设置：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.postBuffer 524288000</span><br></pre></td></tr></table></figure>
 
-<p>fatal: not in a git directory <code>**再继续执行**</code>git config –globle http.sslVerify “false”&#96;** 问题解决</p>
-<p>2、文件大小的上限设置：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.postBuffer 524288000</span><br></pre></td></tr></table></figure>
 
-<p>3、如果还是git代码还是下载失败，则需要继续修改git缓存的大小</p>
+<section id="comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname =
+    'true'; // required: replace example with your forum shortname
 
-    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
 
-    
+  </script>
+  <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by
+      Disqus.</a></noscript>
+</section>
 
-    
 
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-    
 
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/03/15/%E8%A7%A3%E5%86%B3Github%E4%B8%8D%E8%83%BD%E4%B8%8B%E8%BD%BD%EF%BC%8C%E4%B8%8B%E8%BD%BD%E9%80%9F%E5%BA%A6%E6%85%A2%E7%9A%84%E5%B0%8F%E5%A6%99%E6%8B%9B/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-使用Github-picGo搭建图床，保姆级教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/03/15/%E4%BD%BF%E7%94%A8Github-picGo%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A%EF%BC%8C%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/" target="_blank">使用Github+picGo搭建图床，保姆级教程</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/03/15/%E4%BD%BF%E7%94%A8Github-picGo%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A%EF%BC%8C%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/" class="archive-article-date">
-        <time datetime="2024-03-15T06:08:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-15</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="使用Github-picGo搭建图床，保姆级"><a href="#使用Github-picGo搭建图床，保姆级" class="headerlink" title="使用Github+picGo搭建图床，保姆级"></a>使用Github+picGo搭建图床，保姆级</h1><p>转载自<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/xiao-xiao-yu-zi-12-58">小小芋子</a></p>
-<h2 id="1-注册一个Github账号"><a href="#1-注册一个Github账号" class="headerlink" title="1. 注册一个Github账号"></a><strong>1. 注册一个Github账号</strong></h2><p>首先你需要一个github账号，如果没有的话，先注册。</p>
-<p>github官网地址： <a href="https://link.zhihu.com/?target=https://github.com/">https://github.com/</a></p>
-<p>注册过程省略，因为这是保姆都不管的事情。</p>
-<p>友情提示：可能在注册过程中会出现 “Unable to verify your captcha response… …”，一直不能正常注册。</p>
-<p>网上有各种解决方案：换浏览器、换电脑… …</p>
-<h2 id="2-配置Github"><a href="#2-配置Github" class="headerlink" title="2. 配置Github"></a>2. 配置Github</h2><h3 id="2-1-创建一个新仓库，用于存放图片。"><a href="#2-1-创建一个新仓库，用于存放图片。" class="headerlink" title="2.1 创建一个新仓库，用于存放图片。"></a>2.1 创建一个新仓库，用于存放图片。</h3><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/v2-59b7f87b4fbe21a2492e4b9e529fe87c_1440w.webp" alt="img"></p>
-<p>填写仓库名称和描述，且仓库必须是public的，否则存储的图片不能正常访问。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/v2-d3733c14e8c9b53cb5cf9f7607d51c8a_1440w.webp" alt="img"></p>
-<h3 id="2-2-生成一个token，用于picGo访问github"><a href="#2-2-生成一个token，用于picGo访问github" class="headerlink" title="2.2 生成一个token，用于picGo访问github"></a>2.2 生成一个token，用于picGo访问github</h3><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/v2-4d227062bcfa58dba6c0582c982b737b_1440w.webp" alt="img"></p>
-<p>选择左侧菜单的Developer settings</p>
-<p><img src="/%E4%BD%BF%E7%94%A8Github-picGo%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A%EF%BC%8C%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B.assets/v2-4d227062bcfa58dba6c0582c982b737b_1440w-17104837862607.webp" alt="img"></p>
-<p>之后选择左侧Personal access tokens，再点击Generate new token</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/v2-2d5bcabac97557591c4203009d306750_1440w.webp" alt="img"></p>
-<p>填写Note，勾选repo.</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/v2-346da4ccf189eb5997abe2fadadca331_1440w.webp" alt="img"></p>
-<p>注意，生成的token只会在这里显示一次，所以记得单独保存下来哦。</p>
-<p><img src="/%E4%BD%BF%E7%94%A8Github-picGo%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A%EF%BC%8C%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B.assets/v2-354ea85a4bd9cfc99157b86cae9a2332_1440w.webp" alt="img"></p>
-<p>至此，Github的配置完成。</p>
-<h2 id="3-下载picGo，并进行配置"><a href="#3-下载picGo，并进行配置" class="headerlink" title="3. 下载picGo，并进行配置"></a>3. 下载picGo，并进行配置</h2><h3 id="3-1-下载"><a href="#3-1-下载" class="headerlink" title="3.1 下载"></a>3.1 下载</h3><p>网络不好的情况下，PicGo下载可能会多次失败，所以我把下载好的应用放在百度网盘了。</p>
-<p>大家按需取用。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/v2-279f576c0dc0861fd7edcf1d43e5675f_1440w.webp" alt="img"></p>
-<p>网盘地址：<a href="https://link.zhihu.com/?target=https://pan.baidu.com/s/1LvkzLJyZcjpflK2Evq3X9A">https://pan.baidu.com/s/1LvkzLJyZcjpflK2Evq3X9A</a> 提取码：s6x7</p>
-<p>下载完成，双击启动安装即可。</p>
-<p>如果安装成功，picGo不能正常使用，则可以用兼容模式启动。【此问题因电脑而异，也是我在配置过程中踩过的坑。】</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/v2-3f60ccb549e01c95a1702ceca9bda95d_1440w.webp" alt="img"></p>
-<h3 id="3-2-配置"><a href="#3-2-配置" class="headerlink" title="3.2 配置"></a>3.2 配置</h3><p>仓库名：[github用户名]&#x2F;[第一步新建的仓库名称]</p>
-<p>分支：默认master，从2020.10.01开始，github的默认分支名变更为main</p>
-<p>设定token：第一步创建的token</p>
-<p>指定存储路径：可填可不填，如果填写了，图片就会存储在img文件夹下</p>
-<p>设定自定义域名：<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/[github%E7%94%A8%E6%88%B7%E5%90%8D]/[%E4%BB%93%E5%BA%93%E5%90%8D]@main%EF%BC%8C%E6%B3%A8%E6%84%8F%EF%BC%8C%E6%AD%A4%E5%A4%84%E7%9A%84%E5%88%86%E6%94%AF%E4%B8%80%E5%AE%9A%E8%A6%81%E5%A1%AB%E5%86%99@main%EF%BC%8C%E5%90%A6%E5%88%99%E9%BB%98%E8%AE%A4%E4%BD%BF%E7%94%A8master%E5%88%86%E6%94%AF%E3%80%82%E8%80%8C%E7%8E%B0%E5%9C%A8github%E5%88%9B%E5%BB%BA%E7%9A%84%E9%BB%98%E8%AE%A4%E5%88%86%E6%94%AF%E5%90%8D%E4%B8%BAmain%EF%BC%8C%E5%A6%82%E6%9E%9C%E4%B8%8D%E6%8C%87%E5%AE%9A%EF%BC%8C%E5%88%99%E4%BC%9A%E5%87%BA%E7%8E%B0%E5%9B%BE%E7%89%87%E4%B8%8D%E8%83%BD%E4%B8%8A%E4%BC%A0%E7%9A%84%E6%83%85%E5%86%B5%E3%80%82%E3%80%90%E8%B8%A9%E5%9D%91%E4%B8%A4%E5%B0%8F%E6%97%B6%E3%80%91">https://cdn.jsdelivr.net/gh/[github用户名]/[仓库名]@main，注意，此处的分支一定要填写@main，否则默认使用master分支。而现在github创建的默认分支名为main，如果不指定，则会出现图片不能上传的情况。【踩坑两小时】</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/v2-62e4faaa7999d1d32fa80aec44b4034e_1440w.webp" alt="img"></p>
-<p>至此，github+picGo的配置完成，可以在上传区进行图片上传了。</p>
-<h3 id="3-3-补充几点"><a href="#3-3-补充几点" class="headerlink" title="3.3 补充几点"></a>3.3 补充几点</h3><p>1.原本github的自定义域名应该是：[<a href="https://raw.githubusercontent.com/[username/]/[%E4%BB%93%E5%BA%93%E5%90%8D]](https://link.zhihu.com/?target=https://raw.githubusercontent.com/%5Busername%5D/%5B%E4%BB%93%E5%BA%93%E5%90%8D%5D)">https://raw.githubusercontent.com/[username\]/[仓库名]](https://link.zhihu.com/?target=https%3A//raw.githubusercontent.com/%5Busername%5D/%5B%E4%BB%93%E5%BA%93%E5%90%8D%5D)</a></p>
-<p>但是使用这种方式访问图片巨慢，所以教程中使用了jsdelivr作为cdn加速。改变域名即可，不需要任何其他配置。</p>
-<p>2.配置完成，可能出现不能上传的情况，请大家耐心检查，也许某一步的配置出现了问题，就像检查bug一样耐心、细心。想象一下图床搭建成功后，写起文章来的丝滑感，是不是又有动力了？</p>
-<h2 id="4-PicGo集成Typora"><a href="#4-PicGo集成Typora" class="headerlink" title="4. PicGo集成Typora"></a>4. PicGo集成Typora</h2><p>使用MarkDown语法写文章，我使用的编辑器是typora，一款超级好用的编辑器。在一个编辑框内，编辑完成后，可以马上显示MarkDown语法效果。</p>
-<p>举个栗子：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/v2-ce0b207c19d6ca32ac22937f1dc6cfcd_1440w.webp" alt="img"></p>
-<p>并且typora可以和picGo联合在一起使用，当你在编辑器中插入、粘贴图片时，typora+picGo的组合方式，可以自动把图片上传至github保存。</p>
-<h3 id="4-1-下载安装"><a href="#4-1-下载安装" class="headerlink" title="4.1 下载安装"></a>4.1 下载安装</h3><p>Typora新版本是收费的，所以建议大家使用旧版本就可以了，完全能满足写作需求。</p>
-<p>旧版本安装包和picGo放在一起了（下载地址见上文），大家按需取用即可。</p>
-<p>下载完成后正常步骤安装即可。</p>
-<h3 id="4-2-配置"><a href="#4-2-配置" class="headerlink" title="4.2 配置"></a>4.2 配置</h3><p>在typora顶部菜单界面，选择“文件” - &gt; “偏好设置”，设置图片存储方式。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/v2-f595cf5c8a0e3b62944c68deb8fb5878_1440w.webp" alt="img"></p>
-<p>选择图片存储方式：上传图片。</p>
-<p>上传服务：PicGo(app)</p>
-<p>PicGo路径：picGo安装的地址</p>
-<p>设置完成，点击“验证图片上传”，提示上传成功，即代表配置成功。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/v2-e27e9f198aef7bdea365549b2257025d_1440w.webp" alt="img"></p>
-<p>注意一点，typora图片验证中的端口，需要与picGo中的server设置内的端口一致，否则typora中不能正常上传。</p>
-<h3 id="4-3-picGo监听端口设置"><a href="#4-3-picGo监听端口设置" class="headerlink" title="4.3 picGo监听端口设置"></a>4.3 picGo监听端口设置</h3><p>选择“PicGo设置”–&gt;“设置server”</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/v2-8ff622935a6b0597a21e68e7575e16ef_1440w.webp" alt="img"></p>
-<p>【此处有坑】如果监听端口不是36677，则需要修改为36677。否则会出现picGo能正常上传 图片，而typora上传图片失败的情况。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/v2-304589efaed9a1ba3caf5e8827e77582_1440w.webp" alt="img"></p>
-<p>最后，在苹果电脑中可以使用<strong>Typora+Ipic+Github</strong>的方式，有兴趣的话可以自行尝试</p>
-<p><strong>总结：github+picGo+typora他们三个是好基友。</strong></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/03/15/%E4%BD%BF%E7%94%A8Github-picGo%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A%EF%BC%8C%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-小鼠体外受精" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/03/15/%E5%B0%8F%E9%BC%A0%E4%BD%93%E5%A4%96%E5%8F%97%E7%B2%BE/" target="_blank">小鼠体外受精2</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/03/15/%E5%B0%8F%E9%BC%A0%E4%BD%93%E5%A4%96%E5%8F%97%E7%B2%BE/" class="archive-article-date">
-        <time datetime="2024-03-14T16:08:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-15</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><a href="javascript:;">杨伟伟</a>，<a href="javascript:;">顾美儿</a>，<a href="javascript:;">桂飞</a>，<a href="javascript:;">宋晓明</a>，<a href="javascript:;">孙筱品</a>，<a href="javascript:;">唐蔚</a>，<a href="javascript:;">吴宝金 </a></p>
-<p>来源DOI:  <a target="_blank" rel="noopener" href="https://doi.org/10.21769/BioProtoc.1010947">10.21769&#x2F;BioProtoc.1010947</a></p>
-<p>杨伟伟, 顾美儿, 桂飞, 宋晓明, 孙筱品, 唐蔚, 吴宝金. (2022). 小鼠体外受精. &#x2F;&#x2F; 实验动物胚胎操作实验手册. <em>Bio-101</em>: e1010947. DOI: <a target="_blank" rel="noopener" href="https://doi.org/10.21769/BioProtoc.1010947">10.21769&#x2F;BioProtoc.1010947</a>.</p>
-<p>第一次发表时间:  2022&#x2F;09&#x2F;20</p>
-<p><strong>摘要:</strong> 小鼠体外受精实验是基因工程小鼠的辅助生殖及遗传工程小鼠精子库的重要支撑技术。在常规In Vitro Fertilization(IVF)操作的基础上，Nakagata改良法在modified human tubal fluid (mHTF)中加入Reduced glutathione(GSH)作为受精液（mHTF-GSH），在modified Krebs-Ringer’s bicarbonate medium中加入Methyl-β-cyclodextrin作为获能液（TYH with MβCD），显著提升了体外受精效率。该法适用于新鲜及冷冻复苏精子的体外受精操作。</p>
-<p>关键词: 小鼠, mHTF-GSH, TYH with MβCD, 体外受精</p>
-<hr>
-<h3 id="材料与试剂"><a href="#材料与试剂" class="headerlink" title="材料与试剂"></a>材料与试剂</h3><h4 id="材料"><a href="#材料" class="headerlink" title="材料"></a><strong>材料</strong></h4><ol>
-<li>培养皿35mm×10mm（Corning，货号：430588）</li>
-<li>胚胎移植口吸管（北京吉田生物科技有限公司，规格：1.0×500mm）</li>
-<li>吸头（Axygen，货号：T-300-R-S、T-1000-B-R-S、T-200-Y-R-S）</li>
-<li>无菌注射器（上海米沙瓦医科工业有限公司，规格：1mL）</li>
-<li>50mL离心管（BD，货号：352070）</li>
-<li>滤纸（宝威德，规格：60 × 60 cm）</li>
-</ol>
-<p><strong>动物：</strong>3-6月龄成年雄鼠，1-2只&#x2F;品系。4-5周龄雌性供体小鼠，4-5只&#x2F;品系（根据雄性小鼠背景品系选用)。本实验室所用动物来自杭州师范大学实验动物中心（生产许可证号：SCXK（浙）2016-0004，使用许可证号：SYXK（浙）2016-0014），饲养在独立换气笼盒系统，动物自由饮水、自由采食经Co60辐射的灭菌饲料。</p>
-<h4 id="试剂"><a href="#试剂" class="headerlink" title="试剂"></a><strong>试剂</strong></h4><ol>
-<li>注射用血促性素（PMSG, Pregnant Mare Serum Gonadotropin）(宁波市三生药业有限公司, 规格:1000IU×10瓶)和注射用绒促性素（hCG, human Chorionic Gonadotropin,）(宁波市三生药业有限公司, 规格:1000IU×10支)</li>
-<li>矿物油（Sigma，货号：M8410）</li>
-<li>mHTF：按表1配制。</li>
-<li>mHTF-GSH：按表2配制。</li>
-<li>TYH with MβCD（TYH with Methyl-β-cyclodextrin）按表3配制。</li>
-</ol>
-<h4 id="仪器设备"><a href="#仪器设备" class="headerlink" title="仪器设备"></a>仪器设备</h4><ol>
-<li>100mL烧杯（蜀牛，货号：GG-17）</li>
-<li>100mL容量瓶（天玻，货号：TB9）</li>
-<li>生物安全柜（Thermo Scientific，型号：1384 ）</li>
-<li>超净工作台（苏净安泰，型号：HS-840-U）</li>
-<li>CO2培养箱（Thermo Scientific，型号：3111 ）</li>
-<li>体视显微镜（Nikon，型号： SMZ745T）</li>
-<li>电子天平（Sartorius，型号：MSA125P-CE）</li>
-<li>电热恒温水浴锅（上海精宏实验设备有限公司，型号：DK-S22型）</li>
-<li>微量移液器 （eppendorf，货号：3120000224、3120000240）</li>
-<li>手术剪（上海金钟，型号：J21010）</li>
-<li>医用镊（上海金钟，型号：J40120）</li>
-<li>维纳斯剪（上海金钟，型号：YC0040）</li>
-<li>显微镊（上海金钟，型号：WA3030）</li>
-<li>眼科直剪（上海金钟，型号：Y00030）</li>
-<li>眼科直镊（上海金钟，型号：JD1050）</li>
-</ol>
-<hr>
-<h3 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h3><h4 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h4><ol>
-<li><p>超数排卵：供体小鼠腹腔注射PMSG，每只5IU（0.1mL）。46-48h后，腹腔注射hCG，每只5IU（0.1mL）。</p>
-</li>
-<li><p>精子获能滴（TYH with MβCD，如图1-A）：用TYH with MβCD液在培养皿内做一个100µL液滴（冻存精液滴为90µL），加3-4mL矿物油覆盖，在培养箱（37℃、5%CO2）孵育至少30min。</p>
-</li>
-<li><p>受精滴（mHTF-GSH，如图1-B）：用mHTF-GSH液在培养皿内做两个200µL液滴（冻存精液滴为90µL），加3-4mL矿物油覆盖，在培养箱（37℃、5%CO2）孵育至少10min。</p>
-</li>
-<li><p>清洗滴（mHTF，如图1-C）：用mHTF液在培养皿内做3个80µL液滴和1个160µL液滴，加3-4mL矿物油覆盖，在培养箱（37℃、5%CO2）孵育至少30min。</p>
-</li>
-<li><p>水浴准备：恒温水浴锅开启37℃水浴。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/20220811202317_0252.jpg" alt="img"><br><strong>图1. 小鼠体外受精实验培养滴</strong> A. 精子获能滴（TYH with MβCD） B. 受精滴（mHTF-GSH） C. 清洗滴（mHTF），胚胎按照图中白色箭头方向清洗转移</p>
-</li>
-</ol>
-<hr>
-<h4 id="二、操作流程"><a href="#二、操作流程" class="headerlink" title="二、操作流程"></a>二、操作流程</h4><ol>
-<li><p>精子的采集及获能</p>
-</li>
-<li><p>卵母细胞采集（如图2-D,E,F）：将注射hCG的供体小鼠（15-17h后）断颈处死，酒精消毒。剪开背部皮肤，快速找到输卵管，在滤纸上吸干，放入受精滴培养皿的矿物油中。在显微镜下找到膨大部，牵引卵丘团流出，并将其拖入mHTF-GSH滴中（取至4-6簇卵丘团）。注意：为保证质量，在处死动物到卵丘团放入液滴的过程中，务必在30sec内完成。</p>
-</li>
-<li><p>体外受精（如图2-G,H）：精液孵育50-60min后，观察精子活力，并沿着TYH with MβCD滴的外围用移液器吸取4-5µL精液（冷冻复苏精液可根据精子活力及浓度增加量至10-20µL），放入含有卵母细胞的mHTF-GSH滴中，并将其放入培养箱（37℃、5%CO2）培养3h。</p>
-</li>
-<li><p>清洗：受精后培养3h，将细胞先转入80µL的mHTF滴中，3次清洗后，转入160µL的mHTF滴培养6h，去除未受精的卵母细胞和含有单原核的孤雌生殖卵母细胞，保留含有第二极体和两个原核的受精卵细胞（如图2-I,J）。</p>
-</li>
-<li><p>受精卵过夜培养：次日挑选发育正常的2-细胞（如图2-K），用胚胎移植口吸管转移至mHTF的第4个滴中，移植或者胚胎冻存备用。同时记录2-细胞、单细胞和异型细胞的数量，计算受精率。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/20220811203426_9863.jpg" alt="img"><br><strong>图2. 小鼠体外受精过程.</strong> A. 附睾的解剖位置 A-1. 附睾组织结构图 B. 取出的附睾尾 C. 冷冻精子复苏精液 D. 输卵管解剖位置 E. 输卵管壶腹部 F.卵母细胞-卵丘团 G. 获能完成的精子悬液 H. 受精 I、J. 受精6小时后细胞形态 K. 受精24小时后细胞形态</p>
-</li>
-</ol>
-<p>溶液配方</p>
-<ol>
-<li><p>mHTF配制表</p>
-</li>
-<li><p>mHTF-GSH配制表</p>
-</li>
-<li><p>TYH with MβCD配制表</p>
-<p>表1：mHTF配制表（100mL体积）</p>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>重量（mg）</th>
-<th>品牌</th>
-<th>货号</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>NaCl</td>
-<td>593.8</td>
-<td>Sigma</td>
-<td>S-5886</td>
-</tr>
-<tr>
-<td>KCl</td>
-<td>35.0</td>
-<td>Sigma</td>
-<td>P-5405</td>
-</tr>
-<tr>
-<td>CaCl2</td>
-<td>57.0</td>
-<td>Sigma</td>
-<td>G-5670</td>
-</tr>
-<tr>
-<td>Glucose</td>
-<td>50.0</td>
-<td>Sigma</td>
-<td>G-6152</td>
-</tr>
-<tr>
-<td>MgSO4</td>
-<td>2.4</td>
-<td>Sigma</td>
-<td>M2643</td>
-</tr>
-<tr>
-<td>KH2PO4</td>
-<td>5.4</td>
-<td>Sigma</td>
-<td>P-5655</td>
-</tr>
-<tr>
-<td>Sodium pyruvate</td>
-<td>3.5</td>
-<td>Sigma</td>
-<td>P-4562</td>
-</tr>
-<tr>
-<td>60%sodium lacate</td>
-<td>0.34mL</td>
-<td>Sigma</td>
-<td>L-7900</td>
-</tr>
-<tr>
-<td>NaHCO3</td>
-<td>210.0</td>
-<td>Sigma</td>
-<td>S-5761</td>
-</tr>
-<tr>
-<td>Penicillin G</td>
-<td>7.5</td>
-<td>BD</td>
-<td>C15935000</td>
-</tr>
-<tr>
-<td>Streptomycin</td>
-<td>5.0</td>
-<td>Sigma</td>
-<td>S-1277</td>
-</tr>
-<tr>
-<td>Bovine serum albumin</td>
-<td>400.0</td>
-<td>Sigma</td>
-<td>B2064</td>
-</tr>
-<tr>
-<td>0.5%phenol red</td>
-<td>0.04ml</td>
-<td>Sigma</td>
-<td>P-0290</td>
-</tr>
-</tbody></table>
-<p>配制方法：在100mL的烧杯中，加入80mL的灭菌水(Sigma,W1503)，将上述药品依次加入混匀，容量瓶定容至100mL。0.22µM针式过滤器过滤分装在1.5mL的离心管内。4℃保存可用30天。</p>
-<p>表2：mHTF-GSH配制（1mL体积）</p>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>重量（mg）</th>
-<th>品牌</th>
-<th>货号</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>GSH</td>
-<td>1.5</td>
-<td>Sigma</td>
-<td>G4251</td>
-</tr>
-<tr>
-<td>mHTF</td>
-<td>1（mL）</td>
-<td>-</td>
-<td>无</td>
-</tr>
-</tbody></table>
-<p>注：“-” 为混合试剂，配方参见表1</p>
-<p>配制方法：称取1.5mg(冷冻精液取3.1mg)的GSH，溶解在装有mHTF(1mL)的1.5mL离心管内，再分次将100µL上述溶液转移至装有mHTF（900µL）的1.5mL离心管内，混匀密封，-20℃冷冻保存备用，有效期约30天。</p>
-<p>表3：TYH with MβCD配制（100mL体积）</p>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>重量（mg）</th>
-<th>品牌</th>
-<th>货号</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>NaCl</td>
-<td>697.6</td>
-<td>Sigma</td>
-<td>S-5886</td>
-</tr>
-<tr>
-<td>KCl</td>
-<td>35.6</td>
-<td>Sigma</td>
-<td>P-5405</td>
-</tr>
-<tr>
-<td>CaCl2.2H2O</td>
-<td>25.1</td>
-<td>Sigma</td>
-<td>G-5670</td>
-</tr>
-<tr>
-<td>Glucose</td>
-<td>100.0</td>
-<td>Sigma</td>
-<td>G-6152</td>
-</tr>
-<tr>
-<td>MgSO4</td>
-<td>14.3</td>
-<td>Sigma</td>
-<td>M2643</td>
-</tr>
-<tr>
-<td>KH2PO4</td>
-<td>16.2</td>
-<td>Sigma</td>
-<td>P-5655</td>
-</tr>
-<tr>
-<td>Sodium pyruvate</td>
-<td>5.5</td>
-<td>Sigma</td>
-<td>P-4562</td>
-</tr>
-<tr>
-<td>Polyvinyl alcohol</td>
-<td>100.0</td>
-<td>Sigma</td>
-<td>P-8136</td>
-</tr>
-<tr>
-<td>Penicillin G</td>
-<td>7.5</td>
-<td>BD</td>
-<td>C15935000</td>
-</tr>
-<tr>
-<td>Streptomycin</td>
-<td>5.0</td>
-<td>Sigma</td>
-<td>S-1277</td>
-</tr>
-<tr>
-<td>Methyl-β-cyclodextrin</td>
-<td>98.3</td>
-<td>Sigma</td>
-<td>C-4555</td>
-</tr>
-<tr>
-<td>NaHCO3</td>
-<td>210.6</td>
-<td>Sigma</td>
-<td>S-5761</td>
-</tr>
-</tbody></table>
-<p>配制方法：在100mL烧杯中加入70mL的灭菌水（Sigma,W1503），将上述药品依次加入，混匀；同时，100mg（Polyvinyl alcohol）放入含有10mL灭菌水的离心管中，60℃水浴10min，溶解后加入烧杯中，再依次加入其它试剂溶解，最后定容至100mL。0.22µM针式过滤器过滤分装在1.5mL的离心管内。4℃保存可用30天。</p>
-<p>PMSG配制方法：将1000IU &#x2F;支的PMSG稀释在20mL灭菌水中，制成50IU&#x2F;mL的备用液。-20℃冷冻保存可使用14天。</p>
-<p>hCG配制方法：将1000IU&#x2F;支的hCG稀释在20mL灭菌水中，制成50IU&#x2F;mL的备用液。-20℃冷冻保存可使用14天。</p>
-</li>
-</ol>
-<hr>
-<h3 id="经验体会"><a href="#经验体会" class="headerlink" title="经验体会"></a>经验体会</h3><ol>
-<li>供体小鼠年龄的要求，常用4-5周龄背景品系雌鼠，超排效果较好，获取的卵母细胞数量较多。6-8周龄小鼠的超排效果相对较差。8周龄以上的雌鼠，在超排时，根据体重适当加大超排剂量，超排效果尚可。</li>
-<li>体外受精对雄鼠的要求不高，健康雄鼠精液质量较好，受精率较高一般均能达到90%上。若雄鼠年龄偏大，精液质量欠佳，受精率会相对较低一般在50-80%左右。个别品系及个体差异出现过30%左右的受精率。可根据雄鼠状态相应准备足够数量的供体雌鼠。</li>
-<li>卵母细胞的采集，尽可能在小鼠断颈后30sec内完成，如果无人配合，可单只处死快速采集，可减少异形细胞或孤雌生殖卵母细胞的出现。</li>
-<li>体外受精时精液的用量一般为3-5μL，可根据精液的浓度和精子活力适当调整加液量。冷冻复苏时精液应加倍。</li>
-<li>在受精后6h，可观察到含有第二极体和两个原核的受精卵细胞，同时含有单原核的孤雌生殖卵母细胞，这种细胞需剔除。</li>
-<li>移卵针的挑选。如果是自行制作的，应保证移卵针前端圆润，以免伤到细胞，同时应注意孔径大小，若过大，在吸放卵细胞时不好控制，导致清洗不干净；若过小，有可能会损伤细胞，吸放比较费力。目前有商品化的移卵针，可根据情况自行选用。</li>
-<li>在TYH with MβCD配制过程中，因聚乙烯醇可溶性不好，需要先溶于水，涡旋混匀，在60℃水浴锅内温浴10min，之后再加入总的液体中。</li>
-<li>加入还原性谷胱甘肽的HTF作为受精液，可有效提高受精率，尤其对冷冻复苏精子尤为明显。</li>
-</ol>
-<hr>
-<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
-<li>Takeo, T. and Nakagata, N. (2011). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/21778138">Reduced glutathione enhances fertility of frozen&#x2F;thawed C57BL&#x2F;6 mouse sperm after exposure to methyl-beta-cyclodextrin.</a> <em>Biol Reprod</em> 85(5): 1066-1072.</li>
-<li>Takeo, T., Sztein, J. and Nakagata, N. (2019). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/30353518">The CARD Method for Mouse Sperm Cryopreservation and In Vitro Fertilization Using Frozen-Thawed Sperm.</a> <em>Methods Mol Biol</em> 1874: 243-256.</li>
-<li>Guan, M., Bogani, D., Marschall, S., Raspa, M., Takeo, T., Nakagata, N. and Fray, M. (2014). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/25723919">In vitro fertilization in mice using the MBCD-GSH protocol.</a> <em>Curr Protoc Mouse Biol</em> 4(2): 67-83.</li>
-<li>Nakagata, N., Takeo, T., Fukumoto, K., Haruguchi, Y., Kondo, T., Takeshita, Y., Nakamuta, Y., Umeno, T. and Tsuchiyama, S. (2014). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/24492659">Rescue in vitro fertilization method for legacy stock of frozen mouse sperm.</a> <em>J Reprod Dev</em> 60(2): 168-171.</li>
-<li>Takeo, T. and Nakagata, N. (2010). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/20357317">Combination medium of cryoprotective agents containing L-glutamine and methyl-{beta}-cyclodextrin in a preincubation medium yields a high fertilization rate for cryopreserved C57BL&#x2F;6J mouse sperm.</a> <em>Lab Anim</em> 44(2): 132-137.</li>
-<li>Takeo, T., Hoshii, T., Kondo, Y., Toyodome, H., Arima, H., Yamamura, K., Irie, T. and Nakagata, N. (2008). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/18046011">Methyl-beta-cyclodextrin improves fertilizing ability of C57BL&#x2F;6 mouse sperm after freezing and thawing by facilitating cholesterol efflux from the cells.</a> <em>Biol Reprod</em> 78(3): 546-551.</li>
-</ol>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/03/15/%E5%B0%8F%E9%BC%A0%E4%BD%93%E5%A4%96%E5%8F%97%E7%B2%BE/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-小鼠受精卵原核注射及胞浆注射" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/03/15/%E5%B0%8F%E9%BC%A0%E5%8F%97%E7%B2%BE%E5%8D%B5%E5%8E%9F%E6%A0%B8%E6%B3%A8%E5%B0%84%E5%8F%8A%E8%83%9E%E6%B5%86%E6%B3%A8%E5%B0%84/" target="_blank">小鼠受精卵原核注射及胞浆注射</a>
-  
-    </h1>
-  
-
-
-  
+  <div id="giteement-ctn"></div>
   
-<a href="/2024/03/15/%E5%B0%8F%E9%BC%A0%E5%8F%97%E7%B2%BE%E5%8D%B5%E5%8E%9F%E6%A0%B8%E6%B3%A8%E5%B0%84%E5%8F%8A%E8%83%9E%E6%B5%86%E6%B3%A8%E5%B0%84/" class="archive-article-date">
-        <time datetime="2024-03-14T16:04:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-15</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><a href="javascript:;">唐蔚</a>，<a href="javascript:;">李周结</a>，<a href="javascript:;">俞骞</a>，<a href="javascript:;">陈子尘</a>，<a href="javascript:;">王倩雯</a>，<a href="javascript:;">陈国元</a>，<a href="javascript:;">丁一夫</a>，<a href="javascript:;">吴宝金 </a></p>
-<p>来源DOI:  <a target="_blank" rel="noopener" href="https://doi.org/10.21769/BioProtoc.1010948">10.21769&#x2F;BioProtoc.1010948</a></p>
-<p>第一次发表时间:  2022&#x2F;09&#x2F;20</p>
-<p><strong>摘要:</strong> 将外源基因DNA序列直接注射到原核期的受精卵雄性原核中，或将sgRNA及Cas9等基因打靶构建注入受精卵的胞浆内，经过显微注射的受精卵再移植到受体动物的输卵管或子宫内继续发育，进而可得到转基因&#x2F;基因敲除动物。</p>
-<h3 id="材料与试剂"><a href="#材料与试剂" class="headerlink" title="材料与试剂"></a>材料与试剂</h3><h4 id="（一）材料"><a href="#（一）材料" class="headerlink" title="（一）材料"></a>（一）材料</h4><ol>
-<li><h5 id="手术器械"><a href="#手术器械" class="headerlink" title="手术器械"></a>手术器械</h5><p>系线镊（协和, MR-F201A）<br>弯嘴眼科镊（施强, JYN1030）<br>小血管剪（金钟, JA2405）<br>止血夹（灵涛, LW0080）<br>缝合钳（三友, SY11Cr）<br>带线缝合针（双箭, YY0166-2002）</p>
-</li>
-<li><p>注射针（带芯毛细玻璃管，SUTTER INSTRUMENT BF100-78-10）</p>
-</li>
-<li><p>微量注射枪头（Eppendorf Microloader货号：5242956003）</p>
-</li>
-<li><p>固定针（无芯毛细玻璃管，SUTTER INSTRUMENT B100-75-10）</p>
-</li>
-<li><p>吸卵针（国产毛细管，规格0.9-1.1×120 mm）</p>
-</li>
-<li><p>培养皿（FALCON 353001、353002）</p>
-</li>
-</ol>
-<h4 id="（二）试剂"><a href="#（二）试剂" class="headerlink" title="（二）试剂"></a>（二）试剂</h4><ol>
-<li>FHM小鼠胚胎培养液（MILLIPORE公司，产品目录号：MR-025-D）</li>
-<li>KSOM小鼠胚胎培养液（MILLIPORE公司，产品目录号：MR-121-D）</li>
-<li>矿物油（SIGMA M8410）</li>
-<li>透明质酸酶（SIGMA H3506 ）</li>
-<li>孕马血清PMSG（宁波三生）</li>
-<li>人绒毛膜促性腺激素HCG（宁波三生）</li>
-<li>细胞松弛素CB（SIGMA C6762）</li>
-<li>二甲基亚砜细胞冻存液DMSO（SIGMA D2650）</li>
-<li>2,2,2-Tribromoethanol（SIGMA-ALDRICH T48402）</li>
-<li>2-Methyl-2-butanol（SIGMA 240486）</li>
-<li>ULTRA PURE WATER（MILLIPORE TMS-006-A）</li>
-<li>PMSG（见溶液配方）</li>
-<li>HCG（见溶液配方）</li>
-<li>2.5%阿佛丁麻醉剂（见溶液配方）</li>
-<li>CB-HCZB（见溶液配方）</li>
-</ol>
-<h4 id="（三）供受体小鼠"><a href="#（三）供受体小鼠" class="headerlink" title="（三）供受体小鼠"></a>（三）供受体小鼠</h4><ol>
-<li>供体雌鼠（C57BL&#x2F;6J、3-4周）</li>
-<li>供体雄鼠（C57BL&#x2F;6J、大于8周）</li>
-<li>假孕雌鼠（ICR、大于6周）</li>
-<li>结扎雄鼠（ICR、大于6周）</li>
-</ol>
-<h3 id="仪器设备"><a href="#仪器设备" class="headerlink" title="仪器设备"></a>仪器设备</h3><ol>
-<li>拉针仪（SUTTER INSTRUMENT P-97）</li>
-<li>煅针仪（NARISHIGE MF-900）</li>
-<li>实体镜（NIKON SMZ800N）</li>
-<li>倒置显微镜（OLYMPUS IX73）</li>
-<li>显微操作系统（NARISHIGE IM-9C）</li>
-<li>离心机（eppendorf 5430）</li>
-<li>CO2恒温培养箱（Thermo i160）</li>
-<li>超洁净工作台（万里 SW-CJ-2FX）</li>
-<li>热台</li>
-<li>磁力搅拌器（CORNING PC-420D）</li>
-</ol>
-<h3 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h3><h4 id="（一）实验动物的准备"><a href="#（一）实验动物的准备" class="headerlink" title="（一）实验动物的准备"></a>（一）实验动物的准备</h4><ol>
-<li>受精卵供应鼠：选用3到4周龄的C57BL&#x2F;6J雌鼠，或根据研究需要选择特定的品系。</li>
-<li>可育雄鼠：选用8周龄以上的C57BL&#x2F;6J雄鼠，最好有过交配记录，或根据研究需要选择特定的品系。</li>
-<li>结扎雄鼠（需提前一个月准备，见相关章节）。</li>
-<li>假孕雌鼠：由6周龄以上ICR雌鼠与结扎雄鼠交配所成，其性周期与受精卵供应鼠保持一致。</li>
-</ol>
-<h4 id="（二）受精卵的制备"><a href="#（二）受精卵的制备" class="headerlink" title="（二）受精卵的制备"></a>（二）受精卵的制备</h4><p>若选用C57BL&#x2F;6J背景鼠作为实验小鼠，选取10只3-4周龄的雌性小鼠，于下午19:00-20:00按5IU&#x2F;只腹腔注射孕马血清(PMSG)，46-48小时之后注射按5IU&#x2F;只腹腔注射人绒毛膜促性腺激素(HCG)，然后与可育雄鼠合笼交配，次日上午选出有阴道栓的雌鼠取受精卵。查栓当天10:00-12:00将有阴道栓的小鼠脱颈椎处死，打开腹腔后将完整的输卵管带一小段子宫剪下，置于FHM操作液中，在解剖镜下找到输卵管的膨大部，用1 ml注射器针头撕开，带有卵丘细胞的卵团自行流出。随后将卵团移入含有lmg&#x2F; ml透明质酸酶(Hyaluronidase)的FHM操作液内1 min，溶去卵丘细胞，立即用预先拉制的吸管将卵子吸至新鲜的FHM操作液中洗涤2-3次，然后再将受精卵吸至另外新鲜FHM操作液中，如此进行4-5次，直至清洗干净。最后将受精卵吸至含多个KSOM培养液滴的35 mm培养皿中，此KSOM培养皿需提前放入二氧化碳恒温培养箱内平衡超过10 min，并用矿物油覆盖。待卵原核发育清晰饱满后即可做显微注射。</p>
-<h4 id="（三）假孕雌鼠的制备（见相关章节）"><a href="#（三）假孕雌鼠的制备（见相关章节）" class="headerlink" title="（三）假孕雌鼠的制备（见相关章节）"></a>（三）假孕雌鼠的制备（见相关章节）</h4><p>在供卵鼠与可育雄鼠合笼当天，挑选处于发情期的ICR雌鼠与结扎雄鼠合笼，第二天早上检查交配情况，选择有阴栓的假孕雌鼠作为受体使用。</p>
-<h4 id="（四）显微注射系统的建立"><a href="#（四）显微注射系统的建立" class="headerlink" title="（四）显微注射系统的建立"></a>（四）显微注射系统的建立</h4><ol>
-<li><p>注射针的拉制<br>选用外径为1 mm，内径0.75 mm-0.8 mm带芯毛细玻璃管，装在水平拉针仪上，拧紧左右两侧的夹子，做好固定，并使其中间部位对准加热丝。设定好电流、拉力和时间。然后按开始键，等待毛细管被拉成两个所需的微注射针头。</p>
-</li>
-<li><p>持卵针（Holder）的拉制<br>选用外径为1 mm，内径0.75 mm无芯毛细玻璃管作为制作持卵针的材料，装在拉针仪上，拧紧左右两侧的夹子，做好固定，并使其中间部位对准加热丝。设定好电流、拉力和时间。按键拉出针坯，用细砂轮在直径为80-100 μm处将玻璃针切断，尽量使断面平齐，然后在煅针仪上处理断面，将断面烧圆。最后用煅针仪铂金丝在距针尖2-3 mm处，将针坯弯成20-30°。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/20221017015809_4598.jpg" alt="img"><br>注射针安装<br>左图：注射针角度过大；右图：注射针角度合适</p>
-</li>
-</ol>
-<h4 id="（五）原核注射操作过程"><a href="#（五）原核注射操作过程" class="headerlink" title="（五）原核注射操作过程"></a>（五）原核注射操作过程</h4><ol>
-<li>注射针头装液<br>将制备好的DNA溶液（浓度通常为20-40ng&#x2F;ul）12,000 rpm离心5 min，使用无菌的微量加样器从注射针头的后部加入0.5～1 μl的注射样品。</li>
-<li>将注射针和持卵针安装在显微操作臂上。</li>
-<li>原核注射的操作：<ol>
-<li>在100 mm的培养皿中央制作两排20 μl的CB-HCZB操作液，加入5ml矿物油覆盖。并将培养皿液滴调整到显微镜视野中央，然后吸取10-20枚细胞核清晰的受精卵吹到液滴中央，在吹卵过程中尽量不要吹出气泡以免影响视野。</li>
-<li>用低倍物镜对准受精卵调焦，轻轻的落下针尖，并将注射针尖推入视野中心，通过微操作系统的微调调整注射针位置，直到清晰见到针尖为止。用同样的方法调整持卵针的位置，使持卵针开口端正对注射针尖。</li>
-<li>使用持卵针吸取边缘清晰、形状饱满且细胞核明显的受精卵，调整受精卵的位置，使受精卵体积较大的雄性原核正对注射针尖且两者之间的距离最小。将放大倍数调至工作倍数（目镜20×—40×），进一步调整显微镜焦距和注射针及持卵针的位置，使细胞核和注射针尖均达到最佳清晰程度。推动操纵杆，小心进针，使注射针针尖进入细胞核。</li>
-<li>加大注射压，直到细胞核明显胀大为止。</li>
-<li>轻而迅速往外拔针头，直到离开细胞。</li>
-<li>移动显微镜载物台，找到下一颗受精卵，重复以上步骤。注射完毕，将受精卵放回KSOM培养液中，在恒温培养箱中继续培养，吸取下一批受精卵继续进行，直到注完为止。将注射过受精卵培养过夜。</li>
-<li>经一夜培养，选择发育良好的二细胞期的胚胎用于移植。</li>
-</ol>
-</li>
-</ol>
-<h4 id="（六）胞浆注射"><a href="#（六）胞浆注射" class="headerlink" title="（六）胞浆注射"></a>（六）胞浆注射</h4><ol>
-<li>将离心完的核酸或其他溶液上清通过配套的微量注射枪头经底部加入胞浆注射针（微量注射时，2 μl溶液就足以完成数小时的注射），将针头向下静置数分钟（也可以用胶带纸粘在实验台上），可以明显观察到针尖端的空气慢慢被液体替换，同时可能观察到微小气泡上浮。基因敲除时注射物的浓度一般是：sgRNA 12.5ng&#x2F;μl, Cas9 mRNA 25 ng&#x2F;μl；条件性基因敲除注射物的浓度通常是：sgRNA 5ng&#x2F;μl, Cas9 mRNA 10ng&#x2F;μl, Donor质粒10ng&#x2F;μl 。</li>
-<li>将持卵针与充分静置后的注射针安装上显微操作仪，注射针的角度应尽可能的平（因为胞浆注射针无法像其他显微操作的注射针一样弯折角度，为了确保注射后受精卵的存活率，应尽可能降低注射针与载物台的夹角，详情见图1）。</li>
-<li>在10厘米细胞培养皿盖或其他专用的注射皿上制作数个CB-HCZB液滴，其上覆盖以矿物油，用手持式移卵管转移适量的受精卵至CB-HCZB液滴中。一般情况下，可以明显的分辨出受精卵的两个原核，而未受精的卵母细胞只能观察到1个或无法观察到原核。</li>
-<li>持卵针和注射针调整到视野中心，将微量注射仪程序调至FUNC 4，即持续注射模式，初始压力值可以设置高一些，约在600左右，轻轻地将注射针的针头“撞”在持卵针上或在持卵针上拨动，将针头部封闭处开放。判断是否撞开的标准是，如果将针头靠近受精卵能观察到受精卵开始旋转，则证明针头已经开放。此时第一次调整注射压力，最适值是针头靠近受精卵，受精卵能缓缓的开始旋转，但不会发生剧烈的前后位移。</li>
-<li>在20倍镜下，先用一些状态差的受精卵测试压力，将注射针轻轻扎入卵胞质内，此时可根据情况第二次调整压力，合适的注射压力是根据针头的粗细与是否堵针决定的，理想的注射压力是受精卵被注射的局部区域出现明显膨胀，但受精卵本身又不能产生明显的膨胀。注射压力在10到1000之间都属正常，但针头越细越容易扎入卵胞质，但同时也越容易堵针，如果发现注射时受精卵膨胀的程度显著性降低或者完全没有膨胀，可以使用机器自带的Clean程序将注射针头以较高压力吹洗，如果多次冲洗仍然堵针，可重复4中撞针的步骤，将针头撞的更粗一些，如果针头粗到难以扎破受精卵，则需要重新装液换针。</li>
-<li>测试调整完压力后，就可以开始注射，为了最大化存活率，应尽可能的减少针停留在受精卵内部的时间，以避免受精卵无法封口导致死亡。重复操作直至所有受精卵注射完毕。</li>
-<li>将注射后的受精卵移回KSOM培养液中继续培养，刚注射完的受精卵会残留CB-HCZB，因此在过夜培养前需要反复洗涤几次。</li>
-</ol>
-<h4 id="（七）胚胎的移植"><a href="#（七）胚胎的移植" class="headerlink" title="（七）胚胎的移植"></a>（七）胚胎的移植</h4><p>将经过显微注射，发育到二细胞期的胚胎移植入0.5天的假孕雌鼠体内（具体操作见相关章节）。</p>
-<p>溶液配方</p>
-<ol>
-<li>PMSG配置<br>将PMSG 冻干粉溶于0.9%NaCl 无菌生理盐水,浓度50IU&#x2F;ml，根据实验需要的量分装到1.5 ml EP 管中。-20 °C至少可保存一个月。</li>
-<li>HCG配置<br>将冻干粉溶于0.9%NaCl 无菌生理盐水,浓度50IU&#x2F; ml，根据实验需要的量分装到1.5 ml EP 管中。-20 °C至少可保存一个月</li>
-<li>2.5%阿佛丁麻醉剂配制<br>称取10g 2,2,2-Tribromoethanol后加入10 ml 2-Methyl-2-butanol，240转&#x2F;25℃避光振荡至沉淀完全消失，配制成浓储液。使用时按照2.5%浓度将浓缩液加入相应的ULTRA PURE WATER（2.5 ml浓缩液：97.5 ml超纯水），280转&#x2F;25℃避光振荡至沉淀完全消失，0.25nm过滤器过滤后即为工作液。</li>
-<li>CB-HCZB 配制方法<br>CB先用2.5 ml DMSO充分溶解，配制成浓储液（每管100 μl分装）。使用时每管浓储加400 μl DMSO配成2mg&#x2F; ml的次级浓储液，再每管2.5 μl分装到Ep管中，使用时每管加入1 ml FHM即为工作液。</li>
-</ol>
-<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
-<li>1.Andras, N., Marina, G., Kristina, V. and Richard, B.(2003). Manipulating the Mouse Embryo. Cold Spring Harbor Laboratory Press. Cold Spring Harbor, New York.</li>
-</ol>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/03/15/%E5%B0%8F%E9%BC%A0%E5%8F%97%E7%B2%BE%E5%8D%B5%E5%8E%9F%E6%A0%B8%E6%B3%A8%E5%B0%84%E5%8F%8A%E8%83%9E%E6%B5%86%E6%B3%A8%E5%B0%84/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-原核显微注射技术实验" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/03/14/%E5%8E%9F%E6%A0%B8%E6%98%BE%E5%BE%AE%E6%B3%A8%E5%B0%84%E6%8A%80%E6%9C%AF%E5%AE%9E%E9%AA%8C/" target="_blank">原核显微注射技术实验1</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/03/14/%E5%8E%9F%E6%A0%B8%E6%98%BE%E5%BE%AE%E6%B3%A8%E5%B0%84%E6%8A%80%E6%9C%AF%E5%AE%9E%E9%AA%8C/" class="archive-article-date">
-        <time datetime="2024-03-14T15:52:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-14</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h2 id="显微注射室和显微工具的准备"><a href="#显微注射室和显微工具的准备" class="headerlink" title="显微注射室和显微工具的准备"></a>显微注射室和显微工具的准备</h2><h3 id="材料"><a href="#材料" class="headerlink" title="材料"></a>材料</h3><h4 id="试剂"><a href="#试剂" class="headerlink" title="试剂"></a>试剂</h4><ol>
-<li>无 水 乙 醇（9 5 % 和 70%)</li>
-<li>盐 酸（1%)</li>
-<li>SafetyCoat Nontoxic Coating (JTBaker 4017-01) 或 Sigmacote (SigmaAldrich)</li>
-</ol>
-<h4 id="仪器"><a href="#仪器" class="headerlink" title="仪器"></a>仪器</h4><ol>
-<li>4in 的 钝 的 不 锈 钢 针（Custom order: Hamilton Co.， Reno， Nevada) 或者纯的18 G 皮肤穿刺针，连着一段内径为 1&#x2F;32 (0.8in) 软 管（Saint-Gobain PerformancePlastics AJC40001)，软管后面安装固定针。</li>
-<li>钻石或金刚石笔</li>
-<li>符合 DIC 的光学载玻片（2 5 mmX 75 mm, 预先清洁）</li>
-<li>真空砂油（ Dow Corning 1597418)</li>
-<li>微型本生灯</li>
-<li>用 钝 的 18 G 针来替换燃烧器，调节本生灯使其发出非常小的火焰。</li>
-<li>微型毛细管（100ul )</li>
-<li>用钻石或金刚石笔，把 毛 细 管 切 成 2 2mm长（每一个显微注射室准备两段)。</li>
-<li>微 锻 仪（DeFonbrune^type or Narishige-type) 配有双目的复合显微镜； 10 X 光学目镜，其中一个装有十字千分尺；物 镜 4X 、 IOX 和 20X (长工作距离）</li>
-<li>装有箱式的钻丝（2.5 mmX2.5 mm或 3 mmX3 mm) 的 P-87&#x2F;P-97Flaming-Brown</li>
-<li>微电极水平拉针仪（Sutter Instruments, Novato California)</li>
-<li>塑料球形移液管（可任意使用）</li>
-<li>载玻片盒用作无尘储存器</li>
-<li>硅 胶（ GE Silicone II), 真空矽油，或者蜡，把毛细管粘到载玻片</li>
-<li>用于固定针的厚壁毛细管（I .Omm OD X 0. 58 mm ID) (World Precision Instruments, Sutter Instruments)</li>
-<li>用于毛细针的薄壁单管有丝毛细管（I.Omm OD X 0 •75 mm ID) (World PrecisionInstruments, Sarasota, Florida； Sutter Instruments)</li>
-<li>注射器用在硅化时对针产生正压（optional, 见步骤 13)</li>
-<li>连 有 6〜8 cm 长 的 软 管 钝 的 18 G 皮 肤 穿 刺 针（1&#x2F;32[1 〇 ])&lt;3&#x2F;32[OD]\1&#x2F;32[wall])(Saint-GobainPerformance Plastics AJC40001)，软 管 连 接 到 20cc 可任意处置的有卡式胶筒盖注射器。</li>
-</ol>
-<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><h5 id="准备显微注射室"><a href="#准备显微注射室" class="headerlink" title="准备显微注射室"></a>准备显微注射室</h5><p>1•用少量硅胶（GESiliconeII) 将一段 22m m 长 IOOul 的毛细管粘到 25m m X 75m m 预先准备好的载玻片上，毛细管与载玻片长边平行，距离边缘 2 m m 。</p>
-<p>2 •在载玻片的另一边相同位置沿着边再粘一根 22m m 长的毛细管，在运行的组织培养箱内过夜干燥胶水。</p>
-<p>3•用 1 % 盐酸彻底洗净载玻片，用蒸馈水洗几遍，最后用乙醇清洗。</p>
-<p>4•用可随意使用的塑料球形移液管在载玻片间隔加硅胶溶液，然后用强流蒸馏水冲洗几次。</p>
-<p>SafetyCoat Nontoxic Coating 是最好的，但是 S gmacote 也可使用。</p>
-<p>5•把显微注射载玻片在组织培养箱中干燥，为防尘放置于塑料载玻片盒中。<br>显微工具制作：拉取胚胎固定针</p>
-<p>6•在距厚壁毛细管（I. 〇 m m O D X O .58m m I D ) —端 2 &#x2F;3 处 加 热 5mm长 一 截 ，拉长到30m m , 使管径在 1 〇〇〜150um 。</p>
-<p>7.在距离固定针较长一端变细点 10〜15m m 处用金刚笔切割拉长的细管，把长的部分与短的部分间折断。</p>
-<p>8.在微锻仪上检查固定针，确保针头是对称的，没有尖或裂缝，确保在显微注射时做好的固定针能把胚胎固定在正确的位置。如果有必要，在微锻仪上用粗丝切断吸管去形成一个对称的面。</p>
-<p>9.用微锻仪的粗丝磨平吸管，并把吸管的开口弄细到 15〜20um ，如果有必要，在吸管的凸出部做一个 5°的弯曲以使得固定针能平行于注射室的面进入显微注射滴。</p>
-<p>10.用微型本生灯的火焰烤平固定针粗的一端，但注意不能使开口封闭</p>
-<hr>
-<h5 id="显微工具制作：-拉显微注射针"><a href="#显微工具制作：-拉显微注射针" class="headerlink" title="显微工具制作： 拉显微注射针"></a>显微工具制作： 拉显微注射针</h5><p>11 . 用 Sutter Instruments P - 9 7 微电极水平拉针仪制作显微注射针，使用系统默认的参数 ： Heat &#x3D; Rampvalue ; Pu ll &#x3D; 50; Delay &#x3D; 80; Pressure &#x3D; 200。调节参数制作一 个全长 7〜9m m 逐渐变细的针， 使针管从大约 2( V m 迅速地变到最后的 0. 5mm 。</p>
-<p>12•在微锻仪的玻璃珠上轻轻地削尖针尖，使得吸管尖在 0.2〜0.5um (Mann and McMahon 1993) 。</p>
-<p>13.可选择的步骤：在削尖吸管尖之前硅化处理显微注射针，以助于减少细胞物质对针尖的黏附性，增加用单针头注射的卵子的数量。操作如下：</p>
-<p>a•把针安装到 20 cc 的注射器上，注射器连有 10 cm 长的 ID 为 1&#x2F;3 2 的软管。</p>
-<p>b•应用注射器的正压，把针尖浸人用 9 5 % 乙醇稀释的 SafetyCoat Nontoxic 无毒涂料中，浸入两次，每 次 5s。</p>
-<p>c. 立即用 9 5 % 乙醇冲洗针尖，接着用 7 0 % 乙醇，然后浸人 0. 2 2 um无菌过滤的蒸馏水中。</p>
-<p>d. 干燥针尖，然后按步骤 12 描述在微锻仪上削尖。</p>
-<p>对固定针和显微注射针的角度调节</p>
-<p>14.在使用 Leica-型显微操纵仪时不要求在拉完显微注射针和固定针后进一步调节角度。在使用 Rail-Mounted Narishige-型显微操作仪时，有必要把显微操作针和固定针的针头做成 30°〜35°的弯曲，以使得针尖能平行于显微注射室进入显微注射 滴 。</p>
-<h2 id="准备显微注射的-DNA"><a href="#准备显微注射的-DNA" class="headerlink" title="准备显微注射的 DNA"></a>准备显微注射的 DNA</h2><h3 id="材料-1"><a href="#材料-1" class="headerlink" title="材料"></a>材料</h3><h4 id="试-剂"><a href="#试-剂" class="headerlink" title="试 剂"></a>试 剂</h4><ol>
-<li>琼脂糖凝胶</li>
-<li>乙 酸 铵（5m ol&#x2F;L )</li>
-<li>DNA 显 微 注 射 缓 冲 液（10 m mol&#x2F;L Tris-HCl pH 7. 5 、 0.1 mmol&#x2F;L EDTA 、注 射 用 水 满 足 所 有 USP Monograph 要 求 [W F I; Invitrogen ])</li>
-<li>使 用 0• 22um 的 SFCA 无 菌 滤 器 过 滤（Millipore)。</li>
-<li>乙 醇（1 0 0 % 和 9 5 % )</li>
-<li>酚 ：氯仿</li>
-<li>质粒</li>
-<li>用于消化质粒的限制性内切核酸酶</li>
-<li>蔗糖溶液1 0 % (m&#x2F;V ) 和 4 0 % (to&#x2F;V ) 溶 于 lm ol&#x2F;L 的 NaCl 中、 10 mmol&#x2F;L Tris-HCl pH 8. 0、lm m ol&#x2F;L EDTA 用 W F I 水准备。使 用 〇.22fzm 的 SFCA 无 菌 滤 器 过 滤（Millipore)。</li>
-</ol>
-<p>T E 缓 冲 液（10m m o l&#x2F;L T ris-Cl p H 8. 0 ， lm m o l&#x2F;L E D T A )</p>
-<h4 id="仪器-1"><a href="#仪器-1" class="headerlink" title="仪器"></a>仪器</h4><p>Centricon-IO O 微 型 浓 缩 机（A m e rsh a m )</p>
-<p>梯 度 形 成 仪（如 S G 30 g ra d ie n t fo rm e r; A m e rsh a m )</p>
-<p>低 流 动 性 蠕 动 泵（〇 •0 3 〜 8. 2m l&#x2F;m in ) (Y W R S cien tific)</p>
-<p>微 型 离 心 管（I .7m l，无 菌）</p>
-<p>若必要，用 〇.22um的无菌过滤器滤去内毒素的蒸馏水除去尘埃粒子。</p>
-<p>针（25 G )</p>
-<p>橡皮塞</p>
-<p>橡 皮 塞 要 有 18 G 的皮肤穿刺针从塞子的中心由上到下穿过，并且要很适合超速离心机的上部。</p>
-<p>超 速 离 心 管（B eckm an U ltra -C le a r 344060)</p>
-<p>超 速 离 心 机 和 翻 斗 式 超 速 离 心 机 转 子（如 S W 40 T i ; B eckm an-C o u lte r)</p>
-<h4 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h4><p>1•用限制性内切核酸酶切割 50ug 质粒，从质粒上释放转基因插人片段。黏 粒 DNA 在纯化前用限制性内切核酸酶线性化。</p>
-<p>2•用酚：氯仿抽提，然后用 1 倍体积 5m o l &#x2F; L 乙酸胺、 2. 5 倍体积的 1 0 0 % 的乙醇沉淀，13 O O O g 离 心 30m i n 以上，然后用 50 ug T E 缓冲液悬浮。</p>
-<p>3•按照密度梯度形成仪的说明在超速离心管中倒入两份线性的 1 0 % 〜4 0 % 的蔗糖密度梯度，总体积大约 14 ml。</p>
-<p>4•在一支密度梯度离心管中加入切割的 DNA，使用另一支密度梯度管分离其他片段或者作为平衡。</p>
-<p>5.用显微注射缓冲液精确地平衡蔗糖密度梯度管，质粒切割片段在 4°C , 35 OOOr&#x2F;min离心 4 h; 黏 粒 35 000r&#x2F;min 离 心 24 h。</p>
-<p>6 . 当超速离心机离心速度开始下降时在架子上放置 8 0 个灭菌的无菌的 I.7m l 的微型离心管，在超速离心管的上部插人橡皮塞&#x2F;针，从鹿糖密度梯度上部移走大约 2m l 包含DNA 的液体。</p>
-<p>7•把手指放到塞子上开放的位置，然后把 25 G 的针推进超速离心管的底部， 25 G 的针头进人密度梯度液要小于 5 mm。用塞子上的针控制流速，在每个收集管内收集大约0.2m l 的小片段。</p>
-<p>8.每 4 个收集管用琼脂糖凝胶取一个 5ul等份，确认第一个收集管和最后一个收集管仅包含转基因插人片段。对所有的收集管重复凝胶分析，在凝胶的两边点样孔中分别加人载体+ 插人片段及插入片段。</p>
-<p>9•合并所有的仅包含转基因插入片段的收集管，使 用 Centricon-IOO 微型浓缩机用显微注射缓冲液进行 5〜7 次连续的缓冲液的改变。对于质粒，收率是开始时 DNA 总量2 5 % 〜5 0 % ，对于黏粒是 1 0 % 〜2 5 % 。</p>
-<p>1 0 . 用分光光度剂精确地测量 D N A 的浓度，在琼脂糖凝胶上分析小样本，同相似大小的标准比较。</p>
-<p>11.4°C 存储浓缩的 D N A , 用显微注射缓冲液将 D N A 稀 释 至 2 〜 3ug&#x2F;ml。 在灭菌的、无尘的微量离心管中准备几个 1 〇〇 4 等份的 D N A 为显微注射用。 4°C 至多储存一周。备用 D N A 能在一 20°C 下冷冻，但在显微注射稀释时要小心地完全悬浮 DNA。</p>
-<h2 id="超数排卵和胚胎采集"><a href="#超数排卵和胚胎采集" class="headerlink" title="超数排卵和胚胎采集"></a>超数排卵和胚胎采集</h2><h3 id="材料-2"><a href="#材料-2" class="headerlink" title="材料"></a>材料</h3><p>试剂</p>
-<p>IV -S 型 牛 睾 丸 透 明 质 酸 酶（l 〇 m g &#x2F;m l; S igm a-A ld ric h ) 在 M 2 中（储存液 4 0 X )</p>
-<p>在- 20°C 储存等份。使 用 前 用 M2 稀 释 至 250ug&#x2F;ml。</p>
-<p>CO2 用于胚胎供体小鼠安乐死（备选，见步骤 4b)</p>
-<p>胚胎供体小鼠</p>
-<p>人绒毛促性腺激素（H G G ) (Sigma-Aldrich)</p>
-<p>用灭 菌 的 0.9 % 生理盐水稀释至 500IU&#x2F;m l，-80°C 储 存 0 • I m l 的等份最多 6 个月。</p>
-<p>轻 矿 物 质 油（Sigma-Aldrich，用于毒性或胚胎试验的配对检验)。<br>在松的带盖瓶中在游箱中保存 30〜40 ml 矿物质油，使用这种「平衡，，矿物质油去覆盖 CZB</p>
-<h4 id="一-培养液。"><a href="#一-培养液。" class="headerlink" title="(一) 培养液。"></a>(一) 培养液。</h4><p>培养基</p>
-<p>C Z B 培养基：无葡萄糖的碳酸氢钠缓冲液胚胎培养培养基，用做所有的单细胞胚胎培养，不 分 品 系（ChatotetaL 1989)。用 盐 和 灭 菌 的 无 内 毒 素 的 H 2O 准 备 储 存 溶 液（Nagyetal.2003)。</p>
-<p>M 2 培养基： H E P E S ■缓冲液胚胎悬浮培养基（Quin n etal. 1982 ) 。 用灭菌的除内毒素的蒸溜 水 准 备（N a g y et al. 2 〇 03)或 者 购 买（Sigma-Aldrich of Specialty M e d ia&#x2F;Chemicon ， Temecula ， California) 。 其 他 的 小 鼠 胚 胎 培 养 基（K S O M - A A , M 1 6 ) 能 购 买（ Specialty<br>Media&#x2F;Chemicon) „</p>
-<p>孕马血清促性腺激素(PMSG) (如 Sigma-Aldrich 或 the National HormonePeptide Program [Dr.A.F.Parlow, Harbor UCLA Medical Center, Los Angeles, California]) „</p>
-<p>用 0. 9 % 的灭菌生理盐水，准 备 500IU&#x2F;m l 的储存溶液，一 80°C 储存灭菌的 0. ImI 等份最多6 个月。</p>
-<p>生 理 盐 水（0 . 9 % ，灭菌）作为注射前稀释激素的储存液</p>
-<p>仪器</p>
-<p>浮箱，事先调到 37°C (humidified， 5 % CO2)</p>
-<p>嘴吸管用做胚胎固定</p>
-<p>16〜18in 的 橡 胶 管（1&#x2F;8X3&#x2F;16X 1&#x2F;32) —端连接 10(^1 的毛细管，将附隔离塞吸管尖头尖嘴 切 去 2 —— 3mm ，将其插到橡胶管的另一端，用作胚胎固定针的巴斯德吸管大的末端安到大的附隔离塞吸管尖，另一端为嘴吸管（HPIHospital Products, Apopka, Florida)。<br>皮氏培养皿（3 cm)</p>
-<p>在不同的培养液间移动胚胎时均可照明的立体变焦显微解剖镜（如 Leica MZ7. 5)</p>
-<p>钟表钳子（Cumont no.5 ) (两副），细 解 剖 剪（一副）（ World Precision Instruments; Roboz Surgical Instrument Co.， Inc.， Gaithersburg， Maryland)</p>
-<hr>
-<h4 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h4><p>胚胎供体小鼠的超数排卵</p>
-<p>1.一般用在<a target="_blank" rel="noopener" href="https://pro.biomart.cn/lab-web/que/316nrk8go403k/32r92mggo46fo.html">原核</a>显微注射实验中来源于小鼠系的雌鼠在开始源发性的发情周期 3〜5 周龄前超数排卵，一些品系的小鼠在开始源发性的发情周期后对激素的反应更有效。</p>
-<p>2.PMSG 的标准剂量是 5I U &#x2F;小鼠，在光循环开始后 6〜IO h 后由腹腔注射给药（如下午 12点至下午 4 点并在下午 6 点开灯)。对于有些品系的小鼠增加或减少 2.5IU&#x2F;小鼠，会工作的更好。</p>
-<p>3•在 PMSG 注射 46〜48 h 后通过腹腔以 5IU&#x2F;小鼠的剂量注射 HGG 刺激排卵。 HGG的剂量一般要与早期注射的 PMSG 的量相匹配。在注射了 HCG 后胚胎供体雌性小鼠与能繁殖的雄性小鼠立即配对。来源于自交系的雌性小鼠（如 C57BL&#x2F;6J) 正常受精卵的产量可以提高，当其在注射 HCG 4〜6 h 后不与雄性配对。检测超数排卵的雌鼠阴道内交配栓是交配发生过最强的证据。</p>
-<p>4.受精的单细胞胚胎的恢复与维持按如下描述进行</p>
-<p>a.准备 4 个 3 cm 的皮氏培养皿，每个包含 5 排 5 个 10ul的 CZB 胚胎培养液滴，标上（「Washl」、 「pre」、 「Wash2」 和 「Injected」），用矿物油覆盖，置 于 咖CCV95% 空气的细胞培养箱平衡。在接种胚胎前让平皿在组织培养箱内平衡大于 3Omin</p>
-<p>b. 经过中间暗周期 10〜12 h 后 ，用吸人CO2 的方法安乐处死胚胎供体小鼠，或者通过颈椎脱位法。</p>
-<p>c•解剖每只小鼠的输卵管，小心不要撕开被堆积物质包围的包含单细胞卵的子宫胫。</p>
-<p>d. 在 H E P E S ■缓冲的胚胎悬浮培养基 M2 中冲洗每只小鼠的输卵管壁。</p>
-<p>e. 准备 0 ■ 5m l 包含大约 250 ug&#x2F;m l 的 IV-S 型牛睾丸透明质酸酶的胚胎处理培养基。</p>
-<p>f. 从每只小鼠的输卵取堆积物，放人包含透明质酸酶的 M2 培养基滴中，用钟表镊子过撕开子宫胫。</p>
-<p>g. 在含有透明质酸酶的液滴中搅动堆积物，直到堆积细胞消失。收集卵细胞，立即用不含有透明质酸酶的 M2 培养基冲洗。动作要快。</p>
-<p>h.在 「Washl」培养皿中通过 6 滴冲洗 40〜6 0 组胚胎，然后放一滴在「Pre，，培养皿中，转移胚胎到 CO2 孵箱中。原核在经过中间的暗周期 10〜14h 将变得清晰可见，显微注射应在检测到原核后尽可能快地进行。</p>
-<h2 id="显微注射"><a href="#显微注射" class="headerlink" title="显微注射"></a>显微注射</h2><h3 id="材料-3"><a href="#材料-3" class="headerlink" title="材料"></a>材料</h3><p>试剂</p>
-<p>用于显微注射的 D N A 溶 液（准备见方案 2)</p>
-<p>用做显微注射的受精卵（准备见方案 3)</p>
-<p>氣（Sigma-A ldrich )</p>
-<p>氟用来加胚胎固定针当用油加显微注射器。</p>
-<p>真 空 砂 油（D o w C o m i n g 1597418)</p>
-<p>M 2 培 养 基</p>
-<p>包 含 C Z B 培养基滴的皮氏培养皿（方 案 3 的步骤 4a 中 准 备 的 「 W ash 2 」 和 「 Injected 」 培养皿）</p>
-<p>仪器</p>
-<p>吸水纸</p>
-<p>盖 玻 片（22 mmX22 mmXlmm)</p>
-<p>胚胎固定针（准备见方案 I)</p>
-<p>倒 置显微镜（高质量）有 4 X 明视场， IOX 明视场， 3O〜40X D IC 或 者 HoffmanModulation contrast optics 用作显微注射（如 LeicaMicrosystems, Wexlar, Delaware； NiKon USA, Melville, New York； Olympus America Inc., Melville,New Yord； Carl Zeiss Imaging Inc., Thornwood, New York)</p>
-<p>2 6 mmX 7 6 mm X 1. 5m m 的槽加工为显微镜座插人物的中心，以精确的线性固定着显微注射室 。 6 0mm或 IOOmm 的皮氏培养皿的盖子能与霍夫曼调制相差光学镜一起使用。</p>
-<p>手动显微注射器控制胚胎固定针的吸入（如 Eppendorf， Narishige)</p>
-<p>显微注射室（准备见方案 1)</p>
-<p>显微注射针（准备见方案 1)</p>
-<p>一对显微操纵器（左和右）</p>
-<p>机 械 的 显 微 操 纵 仪（Leitz) 要求一个带有轨道的底座平面，液 压 的 显 微 操 纵 仪（NarishigeInternational, New York) 要求有轨道，上面配有显微镜。</p>
-<p>巴斯德移吸液管（灭菌的）</p>
-<p>吸管架&#x2F;工具袖</p>
-<p>充气防震管（Kinetic Systems Inc. ， Boston, Massachusetts)</p>
-<p>充气显微注射器 械（如 Femtojit Eppendorf AG， Hamburg)</p>
-<p>用来从显微注射针移走泡注射器</p>
-<p>连着 6〜8 cm 长 的 软 管（1&#x2F;32IDX 3&#x2F;32 O D X 1&#x2F;32 wall ) (Saint-Gobain Performance PlasticsAJC4 0 001) 的、钝 的 18 G 腹腔注射针，软 管 连 接 到 20cc 有卡式胶筒盖可随意使用的注射器上。</p>
-<p>U V 分光光度计</p>
-<p>方法</p>
-<p>构建显微注射滴</p>
-<p>1.若在方案 2 准备的 2ug&#x2F;ml DNA 溶液被预先冻好，彻底地混合它以保证 DNA 被完全地溶解。用紫外分光光度计检查溶液的浓度（A260)。</p>
-<p>2 . 4℃， 14 000 g•离心 DNA 溶液 30 min，置于冰上。</p>
-<p>3.用真矽油填充显微注射室（准备见方案 1 ) 上部毛细管的两个空间，吸取 300〜400ul的 M 2 培养基滴到间隔间，形成椭圆滴。在上面放一个盖玻片，轻轻地推使密封。在液滴周围填充轻质矿物质油（图 1 ) 。</p>
-<p>4 . 用氟填充胚胎固定针，插针进人工具袖，其与微注射器相连。把工具袖放入显微操作仪。</p>
-<p>5 . 调节固定针的角度，以便使针尖与显微注射室的表面平行。</p>
-<p>6.用一张吸水纸盖住显微镜台座空白地方，防止液体从固定针流出，滴进显微镜目标。</p>
-<p>7•拉一个灭菌的巴斯德吸液管到 10〜12c m 长，直径大约 0 •15m m ，从上层吸取 D N A溶液，避开颗粒物质。把加样针插入显微注射针的凸部，吸 取 2〜5ul D N A 溶液。</p>
-<p>8.DNA 溶液不会从注射针内流出，直到所有的气泡被移走。这个过程能通过使用下面方法显著的加快。</p>
-<p>a•安装 20cc 注射器，注射器连有橡胶管，橡胶管上有塞子，将针粗末端插入塞子。</p>
-<p>b. 弯曲橡胶管，以使针尖向下，运用轻轻拍打针尖时产生的正压驱除所有气泡。</p>
-<p>9.把显微注射针插入工具袖，把工具袖放人显微操作仪。工具袖应该与显微操作仪的固定夹成一排，以便显微工具被作为中心，恰好与显微注射室的长轴平行。调节工具袖的倾斜度，以便显微注射针几乎与显微注射室的表面平行。</p>
-<p>10•调节充气的显微注射针的注射压（Pi) 到 70〜 IOOhPa, 固 定 压（Ph) 到大约5 0 % Pi。</p>
-<p>11.提升在显微操作室的工具袖直到针尖距离显微注射室的边缘大约 2 mm，然后拧紧固定夹。</p>
-<p>12.用几滴轻矿物质油下的 M2 培养基冲洗保存在 37°C ， CO2 孵箱中 CZB 微滴中卵子。</p>
-<p>1 3 . 从显微镜底座移走显微注射室，在 M 2 滴中心的垂线上沉淀卵子，从液滴的中点开始 ，延伸到顶部。</p>
-<p>1 4 . 在低放大率下，向前推进固定针和显微注射针，直到它们与胚胎一样在一个小的视角内可见。保持固定针与注射针分离，以免损坏针尖。</p>
-<p>1 5 . 旋转到 IOX 物镜，调节固定针和显微注射针的高度，直到它们与胚胎在同一个焦平面，重复调节直到最大的放大率。</p>
-<p>1 6 . 固定针尖应几乎触及注射室的表面，应与胚胎在同一个焦平面。调节固定针的角度与 f 面斜度，以使固定针移动没有明显的震动。</p>
-<p>原核显微注射</p>
-<p>1 7 . 用固定针吸起一个卵子，在高放大率下检查。在一个受精卵中应该仅有两个原核是可见的，在原核内有一个或多个核仁。单个原核暗示着卵子没有受精，卵子内有大于 2 个原核则其不能正常发育。</p>
-<p>1 8 . 焦点对准显微注射针，当充气注射器的注射功能激活时，在针尖找一个非常小的旋涡液滴。若没有见到，或许有必要轻轻地把它推进人固定针轻打开针尖。若启动注射功能时在针尖产生一个大的旋流，注射针会引起过量的卵子溶解。如 果 DNA 溶液缺乏或过量在进行前换针。</p>
-<p>1 9 . 调节卵子的位置，以使较大的原核和固定针的针尖都在准聚焦。<br>靶原核应该位于卵子的中心附近，卵子的质膜会很难穿透。理想的，原核将被定位，以使显微注射针在刺穿质膜时不会碰到任何的核仁。</p>
-<p>20.确保胚胎被固定针牢牢地固定，然后放置注射针直到针尖直接在靶原核的下面(6 o’ clock) , 调节针的高度（2 轴）直到显微注射针和原核膜恰在同一焦平面。原核膜看起来像一条好的环线，核仁通常也在准焦平面内。显微注射针尖可能很难清晰地看见，因此调节针的高度，直到上下边缘锋利可见，然后在针尖处合并为一（图 2 , 见彩版)。<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/A1470797127351992mpraganpng_small.jpg" alt="img"></p>
-<p>21.把针尖放在原核相反的方向，瞄准没有核仁的区域，推进透明带和质膜，以一个单一平稳运动进入原核。一旦当穿刺针穿透透明带与质膜时，卵子的表面会收缩，然</p>
-<p>22.如果针不能刺穿卵子质膜或者原核膜，小 的 「气泡」会出现在针尖。如果这种现象发生，从卵子抽出针尖，把原核膜和针尖放到焦平面，重复显微注射过程。</p>
-<p>2 3 . 进行显微注射，用 5〜6 滴 CO2 平衡了的 C Z B 培 养 基（「 Wash2」 培养皿）冲洗注射的卵子，培 养 60 min ( 「Injected」 培养皿）去评估生存率（这些培养皿是在方案3 的步骤 4a 中准备的）。</p>
-<p>显微注射后卵子的成活，依赖于个人的技巧及所用的小鼠的品系。典型的，大 于 9 0 % 的卵子在显微注射过程中成活。</p>
-<h2 id="胚胎移植"><a href="#胚胎移植" class="headerlink" title="胚胎移植"></a>胚胎移植</h2><h3 id="材料-4"><a href="#材料-4" class="headerlink" title="材料"></a>材料</h3><p>试剂</p>
-<p>麻醉剂</p>
-<p>已经显微注射的卵子&#x2F;胚 胎（如方案 4 中）</p>
-<p>理想地，经过一个简短的接种显微注射过程存活的卵子移植到〇.5dpc (days postcoitus) 假孕受体雌性小鼠体内。如果得不到雌性受体小鼠，体 外 在 CZB 培养基中培养卵子到多细胞胚胎阶段。</p>
-<p>受体雌性小鼠</p>
-<p>使 用 6〜9 周 龄 的 杂 交 （如 F1 或 F2 C57BL&#x2F;6XCBACa&#x2F;J) 或者远交品系。</p>
-<p>输卵管结扎雄性小鼠</p>
-<p>仪器</p>
-<p>玻璃移液吸管 （120〜150u m )</p>
-<p>揭开假孕受孕小鼠生殖管的工具</p>
-<p>立体变焦解剖显微镜光纤照明用做外科胚胎转移 （如 Leica M Z 7 .5)<br>手 术 针 （9m m )</p>
-<p>方法</p>
-<p>假孕受孕雌性小鼠的准备</p>
-<p>1.在胚胎移植手术进行的前一晚上，雌性受体与结扎输精管的雄性小鼠配对。</p>
-<p>2 . 在第二天中午 12 点前，检查雌性小鼠阴道是否存在交配栓。<br>发现有交配栓的雌鼠终止 0 • 5dpc, 因为交配在暗周期中发生了。<br>把胚胎移植到假孕受孕受体小鼠</p>
-<p>3 . 麻醉一个 0.5d p c 的假孕受孕雌性小鼠，准备无菌外科手术，通过腹部中央切割手术取出一边的生殖管道。</p>
-<p>4 . 把卵子&#x2F;胚胎加人一个 120〜150um 的玻璃移液管中，打孔或小心地撕开卵巢囊，出血最少，把卵子&#x2F;胚胎移植到子宫囊口。</p>
-<p>5.若有必要，剪开另一侧的腹腔及生殖道，重复上述操作。</p>
-<p>6•用 9 mm 的手术针把切口缝起。</p>
-<p>根据经验，显微注射胚胎的 20%〜40% 产生活胎，因此，移 植 大 约 30 个胚胎到雌性受体,会产生合适的数量。</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/03/14/%E5%8E%9F%E6%A0%B8%E6%98%BE%E5%BE%AE%E6%B3%A8%E5%B0%84%E6%8A%80%E6%9C%AF%E5%AE%9E%E9%AA%8C/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-气道上皮细胞及其干细胞和祖细胞" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/03/14/%E6%B0%94%E9%81%93%E4%B8%8A%E7%9A%AE%E7%BB%86%E8%83%9E%E5%8F%8A%E5%85%B6%E5%B9%B2%E7%BB%86%E8%83%9E%E5%92%8C%E7%A5%96%E7%BB%86%E8%83%9E/" target="_blank">气道上皮细胞及其干细胞和祖细胞</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/03/14/%E6%B0%94%E9%81%93%E4%B8%8A%E7%9A%AE%E7%BB%86%E8%83%9E%E5%8F%8A%E5%85%B6%E5%B9%B2%E7%BB%86%E8%83%9E%E5%92%8C%E7%A5%96%E7%BB%86%E8%83%9E/" class="archive-article-date">
-        <time datetime="2024-03-14T14:57:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-14</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240314225928932.png" alt="image-20240314225928932"></p>
-<p>来源：<a target="_blank" rel="noopener" href="http://www.nwbiotec.com/index.php?g=&m=article&a=new_nav_list&newid=303">诺为生物</a></p>
-<h2 id="人体呼吸道上皮细胞"><a href="#人体呼吸道上皮细胞" class="headerlink" title="人体呼吸道上皮细胞"></a>人体呼吸道上皮细胞</h2><p>人类在呼吸过程中，吸入外界空气，空气中的氧气通过呼吸进入循环系统，同时体内细胞产生的二氧化碳通过肺泡和毛细血管的气体交换排到 外界空气中。呼吸道具有加温、湿润、过滤等保护功能。在换气前，呼吸道会将吸入的空气变暖，变湿，然后温暖湿润的空气将会直达肺部的最远端，同时可以保护肺部免受病原体及大气污染物的侵袭。人体呼吸道可分为传导区和呼吸区。</p>
-<p>传导区包括鼻腔通道、气管、主支气管、肺内支气管 和细支气管，不参与换气流程。从气管到未端细支气管，随着呼吸道的不断分支，各级分支的直径和长度逐步缩小缩短。呼吸区包括呼吸性细支气管、肺泡管和肺泡囊。呼吸区是指肺腔内吸入的空气与肺毛细血管中的 血液进行换气(经肺通气进入人肺泡的新鲜空气与血液进行气体交换，氧气从肺泡顺着分压差扩散到静脉血，而静脉血中的二氧化碳，则向肺泡扩散的场所。[1,2]</p>
-<p>从鼻腔通道到肺泡囊的整个人体呯吸道覆盖着一层连续的上皮细胞，但是传导区和呯吸区的上皮细胞在形态和细胞成分上却各有不同。在包括鼻腔通道、气管和支气管在内的传导区的最近端部位，呼吸道上皮细胞的形态为<strong>假复层纤毛柱状上皮细胞</strong>。距离传导区越远(分支增多，呼吸道内径缩小)，此上皮细胞的厚度越薄，且在小呼吸道(细支气管)形成类似立方上皮细胞。大呼吸道上皮细胞主要由三种细胞类型构成:可分泌粘液的 杯状细胞、可通过与顶部纤毛进行协同摆动而促进粘液运动的纤毛细胞，以及在基底膜上排列目不与上皮细胞顶面接触的基底细胞。细支气管内 的立方上皮细胞由两种细胞类型构成:分泌细胞和纤毛细胞，但是其含有 的纤毛细胞数量要比近端大呯吸道所含数量要少。肺泡上皮细胞分为!型 肺泡上皮细胞和川型肺泡上皮细胞(AEC)。肺泡细胞通过毛细血管的内 皮细胞基膜，与内皮细胞融合，形成换气屏障。整个呼吸道内的细胞均为 各种低活跃度的细胞，包括大呼吸道内的神经内分泌细胞、分布在肺间质 内的肺泡巨噬细胞(吞噬细胞)(其主要作用是清除气腔内存在的和吸入 的空气中的尘粒、细菌等异物)。[13]</p>
-<hr>
-<h3 id="上皮细胞屏障和防御功能"><a href="#上皮细胞屏障和防御功能" class="headerlink" title="上皮细胞屏障和防御功能"></a>上皮细胞屏障和防御功能</h3><p>呼吸道上皮细胞在协调空气进出肺泡的过程中，发挥着重要作用。呼吸道 上皮细胞可以阻挡和清除随空气进入呼吸道的颗粒、异物，使进入肺泡 的气体几乎清洁无菌，这一防御作用至关重要。其主要的防御手段是综合 利用分泌细胞和纤毛细胞的功能，因为分泌细胞会分泌出粘液，覆盖在纤 毛细胞的纤毛上，纤毛协调摆动，将粘液层与附着在粘液层上的随空气吸 入呼吸道的异物向咽喉方向移动，直至到达咽部，被吞咽或咳出。4,5其他,各种宿主防御机制也保证了呼吸道上皮细胞可以正常有效的发挥保护作 用。重要的是，上皮细胞层并非是独立发挥防御作用，而是与其他上皮细 胞、间充质细胞、内皮细胞和细胞外基质一起，作为共生的功能单元，协调 发挥作用。6.7.8<br>另外上皮细胞可以通过细胞间连接形成另一层防御屏障，有效的阻止病原 体或有毒物质进入体内。通过细胞间紧密连接，控制阻渗层，限制顶层腔 室和基底外侧腔室间分子的被动流动。细胞间紧密连接也是维持离子和 溶质体内平衡的重要因素，从而实现对呼吸道表面液体厚度和离子组成 控制，这是保护肺部的必要手段。。<br>尽管人上呼吸道存在这些有效的防御系统，但是呼吸道上皮细胞长期接 触外部空气，必然导致经常受损。呼吸道上皮细胞受损后，导致基底膜部 分或全部外露，仅有基底细胞群与基底膜相连。这些结构与功能的典型变,异是由肺部每天饱受各种自然颗粒物、人为颗粒物、纤维物质和化学品 等各种随空气吸入的物质的伤害而形成，由此导致患上慢性支气管炎、哮喘、慢性阳塞性肺病(COPD)或囊胞性纤维症(CF)等各种呼吸疾病。一旦受损，呼吸道上皮细胞会自动进行修复，以期恢复细胞屏障的完整性 和正常的上皮细胞功能，但是这些修复机制尚未完全为人所知。[1,5,10,11]</p>
-<hr>
-<h3 id="呼吸道特定区域的干细胞与祖细胞"><a href="#呼吸道特定区域的干细胞与祖细胞" class="headerlink" title="呼吸道特定区域的干细胞与祖细胞"></a>呼吸道特定区域的干细胞与祖细胞</h3><p>呼吸道上皮细胞一直进行着缓慢而持续的动态代谢平衡。当发生中轻度 损伤，呼吸道上皮细胞会及时做出反应，重建上皮细胞层，恢复其正常的 结构和功能。这个上皮细胞修复的过程主要由呼吸道干细胞和祖细胞来 完成。11-18<br>上皮祖细胞生物学领域内，描述不同祖细胞的术语有些复杂而没有统一 标准化。在本篇综述中，我们用”祖细胞”一词来概括地定义相对而言未分 化的，具有增殖和分化潜能的细胞，而干细胞属于祖细胞里的一种罕有细 胞，具有持续增殖、自我更新和多向分化潜能。相比之下，很多成年祖细胞,是短暂扩充细胞，可以广泛增殖成为终未分化细胞，但是与干细胞相比，其寿命周期有限。12,13,19<br>有证据表明:不同种类的上皮于细胞和祖细胞分布在肺部的,位置不同:基 底细胞分布在气管和大支气管，2细支气管肺泡于细胞(BASC)分布在细 支气管肺泡管连接处(BADJ)，21型肺泡上皮细胞则分布在肺泡区。22</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240314230826194.png" alt="image-20240314230826194"></p>
-<hr>
-<h3 id="基底细胞"><a href="#基底细胞" class="headerlink" title="基底细胞"></a>基底细胞</h3><p>越来越多的证据表明:基底细胞为分布在气管支气管部位的多能祖细胞，在出生后不同发育阶段和稳态周期内，既可讲行自我更新，又可形成纤毛 细胞谱系和分泌细胞谱系，并且可以在上皮细胞受损后，进行修复。以上认知是从体内遗传谱系示踪研究和体外培养(气波界面(ALI)培养和三 维球状形态(克隆形态)培养中总结出来20,23,24 这些方法均需用标志物对基底 细胞进行精准标示，但是这些标志物对基底细胞祖细胞的功能的。在运用此类培养技术，可以 发挥单细胞自我更新和分化的潜能。上的重要 性尚不明确，应用最广泛的基底细胞标志物有P63、IGTA6、NGFR、KRT5 和KRT14。19,20.23:27所有这些标志物中，最为常用的是KRT5和KRT14。KRT5 可以在所有的基底细胞中进行标记，而只有当上皮细胞的代谢速率较低 时，通常采用 KRT14来标记出稳态子代基底细胞。2 这就说明:不同基底 细胞间存在功能异质性，只有少数基底细胞能够形成多个成熟细胞谱系。根据KRT14-CreER追踪，对小鼠气管和支气管上皮细胞进行的谱系示踪 研究的结果表明:在呼吸道受损的情况下，基底细胞子代可转化为多能或 单能细胞。<br>在对因强酸、洗涤剂或系统性萘摄入等各种介质摄入而使腔细胞受损，进 而进行修复的过程中，用KRT5和KRT14进行标记的双阳性基底细胞，无论,是单独存在或是以小集群形式存在的，均呈现出暂时性的数量增加。这一 结果表明:当基底细胞被激活“进行增殖时，KRT14标志物的表达水平上 调，23.28 但是，还有研究结果认为所有的基底细胞均能进行多向分化，而且 基底细胞祖细胞的分化命运是受到局部环境和损伤机制的影响。20<br>与人体肺部的再生疗法实际相关的一个问题是:基底细胞是否是唯一能 有效修复假复层上皮细胞的细胞，或分化的细胞是否能在特定条件下返 回祖细胞&#x2F;或转分化成其它分化细胞，在Raia00pa实验室近期发表的一 篇主要论文中，采用了一种方法专门杀死小鼠体内气管中的KRT5+标志物 和基底细胞，29 在这种情况下，研究人员发现分化的 SCGB1A1+分泌细胞 可返回到祖细胞状态，转而成为P63和 KRT5标记的双阳性基底细胞。这 些基底细胞能够长期积蓄，与正常的KRT5+标记的祖细胞功能相似。通过 体外培养，论文作者进一步证明:基底细胞之间的细胞间连接可以阻止表 层分化细胞的去分化，但是还需对去分化的重新驱动程序的精准机制以 及随后产生的干细胞功能进行进一步研究。[29]</p>
-<hr>
-<h3 id="分泌细胞-Club-cell"><a href="#分泌细胞-Club-cell" class="headerlink" title="分泌细胞(Club cell)"></a>分泌细胞(Club cell)</h3><p>与人体肺部的再生疗法实际相关的一个问题是:基底细胞是否是唯一能有效修复假复层上皮细胞的细胞，或分化的细胞是否能在特定条件下去分化或转分化。在Rajagopal实验室近期发表的篇主要论文中，采用了一种方法专门杀死小鼠体内气管中的KRT5<em>标志物和基底细胞，在这种情况下，研究人员发现分化的 SCGB1A1+分泌细胞可返回到祖细胞状态，转而成为P63和 KRT5标记的双阳性基底细胞。这些基底细胞能够长期积蓄，与正常的KRT5</em>标记的祖细胞功能相似，通过体外培养，论文作者进一步证明:基底细胞之间的细胞间连接可以阻止表层分化细胞的去分化。但是还需对去分化的重新驱动程序的精准机制以及随后产生的干细胞功能进行进一步研究。</p>
-<hr>
-<h3 id="细支气管肺泡干细胞-BASC"><a href="#细支气管肺泡干细胞-BASC" class="headerlink" title="细支气管肺泡干细胞(BASC)"></a>细支气管肺泡干细胞(BASC)</h3><p>最细小的未端细支气管与肺泡之间的过渡区被称之为细支气管肺泡管连 接处。小鼠体内的此部位包含纤毛细胞和分泌细胞，但是人体内的此部位 所分布的细胞，尚不明确。将小鼠体内细支气管肺泡管连接处的少量细 胞(每个气管有1-2个胞)共同标记为Scob1a1(分泌细胞)和肺泡表面活 性蛋白C(Shpc)，肺泡表面活性蛋白C是I型肺泡上皮细胞特有的一种蛋 白。其结论为:此类双阳性细胞为细支气管肺泡千细胞。之所以被称之为 细支气管肺泡干细胞，是因为当被荧光活化细胞分选方法所分离时，此类细胞会在培养皿中生成细支气管细胞和肺泡细胞。[30]Kim及其同事 进一步通过采用精致的3D克隆共同培养方法，证明了肺内皮细胞中的 BMP4-NFATC1-TSP轴可以诱导细支气管肺泡干细胞分化成肺泡谱系。[21]</p>
-<hr>
-<h3 id="II型肺泡上皮细胞-AEC2"><a href="#II型肺泡上皮细胞-AEC2" class="headerlink" title="II型肺泡上皮细胞(AEC2)"></a>II型肺泡上皮细胞(AEC2)</h3><p>气体交换部位的主要上皮细胞类型包括:立方II型肺泡上皮细胞(主要生 产和分泌表面活性蛋白)和扁平的!型肺泡上皮细胞(主要进行换气)。成 年小鼠的肺泡部位的细胞新陈代谢一般比较慢，因此很难追踪到稳态的 谱系关系。但是，在对肺泡细胞进行实验性损伤，或让其接受氧化应激作 用的情况下，存活的细胞将快速增殖，并激活细胞修复机制。</p>
-<p>过去40年一直采用H3胸昔标记法进行的研究结果表明，当因组织内氧气,过多或一氧化碳过多导致上皮细胞受损后，成年猴和小鼠的”型肺泡上皮 细胞会进行增殖，并形成型肺泡上皮细胞。近期，针对体内遗传谱系示踪 的研究肯定了成熟的川型肺泡,上皮细胞有这种自我更新和分化能力。上述 体内遗传谱系示踪研究采用与终未分化细胞(包括肺泡表面活性蛋白C和Lyz2)相关的基因驱动的Cre重组酶，在稳态的新陈代谢情况下，单个!型 肺泡,上皮细胞很少发生克峰性增殖，亦很少分化为(型肺泡上皮细胞。当博菜霉素和氧气过多对肺泡部位造成损伤之后，标记为”型肺泡上皮细胞,的谱系分化为|型肺泡上皮细胞的比例明显增高。[22,31-34]</p>
-<p>近年来，干细胞和祖细胞谱系的识别以及这些细胞在成人体内的活动的,相关研究发展很快。相对而言，分子水平的信号通道对细胞行为的调控方 面的研究发展缓慢普遍认为，个体发育过程中使用的主要分子信号通 路在肺部细胞修复过程中被激活而发挥着重要作用，但是这些观点需要 进一步在生理或临床相关实验模型上测试证明。探索肺形成的机制，尤 其是肺泡形成领域的研究，方兴未艾。支气管上皮的气液界面培养系统， 和近几年流行起来的体外类器官培养(支气管类器官和肺泡类器官)系统 为解决这些呼吸领域的问题提供了最佳的技术支撑和研究平台。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240314231028998.png" alt="image-20240314231028998"></p>
-<hr>
-<p>Reference</p>
-<p>1.Berube K, et al. Altern Lab Anim 37:89-141.2009<br>2.Crystal RG, et al Proc Am Thorac Soc 5:772-777,200<br>3.Kaisani A,et al. Differentiation 87:119-126.2014<br>4.Randell SH.Proc Am Thorac Soc 3: 718-725.2006<br>5.LivraghiA and Randell SH. Toxicol Pathol 35:116-129.2007<br>6.Rock JR.et al Proc Natl Acad SciU SA 108: E1475-1483.2011<br>7Weaver M,et al. Dev Biol 258:169-184.2003<br>8.Knight DA, et al. Expert Rev Respir Med. 4(6):747-58.2010<br>9.Matsui H,et al J Clin Invest 102:1125-1131.1998<br>10.Rawlins EL, et al. Proc Natl Acad Sci U SA 104: 410-417.2007<br>11.BorokZ,et al.Proc Am Thorac Soc 8:215-222.2011<br>12.Hogan BL,et al. Cell Stem Cell 15:123-138.2014<br>13.Kotton DN and Morrisey EE.Nat Med 20:822-832.2014<br>14.Rock JR and Hogan BL. Annu Rev Cel Dev Biol 27: 493-512.2011<br>15.Rock JR,et al. Dis Model Mech 3:545-556.2010<br>16.Stripp BR and Reynolds SD. Proc Am Thorac Soc 5: 328-333, 2008<br>17.Wansleeben C,et al. Dev Biol 2:131-148.2013<br>18.HackettTL,et al.Stem Cells 26(10)2576-85.2008<br>19.Reynolds SD, et al. Proc Am Thorac Soc 9: 27-37.2012<br>20.Rock JR, et al Proc Natl Acad SciU S A 106: 12771-12775.2009<br>21.Lee JH, et al. Cell 156:440-455.2014<br>22 Barkauskas CE et al J Clin Invest 123:3025-3036.2013<br>23.Cole BB,et al. Am J Pathol 177:362-376.2010<br>24.Ghosh M, et al Am J Respir Cell Mol Biol 45:459-469.2011<br>25 .Ghosh M,et al Stem Cells 31:2767-2778,2013<br>26.Ahmad S, et al. Am J Respir Cell Mol Biol 48:94-104,2013<br>27.Ghosh M,et al Am J Respir Cell Mol Biol 45:403-410,2011<br>28.Ghosh M, et al Am J Respir Cell Mol Biol 49:1127-1134.2013<br>29 Tata PR et al Nature 503:218-223.2013<br>30.Giangreco A,et al.AmJPathol 161:173-182.2002<br>31.Desai TJ,et al. Nature 507:190-194.2014<br>32 Evans MJ,et al Exp Mol Mathol 22 142-150.1975<br>33.Evans MJ,et al Am J Pathol 70:175-198.1973<br>34.Kaplan HP et al.Lab Invest 20:94-100.1969</p>
+  <script>
+  <!-- id: "WES数据分析流程(下)--可视化" -->
+  var giteement = new Giteement({
+    id: '20240317145333',
+    owner: 'anderson2',
+    repo: 'disque',
+    backcall_uri: '',
+    oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'b7bbbb81c70a80c54b67830b93347418a2add42a2a1f038b58e9f8c1a76754ba',
+      client_secret: '4ccab940fe3153435d3da5a5edbc5214d719cabfd6736c016135223adf4d7fbb'
+    },
+  })
+  giteement.render('giteement-ctn')
+  </script>
 
-    
 
-    
 
-    
 
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioLearning</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-    
 
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/03/14/%E6%B0%94%E9%81%93%E4%B8%8A%E7%9A%AE%E7%BB%86%E8%83%9E%E5%8F%8A%E5%85%B6%E5%B9%B2%E7%BB%86%E8%83%9E%E5%92%8C%E7%A5%96%E7%BB%86%E8%83%9E/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -2604,8 +754,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
