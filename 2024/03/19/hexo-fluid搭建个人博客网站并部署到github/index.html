@@ -6,17 +6,45 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://nikolahuang.github.io">
-  <title>Archives: 2024 | Anderson Blog</title>
+  <title>hexo+fluid搭建个人博客网站并部署到github | Anderson Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Anderson Blog">
-<meta property="og:url" content="http://nikolahuang.github.io/archives/2024/page/2/index.html">
+  <meta name="description" content="环境准备需要预先安装node.js、npm、并添加到环境变量(path) 1.官网安装Nodejs(建议使用 Node.js 12.0 及以上版本)NodeJs是Hexo所必需的环境。 点击 NodeJs 官网，下载左边那个即可，下载好一直 next，选择一个文件夹位置在一直 next 即可完成。安装Node.js会包含环境变量及npm的安装。  验证安装完成cmd中输入命令： 12node -v">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo+fluid搭建个人博客网站并部署到github">
+<meta property="og:url" content="http://nikolahuang.github.io/2024/03/19/hexo-fluid%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0github/index.html">
 <meta property="og:site_name" content="Anderson Blog">
+<meta property="og:description" content="环境准备需要预先安装node.js、npm、并添加到环境变量(path) 1.官网安装Nodejs(建议使用 Node.js 12.0 及以上版本)NodeJs是Hexo所必需的环境。 点击 NodeJs 官网，下载左边那个即可，下载好一直 next，选择一个文件夹位置在一直 next 即可完成。安装Node.js会包含环境变量及npm的安装。  验证安装完成cmd中输入命令： 12node -v">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/902f589b96784f8098d216e8e32637d7.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/3705169b5054b5c69bd374ad08fa97f5.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/0dff30cffe9cf89a53a611016f460fb2.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-17108599776039.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-17108599724496.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171085998395512.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171085998869315.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171085999733320.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086000214523.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086000704026.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086001111729.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086001497732.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086002211535.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086002974038.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086003410441.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086003899944.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086004334947.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086004676550.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/70895669db2179fa65774c69fff62735.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/68e29340708fafdd1da425162b615b27.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/b032fffb71937ba1b5888640970d96b8.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/eafc90db32b9693697d254f08024ca58.png">
+<meta property="article:published_time" content="2024-03-19T14:59:09.000Z">
+<meta property="article:modified_time" content="2024-03-19T14:59:58.618Z">
 <meta property="article:author" content="Anderson">
+<meta property="article:tag" content="计算机随笔">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/902f589b96784f8098d216e8e32637d7.png">
   
     <link rel="alternative" href="/atom.xml" title="Anderson Blog" type="application/atom+xml">
   
@@ -219,456 +247,341 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-hexo-fluid搭建个人博客网站并部署到github" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/15/%E5%B0%8F%E9%BC%A0%E4%BD%93%E5%A4%96%E5%8F%97%E7%B2%BE/" class="archive-article-date">
-        <time datetime="2024-03-14T16:08:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-15</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/15/%E5%B0%8F%E9%BC%A0%E4%BD%93%E5%A4%96%E5%8F%97%E7%B2%BE/" target="_blank">小鼠体外受精2</a>
   
+    <h1 class="article-title" itemprop="name">
+      hexo+fluid搭建个人博客网站并部署到github
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2024/03/19/hexo-fluid%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0github/" class="archive-article-date">
+        <time datetime="2024-03-19T14:59:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-19</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.9k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">7分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><p>需要预先安装node.js、npm、并添加到环境变量(path)</p>
+<h4 id="1-官网安装Nodejs-建议使用-Node-js-12-0-及以上版本"><a href="#1-官网安装Nodejs-建议使用-Node-js-12-0-及以上版本" class="headerlink" title="1.官网安装Nodejs(建议使用 Node.js 12.0 及以上版本)"></a>1.官网安装Nodejs(建议使用 Node.js 12.0 及以上版本)</h4><p>NodeJs是Hexo所必需的环境。</p>
+<p>点击 <a target="_blank" rel="noopener" href="https://nodejs.org/en/">NodeJs 官网</a>，下载左边那个即可，下载好一直 next，选择一个文件夹位置在一直 next 即可完成。安装Node.js会包含环境变量及npm的安装。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/902f589b96784f8098d216e8e32637d7.png" alt="2"></p>
+<p>验证安装完成cmd中输入命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+
+<p>返回版本号代表安装完成。</p>
+<p>2.安装git<br>Git是开源的分布式版本控制系统，用于敏捷高效地处理项目。</p>
+<p>我们网站在本地搭建好了，需要使用Git同步到云服务器或者GitHub的代码库里。点击 git 官网，下载安装包。点击 next，选择文件夹位置，然后一直 next 到底就行了，选择默认配置就好，默认配置会将环境变量配置好的。安装成功右击鼠标如图所示：<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/3705169b5054b5c69bd374ad08fa97f5.png" alt="1"></p>
+<p>3.下载安装Hexo博客框架<br>Hexo 是一个快速、简洁且高效的博客框架。Hexo是有官方说明文档，想看最详细的教程可以移步到HEXO官网。前面git和nodejs安装好后，就可以安装hexo了，可以先创建一个文件夹HEXO，然后在这个文件夹下直接右键git bash打开，输入命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>下载太慢可以换一下淘宝源，依旧用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+
+<p>查看一下版本，至此就全部安装完了。</p>
+<p>接下来初始化一下hexo，，在该文件夹下鼠标右键gitbash后输入命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
+
+<p>“blog”是你要生成博客的文件夹名称，可以根据自己的喜好来取名。生成的文件如图所示：<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/0dff30cffe9cf89a53a611016f460fb2.png" alt="image-20220515193739986"></p>
+<p>输入命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>完成后，打开浏览器输入地址：localhost:4000就可以看到你生成的博客了。使用ctrl+c可以把服务关掉。</p>
+<p>本地部署好之后，只能自己在本地查看博客，我们需要上传到云端的代码库（云服务器或者GitHub）来托管你的博客，这样其他人才能随时访问你的博客。</p>
+<h2 id="二、安装使用fluid-主题"><a href="#二、安装使用fluid-主题" class="headerlink" title="二、安装使用fluid 主题"></a>二、安装使用fluid 主题</h2><h3 id="获取最新版本"><a href="#获取最新版本" class="headerlink" title="获取最新版本"></a>获取最新版本</h3><p>主题下载：<a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid">https://github.com/fluid-dev/hexo-theme-fluid</a></p>
+<h3 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h3><p>Hexo 5.0.0 版本以上，推荐通过 npm 直接安装，进入博客目录执行命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-theme-fluid</span><br></pre></td></tr></table></figure>
+
+<p>然后在博客目录下创建 <code>_config.fluid.yml</code>，将主题的 <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/fluid-dev/hexo-theme-fluid/blob/master/_config.yml">_config.yml (opens new window)</a>内容复制过去（找到主题文件夹，一般在\blog\nikolahuang.github.io\node_modules\hexo-theme-fluid里面）。</p>
+<h3 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h3><p>下载 <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/fluid-dev/hexo-theme-fluid/releases">最新 release 版本 (opens new window)</a>解压到 themes 目录，并将解压出的文件夹重命名为 <code>fluid</code>。</p>
+<h3 id="指定主题"><a href="#指定主题" class="headerlink" title="指定主题"></a>指定主题</h3><p>如下修改 Hexo 博客目录中的 <code>_config.yml</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">theme: fluid  <span class="comment"># 指定主题</span></span><br><span class="line"></span><br><span class="line">language: zh-CN  <span class="comment"># 指定语言，会影响主题显示的语言，按需修改</span></span><br></pre></td></tr></table></figure>
+
+<p>在这，我使用的是第一种方式，主要步骤是</p>
+<h3 id="1、运行安装命令-npm-install-–save-hexo-theme-fluid"><a href="#1、运行安装命令-npm-install-–save-hexo-theme-fluid" class="headerlink" title="1、运行安装命令   npm install –save hexo-theme-fluid"></a>1、运行安装命令   npm install –save hexo-theme-fluid</h3><h3 id="2、在根目录下创建文件一个名为-config-fluid-yml的文件"><a href="#2、在根目录下创建文件一个名为-config-fluid-yml的文件" class="headerlink" title="2、在根目录下创建文件一个名为_config.fluid.yml的文件"></a>2、在根目录下创建文件一个名为_config.fluid.yml的文件</h3><h3 id="3、将node-modules里面hexo-theme-fluid文件夹里面的-config-yml的内容复制到新建的-config-fluid-yml文件中"><a href="#3、将node-modules里面hexo-theme-fluid文件夹里面的-config-yml的内容复制到新建的-config-fluid-yml文件中" class="headerlink" title="3、将node_modules里面hexo-theme-fluid文件夹里面的_config.yml的内容复制到新建的_config.fluid.yml文件中"></a>3、将node_modules里面hexo-theme-fluid文件夹里面的_config.yml的内容复制到新建的_config.fluid.yml文件中</h3><h3 id="4、如下图修改-config-fluid-yml文件中的内容-，注意空格位置什么的不要改"><a href="#4、如下图修改-config-fluid-yml文件中的内容-，注意空格位置什么的不要改" class="headerlink" title="4、如下图修改_config.fluid.yml文件中的内容 ，注意空格位置什么的不要改"></a>4、如下图修改_config.fluid.yml文件中的内容 ，注意空格位置什么的不要改</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">theme: fluid  <span class="comment"># 指定主题</span></span><br><span class="line"></span><br><span class="line">language: zh-CN  <span class="comment"># 指定语言，会影响主题显示的语言，按需修改</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5、运行清除缓存命令-hexo-clean-再运行hexo-g-再运行hexo-s-然后预览页面。类似下图的页面"><a href="#5、运行清除缓存命令-hexo-clean-再运行hexo-g-再运行hexo-s-然后预览页面。类似下图的页面" class="headerlink" title="5、运行清除缓存命令  hexo clean  再运行hexo g  再运行hexo s ,然后预览页面。类似下图的页面"></a>5、运行清除缓存命令  hexo clean  再运行hexo g  再运行hexo s ,然后预览页面。类似下图的页面</h3><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-17108599776039.webp" alt="img"></p>
+<p>image.png</p>
+<h1 id="三、完善页面的功能插件"><a href="#三、完善页面的功能插件" class="headerlink" title="三、完善页面的功能插件"></a>三、完善页面的功能插件</h1><h3 id="1、中间的背景图的更换，如下图效果"><a href="#1、中间的背景图的更换，如下图效果" class="headerlink" title="1、中间的背景图的更换，如下图效果"></a>1、中间的背景图的更换，如下图效果</h3><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-17108599724496.webp" alt="img"></p>
+<p>image.png</p>
+<p>在_config.fluid.yml中找到上面的位置填写上图标记的代码(注意图片的路径位置)</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">banner_img</span>: <span class="regexp">/img/</span>bg.<span class="property">jpg</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171085998395512.webp" alt="img"></p>
+<p>image.png</p>
+<p>步骤：</p>
+<h3 id="2、添加随机打印机效果，如图我所标记的位置的效果"><a href="#2、添加随机打印机效果，如图我所标记的位置的效果" class="headerlink" title="2、添加随机打印机效果，如图我所标记的位置的效果"></a>2、添加随机打印机效果，如图我所标记的位置的效果</h3><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171085998869315.webp" alt="img"></p>
+<p>image.png</p>
+<p>步骤1、在_config.fluid.yml文件中找到下图位置修改，开启打印机插件：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171085999733320.webp" alt="img"></p>
+<p>image.png</p>
+<p>步骤2、在上述文件找到下图位置修改，调用接口</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086000214523.webp" alt="img"></p>
+<h3 id="3、添加统计数，我使用的是valiner插件。如下图效果"><a href="#3、添加统计数，我使用的是valiner插件。如下图效果" class="headerlink" title="3、添加统计数，我使用的是valiner插件。如下图效果"></a>3、添加统计数，我使用的是valiner插件。如下图效果</h3><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086000704026.webp" alt="img"></p>
+<p>步骤：在在上述文件找到下图位置修改，</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086001111729.webp" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086001497732.webp" alt="img"></p>
+<h3 id="4、添加右上角的社交图标和链接，如下图效果"><a href="#4、添加右上角的社交图标和链接，如下图效果" class="headerlink" title="4、添加右上角的社交图标和链接，如下图效果"></a>4、添加右上角的社交图标和链接，如下图效果</h3><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086002211535.webp" alt="img"></p>
+<p> 步骤：点击<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/blog/273-github-ribbons">这里</a> 或者 <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=http://tholman.com/github-corners/">这里</a>挑选自己喜欢的样式，选择其中一个并复制其代码。 如下图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086002974038.webp" alt="img"></p>
+<p> 在找到下图位置粘贴代码，如图绿色标记处</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086003410441.webp" alt="img"></p>
+<h1 id="四、部署到github的托管网站上，实现在线博客"><a href="#四、部署到github的托管网站上，实现在线博客" class="headerlink" title="四、部署到github的托管网站上，实现在线博客"></a>四、部署到github的托管网站上，实现在线博客</h1><p>步骤1：在github 创建好仓库，至于如何创建可以点击<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/11d6d8e7eb9a">这里</a>查看。<br> 步骤2：在_config.yml文件中找到下图位置修改内容</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086003899944.webp" alt="img"></p>
+<p> 步骤3：使用命令npm install hexo-deployer-git –save  安装部署插件<br> 步骤4：使用hexo clean 清除缓存 、使用hexo g 渲染页面 、使用hexo d 部署页面<br> 步骤5：此时，你远程仓库上，已经有文件了，也就是如下图public文件夹中的文件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086004334947.webp" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086004676550.webp" alt="img"></p>
+<p> 步骤6: 在浏览器地址栏输入https:&#x2F;&#x2F;仓库名<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=http://.github.io">.github.io</a>     就能看到你的线上博客网站了。</p>
+<hr>
+<p>上面的方法尝试之后不行的，可以继续下面这种办法：将博客托管到GitHub</p>
+<h4 id="1-GitHub生成代码库"><a href="#1-GitHub生成代码库" class="headerlink" title="1.GitHub生成代码库"></a>1.GitHub生成代码库</h4><p>首先，你先要有一个GitHub账户。点击+号，选择New repository，新建仓库：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/70895669db2179fa65774c69fff62735.png" alt="image-20220515194104048"></p>
+<p>创建一个和你用户名相同的仓库，后面加.github.io，只有这样，将来要部署到GitHub page的时候，才会被识别，也就是xxxx.github.io，其中xxx就是你注册GitHub的用户名，点击create repository。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/68e29340708fafdd1da425162b615b27.png" alt="image-20220515194255616"></p>
+<p>本地SSH生成密钥，将公钥复制到云端<br>回到本地主机git bash中，创建用户名和密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;GitHub用户名&quot;</span><br><span class="line">git config --global user.email &quot;GitHub注册邮箱&quot;</span><br><span class="line">git config --global user.password &quot;GitHub登录密码&quot;</span><br></pre></td></tr></table></figure>
+
+
+<p>创建SSH密钥，一路回车</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;GitHub注册邮箱&quot;</span><br></pre></td></tr></table></figure>
+
+<p>ssh，简单来讲，就是一个秘钥，其中，id_rsa是你这台电脑的私人秘钥，相当于钥匙，id_rsa.pub是公共秘钥，相当于锁。要把id_rsa.pub公共秘钥给GitHub，这样才能用自己的私人密钥去开这把锁。当能够相互匹配时，才能够顺利的通过git上传你的文件到GitHub上。</p>
+<p>将id_rsa.pub中的内容复制，而后在GitHub的setting中：<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/b032fffb71937ba1b5888640970d96b8.png" alt="image-20220515194631747"></p>
+<p>点击左侧SSH and GPG keys的设置选项，点击New SSH key，把你的id_rsa.pub里面的信息复制进去。title随便填，本地的公钥复制到key中。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/eafc90db32b9693697d254f08024ca58.png" alt="image-20220515195256471"></p>
+<p>在本地gitbash中检测GitHub公钥设置是否成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh git@github.com</span><br></pre></td></tr></table></figure>
+
+
+<p>第一次登录需要输入GitHub的登录用户名和密码。</p>
+<p>3.修改配置文件<br>下一步将我们的Hexo与GitHub关联起来，打开站博客根目录blog的配置文件_config.yml<br>翻到最后修改为：（注意后面三行缩进两格）</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span> </span><br><span class="line">  <span class="attr">repository:</span> <span class="string">https://github.com/lixinyiceline/lixinyiceline.github.io.git（改）</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+
+<p>repository里的内容是GitHub代码仓库浏览器网址栏的网址，注意后面加上.git，保存站点配置文件。</p>
+<h4 id="4-本地上传到GitHub"><a href="#4-本地上传到GitHub" class="headerlink" title="4.本地上传到GitHub"></a>4.本地上传到GitHub</h4><p>本地gitbash安装Git部署插件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>然后输入下面三个命令就可搭建成功博客了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g &amp;&amp; hexo d</span><br><span class="line">hexo new 你要新建的博客名称 #注：新建的博客markerdown文件存放在_post文件夹中，可以直接查看</span><br></pre></td></tr></table></figure>
+
+<p>云服务器的部署参考博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_50609661/article/details/125216866">https://blog.csdn.net/m0_50609661/article/details/125216866</a></p>
+<p>改自：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6d2614b28daf">随心了</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机随笔</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://nikolahuang.github.io/2024/03/19/hexo-fluid%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0github/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/15/%E5%B0%8F%E9%BC%A0%E5%8F%97%E7%B2%BE%E5%8D%B5%E5%8E%9F%E6%A0%B8%E6%B3%A8%E5%B0%84%E5%8F%8A%E8%83%9E%E6%B5%86%E6%B3%A8%E5%B0%84/" class="archive-article-date">
-        <time datetime="2024-03-14T16:04:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-15</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2024/03/19/%E5%90%8C%E6%BA%90%E9%87%8D%E7%BB%84%E6%9E%84%E5%BB%BA%E8%B4%A8%E7%B2%92%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">同源重组构建质粒原理详解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+<div id="SOHUCS" sid="hexo-fluid搭建个人博客网站并部署到github" ></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "true",
+        conf: "true"
+    });
+</script>
+</script>
+
+
+
+<section id="comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname =
+    'true'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+  </script>
+  <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by
+      Disqus.</a></noscript>
+</section>
+
+
+
+
+  <div id="giteement-ctn"></div>
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/15/%E5%B0%8F%E9%BC%A0%E5%8F%97%E7%B2%BE%E5%8D%B5%E5%8E%9F%E6%A0%B8%E6%B3%A8%E5%B0%84%E5%8F%8A%E8%83%9E%E6%B5%86%E6%B3%A8%E5%B0%84/" target="_blank">小鼠受精卵原核注射及胞浆注射</a>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
-    </h1>
-  
+  <script>
+  <!-- id: "hexo+fluid搭建个人博客网站并部署到github" -->
+  var giteement = new Giteement({
+    id: '20240319225909',
+    owner: 'anderson2',
+    repo: 'disque',
+    backcall_uri: '',
+    oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'b7bbbb81c70a80c54b67830b93347418a2add42a2a1f038b58e9f8c1a76754ba',
+      client_secret: '4ccab940fe3153435d3da5a5edbc5214d719cabfd6736c016135223adf4d7fbb'
+    },
+  })
+  giteement.render('giteement-ctn')
+  </script>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/14/%E5%8E%9F%E6%A0%B8%E6%98%BE%E5%BE%AE%E6%B3%A8%E5%B0%84%E6%8A%80%E6%9C%AF%E5%AE%9E%E9%AA%8C/" class="archive-article-date">
-        <time datetime="2024-03-14T15:52:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-14</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/14/%E5%8E%9F%E6%A0%B8%E6%98%BE%E5%BE%AE%E6%B3%A8%E5%B0%84%E6%8A%80%E6%9C%AF%E5%AE%9E%E9%AA%8C/" target="_blank">原核显微注射技术实验1</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/14/%E6%B0%94%E9%81%93%E4%B8%8A%E7%9A%AE%E7%BB%86%E8%83%9E%E5%8F%8A%E5%85%B6%E5%B9%B2%E7%BB%86%E8%83%9E%E5%92%8C%E7%A5%96%E7%BB%86%E8%83%9E/" class="archive-article-date">
-        <time datetime="2024-03-14T14:57:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-14</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/14/%E6%B0%94%E9%81%93%E4%B8%8A%E7%9A%AE%E7%BB%86%E8%83%9E%E5%8F%8A%E5%85%B6%E5%B9%B2%E7%BB%86%E8%83%9E%E5%92%8C%E7%A5%96%E7%BB%86%E8%83%9E/" target="_blank">气道上皮细胞及其干细胞和祖细胞</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioLearning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/14/%E5%8D%B5%E6%AF%8D%E7%BB%86%E8%83%9E%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/" class="archive-article-date">
-        <time datetime="2024-03-14T14:17:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-14</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/14/%E5%8D%B5%E6%AF%8D%E7%BB%86%E8%83%9E%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C/" target="_blank">卵母细胞常规操作</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/14/%E4%B8%89%E7%A7%8D%E5%8A%A0%E5%BC%BACRISPR%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E7%9A%84Gibson%E7%BB%84%E8%A3%85%E6%96%B9%E6%B3%95/" class="archive-article-date">
-        <time datetime="2024-03-14T14:06:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-14</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/14/%E4%B8%89%E7%A7%8D%E5%8A%A0%E5%BC%BACRISPR%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E7%9A%84Gibson%E7%BB%84%E8%A3%85%E6%96%B9%E6%B3%95/" target="_blank">三种加强CRISPR工作流程的Gibson组装方法</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioLearning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/14/CRISPR-Cas9%E4%BB%8B%E5%AF%BC%E7%9A%84%E4%BA%BAiPSC%E7%BB%86%E8%83%9E%E7%B3%BBSNP%E7%B2%BE%E7%A1%AE%E7%BC%96%E8%BE%91/" class="archive-article-date">
-        <time datetime="2024-03-14T11:36:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-14</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/14/CRISPR-Cas9%E4%BB%8B%E5%AF%BC%E7%9A%84%E4%BA%BAiPSC%E7%BB%86%E8%83%9E%E7%B3%BBSNP%E7%B2%BE%E7%A1%AE%E7%BC%96%E8%BE%91/" target="_blank">CRISPR/Cas9介导的人iPSC细胞系SNP精确编辑</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/14/%E7%9A%84%E5%85%8D%E7%96%AB%E7%90%83%E8%9B%8B%E7%99%BD%E4%BD%8D%E7%82%B9%E5%B7%A5%E7%A8%8B/" class="archive-article-date">
-        <time datetime="2024-03-14T09:12:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-14</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/14/%E7%9A%84%E5%85%8D%E7%96%AB%E7%90%83%E8%9B%8B%E7%99%BD%E4%BD%8D%E7%82%B9%E5%B7%A5%E7%A8%8B/" target="_blank">杂交瘤细胞中基于 CRISPR/Cas9 的免疫球蛋白位点工程</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/14/%E7%94%A8%E4%BA%BA%E5%A4%96%E5%91%A8%E8%A1%80%E6%B6%B2%E4%B8%AD%E7%9A%84%E9%9D%9ET%E6%B7%8B%E5%B7%B4%E7%BB%86%E8%83%9E%E3%80%81B%E7%BB%86%E8%83%9E%E8%AF%B1%E5%AF%BC%E7%94%9F%E6%88%90%E5%85%A8%E8%83%BD%E5%B9%B2%E7%BB%86%E8%83%9E/" class="archive-article-date">
-        <time datetime="2024-03-14T07:54:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-14</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/14/%E7%94%A8%E4%BA%BA%E5%A4%96%E5%91%A8%E8%A1%80%E6%B6%B2%E4%B8%AD%E7%9A%84%E9%9D%9ET%E6%B7%8B%E5%B7%B4%E7%BB%86%E8%83%9E%E3%80%81B%E7%BB%86%E8%83%9E%E8%AF%B1%E5%AF%BC%E7%94%9F%E6%88%90%E5%85%A8%E8%83%BD%E5%B9%B2%E7%BB%86%E8%83%9E/" target="_blank">用人外周血液中的非T淋巴细胞、B细胞诱导生成全能干细胞</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/03/14/%E4%BD%BF%E7%94%A8Anvi%E2%80%99o%E8%BF%9B%E8%A1%8C%E4%BB%8E%E8%B4%A8%E9%87%8F%E6%8E%A7%E5%88%B6%E5%88%B0%E6%98%A0%E5%B0%84%E7%9A%84%E5%85%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%BB%84%E8%A3%85%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E/" class="archive-article-date">
-        <time datetime="2024-03-14T06:40:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-14</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/03/14/%E4%BD%BF%E7%94%A8Anvi%E2%80%99o%E8%BF%9B%E8%A1%8C%E4%BB%8E%E8%B4%A8%E9%87%8F%E6%8E%A7%E5%88%B6%E5%88%B0%E6%98%A0%E5%B0%84%E7%9A%84%E5%85%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%BB%84%E8%A3%85%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%9A%84%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E/" target="_blank">使用Anvi’o进行从质量控制到映射的宏基因组组装基因组的操作说明</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2024/">&laquo; Prev</a><a class="page-number" href="/archives/2024/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2024/page/3/">3</a><a class="page-number" href="/archives/2024/page/4/">4</a><a class="page-number" href="/archives/2024/page/5/">5</a><a class="extend next" rel="next" href="/archives/2024/page/3/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -709,8 +622,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
