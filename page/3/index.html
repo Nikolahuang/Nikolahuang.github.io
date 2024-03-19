@@ -233,6 +233,623 @@
 
 
   
+    <article id="post-蛋白质相互作用可视化检测方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/03/14/%E8%9B%8B%E7%99%BD%E8%B4%A8%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E5%8F%AF%E8%A7%86%E5%8C%96%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95/" target="_blank">可视免疫沉淀（VIP）实验：一种简单通用的蛋白质 - 蛋白质相互作用可视化检测方法</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/03/14/%E8%9B%8B%E7%99%BD%E8%B4%A8%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E5%8F%AF%E8%A7%86%E5%8C%96%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95/" class="archive-article-date">
+        <time datetime="2024-03-14T05:02:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-14</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1008119"> Yohei Katoh <img src="https://cdn.bio-protocol.org/forum/fe/static/icon_email.svg" alt="email"></a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1014359">KN Kentaro Nakamura</a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1014360">KN Kazuhisa Nakayama</a></p>
+<p>第一次发布: <a target="_blank" rel="noopener" href="https://bio-protocol.org/cn/archive?vol=8&issid=1183">2018年01月05日第8卷第1期 </a>DOI: <a target="_blank" rel="noopener" href="https://doi.org/10.21769/BioProtoc.2687">10.21769&#x2F;BioProtoc.2687</a> </p>
+<p>评审: <a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1005689">Alessandro Didonna</a><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1006990">Lai-Yee Wong</a><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=4649">Mirko Messa</a></p>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>可见免疫沉淀（VIP）分析是一种方便的替代传统共免疫沉淀（Katoh et al., 2015）的方法。通过处理共表达GFP融合蛋白和RFP融合蛋白的细胞裂解液，并使用GST标记的抗GFP纳米体和谷胱甘肽-Sepharose珠子进行免疫沉淀，可以在荧光显微镜下直接观察到带有免疫沉淀的珠子，从而可视化蛋白质-蛋白质相互作用。该分析方法可以同时检查大量蛋白质组合，无需包括SDS-PAGE和免疫印迹在内的耗时程序。此外，VIP分析可以检查复杂的单对多和多对多蛋白质相互作用。VIP分析的另一个重要特点是使用纳米体进行免疫沉淀。纳米体是从骆驼科动物（骆驼及其近亲）衍生出的单一域抗体。由于其体积小、高亲和力、高特异性和稳定性，大肠杆菌中表达的抗GFP纳米体可以在大规模上纯化，并几乎无限量地用于免疫沉淀实验。在这里，我们描述了制备GST标记的抗GFP纳米体和VIP分析的协议。</p>
+<hr>
+<h3 id="背景介绍："><a href="#背景介绍：" class="headerlink" title="背景介绍："></a>背景介绍：</h3><p>几乎所有细胞内的蛋白质都是通过与其他蛋白质相互作用来发挥功能的。揭示蛋白质-蛋白质相互作用网络对于理解蛋白质的功能至关重要。已经开发了各种方法来分析蛋白质-蛋白质相互作用，如酵母双杂交系统、GST拉下技术和共免疫沉淀。最近，我们开发了一种新的蛋白质-蛋白质相互作用分析方法，称为可见免疫沉淀（VIP）分析法（Katoh et al., 2015）。VIP分析法最重要的优势在于它方便快捷。该分析法可以在短时间内检查大量蛋白质组合，无需包括SDS-PAGE和免疫印迹在内的耗时程序。此外，VIP分析法能够同时确定两个以上蛋白质之间的相互作用。这个强大的工具可以用来揭示多蛋白质复合物的复杂结构，这是传统蛋白质-蛋白质相互作用分析方法无法确定的。利用VIP分析法的优势，我们阐明了多亚基复合物的结构，包括BBSome（由8个亚基组成）（Katoh et al., 2015）、IFT-B（16个亚基）（Katoh et al., 2016）和IFT-A（6个亚基）（Hirano et al., 2017），这些复合物都涉及在细胞内的蛋白质运输。</p>
+<hr>
+<h3 id="材料和试剂"><a href="#材料和试剂" class="headerlink" title="材料和试剂"></a>材料和试剂</h3><ol>
+<li>10 ml试管（ASIA KIZAI，目录号：2221C010B-10） </li>
+<li>50 ml试管（Thermo Fisher Scientific，Thermo ScientificTM，目录号：339652） </li>
+<li>15 ml试管（Thermo Fisher Scientific，Thermo ScientificTM，目录号：339650） </li>
+<li>6孔板（Thermo Fisher Scientific，Thermo ScientificTM，目录号：140675） </li>
+<li>1.5 ml试管（BIO-BIK，目录号：RC-0150） </li>
+<li>0.2 ml 8管条（Greiner Bio One International，目录号：673210和373270） </li>
+<li>96孔板（Thermo Fisher Scientific，Thermo ScientificTM，目录号：167008） </li>
+<li>0.22 µm PVDF过滤器（Millex-GV 0.22 µm PVDF 33 mm Gamma灭菌）（Merck，目录号：SLGV033RS） </li>
+<li>pGEX6P1-GFP-Nanobody（Addgene，目录号：61838） </li>
+<li>大肠杆菌BL21-CodonPlus(DE3)-RIPL株（Agilent Technologies，目录号：230280） </li>
+<li>人胚胎肾293T细胞（例如，ATCC，目录号：CRL-3216） </li>
+<li>荧光蛋白表达载体（例如，mEGFP-C1&#x2F;N1 [Addgene，目录号：54759和54767]，pmCherry-C1&#x2F;N1 [Takara Bio，Clontech，目录号：632524和632523] 或 pTagRFP-C&#x2F;N [Evrogen，目录号：FP141和FP142]Luria-Bertani (LB)培养基（NACALAI TESQUE，目录号：20068-75） </li>
+<li>LB琼脂平板（NACALAI TESQUE，目录号：20069-65） </li>
+<li>氨苄青霉素（NACALAI TESQUE，目录号：02739-32） </li>
+<li>异丙基β-D-1-硫代半乳糖苷（IPTG）（NACALAI TESQUE，目录号：19742-94） </li>
+<li>聚乙二醇单-p-异辛基苯醚（Triton X-100）（NACALAI TESQUE，目录号：12967-45） </li>
+<li>谷胱甘肽-Sepharose 4B（GE Healthcare，目录号：17075601） </li>
+<li>无钙镁磷酸盐缓冲液[PBS(-)]（NACALAI TESQUE，目录号：1148215） </li>
+<li>CBB染色剂One Super（NACALAI TESQUE，目录号：11642-31） </li>
+<li>Dulbecco’s改良Eagle培养基（DMEM），高糖（NACALAI TESQUE，目录号：08458-16） </li>
+<li>胎牛血清（FBS）（Thermo Fisher Scientific，GibcoTM，目录号：10270106） </li>
+<li>Opti-MEM（Thermo Fisher Scientific，目录号：31985070） </li>
+<li>二硫苏糖醇（DTT）（NACALAI TESQUE，目录号：14112-52） </li>
+<li>聚乙烯亚胺（PEI Max，Mw 40,000）（Polysciences，目录号：24765-2） </li>
+<li>HEPES（NACALAI TESQUE，目录号：17546-05） </li>
+<li>氯化钠（NaCl）（NACALAI TESQUE，目录号：31320-05） </li>
+<li>甘油（NACALAI TESQUE，目录号：17018-25） </li>
+<li>通用蛋白酶抑制剂 cocktail（100x）（NACALAI TESQUE，目录号：04080-11） 注：此蛋白酶抑制剂 cocktail 包含 4-(2-氨基乙基)苯磺酰氟化氢盐酸盐（AEBSF）、抑肽酶、E-64、硫酸链霉素一水合物，和二钠二氢乙二胺四乙酸二水合物（EDTA）。</li>
+<li>牛血清白蛋白（BSA）（NACALAI TESQUE，目录号：08587-84）</li>
+<li>用于哺乳动物细胞和组织提取的蛋白酶抑制剂 cocktail（100x）（NACALAI TESQUE，目录号：25955-11）<br>注：此蛋白酶抑制剂 cocktail 包含 4-(2-氨基乙基)苯磺酰氟化氢盐酸盐（AEBSF）、抑肽酶、E-64、硫酸链霉素一水合物、苯甲酰苯丙氨酸甲酯和腐胺。</li>
+<li>结合缓冲液（见配方）</li>
+<li>洗涤缓冲液（见配方）</li>
+<li>2 mg&#x2F;ml PEI Max 试剂（见配方）</li>
+<li>HEPES、NaCl、Triton X-100 和甘油（HNTG）缓冲液（见配方）</li>
+</ol>
+<hr>
+<h3 id="设备"><a href="#设备" class="headerlink" title="设备"></a>设备</h3><p>多通道移液器（20-200 µl）（Greiner Bio One International，目录号：89008200） </p>
+<p>吸管 大型离心机（日立工机，型号：CR22G） </p>
+<p>可设置为4 °C的冷却离心机（TOMY SEIKO，型号：EX-136） </p>
+<p>台式离心机（Eppendorf，型号：5415 R） </p>
+<p>PCR管离心机（BM Equipment，型号：ForceMini） </p>
+<p>摇床培养箱（TAITEC，型号：BR-23FP） </p>
+<p>旋转器（TAITEC，型号：RT-50） </p>
+<p>超声波细胞破碎仪（Misonix，型号：S-4000） </p>
+<p>荧光显微镜（Keyence，型号：BZ-8000） </p>
+<p>物镜（尼康，PlanApo 20x NA0.75 WD1.00） </p>
+<p>500 ml烧瓶（AGC Techno Glass，目录号：4551FK500R） </p>
+<p>分光光度计（GE healthcare，型号：UltrospecTM 2100 pro） </p>
+<p>光度计比色杯（GE Healthcare，目录号：80-2076-38）</p>
+<hr>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><h4 id="A-GST标记的抗GFP纳米体的制备"><a href="#A-GST标记的抗GFP纳米体的制备" class="headerlink" title="A. GST标记的抗GFP纳米体的制备"></a>A. GST标记的抗GFP纳米体的制备</h4><p>在这里，我们介绍制备GST标记的抗GFP纳米体的方法。在我们的条件下，通常从200 ml的大肠杆菌培养物中纯化约1 mg的蛋白质。<br>取携带pGEX6P1-GFP-Nanobody的大肠杆菌单菌落，接种到含有50 µg&#x2F;ml氨苄青霉素的3 ml LB培养基的试管中，并在37 °C下剧烈振荡培养过夜。</p>
+<ol>
+<li>将2 ml过夜培养物接种到含有50 µg&#x2F;ml氨苄青霉素的200 ml LB培养基的烧瓶中，并在37 °C下以130 rpm的转速摇动，直到培养物的OD600达到0.5（约需2-4小时）。</li>
+<li>为了诱导GST标记的抗GFP纳米体的表达，向烧瓶中加入200 µl的100 mM IPTG（最终浓度为0.1 mM），并在30 °C下以130 rpm的转速摇动4小时。</li>
+<li>将培养物转移到适当的离心管中，并在4 °C下以5,550 x g（例如，在Himac CR22G离心机中以6,000 rpm）的转速离心15分钟。</li>
+<li>弃去上清液，用10 ml结合缓冲液（见配方）重悬细胞。</li>
+<li>将细胞悬液转移到50 ml管中，并通过超声波细胞破碎仪进行破碎。在冰上进行5轮超声（15秒开启和15秒关闭），使用30%的振幅。</li>
+<li>向管中加入0.5 ml的20% Triton X-100水溶液，使最终浓度达到1%，并在4 °C（或冰上）孵育20分钟，以帮助细胞裂解。</li>
+<li>在4 °C下以20,700 x g（例如，在Himac CR22G离心机中以12,000 rpm）的转速离心20分钟，并将上清液转移到15 ml管中。</li>
+<li>将上清液分为2 x 5 ml。在这里，我们使用2个试管。</li>
+<li>向5 ml上清液中加入2.5 ml（床体积）的用PBS(-)平衡的谷胱甘肽-Sepharose 4B珠子，并在4 °C下旋转孵育过夜（12-24小时），使纳米体与珠子结合。</li>
+<li>在4 °C下以780 x g（例如，在EX-136离心机中以2,000 rpm）的转速离心2分钟，并通过吸管去除上清液。</li>
+<li>向沉淀中加入10 ml冰冷的洗涤缓冲液（见配方）。</li>
+<li>重复步骤A10和A11共8次。</li>
+<li>将珠子保留为1:1的悬浮液，在洗涤缓冲液中（即2.5 ml珠子和2.5 ml洗涤缓冲液）。珠子可以在4 °C下储存几个月。<br>注意：我们通常将珠子悬浮液分为1 ml（床体积500 µl）的等分。</li>
+<li>通过SDS-PAGE和考马斯亮蓝（CBB）染色检查纯化GST标记的抗GFP纳米体的质量和数量。在我们的制备条件下，大约1 µg&#x2F;5 µl（珠子床体积）的纳米体蛋白被纯化。一个典型的结果如图1所示。</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/20180102004906_7697.jpg" alt="Large image"></p>
+<p>[^图1. 纯化GST标记的抗GFP纳米体的典型结果。]: 纯化的GST标记的抗GFP纳米体和BSA经SDS-PAGE和CBB染色处理。通过比较纯化蛋白的条带强度与BSA的条带强度，估计纯化GST标记的抗GFP纳米体的浓度约为1 μg&#x2F;5 μl（床体积）。</p>
+<hr>
+<p>B. VIP分析法的执行</p>
+<p>在这里，我们将介绍如何执行VIP分析法（图2和视频1）。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/20180102005038_2911.jpg" alt="Large image"></p>
+<p><img src="https://en-cdn.bio-protocol.org/video/2687/2687-1.mp4" alt="video1"></p>
+<ol>
+<li><p>将大约8 × 10^5个HEK293T细胞播种到6孔板中，并在含5% FBS的2 ml DMEM高糖培养基中孵育24小时。</p>
+</li>
+<li><p>使用PEI Max试剂（见配方）共转染表达GFP融合蛋白和RFP融合蛋白的表达载体。</p>
+<p>a. 在一个1.5 ml管中混合250 µl Opti-MEM和4 µg DNA（例如，2 μg GFP表达载体和2 μg RFP表达载体）。</p>
+<p>b. 在另一个1.5 ml管中混合250 µl Opti-MEM和10 µl 2 mg&#x2F;ml的PEI Max试剂，室温下孵育5分钟。</p>
+<p>c. 通过涡旋混合DNA溶液和PEI溶液，并在室温下孵育20分钟。</p>
+<p>d. 将500 µl的DNA&#x2F;PEI混合物加入到6孔板中的每个孔中。</p>
+</li>
+<li><p>24小时后，通过荧光显微镜观察细胞以确认GFP融合蛋白和RFP融合蛋白的表达。</p>
+</li>
+<li><p>通过吸管完全去除板上的培养基，向每个孔中加入250 µl冰冷的HNTG缓冲液（见配方），并在冰上孵育5-10分钟以脱离贴壁细胞。</p>
+</li>
+<li><p>通过吸管悬浮细胞，将细胞悬液转移到一个1.5 ml管中，并在冰上孵育15分钟以裂解细胞。</p>
+</li>
+<li><p>在4 °C以16,100 x g（例如，在5415 R离心机中以13,200 rpm）的转速离心15分钟。</p>
+</li>
+<li><p>将200 µl上清液转移到含有预先结合到谷胱甘肽-Sepharose珠子上的GST标记的抗GFP纳米体的0.2 ml 8管条中，并在4 °C下用管旋转器持续旋转孵育1小时。</p>
+</li>
+<li><p>离心8管条30秒，并通过吸管去除上清液。</p>
+</li>
+<li><p>添加180 µl冰冷的HNTG缓冲液，并通过轻敲8管条混合内容物。</p>
+</li>
+<li><p>重复步骤B8和B9三次。</p>
+</li>
+<li><p>最后，将珠子悬浮在180 µl冰冷的PBS(-)中，并将珠子悬浮液转移到96孔板中。</p>
+</li>
+<li><p>在荧光显微镜下观察珠子上的绿色和红色荧光，并获取图像。为了比较荧光强度，在固定条件下（相机的曝光时间和ISO灵敏度）获取图像。</p>
+</li>
+<li><p>如果需要进行免疫印迹，收集珠子。</p>
+</li>
+</ol>
+<hr>
+<h3 id="数据分析"><a href="#数据分析" class="headerlink" title="数据分析"></a>数据分析</h3><h4 id="VIP分析法的示例"><a href="#VIP分析法的示例" class="headerlink" title="VIP分析法的示例"></a>VIP分析法的示例</h4><p>IFT-B复合物负责细胞蛋白运输，这是一个由16个亚基组成的大型蛋白质复合物。我们通过VIP分析法确定了IFT-B亚基之间的二元相互作用以及一对多和多对多的蛋白质相互作用，从而揭示了IFT-B复合物的结构（Katoh et al., 2016）。在这里，我们展示了一些IFT-B亚基的相互作用分析示例。</p>
+<h4 id="实验示例1：二元蛋白质相互作用"><a href="#实验示例1：二元蛋白质相互作用" class="headerlink" title="实验示例1：二元蛋白质相互作用"></a>实验示例1：二元蛋白质相互作用</h4><p>在带有GFP标签和mCherry（mChe）标签的IFT74和IFT81上执行VIP分析法（图3A）。左侧第四和第五个面板中的红色信号表明IFT74和IFT81相互作用。</p>
+<h4 id="实验示例2：一对多蛋白质相互作用"><a href="#实验示例2：一对多蛋白质相互作用" class="headerlink" title="实验示例2：一对多蛋白质相互作用"></a>实验示例2：一对多蛋白质相互作用</h4><p>在带有GFP标签的IFT22和带有mChe标签的IFT74、IFT81或IFT74 + IFT81上执行VIP分析法（图3B）。GFP-IFT22没有与mChe-IFT74或mChe-IFT81单独相互作用。然而，GFP-IFT22与带有mChe标签的IFT74 + IFT81异二聚体（图3B右侧面板）相互作用。为了确认IFT74和IFT81都绑定到IFT22，在VIP分析法之后进行了免疫印迹（图3C）。VIP分析法和免疫印迹的结果表明IFT22只与IFT74-IFT81异二聚体相互作用（图3D）。</p>
+<p>如上所述，VIP分析法是一种通用且灵活的方法，可以全面检查二元蛋白质相互作用，并检查更复杂的 一对多和多对多蛋白质相互作用。<br>最后，我们描述VIP分析法的注意事项。在此方法中，使用适当的阳性对照和阴性对照非常重要。作为阳性对照，应使用已知相互作用的蛋白质。作为阴性对照，应仅使用荧光蛋白。使用适当的实验对照有助于确定蛋白质-蛋白质相互作用的阳性或阴性。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/20180102005331_5374.jpg" alt="Large image"></p>
+<p>[^图3. VIP分析法揭示的IFT亚基之间的相互作用。]: A. 二元蛋白质相互作用。在GFP或mChe标记的IFT74和IFT81上执行VIP分析法。B. 一对多蛋白质相互作用。在GFP标记的IFT22和mChe标记的IFT74、IFT81或IFT74 + IFT81上执行VIP分析法。C. 在B所示的VIP分析法之后进行了免疫印迹。D. IFT22、IFT74和IFT88的相互作用模式。 （来自Katoh和Nakayama，2017；经YODOSHA Co., Ltd.许可改编。）</p>
+<hr>
+<h3 id="配方"><a href="#配方" class="headerlink" title="配方"></a>配方</h3><ol>
+<li>结合缓冲液<br>PBS(-)<br>5 mM DTT<br>通用蛋白酶抑制剂 cocktail（0.5 mM AEBSF，0.15 µM aprotinin，1 µM E-64，1 µM 硫酸链霉素一水合物，和0.5 mM EDTA）</li>
+<li>洗涤缓冲液<br>PBS(-)<br>5 mM DTT<br>0.1% Triton X-100</li>
+<li>2 mg&#x2F;ml PEI Max 试剂<br>20 mg的PEI Max溶解在10 ml的Milli-Q级水中，通过过滤灭菌<br>该溶液分为1 ml的等分，可以在4 °C下储存几个月<br>更长期储存，可以储存在-20 °C</li>
+<li>HEPES、NaCl、Triton X-100 和甘油（HNTG）缓冲液<br>注意：这只是一个裂解缓冲液的例子。也可以使用其他裂解缓冲液进行VIP分析法。<br>20 mM HEPES（pH7.4）<br>150 mM NaCl<br>0.1%（w&#x2F;v）Triton X-100<br>10%（w&#x2F;v）甘油<br>使用哺乳动物细胞和组织提取的蛋白酶抑制剂 cocktail（1 mM AEBSF，0.8 µM aprotinin，15 µM E-64，20 µM 硫酸链霉素一水合物，50 µM 苯甲酰苯丙氨酸甲酯，和10 µM 腐胺）</li>
+</ol>
+<hr>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ol>
+<li>Hirano, T., Katoh, Y. and Nakayama, K. (2017). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/27932497">Intraflagellar transport-A complex mediates ciliary entry and retrograde trafficking of ciliary G protein-coupled receptors.</a> <em>Mol Biol Cell</em> 28(3): 429-439.</li>
+<li>Katoh, Y. and Nakayama K. (2017). Visible immunoprecipitation assay: a convenient and versatile method for studying protein‒protein interactions using fluorescent fusion proteins. <em>Experimental Medicine</em> 35: 85-95 (written in Japanese).</li>
+<li>Katoh, Y., Nozaki, S., Hartanto, D., Miyano, R. and Nakayama, K. (2015). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/25964651">Architectures of multisubunit complexes revealed by a visible immunoprecipitation assay using fluorescent fusion proteins.</a> <em>J Cell Sci</em> 128(12): 2351-2362.</li>
+<li>Katoh, Y., Terada, M., Nishijima, Y., Takei, R., Nozaki, S., Hamada, H. and Nakayama, K. (2016). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/26980730">Overall architecture of the Intraflagellar Transport (IFT)-B complex containing Cluap1&#x2F;IFT38 as an essential component of the IFT-B peripheral subcomplex.</a> <em>J Biol Chem</em> 291: 10962-10975.</li>
+</ol>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/03/14/%E8%9B%8B%E7%99%BD%E8%B4%A8%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E5%8F%AF%E8%A7%86%E5%8C%96%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-刺突蛋白受体结合域复合的纳米抗体的产生和结晶" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/03/14/%E5%88%BA%E7%AA%81%E8%9B%8B%E7%99%BD%E5%8F%97%E4%BD%93%E7%BB%93%E5%90%88%E5%9F%9F%E5%A4%8D%E5%90%88%E7%9A%84%E7%BA%B3%E7%B1%B3%E6%8A%97%E4%BD%93%E7%9A%84%E4%BA%A7%E7%94%9F%E5%92%8C%E7%BB%93%E6%99%B6/" target="_blank">与SARS-CoV-2刺突蛋白受体结合域复合的纳米抗体的产生和结晶</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/03/14/%E5%88%BA%E7%AA%81%E8%9B%8B%E7%99%BD%E5%8F%97%E4%BD%93%E7%BB%93%E5%90%88%E5%9F%9F%E5%A4%8D%E5%90%88%E7%9A%84%E7%BA%B3%E7%B1%B3%E6%8A%97%E4%BD%93%E7%9A%84%E4%BA%A7%E7%94%9F%E5%92%8C%E7%BB%93%E6%99%B6/" class="archive-article-date">
+        <time datetime="2024-03-14T02:06:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-14</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1361133">AB Audrey Le Bas *</a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1354103">HM Halina Mikolajek *</a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1353962">JH Jiandong Huo *</a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1361134">CN Chelsea Norman</a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1353965">JD Joshua Dormon</a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1353963">JN James H. Naismith <img src="https://cdn.bio-protocol.org/forum/fe/static/icon_email.svg" alt="email"></a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1313253">RO Raymond J. Owens <img src="https://cdn.bio-protocol.org/forum/fe/static/icon_email.svg" alt="email"></a>，</p>
+<p>第一次发布: <a target="_blank" rel="noopener" href="https://bio-protocol.org/cn/archive?vol=12&issid=1287">2022年05月05日第12卷第9期 </a>DOI: <a target="_blank" rel="noopener" href="https://doi.org/10.21769/BioProtoc.4406">10.21769&#x2F;BioProtoc.4406</a> </p>
+<p>评审: <a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1055603">Joana Alexandra Costa Reis</a>Luke A Yates<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1206765">Sneha Ray</a></p>
+<hr>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>SARS-CoV-2的刺突蛋白的受体结合域（RBD）与上皮细胞表面的血管紧张素转换酶-2（ACE-2）结合，导致融合，病毒进入细胞。这种相互作用可以通过羊驼衍生的纳米体（VHHs）与RBD的结合而被阻断，从而导致病毒中和。通过X射线晶体学对VHH-RBD复合物进行结构分析，可以精确地映射VHH表位，并解释和预测变异突变的影响。关键在于一种可重复生产并结晶化VHH-RBD复合物的协议。根据我们的经验，我们描述了一个表达和纯化蛋白的工作流程，以及生成VHH-RBD复合物衍射质量晶体的筛选条件。从构建载体到收获并冻结晶体以收集数据，生产和结晶化蛋白复合物大约需要十二天的时间。</p>
+<hr>
+<h3 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h3><p>骆驼科动物（包括羊驼、驼羊和骆驼）产生一种独特的仅含重链的抗体，由可变域（VHH）与Fc恒定域（CH2和CH3）连接而成。VHHs可以作为单一域抗原结合蛋白或纳米体（Muyldermans, 2013）产生，在生命科学领域有广泛的应用（Pleiner等人，2015；Jovcevska和Muyldermans，2020）。针对COVID-19大流行（Dhama等人，2020），我们和其他许多研究团队开发了VHH试剂，这些试剂与SARS-CoV-2刺突蛋白的受体结合域（RBD）结合，并阻断了与细胞表面的ACE-2的结合，这是导致细胞感染的主要相互作用（Xiang等人，2020；Hanke等人，2020；Schoof等人，2020；Koenig等人，2021；Huo等人，2020，2021）。这些VHH的多聚体版本，无论是作为三聚体还是IgG Fc融合蛋白，都已证明可以在体外和COVID-19动物模型中中和SARS-CoV-2（Huo等人，2021；Nambulli等人，2021）。VHH-RBD复合物的结构分析揭示了两个表位聚集的区域，一个在或靠近ACE-2结合表面（簇2），另一个在RBD的对面（簇1）（Tang等人，2021）。关于VHH结合位点的信息使得可以解释和预测刺突蛋白中的突变效应。根据我们的经验，为了结晶某些VHH-RBD复合物，形成与两个VHH结合的正交位点的RBD复合物是必要的（Huo等人，2021）。</p>
+<p>VHHs通常在<em>E. coli</em>菌株WK6中作为六组氨酸标记蛋白生产，使用异丙基硫代-β-D-1-半乳糖苷（ITPG）诱导性启动子，并添加分泌信号（例如，pelB或ompA），以便在诱导表达后从周质中回收VHH。初步纯化使用固定金属亲和色谱（IMAC），并添加凝胶过滤作为抛光步骤。另外，VHHs也可以直接从裂解细胞中纯化，不过根据我们的经验，通过渗透休克从周质提取可以获得更高的蛋白产量。</p>
+<p>作为糖基化蛋白，SARS-CoV-2刺突蛋白的RBD生产需要在高级真核细胞中表达，为此已使用昆虫和哺乳动物细胞。在N端添加适当的信号序列以将产物定向到细胞培养基，并在C端添加六组氨酸标签以通过IMAC纯化。RBD的N-糖基化（Asn331和Asn343）引入了化学异质性，特别是在哺乳动物细胞中生产时，这通常会抑制结晶（Chang等人，2007）。通过在mannosidase抑制剂kifunensine的存在下培养细胞，N-糖基化可以被阻止在高甘露糖状态（GlcNAc2Man9糖型）。然后可以通过用endoglycosidase F1或H处理，将这些糖型修剪回单个N-乙酰葡萄糖胺残基（Chang等人，2007）。根据以往的经验（Nettleship等人，2013），这在进行VHH-RBD复合物纯化之前最有效地进行。</p>
+<p>分泌的糖蛋白从细胞培养液中通过IMAC纯化时，一个问题是某些培养液成分在色谱步骤中取代了感兴趣的His标签蛋白，显著降低了产量。在这里，我们使用了一种自动化的亲和纯化方法，包括IMAC和凝胶过滤，该方法涉及分批将样本加载到Ni-NTA柱上，并在每批之间进行柱洗涤步骤（Nettleship等人，2009）。</p>
+<p>我们已报道了使用商业筛选试剂盒、96孔格式和1-200纳升低样本量结晶化的多个VHH-RBD复合物。使用同步辐射X射线从主要的晶体命中收集衍射数据，并通过分子替换法解决了结构（Huo等人，2020，2021）。获得高质量晶体的关键在于蛋白质的制备。因此，在这篇文章中，我们描述了我们优化的工作流程，用于生产VHH-RBD复合物及其通过X射线晶体学分析的结晶化。</p>
+<hr>
+<h3 id="材料与试剂"><a href="#材料与试剂" class="headerlink" title="材料与试剂"></a>材料与试剂</h3><h4 id="A-受体结合域（RBD）的生产"><a href="#A-受体结合域（RBD）的生产" class="headerlink" title="A. 受体结合域（RBD）的生产"></a>A. <strong>受体结合域（RBD）的生产</strong></h4><ol>
+<li><h5 id="载体构建"><a href="#载体构建" class="headerlink" title="载体构建"></a>载体构建</h5><p>a. 用KpnI&#x2F;PmeI消化pOPINTTG载体（图1A）<br>b. 人类密码子优化的合成RBD基因（编码氨基酸330-352），带有与pOPINTTG融合入口位点重叠的15个碱基扩展（小写字母）：<br>5’gcgtagctgaaaccggcCCGAATATCACAAATCTTTGTCCTTTCGGAGAAGTATTCAACGCAACTCGCTTCGCATCAGTATATGCCTGGAACCGCAAACGAATTTCTAATTGTGTCGCCGACTACTCTGTGCTTTACAACTCAGCATCATTTTCAACATTCAAATGCTATGGTGTCTCCCCTACGAAGTTGAACGATCTTTGTTTCACTAATGTCTACGCCGATTCCTTTGTTATTAGGGGGGACGAGGTTCGCCAGATCGCGCCGGGCCAAACGGGCAAGATAGCTGACTATAATTATAAGCTGCCAGACGACTTTACAGGCTGCGTTATCGCTTGGAATTCAAACAATCTTGATAGCAAAGTGGGTGGTAATTATAACTACCTCTACAGACTGTTTCGCAAGTCTAATCTGAAGCCTTTCGAGCGGGACATCTCTACTGAGATCTATCAAGCTGGTTCAACCCCCTGCAATGGCGTCGAGGGTTTTAACTGTTACTTCCCACTTCAGTCATACGGATTTCAACCAACTAATGGGGTTGGCTATCAGCCGTACCGCGTGGTCGTTCTTAGCTTTGAGCTGCTTCACGCCCCTGCAACGGTGTGCGGACCGAAAAAAAGTACAAAaaacatcaccatcac 3’<br>c. ClonExpress II一步克隆试剂盒（Vazyme，目录号：C113-02）<br>d. NucleoSpin 148® 凝胶和PCR清洁试剂盒（MACHEREY-NAGEL，目录号：12303368）<br>e. Stellar感受态细胞（Takara Bio，目录号：636766）<br>f. LB培养基（Sigma-Aldrich，目录号：L3022）<br>g. S.O.C.（超级优化肉汤与分解代谢抑制）恢复培养基（ThermoFisher Scientific，目录号：15544034）<br>h. 阿莫西林（Sigma-Aldrich，目录号：A9393）<br>i. 加入100 μg&#x2F;mL阿莫西林的LB-琼脂平板<br>j. 质粒小量提取试剂盒（例如，Qiagen，目录号：27104）<br>k. Plasmid Plus Midi试剂盒（例如，Qiagen，目录号：12941）<br>l. 测序引物：pTTfwd 5’ TCCACAGGTGTCCACTCC 3’<br>   pTTrev 5’ TCCTTTATTAGCCAGAGG 3’</p>
+</li>
+<li><h5 id="在expi293TM细胞中的表达"><a href="#在expi293TM细胞中的表达" class="headerlink" title="在expi293TM细胞中的表达"></a>在expi293TM细胞中的表达</h5><p>a. 500 mL带挡板的无菌烧瓶，带通风盖（ThermoFisher Scientific，目录号：4116-0500）<br>b. CountessTM细胞计数室滑片（ThermoFisher Scientific，目录号：C10228）<br>c. Expi293TM细胞（ThermoFisher Scientific，目录号：A14527）<br>d. Expi293TM表达培养基（ThermoFisher Scientific，目录号：A1435101）<br>e. 台盼蓝溶液（ThermoFisher Scientific，目录号：15250061）<br>f. 汉克平衡盐溶液（HBSS）（10×）（ThermoFisher Scientific，目录号：14185052）<br>g. Gibco OPTI-MEM减血清培养基（ThermoFisher Scientific，目录号：31985062）<br>h. 瓦罗酸（Sigma-Aldrich，目录号：P4543）<br>i. 葡萄糖（45%溶液）（见配方或从Sigma-Aldrich，目录号：G8769）<br>j. 丙酸钠（Sigma-Aldrich，目录号：P1880）<br>k. PEI MAX 40 K（Polysciences Inc.，目录号：24,765-1）<br>l. Kifunensine（Sigma-Aldrich，目录号：K1140）<br>m. 预制SDS聚丙烯酰胺凝胶（例如，NuPAGETM 10%，Bis-Tris，ThermoFisher Scientific，目录号：WG1201A）<br>n. InstantBlue® Coomassie蛋白染色剂（Abcam，目录号：ab119211）</p>
+</li>
+<li><h4 id="RBD纯化"><a href="#RBD纯化" class="headerlink" title="RBD纯化"></a>RBD纯化</h4></li>
+</ol>
+<p>​              a. 5 ml HisTrap_FF Ni-NTA柱（Cytiva，目录号：1752860）</p>
+<p>​              b. SD75 16&#x2F;600排阻色谱柱（Cytiva，目录号：28989333）</p>
+<p>​              c. 丙咪唑（Sigma-Aldrich，目录号：I2399）</p>
+<p>​              d. PBS，磷酸盐缓冲液，10×溶液（Fisher，目录号：BP399-20）</p>
+<p>​              e. 洗涤缓冲液（见配方）</p>
+<p>​              f. 洗脱缓冲液（见配方）</p>
+<p>​             g. 凝胶过滤缓冲液（见配方）</p>
+<hr>
+<h4 id="B-VHH-production"><a href="#B-VHH-production" class="headerlink" title="B. VHH production"></a>B. <strong>VHH production</strong></h4><ol>
+<li><h5 id="载体构建-1"><a href="#载体构建-1" class="headerlink" title="载体构建"></a>载体构建</h5><p>a. 用SfiI切割的pADL-23c载体（图1B）（New England Biolabs，目录号：R0123S）</p>
+<p>b. 融合引物：<br>VHH正向引物 5’ GTTATTACTCGCGGCCCAGCCGGCCATGGCCC 3’<br>VHH反向引物 5’ GGTGATGGTGTTGGCCTTTATTAATGATGGTGGTGATGGTG 3’<br>c. 校对聚合酶（例如，PhusionFlashTM高保真聚合酶，ThermoFisher Scientific，目录号：F548S）</p>
+<p>d. pADL-23c测序引物：PhDseqFwd 5’ GCTTCCGGCTCGTATGTTG 3’<br>                                     PhDseqRev 5’ GTCGTCTTTCCAGACGTTAG 3’<br>e. 2 mL冷冻管（例如，ThermoFisher Scientific，目录号：5000-0020）</p>
+</li>
+<li><h5 id="E-coli-表达"><a href="#E-coli-表达" class="headerlink" title="E. coli 表达"></a><em>E. coli</em> 表达</h5><p>a. WK6细胞 <em>大肠杆菌</em> (Migula) Castellani and Chalmers (ATCC，目录号：47078)</p>
+<p>b. Terrific肉汤培养基（见配方）</p>
+<p>c. 异丙基硫代-β-D-1-半乳糖苷，IPTG（Sigma-Aldrich，目录号：I6758）</p>
+<p>d. 葡萄糖</p>
+<p>e. 氯化镁</p>
+<p>f. 阿莫西林</p>
+</li>
+<li><h5 id="VHH纯化"><a href="#VHH纯化" class="headerlink" title="VHH纯化"></a>VHH纯化</h5><p>a. TES缓冲液（见配方）</p>
+<p>b. 脱氧核糖核酸酶I（Sigma-Aldrich，目录号：D4263）</p>
+<p>c. 氯化镁（Sigma-Aldrich，目录号：M8266）</p>
+<p>d. 蔗糖（Sigma-Aldrich，目录号：S0389）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-12-09-4406-g001.jpg" alt="img"><br><strong>图1. 载体图谱 (A) pOPINTTGneo (B) pADL-23c</strong></p>
+</li>
+</ol>
+<hr>
+<h4 id="C-VHH-RBD复合物的结晶"><a href="#C-VHH-RBD复合物的结晶" class="headerlink" title="C. VHH-RBD复合物的结晶"></a>C. <strong>VHH-RBD复合物的结晶</strong></h4><ol>
+<li><h5 id="VHH-RBD复合物的制备"><a href="#VHH-RBD复合物的制备" class="headerlink" title="VHH-RBD复合物的制备"></a>VHH-RBD复合物的制备</h5><p>a. EndoH (New England Biolabs，目录号：P0702S)</p>
+<p>b. SD200 10&#x2F;300排阻色谱柱 (Cytiva，目录号：28990944)</p>
+</li>
+<li><h5 id="结晶筛选"><a href="#结晶筛选" class="headerlink" title="结晶筛选"></a>结晶筛选</h5><p>a. Swisssci Triple-Drop结晶板 (Molecular Dimensions，目录号：MD11-003-100)</p>
+<p>b. V型微孔板，无盖，自然色，聚丙烯 (Greiner，目录号：651201 96)</p>
+<p>c. VIEWsealTM板密封器，透明，不可穿透 (Greiner，目录号：676070)</p>
+<p>d. Pact premierTM结晶筛选条件 (Molecular Dimensions，目录号：MDSR-29)</p>
+<p>e. JCSG-plusTM结晶筛选条件 (Molecular Dimensions，目录号：MDSR-37)</p>
+<p>f. SG1TM结晶条件 (Molecular Dimensions，目录号：MDSR-88)</p>
+</li>
+<li><h5 id="晶体的冷冻保存"><a href="#晶体的冷冻保存" class="headerlink" title="晶体的冷冻保存"></a>晶体的冷冻保存</h5><p>a. 甘油 (Molecular Dimensions，目录号：MD2-100-65)</p>
+<p>b. PEG 400 (Sigma-Aldrich，目录号：06855)</p>
+<p>c. 已安装的圆形石版印刷环 (0.25 mm) (Molecular Dimensions，目录号：MD7-137)</p>
+<p>d. 已安装的圆形石版印刷环 (0.15 mm) (Molecular Dimensions，目录号：MD7-135)</p>
+<p>e. 标准泡沫杜瓦瓶 (Molecular Dimensions，目录号：MD7-35)</p>
+<p>f. Uni-Puck 10包装 (Molecular Dimensions，目录号：MD7-613)</p>
+<p>g. 冷冻工具套装 (Molecular Dimensions，目录号：MD7-517)</p>
+<p>h. 干燥运输器 (Molecular Dimensions，目录号：MD7-21</p>
+</li>
+</ol>
+<hr>
+<p>Equipment</p>
+<ol>
+<li>Microvolume spectrophotometer (<em>e.g</em>., ThermoFisher Scientific, NanoDropTM One&#x2F;OneC Microvolume UV-Vis Spectrophotometer: ND-ONE-W)</li>
+<li>CO2 orbital shaker (<em>e.g</em>., n-Biotek.com ANICELL incubator, catalog number: NB-206CXL&#x2F;NB)</li>
+<li>Tabletop centrifuge suitable for 50 mL Falcon tubes (Sorvall Legend RT Plus)</li>
+<li>Cell Counter (<em>e.g</em>., ThermoFisher Scientific CountessTM 3 Automated Cell Counter)</li>
+<li>ÄKTA Xpress automated multi-step purification system</li>
+<li>Liquid handler (<em>e.g</em>., Hydra Dispenser by Art Robbins Instruments)</li>
+<li>Low volume dispenser for crystallization plates (<em>e.g</em>., SPT labtech mosquito® LV)</li>
+<li>Crystal plate imager (<em>e.g</em>., Formulatrix RockImager® system)</li>
+</ol>
+<hr>
+<h3 id="Procedure"><a href="#Procedure" class="headerlink" title="Procedure"></a>Procedure</h3><h4 id="A-受体结合域的生产"><a href="#A-受体结合域的生产" class="headerlink" title="A.受体结合域的生产"></a>A.<strong>受体结合域的生产</strong></h4><ol>
+<li><h5 id="载体构建-2"><a href="#载体构建-2" class="headerlink" title="载体构建"></a>载体构建</h5><p>a. 对于10 μL的融合反应，混合20 ng（1–3 μL）的合成基因，100 ng（1–2 μL）的PmeI&#x2F;NcoI切割的pOPINTTG载体，1 μL的Exnase II，以及克隆试剂盒提供的优化缓冲液2 μL。</p>
+<p>b. 在37°C下孵育反应30分钟，然后立即加入20 μL的冰冷TE缓冲液以停止反应。</p>
+<p>c. 使用5 μL的反应混合物转化20 μL的Stellar感受态细胞，在冰上孵育30分钟，然后42°C下热击45秒。</p>
+<p>d. 加入400 μL的SOC培养基，并在37°C下孵育45分钟。</p>
+<p>e. 将细胞和培养基混合物中的100 μL涂布在含100 μg&#x2F;mL阿莫西林的LB-琼脂平板上，并在37°C下过夜培养。</p>
+<p>f. 将单个菌落接种到含100 μg&#x2F;mL阿莫西林的3 mL LB中，并在37°C下过夜培养。</p>
+<p>g. 通过向LB中的过夜培养细胞中加入0.5 mL的50%（v&#x2F;v）无菌甘油，制备甘油储备液，并在-80°C下冷冻。</p>
+<p>h. 从沉淀的细胞中制备DNA，并使用pTTfwd和PTTrev引物通过DNA小量制备进行克隆确认。</p>
+<p>i. 使用50%的甘油储备液培养更大规模的培养物，用于制备转染级质粒。</p>
+<p>j. 从150 mL的过夜LB培养物中使用QIAGEN Plasmid Plus Midi试剂盒纯化转染级质粒（0.5–1 mg），如有必要，将质粒储存在-20°C的无菌1.5 mL Eppendorf管中。</p>
+<p>k. 使用NanoDrop分光光度计测量DNA的纯度和浓度。用于转染的质粒DNA应具有高纯度（见注释1）。</p>
+<p>l. 仪器会自动计算DNA的浓度和纯度，使用以下方程式：<br>   浓度：DNA (µg&#x2F;mL) &#x3D; (A260读数 - A320读数) × 稀释因子 × 50 µg&#x2F;mL<br>   纯度：(A260&#x2F;A280) &#x3D; (A260读数 - A320读数) ÷ (A280读数 - A320读数)</p>
+<p>m. 每个转染的细胞使用1 μg的DNA。</p>
+</li>
+<li><h5 id="转染方法"><a href="#转染方法" class="headerlink" title="转染方法"></a>转染方法</h5><p>a. 在解冻后的至少三个传代（传代数3-30可用于实验）后，在湿度为80%，二氧化碳浓度为5-8%，温度为37°C的条件下，使用Gibco Expi293TM Express培养基在轨道摇床上以120 rpm的转速培养Expi293TM细胞悬浮培养，细胞密度在0.5至5.0 × 106细胞&#x2F;mL之间。使用125 mL烧瓶维持30 mL的Expi293细胞。</p>
+<p>b. 转染前一天，将Expi293TM细胞播种在细胞密度为1 × 106细胞&#x2F;mL的培养基中。对于每次RBD的准备，在500 mL烧瓶中设置三个170 mL的培养物。</p>
+<p>c. 转染当天，确定细胞计数和活力，如果细胞计数在2 × 106 - 2.5 × 106&#x2F;mL之间且至少95%为活细胞，则进行转染（见注释2）。<br>d. 对于每个170 mL的培养物，将17 mL的OPTI-MEM培养基与170 μg质粒DNA和918 μL的PEI Max 40kDa转染试剂混合在50 mL的Falcon管中。</p>
+<p>e. 充分混合，室温（RT）下孵育10分钟，然后轻轻（逐滴）加入Expi293TM细胞中（见注释3）。<br>f. 从1 mg&#x2F;mL的储备液中添加kifunensine（每100 mL培养体积100 μL），并将细胞放回轨道摇床上，以125 rpm的速度，5-8%的二氧化碳，80%的湿度和37°C的温度继续培养。</p>
+<p>g. 转染16-18小时后，向每个170 mL的培养物中添加2,890 μL的瓦罗酸、1,100 μL的丙酸钠和3,400 μL的葡萄糖。将培养物放回培养箱（见注释4）。</p>
+<p>h. 转染后第5天，确定细胞计数和活力。</p>
+<p>i. 收获培养基，并在6,000 × g的条件下在0.5 L离心管中离心20分钟。使用0.45 μm的0.5 L瓶顶过滤器进行过滤消毒。</p>
+</li>
+<li><h5 id="纯化"><a href="#纯化" class="headerlink" title="纯化"></a>纯化</h5><p>IMAC-SEC纯化协议适用于ÄKTA Xpress平台，该协议在Nettleship等人（2009）中有描述。相同的工作流程也可以在其他具有自动峰检测的纯化系统中实现。Unicorn程序的转录本作为<a target="_blank" rel="noopener" href="https://os.bio-protocol.org/attached/file/20220406/Appendix.docx">附录</a>提供。</p>
+<p>a. 使用“Gel Filtration Equilibration”程序和Gel filtration缓冲液（20 mM Tris，pH 7.5，200 mM NaCl）平衡凝胶过滤柱。</p>
+<p>b. 按照“Mammalian Prepping System”方法设置系统。它将泵入洗涤A1和A2，并清洁进口。然后它会要求你将5-mL柱子拧入位置1，并将会平衡柱子。</p>
+<p>c. 将等体积的PBS加入到过滤的细胞上清中，并用NaOH将pH调至7.4。</p>
+<p>d. 一旦柱子插上电源且样品准备就绪，缓慢移除A2线上的缓冲液（通过小动作以避免管线中产生气泡），并将它插入样品中。确保所有管线都在瓶子的底部。</p>
+<p>e. 让程序在夜间运行。</p>
+<p>f. 使用ÄKTA的跟踪，选择包含目标蛋白的正确馏分。将10 μL的蛋白溶液与10 μL的样品缓冲液混合，并在95°C下加热5分钟。对样品进行SDS-PAGE凝胶电泳，并用Instant Blue®染色。</p>
+<p>g. 使用10 kDa浓缩器在2,500 × g和4°C的条件下浓缩蛋白，通常浓缩至5 mg&#x2F;mL。</p>
+<p>h. 分装（例如，0.1 mL）并在液氮中快速冷冻蛋白质，通过将试管浸入液氮中。</p>
+<p>i. 存放在-80°C。</p>
+</li>
+</ol>
+<hr>
+<h4 id="B-Production-of-VHHs"><a href="#B-Production-of-VHHs" class="headerlink" title="B. Production of VHHs"></a>B. <strong>Production of VHHs</strong></h4><ol>
+<li><h5 id="载体构建-3"><a href="#载体构建-3" class="headerlink" title="载体构建"></a>载体构建</h5><p>通过M13噬菌体展示库筛选确定的VHHs重新表达以生产蛋白质。</p>
+<p>a. 使用VHH Fwd引物和VHH Rev引物从源展示载体中扩增VHH，并使用以下PCR条件：<br>\1) 98°C for 10 s<br>\2) 30 cycles of:<br>98°C for 1 s<br>60°C for 5 s<br>72°C for 15 s<br>\3) 72°C for 2 min<br>\4) 4°C hold</p>
+<p>b. 通过琼脂糖凝胶电泳纯化扩增的VHH DNA，并按照制造商的说明使用Nucleospin®试剂盒提取。将PCR产物克隆到SfiI切割的pADL-23c载体中，如RBD克隆所述。</p>
+<p>c. 通过使用PhDseqFwd和PhDseqRev引物进行测序验证克隆。</p>
+</li>
+<li><h5 id="在E-coli中的表达"><a href="#在E-coli中的表达" class="headerlink" title="在E. coli中的表达"></a>在<em>E. coli</em>中的表达</h5><p>a. 按照上述描述，将RBD表达载体的构建转化到化学感受态WK6细胞中。</p>
+<p>b. 从转化细胞的平板上选取一个菌落，并设置预培养：8 mL TB培养基补充100 μg&#x2F;mL阿莫西林、2%葡萄糖和1 mM MgCl2。</p>
+<p>c. 设置培养：2-L烧瓶中的800 mL TB培养基，补充100 μg&#x2F;mL阿莫西林、0.1%葡萄糖和1 mM MgCl2。</p>
+<p>d. 预热烧瓶&#x2F;培养基至37°C。</p>
+<p>e. 加入预培养物，并在轨道摇床上以225 rpm和37°C的生长速率培养。</p>
+<p>f. 当OD600达到约1.2时（通常需要约3.5小时），添加IPTG至最终浓度为1 mM，并在225 rpm和28°C的条件下继续培养过夜。</p>
+<p>g. 在4°C以2,500 × g的转速离心15分钟沉淀细胞。</p>
+</li>
+<li><h5 id="VHH的纯化"><a href="#VHH的纯化" class="headerlink" title="VHH的纯化"></a>VHH的纯化</h5><p>a. 将15 mL TES缓冲液添加到细胞沉淀中，并在4°C下用磁力搅拌器缓慢重悬过夜。</p>
+<p>b. 第二天，将两倍的体积的冷TES&#x2F;4缓冲液（含120U Kunitz DNaseI）添加到重悬的培养物中，并缓慢搅拌2小时。</p>
+<p>c. 用TES&#x2F;4缓冲液将体积补至80 mL。</p>
+<p>d. 在4°C以28,000 × g的转速离心30分钟（使用50 mL管）。</p>
+<p>e. 在真空条件下，通过0.8 μm过滤器过滤上清液。</p>
+<p>f. 用PBS（pH 7.4）将上清液稀释五倍，并充分混合。</p>
+<p>g. 将样品加载到两个串联的5-mL IMAC柱上，流速小于2 mL&#x2F;min。</p>
+<p>h. 用含30 mM咪唑的PBS（pH 7.4）洗涤柱子。</p>
+<p>i. 用含300 mM咪唑的PBS以1 mL&#x2F;min的速度洗脱样品，收集到96孔收集板中，每1 mL收集一个馏分。</p>
+<p>j. 合并A280峰值馏分（约7.5 mL）并在凝胶过滤缓冲液（50 mM Tris pH 7，150 mM NaCl）中通过Superose S75 16&#x2F;600进行凝胶过滤。</p>
+<p>k. 合并A280峰值蛋白馏分，并使用5 kDa MWCO浓缩器浓缩，通常浓缩至15 mg&#x2F;mL（见注释5）。</p>
+<p>l. 分装（例如，0.1 mL）并在液氮中快速冷冻蛋白质，通过将试管浸入液氮中。</p>
+<p>m. 存放在-80°C。</p>
+</li>
+</ol>
+<hr>
+<p>C. <strong>VHH-RBD复合物的结晶</strong></p>
+<ol>
+<li><p>VHH:RBD复合物的制备</p>
+<p>a. 在冷室中，以2 rpm的转速搅拌下，将5 mg RBD（5 mg&#x2F;mL）与3 mg VHH（15 mg&#x2F;mL）按RBD:VHH的摩尔比为1:1.2混合，并在冷室中孵化3小时（见注释6）。</p>
+<p>b. 在室温下，以2 rpm的转速搅拌下，将RBD-VHH复合物与0.4 mg EndoH糖苷酶（1 mg&#x2F;mL）孵化过夜（见注释7）。</p>
+<p>c. 使用5 kDa MWCO浓缩器将混合物浓缩至1 mL，并注入到凝胶过滤缓冲液（50 mM Tris pH 7，150 mM NaCl）中的Superose 200 10&#x2F;300柱上。</p>
+<p>d. 监测A280，收集峰值馏分，并使用5 kDa MWCO浓缩器浓缩至20 mg&#x2F;mL（见图2和3）。</p>
+</li>
+<li><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-12-09-4406-g002.jpg" alt="img"><br><strong>图2. 在SD200 20&#x2F;300排阻色谱柱上纯化VHH-RBD复合物（CV 23.56 mL)。</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-12-09-4406-g003.jpg" alt="img"><br><strong>图3. SDS-PAGE分析RBD（泳道1）、VHH（泳道2）以及RBD-VHH复合物经EndoH处理后的凝胶过滤馏分（泳道3-12)。</strong></p>
+</li>
+<li><p>结晶筛选</p>
+<ol>
+<li>使用Hydra液体处理器，将25 μL的结晶溶液从96孔主块中分配到Swisssci结晶板的底座孔中。</li>
+<li>使用移液器将蛋白质溶液滴入V型微孔板孔中的柱中。</li>
+<li>使用机器人液体处理器（Mosquito）设置一个由288滴组成的坐滴板，使用三种蛋白质：底座比例（100 nL蛋白质 + 100 nL底座；200 nL蛋白质 + 100 nL底座；100 nL蛋白质 + 200 nL底座）（见注释8）。</li>
+<li>使用VIEWseal密封完成的板。</li>
+<li>在Formulatrix成像器中，按照Fibonacci时间表以20°C的温度拍摄和存储板（见图4中晶体示例）。</li>
+<li>剪去密封膜上的一个方块，打开滴。</li>
+<li>将1 μL的冷冻保护剂混合物（原始结晶条件中的30%甘油或Peg 400）滴在晶体&#x2F;滴上。表1提供了结晶化VHH-RBD复合物的示例。</li>
+<li>将磁性棒上的安装针放在磁性棒上，从滴中钩住晶体，并迅速放入含有液氮的泡沫杜瓦瓶中。</li>
+<li>将装有晶体的圆柱放入泡沫杜瓦瓶中。</li>
+<li>将圆柱转移到预冷的干式运输器中。</li>
+</ol>
+<p><strong>表1. 结晶化VHH-RBD复合物的示例，包括结晶条件的详细信息、空间群和晶体产生的分辨率极限。</strong></p>
+<table>
+<thead>
+<tr>
+<th>Complex</th>
+<th>RBD-F2</th>
+<th>RBD-H3-C1</th>
+<th>RBD-C5</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Crystal screen</td>
+<td>PactTM</td>
+<td>JCSGTM</td>
+<td>SG1TM</td>
+</tr>
+<tr>
+<td>Crystallisation condition</td>
+<td>0.1 M SPG, pH 8, 25% Peg 1500</td>
+<td>1.0 M Lithium chloride, 0.1 M Citrate pH 4, 20% Peg 6000</td>
+<td>0.2 M Na Acetate, 0.1 M Na Cacodylate pH 6.5 and 30% w&#x2F;v PEG 8000</td>
+</tr>
+<tr>
+<td>Time for crystal formation</td>
+<td>3 days</td>
+<td>less than 24 h</td>
+<td>3 days optimal growth</td>
+</tr>
+<tr>
+<td>Ratio</td>
+<td>0.2 μL protein with 0.1 μL reservoir</td>
+<td>0.2 μL protein with 0.1 μL reservoir</td>
+<td>0.1 μL protein with 0.1 μL reservoir</td>
+</tr>
+<tr>
+<td>Concentration</td>
+<td>34 mg&#x2F;mL</td>
+<td>18 mg&#x2F;mL</td>
+<td>18 mg&#x2F;mL</td>
+</tr>
+<tr>
+<td>Cryoprotectant</td>
+<td>glycerol</td>
+<td>Peg400</td>
+<td>glycerol</td>
+</tr>
+<tr>
+<td>Data collection</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Exposure</td>
+<td>0.006s</td>
+<td>0.012s</td>
+<td>0.008s</td>
+</tr>
+<tr>
+<td>Space group</td>
+<td>P31</td>
+<td>P41212</td>
+<td>P21212</td>
+</tr>
+<tr>
+<td>Resolution (Å)</td>
+<td>2.3</td>
+<td>1.9</td>
+<td>1.5</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-12-09-4406-g004.jpg" alt="img"><br><strong>图4. 不同复合物的晶体形状：RBD-F2（左），RBD-H3-C1（中）和RBD-C5（右)。</strong></p>
+<hr>
+<h4 id="注："><a href="#注：" class="headerlink" title="注："></a>注：</h4><ol>
+<li>高质量的DNA应具有最低限度的蛋白质和化学污染，其吸收比260&#x2F;280应在1.8-2.0之间，260&#x2F;230应在2.0-2.2之间。</li>
+<li>我们的协议适用于任何规模的表达：1-3 mL板实验，以及30-300 mL的扩大表达在烧瓶中。提供的体积和试剂量应与转染细胞的体积成比例。</li>
+<li>不要直接混合DNA和PEI，因为它们会立即沉淀。</li>
+<li>瓦罗酸、丙酸钠（组蛋白去乙酰化酶抑制剂）和葡萄糖的组合使用可以显著提高基因表达。</li>
+<li>在浓缩步骤中，检查是否有VHH沉淀非常重要，如果观察到沉淀，应停止进一步浓缩蛋白质。任何沉淀物都可以通过在微旋离心机中以12,000 × g的速度离心10分钟来去除，然后通过在280 nm处的吸光度来测量最终蛋白质浓度。</li>
+<li>添加过量的VHH，以确保RBD与纳米体完全复合。</li>
+<li>EndoH在pH ~5.2时效率最高。然而，由于大多数蛋白质在这个pH下不稳定，反应在pH 7.5下进行。此外，许多蛋白质长时间在37°C下不稳定，因此室温是反应的首选。EndoH在室温和pH 7.5下活跃，但在最佳条件下反应时间会更长。</li>
+<li>两种稀疏矩阵筛选（JCSG+和SG1）通常以两种不同浓度（通常是34 mg&#x2F;mL和18 mg&#x2F;mL）进行筛选，比例为三种。对于复合物RBD-F2和RBD-H3-C1，我们得到了许多结晶命中，而对于RBD-C5，我们只得到了一个命中。偶尔使用PACT筛选。从稀疏矩阵筛选中收获的晶体不需要进一步优化。为了获得更多不同衍射质量的晶体，通常在蚊子上设置相同的条件作为一行，使用相同的协议。这还允许测试两种不同的冷冻条件（通常是甘油和Peg 400）。晶体非常可重复。通常在生长后24小时内收获所有命中中的最清晰的晶体，但大多数命中在随后5天内衍射质量保持稳定。</li>
+</ol>
+<hr>
+<h3 id="配方"><a href="#配方" class="headerlink" title="配方"></a>配方</h3><ol>
+<li><p>瓦罗酸<br>将500 mg的瓦罗酸溶解在10 mL的细胞培养基或HBSS中，过滤0.2 μm，并储存在-20°C。</p>
+</li>
+<li><p>丙酸钠溶液<br>将1 g的丙酸钠溶解在10 mL的细胞培养基或HBSS中，过滤，并储存在-20°C。</p>
+</li>
+<li><p>PEI<br>将100 mg的PEI Max 40K悬浮在90 mL的MilliQ水中。使用PTFE涂层的搅拌棒搅拌。溶解时间应少于5分钟，然后使用NaOH或HCl将pH调整至7.0。加水上至100 mL，过滤0.2 μm，并储存在-20°C。</p>
+</li>
+<li><p>葡萄糖<br>将45 g的葡萄糖溶解在100 mL的HBSS或细胞培养基中，过滤0.2 μm，并储存在-20°C。</p>
+</li>
+<li><p>洗涤缓冲液<br>PBS + 30 mM咪唑 pH 7.4</p>
+</li>
+<li><p>洗脱缓冲液<br>PBS + 300 mM咪唑 pH 7.4</p>
+</li>
+<li><p>凝胶过滤缓冲液<br>20 mM Tris，pH 7.5，200 mM NaCl，或50 mM Tris pH 7，150 mM NaCl</p>
+</li>
+<li><p>TES缓冲液<br>200 mM Tris pH 8，0.5 mM EDTA，500 mM蔗糖</p>
+</li>
+<li><p>TES&#x2F;4缓冲液<br>50 mM Tris pH 8，125 mM蔗糖</p>
+</li>
+<li><p>TB培养基<br>酵母提取物（24 g&#x2F;L），胰蛋白胨（20 g&#x2F;L），甘油（4 mL&#x2F;L），磷酸盐缓冲液（100 mL&#x2F;L）为0.17 M KH2PO4，0.72 M K2HPO4</p>
+<hr>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3></li>
+<li><p>Chang, V. T., Crispin, M., Aricescu, A. R., Harvey, D. J., Nettleship, J. E., Fennelly, J. A., Yu, C., Boles, K. S., Evans, E. J., Stuart, D. I., <em>et al</em>. (2007). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/17355862">Glycoprotein structural genomics: solving the glycosylation problem.</a> <em>Structure</em> 15(3): 267-273.</p>
+</li>
+<li><p>Dhama, K., Khan, S., Tiwari, R., Sircar, S., Bhat, S., Malik, Y. S., Singh, K. P., Chaicumpa, W., Bonilla-Aldana, D. K. and Rodriguez-Morales, A. J. (2020). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/32580969">Coronavirus Disease 2019-COVID-19.</a> <em>Clin Microbiol Rev</em> 33(4): e00028-20.</p>
+</li>
+<li><p>Hanke, L., Vidakovics Perez, L., Sheward, D. J., Das, H., Schulte, T., Moliner-Morro, A., Corcoran, M., Achour, A., Karlsson Hedestam, G. B., Hallberg, B. M., <em>et al</em>. (2020). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/32887876">An alpaca nanobody neutralizes SARS-CoV-2 by blocking receptor interaction.</a> <em>Nat Commun</em> 11(1): 4420.</p>
+</li>
+<li><p>Huo, J., Le Bas, A., Ruza, R. R., Duyvesteyn, H. M. E., Mikolajek, H., Malinauskas, T., Tan, T. K., Rijal, P., Dumoux, M., Ward, P. N., <em>et al</em>. (2020). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/32661423">Neutralizing nanobodies bind SARS-CoV-2 spike RBD and block interaction with ACE2.</a> <em>Nat Struct Mol Biol</em> 27(9): 846-854.</p>
+</li>
+<li><p>Huo, J., Mikolajek, H., Le Bas, A., Clark, J. J., Sharma, P., Kipar, A., Dormon, J., Norman, C., Weckener, M., Clare, D. K., <em>et al</em>. (2021). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/34552091">A potent SARS-CoV-2 neutralising nanobody shows therapeutic efficacy in the Syrian golden hamster model of COVID-19.</a> <em>Nat Commun</em> 12(1): 5469.</p>
+</li>
+<li><p>Jovcevska, I. and Muyldermans, S. (2020). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/31686399">The Therapeutic Potential of Nanobodies.</a> <em>BioDrugs</em> 34(1): 11-26.</p>
+</li>
+<li><p>Koenig, P. A., Das, H., Liu, H., Kummerer, B. M., Gohr, F. N., Jenster, L. M., Schiffelers, L. D. J., Tesfamariam, Y. M., Uchima, M., Wuerth, J. D., <em>et al</em>. (2021). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/33436526">Structure-guided multivalent nanobodies block SARS-CoV-2 infection and suppress mutational escape.</a> <em>Science</em> 371(6530): eabe6230.</p>
+</li>
+<li><p>Muyldermans, S. (2013). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/23495938">Nanobodies: natural single-domain antibodies.</a><em>Annu Rev Biochem</em> 82: 775-797.</p>
+</li>
+<li><p>Nambulli, S., Xiang, Y., Tilston-Lunel, N. L., Rennick, L. J., Sang, Z., Klimstra, W. B., Reed, D. S., Crossland, N. A., Shi, Y. and Duprex, W. P. (2021). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/34039613">Inhalable Nanobody (PiN-21) prevents and treats SARS-CoV-2 infections in Syrian hamsters at ultra-low doses.</a> <em>Sci Adv</em> 7(22): eabh0319.</p>
+</li>
+<li><p>Nettleship, J. E., Rahman-Huq, N. and Owens, R. J. (2009). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/18988030">The production of glycoproteins by transient expression in Mammalian cells. </a><em>Methods Mol Biol</em> 498: 245-263.</p>
+</li>
+<li><p>Nettleship, J. E., Ren, J., Scott, D. J., Rahman, N., Hatherley, D., Zhao, Y., Stuart, D. I., Barclay, A. N. and Owens, R. J. (2013). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/23826770">Crystal structure of signal regulatory protein gamma (SIRPgamma) in complex with an antibody Fab fragment.</a> <em>BMC Struct Biol</em> 13: 13.</p>
+</li>
+<li><p>Pleiner, T., Bates, M., Trakhanov, S., Lee, C. T., Schliep, J. E., Chug, H., Bohning, M., Stark, H., Urlaub, H. and Gorlich, D. (2015). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/26633879">Nanobodies: site-specific labeling for super-resolution imaging, rapid epitope-mapping and native protein complex isolation.</a> <em>Elife</em> 4: e11349.</p>
+</li>
+<li><p>Schoof, M., Faust, B., Saunders, R. A., Sangwan, S., Rezelj, V., Hoppe, N., Boone, M., Billesbolle, C. B., Puchades, C., Azumaya, C. M., <em>et al</em>. (2020). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/33154106">An ultrapotent synthetic nanobody neutralizes SARS-CoV-2 by stabilizing inactive Spike.</a> <em>Science</em> 370(6523): 1473-1479.</p>
+</li>
+<li><p>Tang, Q., Owens, R. J. and Naismith, J. H. (2021). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/34835020">Structural Biology of Nanobodies against the Spike Protein of SARS-CoV-2.</a> <em>Viruses</em> 13(11): 2214.</p>
+</li>
+<li><p>Wec, A. Z., Wrapp, D., Herbert, A. S., Maurer, D. P., Haslwanter, D., Sakharkar, M., Jangra, R. K., Dieterle, M. E., Lilov, A., Huang, D., <em>et al</em>. (2020). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/32540900">Broad neutralization of SARS-related viruses by human monoclonal antibodies.</a> <em>Science</em> 369(6504): 731-736.</p>
+</li>
+<li><p>Xiang, Y., Nambulli, S., Xiao, Z., Liu, H., Sang, Z., Duprex, W. P., Schneidman-Duhovny, D., Zhang, C. and Shi, Y. (2020). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/33154108">Versatile and multivalent nanobodies efficiently neutralize SARS-CoV-2.</a> <em>Science</em> 370(6523): 1479-1484.</p>
+</li>
+</ol>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/03/14/%E5%88%BA%E7%AA%81%E8%9B%8B%E7%99%BD%E5%8F%97%E4%BD%93%E7%BB%93%E5%90%88%E5%9F%9F%E5%A4%8D%E5%90%88%E7%9A%84%E7%BA%B3%E7%B1%B3%E6%8A%97%E4%BD%93%E7%9A%84%E4%BA%A7%E7%94%9F%E5%92%8C%E7%BB%93%E6%99%B6/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-从骆驼到纳米抗体-用于生成功能化 VHH 的简化工作流程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -6677,890 +7294,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2024/03/09/%E5%B0%8F%E9%BC%A0%E8%84%91%E5%AE%A4%E7%AE%A1%E8%86%9C%E7%BB%86%E8%83%9E%E7%BA%A4%E6%AF%9B%E7%BB%84%E7%BB%87%E5%88%86%E6%9E%90%EF%BC%9A%E8%84%91%E5%AE%A4%E7%9A%84%E8%A7%A3%E5%89%96%E5%92%8C%E6%9F%93%E8%89%B2/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-小鼠室管膜纤毛干的纯化和免疫染色" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/03/09/%E5%B0%8F%E9%BC%A0%E5%AE%A4%E7%AE%A1%E8%86%9C%E7%BA%A4%E6%AF%9B%E5%B9%B2%E7%9A%84%E7%BA%AF%E5%8C%96%E5%92%8C%E5%85%8D%E7%96%AB%E6%9F%93%E8%89%B2/" target="_blank">小鼠室管膜纤毛干的纯化和免疫染色</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/03/09/%E5%B0%8F%E9%BC%A0%E5%AE%A4%E7%AE%A1%E8%86%9C%E7%BA%A4%E6%AF%9B%E5%B9%B2%E7%9A%84%E7%BA%AF%E5%8C%96%E5%92%8C%E5%85%8D%E7%96%AB%E6%9F%93%E8%89%B2/" class="archive-article-date">
-        <time datetime="2024-03-09T10:42:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-09</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><strong>小鼠室管膜纤毛干的纯化和免疫染色</strong></p>
-<p>作者：<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1346660">KH Kai Hao</a><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1004150">XZ Xueliang Zhu </a><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1004151"> Xiumin Yan <img src="https://cdn.bio-protocol.org/forum/fe/static/icon_email.svg" alt="email"></a></p>
-<p>第一次发布: <a target="_blank" rel="noopener" href="https://bio-protocol.org/cn/archive?vol=12&issid=1292">2022年07月20日第12卷第14期 </a>DOI: <a target="_blank" rel="noopener" href="https://doi.org/10.21769/BioProtoc.4467">10.21769&#x2F;BioProtoc.4467</a> </p>
-<p>评审: <a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1004051">David Paul</a><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1241469">Yoko Bekku</a><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1256993">Nona Farbehi</a></p>
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>纤毛和鞭毛是从大多数真核细胞表面突出的基于微管的毛状细胞器，在细胞运动、左右不对称、胚胎发育和组织稳态中起重要作用。对于孤立的纤毛和鞭毛，在了解纤毛的组成、结构和功能方面取得了很大进展。然而，当前的纤毛&#x2F;鞭毛分离方法在应用于哺乳动物活动纤毛时在纯化纤毛的完整性或生产力方面存在缺陷。在这里，我们描述了一种新的协议，该操作方法通过水平剪切力和温和的洗涤剂将纤毛轴与小鼠室管膜细胞分离。这种方法能够以高产量和更少的细胞体污染生产几乎完整的纤毛。适用于哺乳动物活动纤毛的免疫染色、嘌呤霉素标记测定和邻近结扎测定。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/20220715190004_0382.jpg" alt="Graphic abstract"></p>
-<hr>
-<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>多种鞭毛&#x2F;纤毛提取方法已被开发出来，包括<strong>pH冲击</strong>、<strong>钙冲击</strong>、<strong>dibucaine处理</strong>以及剥离和滑移等机械方法（Witman等人，1972、1978、1986；Adoutte等人，1980；Mitchell等人，2009）。最初，pH和钙冲击方法是为了从衣藻和四膜虫中提取纤毛而设计的（Gibbons，1965；Rosenbaum和Child，1967）。后来，这两种方法成为原生动物中最常用的鞭毛&#x2F;纤毛提取方法。在哺乳动物中，剥离或滑移法被用来从培养的细胞中提取初级纤毛，例如MDCK（Madin-Darby犬肾）细胞、正常小鼠胆管上皮细胞（NMCs）和正常大鼠胆管上皮细胞（NRCs）（Huang等人，2006；Kiesel等人，2020）。</p>
-<p><u><strong>钙冲击法结合机械振荡</strong></u>，用于从<strong>兔输卵管</strong>、<strong>猪气管</strong>和<strong>初级培养的小鼠室管膜细胞</strong>（mEPCs）中提取运动纤毛（Anderson，1974；Hastie等人，1986；Zheng等人，2019）。这种方法还用于从大鼠嗅觉纤毛和内髓质集合管（IMCD3）细胞中提取初级纤毛（Mayer等人，2008；Ishikawa等人，2012）。使用这些方法在提取的鞭毛&#x2F;纤毛中已经很好地研究了构成纤毛的蛋白质种类和比例以及高分辨率的纤毛超微结构。 然而，这些程序通常会导致纤毛膜损伤并忽略分离纤毛的生理活性，从而限制了对纤毛生物学的深入研究。</p>
-<p>在此，我们报告了一种改良自钙冲击结合机械振荡法的纤毛分离方案。为了保持分离纤毛的结构和功能完整性并减少细胞质污染，我们在去纤毛缓冲液中降低了洗涤剂的浓度，并使用<strong>水平剪切力</strong>替代了涡流振荡。通过这种方法，我们获得了足够数量的运动纤毛，用于免疫染色、嘌呤霉素标记和邻近连接试验。作为应用实例，我们应用此程序纯化小鼠室管膜纤毛，以证实纤毛RNA的局部翻译。此外，这种方法也适用于纯化小鼠大脑<strong>侧脑室的运动纤毛</strong>。</p>
-<hr>
-<h3 id="材料和试剂"><a href="#材料和试剂" class="headerlink" title="材料和试剂"></a>材料和试剂</h3><p>\1. 0.22 微米_ 过滤器（Millipore，目录号： SLGPR33RB ）<br>\2. 75 cm 2烧瓶（Corning，目录号：430641）<br>\3. 15 mL管（Falcon，目录号：352095）<br>\4. 12毫米直径的圆形盖玻片（ Marienfeld ，目录号：MAR0111520）<br>\5. 载玻片（Premiere，目录号：9308W ）<br>\6. 24孔板（Costar，目录号：3524）<br>\7. 15厘米培养皿（Corning，目录号：430599）<br>\8. 滤纸（ GE，目录号：10311611 ）<br>\9. 封口膜（Bemis，目录号：PM-996）<br>\10. Milli-Q 水<br>\11. 纤连蛋白（1 mg &#x2F; mL）（ Sigma-Aldrich，目录号：FC010），储存在4 °C<br>\12. LS003126 ），4°C 储存<br>\13. DMEM（ ThermoFisher Scientific ， Gibco TM ，目录号： 12430054），储存于 4°C<br>\14. Primocin (50 mg&#x2F;mL) ( InvivoGen , ant-pm-2)，储存于-20°C<br>\15. 胎牛血清（ Ausbian ，VS500T），- 20°C储存<br>\16. 聚-L-赖氨酸氢溴酸盐（ Sigma-Aldrich ，目录号：P1399 ） ，将粉末储存在-20°C 。<br>μm过滤器对储备溶液（Milli-Q 水中的 100 mg&#x2F;mL 聚-L-赖氨酸）进行灭菌，并将其分装在 -20°C 下储存。<br>\17. Trition X-100 （ Sangon Biotech ，目录号：A110694 ）<br>\18. Tween 20（ Sangon Biotech，目录号：A100777）<br>\19. 多聚甲醛（PFA）（Sigma-Aldrich，目录号：P6148），将粉末储存在4 °C<br>\20. 牛血清白蛋白（BSA）（ Sigm a-Aldrich，目录号：A3912 ），将粉末储存在4°C<br>\21. 小鼠抗乙酰化微管蛋白（Sigma-Aldrich，目录号：T6793），4°C保存<br>\22. 兔抗 Cep290（自制） （Zhao et al. ，2021） ，- 20°C保存<br>\23. 豚鼠抗Odf2（自制） （Zhao et al. , 2019） ，-20°C 保存<br>\24. ThermoFisher Scientific，目录号：A-21202 ）缀合的驴抗小鼠IgG ，-80°C长期储存，4°C短期储存<br>\25. 与Cy3缀合的驴抗兔Ig G（ Jackson ImmunoResearch ，目录号： 711-165-152 ），-80°C长期储存，4°C短期储存<br>\26. ImmunoResearch ，目录号：706-605-148）缀合的驴抗豚鼠IgG ，-80°C长期储存，4°C短期储存<br>\27. ProLong Diamond Antifade Mountant （ ThermoFisher Scientific，目录号：P36970），4°C储存<br>\28. 浸油（Le cia microsystem，目录号：12847995 ）<br>\29. PBS （见食谱），储存在 4°C<br>\30. D issection 缓冲液（参见配方）， 4°C储存<br>\31. 酶消化缓冲液（见材料试剂） ，新鲜制备<br>\32. mEPC培养基（见配方），4°C 储存<br>\33. 饥饿培养基（见材料试剂），储存在 4°C<br>\34. 脱纤缓冲液（见配方），储存在 4°C<br>\35. 4% PFA （见材料试剂）<br>\36. TBST (10 × ) （见材料试剂）<br>\37. 封闭缓冲液（参见配方） ，分装于 -20°C 储存</p>
-<hr>
-<h3 id="设备"><a href="#设备" class="headerlink" title="设备"></a>设备</h3><p>\1. Milli-Q（Millipore，型号：Advantage A10）<br>\2. 锋利的镊子（ Dumont，目录号： 0208-5&#x2F;45-PO）<br>\3. 镊子（Dumont，目录号：0203-5&#x2F;15-PO）<br>\4. 卧式振动筛（智初，型号： ZQZY -AS9 ）<br>\5. 高速离心机（ ThermoFisher Scientific，型号： Sorvall LYNX 6000，目录号：75006590）<br>\6. S翼桶转子（ ThermoFisher Scientific，型号： BIOFlex TM HC ，目录号： 75003000 ）<br>\7. 共聚焦显微镜（徕卡，型号：TCS SP8 WLL 系统，配备 63×&#x2F;1.4 油浸物镜）</p>
-<hr>
-<h3 id="程序步骤"><a href="#程序步骤" class="headerlink" title="程序步骤"></a>程序步骤</h3><h4 id="A-睫状轴净化前的准备工作"><a href="#A-睫状轴净化前的准备工作" class="headerlink" title="A. 睫状轴净化前的准备工作"></a>A. 睫状轴净化前的准备工作</h4><ol>
-<li><h5 id="75-cm-2中培养和维持小鼠室管膜细胞-mEPCs-烧瓶-（hao等人，2021-）-。"><a href="#75-cm-2中培养和维持小鼠室管膜细胞-mEPCs-烧瓶-（hao等人，2021-）-。" class="headerlink" title="75 cm^2中培养和维持小鼠室管膜细胞 ( mEPCs ) 烧瓶 （hao等人，2021 ） 。"></a>75 cm^2中培养和维持小鼠室管膜细胞 ( mEPCs ) 烧瓶 （hao等人，2021 ） 。</h5><p>a. 添加 6 mL纤连蛋白（ PBS 中10 μg &#x2F; mL ）至75 cm^2 培养瓶，在培养前一天在 37°C 孵育 24 小时以包被培养瓶。<br>b. 在冰冷的解剖缓冲液中解剖五只 C57BL&#x2F;6 小鼠幼崽的端脑，并用锋利的镊子去除海马、小脑、脉络丛、嗅球和脑膜。<br>c. 将解剖的端脑转移到 15 mL 管中，用 10 mL 新鲜制备的酶消化缓冲液在 37°C 下消化 30 分钟。<br>d. 用 5 mL 移液器吹打 10 次，小心分离细胞，然后在 400 ×g 在室温离心5分钟。<br>e. mEPC培养基重悬细胞，并将它们移植到75 平方厘米纤连蛋白涂层烧瓶中。<br>f. 播种后一天摇晃并去除神经元。<br>g. 当细胞汇合时，用 PBS 冲洗细胞，并加入10 mL 饥饿培养基以诱导分化。<br>h. 在饥饿培养基中培养十天后收获细胞。<br>注意：在血清饥饿的第 10 天收获时，多纤毛细胞的比例应约为 50%（图 1）</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-12-14-4467-g001.jpg" alt="Figure1"></p>
-<p>​                                                  图 1. 原代培养的小鼠室管膜细胞。<br>乙酰化微管蛋白 ( Ac-tub) 修饰纤毛轴丝。 Zo-1 和 DAPI 分别标记紧密连接和细胞核。 比例尺，25 μ m </p>
-</li>
-<li><p><strong>在纤毛纯化前一天用 多聚-L-赖氨酸涂上盖玻片。</strong><br>a. 将 12 个灭菌盖玻片放入 24 孔板中，每孔一个盖玻片。<br>b. 冲洗盖玻片3 次，用500 每孔微升PBS 。<br>c. 加入 500 μL聚-L-赖氨酸(100 ng &#x2F; μL ) 加入每孔， 37°C 孵育 24 h 。</p>
-</li>
-</ol>
-<h4 id="B-纤毛细胞净化"><a href="#B-纤毛细胞净化" class="headerlink" title="B. 纤毛细胞净化"></a>B. 纤毛细胞净化</h4><ol>
-<li><p>清洗mEPC 两次用 6 mL 冰冷的 PBS，两次用 6 mL 冰冷的脱纤缓冲液快速。</p>
-</li>
-<li><p>在烧瓶中，加入 9 m L 的含有 0.01% Triton X-100 的冰冷deciliation 缓冲液。</p>
-</li>
-<li><p>将烧瓶固定在带有粘性绿色橡胶底座的水平振动筛上（图 2）。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-12-14-4467-g002.jpg" alt="Figure2"></p>
-<p><strong>图 2. 水平振动筛上粘附烧瓶的代表性图像。</strong> </p>
-</li>
-<li><p>立即在 3 00 rpm 和 37°C 下摇动15 分钟，以从过渡区底部分离纤毛（视频 1）</p>
-<p><img src="https://en-cdn.bio-protocol.org/video/4467/4467-1.mp4" alt="Video1"></p>
-<p><strong>视频1.使用剪切力净化睫状轴。</strong></p>
-</li>
-<li><p>纤毛干的上清液转移到15 mL试管中。</p>
-</li>
-<li><p>在摆动斗式转子中水平离心机（ BIOFlex TM HC)在600 × g和 4 °C 10 分钟以去除细胞碎片。</p>
-</li>
-<li><p>用 500 μL的 PBS冲洗聚 L-赖氨酸涂层盖玻片三次。</p>
-</li>
-<li><p>将上清液分装到 12 孔板中，用等量的聚 L-赖氨酸涂层盖玻片（每孔 720 μL上清液）。</p>
-</li>
-<li><p>将 24 孔板放入摆动桶转子中 ( BIOFlex TM HC) .</p>
-</li>
-<li><p>离心机 4,200 × g水平 和 4°C 10 分钟。</p>
-</li>
-<li><p>洗盖玻片_ 每孔500 μL PBS 一次。</p>
-</li>
-<li><p>现在，纯化的纤毛细胞已准备好进行免疫染色、嘌呤霉素标记和邻近结扎测定。<br>注意：建议使用免疫荧光染色来检查纤毛的质量和完整性。针对 Arl13b（一种室管膜细胞膜蛋白）和乙酰化微管蛋白的抗体分别用于睫状膜和轴丝的质量和完整性。针对 Cep290（一种过渡区蛋白）和 <strong>Odf2（一种基体蛋白）的抗体用于检查纯化的睫状轴是否含有过渡区和缺乏基体</strong>。</p>
-</li>
-</ol>
-<h4 id="C-纯化的睫状轴的免疫染色"><a href="#C-纯化的睫状轴的免疫染色" class="headerlink" title="C. 纯化的睫状轴的免疫染色"></a>C. 纯化的睫状轴的免疫染色</h4><ol>
-<li><p>室温下用每孔500 μL的 4% PFA固定室管膜纤毛细胞15 分钟。</p>
-</li>
-<li><p>每孔 500 μL PBS 短暂洗涤 。</p>
-</li>
-<li><p>使用 500 μL的 0.5% Triton X-100 渗透 15 分钟。</p>
-</li>
-<li><p>每孔 500 μL PBS 短暂洗涤。</p>
-</li>
-<li><p>用 500 μL 封闭缓冲液孵育 （TBST 中 4% BSA）在室温下每孔1 小时。</p>
-</li>
-<li><p>制作一个湿度室（图 3）。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-12-14-4467-g003.jpg" alt="Figure3"></p>
-<p><strong>图 3. 湿度室的代表性图像</strong>。<br>注意锡箔纸、滤纸、封口膜和盖玻片。滤纸和封口膜分别由紫色和蓝色虚线勾勒。</p>
-<p>a. 用锡箔包裹15 厘米培养皿的外表面，以保护样品免受光照。将锡纸的亮面朝湿度室外面放置。<br>b. 将浸水的滤纸放入培养皿中。<br>c. 将一块封口膜放在滤纸上。</p>
-</li>
-<li><p>使用镊子将盖玻片转移到封口膜上。将有纤毛细胞的一侧朝上。</p>
-</li>
-<li><p>用 90 μL封闭缓冲液中的稀释一抗孵育每个盖玻片 ， 在 4°C 过夜。</p>
-</li>
-<li><p>用 200 μL封闭缓冲液洗涤 3 次，每次 5 分钟。</p>
-</li>
-<li><p>封闭缓冲液中稀释的二级抗体，得到90μL，然后在室温下孵育每个盖玻片1 小时。</p>
-</li>
-<li><p>用 200 μL封闭缓冲液洗涤 3 次，每次 5 分钟。</p>
-</li>
-<li><p>200μL短暂洗涤每个盖玻片的 Milli-Q 水。 </p>
-</li>
-<li><p>每张片子滴 10 μL 封固剂（ ProLong 钻石防褪色封固剂，封片） 。</p>
-</li>
-<li><p>用滤纸从盖玻片中去除多余的 Milli-Q 水。</p>
-</li>
-<li><p>立即将盖玻片安装到载玻片上（ Cao等人，2014 年） 。</p>
-</li>
-<li><p>将样品在室温下避光干燥至少 2 小时，然后将其储存在4°C。</p>
-</li>
-</ol>
-<h3 id="D-共聚焦显微镜对纯化睫状轴的成像"><a href="#D-共聚焦显微镜对纯化睫状轴的成像" class="headerlink" title="D. 共聚焦显微镜对纯化睫状轴的成像"></a>D. 共聚焦显微镜对纯化睫状轴的成像</h3><ol>
-<li><p>共聚焦显微镜图像是在具有 63×&#x2F;1.4 油浸物镜的 Leica TCS SP8 WLL 系统上拍摄的。使用折射率为 1.518 的浸油来最大限度地减少球面像差。扫描速度为 400 Hz ，线平均为 3，沿z 轴以 0.5-μm 的间隔捕获光学切片。典型图像如图 4 所示。对于额外的荧光图像，请参阅原始研究文章的补充图 2C ( Hao et al. , 2021 ) 。</p>
-</li>
-<li><p>测量参数见表 1，荧光成像的适当睫状轴密度如图 4 所示。</p>
-<p>表 1. 滤波器和测量参数</p>
-<p>**Table 1. Filters and measurements parameters<br>**</p>
-<table>
-<thead>
-<tr>
-<th>Filter</th>
-<th>Excitation</th>
-<th>Emission</th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Laser (nm)</td>
-<td>Intensity</td>
-<td>Detector</td>
-<td>Wavelength (nm)</td>
-<td>Gain</td>
-<td></td>
-</tr>
-<tr>
-<td>Alexa Fluor 488</td>
-<td>498</td>
-<td>1.5%</td>
-<td>HyD standard mode</td>
-<td>508–542</td>
-<td>81%</td>
-</tr>
-<tr>
-<td>Cy3</td>
-<td>550</td>
-<td>7%</td>
-<td>HyD standard mode</td>
-<td>560–620</td>
-<td>100%</td>
-</tr>
-<tr>
-<td>Alexa Fluor 647</td>
-<td>650</td>
-<td>2%</td>
-<td>HyD standard mode</td>
-<td>660–720</td>
-<td>80%</td>
-</tr>
-</tbody></table>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-12-14-4467-g004.jpg" alt="Figure4"></p>
-<p><strong>图 4。孤立的睫状轴的典型图像。</strong><br>从一个纯化的睫状轴 将75 cm 2 mPEC烧瓶均匀地旋转到 12 片 12-mm 盖玻片上。 Ac-tub 装饰纤毛轴丝。 Cep290 标志着过渡区。比例尺，25 μ m 。</p>
-</li>
-</ol>
-<hr>
-<h4 id="材料试剂"><a href="#材料试剂" class="headerlink" title="材料试剂"></a>材料试剂</h4><ol>
-<li><p><strong>PBS, pH 7.4</strong></p>
-<table>
-<thead>
-<tr>
-<th><strong>Reagent</strong></th>
-<th><strong>Final concentration</strong></th>
-<th><strong>Amount</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>NaCl</td>
-<td>137 mM</td>
-<td>8 g</td>
-</tr>
-<tr>
-<td>KCl</td>
-<td>2.7 mM</td>
-<td>0.2 g</td>
-</tr>
-<tr>
-<td>KH2PO4</td>
-<td>2 mM</td>
-<td>0.24 g</td>
-</tr>
-<tr>
-<td>Na2HPO4</td>
-<td>10 mM</td>
-<td>1.44 g</td>
-</tr>
-<tr>
-<td>Milli-Q water</td>
-<td>n&#x2F;a</td>
-<td>1,000 mL</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>n&#x2F;a</td>
-<td>1,000 mL</td>
-</tr>
-</tbody></table>
-</li>
-<li><p><strong>mEPC culture medium</strong></p>
-<table>
-<thead>
-<tr>
-<th><strong>Reagent</strong></th>
-<th><strong>Final concentration</strong></th>
-<th><strong>Amount</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Primocin</td>
-<td>50 μg&#x2F;mL</td>
-<td>500 μL</td>
-</tr>
-<tr>
-<td>DMEM</td>
-<td>n&#x2F;a</td>
-<td>500 mL</td>
-</tr>
-<tr>
-<td>FBS</td>
-<td>10%</td>
-<td>50 mL</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>n&#x2F;a</td>
-<td>500 mL</td>
-</tr>
-</tbody></table>
-</li>
-<li><p><strong>Starvation culture medium</strong></p>
-<table>
-<thead>
-<tr>
-<th>Reagent</th>
-<th>Final concentration</th>
-<th>Amount</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Primocin</td>
-<td>50 μg&#x2F;mL</td>
-<td>500 μL</td>
-</tr>
-<tr>
-<td>DMEM</td>
-<td>n&#x2F;a</td>
-<td>500 mL</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>n&#x2F;a</td>
-<td>500 mL</td>
-</tr>
-</tbody></table>
-</li>
-<li><p><strong>Dissection buffer, pH 7.4</strong></p>
-<table>
-<thead>
-<tr>
-<th><strong>Reagent</strong></th>
-<th><strong>Final concentration</strong></th>
-<th><strong>Amount</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>NaCl</td>
-<td>161 mM</td>
-<td>9.4 g</td>
-</tr>
-<tr>
-<td>KCl</td>
-<td>5 mM</td>
-<td>0.37 g</td>
-</tr>
-<tr>
-<td>MgSO4</td>
-<td>1 mM</td>
-<td>0.12 g</td>
-</tr>
-<tr>
-<td>CaCl2</td>
-<td>4.7 mM</td>
-<td>0.41 g</td>
-</tr>
-<tr>
-<td>HEPES</td>
-<td>5 mM</td>
-<td>1.2 g</td>
-</tr>
-<tr>
-<td>Glucose</td>
-<td>5.5 mM</td>
-<td>0.99 g</td>
-</tr>
-<tr>
-<td>Milli-Q water</td>
-<td>n&#x2F;a</td>
-<td>1,000 mL</td>
-</tr>
-<tr>
-<td>T0tal</td>
-<td>n&#x2F;a</td>
-<td>1,000 mL</td>
-</tr>
-</tbody></table>
-</li>
-<li><p><strong>Enzymatic digestion buffer</strong></p>
-<table>
-<thead>
-<tr>
-<th><strong>Reagent</strong></th>
-<th><strong>Final concentration</strong></th>
-<th><strong>Amount</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>EDTA (50mM stock)</td>
-<td>0.5 mM</td>
-<td>100 μL</td>
-</tr>
-<tr>
-<td>CaCl2 (100mM stock)</td>
-<td>1 mM</td>
-<td>100 μL</td>
-</tr>
-<tr>
-<td>NaOH (1M stock)</td>
-<td>1.5 mM</td>
-<td>15 μL</td>
-</tr>
-<tr>
-<td>Papain</td>
-<td>10 U&#x2F;mL</td>
-<td>100 U</td>
-</tr>
-<tr>
-<td>Dissection buffer</td>
-<td>n&#x2F;a</td>
-<td>10 mL</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>n&#x2F;a</td>
-<td>10 mL</td>
-</tr>
-</tbody></table>
-</li>
-<li><p><strong>Deciliation buffer, pH 5.5</strong></p>
-<table>
-<thead>
-<tr>
-<th><strong>Reagent</strong></th>
-<th><strong>Final concentration</strong></th>
-<th><strong>Amount</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Sucrose</td>
-<td>250 mM</td>
-<td>85.575 g</td>
-</tr>
-<tr>
-<td>CaCl2</td>
-<td>20 mM</td>
-<td>2.22 g</td>
-</tr>
-<tr>
-<td>Pipes</td>
-<td>20 mM</td>
-<td>6.047 g</td>
-</tr>
-<tr>
-<td>Milli-Q water</td>
-<td>n&#x2F;a</td>
-<td>1,000 mL</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>n&#x2F;a</td>
-<td>1,000 mL</td>
-</tr>
-</tbody></table>
-<p>Adjust the pH with saturated HCl. Filter-sterilize with a 0.22 μm filter, and store at 4°C.</p>
-</li>
-<li><p><strong>4% PFA</strong></p>
-<table>
-<thead>
-<tr>
-<th>Reagent</th>
-<th>Final concentration</th>
-<th>Amount</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Paraformaldehyde</td>
-<td>4%</td>
-<td>4 g</td>
-</tr>
-<tr>
-<td>PBS</td>
-<td>n&#x2F;a</td>
-<td>100 mL</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>n&#x2F;a</td>
-<td>100 mL</td>
-</tr>
-</tbody></table>
-<p>Heat the solution to 60°C with stirring, to accelerate the dissolution of PFA.</p>
-<p>Freshly prepare, and filter-sterilize with a 0.22 μm filter before use.</p>
-</li>
-<li><p><strong>TBST (10×), pH 7.5</strong></p>
-<table>
-<thead>
-<tr>
-<th><strong>Reagent</strong></th>
-<th><strong>Final concentration</strong></th>
-<th><strong>Amount</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>NaCl</td>
-<td>1.5 M</td>
-<td>88 g</td>
-</tr>
-<tr>
-<td>Tris base</td>
-<td>0.5 M</td>
-<td>60 g</td>
-</tr>
-<tr>
-<td>Tween 20</td>
-<td>0.5%</td>
-<td>5 mL</td>
-</tr>
-<tr>
-<td>Milli-Q water</td>
-<td>n&#x2F;a</td>
-<td>1,000 mL</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>n&#x2F;a</td>
-<td>1,000 mL</td>
-</tr>
-</tbody></table>
-<p>Heat the solution to 60°C with stirring, to accelerate the dissolution of solutes.</p>
-</li>
-<li><p><strong>Blocking buffer</strong></p>
-<table>
-<thead>
-<tr>
-<th><strong>Reagent</strong></th>
-<th><strong>Final concentration</strong></th>
-<th><strong>Amount</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>BSA</td>
-<td>4%</td>
-<td>4 g</td>
-</tr>
-<tr>
-<td>TBST (10×)</td>
-<td>1×</td>
-<td>10 mL</td>
-</tr>
-<tr>
-<td>Milli-Q wate</td>
-<td>n&#x2F;a</td>
-<td>90 mL</td>
-</tr>
-<tr>
-<td>Total</td>
-<td>n&#x2F;a</td>
-<td>100 mL</td>
-</tr>
-</tbody></table>
-<p>Filter-sterilize with a 0.22 μm filter, and store at -20°C.</p>
-</li>
-</ol>
-<hr>
-<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ol>
-<li>Adoutte, A., Ramanathan, R., Lewis, R. M., Dute, R. R., Ling, K. Y., Kung, C. and Nelson, D. L. (1980). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/7358796">Biochemical studies of the excitable membrane of Paramecium tetraurelia. III. Proteins of cilia and ciliary membranes.</a> <em>J Cell Biol</em> 84(3): 717-738.</li>
-<li>Anderson, R. G. (1974). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/4204973">Isolation of ciliated or unciliated basal bodies from the rabbit oviduct.</a> <em>J Cell Biol</em> 60(2): 393-404.</li>
-<li>Cao, J., Zhu, X. and Yan, X. (2014). <a target="_blank" rel="noopener" href="https://doi.org/10.21769/BioProtoc.1188">Fluorescence Microscopy for Cilia in Cultured Cells and Zebrafish Embryos.</a> <em>Bio-protocol</em> 4(14): e1188.</li>
-<li>Gibbons, I. R. (1965). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/5323574">Chemical dissection of cilia.</a> <em>Arch Biol (Liege)</em> 76(2): 317-352.</li>
-<li>Hao, K., Chen, Y., Yan, X. and Zhu, X. (2021). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/34848703">Cilia locally synthesize proteins to sustain their ultrastructure and functions.</a> <em>Nat Commun</em> 12(1): 6971.</li>
-<li>Hastie, A. T., Dicker, D. T., Hingley, S. T., Kueppers, F., Higgins, M. L. and Weinbaum, G. (1986). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/2938744">Isolation of cilia from porcine tracheal epithelium and extraction of dynein arms.</a> <em>Cell Motil Cytoskeleton</em> 6(1): 25-34.</li>
-<li>Huang, B. Q., Masyuk, T. V., Muff, M. A., Tietz, P. S., Masyuk, A. I. and Larusso, N. F. (2006). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/16899714">Isolation and characterization of cholangiocyte primary cilia.</a> <em>Am J Physiol Gastrointest Liver Physiol</em> 291(3): G500-509.</li>
-<li>Ishikawa, H., Thompson, J., Yates, J. R., 3rd and Marshall, W. F. (2012). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/22326026">Proteomic analysis of mammalian primary cilia.</a> <em>Curr Biol</em> 22(5): 414-419.</li>
-<li>Kiesel, P., Alvarez Viar, G., Tsoy, N., Maraspini, R., Gorilak, P., Varga, V., Honigmann, A. and Pigino, G. (2020). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/32989303">The molecular structure of mammalian primary cilia revealed by cryo-electron tomography.</a> <em>Nat Struct Mol Biol</em> 27(12): 1115-1124.</li>
-<li>Mayer, U., Ungerer, N., Klimmeck, D., Warnken, U., Schnolzer, M., Frings, S. and Mohrlen, F. (2008). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/18032372">Proteomic analysis of a membrane preparation from rat olfactory sensory cilia.</a> <em>Chem Senses</em> 33(2): 145-162.</li>
-<li>Mitchell, K. A., Szabo, G. and Otero Ade, S. (2009). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/20362086">Methods for the isolation of sensory and primary cilia–an overview.</a> <em>Methods Cell Biol</em> 94: 87-101.</li>
-<li>Rosenbaum, J. L. and Child, F. M. (1967). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/6033540">Flagellar regeneration in protozoan flagellates.</a> <em>J Cell Biol</em> 34(1): 345-364.</li>
-<li>Witman, G. B. (1986). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/3821567">Isolation of Chlamydomonas flagella and flagellar axonemes.</a> <em>Methods Enzymol</em> 134: 280-290.</li>
-<li>Witman, G. B., Carlson, K., Berliner, J. and Rosenbaum, J. L. (1972). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/4558009">Chlamydomonas flagella. I. Isolation and electrophoretic analysis of microtubules, matrix, membranes, and mastigonemes.</a> <em>J Cell Biol</em> 54(3): 507-539.</li>
-<li>Witman, G. B., Plummer, J. and Sander, G. (1978). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/632325">Chlamydomonas flagellar mutants lacking radial spokes and central tubules. Structure, composition, and function of specific axonemal components.</a> <em>J Cell Biol</em> 76(3): 729-747.</li>
-<li>Zhao, H., Chen, Q., Fang, C., Huang, Q., Zhou, J., Yan, X. and Zhu, X. (2019). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/30833343">Parental centrioles are dispensable for deuterosome formation and function during basal body amplification.</a> <em>EMBO Rep</em> 20(4).</li>
-<li>Zhao, H., Chen, Q., Li, F., Cui, L., Xie, L., Huang, Q., Liang, X., Zhou, J., Yan, X. and Zhu, X. (2021). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/33627667">Fibrogranular materials function as organizers to ensure the fidelity of multiciliary assembly.</a> <em>Nat Commun</em> 12(1): 1273.</li>
-<li>Zheng, J., Liu, H., Zhu, L., Chen, Y., Zhao, H., Zhang, W., Li, F., Xie, L., Yan, X. and Zhu, X. (2019). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/30535028">Microtubule-bundling protein Spef1 enables mammalian ciliary central apparatus formation.</a> <em>J Mol Cell Biol</em> 11(1): 67-77.</li>
-</ol>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/03/09/%E5%B0%8F%E9%BC%A0%E5%AE%A4%E7%AE%A1%E8%86%9C%E7%BA%A4%E6%AF%9B%E5%B9%B2%E7%9A%84%E7%BA%AF%E5%8C%96%E5%92%8C%E5%85%8D%E7%96%AB%E6%9F%93%E8%89%B2/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-小鼠ESC分化成Nkx2-1-肺和甲状腺祖细胞" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/03/08/%E5%B0%8F%E9%BC%A0ESC%E5%88%86%E5%8C%96%E6%88%90Nkx2-1-%E8%82%BA%E5%92%8C%E7%94%B2%E7%8A%B6%E8%85%BA%E7%A5%96%E7%BB%86%E8%83%9E/" target="_blank">小鼠ESC分化成Nkx2.1+肺和甲状腺祖细胞</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/03/08/%E5%B0%8F%E9%BC%A0ESC%E5%88%86%E5%8C%96%E6%88%90Nkx2-1-%E8%82%BA%E5%92%8C%E7%94%B2%E7%8A%B6%E8%85%BA%E7%A5%96%E7%BB%86%E8%83%9E/" class="archive-article-date">
-        <time datetime="2024-03-08T15:51:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-08</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>来源：<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1003138">TL Tyler A. Longmire</a><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1003139">LI Laertis Ikonomou</a><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1003140"> Darrell N. Kotton <img src="https://cdn.bio-protocol.org/forum/fe/static/icon_email.svg" alt="email"></a></p>
-<p>第一次发布: <a target="_blank" rel="noopener" href="https://bio-protocol.org/cn/archive?vol=2&issid=46">2012年11月20日第2卷第22期 </a>DOI: <a target="_blank" rel="noopener" href="https://doi.org/10.21769/BioProtoc.295">10.21769&#x2F;BioProtoc.295</a> </p>
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>来自多能干细胞的肺祖细胞的新发现提供了在体外模拟早期肺发育的机会，并且容易获得用于组织工程或基础细胞生物学研究的细胞。 该详细方案允许从小鼠胚胎干细胞（ESC）或诱导多能干细胞（iPSC）系生成肺和甲状腺祖细胞。 当与公布的Nkx2.1-GFP敲入ESC系一起使用时，该方案允许通过基于对最早已知的肺和甲状腺细胞命运的标记物的诱导在GFP报告基因上进行分选来跟踪和纯化肺和甲状腺祖细胞， Nkx2.1。 在分选后，然后可以在无血清条件下培养纯化的Nkx2.1 +细胞群，以进一步扩增，分化和成熟。</p>
-<hr>
-<h3 id="材料和试剂"><a href="#材料和试剂" class="headerlink" title="材料和试剂"></a>材料和试剂</h3><ol>
-<li><p>携带敲入Nkx2.1基因座（Nkx2.1-GFP ESC）的GFP报告基因的小鼠ESC或iPSC（Longmire等人，2012）</p>
-</li>
-<li><p>1x 0.05％胰蛋白酶-EDTA（Life Technologies，Gibco ，目录号：25300-054）</p>
-</li>
-<li><p>定制的胎牛血清（Hyclone，目录号：SH30070.03）</p>
-</li>
-<li><p>IMDM粉末（Life Technologies，Invitrogen TM，目录号：12200-036）</p>
-</li>
-<li><p>NaHCO3（Sigma-Aldrich，目录号：S-5761）</p>
-</li>
-<li><p>Pen&#x2F;Strep（Life Technologies，Invitrogen TM，目录号：15140-148）（10,000U青霉素和10mg链霉素&#x2F;ml）</p>
-</li>
-<li><p>Cellgro水（VWR，目录号：45000-672）</p>
-</li>
-<li><p>Ham’s F-12（Cellgro，目录号：10-080-CV）</p>
-</li>
-<li><p>B-27补充RA（Life Technologies，Invitrogen TM，目录号：17504-044）</p>
-</li>
-<li><p>N-2补充剂（Life Technologies，Invitrogen TM，目录号：17502-048）</p>
-</li>
-<li><p>BSA中的7.5％BSA（Life Technologies，Invitrogen TM，目录号：15260-037）</p>
-</li>
-<li><p>1-硫代甘油（MTG）（Sigma，M6145-25ml）</p>
-</li>
-<li><p>200mM L-谷氨酰胺（Life Technologies，Invitrogen TM，目录号：25030-081）</p>
-</li>
-<li><p>抗坏血酸（Sigma-Aldrich，目录号：A4544-25G）</p>
-</li>
-<li><p>1M HEPES（Gibco，15630-080）</p>
-</li>
-<li><p>CaCl2（Sigma-Aldrich，目录号：C4901）</p>
-</li>
-<li><p>BSA（Sigma-Aldrich，目录号：A9418-10G）</p>
-</li>
-<li><p>100x ITS补充剂（BD Biosciences，目录号：354352）</p>
-</li>
-<li><p>mNoggin（R&amp; D Systems，目录号：1967-NG-025）</p>
-</li>
-<li><p>SB431542（Sigma-Aldrich，目录号：S4317）</p>
-</li>
-<li><p>mRnt3a（R&amp; D Systems，目录号：1324-WN-010）</p>
-</li>
-<li><p>hBMP4（R&amp; D Systems，目录号：314-BP-050）</p>
-</li>
-<li><p>hEGF（R&amp; D Systems，目录号：236-EG-01M）</p>
-</li>
-<li><p>mFGF2（R&amp; D Systems，目录号：目录号：3139-FB-025）</p>
-</li>
-<li><p>mFGF7（R&amp; D Systems，目录号：5028-KG-025）</p>
-</li>
-<li><p>hFGF10（R&amp; D Systems，目录号：345-FG-025）</p>
-</li>
-<li><p>肝素钠盐（Sigma-Aldrich，目录号：H4784-250mg）</p>
-</li>
-<li><p>地塞米松（Sigma-Aldrich，目录号：D4902）</p>
-</li>
-<li><p>8-Br-cAMP（Sigma-Aldrich，目录号：B7880）</p>
-</li>
-<li><p>IBMX（Sigma-Aldrich，目录号：I5879）</p>
-</li>
-<li><p>DMSO，Hybri-Max（Sigma-Aldrich，目录号：D2650）</p>
-</li>
-<li><p>乙醇（Sigma-Aldrich，目录号：E7023）</p>
-</li>
-<li><p>激活素A（R&amp; D Systems，目录号：338-AC）</p>
-</li>
-<li><p>PBS（Life Technologies，Gibco ，目录号：14190-250）</p>
-</li>
-<li><p>0.1％明胶在超纯水（EMD Millipore，目录号：ES-006-B）中</p>
-</li>
-<li><p>Cxcr4抗体：APC大鼠抗小鼠CD184（Cxcr4）（BD-Pharmigen，目录号：558644）</p>
-</li>
-<li><p>cKit抗体：PE大鼠抗小鼠CD117（cKit）（BD-Pharmigen，目录号：553355）</p>
-</li>
-<li><p>APC同种型：APC大鼠IgG 2b，κ（BD-Pharmigen，目录号：553991）</p>
-</li>
-<li><p>PE同种型：PE大鼠IgG 2b，κ（BD-Pharmigen，目录号：553989）</p>
-</li>
-<li><p>IMDM（请参阅配方）</p>
-</li>
-<li><p>无血清分化培养基（SFD）（参见配方）</p>
-</li>
-<li><p>完全无血清分化培养基（cSFDM）（参见配方）</p>
-</li>
-<li><p>DCI + K的BASE介质（参见配方）</p>
-</li>
-<li><p>前置介质（参见配方）</p>
-</li>
-<li><p>中和介质（见配方）</p>
-</li>
-<li><p>DCI + K介质（见配方）</p>
-</li>
-<li><p>制备10x cAMP + IBMX储液（见配方）</p>
-</li>
-</ol>
-<hr>
-<h3 id="设备和器具"><a href="#设备和器具" class="headerlink" title="设备和器具"></a>设备和器具</h3><ol>
-<li>P100培养皿（100mm×15mm细菌培养皿，未处理的聚苯乙烯，BD Falcon ，目录号：351029）</li>
-<li>P150培养皿（150mm×15mm细菌培养皿，未处理的聚苯乙烯，BD Falcon ，目录号：351058）</li>
-<li>12×75mm，具有细胞过滤帽（BD，352235）的5ml聚苯乙烯圆底试管</li>
-<li>1.5-ml Eppendorf Snap-Cap微量离心管（Thermo Fisher Scientific，目录号：05-402-25）</li>
-<li>离心机</li>
-<li>LSRII 流式细胞仪</li>
-<li>0.22μm过滤器</li>
-</ol>
-<hr>
-<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
-<li><h4 id="工作时间线"><a href="#工作时间线" class="headerlink" title="工作时间线"></a>工作时间线</h4><ol>
-<li><h5 id="时间点：0小时"><a href="#时间点：0小时" class="headerlink" title="时间点：0小时"></a>时间点：0小时</h5><ol>
-<li>Nkx2-1-GFP小鼠ESC或iPSC在2i_LIF（无血清，无饲养细胞）条件下培养。 对于每个实验，将第23个通道的新小瓶解冻，并在两次传代后使用细胞</li>
-<li>每个具有12.5ml &#x2F;皿cSFDM的P100培养皿种子500,000Nkx2-1-GFP小鼠ESC或iPSC（悬浮液）。</li>
-<li>在此期间，ESC或iPSC将形成100-300μm之间的将保持悬浮的胚状体（EB）。</li>
-</ol>
-</li>
-<li><h5 id="时间点：60小时"><a href="#时间点：60小时" class="headerlink" title="时间点：60小时"></a>时间点：60小时</h5><ol>
-<li>从一个盘中收集EB在一个50毫升锥形，让EB定居1-2分钟，小心删除大部分含有死细胞和碎片的上清液。</li>
-<li>旋转5分钟，300×g &lt;4℃，4℃</li>
-<li>吸出上清液。</li>
-<li>每管加入1ml 0.05％胰蛋白酶&#x2F;EDTA，在37℃水浴中孵育1分钟，同时涡旋管。</li>
-<li>通过温和研磨分解EB以形成单细胞悬浮液</li>
-<li>加入1ml血清封闭胰蛋白酶</li>
-<li>加入4ml IMDM。</li>
-<li>旋转5分钟，300×g &lt;4℃，4℃</li>
-<li>将细胞重悬于5ml cSFDM中</li>
-<li>计数单元格。</li>
-<li>在每个P100或P150培养皿中，在补充有50ng&#x2F;ml激活素A的25ml cSFDM中平板0.5-1×10 6个细胞（悬浮液），用于定形内胚层诱导和EB形成。</li>
-</ol>
-</li>
-<li><h5 id="时间点：120小时（第5天）"><a href="#时间点：120小时（第5天）" class="headerlink" title="时间点：120小时（第5天）"></a>时间点：120小时（第5天）</h5><ol>
-<li>对替代定形内胚层标记物（Cxcr4&#x2F;cKit，参见FACS方案）进行染色以证实有效的定形内胚层诱导（超过40-50％的细胞应该是Cxcr4 + sup&#x2F;cKit sup&gt;）。</li>
-<li>收集EB并在IMDM中清洗。</li>
-<li>旋转5分钟，300×g &lt;4℃，4℃</li>
-<li>重悬在10-15毫升前化培养基和板悬浮在新的P100培养皿</li>
-</ol>
-</li>
-<li><h5 id="时间点：144小时（第6天）"><a href="#时间点：144小时（第6天）" class="headerlink" title="时间点：144小时（第6天）"></a>时间点：144小时（第6天）</h5><ol>
-<li>收集EB。</li>
-<li>在IMDM中清洗。</li>
-<li>旋转5分钟，300×g &lt;4℃，4℃</li>
-<li>通过胰蛋白酶消化1ml等份的EB以获得单个细胞并计算总细胞数当量来获得细胞计数。</li>
-<li>重悬在腹侧培养基中</li>
-<li>在明胶包被的平板或皿（例如24孔板的100,000 &#x2F;孔）上涂布50,000个细胞&#x2F;cm 2的EB当量。 涂层程序参见下面的步骤2</li>
-<li>每隔一天更换一次媒体。</li>
-<li>GFP + 将在第8-9天开始出现</li>
-</ol>
-</li>
-<li><h5 id="时间点：第15天"><a href="#时间点：第15天" class="headerlink" title="时间点：第15天"></a>时间点：第15天</h5><ol>
-<li>取出腹腔介质并加入适当体积的胰蛋白酶（例如，每孔6ml板1ml&#x2F;P100皿3-4ml）。</li>
-<li>转移细胞从50毫升锥形的几个井，通过温和研磨形成单细胞悬浮液，并与等体积的FBS灭活。</li>
-<li>重悬于PBS + （PBS + 2％FBS）中</li>
-<li>排序GFP + cells。</li>
-<li>旋转7分钟，500 x g ，4°C（注意离心机设置的变化）。</li>
-<li>在补充有FGF2（250ng&#x2F;ml），FGF10（100ng&#x2F;ml）的cSFDM中复制25,000个细胞&#x2F;cm 2（例如，24-孔板的50,000个细胞&#x2F;ml）和肝素盐（100ng&#x2F;ml）</li>
-<li>每隔7天更换一次媒体。</li>
-</ol>
-</li>
-<li><h5 id="时间点：第22天"><a href="#时间点：第22天" class="headerlink" title="时间点：第22天"></a>时间点：第22天</h5><ol>
-<li>取出介质并用PBS冲洗。</li>
-<li>切换到DCI + K媒体</li>
-<li>在第25天收获细胞（程序与第15天相同）</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><h4 id="明胶涂层"><a href="#明胶涂层" class="headerlink" title="明胶涂层"></a>明胶涂层</h4><p>在室温下（例如在6孔板的孔中1ml）施加0.1％明胶（溶解在超纯水中）25-30分钟。 吸出明胶，用PBS冲洗，并再次吸出。 该板现在可以使用了。</p>
-</li>
-<li><h4 id="Cxcr4-cKit的FACS"><a href="#Cxcr4-cKit的FACS" class="headerlink" title="Cxcr4&#x2F;cKit的FACS"></a>Cxcr4&#x2F;cKit的FACS</h4><ol>
-<li><h5 id="细胞计数"><a href="#细胞计数" class="headerlink" title="细胞计数"></a>细胞计数</h5><ol>
-<li>取出1毫升EB，旋转和胰蛋白酶消化（0.5毫升胰蛋白酶），计数细胞</li>
-<li>根据以前的细胞计数，去除对应于2-2.5×10 6 细胞的培养体积。</li>
-<li>对未分化ES细胞重复步骤。</li>
-</ol>
-</li>
-<li><h5 id="制备用于染色的细胞（在冰上的所有步骤）"><a href="#制备用于染色的细胞（在冰上的所有步骤）" class="headerlink" title="制备用于染色的细胞（在冰上的所有步骤）"></a>制备用于染色的细胞（在冰上的所有步骤）</h5><ol>
-<li>离心EB，重悬在1ml胰蛋白酶（60秒在37℃），用P1000移液管单分散。</li>
-<li>用1ml血清灭活，离心（5分钟，300×g，4℃），并用5ml IMDM洗涤一次。</li>
-<li>重悬于500μlPBS中（PBS + 2％FBS），细胞浓度应为0.4-0.5×10 6细胞&#x2F;100μl。</li>
-<li>准备2×5 Eppendorf管（未染色，同种型，Cxcr4，cKit，Cxcr4&#x2F;cKit（双）），标记每个管系列（D5内胚层或未分化的ES细胞），并将100μl每种培养物转移到每个管。</li>
-</ol>
-</li>
-<li><h5 id="细胞染色"><a href="#细胞染色" class="headerlink" title="细胞染色"></a>细胞染色</h5><ol>
-<li>每管加入合适的抗体（例如，在”未染色”管中没有抗体，”双”管中的两种抗体）。<br>用于此协议的抗体为08&#x2F;15&#x2F;12：<br>同种型：APC大鼠IgG 2b，κ<br>同种型：PE大鼠IgC 2b，κ<br>Cxcr4：APC大鼠α - 小鼠CD184<br>cKit：PE鼠α小鼠CD117</li>
-<li>短暂涡旋并在冰上转移30分钟（用铝箔覆盖，在15分钟再次涡旋）</li>
-<li>每个管中加入1ml PBS ，在台式离心机中以300×g旋转5分钟，小心地吸出上清液。</li>
-<li>在500μlPBS +中重悬沉淀。</li>
-<li>转移到带有细胞过滤器帽的FACS聚苯乙烯管</li>
-<li>将细胞送到LSRII进行分析。</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<hr>
-<h3 id="试剂"><a href="#试剂" class="headerlink" title="试剂"></a>试剂</h3><ol>
-<li><h4 id="IMDM"><a href="#IMDM" class="headerlink" title="IMDM"></a>IMDM</h4><p>1包IMDM粉末<br>3.02g NaHCO 3&#x2F;v&#x2F;v 10ml Pen&#x2F;Strep<br>1 L Cellgro水<br>检查pH（可接受范围6.9≤pH≤7.3）</p>
-</li>
-<li><h4 id="无血清分化培养基（SFD）"><a href="#无血清分化培养基（SFD）" class="headerlink" title="无血清分化培养基（SFD）"></a>无血清分化培养基（SFD）</h4><p>IMDM-375 ml<br>火腿的F-1-125毫升<br>B-27补充RA-5 ml<br>N-2补充-2.5毫升<br>BSA 7.5％的PBS-3.3ml</p>
-</li>
-<li><h4 id="完全无血清分化培养基（cSFDM）"><a href="#完全无血清分化培养基（cSFDM）" class="headerlink" title="完全无血清分化培养基（cSFDM）"></a>完全无血清分化培养基（cSFDM）</h4><p>SFD -100 ml<br>MTG300μl储备液（库存：26μlMTG至2ml IMDM）<br>200 mM L-Glut -1 ml<br>抗坏血酸-1ml原液（库存：5mg&#x2F;ml蒸馏水，新鲜制备）</p>
-</li>
-<li><h4 id="DCI-K的BASE介质"><a href="#DCI-K的BASE介质" class="headerlink" title="DCI + K的BASE介质"></a>DCI + K的BASE介质</h4><p>Ham’s F-12-243.7 ml<br>1.0 M HEPES（pH 7.4）-3.75 ml<br>1.0M CaCl 2-200μl<br>BSA-0.625g<br>100x ITS补充-2.5毫升</p>
-</li>
-<li><h4 id="前置媒介"><a href="#前置媒介" class="headerlink" title="前置媒介"></a>前置媒介</h4><p>cSFDM-10 ml<br>mNoggin-100ng ml（储备：10μg&#x2F;ml） SB431542-10μM（储备液：10mM，在DMSO中）</p>
-</li>
-<li><h4 id="中和介质"><a href="#中和介质" class="headerlink" title="中和介质"></a>中和介质</h4><p>cSFDM - 10ml<br>mWnt3a-100ng&#x2F;ml（储备：100μg&#x2F;ml） hBMP4-10ng&#x2F;ml （储备：10μg&#x2F;ml） hEGF-20ng&#x2F;ml（储备：20μg&#x2F;ml） mFGF2-250ng&#x2F;ml（储备：100μg&#x2F;ml） mFGF7-10ng&#x2F;ml（储备：10μg&#x2F;ml） hFGF10-10ng&#x2F;ml（储备：10μg&#x2F;ml） 肝素钠盐-100ng&#x2F;ml血浆（储备液：1mg&#x2F;ml）</p>
-</li>
-<li><h4 id="DCI-K介质"><a href="#DCI-K介质" class="headerlink" title="DCI + K介质"></a>DCI + K介质</h4><p>BASE培养基 - 25 ml<br>地塞米松-50nM（储备液：250μM，在乙醇中）<br>KGF（FGF7）-10ng&#x2F;ml（储备：10μg&#x2F;ml） cAMP + IBMX-0.1mM（储备液：1mM cAMP + 1mM IBMX）</p>
-</li>
-<li><h4 id="制备10x-cAMP-IBMX公司"><a href="#制备10x-cAMP-IBMX公司" class="headerlink" title="制备10x cAMP + IBMX公司"></a>制备10x cAMP + IBMX公司</h4><p>将22.22mg IBMX溶于1ml DMSO（0.1M IBMX储备液，-20℃储存）中<br>为了制备1mM cAMP + 1mM IBMX（10x）原液，将21.5mg 8BrcAMP溶解在49.5ml BASE培养基中，并加入0.5ml IBMX贮液器<br>0.22μm过滤器<br>在4°C下存储最多4周</p>
-</li>
-</ol>
-<hr>
-<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ol>
-<li>Gonzales, L. W., Guttentag, S. H., Wade, K. C., Postle, A. D. and Ballard, P. L. (2002). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/12376347">Differentiation of human pulmonary type II cells in vitro by glucocorticoid plus cAMP.</a> <em>Am J Physiol Lung Cell Mol Physiol</em> 283(5): L940 - 951.</li>
-<li>Longmire, T. A., Ikonomou, L., Hawkins, F., Christodoulou, C., Cao, Y., Jean, J. C., Kwok, L. W., Mou, H., Rajagopal, J., Shen, S. S., Dowton, A. A., Serra, M., Weiss, D. J., Green, M. D., Snoeck, H. W., Ramirez, M. I. and Kotton, D. N. (2012). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/22482505">Efficient derivation of purified lung and thyroid progenitors from embryonic stem cells.</a> <em>Cell Stem Cell</em> 10(4): 398-411.</li>
-<li>Wray, J., Kalkan, T., and Smith, A.G. (2010). <a target="_blank" rel="noopener" href="http://www-06.all-portland.net/bst/038/1027/0381027.pdf">Revolutionizing Drug Discovery with Stem Cell Technology.</a> <em>Biochem Soc Trans</em> 38, 1027-1032.</li>
-</ol>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/03/08/%E5%B0%8F%E9%BC%A0ESC%E5%88%86%E5%8C%96%E6%88%90Nkx2-1-%E8%82%BA%E5%92%8C%E7%94%B2%E7%8A%B6%E8%85%BA%E7%A5%96%E7%BB%86%E8%83%9E/">展开全文 >></a>
     </p>
     
 
