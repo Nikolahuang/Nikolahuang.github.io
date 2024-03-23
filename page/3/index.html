@@ -233,6 +233,631 @@
 
 
   
+    <article id="post-的免疫球蛋白位点工程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/03/14/%E7%9A%84%E5%85%8D%E7%96%AB%E7%90%83%E8%9B%8B%E7%99%BD%E4%BD%8D%E7%82%B9%E5%B7%A5%E7%A8%8B/" target="_blank">杂交瘤细胞中基于 CRISPR/Cas9 的免疫球蛋白位点工程</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/03/14/%E7%9A%84%E5%85%8D%E7%96%AB%E7%90%83%E8%9B%8B%E7%99%BD%E4%BD%8D%E7%82%B9%E5%B7%A5%E7%A8%8B/" class="archive-article-date">
+        <time datetime="2024-03-14T09:12:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-14</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1204960">G Camille M. Le Gall *</a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1416910">FF Felix L. Fennemann *</a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1416911">JS Johan M.S. van der Schoot *</a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1416912">FS Ferenc A. Scheeren <img src="https://cdn.bio-protocol.org/forum/fe/static/icon_email.svg" alt="email"></a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1374104">MV Martijn Verdoes <img src="https://cdn.bio-protocol.org/forum/fe/static/icon_email.svg" alt="email"></a>，</p>
+<p>第一次发布: <a target="_blank" rel="noopener" href="https://bio-protocol.org/cn/archive?vol=13&issid=1315">2023年02月20日第13卷第4期 </a>DOI: <a target="_blank" rel="noopener" href="https://doi.org/10.21769/BioProtoc.4613">10.21769&#x2F;BioProtoc.4613</a> </p>
+<p>评审: <a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1011509">Luis Alberto Sánchez Vargas</a><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1048637">Day-Yu Chao</a> 匿名评审</p>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>Köhler和Milstein在1975年开发的杂交瘤技术彻底改变了免疫学领域，使得单克隆抗体（mAbs）在研究和开发中得以常规使用，并最终在临床上成功应用。尽管重组生产需要符合良好生产规范的技术来生产临床级别的mAbs，但学术实验室和生物技术公司仍然依赖原始的杂交瘤细胞系，以稳定、轻松地以适中价格生产高产量抗体。在我们的工作中，使用杂交瘤来源的mAbs时遇到了一个主要问题：无法控制生产的抗体格式，而重组生产则允许这种灵活性。为了消除这一障碍，我们通过直接在杂交瘤细胞的免疫球蛋白（Ig）位点进行基因工程改造抗体。我们使用成簇规律间隔短回文重复（CRISPR）&#x2F;CRISPR相关蛋白9（Cas9）和同源指导修复（HDR）来修改抗体的格式[mAb或抗原结合片段（Fab’）]和抗体同种型。本方案描述了一个简单的方法，操作时间少，能够产生稳定分泌高水平工程抗体的细胞系。保持亲本杂交瘤细胞在培养中，转染针对Ig位点中兴趣位点的导向RNA（gRNA）和HDR模板以敲入所需插入物和抗生素抗性基因。通过施加抗生素压力，扩大抗性克隆，并在基因和蛋白质水平上对其是否能产生修改后的mAbs而非亲本蛋白进行表征。最后，在功能分析中表征修改后的抗体。为了展示我们策略的多样性，我们用以下例子来说明本方案：一是更换抗体的恒定重区，创建新型同种型的嵌合mAb；二是截断抗体以创建抗原肽融合的Fab’片段，以产生针对树突细胞的疫苗；三是修改重链（HC）的恒定重（CH）1域和轻链（LC）的恒定kappa（Cκ）以引入用于进一步衍生纯化蛋白的位点选择性修饰标签。只需使用标准的实验室设备，这有助于其在各种实验室的应用。我们希望这个方案能够进一步传播我们的技术，帮助其他研究人员。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-13-04-4613-ga001.jpg" alt="Large image"></p>
+<hr>
+<h3 id="背景介绍："><a href="#背景介绍：" class="headerlink" title="背景介绍："></a>背景介绍：</h3><p>使用瞬时重组系统生产抗体是劳动密集型的，并且由于可变的转染效率和需要抗体可变区序列的知识，面临着可重复性问题。这对于拥有专用生物工厂的专业公司和实验室来说是常规操作，但典型的学术实验室通常不具备这些基础设施。对于大多数实验室来说，杂交瘤是生产单克隆抗体（mAbs）最便宜且劳动强度最低的方法。</p>
+<p>由于最初细胞系产生的免疫动物经历了多轮免疫和类别转换重组，同种型之间存在着微小的多样性，几乎全部是免疫球蛋白（Ig）G亚型。尽管同种型并不总是相关的，但它对于治疗的有效性越来越明显（Waldor等人，1987年；Beers等人，2016年；Evers等人，2021年）；例如，在癌症治疗中使用的mAbs的同种型工程可以显著提高其疗效（Sharma等人，2019年）。抗原结合片段（Fab’）由于其小尺寸，在研究中是宝贵的工具，但需要使用木瓜蛋白酶对抗体进行后隔离修改（Zhao等人，2009年）。最后，抗体的化学修饰通常是通过赖氨酸残基的随机标记来实现的（Nanda和Lorsch，2014年），这不是特定位点的，会导致不希望有的异质产品，或者通过工程化序列引入未配对的半胱氨酸残基（Adhikari等人，2020年），尽管正在开发新的方法（Yamada等人，2019年）。</p>
+<p>为了共同解决这些问题，我们开发了一种技术，可以重复地使用成簇规律间隔短回文重复（CRISPR）&#x2F;CRISPR相关蛋白9（Cas9）修改杂交瘤中的Ig恒定位点。这种现在常规的基因编辑方法能够精确地靶向Ig位点的恒定区域，无论可变区域如何，并能够插入几乎任何序列来生产具有任何切换或突变同种型、格式或标签的抗体。在这种情况下，杂交瘤中同种型的低多样性是一个优势，因为同源指导修复（HDR）模板可以轻松地在许多细胞系上重复使用。虽然我们专注于编辑恒定重链（CH）1、铰链（H）和轻链（LC）区域，但其他人已经证明了CH3靶向的可行性（Khoshnejad等人，2018年）。总的来说，这展示了策略的多样性。<br>我们预计这个方案可以应用于任何领域，因为mAbs是生物研究的基础，并希望看到同行成功地应用这种方法，以实现我们无法预见的用途。</p>
+<hr>
+<h3 id="实验材料与试剂"><a href="#实验材料与试剂" class="headerlink" title="实验材料与试剂"></a>实验材料与试剂</h3><p>875 cm² 5层培养瓶 (康宁, Falcon®, 目录号: 353144)<br>75 cm²培养瓶 (Greiner Bio-one, Cellstar, 目录号: 658170)<br>25 cm²培养瓶 (Greiner-Bio one, Cellstar, 目录号: 690175)<br>10 cm培养处理的Petri盘 (Greiner Bio-one, Cellstar, 目录号: 664161)<br>6孔板 (康宁, Costar, 目录号: 3516)<br>24孔板 (康宁, Costar, 目录号: 3524)<br>96孔板 (康宁, Costar, 目录号: 3799)<br>50 mL Falcon管 (赛默飞世尔, BrandTM 114821, 目录号: 10420602)<br>15 mL Falcon管 (赛默飞世尔, BrandTM 114818, 目录号: 10345521)<br>1.5 mL管 (Eppendorf, 目录号: 0030120086)<br>PCR管 (Eppendorf, 目录号: 0030124820)<br>一次性色谱柱 (Bio-Rad, 目录号: 7321010)<br>pX330-U6-Chimeric_BB-CBh-hSpCas9 (Addgene, 目录号: 42230)<br>pSMART-HCKan, CloneSmart Blunt Cloning kit (Lucigen, 目录号: 40704-2)<br>pHybr_r2a&gt;mA-srt-his (Addgene, 目录号: 124806)<br>pHybr_r2a&gt;m2a(silent)-srt-his (Addgene, 目录号: 124807)<br>PX458-gR2A_ISO (Addgene, 目录号: 124808)<br>BbsI-HF® (新英格兰生物实验室, 目录号: R3539)<br>rSAP (新英格兰生物实验室, 目录号: M0371)<br>T4 DNA连接酶 (新英格兰生物实验室, 目录号: M0202)<br>T4 PNK (新英格兰生物实验室, 目录号: M0201)<br>Q5聚合酶 (新英格兰生物实验室, 目录号: M0491)<br>dNTP (赛默飞世尔, 目录号: R0192)<br>ddH2O (赛默飞世尔, 英杰生命技术, 目录号: AM9935)<br>琼脂糖 (Sigma-Aldrich, 目录号: A4718)<br>Nancy-520 (Sigma-Aldrich, 目录号: 01494)<br>NucleoBond Xtra Midi Plus EF kit (Macherey-Nagel, 目录号: 740422.50)<br>NucleoSpin Gel and PCR cleanup (Macherey-Nagel, 目录号: 740609.50)<br>ISOLATE II Genomic DNA isolation kit (Bioline, 目录号: BIO-52067)<br>杂交瘤: 大鼠IgG2a,λ抗小鼠PD-L1 [MIH5] (自备)<br>杂交瘤: 大鼠IgG2a,κ抗小鼠DEC-205 [NLDC-145] (ATCC, 目录号: HB-290TM)<br>杂交瘤: 小鼠IgG1,κ抗人CD20 [NKI.B20&#x2F;1] (自备)<br>SF细胞系4D-NucleofectorTM X套件L (Lonza Biosciences, 目录号: V4XC-2024)<br>PBS (Fresnius Kabi, 目录号: M087312&#x2F;01)<br>RPMI-1640 (赛默飞世尔, GibcoTM, 目录号: 42401018)<br>CD杂交瘤培养基 (赛默飞世尔, GibcoTM, 目录号: 11279023)<br>热灭活胎牛血清 (FBS) (HyClone, 目录号: SV35959)<br>Ultraglutamine-1 (Lonza Biosciences, 目录号: BE17-605E&#x2F;U1)<br>抗生素-抗真菌剂 (赛默飞世尔, GibcoTM, 目录号: 15240062)<br>β-巯基乙醇 (β-ME) (Sigma-Aldrich, 目录号: 444203)<br>台盼蓝 (赛默飞世尔, GibcoTM, 目录号: 15250061)<br>CELLine CL 1000生物反应器 (INTEGRA Biosciences AG, 目录号: 90005)<br>博来霉素 (Invivogen, 目录号: ant-bl-05)<br>嘌呤霉素 (Invivogen, 目录号: ant-pr-5)<br>牛血清白蛋白 (BSA) (Sigma-Aldrich, 目录号: A9418)</p>
+<p>NaN3 (Sigma-Aldrich, 目录号: 26628-22-8)<br>重组蛋白G (赛默飞世尔, PierceTM, 目录号: 21193)<br>Ni-NTA琼脂糖 (Qiagen, 目录号: 30230)<br>抗6×His标签抗体 (克隆J095G46) (PE, Biolegend, 目录号: 362603)<br>抗大鼠IgG2a重链 (克隆MRG2a-83) (PE, Biolegend, 目录号: 407507)<br>抗小鼠IgG2a (克隆m2a-15F8) (PE, eBioscience, 目录号: 12-4817-82)<br>兔抗6×His标签抗体 (克隆RM146, 非结合, Abcam, 目录号: AB14923)<br>山羊抗兔IgG (H+L) (多克隆, IRD800, LI-COR, 目录号: 926-32211)<br>山羊抗大鼠IgG (H+L) (多克隆, AF680, 赛默飞世尔, 目录号: A-21096)<br>洗涤缓冲液 (见配方)<br>PBA (见配方)<br>培养基 (见配方)<br>1×选择培养基 (见配方)</p>
+<hr>
+<h3 id="设备"><a href="#设备" class="headerlink" title="设备"></a>设备</h3><p>电穿孔设备，例如 AMAXA 4D Nucleofector (Lonza BioSciences, AAF-1002X&#x2F;AAF-1002B)<br>带5% CO2的湿化培养箱<br>热循环器（例如，Bio-Rad, 目录号：1861096EDU）<br>流式细胞仪，例如，FACSLyric (BD Biosciences, 目录号：663518)<br>荧光扫描仪，例如，Amersham TyphoonTM 5 (Cytiva, 目录号：29187191)<br>Sanger测序服务</p>
+<hr>
+<h3 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h3><h4 id="A-一般注意事项"><a href="#A-一般注意事项" class="headerlink" title="A. 一般注意事项"></a>A. 一般注意事项</h4><ol>
+<li><p>在进行杂交瘤细胞修改之前，需要了解宿主物种和抗体同种型的信息。我们使用了剪切位点来在重链（HC）的CH1上游或下游、铰链的上游以及轻链（LC）的Cκ下游敲入插入物，但实际上几乎可以使用任何其他剪切位点来根据预期用途定制抗体。</p>
+</li>
+<li><p>从目标细胞系的转染到高水平修改抗体（图1）的分离，需要4-6周的时间。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-13-04-4613-g001.jpg" alt="Large image"></p>
+</li>
+<li><p>为了本方案的目的，并且为了展示潜在应用的多样性，我们描述了三个成功编辑的杂交瘤的全面表征：将大鼠IgG2a（r2a）抗体的恒定重链（HC）切换到小鼠IgG2a（m2a）恒定HC并产生嵌合r2a(V):m2a(C) mAb，在r2a HC的铰链区域引入抗原以产生Fab’片段-抗原融合，以及修改小鼠IgG1（m1）HC和鼠标kappa（mκ）LC以引入两个位点特异性标记标签。</p>
+</li>
+</ol>
+<hr>
+<h4 id="B-CRISPR-HDR模板和gRNA的设计"><a href="#B-CRISPR-HDR模板和gRNA的设计" class="headerlink" title="B. CRISPR&#x2F;HDR模板和gRNA的设计"></a>B. CRISPR&#x2F;HDR模板和gRNA的设计</h4><ol>
+<li><p>要从头开始设计HDR模板和gRNA，Addgene CRISPR指南或CRISPR 101书籍是很好的起点。</p>
+</li>
+<li><p>在图2-6中，逐步展示了设计CRISPR&#x2F;HDR模板和gRNAs的过程。我们以靶向m1 CH1的C端为例，工程化一个分泌mAb的细胞系，以产生在CH1 C端带有位点特异性标记位点的Fab’片段。</p>
+<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-13-04-4613-g002.jpg" alt="Large image" style="zoom: 50%;">
+
+<p>[^图2. 目标序列的注释。]: A. 访问感兴趣位点的基因组序列（例如，在NCBI基因库上）。使用“序列文本”视图，可视化目标位点的外显子和内含子。B. 移除注释，仅显示核苷酸序列。对于给定的位点，外显子以红色标记，内含子以绿色标记。在这里，高亮显示了Ighg1基因（mIgG1恒定区）中的恒定重链（CH）1、铰链、CH2和CH3。C. 在Snapgene中复制序列并注释外显子，以识别目标区域。这通常取决于预期的修改。在这里，我们目标是mIgG1 CH1的C端。</p>
+<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-13-04-4613-g003.jpg" alt="Large image" style="zoom:33%;">
+
+<p>[^图3. 目标位点的识别。]: A. 确定要敲入的目标区域。在这里，我们选择CH1域的C端插入部分铰链区域、一个短连接器、一个位点特异性标记位点和一个组氨酸标签。这实际上将mAb转化为在其重链（HC）C端带有位点特异性标记位点的Fab’片段。B. 将选定的序列复制到CRISPOR。C. 选择适当的宿主（在这里，为Mus musculus）和protospacer adjacent motif（PAM）（典型为-NGG）并提交。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-13-04-4613-g004.jpg" alt="Large image"></p>
+<p>[^图4. gRNA的选择。]:  A. CRISPOR识别PAM序列和相应的gRNA候选序列。所有可能的PAM序列（在这里为-NGG）都输入序列下方识别。B. 显示潜在gRNA的序列和特性，作为表格，按预测效果排序。插入位点应尽可能远离双链断裂10 bp以内。当靶向新区域时，根据其接近预期插入位点的位置和预测评分，至少选择两个或三个gRNAs。在这里，我们选择了gRNA_m1_HC（5′-CTTGGTGCTGCTGGCCGGGT-3′）。通过点击“克隆”，一个新窗口打开，显示各种Cas9载体中的克隆序列。C. 我们使用了一个U6表达系统（U6启动子，pX330载体及其衍生物）（Cong等人，2013年）。在这里，我们使用了一个20 nt的gRNA，但最近有提议使用19 nt的gRNA以提高效率（Kim等人，2020年）。选择适当的引物，并按照说明将gRNAs克隆到pX330载体中的BbsI位点。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-13-04-4613-g005.jpg" alt="Large image"></p>
+<p>[^图5. 在敲入位点插入所需序列。]:  A. 将gRNA序列（s）复制到Snapgene并B. 显示protospacer adjacent motif（PAM）序列（s）。将序列插入尽可能接近PAM序列的位置。C. 插入预定的包含所需插入物的核苷酸。在这里，我们插入部分铰链区域（VPRDC），允许与下游的轻链（LC）结合，之后是一个多克隆位点（MCS）、一个灵活的连接器（GGGGS）、一个sortag motif（LAETGG）和一个组氨酸标签（HHHHHH），之后是一个终止密码子。插入物后面是一个内部核糖体进入位点（IRES），允许转录博来霉素抗性基因（BSD），以及一个猴空泡病毒40（SV40）多聚A尾，以解离核糖体。每个域都被一个MCS包围，允许轻松交换质粒的任何部分。在这里，我们另外优化了CH1的一部分，以改善与LC的结合（PACSTKVDKKI，S&gt;C突变）。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-13-04-4613-g006.jpg" alt="Large image"></p>
+<p>[^图6. 同源臂（HA）和最终HDR模板设计。]: 同源臂（HA）大约在插入物的每侧延伸0.6 kb。它们的大尺寸允许在同源臂和目标位点之间存在一些不匹配，而不会影响HDR过程中同源臂与基因组位点的结合。因此，与最初从基因组浏览器获得的祖源序列相比，可以在同源臂序列中进行一些小的调整，而不会影响HDR的效率。A. 需要突变“NGG” protospacer adjacent motif（PAM）序列。为了失活PAM序列，将其突变“NGG”为“NGC”、“NGA”或“NGT”。如果PAM序列位于编码区，确保它是沉默突变。或者，完全移除PAM序列。经历过成功的HDR的细胞将不包含PAM序列，Cas9将被失活。B. 为了定义5’HA和3’HA，选择插入物每侧约0.6 kb的序列。</p>
+<p><strong>Table 1. gRNA used or mentioned in this protocol.</strong> HA sequences for the corresponding HDR templates are reported in Table 5.</p>
+<table>
+<thead>
+<tr>
+<th>gRNA</th>
+<th>Target</th>
+<th>Sequence</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>gRNA_iso_r2a</td>
+<td>Upstream of rat IgG2a CH1 exon</td>
+<td>TGTAGACAGCCACAGACTTG</td>
+</tr>
+<tr>
+<td>gRNA_r2a_H</td>
+<td>Upstream of rat IgG2a hinge exon</td>
+<td>GACTTACCTGTACATCCACA</td>
+</tr>
+<tr>
+<td>gRNA_m1_HC</td>
+<td>C-terminus of mouse IgG1</td>
+<td>CTTGGTGCTGCTGGCCGGGT</td>
+</tr>
+<tr>
+<td>gRNA_mκ_LC</td>
+<td>C-terminus of mouse κ LC</td>
+<td>GGAATGAGTGTTAGAGACAA</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>恒定免疫球蛋白位点的序列可以在NCBI基因库中找到；PAM序列和gRNA可以使用CRISPOR或其他工具确定。<br>HDR模板应包含5’和3’同源臂（HAs）包围所需插入物，一个终止密码子，一个内部核糖体进入位点（IRES），一个抗生素抗性基因（博来霉素或嘌呤霉素），以及一个聚A尾（图8A-C）。插入物的长度通常为1-2 kb。虽然更长插入物是可能的，但超过2-3 kb后，HDR效率会大大降低。HAs的长度取决于插入物的长度（每1 kb插入物约0.5 kb HAs），通常在0.3 kb到1 kb之间，尽管更短的HAs也是可能的。在这里，我们使用了0.6 kb的HAs。<br>建议：对目标区域进行测序，以确保不存在与原始基因的偏差，并确保HDR模板中的HAs移除了PAM序列和下游外显子的剪接受体序列。表2中提供了通用测序引物，并在补充文件中提供了通用PCR协议。通过T7试验确定感兴趣区域的gRNA效率。<br>HDR模板作为双链DNA gBlock订购，并克隆到pSmart载体中（例如，pSMART-HCKan, CloneSmart Blunt Cloning kit）。候选gRNA作为单链DNA寡核苷酸订购，退火并克隆到pX330家族的载体中（Cong等人，2013年）。补充文件中提供了基本的克隆协议。<br>设计和克隆后，使用NucleoBond Xtra Midi Plus EF试剂盒对编码HDR和gRNA模板的质粒DNA进行中量提取，并使用标准引物进行测序。A260:A280比率应至少为1.8。<br>我们已经开发了能够在大鼠IgG2a杂交瘤中修改HC的质粒，用新的同种型替换整个恒定区，以及在铰链处剪切并插入任何感兴趣的标签（Fab’片段）（van der Schoot等人，2019年），以及修改小鼠杂交瘤的mIgG1 CH1（如图2-6所示并在视频中记录）和Cκ kappa LC（Le Gall等人，2021年）。我们发布的质粒可在Addgene上找到或通过请求获得。使用标准的分子克隆技术和专用的限制性位点，可以轻松地在HAs之间交换插入物。表1中报告了gRNAs，表5中报告了HAs（注释）。</p>
+</li>
+</ol>
+<hr>
+<h4 id="C-杂交瘤细胞的培养及转染前抗生素的滴定"><a href="#C-杂交瘤细胞的培养及转染前抗生素的滴定" class="headerlink" title="C. 杂交瘤细胞的培养及转染前抗生素的滴定"></a>C. 杂交瘤细胞的培养及转染前抗生素的滴定</h4><p>在抗生素压力下进行HDR重组成功的细胞的筛选。在进行该程序之前确保亲本细胞系的质量至关重要（参见注释）。目标杂交瘤应在实验开始前进行抗生素（博来霉素&#x2F;嘌呤霉素）敏感性测试。</p>
+<ol>
+<li>在完整的培养基中培养目标杂交瘤细胞，无论是自建的还是从美国典型培养物保藏中心获得的，确保细胞保持高活力（&gt; 90%）。</li>
+<li>当细胞汇合时，将1 × 10^6细胞&#x2F;孔接种到6孔板中，加入3 mL的培养基，并补充0、0.5、1、2、4、8、10或20 μg&#x2F;mL的适当抗生素。</li>
+<li>在37°C下培养细胞3-7天，具体时间取决于选择的抗生素（嘌呤霉素为3天，博来霉素为7天）。</li>
+<li>使用台盼蓝确定在培养基中没有存活细胞的最小浓度，并使用确定的浓度进行筛选程序（图7A-B）。</li>
+</ol>
+<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-13-04-4613-g007.jpg" alt="Large image" style="zoom:10%;">
+
+<p>[^图 7. 抗生素滴定、转染和耐药细胞扩增。]: A. 对野生型（WT）抗人CD20 [NKI.B20&#x2F;1] 进行普鲁霉素滴定。普鲁霉素的连续稀释浓度为0–12.5 μg&#x2F;mL。48小时后，处理组细胞开始死亡。健康的杂交瘤细胞呈圆形且规则，并成簇生长。死亡或濒死的细胞失去圆形，变得不规则。在0.5 μg&#x2F;mL时可观察到死亡细胞，且在4 μg&#x2F;mL时仍有存活细胞。从8 μg&#x2F;mL开始，细胞明显死亡。经过训练的眼睛可以轻松识别细胞的存活情况。B. 为了量化存活率，使用台盼蓝染色区分活细胞（白色）和死细胞（蓝色）。这里我们选择8 μg&#x2F;mL普鲁霉素进行实验。C. 使用AMAXA电转染杯和程序（细胞系SF，CQ-104）。小心地将含有细胞和DNA的悬液用移液管吸入电极之间（箭头），避免产生气泡。D. 经过筛选后，HDR转染的培养皿中开始出现小簇生长，大部分细胞死亡或濒死（第6天）。这些耐药细胞成功进行了HDR。继续培养，直至更大的细胞簇出现（第10天），并逐渐长满培养皿（第13天）。相比之下，绿色荧光蛋白（GFP）转染的杂交瘤细胞保持死亡状态，未见细胞簇（第13天，右图）。当培养皿长满后，进行限稀释。E. 经过限稀释后，单克隆细胞系可以在各自井底的底部轻易识别（箭头）。扩增并鉴定这些细胞系。</p>
+<hr>
+<h4 id="D-杂交瘤细胞的转染"><a href="#D-杂交瘤细胞的转染" class="headerlink" title="D. 杂交瘤细胞的转染"></a>D. 杂交瘤细胞的转染</h4><p>本节描述了使用gRNA&#x2F;Cas9 + HDR模板或绿色荧光蛋白（GFP）作为模拟转染对照，对1 × 106野生型杂交瘤细胞进行电转染的过程。将细胞长时间悬浮在SF转染介质中（来自SF Cell Line 4D-NucleofectorTM X试剂盒）是有害的：需快速、有序地进行转染，并依次进行。</p>
+<ol>
+<li>在第0天，使用高存活率（&gt;90%）的野生型杂交瘤细胞进行电转染。</li>
+<li>向6孔板中加入3 mL培养液，并在37 °C下孵育。用50 mL Falcon预先加热培养液。</li>
+<li>从所需细胞系中离心沉淀杂交瘤细胞（1,500 rpm，5分钟，4 °C）。</li>
+<li>用适量的洗涤缓冲液（目标是1 × 106–2 × 106细胞&#x2F;mL）重新悬浮细胞沉淀。</li>
+<li>使用台盼蓝计数细胞，并将1 × 106细胞转移到1.5 mL Eppendorf管中。</li>
+<li>在台式离心机中离心细胞悬浮液（1,500 × g，5分钟，室温）。</li>
+<li>在此期间，准备两个或所需数量的DNA混合物，在0.2 mL Eppendorf管中，通过用移液管吸取每个条件下1 μg的Cas9&#x2F;gRNA + 1 μg的HDR模板，以及2 μg的pMAX-GFP作为模拟转染对照（DNA混合管）。</li>
+<li>使用参数：程序CQ-104，细胞系SF，准备4D-Nucleofector。</li>
+<li>小心吸走上清液。</li>
+<li>向细胞沉淀中加入100 μL SF转染介质，并在转移到含有HDR模板+ gRNA或pMAX-GFP的DNA混合管之前重新悬浮细胞。</li>
+<li>重新悬浮，并小心地将悬液转移到Lonza电转染试剂盒提供的100 μL电转染杯底部（图7C）。轻轻敲击电转染杯以确保样本覆盖电极和电转染杯底部，并检查是否有气泡。</li>
+<li>关闭盖子，将电转染杯插入AMAXA电转染器中。按显示屏上的开始按钮，使用参数：程序CQ-104，细胞系SF（图7C）进行电转染。</li>
+<li>小心地向电转染杯中加入1 mL预热的培养基，并将细胞立即转移到含有预热培养基的6孔板中（孔中总体积现在约为4 mL）。避免反复吸取细胞。</li>
+<li>用培养基冲洗电转染杯，以确保所有细胞都已转移。</li>
+<li>进行下一次转染（从步骤8开始重复）。</li>
+<li>将6孔板在37 °C的湿化CO2培养箱中孵育。</li>
+</ol>
+<hr>
+<h4 id="E-工程杂交瘤细胞的筛选及单克隆细胞系的生成"><a href="#E-工程杂交瘤细胞的筛选及单克隆细胞系的生成" class="headerlink" title="E. 工程杂交瘤细胞的筛选及单克隆细胞系的生成"></a>E. 工程杂交瘤细胞的筛选及单克隆细胞系的生成</h4><p>本节描述了筛选成功工程化的杂交瘤细胞以识别HDR编辑克隆的过程。这是通过从转染后第3天起对HDR-和GFP-转染的杂交瘤细胞施加抗生素选择压力来完成的。耐药细胞生长至融合，并可生成单克隆细胞系。</p>
+<ol>
+<li><p>转染细胞在无选择压力的培养液中培养两天，以允许电转染的细胞生长。在第1天，通过目测检查转染细胞的存活率，并使用荧光显微镜检查转染对照细胞中的GFP表达。小心处理细胞以保持其存活率。</p>
+</li>
+<li><p>在第3天，刮取细胞或重新悬浮直至细胞脱离，并将所有4 mL的细胞悬液转移到含有5 mL预热的1倍选择培养基和两倍预定浓度的适当选择药物（2×选择培养基）的10 cm培养皿中。用1 mL培养液冲洗井，收集所有细胞并转移到培养皿中。转移细胞后，应使用培养液调整培养皿中的最终体积至10 mL，以确保细胞处于1×选择培养基中。</p>
+</li>
+<li><p>从第5天开始，每周两次传代转染细胞。具体操作为：刮取细胞，转移到15 mL Falcon管中。在10 cm培养皿中放置5 mL新的预热的1×选择培养基。离心（1,500 rpm，5分钟，室温）并弃去上清液。在2 mL预热的1×选择培养基中重新悬浮细胞沉淀，并将其悬液转移回培养皿。用3 mL 1×选择培养基冲洗15 mL Falcon管，并将其转移回培养皿。</p>
+</li>
+<li><p>根据抗生素的不同，到第5-10天，HDR&#x2F;gRNA转染的培养皿中应在大多数死亡细胞中形成小簇，而GFP转染的细胞全部死亡（图7D）。如果没有观察到细胞死亡，应调整抗生素浓度（见注释）。如果在抗生素压力下没有活细胞生长，请参阅列出的故障排除解决方案（见注释）。</p>
+</li>
+<li><p>继续传代细胞，直到这些簇生长达到更高的融合度和存活率（图7D，&gt;90%，通常在第15-20天左右）。当HDR转染的培养皿长满时，GFP培养皿中的细胞仍应全部死亡。此时，丢弃GFP转染的培养皿，并继续进行HDR转染细胞的限稀释。在此步骤之后，不再需要抗生素压力。如果有些簇生长非常缓慢或GFP转染的培养皿中仍有存活的细胞，最好在鉴定单克隆细胞系后继续在培养基中保留所选抗生素。</p>
+</li>
+<li><p>在五个圆底96孔板中预先加入100 μL&#x2F;孔的培养液，并在37 °C下孵育。</p>
+</li>
+<li><p>刮取融合的HDR转染细胞并离心细胞悬液（1,500 rpm，5分钟，室温）。保留1 mL上清液样本，并丢弃其余部分。</p>
+</li>
+<li><p>在5 mL培养液中重新悬浮细胞并使用台盼蓝计数。在培养液中分两步稀释细胞，以获得浓度为3细胞&#x2F;mL的50 mL悬液。</p>
+<p>[示例：初始悬液浓度为1.5 × 106细胞&#x2F;mL → 稀释因子：500,000（1.5 × 106&#x2F;3）。首先进行500倍稀释，100 μL细胞悬液在50 mL培养液（3,000细胞&#x2F;mL）中。然后取50 μL细胞悬液（3,000细胞&#x2F;mL）在50 mL培养液中稀释1,000倍（浓度为3细胞&#x2F;mL）。]</p>
+</li>
+<li><p>在圆底96孔板中每孔加入100 μL悬液。最终浓度为0.3细胞&#x2F;孔在200 μL或33细胞&#x2F;板。</p>
+</li>
+<li><p>从原始细胞悬液中保留约500,000个细胞用于基因组DNA（gDNA）提取（使用ISOLATE II Genomic DNA提取试剂盒）。离心并遵循制造商的说明。</p>
+</li>
+<li><p>按照标准冷冻保存程序冷冻保存大量群体的剩余细胞。</p>
+</li>
+<li><p>在单细胞克隆（SCC）生长的同时，应立即对大量群体及其上清液进行表征，以确定HDR模板的整合。为此，请遵循数据分析部分1-3的内容。</p>
+</li>
+</ol>
+<hr>
+<h4 id="F-修改后杂交瘤细胞的扩增"><a href="#F-修改后杂交瘤细胞的扩增" class="headerlink" title="F. 修改后杂交瘤细胞的扩增"></a>F. 修改后杂交瘤细胞的扩增</h4><ol>
+<li>在37 °C下孵育培养板10-15天，期间不更换培养基。</li>
+<li>当在皿底可见SCC（单细胞克隆）（图7E）时，将它们转移到新的平底96孔板中，并加入100 μL新的培养基。</li>
+<li>当细胞融合时，收集并冷冻上清液，并将克隆扩展到24孔板，然后是T75烧瓶。</li>
+<li>收集约500,000个细胞用于gDNA提取，并冷冻保存扩大的克隆。</li>
+</ol>
+<hr>
+<h3 id="数据分析"><a href="#数据分析" class="headerlink" title="数据分析"></a>数据分析</h3><h4 id="选择克隆的表征（来自大量群体和-或单细胞克隆群体）"><a href="#选择克隆的表征（来自大量群体和-或单细胞克隆群体）" class="headerlink" title="选择克隆的表征（来自大量群体和&#x2F;或单细胞克隆群体）"></a>选择克隆的表征（来自大量群体和&#x2F;或单细胞克隆群体）</h4><p>验证细胞系是否产生正确的抗体（片段）至关重要。首先在大批量群体上进行筛选方法，以确保程序的顺利进行，然后在单细胞克隆上进行。我们通常结合三种或更多方法来确保插入片段的整合和正确的蛋白生产：在基因、蛋白质和功能层面上。下面提供了几个不同方法的例子以供说明。在功能表征之前，这个直接的协议不需要进行统计分析。如果耐药细胞没有产生修改后的抗体，请参阅列出的故障排除解决方案（见注释）。<br>为了说明这一部分，我们展示了使用此技术修改的三个不同细胞线的全面表征：</p>
+<ol>
+<li>MIH5是一种产生单克隆抗体的鼠IgG2a, λ杂交瘤，这些抗体与小鼠PD-L1结合，这是一种由癌细胞和髓系细胞表达的蛋白。PD-L1是基于mAb（抗体药物）治疗的癌症（检查点抑制剂）的治疗靶点。我们工程化了MIH5细胞系，以产生具有鼠IgG2a（m2a）和鼠IgG2a L234A&#x2F;L235A&#x2F;N297A（m2a(silent)）同种型的嵌合抗PD-L1抗体（图8A）（van der Schoot等人，2019年）。</li>
+<li>NLDC-145是一种产生单克隆抗体的鼠IgG2a, κ杂交瘤，这些抗体与小鼠DEC-205结合，DEC-205是一种由能够交叉呈递抗原的树突细胞亚群表达的C型凝集素。由于其表达受限，DEC-205是开发靶向疫苗的有前景的靶点，这些疫苗能有效地将抗原递送到能够最佳激发T细胞反应的受限细胞群体。我们工程化了NLDC-145以产生截短的抗体（Fab’片段），这些抗体带有来自模型抗原卵清蛋白（OVA）的CD8 T或CD4 T细胞表位（分别为Fab’OTI和Fab’OTII）（图8B）（Fennemann等人未发表的数据，2021年）。</li>
+<li>NKI.B20&#x2F;1是一种产生单克隆抗体的鼠IgG1,κ杂交瘤，这些抗体与人CD20结合。CD20是Rituximab的靶点，Rituximab是一种用于治疗B细胞淋巴瘤、类风湿性关节炎或狼疮的B细胞耗竭mAb。我们生成了一种NKI.B20&#x2F;1细胞系，该细胞系产生一个Fab’片段，在HC和LC上带有两个正交的位点选择性修饰位点（图8C）：HC上的LAETGG-His标签和LC上的LPESGG-Myc标签。这个构建体可以用来生成带有两个不同有效载荷的均质抗体-药物偶联物（Le Gall等人，2021年）。</li>
+</ol>
+<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-13-04-4613-g008.jpg" alt="Large image" style="zoom:13%;">
+
+<p>[^图 8. 在基因、蛋白质和功能层面上对三种工程细胞系进行验证]: 。A. 用于将大鼠IgG2a杂交瘤转变为小鼠IgG2a的HDR模板和gRNA的等位基因转换。B. HDR模板结构和用于将大鼠IgG2a杂交瘤转变为Fab’抗原（Fab’Ag）的gRNA。此处展示的抗原是OTI和OTII肽。C. 用于编辑小鼠IgG1杂交瘤LC的HDR模板和gRNA。在此策略中，HC和LC都经过编辑，以形成一个带有两个选择性修饰位点的Fab’片段（此处展示LC编辑）。D. 使用位置特异性（1）和HDR特异性（2）引物集，对从m2a和m2a(silent)抗性克隆中提取的gDNA进行PCR扩增。E. 使用位置特异性（1）和HDR特异性（2）引物集，对从Fab’OTI和Fab’OTII抗性克隆中提取的gDNA进行PCR扩增。F. 使用位置特异性（1）和HDR特异性（2）引物集，对从mκ抗性克隆中提取的gDNA进行PCR扩增。G. 在选择每种等位基因的单克隆杂交瘤后，将上清液与表达PD-L1的目标细胞（CT26）孵育，并用抗r2a、抗m2a或抗His标签染色。显示的图表明上清液仅含有带C端His标签的工程等位基因变体，而原始的大鼠IgG2a单抗不存在。H. Western blot Fab’ -OTI和-OTII，染色His标签（绿色）和大鼠IgG2a（蓝色）。使用NLDC-145抗体作为阴性对照（WT）。I. SDS-PAGE凝胶内荧光（Sypro染色）显示WT mAb CD20、Fab’HC和Fab’HC+LC蛋白的分子量在编辑HC和LC后发生改变。J. 代表性传感图显示MIH5 WT和MIH5工程单抗（WT r2a、m2a、m2asilent）与固定的小鼠FcγR（FcγRI、FcγRIIb和FcγRIV）在递增浓度（0.49–1000 nM）下的相互作用。与FcγR的结合以共振单位（RU）表示。K. 体外抗体依赖性细胞毒性（ADCC）试验比较MIH5等位基因变体的效应功能。将MC38细胞用51Cr标记，用m2a或m2a(silent) MIH5等位基因变体进行调理，然后暴露于C57BL&#x2F;6小鼠的全血中4小时。通过测量51Cr释放（n &#x3D; 3，平均值±SEM，* p &lt; 0.05）来量化特异性裂解，并显示m2a可诱导PD-L1表达细胞的特异性裂解，而m2a(silent)在体外无活性。L. 体内耗竭试验。使用Violet和Red示踪染料标记的脾脏B细胞作为体内耗竭的目标细胞，并用m2a(silent)变体或m2a进行调理。随后，将B细胞以1:1的比例（m2a:m2a(silent)或m2a(silent):m2a(silent)）混合并静脉注射到C57BL&#x2F;6小鼠中。24小时后，分离脾脏，并通过流式细胞术测定荧光标记细胞群之间的比例，以量化目标细胞的等位基因特异性耗竭，显示m2a和m2a(silent)在体内均具有功能（n &#x3D; 3，平均值±SEM，* p &lt; 0.05）。M. 使用Flt3L和OP9-DL-1饲养层（Kirkling等人，2018年）从骨髓生成表达DEC-205的小鼠树突状细胞。在第8天，使用CD11c微珠分离CD11c+细胞，并与1 μM Fab’OTI、5 nM OVA257-263（SIINFEKL，阳性对照）或10 μM OVA孵育2小时。洗涤后，将细胞暴露于新鲜分离的荧光标记OTI CD8 T细胞中，并补充0.3 μg&#x2F;mL脂多糖（LPS）。72小时后，通过流式细胞术分析细胞增殖（细胞染料稀释）和活化标志物（未显示），并通过ELISA分析上清液中促炎IFNγ和IL-2细胞因子的产生。Fab’OTI处理的树突状细胞诱导CD8 T细胞增殖和活化，表明它被DEC-205表达的树突状细胞摄取并加工，并且CD8 T细胞表位在I类主要组织相容性复合体（MHC）上呈现（n &#x3D; 3，平均值±SD，ns：不显著，**** p &lt; 0.0001，单因素方差分析后Tukey多重检验）。N. 第8天表达DEC-205的小鼠树突状细胞与1 μM Fab’OTII、1 μM OVA323-339（ISQAVHAAHAEINEAGR，阳性对照）或10 μM OVA孵育2小时。洗涤后，将细胞暴露于新鲜分离的荧光标记OTII CD4 T细胞中，并补充0.3 μg&#x2F;mL LPS。72小时后，通过流式细胞术分析细胞增殖和活化标志物表达（未显示），并通过ELISA分析上清液中促炎IFNγ和IL-2细胞因子的产生。Fab’OTII处理的树突状细胞诱导CD4 T细胞增殖和活化，表明它被DEC-205表达的树突状细胞摄取并加工，并且CD4 T细胞表位在II类MHC上呈现（n &#x3D; 3，平均值±SD，ns：不显著，* p &lt; 0.05，** p &lt; 0.01，单因素方差分析后Tukey多重检验）。O. SDS-PAGE分析Fab′CD20顺序特异性标记H-GGG-C-K(FITC)-NH2在HC上和H-GGG-K(N3)-NH2在LC上，确认在工程Fab′上引入了两个不同的货物，并且引入的基序功能正常。P. 抗原结合竞争试验，每个工程蛋白对mAbNKI.B20&#x2F;1-AF647的结合亲和力表明，经过CRISPR&#x2F;Cas9编辑和顺序双重特异性标记后，蛋白质没有失去对它们目标的结合亲和力。B: 阳光霉素抗性基因，用于在细胞培养中筛选成功转化的细胞。FITC: 荧光素异硫氰酸酯，一种常用的荧光标记物。 H: 铰链区，连接抗体轻链和重链的结构域。 H6: 六聚组氨酸标签（HHHHHH），用于蛋白质纯化和检测。 HA: 同源臂，在基因编辑中用于引导DNA修复。 HC: 重链，抗体的一部分，负责与抗原结合。 HDR: 同源定向修复，一种基因编辑技术，利用DNA的天然修复机制插入或替换DNA序列。 I: 内部核糖体进入位点（IRES），一种允许在翻译水平上调控基因表达的结构。 IFNγ: 干扰素gamma，一种免疫调节蛋白，具有抗病毒和抗肿瘤活性。 IL-2: 白细胞介素-2，一种免疫调节蛋白，促进T细胞增殖和分化。 LC: 轻链，抗体的一部分，与重链一起构成抗体的可变区。 myc: myc标签（EQKLISEEDL），一种常用的蛋白质标签，用于检测和纯化。 OVA: 卵白蛋白，常用于免疫学研究中的抗原。 P: 阳光霉素抗性基因，用于在细胞培养中筛选成功转化的细胞。 pA: 聚A尾，存在于真核生物mRNA末端的序列，有助于mRNA的稳定和翻译。 PAM: 间隔相邻基序，CRISPR&#x2F;Cas9系统中指导RNA识别目标DNA序列的关键序列。 PD-L1: 程序性死亡配体1，一种免疫检查点分子，在肿瘤免疫逃逸中起重要作用。 PEG: 聚乙二醇，一种多功能聚合物，常用于蛋白质化学和药物输送。 srt: sortag motif，一种用于蛋白质修饰的短肽序列。 WT: 野生型，指未经基因改造的自然基因型。</p>
+<ol>
+<li><p>PCR扩增目标位点以确定HDR整合<br>应该对细胞团和SCC（单细胞克隆）群体进行PCR筛选。为此，使用从约500,000个细胞中分离的gDNA，并使用仅与插入序列杂交的引物以及与插入位点外HA区域附近杂交的位置特异性引物扩增目标位点。使用约100 ng的gDNA，使用标准PCR程序（在补充文件中提供）扩增目标位点。表2提供了用于扩增插入我们的HDR模板后的鼠IgG1重链、鼠κ轻链和大小鼠IgG2a CH1重链的引物序列。</p>
+<p><strong>Table 2. Locus-specific and HDR-specific for PCR amplification of target region</strong></p>
+<table>
+<thead>
+<tr>
+<th>Primer</th>
+<th>Target</th>
+<th>5′-3′ Sequence</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>r2a_iso_fw</td>
+<td>rat IgG2a upstream of CH1 (locus-specific)</td>
+<td>GGCGACCTGTAACAACTTGG</td>
+</tr>
+<tr>
+<td>r2a_CH1_fw</td>
+<td>rat IgG2a CH1 exon (locus-specific)</td>
+<td>TGTAGGAGCTTGGGTCCAGA</td>
+</tr>
+<tr>
+<td>m1_CH1_fw</td>
+<td>mouse IgG1 CH1 (locus-specific)</td>
+<td>GTGCCGACTTCAATGTGCTT</td>
+</tr>
+<tr>
+<td>mκ_LC_fw</td>
+<td>mouse kappa light chain (locus-specific)</td>
+<td>GTGCTTGTGTTCAGACTCCC</td>
+</tr>
+<tr>
+<td>blast_rv</td>
+<td>blasticidin resistance gene (HDR-specific)</td>
+<td>ATACATTGACACCAGTGAAGATGC</td>
+</tr>
+<tr>
+<td>ires_rv</td>
+<td>IRES (HDR-specific)</td>
+<td>GGCTTCGGCCAGTAACGTTA</td>
+</tr>
+<tr>
+<td>polyA_rv</td>
+<td>poly A tail (HDR-specific)</td>
+<td>CATAGAGCCCACCGCATCCC</td>
+</tr>
+</tbody></table>
+<p>  a. 将PCR产物在1%（w&#x2F;v）的琼脂糖凝胶上运行，并使用Nancy-520（1:15,000）可视化DNA。<br>  b. 插入物在目标区域的整合通过存在预期的工程MIH5 [r2a&gt;m2a和r2a&gt;m2a(silent) (r2a_iso_fw + blast_rv, Figure 8D)], NLDC-145 (r2a&gt;Fab’OTI和r2a&gt;Fab’OTII (r2a_HC_fw + blast_rv, Figure 8E)), 和NKI.B20&#x2F;1 [mκ&gt; mκ-srt-myc (mκ_LC_fw + ires_rv, Figure 8F)] 细胞系的单个带得到确认。<br>  c. 应在正确的高度切割正确的带并进行凝胶纯化，以进行Sanger测序并确认正确的整合。</p>
+</li>
+<li><p>杂交瘤上清液的流式细胞术分析<br>可以进行流式细胞术筛选，以研究例如His标签&#x2F;Myc标签、重链、轻链或某种等位基因的表达。<br>对于初步筛选，将50 μL的细胞团或SCC的上清液与50,000个目标表达细胞在4°C下孵育20分钟。在PBA洗涤两次后，进行二次染色，使用表3中指示的抗体来染上清液产生的抗体（等位基因、标签等）。</p>
+<p><strong>Table 3. Secondary antibodies used to analyze hybridoma production by flow cytometry</strong></p>
+<table>
+<thead>
+<tr>
+<th>Target</th>
+<th>Clone</th>
+<th>Fluorophore</th>
+<th>Company</th>
+<th>Cat. number</th>
+<th>Dilution</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>6×His-tag</td>
+<td>J095G46</td>
+<td>PE</td>
+<td>Biolegend</td>
+<td>362603</td>
+<td>25</td>
+</tr>
+<tr>
+<td>rat IgG2a HC</td>
+<td>MRG2a-83</td>
+<td>PE</td>
+<td>Biolegend</td>
+<td>407507</td>
+<td>400</td>
+</tr>
+<tr>
+<td>mouse IgG2a</td>
+<td>m2a-15F8</td>
+<td>PE</td>
+<td>eBioscience</td>
+<td>12-4817-82</td>
+<td>500</td>
+</tr>
+</tbody></table>
+<p>对于旨在选择高产量克隆的第二次筛选，使用类似的工作流程，但包括积极克隆的上清液的连续稀释。建议带有一个已知浓度的亲本抗体的稀释液，以计算样本中的抗体量。<br>我们修改了产生r2a的MIH5细胞系，使其产生m2a和m2a(silent)等位基因，并将积极克隆的未稀释上清液与表达PD-L1的细胞（Figure 8G）孵育。流式细胞术分析显示，最初细胞系产生原始等位基因，但未选择克隆，并产生带有His标签的m2a等位基因，证实了正确的整合。</p>
+</li>
+<li><p>Western blot分析杂交瘤上清液<br>流式细胞术筛选可以用来研究例如His标签&#x2F;Myc标签、重链、轻链或某种等位基因的表达，而不需要大量的目标表达细胞。必须在选定的克隆上单独确认与目标的结合。<br>我们通常首先使用点印迹进行筛选。为此，取每个单细胞克隆上清液的3 μL，并在硝酸纤维素膜上点印，使用96孔板作为指南。让硝酸纤维素膜干燥30分钟，并进行阻断步骤和一般Western blot协议的二次染色，使用表4中指示的抗体来染上清液产生的抗体（等位基因、标签等）。<br>对于第二次筛选，使用积极克隆的上清液的稀释液来确认正确蛋白的生产，使用传统的Western blot。在这里，我们分析了NLDC-145工程细胞系产生的Fab’OTI和Fab’OTII上清液，使用抗rIgG2a（H+L）和抗His标签（Figure 8H）。结果显示，产生了一个带有His标签的25 kDa的重链，高于野生型（WT）50 kDa的重链，确认了HDR插入。<br>另一种方法是SDS-PAGE分析可以确认正确产品的生产（Figure 8I）。在这里，我们依次将NKI.B20&#x2F;1亲本细胞系修改为一个产生带有两个位点特异性修饰位点的Fab’片段的细胞系，分别在其重链和轻链上。在第一次和第二次修改后，我们分别检测到重链从50 kDa降至25 kDa（WT重链 &gt; Fab’-srt-his重链），以及轻链的向上移动（WT轻链 &gt; LC-srt-myc轻链）（Figure 8I）。<br><strong>Table 4. Antibodies used to characterize presence of the right insert</strong></p>
+<table>
+<thead>
+<tr>
+<th>Target</th>
+<th>Clone</th>
+<th>Fluorophore</th>
+<th>Company</th>
+<th>Cat. number</th>
+<th>Dilution</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rabbit anti 6×His-tag</td>
+<td>RM146</td>
+<td>unconjugated</td>
+<td>Abcam</td>
+<td>AB14923</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>goat anti-rabbit IgG (H + L)</td>
+<td>polyclonal</td>
+<td>IRD800</td>
+<td>LI-COR</td>
+<td>926-32211</td>
+<td>5,000</td>
+</tr>
+<tr>
+<td>goat anti-rat IgG (H + L)</td>
+<td>polyclonal</td>
+<td>AF680</td>
+<td>Thermo Fisher</td>
+<td>A-21096</td>
+<td>5,000</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>确认生产功能性蛋白<br>确认选定克隆能产生功能性抗体对于验证选定的细胞系至关重要。</p>
+<p>a. 高水平的修改抗体生产<br>基于基因组筛选和蛋白质水平确认，可以根据其生产能力和生长速率选择一个克隆，用于生产高水平的修改抗体。为此，按照制造商的说明，将选定的克隆扩大到5层培养瓶或CELLineCL 1000生物反应器。</p>
+<p>b. 修改抗体的分离<br>分离方法取决于插入物的性质。HDR模板可以设计包括纯化标签，如His标签或Myc标签，对于这些标签，亲和树脂是可用的（例如，Ni-NTA琼脂糖）。不包含此类标签的抗体可以使用例如蛋白G树脂进行分离，在这种情况下，培养基需要无血清（CD杂交瘤培养基）。</p>
+<p>c. 功能测定<br>确认抗体功能所需的测定通常取决于修饰的性质、目标抗原和预期用途。在这里，我们提供了我们进行的功能测定的例子，以验证所呈现的细胞系。这些结果表明，在免疫球蛋白位点中进行的CRISPR&#x2F;Cas9敲入保留了抗体的特异性，并且插入物是功能性的。</p>
+<p>我们生成了产生m2a和m2a（沉默）等位基因的MIH5细胞系。为了确认等位基因的功能，我们进行了表面等离子共振分析，以评估纯化的mAbs在固定的小鼠可溶性片段结晶γ受体（FcyR）上的结合能力（图8J）。正如预期的那样，m2a抗体与小鼠FcyR结合，并且与m2a（沉默）中引入的突变结合被阻断。此外，我们进行了不同等位基因（图8K）包被的PD-L1表达癌细胞的原发性细胞毒性实验。与C57BL6&#x2F;J小鼠的全血共培养显示，m2a能够特异性裂解靶细胞，而r2a（WT）和m2a（沉默）则没有活性。类似地，在体内杀伤实验中，与m2a或m2a（沉默）共培养的脾细胞显示出对m2a处理细胞的特定杀伤作用（图8L）。这些结果共同验证了新型嵌合抗体的功能（van der Schoot等人，2019年）。</p>
+<p>工程化的NLDC-145细胞系产生Fab’OTI和Fab’OTII，这些蛋白可以特异性地将抗原递送到表达DEC-205的树突状细胞（DCs）。OTI和OTII抗原分别被CD8 OTI和CD4 OTII T细胞识别，这些T细胞在DCs呈递的MHC分子上。我们用构建体、短肽（阳性对照，OVA257-264或OVA323-339）或OVA蛋白孵育DEC-205表达的初级小鼠树突状细胞2小时，然后将DCs暴露于抗原特异性CD8或CD4 T细胞（图8M-N），这些细胞用CTV标记。CD8（图8M）和CD4（图8N）T细胞在识别其相应抗原后增殖并产生促炎细胞因子，这些细胞因子通过流式细胞术测定其增殖（CTV稀释），通过表达激活标志物，并通过ELISA检测细胞因子产生（IL-2，IFNγ）。当DCs暴露于短肽和Fab’抗原融合蛋白时，CD8和CD4 T细胞增殖并产生促炎细胞因子。这证实了Fab’抗原融合蛋白保留被DCs处理和呈递的能力，并且强烈诱导T细胞激活（Fennemann等人未发表的数据）。</p>
+<p>最后，我们生成了一个产生带有正交位点特异性修饰位点的Fab’片段的NKI.B20&#x2F;1细胞系，这些位点位于重链和轻链的C末端（Le Gall等人，2021年）。为了确认正交位点的功能，我们依次修改重链以引入荧光素异硫氰酸酯，修改轻链以引入叠氮基团，这在荧光SDS-PAGE上得到确认（图8O）。最后，我们通过在表达CD20的目标细胞上进行竞争结合实验来确认位点特异性修饰不会改变与靶标的结合（图8P）。</p>
+</li>
+</ol>
+<hr>
+<h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes:"></a>Notes:</h3><p>我们已经成功地将此协议应用于各种杂交瘤细胞系。我们建议操作者在进行遗传工程之前，对目标细胞系的生长速率、产量水平和存活率有一个良好的了解。我们发现以下细节可以帮助完善程序：</p>
+<ol>
+<li><p>确保亲本细胞系的质量<br>杂交瘤可能会随着时间的推移而失去生产能力或存活率低，这严重损害了程序的效率。为了解决这个问题，我们建议操作者通过执行限制稀释（如在E节中描述）来亚克隆亲本线，并量化SCC的存活率和WT抗体产量，以选择一个新的单克隆线。这确保了选择高度存活的亲本克隆和高产量的细胞。在亲本细胞系上进行亚克隆还可以确认SCC能够生长。如果亲本线的存活率没有改善，调整培养条件，例如通过去除β-ME（确保抗体生产不受影响）或在培养基中增加FBS浓度，以800 rpm而不是1,500 rpm的转速离心5分钟，或使用密度梯度如Lymphoprep去除死细胞。</p>
+</li>
+<li><p>确认亲本线对抗生素压力的敏感性<br>通常，杂交瘤细胞系对选择性抗生素没有抵抗力，我们不需要对模拟转染的杂交瘤进行抗生素滴定。对于每个细胞系可能不是这样，并且在某些情况下，需要在模拟转染的杂交瘤上进行滴定。如果是这种情况，请按照D节模拟转染细胞系，然后按照C节中的指示进行滴定。</p>
+</li>
+<li><p>在程序过程中调整选择药物的浓度<br>细胞死亡通常从第2-3天开始。对于嘌呤霉素，细胞应在第7天死亡，对于阳光霉素，应在第10天死亡。在抗生素压力下，我们通常观察到GFP和HDR转染板的细胞大量死亡。如果情况并非如此，选择药物的浓度太低。即使经过滴定，也可能发生这种情况，操作者应增加浓度。</p>
+</li>
+<li><p>如果转染细胞在抗生素压力下不能生长<br>如果转染细胞不能承受抗生素压力，可以尝试以下解决方案。在转染前检查杂交瘤的存活率并进行GFP转染效率。序列目标区域以确保没有可能影响gRNA&#x2F;HDR效率的突变。进行T7实验以确定gRNA切割目标位点的能力，并在必要时尝试其他gRNAs。测试支原体污染。通过饥饿（低&#x2F;无FBS）同步转染前的细胞。加入非同源末端连接抑制剂，如nocodazole，以促进HDR。</p>
+</li>
+<li><p>如果在限制稀释后SCCs不能生长<br>虽然我们从未遇到过这个问题，但一些细胞系在限制稀释后可能无法生长。为了解决这个问题，可以在培养基中加倍FBS浓度来拯救单细胞。此外，使用条件培养基进行限制稀释可以帮助单细胞存活。为了制备条件培养基，在10厘米的培养皿中接种约1 × 106个亲本细胞。根据生长速率，24小时或48小时后，离心上清液并通过0.45微米过滤器。</p>
+</li>
+<li><p>如果抗性细胞不产生（仅）修改的抗体<br>在抗性克隆中，我们通常发现有很大比例的克隆正确编辑并产生大量抗体（50%–90%）。我们发现偶尔有SCC能够抵抗抗生素压力并显示出插入物的正确整合，但产生WT抗体，我们认为这是等位基因排除的例外情况。通常，其他SCC会产生正确的蛋白，应该选择这些克隆。<br>然而，如果所有在抗生素压力下存活的SCC通过PCR在目标区域显示出插入物的整合，但不分泌修改的抗体，则HDR模板可能需要调整。例如，由于替代剪接，SCC可以抵抗抗生素压力但产生修改和WT抗体，或者只产生WT抗体。为了解决这个问题，删除3’端接头序列中插入下游的exon的剪接供体序列，并在合成exon上游插入一个合成的剪接供体序列（如GCTAGCGATCGCAGGCGCAATCTTCGCATTTCTTTTTTCCAG）。特别是如果敲入上游的exon，请确保在剪接后插入序列与变异性别的序列对齐。</p>
+<p><strong>表5. 本说明中使用的同源臂。粗体：用于在成功HDR重组后失活Cas9的突变PAM序列。另一种选择是在供体序列中完全切除（例如，Fab r2a_HC）。下划线：原始剪接供体位点位于rIgG2a CH1 exon上游：在HDR模板中删除或突变以防止与原始等位基因的变异性别区域发生替代剪接。</strong></p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Homology arms</th>
+<th>5′-3′ Sequence</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5′ HA r2a_iso (rIgG2a WT &gt; mIgG2a)</td>
+<td>AGAAAGATCTGAGTAGAACCAAGGTAAAAAGTGTGGGTAAAAACACATGTTCACAGGCCTGGCTGACATGATGCTGGGCACGTATGGAGGCAAAGTCAAGAGGGCAGTGTAAGGGCCAGAAGTGAATCCTGACCCAAGAATAGAGAGTGCTAAACCTACGTAGATCGAAGCCAACTAAAAAGACAAGCTACAAAACGAAGCTAAGGCCAGAGATCTTGGACTGTGAAGAGTTCAGAGAACCTAGGATCAGGAACCATTAGTAACAGGCCAAGGAAGATAGAAGCTGCCTAGGACTTGGCAAGAGCCAACATGGTTGGACTGGAAAAGAAAGGAGGAGACAGAAGACAGGAGAGATGTGCCAACTTGATTTTGGGCTTCACTGTTGTCCATACTGTGTGCAGCCATATGGCCCACAGATAACAGGTTTAGCCGAGGAACACAGATACCCACATTGGACAATGGTGGGGGAACACAGATACCCATACTACAGGGCTCTTTAGGGCATTTCCTGAAAGTGTACTAGGAGTGGGACTGGGCTCAAAGGGATTAGGTGTGATCTGGCCTGGTGAGGCTGACATTGGCAAGCCCAATGGTTGGGTGTTGCCTCCT<strong>CCA</strong>TGT</td>
+</tr>
+<tr>
+<td>3′ HA r2a_iso (rIgG2a WT &gt; mIgG2a)</td>
+<td>TGTACAACTTGGGGAGGGTACAAAATGGAGGACTTGTAGGAGCTTGGGTCCAGACCTGTCAGACAAAATGATCACGCATACTTATTCTTGTAGCTGAAACAACAGCCCCATCTGTCTATCCACTGGCTCCTGGAACTGCTCTCAAAAGTAACTCCATGGTGACCCTGGGATGCCTGGTCAAGGGCTATTTCCCTGAGCCAGTCACCGTGACCTGGAACTCTGGAGCCCTGTCCAGCGGTGTGCACACCTTCCCAGCTGTCCTGCAGTCTGGACTCTACACTCTCACCAGCTCAGTGACTGTACCCTCCAGCACCTGGTCCAGCCAGGCCGTCACCTGCAACGTAGCCCACCCGGCCAGCAGCACCAAGGTGGACAAGAAAATTGGTGAGAGAACAACCAGGGGATGAGGGGCTCACTAGAGGTGAGGATAAGGCATTAGATTGCCTACACCAACCAGGGTGGGCAGACATCACCAGGGAGGGGGCCTCAGCCCAGGAGACCAAAAATTCTCCTTTGTCTCCCTTCTGGAGATTTCTATGTCCTTTACACCCATTTATTAATATTCT</td>
+</tr>
+<tr>
+<td>5′ HA r2a_HC (rIgG2a WT &gt; Fab’ fragment)</td>
+<td>CCTGGAACTCTGGAGCCCTGTCCAGCGGTGTGCACACCTTCCCAGCTGTCCTGCAGTCTGGACTCTACACTCTCACCAGCTCAGTGACTGTACCCTCCAGCACCTGGTCCAGCCAGGCCGTCACCTGCAACGTAGCCCACCCGGCCAGCAGCACCAAGGTGGACAAGAAAATTGGTGAGAGAACAACCAGGGGATGAGGGGCTCACTAGAGGTGAGGATAAGGCATTAGATTGCCTACACCAACCAGGGTGGGCAGACATCACCAGGGAGGGGGCCTCAGCCCAGGAGACCAAAAATTCTCCTTTGTCTCCCTTCTGGAGATTTCTATGTCCTTTACACCCATTTATTAATATTCTGGGTAAGATGCCCTTGCATCATGACATACAGAGGCAGACTAGAGTATCAACCTGCAAAAGGTCATACCCAGGAAGAGCCTGCCATGATCCCACACCAGAACCAACCTGGGGCCTTCTCACCTATAGACCATACTAACACACAGCCTTCTCTCTGCA</td>
+</tr>
+<tr>
+<td>3′ HA r2a_HC (rIgG2a WT &gt; Fab’ fragment)</td>
+<td>GGTAAGTCACTAGGACTATTACTCCAGCCCCAGATTCAAAAAATATCCTCAGAGGCCCATGTTAGAGGATGACACAGCTATTGACCTATTTCTACCTTTCTTCTTCATCTACAGGCTCAGAAGTATCATCTGTCTTCATCTTCCCCCCAAAGACCAAAGATGTGCTCACCATCACTCTGACTCCTAAGGTCACGTGTGTTGTGGTAGACATTAGCCAGAATGATCCCGAGGTCCGGTTCAGCTGGTTTATAGATGACGTGGAAGTCCACACAGCTCAGACTCATGCCCCGGAGAAGCAGTCCAACAGCACTTTACGCTCAGTCAGTGAACTCCCCATCGTGCACCGGGACTGGCTCAATGGCAAGACGTTCAAATGCAAAGTCAACAGTGGAGCATTCCCTGCCCCCATCGAGAAAAGCATCTCCAAACCCGAAGGTGGGAGCAGCAGGGTGTGTGGTGTAGAAGCTGCAGTAGGCCATAGACAGAGCTTGACTTAACTAGACTT</td>
+</tr>
+<tr>
+<td>5′ HA m1_HC (mIgG1 WT &gt; Fab’ fragment)</td>
+<td>CAGTATTGTCCAGATTGTGTGCAGCCATATGGCCCAGGTATAAGAGGTTTAACAGTGGAACACAGATGCCCACATCAGACAGCTGGGGGGCGGGGGTGAACACAGATACCCATACTGGAAAGCAGGTGGGGCATTTTCCTAGGAACGGGACTGGGCTCAATGGCCTCAGGTCTCATCTGGTCTGGTGATCCTGACATTGATAGGCCCAAATGTTGGATATCACCTACTCCATGTAGAGAGTCGGGGACATGGGAAGGGTGCAAAAGAGCGGCCTTCTAGAAGGTTTGGTCCTGTCCTGTCCTGTCTGACAGTGTAATCACATATACTTTTTCTTGTAGCCAAAACGACACCCCCATCTGTCTATCCACTGGCCCCTGGATCTGCTGCCCAAACTAACTCCATGGTGACCCTGGGATGCCTGGTCAAGGGCTATTTCCCTGAGCCAGTGACAGTGACCTGGAACTCTGGATCCCTGTCCAGCGGTGTGCACACCTTCCCAGCTGTCCTGCAGTCTGACCTCTACACTCTGAGCAGCTCAGTGACTGTCCCCTCCAGCACCTGGCCCAGCCAGACCGTCACCTGCAACGTTG<strong>CTC</strong>ATCCGGCATGTAGCACCAAGGTAGACAAAAAGATA</td>
+</tr>
+<tr>
+<td>3′ HA m1_HC (mIgG1 WT&gt; Fab’ fragment)</td>
+<td>GGTGAGAGGACGTATAGGGAGGAGGGGTTCACTAGAGGTGAGGCTCAAGCCATTAGCCTGCCTAAACCAACCAGGCTGGACAGCCATCACCAGGAAATGGATCTCAGCCCAGAAGATCGAAAGTTGTTCTTCTCCCTTCTGGAGATTTCTATGTCCTTTACACTCATTGGTTAATATCCTGGGTTGGATTCCCACACATCTTGACAAACAGAGACAATTGAGTATCACCAGCCAAAAGTCATACCCAAAAACAGCCTGGCATGACCTCACACCAGACTCAAACTTACCCTACCTTTATCCTGGTGGCTTCTCATCTCCAGACCCCAGTAACACATAGCTTTCTCTCCACAGTGCCCAGGGATTGTGGTTGTAAGCCTTGCATATGTACAGGTAAGTCAGTAGGCCTTTCACCCTGACCCCAGATGCAACAAGTGGCCATGTTAGAGGGTGGCCCAGGTATTGACCTATTTCCACCTTTCTTCTTCATCCTTAGTCCCAGAAGTATCATCTGTCTTCATCTTCCCCCCAAAGCCCAAGGATGTGCTCACCATTACTCTGACTCCTAAGGTCACGTGTGTTGTGGTAGACATCAGCAAGGATGATCCCGAGGTCCAGTTCAGCTGGTTTGT</td>
+</tr>
+<tr>
+<td>5′ HA mκ_LC (mκ LC &gt; mκLC-tag)</td>
+<td>TCTGTCTGAAGCATGGAACTGAAAAGAATGTAGTTTCAGGGAAGAAAGGCAATAGAAGGAAGCCTGAGAATATCTTCAAAGGGTCAGACTCAATTTACTTTCTAAAGAAGTAGCTAGGAACTAGGGAATAACTTAGAAACAACAAGATTGTATATATGTGCATCCTGGCCCCATTGTTCCTTATCTGTAGGGATAAGCGTGCTTTTTTGTGTGTCTGTATATAACATAACTGTTTACACATAATACACTGAAATGGAGCCCTTCCTTGTTACTTCATACCATCCTCTGTGCTTCCTTCCTCAGGGGCTGATGCTGCACCAACTGTATCCATCTTCCCACCATCCAGTGAGCAGTTAACATCTGGAGGTGCCTCAGTCGTGTGCTTCTTGAACAACTTCTACCCCAAAGACATCAATGTCAAGTGGAAGATTGATGGCAGTGAACGACAAAATGGCGTCCTGAACAGTTGGACTGATCAGGACAGCAAAGACAGCACCTACAGCATGAGCAGCACCCTCACGTTGACCAAGGACGAGTATGAACGACATAACAGCTATACCTGTGAGGCCACTCACAAGACATCAACTTCACCGATTGTAAAGAGTTTTAATAGCAATGAATGCGGATCC</td>
+</tr>
+<tr>
+<td>3′ HA mκ_LC (mκ LC &gt; mκLC-tag)</td>
+<td>TGAAGACAA<strong>AGA</strong>TCCTGAGACGCCACCACCAGCTCCCCAGCTCCATCCTATCTTCCCTTCTAAGGTCTTGGAGGCTTCCCCACAAGCGACCTACCACTGTTGCGGTGCTCCAAACCTCCTCCCCACCTCCTTCTCCTCCTCCTCCCTTTCCTTGGCTTTTATCATGCTAATATTTGCAGAAAATATTCAATAAAGTGAGTCTTTGCACTTGAGATCTCTGTCTTTCTTACTAAATGGTAGTAATCAGTTGTTTTTCCAGTTACCTGGGTTTCTCTTCTAAAGAAGTTAAATGTTTAGTTGCCCTGAAATCCACCACACTTAAAGGATAAATAAAACCCTCCACTTGCCCTGGTTGGCTGTCCACTACATGGCAGTCCTTTCTAAGGTTCACGAGTACTATTCATGGCTTATTTCTCTGGGCCATGGTAGGTTTGAGGAGGCATACTTCCTAGTTTTCTTCCCCTAAGTCGTCAAAGTCCTGAAGGGGGACAGTCTTTACAAGCACATGTTCTGTAATCTGATTCAACCTACCCAGTAAACTTGGCGAAGCAAAGTAGAATCATTATCACAGGAAGCAAAGGCAACCTAAATGTGCA</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="配方"><a href="#配方" class="headerlink" title="配方"></a>配方</h3><ol>
+<li>洗涤缓冲液<br>PBS + 0.5% BSA</li>
+<li>PBA<br>PBS + 5% BSA + 0.03% NaN3</li>
+<li>培养基<br>RPMI-1640（含HEPES）+ 10%热灭活FBS + 2 mM超极性谷氨酰胺-1 + 1%（v&#x2F;v）抗生素-抗真菌 + 新鲜添加的50 μM β-ME。</li>
+<li>1×选择培养基<br>RPMI-1640（含HEPES）+ 10%热灭活FBS + 2 mM超极性谷氨酰胺 + 1%（v&#x2F;v）抗生素-抗真菌 + 新鲜添加的50 μM β-ME + 新鲜添加的选择性抗生素，浓度预先确定。</li>
+</ol>
+<hr>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ol>
+<li>Adhikari, P., Zacharias, N., Ohri, R. and Sadowsky, J. (2020). <a target="_blank" rel="noopener" href="https://link.springer.com/protocol/10.1007/978-1-4939-9929-3_4">Site-Specific Conjugation to Cys-Engineered THIOMABTM Antibodies.</a> In: Tumey, L. (Ed.). <em>Antibody-Drug Conjugates. Methods in Molecular Biology</em>. pp. 51-69.</li>
+<li>Beers, S. A., Glennie, M. J. and White, A. L. (2016). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/26764357">Influence of immunoglobulin isotype on therapeutic antibody function.</a> <em>Blood</em> 127(9): 1097-1101.</li>
+<li>Cong, L., Ran, F. A., Cox, D., Lin, S., Barretto, R., Habib, N., Hsu, P. D., Wu, X., Jiang, W., Marraffini, L. A., et al. (2013). <a target="_blank" rel="noopener" href="https://pubmed.ncbi.nlm.nih.gov/23287718/">Multiplex Genome Engineering Using CRISPR&#x2F;Cas Systems.</a> <em>Science</em> 339(6121): 819-823.</li>
+<li>Evers, M., Stip, M., Keller, K., Willemen, H., Nederend, M., Jansen, M., Chan, C., Budding, K., Nierkens, S., Valerius, T., et al. (2021). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/34716207">Anti-GD2 IgA kills tumors by neutrophils without antibody-associated pain in the preclinical treatment of high-risk neuroblastoma.</a> <em>J Immunother Cancer</em> 9(10): e003163.</li>
+<li>Fennemann, F. L., Le Gall, C. M., van der Schoot, J. M. S., Ramos-Tomillero, I., Figdor, C. G., Scheeren, F. A., and Verdoes, M. (2021). <a target="_blank" rel="noopener" href="https://repository.ubn.ru.nl/handle/2066/235389">Generation of dendritic cell targeted anti-cancer vaccines by CRISPR- Cas9-editing of the hybridoma immunoglobulin locus.</a> In: <em>Molecularly Defined Dendritic Cell-Targeted Vaccines for Cancer Immunotherapy</em>. pp. 42-63.</li>
+<li>Le Gall, C. M., van der Schoot, J. M. S., Ramos-Tomillero, I., Khalily, M. P., van Dalen, F. J., Wijfjes, Z., Smeding, L., van Dalen, D., Cammarata, A., Bonger, K. M., et al. (2021). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/33476135">Dual Site-Specific Chemoenzymatic Antibody Fragment Conjugation Using CRISPR-Based Hybridoma Engineering.</a> <em>Bioconjug Chem</em> 32(2): 301-310.</li>
+<li>Khoshnejad, M., Brenner, J. S., Motley, W., Parhiz, H., Greineder, C. F., Villa, C. H., Marcos-Contreras, O. A., Tsourkas, A. and Muzykantov, V. R. (2018). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/29379029">Molecular engineering of antibodies for site-specific covalent conjugation using CRISPR&#x2F;Cas9.</a> <em>Sci Rep</em> 8(1): 1760.</li>
+<li>Kim, H. K., Lee, S., Kim, Y., Park, J., Min, S., Choi, J. W., Huang, T. P., Yoon, S., Liu, D. R. and Kim, H. H. (2020). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/31937939">High-throughput analysis of the activities of xCas9, SpCas9-NG and SpCas9 at matched and mismatched target sequences in human cells.</a> <em>Nat Biomed Eng</em> 4(1): 111-124.</li>
+<li>Kirkling, M. E., Cytlak, U., Lau, C. M., Lewis, K. L., Resteu, A., Khodadadi-Jamayran, A., Siebel, C. W., Salmon, H., Merad, M., Tsirigos, A., et al. (2018). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/29925006">Notch Signaling Facilitates In Vitro Generation of Cross-Presenting Classical Dendritic Cells.</a> <em>Cell Rep</em> 23(12): 3658-3672 e3656.</li>
+<li>Köhler, G. and Milstein, C. (1975) <a target="_blank" rel="noopener" href="https://pubmed.ncbi.nlm.nih.gov/1172191/">Continuous cultures of fused cells secreting antibody of predefined specificity.</a> <em>Nature</em> 256(5517): 495-497.</li>
+<li>Nanda, J.S. and Lorsch, J.R. (2014). <a target="_blank" rel="noopener" href="https://pubmed.ncbi.nlm.nih.gov/24423269/">Labeling a protein with fluorophores using NHS ester derivitization.</a> <em>Methods Enzymol</em> 536: 87-94.</li>
+<li>van der Schoot, J. M. S., Fennemann, F. L., Valente, M., Dolen, Y., Hagemans, I. M., Becker, A. M. D., Le Gall, C. M., van Dalen, D., Cevirgel, A., van Bruggen, J. A. C., et al. (2019). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/31489367">Functional diversification of hybridoma-produced antibodies by CRISPR&#x2F;HDR genomic engineering.</a> <em>Sci Adv</em> 5(8): eaaw1822.</li>
+<li>Sharma, A., Subudhi, S. K., Blando, J., Scutti, J., Vence, L., Wargo, J., Allison, J. P., Ribas, A., and Sharma, P. (2019). <a target="_blank" rel="noopener" href="https://pubmed.ncbi.nlm.nih.gov/30054281/">Anti-CTLA-4 immunotherapy does not deplete FOXP3+ regulatory T cells (Tregs) in human cancers.</a><em>Clin Cancer Res</em> 25(4): 1233-1238.</li>
+<li>Waldor, M. K., Mitchell, D., Kipps, T. J., Herzenberg, L. A., and Steinman, L. (1987). <a target="_blank" rel="noopener" href="https://pubmed.ncbi.nlm.nih.gov/3500226/">Importance of immunoglobulin isotype in therapy of experimental autoimmune encephalomyelitis with monoclonal anti-CD4 antibody.</a> <em>J Immunol</em> 139(11): 360-3664.</li>
+<li>Yamada, K., Shikida, N., Shimbo, K., Ito, Y., Khedri, Z., Matsuda, Y. and Mendelsohn, B. A. (2019). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/30854738">AJICAP: Affinity Peptide Mediated Regiodivergent Functionalization of Native Antibodies.</a> <em>Angew Chem Int Ed Engl</em> 58(17): 5592-5597.</li>
+<li>Zhao, Y., Gutshall, L., Jiang, H., Baker, A., Beil, E., Obmolova, G., Carton, J., Taudte, S. and Amegadzie, B. (2009). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/19442740">Two routes for production and purification of Fab fragments in biopharmaceutical discovery research: Papain digestion of mAb and transient expression in mammalian cells.</a> <em>Protein Expr Purif</em> 67(2): 182-189.</li>
+</ol>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/03/14/%E7%9A%84%E5%85%8D%E7%96%AB%E7%90%83%E8%9B%8B%E7%99%BD%E4%BD%8D%E7%82%B9%E5%B7%A5%E7%A8%8B/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-用人外周血液中的非T淋巴细胞、B细胞诱导生成全能干细胞" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/03/14/%E7%94%A8%E4%BA%BA%E5%A4%96%E5%91%A8%E8%A1%80%E6%B6%B2%E4%B8%AD%E7%9A%84%E9%9D%9ET%E6%B7%8B%E5%B7%B4%E7%BB%86%E8%83%9E%E3%80%81B%E7%BB%86%E8%83%9E%E8%AF%B1%E5%AF%BC%E7%94%9F%E6%88%90%E5%85%A8%E8%83%BD%E5%B9%B2%E7%BB%86%E8%83%9E/" target="_blank">用人外周血液中的非T淋巴细胞、B细胞诱导生成全能干细胞</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/03/14/%E7%94%A8%E4%BA%BA%E5%A4%96%E5%91%A8%E8%A1%80%E6%B6%B2%E4%B8%AD%E7%9A%84%E9%9D%9ET%E6%B7%8B%E5%B7%B4%E7%BB%86%E8%83%9E%E3%80%81B%E7%BB%86%E8%83%9E%E8%AF%B1%E5%AF%BC%E7%94%9F%E6%88%90%E5%85%A8%E8%83%BD%E5%B9%B2%E7%BB%86%E8%83%9E/" class="archive-article-date">
+        <time datetime="2024-03-14T07:54:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-14</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1003619">KO Keisuke Okita <img src="https://cdn.bio-protocol.org/forum/fe/static/icon_email.svg" alt="email"></a></p>
+<p>第一次发布: <a target="_blank" rel="noopener" href="https://bio-protocol.org/cn/archive?vol=3&issid=81">2013年09月20日第3卷第18期 </a>DOI: <a target="_blank" rel="noopener" href="https://doi.org/10.21769/BioProtoc.907">10.21769&#x2F;BioProtoc.907</a> </p>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>诱导多能干细胞（iPS细胞）的生成提供了一个使用患者特异性体细胞的机会，这些细胞是疾病建模和药物发现的重要资源。为了促进这些研究，从易于获取且侵入性较小的组织（如血液）中制备iPS细胞非常重要。在这里，我们描述了从成人外周血生成人iPS细胞的基本方法。在分离单核细胞之后，一组细胞因子的组合刺激了造血干细胞&#x2F;祖细胞群体的扩张，这是本协议的主要目标。细胞被转导了编码重编程因子的质粒混合物。在大多数情况下，质粒在建立iPS克隆的过程中丢失。</p>
+<hr>
+<h3 id="材料和试剂"><a href="#材料和试剂" class="headerlink" title="材料和试剂"></a><strong>材料和试剂</strong></h3><ul>
+<li>新鲜抗凝血（约10毫升）</li>
+<li>无钙镁PBS（Nacalai tesque，目录号：14249-95）</li>
+<li>Ficoll-paque Plus（GE Healthcare，目录号：17-1440-02）</li>
+<li>StemSpan H3000（STEMCELL Technologies，目录号：0 9800）</li>
+<li>重组人白细胞介素-6（100 μg&#x2F;ml）（PeproTech，目录号：AF-200-06）</li>
+<li>重组人干细胞因子（SCF）（300 μg&#x2F;ml）（PeproTech，目录号：AF-300-07）</li>
+<li>重组人血小板生成素（TPO）（300 μg&#x2F;ml）（PeproTech，目录号：AF-300-18）</li>
+<li>重组人Flt3配体（300 μg&#x2F;ml）（PeproTech，目录号：AF-300-19）</li>
+<li>重组人白细胞介素-3（10 μg&#x2F;ml）（PeproTech，目录号：AF-200-03）</li>
+<li>重组人碱性成纤维细胞生长因子（bFGF）（10 μg&#x2F;ml）（Wako，目录号：064-04541）</li>
+<li>Amaxa人类CD34+细胞核转染试剂盒（Lonza，目录号：VPA-1003）</li>
+<li>MEF饲养层（Repro Cell，目录号：RCHEFC003）</li>
+<li>Matrigel生长因子减少（BD Biosciences，目录号：356231）</li>
+<li>灵长类ES细胞培养基（Repro Cell，目录号：RCHEMD001）</li>
+<li>Essential 6（Life Technologies，目录号：A1516401）</li>
+<li>明胶（Sigma-Aldrich，目录号：G1890）</li>
+<li>Dulbecco改良Eagle培养基（DMEM）高糖含稳定L-谷氨酰胺（Nacalai tesque，目录号：08459-35）</li>
+<li>胎牛血清（FBS）（Life Technologies，目录号：10437-028）</li>
+<li>质粒套装2（Life Technologies，目录号：A15960）</li>
+<li>血液培养基（见配方）</li>
+<li>质粒混合物（见配方）</li>
+<li>转染混合物（见配方）</li>
+<li>iPS培养基1（见配方）</li>
+<li>iPS培养基2（见配方）</li>
+<li>0.1%明胶溶液（见配方）</li>
+<li>MEF培养基（见配方）</li>
+</ul>
+<hr>
+<h3 id="设备"><a href="#设备" class="headerlink" title="设备"></a><strong>设备</strong></h3><ul>
+<li>Nucleofector 2b（Lonza，目录号：AAB-1001）</li>
+<li>6孔组织培养板（BD Biosciences，Falcon®，目录号：353046）</li>
+<li>15毫升锥形管（BD Biosciences，Falcon®，目录号：352196）</li>
+<li>50毫升锥形管（BD Biosciences，Falcon®，目录号：352070）</li>
+<li>37 °C 5% CO2细胞培养箱</li>
+<li>显微镜</li>
+<li>离心机</li>
+</ul>
+<hr>
+<h3 id="实验步骤："><a href="#实验步骤：" class="headerlink" title="实验步骤："></a>实验步骤：</h3><p><strong>第0天</strong><br>培养基准备：<br>向6孔板的一个孔中加入含有细胞因子的2毫升血液培养基。<br>在板的其他孔中加入2毫升PBS，以防止培养基过度蒸发，并将板存放在37°C、5% CO2的环境中。<br>单核细胞纯化：<br>将10毫升抗凝血（EDTA）中加入10毫升PBS。<br>在两个15毫升管中，分别加入5毫升Ficoll-Paque，然后轻轻加入10毫升血+PBS。<br>在18°C下以400 x g离心30分钟，使用慢加速和慢刹车。<br>小心移除上清液（约2毫升）的上层部分，不要破坏界面处的单核细胞。<br>将界面处的细胞（1-2毫升）转移到一个15毫升管中，与12毫升PBS混合均匀。<br>在18°C下以200 x g离心10分钟（使用慢刹车）。<br>用3毫升H3000培养基重悬细胞，并计数细胞。<br>准备3 x 106细胞的1.5毫升管分装。<br>在18°C下以200 x g离心10分钟（使用慢刹车）。<br>弃去上清液。<br>铺板：<br>将细胞悬浮在步骤1中制备的培养基中。<br>将板存放在37°C、5% CO2的环境中，约6天。此培养期间不需要更换培养基。<br><strong>第5天</strong><br>明胶涂层：<br>向6孔板每个孔中加入1毫升0.1%明胶溶液。<br>在37°C下孵育至少半小时。<br>MEF饲养层细胞准备：<br>在37°C下解冻MEF饲养层细胞，并计数细胞数量。<br>弃去上述准备中多余的明胶溶液。<br>在MEF培养基中将MEF饲养层细胞以每孔3 x 105细胞播种。<br><strong>第6天</strong><br>培养基准备：<br>从MEF饲养层细胞中吸出培养基。<br>向板中每个孔中加入2毫升含有细胞因子的血液培养基。<br>收获培养细胞：<br>将细胞悬浮在培养基中并计数细胞。活细胞数量通常约为1 x 106。<br>将悬浮细胞收集到15毫升管中。<br>在18°C下以200 x g离心10分钟（使用慢刹车）。在离心过程中，准备转染混合物。<br>核转染：<br>用手持移液器完全吸出细胞的上清液。<br>加入转染混合物并悬浮细胞，小心不要产生气泡。<br>使用程序U-008进行核转染。<br>铺板，每孔105至104细胞：<br>在核转染后立即向电穿孔杯中加入800微升H3000，收获细胞。核转染溶液中的金属离子对细胞有毒！<br>将细胞铺到MEF饲养层板上，每孔从5 x 105细胞到5 x 104细胞不等。<br><strong>第8、10和12天</strong><br>每孔添加额外的1.5毫升iPS培养基1。不要吸出现有的培养基。<br><strong>第14天及以后</strong><br>用1.5毫升iPS培养基1替换培养基。* 培养基更换每2天进行一次。<br><strong>第25至35天</strong><br>挑选直径约2毫米的克隆。</p>
+<hr>
+<h3 id="Notes："><a href="#Notes：" class="headerlink" title="Notes："></a>Notes：</h3><p>可以使用冷冻的外周血单个核细胞（PBMC）与此协议配合使用。在第0天，直接在血液培养基中培养解冻的PBMC。<br>iPS细胞可以在无饲养层条件下建立，但效率较低。对于无饲养层条件，使用Matrigel涂层的板和iPS培养基2代替MEF饲养层和iPS培养基1。以下是制作Matrigel涂层板的步骤：<br>在4°C下解冻Matrigel，并将其稀释至在6毫升冷却的DMEM中相当于2毫克蛋白质的浓度。<br>将1毫升&#x2F;孔的溶液添加到6孔板中。<br>在室温下储存1小时。<br>在播种细胞之前，用PBS清洗板一次。</p>
+<hr>
+<p><strong>配方</strong><br><strong>血液培养基</strong><br>StemSpan H3000，包含以下细胞因子：</p>
+<ul>
+<li>10 ng&#x2F;ml IL-3</li>
+<li>100 ng&#x2F;ml IL-6</li>
+<li>300 ng&#x2F;ml SCF</li>
+<li>300 ng&#x2F;ml TPO</li>
+<li>300 ng&#x2F;ml Flt3配体</li>
+<li>使用后立即使用<br><strong>质粒混合物（Addgene，<a target="_blank" rel="noopener" href="http://www.addgene.org/Shinya_Yamanaka%EF%BC%89">http://www.addgene.org/Shinya_Yamanaka）</a></strong><br>使用以下质粒混合物。Set 1显示出更高的效率。在Set 2中，我们省略了WPRE序列，并用针对p53的shRNA替换了小鼠p53的显性负形式，该显性负形式存在于Set 1中。存放在-20°C。Set 2可以从Life Technologies购买。</li>
+</ul>
+<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240314164718449.png" alt="image-20240314164718449" style="zoom: 50%;">
+**转染混合物**
+Amaxa CD34溶液
+81.8 μl
+补充剂
+18.2 μl
+质粒混合物（Set 1或2）
+3 μl（3 μg）
+使用后立即使用
+**iPS培养基1**
+灵长类ES细胞培养基，含4 ng/ml bFGF
+存放在4°C，暗处一周
+**iPS培养基2**
+Essential 6，含100 ng/ml bFGF
+存放在4°C，暗处一周
+**0.1%（w/v）明胶溶液**
+将1克明胶粉末溶解在100毫升去离子水中（1% w/v，10倍浓度），高压灭菌后存放在4°C。
+为了制备0.1%（1x）明胶溶液，将10倍明胶储备液在37°C下加热，然后将其中的50毫升加入到450毫升去离子水中。使用瓶盖过滤器（0.22 μm）过滤溶液，并存放在4°C。
+**MEF培养基**
+含10% FBS的DMEM
+请注意，这里的专业术语已经尽量翻译成对应的中文，但对于某些特定产品名称和型号，保留了原英文名称以确保准确性。
+
+<hr>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ol>
+<li>Mack, A. A., Kroboth, S., Rajesh, D. and Wang, W. B. (2011). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/22132178">Generation of induced pluripotent stem cells from CD34+ cells across blood drawn from multiple donors with non-integrating episomal vectors</a>. <em>PLoS One</em> 6(11): e27956. </li>
+<li>Okita, K., Matsumura, Y., Sato, Y., Okada, A., Morizane, A., Okamoto, S., Hong, H., Nakagawa, M., Tanabe, K., Tezuka, K., Shibata, T., Kunisada, T., Takahashi, M., Takahashi, J., Saji, H. and Yamanaka, S. (2011). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/21460823">A more efficient method to generate integration-free human iPS cells</a>. <em>Nat Methods</em> 8(5): 409-412.</li>
+<li>Okita, K., Yamakawa, T., Matsumura, Y., Sato, Y., Amano, N., Watanabe, A., Goshima, N. and Yamanaka, S. (2013). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/23193063">An efficient nonviral method to generate integration‐free human‐induced pluripotent stem cells from cord blood and peripheral blood cells.</a> <em>Stem Cells</em> 31(3): 458-466.</li>
+</ol>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/03/14/%E7%94%A8%E4%BA%BA%E5%A4%96%E5%91%A8%E8%A1%80%E6%B6%B2%E4%B8%AD%E7%9A%84%E9%9D%9ET%E6%B7%8B%E5%B7%B4%E7%BB%86%E8%83%9E%E3%80%81B%E7%BB%86%E8%83%9E%E8%AF%B1%E5%AF%BC%E7%94%9F%E6%88%90%E5%85%A8%E8%83%BD%E5%B9%B2%E7%BB%86%E8%83%9E/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-使用Anvi’o进行从质量控制到映射的元基因组组装基因组的操作说明" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -6563,729 +7188,9 @@
 
 
   
-    <article id="post-建立双潜能的人肺类器官培养系统及分化产生成熟的肺泡和气道类器官" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/03/10/%E5%BB%BA%E7%AB%8B%E5%8F%8C%E6%BD%9C%E8%83%BD%E7%9A%84%E4%BA%BA%E8%82%BA%E7%B1%BB%E5%99%A8%E5%AE%98%E5%9F%B9%E5%85%BB%E7%B3%BB%E7%BB%9F%E5%8F%8A%E5%88%86%E5%8C%96%E4%BA%A7%E7%94%9F%E6%88%90%E7%86%9F%E7%9A%84%E8%82%BA%E6%B3%A1%E5%92%8C%E6%B0%94%E9%81%93%E7%B1%BB%E5%99%A8%E5%AE%98/" target="_blank">建立双潜能的人肺类器官培养系统及分化产生成熟的肺泡和气道类器官</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/03/10/%E5%BB%BA%E7%AB%8B%E5%8F%8C%E6%BD%9C%E8%83%BD%E7%9A%84%E4%BA%BA%E8%82%BA%E7%B1%BB%E5%99%A8%E5%AE%98%E5%9F%B9%E5%85%BB%E7%B3%BB%E7%BB%9F%E5%8F%8A%E5%88%86%E5%8C%96%E4%BA%A7%E7%94%9F%E6%88%90%E7%86%9F%E7%9A%84%E8%82%BA%E6%B3%A1%E5%92%8C%E6%B0%94%E9%81%93%E7%B1%BB%E5%99%A8%E5%AE%98/" class="archive-article-date">
-        <time datetime="2024-03-10T14:04:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-10</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1409786">MC Man Chun Chiu</a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1427796">CL Cun Li</a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1290644">YY Yifei Yu，</a><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1427797">XL Xiaojuan Liu</a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1427798">JH Jingjing Huang</a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1358804">ZW Zhixin Wan</a>，</p>
-<p><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1427799">KY Kwok Yung Yuen</a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1370824">JZ Jie Zhou <img src="https://cdn.bio-protocol.org/forum/fe/static/icon_email.svg" alt="email"></a></p>
-<p>首次发布: <a target="_blank" rel="noopener" href="https://bio-protocol.org/cn/archive?vol=13&issid=1319">2023年04月20日第13卷第8期 </a>DOI: <a target="_blank" rel="noopener" href="https://doi.org/10.21769/BioProtoc.4657">10.21769&#x2F;BioProtoc.4657</a> </p>
-<p>评审: <a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=3089">Vivien Jane Coulson-Thomas</a>Sudhir Verma 匿名评审</p>
-<h3 id="My-Notes"><a href="#My-Notes" class="headerlink" title="My Notes:"></a>My Notes:</h3><p>主要工作:<br><strong>双潜能人肺类器官培养系统的建立</strong>：通过从患者肺组织分离细胞，在基底培养基中培养，生成双潜能人肺类器官，并能在扩张培养基中长期稳定传代。<br><strong>分化产生肺泡类器官</strong>：将肺类器官机械剪碎成单细胞，然后在肺泡分化培养基中悬浮培养，经过10-14天分化成熟，得到肺泡类器官。<br><strong>优化气道类器官的生成</strong>：将肺类器官机械剪碎成单细胞，种植在Transwell小室上室，经过近2周分化，得到优化的气道类器官。<br><strong>类器官的表征</strong>：通过RT-qPCR、免疫荧光、流式细胞术、电镜等方法，对类器官的基因和蛋白表达进行检测，以验证其与人体肺组织的相似性。<br><strong>双潜能人肺类器官培养系统的意义</strong>：该系统实现了对呼吸道上皮细胞的长期扩增和双向分化，为研究人体呼吸系统的生物学和病理学提供了独特的活体模型。</p>
-<hr>
-<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>一个健壮的人体呼吸上皮体外模型，包括肺泡和气道上皮，对于理解人体呼吸系统的生物学和病理学至关重要。研究人员之前描述了一种从原发性肺组织中衍生出人肺器官团的协议。现在，研究人员描述了一种诱导双向分化的协议，以生成成熟的肺泡或气道器官团。肺器官团在连续扩展超过一年的时间里具有高稳定性，而分化的肺泡和气道器官团在形态和功能上模拟人体肺泡和气道上皮，接近生理水平。因此，研究人员建立了一个完整的人体呼吸上皮的健壮器官团培养系统，这是第一个允许长期扩展和双向分化呼吸上皮细胞的二阶段双向潜能器官团培养系统。长期可扩展的肺器官团和分化的器官团产生了一个稳定和可再生的呼吸上皮细胞来源，使科学家能够在培养皿中重建和扩展人体呼吸上皮。呼吸器官团系统提供了一个独特且生理活跃的人体呼吸上皮体外模型，适用于各种应用，包括研究呼吸道病毒感染、疾病建模、药物筛选和临床前测试。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-13-08-4657-ga001.jpg" alt="Large image" style="zoom: 50%;">
-
-<hr>
-<p>近期干细胞技术的进步使得生成迷你器官或称为类器官的三维细胞培养物成为可能。根据定义，类器官是由干细胞衍生而来的三维培养物；它们模拟了相应组织或器官在体内的结构和功能（Lancaster和Knoblich，2014；李明和李普索·贝尔蒙特，2019；Schutgens和Clevers，2020）。类器官已经成为模拟发育生物学、生理学和病理学的强大和创新工具。</p>
-<p>类器官可以由多能干细胞或成人干细胞（ASC）衍生。当提供适当的生态位因子时，从组织中分离出的ASC可以自我更新和自我组织成由多种组织特异性细胞类型组成的类似器官的多细胞簇，其形态和功能模拟体内的对应物。第一个ASC衍生的类器官——人类肠道类器官的生成，是在2009年报道的（Sato等人，2009和2011）。此后，为多种人类器官和组织建立了ASC衍生的类器官，包括前列腺（Chua等人，2014；Karthaus等人，2014）、肝脏（Huch等人，2013b；胡等人，2018）、胃（Wroblewski等人，2015；Schlaermann等人，2016）、胰腺（Huch等人，2013a）、乳腺（Sachs等人，2018）和肺（周等人，2018；Sachs等人，2019）。这些ASC衍生的类器官保留了原生器官的基本细胞、结构和功能特性，并在长期培养中保持基因型和表型的稳定性。</p>
-<p>人类呼吸道内衬有两种不同的上皮组织：气道和肺泡上皮组织。研究人员与Clevers实验室合作，从肺部组织中建立了可长期扩展的ASC衍生的类肺器官（周等人，2018；Sachs等人，2019）。研究人员进一步开发了一种近端分化协议，并生成了在形态和功能上几乎生理水平模拟气道上皮的3D和2D气道类器官（周等人，2018）。最近发表了一篇详细描述肺类器官的衍生和分化气道类器官生成的协议（李晨等人，2022）。然而，从肺类器官中衍生出由1型和2型肺泡上皮细胞（分别为AT1和AT2）组成的肺泡上皮组织仍然是一个难题。</p>
-<p>研究人员最近报道了一种双潜能肺类器官培养系统，可以生成气道和肺泡上皮细胞（Chiu等人，2022）。在这里，研究人员提供了一个从长期扩展的人类肺类器官生成3D肺泡类器官的详细协议，这与之前报道的生成气道类器官的来源相同。研究人员还描述了一个从肺类器官生成优化的2D气道类器官的协议，这更有利于模拟气道上皮。总的来说，研究人员建立了一个双潜能肺类器官培养系统，该系统可以在远端分化时向肺泡类器官双向分化，或在近端分化时向气道类器官分化。肺类器官作为长期扩展的稳定来源，而分化的气道和肺泡类器官分别忠实地模拟了人类气道和肺泡上皮。这些类器官是强大且生理上活跃的工具，适用于各种实验操作，探索人类肺部的生物学和病理学。</p>
-<hr>
-<h3 id="Materials-and-Reagents"><a href="#Materials-and-Reagents" class="headerlink" title="Materials and Reagents"></a><strong>Materials and Reagents</strong></h3><h4 id="实验步骤："><a href="#实验步骤：" class="headerlink" title="实验步骤："></a>实验步骤：</h4><h5 id="A-肺类器官的衍生和扩增"><a href="#A-肺类器官的衍生和扩增" class="headerlink" title="A. 肺类器官的衍生和扩增"></a>A. 肺类器官的衍生和扩增</h5><h6 id="1-准备"><a href="#1-准备" class="headerlink" title="1.准备"></a>1.准备</h6><p>a. 准备基础培养基（配方1）并保存在冰上或4°C。</p>
-<p>b. 准备扩展培养基（配方2）并在37°C下预热。</p>
-<p>c.  在4°C下解冻Matrigel，并保存在冰上。注意：Matrigel在室温下会凝固。</p>
-<p>d. 在标准细胞培养孵化器中预热24孔悬浮培养板，该孵化器具有5% CO2和湿润气氛，温度为37°C。</p>
-<p>e. 通过在火焰（如本生灯）上燃烧，准备开口较窄（≤1 mm）的玻璃巴斯德吸管。将开口从约1.5 mm缩小到≤1 mm。使巴斯德吸管冷却。使用前对巴斯德吸管进行高压灭菌。<br>注意：燃烧过程还旨在使玻璃吸管的边缘平滑，减少细胞损伤。可以使用任何开口较窄（≤1 mm）且边缘平滑的细尖巴斯德吸管。</p>
-<p>f. 在将巴斯德吸管用于机械剪切类器官（即步骤A3e和B2e）之前，用基础培养基2-3 mL冲洗巴斯德吸管几次上下，以避免细胞过度附着。</p>
-<hr>
-<h6 id="2-肺类器官的衍生"><a href="#2-肺类器官的衍生" class="headerlink" title="2. 肺类器官的衍生"></a>2. 肺类器官的衍生</h6><p>a. 从因各种疾病接受手术的患者那里获取新鲜切除的肺部组织。将组织在冷基础培养基（最好在4°C的冰上）中运输，并在可能的情况下尽快处理。<br>注意：肺部组织&#x2F;活检应从远端肺部区域切除，应包含与病变组织相邻的正常组织（具有支气管和肺泡），且直径应为约0.5 cm。</p>
-<p>b. 用无菌手术刀在100毫米细胞培养皿中将组织切成小块（≤1毫米）。用10毫升冷基础培养基洗涤组织块，并转移到15毫升离心管中。在4°C下以400 × g离心5分钟。弃去上清。</p>
-<p>c. 将组织块在含胶原酶的冷基础培养基中重悬，胶原酶的最终浓度为2毫克&#x2F;毫升。在摇床上以120转&#x2F;分钟的温度消化组织块30-40分钟，温度为37°C。</p>
-<p>d. 通过上下抽吸20次，使用10毫升血清移液管剪切消化后的组织块。通过100微米细胞过滤器过滤细胞悬液。</p>
-<p>e.（可选）用冷基础培养基从细胞过滤器中回收剩余组织块，转移到15毫升离心管中，进行第二轮机械剪切抽吸，然后过滤以增加细胞产量。</p>
-<p>f. 向过滤液中添加FBS，最终浓度为2%，以终止酶消化。在4°C下以400 × g离心5分钟。弃去上清。</p>
-<p>g.（可选）将沉淀物在2毫升红细胞裂解缓冲液中重新悬浮，并在室温下孵育5分钟以去除红细胞。</p>
-<p>h. 用10毫升冷基础培养基洗涤细胞。在4°C下以400 × g离心5分钟。弃去上清。</p>
-<p>i. 将沉淀物悬浮在冷Matrigel中。对于来自直径约0.5厘米的肺部组织的细胞，加入80-160微Matrigel。将40微升细胞悬液分配到预热的24孔悬浮培养板的每个孔中，并在标准细胞培养CO2孵化器中孵育10-15分钟，让Matrigel滴固化。</p>
-<p>j. 向每个孔中加入500微升扩展培养基，并将培养板放入标准细胞培养CO2孵化器中。每2-3天小心更换培养基，不要破坏Matrigel滴。定期在光镜下观察类器官并监测其生长（图1）。<br>注意：在初始培养中，存在非上皮细胞类型，如肺成纤维细胞，这些细胞将在经过2-3代培养后逐渐消失。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-13-08-4657-g001.jpg" alt="Large image" style="zoom:50%;">
-
-<p>[^图1. 肺类器官的衍生和扩增。]:  (A). 上方，一个示意图描绘了在扩展培养基（Exp medium）中肺类器官（LO）的衍生和扩增。下方，光镜图像显示了从分离的肺细胞衍生出的肺类器官在0天、5天、9天、13天和19天的生长情况。比例尺 &#x3D; 500 μm。 (B). 肺类器官进行了免疫荧光染色，标记P63+基底细胞、FOXJ1+&#x2F;ACCTUB+纤毛细胞、MUC5AC+杯状细胞、CC10+球形细胞和SFTPB+ AT2细胞（绿色）。细胞核和肌动蛋白丝分别用DAPI（蓝色）和Phalloidin-647（白色）进行复染色。比例尺 &#x3D; 20 μm。</p>
-<hr>
-<h6 id="3-肺类器官的扩增"><a href="#3-肺类器官的扩增" class="headerlink" title="3. 肺类器官的扩增"></a>3. 肺类器官的扩增</h6><p>a. 每2-3周传代一次肺类器官。</p>
-<p>b. 用1,000 μL的移液管上下抽吸培养基10次以破坏Matrigel滴。将混合物转移到15毫升管中。如果收集多个孔中的类器官进行传代，则用冷基础培养基补至总体积10毫升。在冰上孵育混合物5分钟。在4°C下以400 × g离心5分钟。弃去上清。</p>
-<p>c. 用冷基础培养基洗涤类器官一次。在4°C下以400 × g离心5分钟。弃去上清。</p>
-<p>d.（可选）将类器官在10× TrypLE中悬浮，浓度为1-2毫升，并在37°C下孵育5分钟以消化类器官。向类器官中添加FBS，使最终浓度为2%，以终止酶消化（即对于1毫升10× TrypLE添加20微升FBS）。<br>注意：当机械剪切方法不足以将肺类器官剪切成小片或类器官大小变化很大时，特别是在后续实验需要相对均匀大小的类器官时，胰蛋白酶消化是首选。</p>
-<p>e.使用Pasteur移液管上下抽吸20-40次，将类器官剪切成单个细胞和小细胞团。</p>
-<p>f.在光镜下检查剪切的类器官，确保类器官碎片足够小（例如，少于10个细胞）。如有必要，重复机械剪切。</p>
-<p>g.用冷基础培养基洗涤细胞。在4°C下以400 × g离心5分钟。弃去上清。</p>
-<p>h.根据原始培养中类器官的密度和传代方法，将沉淀物悬浮在估计量的冷Matrigel中，以便以1:2至1:10的比例传代类器官。研究人员通常在机械剪切传代时应用1:2至1:4的比例，而在酶消化传代时应用1:6至1:10的比例。<br>注意：每个40微升Matrigel中细胞密度应约为2 × 10^–4 × 10^4个细胞。</p>
-<p>i.将40微升细胞悬液分配到预热的24孔悬浮培养板的每个孔中，并在标准细胞培养CO2孵化器中孵育10-15分钟，让Matrigel滴固化。</p>
-<p>j.向每个孔中加入500微升扩展培养基，并将培养板放入标准细胞培养CO2孵化器中。每2-3天小心更换培养基，不要破坏Matrigel滴。<br>注意：肺类器官可以每2-3周传代一次，大约持续一年（即16-24次传代）。</p>
-<hr>
-<h5 id="B-肺类器官向肺泡类器官的分化"><a href="#B-肺类器官向肺泡类器官的分化" class="headerlink" title="B. 肺类器官向肺泡类器官的分化"></a>B. 肺类器官向肺泡类器官的分化</h5><h6 id="1-准备-1"><a href="#1-准备-1" class="headerlink" title="1.准备"></a>1.准备</h6><p>准备远端分化培养基（DD培养基）（配方3）并在37°C下预热。</p>
-<h6 id="2-远端分化悬浮培养"><a href="#2-远端分化悬浮培养" class="headerlink" title="2. 远端分化悬浮培养"></a>2. 远端分化悬浮培养</h6><p>a.在扩展培养基中培养肺类器官12-14天，以准备足够数量的类器官进行分化培养（来自步骤A3j的肺类器官）。</p>
-<p>b.用1,000 μL的移液管上下抽吸培养基10次以破坏Matrigel滴。将混合物转移到15毫升管中。如果收集多个孔中的类器官进行传代，则用冷基础培养基补至总体积10毫升。在冰上孵育混合物5-10分钟。在4°C下以400 × g离心5分钟。弃去上清。<br>注意：使用冷基础培养基（保存在冰上）洗涤类器官并在冰上孵育，以完全去除Matrigel。残留的Matrigel可能会影响后续悬浮培养的效果。</p>
-<p>c.用冷基础培养基洗涤类器官。在4°C下以400 × g离心5分钟。弃去上清。</p>
-<p>d.将类器官在10× TrypLE中悬浮，浓度&#x2F;密度为1-2毫升，并在37°C下孵育5分钟以消化类器官。向类器官中添加FBS，使最终浓度为2%，以终止酶消化（即对于1毫升10× TrypLE添加20微升FBS）。</p>
-<p>e.使用Pasteur移液管上下抽吸20-40次，将类器官剪切成单个细胞。</p>
-<p>f.在光镜下检查以确保类器官被剪切成单个细胞。如有必要，重复机械剪切。</p>
-<p>g.用10毫升冷基础培养基洗涤细胞。通过40微米细胞过滤器过滤细胞悬液。在4°C下以400 × g离心5分钟。弃去上清。</p>
-<p>h.根据估计的细胞数量，将沉淀物悬浮在1-10毫升远端分化培养基（DD培养基）中。在显微镜下用血细胞计数器计数细胞。用DD培养基将细胞浓度调整至每毫升2 × 10^5个细胞。</p>
-<p>i.将500微升细胞悬液（1 × 10^5个细胞）分配到Nunclon Sphera 24孔悬浮培养板的每个孔中。</p>
-<p>注意：<br>1）生成24孔格式中的肺泡类器官，大约需要2.4 × 106个细胞。</p>
-<p>2）在悬浮培养中，不要在每个孔中放入太多细胞，因为如果密度过高，细胞可能会形成团块，这可能会影响肺泡分化。</p>
-<p>3）在进行移液操作时，避免刮伤培养板底部，因为Nunclon Sphera培养板的超低细胞附着表面可能因此受损。</p>
-<p>j.在标准细胞培养孵化器中培养细胞10-14天以成熟（图2）。每隔一天直接向每个孔中添加100微升DD培养基，不需移除旧培养基，因为蒸发会在培养过程中减少培养基的体积。在将板放回孵化器之前，轻轻摇动均匀分布细胞。<br>注意：<br>1）确保均匀分布细胞；如果细胞在孔中紧密排列，它们可能会形成团块，这可能会影响肺泡分化。<br>2）在DD培养基中悬浮培养3-4天后，可以在显微镜下观察到具有腔体和薄壁的类器官。经过10天的远端分化培养，肺泡类器官已经足够成熟，可以模拟原生肺泡上皮，适用于后续的实验操作。<br>3）薄而平坦的AT1细胞很脆弱。在分化培养和下游过程中，轻轻移液以避免打扰AT1细胞的形态。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-13-08-4657-g002.jpg" alt="Large image" style="zoom:50%;">
-
-<p>[^图2. 肺泡类器官的生成。]:  (A). 上方，一个示意图描绘了使用远端分化培养基（DD培养基）生成肺泡类器官（AlvO）的远端分化协议。Exp medium &#x3D; 扩展培养基。下方，图像显示了第0天的单细胞悬液和第14天的成熟肺泡类器官。比例尺 &#x3D; 100 μm。 (B). 肺泡类器官进行了免疫荧光染色，标记AQP5+ AT1细胞（红色）和SFTPB+&#x2F;HTII-280+ AT2细胞（绿色）。细胞核和肌动蛋白丝分别用DAPI（蓝色）和Phalloidin-647（白色）进行复染色。比例尺 &#x3D; 20 μm。</p>
-<hr>
-<h5 id="C-近端分化肺类器官以生成优化的2D气道类器官"><a href="#C-近端分化肺类器官以生成优化的2D气道类器官" class="headerlink" title="C. 近端分化肺类器官以生成优化的2D气道类器官"></a>C. 近端分化肺类器官以生成优化的2D气道类器官</h5><h6 id="1-准备-2"><a href="#1-准备-2" class="headerlink" title="1.准备"></a>1.准备</h6><p>a.准备近端分化培养基（PD培养基）（配方4，不含PIPES，pH 7.4）并在37°C下预热。</p>
-<p>b.准备近端分化培养基（PD培养基）（配方4，含PIPES，pH 6.6）并在37°C下预热。</p>
-<p>c.在标准细胞培养孵化器中，用基础培养基预孵化Transwell插入物过夜。对于24孔插入物，分别在顶部和底部室中加入200和500微升基础培养基。</p>
-<h6 id="2-Transwell插入物中的近端分化"><a href="#2-Transwell插入物中的近端分化" class="headerlink" title="2.Transwell插入物中的近端分化"></a>2.Transwell插入物中的近端分化</h6><p>a.在传代后，用扩展培养基培养肺类器官12-14天，以准备足够的细胞进行分化培养（来自步骤A3j的肺类器官）。</p>
-<p>b.根据步骤B2b-B2g将肺类器官解聚为单个细胞。</p>
-<p>c.根据细胞数量，将沉淀物悬浮在1-4毫升扩展培养基中。用血细胞计数器计数细胞。用扩展培养基将细胞浓度调整至每毫升1.3 × 10^6个细胞。</p>
-<p>d.从预孵化Transwell插入物的顶部和底部室中移除基础培养基。将100微升细胞悬液（1.3 × 10^5个细胞）播种到24孔插入物的顶部室中。向底部室中加入500微升扩展培养基。在标准细胞培养CO2孵化器中培养细胞两天，让细胞生长并附着。<br>注意：为了在24孔Transwell插入物中生成一片2D气道类器官，大约需要3.12 × 10^6个细胞。</p>
-<p>e.用PD培养基（pH 7.4）替换顶部和底部室中的扩展培养基。在标准细胞培养CO2孵化器中培养细胞两天，让细胞达到融合。<br>注意：2D类器官在从扩展培养基更换为PD培养基（pH 7.4）后2-3天达到融合。</p>
-<p>f.将PD培养基pH 7.4替换为PD培养基pH 6.6（即顶部和底部室中的pH为6.6&#x2F;7.4）。在标准细胞培养CO2孵化器中培养细胞10天以成熟（图3）。每2-3天补充PD培养基pH 6.6到顶部室和PD培养基pH 7.4到底部室。<br>注意：在光镜下，从PD培养基分化第7天开始，通常可以在类器官中观察到摆动的有鞭毛。经过14天的近端分化培养，2D气道类器官已可以准备进行后续实验操作了。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240311015252605.png" alt="image-20240311015252605" style="zoom:50%;">
-
-<p>[^图3. 生成优化的2D气道类器官。]:  (A). 一个示意图描绘了使用不同pH的近端分化培养基（PD培养基）生成2D气道类器官（AwO）的近端分化协议。Exp medium &#x3D; 扩展培养基。 (B). 2D优化的气道类器官进行了免疫荧光染色，标记ACCTUB+纤毛细胞（红色）。细胞核和肌动蛋白丝分别用DAPI（蓝色）和Phalloidin-647（白色）进行复染色。比例尺 &#x3D; 20 μm。</p>
-<hr>
-<h5 id="D-类器官的特征鉴定"><a href="#D-类器官的特征鉴定" class="headerlink" title="D. 类器官的特征鉴定"></a>D. 类器官的特征鉴定</h5><h6 id="1-检查特定细胞类型基因或其他细胞基因的mRNA表达"><a href="#1-检查特定细胞类型基因或其他细胞基因的mRNA表达" class="headerlink" title="1.检查特定细胞类型基因或其他细胞基因的mRNA表达"></a>1.检查特定细胞类型基因或其他细胞基因的mRNA表达</h6><p>RT-qPCR检测：向类器官中加入350微升细胞裂解缓冲液进行RNA提取、反转录，并检测细胞基因表达。<br>注意：使用自体未分化的肺类器官作为比较&#x2F;对照。</p>
-<h6 id="2-评估特定细胞类型标志物和其他细胞蛋白质的表达"><a href="#2-评估特定细胞类型标志物和其他细胞蛋白质的表达" class="headerlink" title="2. 评估特定细胞类型标志物和其他细胞蛋白质的表达"></a>2. 评估特定细胞类型标志物和其他细胞蛋白质的表达</h6><p><strong>a. 免疫荧光染色和成像</strong></p>
-<p>i. 用1毫升4% PFA在室温下固定类器官60分钟。移除PFA，并用2% FBS&#x2F;PBS洗涤类器官一次。</p>
-<p>ii. 用1毫升0.1% Triton X-100在室温下通透类器官10分钟。移除Triton X-100，并用2% FBS&#x2F;PBS洗涤类器官一次。</p>
-<p>iii. 用1毫升3% BSA在室温下封闭类器官60分钟。移除BSA（无需洗涤）。</p>
-<p>iv. 将类器官与稀释在2% FBS&#x2F;PBS中的一抗在4°C下孵育过夜。移除抗体，并用2% FBS&#x2F;PBS洗涤五次。<br>注意：参考产品说明书获取抗体的最佳稀释度。</p>
-<p>v. 将类器官与稀释在2% FBS&#x2F;PBS中的二抗在4°C下孵育过夜。移除抗体，并用2% FBS&#x2F;PBS洗涤五次。<br>注意：在添加荧光材料（即二抗）后避免暴露于光。</p>
-<p>vi. 用2% FBS&#x2F;PBS稀释的DAPI和Phalloidin在4°C下孵育过夜，进行复染色。移除染料，并用2% FBS&#x2F;PBS洗涤类器官一次。</p>
-<p>vii. 使用Prolong玻璃防褪色封片剂将类器官放置在玻璃载玻片上，并盖上盖玻片，进行共聚焦成像。<br>注意：玻璃载玻片可在4°C的黑暗中保存约1-2周。</p>
-<hr>
-<p><strong>b. 流式细胞术分析</strong><br>i. 在37°C下用10 mM EDTA处理类器官30-60分钟。</p>
-<p>ii. 使用Pasteur移液管上下抽吸20-40次，将类器官剪切成单个细胞。</p>
-<p>iii. 用1毫升4% PFA在室温下固定细胞15-30分钟。移除PFA，并用2% FBS&#x2F;PBS洗涤细胞一次。</p>
-<p>iv. 用1毫升0.1% Triton X-100在4°C下通透细胞5分钟。移除Triton X-100，并用2% FBS&#x2F;PBS洗涤细胞一次。</p>
-<p>v. 将细胞与稀释在2% FBS&#x2F;PBS中的一抗在4°C下孵育60分钟。移除抗体，并用2% FBS&#x2F;PBS洗涤细胞一次。<br>注意：参考产品说明书获取抗体的最佳稀释度。</p>
-<p>vi. 将细胞与稀释在2% FBS&#x2F;PBS中的二抗在4°C下孵育60分钟。移除抗体，并用2% FBS&#x2F;PBS洗涤细胞一次。<br>注意：在添加荧光材料（即二抗）后避免暴露于光。</p>
-<p>vii. 将细胞以每毫升1 × 106细胞的密度悬浮在2% FBS&#x2F;PBS中，并转移到5毫升圆底聚苯乙烯流式管中，进行流式细胞术分析。</p>
-<hr>
-<h6 id="3-其他"><a href="#3-其他" class="headerlink" title="3.其他"></a>3.其他</h6><p><strong>a. 电子显微镜（EM）成像：</strong></p>
-<p>使用1毫升2.5%戊二醛过夜固定类器官，随后进行电子显微镜处理（切片和染色）以进行超微结构成像。<br>注意：请参考香港大学电子显微镜单位提供的详细协议（<a target="_blank" rel="noopener" href="https://emunit.hku.hk/documents/SamplePreparationTechnique.pdf%EF%BC%89%E3%80%82">https://emunit.hku.hk/documents/SamplePreparationTechnique.pdf）。</a></p>
-<p><strong>b. 活细胞染色和成像以评估肺泡类器官中AT2细胞的功能：</strong><br>i. 将肺泡类器官悬浮在0.5毫升添加了1 μM β-BODIPYTM FL C12-HPC的DD培养基中。在标准细胞培养孵化器中以37°C孵育过夜。<br>注意：避免在添加荧光材料后暴露于光。</p>
-<p>ii. 将肺泡类器官收集到15毫升离心管中。用10毫升基础培养基洗涤类器官。在300 × g下离心5分钟。弃去上清。</p>
-<p>iii. 将类器官悬浮在0.5毫升添加了100 nM LysoTracker红色素的DD培养基中。在室温下孵育30分钟。</p>
-<p>iv. 重复洗涤（步骤D3b.ii）。</p>
-<p>v. 将活体类器官放置在玻璃载玻片上，立即进行共聚焦成像。</p>
-<h6 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h6><p><u><em>所有程序均在生物安全柜中进行。</em></u><br><u><em>来自不同供体的类器官可能由于个体基因型和表型差异（例如，基因、年龄、健康状况）而存在一定程度的变异。肺类器官可以冷冻保存以进行长期存储和生物样本库管理。</em></u><br><u><em>条件培养基（Rspondin1、Noggin和WNT3A）可以用市售的重组蛋白替代。</em></u><br><u><em>扩展和分化培养基（配方2-4）如果适当存储在4°C，可以使用大约2-4周。为了获得最佳性能，请制备新鲜培养基。</em></u></p>
-<hr>
-<h4 id="试剂配方："><a href="#试剂配方：" class="headerlink" title="试剂配方："></a>试剂配方：</h4><h5 id="1-基础培养基"><a href="#1-基础培养基" class="headerlink" title="1.基础培养基"></a>1.基础培养基</h5><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240311021100162.png" alt="image-20240311021100162"></p>
-<hr>
-<h5 id="2-扩展培养基"><a href="#2-扩展培养基" class="headerlink" title="2.扩展培养基"></a>2.扩展培养基</h5><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240311021121546.png" alt="image-20240311021121546"></p>
-<p><strong><em><u>注意：</u></em>仅适用于类器官的初始衍生（第一次传代）</strong>*</p>
-<hr>
-<h5 id="3-远端分化培养基（DD培养基）"><a href="#3-远端分化培养基（DD培养基）" class="headerlink" title="3.远端分化培养基（DD培养基）"></a>3.远端分化培养基（DD培养基）</h5><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240311021142349.png" alt="image-20240311021142349"></p>
-<p><strong><em><u>注意：</u></em>额外添加50% 的WNT3A或3 μM CHIR99021</strong>*</p>
-<hr>
-<h5 id="4-近端分化培养基（PD培养基）"><a href="#4-近端分化培养基（PD培养基）" class="headerlink" title="4.近端分化培养基（PD培养基）"></a>4.近端分化培养基（PD培养基）</h5><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240311021205521.png" alt="image-20240311021205521"></p>
-<p><strong><em><u>注意：</u></em>请提前准备两种PD培养基，一种含有PIPES，另一种不含有。 #对于含有PIPES的PD培养基，在加入PIPES后，用盐酸和氢氧化钠调整pH至6.6。</strong>*</p>
-<hr>
-<h5 id="5-Rspondin1条件培养基"><a href="#5-Rspondin1条件培养基" class="headerlink" title="5.Rspondin1条件培养基"></a>5.Rspondin1条件培养基</h5><p>a. 准备选择培养基（500毫升DMEM + 60毫升FBS + 5毫升青霉素-链霉素 + 1.5毫升zeocin选择试剂）。</p>
-<p>b. 准备生长培养基（500毫升DMEM + 60毫升FBS + 5毫升青霉素-链霉素）。</p>
-<p>c. 在标准细胞培养CO2孵化器中，用选择培养基在T175细胞培养瓶中培养Rspondin1表达的293T细胞，直到它们达到融合。</p>
-<p>d. 将细胞分为6个T175细胞培养瓶，用生长培养基培养，直到它们达到融合。</p>
-<p>e. 移除生长培养基，并将细胞在50毫升基础培养基（配方1）中培养七天。</p>
-<p>f. 收集培养基（即Rspondin1条件培养基）。在300 × g下离心5分钟，沉淀细胞&#x2F;细胞碎片，并通过0.22微米瓶顶真空过滤器过滤培养基。</p>
-<p>g. 将培养基分装成小体积（约50毫升）并存储在-80°C。</p>
-<hr>
-<h5 id="6-Noggin条件培养基"><a href="#6-Noggin条件培养基" class="headerlink" title="6.Noggin条件培养基"></a>6.Noggin条件培养基</h5><p>a. 准备选择培养基（500毫升DMEM + 60毫升FBS + 5毫升青霉素-链霉素 + 5毫升G418硫酸盐）。</p>
-<p>b. 准备生长培养基（500毫升DMEM + 60毫升FBS + 5毫升青霉素-链霉素）。</p>
-<p>c. 在标准细胞培养CO2孵化器中，用选择培养基在T175细胞培养瓶中培养表达Noggin的HEK293细胞，直到它们达到融合。</p>
-<p>d. 将细胞分为六个T175细胞培养瓶，用生长培养基培养，直到它们达到融合.</p>
-<p>e. 移除生长培养基，并将细胞在50毫升基础培养基（配方1）中培养七天。</p>
-<p>f. 收集培养基（即Noggin条件培养基）。在300 × g下离心5分钟，沉淀细胞&#x2F;细胞碎片，并通过0.22微米瓶顶真空过滤器过滤培养基。</p>
-<p>g.将培养基分装成小体积（约50毫升）并存储在-80°C。</p>
-<h4 id="设备"><a href="#设备" class="headerlink" title="设备"></a>设备</h4><ol>
-<li><strong>SterilGARD e3 Class II Type A2 生物安全柜</strong> (Baker Co, 目录号: SG404-INT)</li>
-<li><strong>Forma Steri-Cycle i160 CO2 165 L 培养箱</strong> (Thermo Fisher Scientific, 目录号: 51030301)</li>
-<li><strong>New Brunswick Innova® 44&#x2F;44R 可堆叠培养箱振荡器</strong> (Eppendorf, 目录号: M1282-0002)</li>
-<li><strong>离心机</strong> (Eppendorf, 型号: 5810R)</li>
-<li><strong>FE20-Kit FiveEasy 桌面pH计</strong> (Mettler Toledo, 型号: FE20-KIT)</li>
-<li><strong>LightCycler 96 Instrument</strong> (Roche, 目录号: 381711)</li>
-<li><strong>倒置普通显微镜</strong> (Nikon, 型号: Eclipse TS100)</li>
-<li><strong>共聚焦显微镜</strong> (Zeiss, 型号: LSM 800)</li>
-<li><strong>透射电子显微镜</strong> (FEI, 型号: Tecnai G2 20 S-TWIN)</li>
-<li><strong>细胞分析仪</strong> (BD Biosciences, 型号: FACSCanto II &amp; LSRFortessa)</li>
-<li><strong>Midi Plus 移液控制器</strong> (Sartorius, 型号: 710931)</li>
-<li><strong>Research Plus 机械移液管</strong> (Eppendorf, 目录号: 3123000900)<br>这些设备是实验室中常用的，包括生物安全柜、培养箱、振荡器、离心机、pH计、荧光定量PCR仪、显微镜、电子显微镜、细胞分析仪和移液控制器等。</li>
-</ol>
-<hr>
-<h4 id="试剂："><a href="#试剂：" class="headerlink" title="试剂："></a>试剂：</h4><ol>
-<li><p><strong>Nunc 15和50毫升锥形无菌聚丙烯离心管</strong> (Thermo Scientific, 目录号: 339650, 339652)</p>
-</li>
-<li><p><strong>手术刀片 No. 22</strong> (Swann-Morton, 目录号: 0508)</p>
-</li>
-<li><p><strong>100毫米 TC处理培养皿</strong> (Corning, 目录号: 430167)</p>
-</li>
-<li><p><strong>T175细胞培养瓶</strong> (Greiner Bio-One, 目录号: 661175)</p>
-</li>
-<li><p><strong>Nunc未处理的24孔板</strong> (Thermo Scientific, 目录号: 144530)</p>
-</li>
-<li><p><strong>Nunclon Sphera 24孔板</strong> (Thermo Scientific, 目录号: 174930)</p>
-</li>
-<li><p><strong>Costar 6.5和12mm Transwell®，0.4微米孔径的聚酯膜插入物</strong> (Stem Cell Technologies, 目录号: 38024, 38023)</p>
-</li>
-<li><p><strong>40和100微米细胞过滤器</strong> (Falcon, 目录号: 352340, 352360)</p>
-</li>
-<li><p><strong>Steritop螺纹瓶顶过滤器 (0.22微米)</strong> (Merck Millipore, 目录号: SCGPS01RE)</p>
-</li>
-<li><p><strong>10&#x2F;100&#x2F;1000微升QSP低吸附过滤移液管尖</strong> (Thermo Scientific, 目录号: TFLR102-10-Q, TFLR113-100-Q, TFLR1121000-Q)</p>
-</li>
-<li><p><strong>5&#x2F;10&#x2F;15毫升Stripette血清移液管</strong> (Corning, 目录号: 4487, 4488, 4489)</p>
-</li>
-<li><p><strong>长约225毫米的巴斯德吸管</strong> (Brand, 目录号: 747720)</p>
-</li>
-<li><p><strong>5毫升圆底聚苯乙烯试管</strong> (Falcon, 目录号: 352052)</p>
-</li>
-<li><p><strong>β-BODIPYTM FL C12-HPC</strong> (Invitrogen, 目录号: D3792)</p>
-</li>
-<li><p><strong>LysoTrackerTM 红色DND-99</strong> (Invitrogen, 目录号: L7528)</p>
-</li>
-<li><p><strong>Matrigel生长因子减少型 (GFR) 基底膜基质，无酚红，无LDEV</strong> (Corning, 目录号: 356231)</p>
-</li>
-<li><p><strong>高级DMEM&#x2F;F-12</strong> (Gibco, 目录号: 12634010)</p>
-</li>
-<li><p><strong>DMEM</strong> (Gibco, 目录号: 10569010)</p>
-</li>
-<li><p><strong>ZeocinTM 选择试剂 (100毫克&#x2F;毫升)</strong> (Gibco, 目录号: R25005)</p>
-</li>
-<li><p><strong>GeneticinTM 选择性抗生素 (G418硫酸盐) (50毫克&#x2F;毫升)</strong> (Gibco, 目录号: 10131035)</p>
-</li>
-<li><p><strong>HEPES</strong> (Gibco, 目录号: 15630056)</p>
-</li>
-<li><p><strong>GlutaMAX补充剂</strong> (Gibco, 目录号: 35050061)</p>
-</li>
-<li><p><strong>青霉素-链霉素</strong> (Gibco, 目录号: 15140122)</p>
-</li>
-<li><p><strong>重组人Rspondin1</strong> (Stem Cell Technologies, 目录号: 78213; Peprotech, 目录号: 120-38)</p>
-</li>
-<li><p><strong>表达Rspondin1的293T细胞系</strong> (Sigma-Aldrich, 目录号: SCC111)</p>
-</li>
-<li><p><strong>重组人Noggin</strong> (Stem Cell Technologies, 目录号: 78060; Peprotech, 目录号: 120-10C)</p>
-</li>
-<li><p><strong>B-27补充剂 (50x), 无血清</strong> (Gibco, 目录号: 17504044)</p>
-</li>
-<li><p><strong>N-乙酰-L-半胱氨酸</strong> (Sigma-Aldrich, 目录号: A9165)</p>
-</li>
-<li><p><strong>烟酰胺</strong> (Sigma-Aldrich, 目录号: N0636)</p>
-</li>
-<li><p><strong>Y-27632 二氢氯化物</strong> (Tocris, 目录号: 1254)</p>
-</li>
-<li><p><strong>A 83-01</strong> (Tocris, 目录号: 2939)</p>
-</li>
-<li><p><strong>SB 202190</strong> (Sigma-Aldrich, 目录号: S7067)</p>
-</li>
-<li><p><strong>重组人KGF (FGF-7)</strong> (Peprotech, 目录号: 100-19)</p>
-</li>
-<li><p><strong>重组人FGF-10</strong> (Peprotech, 目录号: 100-26)</p>
-</li>
-<li><p><strong>重组人heregulin β-1</strong> (Peprotech, 目录号: 100-03)</p>
-</li>
-<li><p><strong>Primocin</strong> (InvivoGen, catalog number: ant-pm-1)</p>
-</li>
-<li><p><strong>普罗米松</strong> (Tocris, 目录号: 1126)</p>
-</li>
-<li><p><strong>8-溴-cAMP，钠盐</strong> (Tocris, 目录号: 1140)</p>
-</li>
-<li><p><strong>IBMX</strong> (Tocris, 目录号: 2845)</p>
-</li>
-<li><p><strong>CHIR 99021</strong> (Tocris, 目录号: 4423)</p>
-</li>
-<li><p><strong>重组小鼠WNT3A</strong> (Peprotech, 目录号: 315-20)</p>
-</li>
-<li><p><strong>L WNT3A细胞系</strong> (ATCC, 目录号: CRL-2647)</p>
-</li>
-<li><p><strong>PneumaCult-ALI培养基</strong> (StemCell Technologies, 目录号: 05001)</p>
-</li>
-<li><p><strong>肝素溶液</strong> (StemCell Technologies, 目录号: 7980)</p>
-</li>
-<li><p><strong>氢化可的松原液</strong> (StemCell Technologies, 目录号: 7925)</p>
-</li>
-<li><p><strong>DAPT</strong> (Tocris, 目录号: 2634)</p>
-</li>
-<li><p><strong>PIPES</strong> (Sigma-Aldrich, 目录号: P1851)</p>
-</li>
-<li><p><strong>来自溶组织梭菌的胶原酶</strong> (Sigma-Aldrich, 目录号: C9407)</p>
-</li>
-<li><p><strong>TrypLE select酶 (10倍), 无酚红</strong> (Gibco, 目录号: A1217701)</p>
-</li>
-<li><p><strong>磷酸盐缓冲液 (PBS)</strong> (Gibco, 目录号: 10010023)</p>
-</li>
-<li><p><strong>胎牛血清 (FBS), 合格, 热灭活</strong> (Gibco, 目录号: 10082147)</p>
-</li>
-<li><p><strong>Buffer EL红细胞裂解缓冲液</strong> (Qiagen, 目录号: 79217)</p>
-</li>
-<li><p><strong>UltraPureTM 0.5 M EDTA, pH 8.0</strong> (Invitrogen, 目录号: 15575020)</p>
-</li>
-<li><p><strong>甲醛溶液 [即37%多聚甲醛 (PFA)]</strong> (Sigma-Aldrich, 目录号: 252549)</p>
-</li>
-<li><p><strong>曲拉通X-100</strong> (Sigma-Aldrich, 目录号: X100)</p>
-</li>
-<li><p><strong>牛血清白蛋白 (BSA)</strong> (Sigma-Aldrich, 目录号: A9418)</p>
-</li>
-<li><p><strong>DAPT</strong> (Sigma-Aldrich, 目录号: D9542)</p>
-</li>
-<li><p><strong>鬼笔毒环素 - Atto 647N</strong> (Sigma-Aldrich, 目录号: 65906)</p>
-</li>
-<li><p><strong>ProLongTM玻璃防褪色封片剂</strong> (Invitrogen, 目录号: P36980)</p>
-</li>
-<li><p><strong>戊二醛</strong> (从香港大学电子显微镜单位购买)</p>
-</li>
-<li><p><strong>盐酸 (HCl)</strong> (Sigma-Aldrich, 目录号: 320331)</p>
-</li>
-<li><p><strong>氢氧化钠 (NaOH)</strong> (Sigma-Aldrich, 目录号: 221465)</p>
-</li>
-<li><p><strong>基础培养基 (见配方)</strong></p>
-</li>
-<li><p><strong>扩展培养基 (见配方)</strong></p>
-</li>
-<li><p><strong>远端分化培养基 (DD培养基) (见配方)</strong></p>
-</li>
-<li><p><strong>近端分化培养基 (PD培养基) (见配方)</strong></p>
-</li>
-<li><p><strong>Rspondin1条件培养基 (见配方)</strong></p>
-</li>
-<li><p><strong>Noggin条件培养基 (见配方)</strong></p>
-</li>
-<li><p><strong>WNT3A条件培养基 (见配方)</strong></p>
-</li>
-</ol>
-<hr>
-<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ol>
-<li>Chiu, M. C., Li, C., Liu, X., Yu, Y., Huang, J., Wan, Z., Xiao, D., Chu, H., Cai, J. P., Zhou, B., et al. (2022). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/35710786">A bipotential organoid model of respiratory epithelium recapitulates high infectivity of SARS-CoV-2 Omicron variant.</a> <em>Cell Discov</em> 8(1): 57. </li>
-<li>Chua, C. W., Shibata, M., Lei, M., Toivanen, R., Barlow, L. J., Bergren, S. K., Badani, K. K., McKiernan, J. M., Benson, M. C., Hibshoosh, H., et al. (2014). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/25241035">Single luminal epithelial progenitors can generate prostate organoids in culture.</a> <em>Nat Cell Biol</em> 16(10): 951-961, 951-954. </li>
-<li>Hu, H., Gehart, H., Artegiani, B., LÖpez-Iglesias, C., Dekkers, F., Basak, O., van Es, J., Chuva de Sousa Lopes, S. M., Begthel, H., Korving, J., et al. (2018). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/30500538">Long-Term Expansion of Functional Mouse and Human Hepatocytes as 3D Organoids.</a> <em>Cell</em> 175(6): 1591-1606 e1519. </li>
-<li>Huch, M., Bonfanti, P., Boj, S. F., Sato, T., Loomans, C. J., van de Wetering, M., Sojoodi, M., Li, V. S., Schuijers, J., Gracanin, A., et al. (2013a). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/24045232">Unlimited in vitro expansion of adult bi-potent pancreas progenitors through the Lgr5&#x2F;R-spondin axis.</a> <em>EMBO J</em> 32(20): 2708-2721. </li>
-<li>Huch, M., Dorrell, C., Boj, S. F., van Es, J. H., Li, V. S., van de Wetering, M., Sato, T., Hamer, K., Sasaki, N., Finegold, M. J., et al. (2013b). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/23354049">In vitro expansion of single Lgr5+ liver stem cells induced by Wnt-driven regeneration.</a> <em>Nature</em> 494(7436): 247-250. </li>
-<li>Karthaus, W. R., Iaquinta, P. J., Drost, J., Gracanin, A., van Boxtel, R., Wongvipat, J., Dowling, C. M., Gao, D., Begthel, H., Sachs, N., et al. (2014). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/25201529">Identification of multipotent luminal progenitor cells in human prostate organoid cultures.</a> <em>Cell</em> 159(1): 163-175. </li>
-<li>Lancaster, M. A. and Knoblich, J. A. (2014). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/25035496">Organogenesis in a dish: modeling development and disease using organoid technologies.</a> <em>Science</em> 345(6194): 1247125. </li>
-<li>Li, C., Chiu, M. C., Yu, Y., Liu, X., Xiao, D., Huang, J., Wan, Z. and Zhou, J. (2022). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/35404361">Establishing Human Lung Organoids and Proximal Differentiation to Generate Mature Airway Organoids.</a> <em>J Vis Exp</em> (181). </li>
-<li>Li, M. and Izpisua Belmonte, J. C. (2019). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/30726695">Organoids - Preclinical Models of Human Disease.</a> <em>N Engl J Med</em> 380(6): 569-579. </li>
-<li>Sachs, N., de Ligt, J., Kopper, O., Gogola, E., Bounova, G., Weeber, F., Balgobind, A. V., Wind, K., Gracanin, A., Begthel, H., et al. (2018). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/29224780">A Living Biobank of Breast Cancer Organoids Captures Disease Heterogeneity.</a> <em>Cell</em> 172(1-2): 373-386 e310. </li>
-<li>Sachs, N., Papaspyropoulos, A., Zomer-van Ommen, D. D., Heo, I., Bottinger, L., Klay, D., Weeber, F., Huelsz-Prince, G., Iakobachvili, N., Amatngalim, G. D., et al. (2019). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/30643021">Long-term expanding human airway organoids for disease modeling.</a> <em>EMBO J</em> 38(4): e100300.</li>
-<li>Sato, T., Stange, D. E., Ferrante, M., Vries, R. G., Van Es, J. H., Van den Brink, S., Van Houdt, W. J., Pronk, A., Van Gorp, J., Siersema, P. D., et al. (2011). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/21889923">Long-term expansion of epithelial organoids from human colon, adenoma, adenocarcinoma, and Barrett’s epithelium.</a> <em>Gastroenterology</em> 141(5): 1762-1772. </li>
-<li>Sato, T., Vries, R. G., Snippert, H. J., van de Wetering, M., Barker, N., Stange, D. E., van Es, J. H., Abo, A., Kujala, P., Peters, P. J., et al. (2009). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/19329995">Single Lgr5 stem cells build crypt-villus structures in vitro without a mesenchymal niche.</a> <em>Nature</em> 459(7244): 262-265. </li>
-<li>Schlaermann, P., Toelle, B., Berger, H., Schmidt, S. C., Glanemann, M., Ordemann, J., Bartfeld, S., Mollenkopf, H. J. and Meyer, T. F. (2016). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/25539675">A novel human gastric primary cell culture system for modelling Helicobacter pylori infection in vitro.</a> <em>Gut</em> 65(2): 202-213.</li>
-<li>Schutgens, F. and Clevers, H. (2020). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/31550983">Human Organoids: Tools for Understanding Biology and Treating Diseases.</a> <em>Annu Rev Pathol</em> 15: 211-234. </li>
-<li>Wroblewski, L. E., Piazuelo, M. B., Chaturvedi, R., Schumacher, M., Aihara, E., Feng, R., Noto, J. M., Delgado, A., Israel, D. A., Zavros, Y., et al. (2015). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/25123931">Helicobacter pylori targets cancer-associated apical-junctional constituents in gastroids and gastric epithelial cells.</a> <em>Gut</em> 64(5): 720-730.</li>
-<li>Zhou, J., Li, C., Sachs, N., Chiu, M. C., Wong, B. H., Chu, H., Poon, V. K., Wang, D., Zhao, X., Wen, L., et al. (2018). <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/29891677">Differentiated human airway organoids to assess infectivity of emerging influenza virus.</a> <em>Proc Natl Acad Sci U S A</em> 115(26): 6822-6827.</li>
-</ol>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/03/10/%E5%BB%BA%E7%AB%8B%E5%8F%8C%E6%BD%9C%E8%83%BD%E7%9A%84%E4%BA%BA%E8%82%BA%E7%B1%BB%E5%99%A8%E5%AE%98%E5%9F%B9%E5%85%BB%E7%B3%BB%E7%BB%9F%E5%8F%8A%E5%88%86%E5%8C%96%E4%BA%A7%E7%94%9F%E6%88%90%E7%86%9F%E7%9A%84%E8%82%BA%E6%B3%A1%E5%92%8C%E6%B0%94%E9%81%93%E7%B1%BB%E5%99%A8%E5%AE%98/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-迈向培养皿中的睾丸：生成概括睾丸结构和表达谱的小鼠睾丸类器官" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/03/10/%E8%BF%88%E5%90%91%E5%9F%B9%E5%85%BB%E7%9A%BF%E4%B8%AD%E7%9A%84%E7%9D%BE%E4%B8%B8%EF%BC%9A%E7%94%9F%E6%88%90%E6%A6%82%E6%8B%AC%E7%9D%BE%E4%B8%B8%E7%BB%93%E6%9E%84%E5%92%8C%E8%A1%A8%E8%BE%BE%E8%B0%B1%E7%9A%84%E5%B0%8F%E9%BC%A0%E7%9D%BE%E4%B8%B8%E7%B1%BB%E5%99%A8%E5%AE%98/" target="_blank">迈向培养皿中的睾丸：生成概括睾丸结构和表达谱的小鼠睾丸类器官</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/03/10/%E8%BF%88%E5%90%91%E5%9F%B9%E5%85%BB%E7%9A%BF%E4%B8%AD%E7%9A%84%E7%9D%BE%E4%B8%B8%EF%BC%9A%E7%94%9F%E6%88%90%E6%A6%82%E6%8B%AC%E7%9D%BE%E4%B8%B8%E7%BB%93%E6%9E%84%E5%92%8C%E8%A1%A8%E8%BE%BE%E8%B0%B1%E7%9A%84%E5%B0%8F%E9%BC%A0%E7%9D%BE%E4%B8%B8%E7%B1%BB%E5%99%A8%E5%AE%98/" class="archive-article-date">
-        <time datetime="2024-03-10T02:52:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-10</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><em>Int J Biol Sci</em> 2024; 20(3):1024-1041. doi:10.7150&#x2F;ijbs.89480</p>
-<p>Aviya Stopel, Cheli Lev, Stav Dahari, Or Adibi, Leah Armon, Nitzan Gonen <a target="_blank" rel="noopener" href="https://www.ijbs.com/v20p1024.htm#coraddress"><img src="https://www.ijbs.com/ms/images/email.gif" alt="Corresponding address"></a></p>
-<h3 id="My-Notes"><a href="#My-Notes" class="headerlink" title="My Notes:"></a>My Notes:</h3><p>根据全文的研究内容，我们能得出以下结论：</p>
-<ol>
-<li>研究者成功从小鼠的新生儿和胚胎的睾丸细胞中培养出了类器官，这些类器官能维持结构和基因表达谱9周。</li>
-<li>胚胎时期睾丸细胞比新生儿更容易形成类器官，显示类器官的生成与Sertoli细胞的成熟程度有关。</li>
-<li>通过调节培养基的生长因子和激素，研究者可以促进新生神经器官Sertoli细胞向成熟状态的转变。</li>
-<li>类器官支持精原干细胞进入减数分裂，表明它具有支持精原发生和精子生成的潜能。</li>
-<li>类器官类似于体内睾丸的结构，包含支持细胞、Leydig细胞等所有主要的细胞类型。</li>
-</ol>
-<p>文章的研究给我们以下启示：</p>
-<ol>
-<li>类器官为研究睾丸发育和功能障碍提供了一个三维的体外模型。</li>
-<li>可用于研究不同细胞类型之间的相互作用，以及建立遗传疾病模型。</li>
-<li>通过使用不同的培养基，可以在体外模拟睾丸不同发育阶段。</li>
-<li>该类器官支持精原干细胞进入减数分裂，可能具有生产精子的潜力，应用于临床不孕不育治疗。</li>
-</ol>
-<p>简化的操作步骤是：</p>
-<ol>
-<li><strong>睾丸细胞的收集</strong>：<ul>
-<li>收集P4-7日龄幼崽或成年小鼠的睾丸。</li>
-<li>将睾丸切成小块，在37°C、0.045%胰蛋白酶和0.25%胶原酶II溶液中消化30分钟。</li>
-<li>经过消化后，加入含青霉素-链霉素的DMEM&#x2F;F12培养基，通过70微米细胞筛过滤。</li>
-<li>离心沉淀细胞，用培养基重新悬浮，并计数细胞数量。</li>
-<li>从E12.5-14.5小鼠胚胎中收集睾丸，分离出中肾后，对睾丸进行酶消化，过滤，离心，悬浮并计数，以进行后续培养。</li>
-</ul>
-</li>
-<li><strong>2D培养睾丸细胞</strong>：<ul>
-<li>在6孔板中分别用0.2%明胶或不同浓度Geltrex涂层。</li>
-<li>使用含血清的培养基培养时，取约0.6x10^6个细胞&#x2F;孔。</li>
-<li>使用定义培养基培养时，取约1.2x10^6个细胞&#x2F;孔。</li>
-<li>在34°C、5% CO2条件下，替换每3-4天的培养液。</li>
-</ul>
-</li>
-<li><strong>类器官的生成和培养</strong>：<ul>
-<li>在每个Transwell膜上接种2-2.5x10^5 (胚胎)或3.5x10^5 (新生)细胞用作建立类器官。</li>
-<li>在34°C下用5% CO2进行培养，使用定义的培养基更换每3-4天的培养液。</li>
-<li>尽管对于过渡实验，需在未成熟培养基中培养10天，然后转为成熟培养基再培养11天，总计为21天。</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>我们利用transwell插入物从新生小鼠的原代睾丸细胞中成功培育出了睾丸类器官。这些类器官能够形成类似体内睾丸的管状结构和细胞组织，其基因表达谱也与体内睾丸相似。值得注意的是，只有胚胎睾丸细胞能够形成这些类器官，而成人睾丸细胞则不能。这些类器官在培养中可以维持8-9周，并显示出进入减数分裂的迹象。此外，我们还开发了一种特定的培养基配方，可以促进支持细胞和间质细胞的成熟状态，从而实现类器官在体外的成熟。这些睾丸类器官为研究睾丸发育和功能提供了一个有前景的模型系统，对于理解和治疗性别发育障碍及不育症具有重要的转化应用价值。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/toc.jpg" alt="Graphic abstract"></p>
-<hr>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>睾丸是男性生殖系统的一部分，负责精子生产和雄激素的终身产生和分泌[1, 2]。在小鼠中，睾丸在胚胎第11.5天从双向潜能性腺发育而来，这时性别决定基因Sry及其下游目标基因Sox9被表达[3, 4]。睾丸由睾丸索和间质两部分组成。睾丸索由包裹生殖细胞（生殖细胞）的支持细胞构成，而周管肌样细胞（PM）位于睾丸索外部，与支持细胞一起帮助形成主要由细胞外基质（ECM）蛋白构成的睾丸基底膜。间质中则包含分泌雄激素的间质细胞，以及内皮细胞、免疫细胞和前体细胞[1, 5]。在青春期，支持细胞从幼稚状态转变为成熟状态，睾丸索也随之发育为生精小管。在这个阶段，原先位于睾丸索中心的生殖细胞迁移至小管外围，紧邻基底膜，此时被称为精原干细胞（SSC）。成年期，位于特定生态位中的SSC是精子发生的一生之源[6]。支持细胞是唯一与生殖细胞直接接触的体细胞，它们在培育和支持生殖细胞增殖、成熟及精子发生方面发挥着至关重要的作用[1-3]。支持细胞被认为是睾丸在胚胎和成年阶段的关键“组织中心”[1-3]。</p>
-<p>睾丸的发育或功能异常可能导致包括性别发育障碍（DSD）和不育症在内的多种疾病。DSD指的是个体在遗传、生殖腺和解剖性别之间存在不一致，其新生儿发病率大约为1:4000[7, 8]。虽然已有研究表明许多基因和通路与DSD有关，但目前只有50%的DSD病例在全面外显子测序（WES）后得到了遗传诊断，这提示我们需要进一步研究，以更深入地了解哺乳动物的性别决定机制和DSD的病理。不育症定义为在12个月或更长时间的规律无保护性行为后未能实现怀孕，大约每6人中就有1人面临这种情况[9]，其中男性不育症约占50%的病例。尽管男性不育症容易被识别和分为不同亚组，但目前对于导致男性不育的遗传和环境机制的了解仍然有限[10]。</p>
-<p>到目前为止，还没有适当的体外系统来模拟胚胎或成体阶段的睾丸。在二维环境和含血清的培养基中培养原代睾丸细胞会导致它们失去正常特征，其基因表达模式迅速与正常睾丸不同[11]。此外，目前还没有可靠的睾丸细胞系能够真实地模拟体内睾丸细胞[12]。这些限制使得对睾丸发育的研究只能依赖于小鼠体内的模型，这个过程既耗时又昂贵，且劳动强度大。另外，尽管小鼠和人类的性别决定和睾丸功能系统通常相似，但它们并不完全相同，许多性别发育障碍（DSD）和男性不育症病例无法在小鼠中成功建模[13, 14]。因此，从小鼠和人类中生成睾丸类器官，无论是基于原代细胞还是干细胞的方法，都可以作为一个有用且强大的平台，用于探索正常睾丸发育及相关病理。</p>
-<p>类器官是在体外培养的三维结构，它们在结构和功能上与真实器官非常接近[15]。目前已有多种类型的类器官被开发出来，包括肠道、大脑、肾脏、视网膜等[15]。最近几年，一些研究描述了睾丸类器官的生成，这些类器官主要来自人类、小鼠、猪和鼠的原代睾丸细胞（相关综述见[16, 17]）。这些研究采用了多种不同的方法来培养原代睾丸细胞，包括脱细胞睾丸、Matrigel、软琼脂以及微流控设备[18-23]。尽管有些模型能够重现睾丸结构和类似管状结构的形成，保持生殖细胞，甚至轻微进入减数分裂，但大多数模型未能显示出长期保持类器官的能力，并且没有与体内睾丸进行基因表达谱的比较。</p>
-<p>在这项研究中，我们使用了两种转基因小鼠株，使我们能够追踪支持细胞的存在和状态，并探索了各种培养和培养基条件，以从原代睾丸细胞生成睾丸类器官。我们证明了提供气液界面的transwell插入物是生成睾丸类器官的最佳选择。这些由新生幼崽的原代睾丸细胞形成的类器官可以在体外培养9周，同时保持与相应阶段的体内睾丸在结构和基因表达谱上密切相似。这些类器官保持了所有主要体细胞类型和生殖细胞的存在，并组织成类似管状结构和间质区域。我们进一步展示了这些设置也可以用于培养具有管状结构的胚胎睾丸来源的类器官。我们开发了定义明确的培养基配方，可以促进支持细胞和间质细胞的幼稚或成熟状态，因此可能为类器官的体外成熟提供一个平台。最后，我们展示了这些类器官能够支持精原干细胞进入减数分裂的第一个迹象。</p>
-<hr>
-<h3 id="材料与主要方法"><a href="#材料与主要方法" class="headerlink" title="材料与主要方法"></a>材料与主要方法</h3><p>所有动物都根据巴伊兰大学伦理协议57-08-2019和61-11-2020的要求进行了适当的饲养。小鼠TESCO-CFP[24]和Sox9-IRES-GFP[25]被维持在F1（C57BL&#x2F;6J X CBA）遗传背景下。用于基因分型的引物列在表S2中。本研究中使用的胚胎和动物要么是TESCO-CFP纯合子，要么是Sox9-IRES-GFP杂合子以表达绿色荧光蛋白（GFP）。</p>
-<h4 id="睾丸细胞的收集"><a href="#睾丸细胞的收集" class="headerlink" title="睾丸细胞的收集"></a>睾丸细胞的收集</h4><p>P4-7日龄幼崽或成年小鼠的睾丸被解剖取出，首先通过用镊子将其切成小块进行机械性分离。接下来，为了获得单细胞睾丸细胞悬液，将睾丸小块在含有0.045%胰蛋白酶（Thermo Scientific, 25300062）和0.25%胶原酶II（Worthington, LS004176）最终浓度的37°C温育30分钟，期间每隔10分钟轻轻摇动。然后，向悬液中加入8mL含有1x青霉素-链霉素溶液（Thermo Scientific, 15140122）和2mM L-谷氨酰胺（Biological Industries, BI-03-020-1A）的DMEM&#x2F;F12（Thermo Scientific 12634-010）培养基，并通过70微米细胞筛（Lifegene, CSS010070S）过滤。在4°C下以300 x g离心5分钟，细胞沉淀用10mL培养基重新悬浮，并用Countess II（Invitrogen）计数细胞数量。</p>
-<p>对于胚胎类器官，在E12.5-14.5日龄收集胚胎，将中肾定为E0.5。睾丸被取出，与中肾分开，并在上述条件下用酶消化8分钟。然后加入3毫升含有1x青霉素-链霉素和2mM L-谷氨酰胺的DMEM&#x2F;F12培养基，细胞离心，细胞沉淀用1毫升培养基重新悬浮，并计数细胞数量。</p>
-<h4 id="2D培养睾丸细胞"><a href="#2D培养睾丸细胞" class="headerlink" title="2D培养睾丸细胞"></a><strong>2D培养睾丸细胞</strong></h4><p>在培养前，6孔板（Corning 3516）要么用0.2%明胶（Sigma-Aldrich G9391）涂层，并室温下放置至少15分钟，要么用Geltrex（Thermo Scientific A1413201）在冷DMEM&#x2F;F12培养基中稀释，稀释比例分别为1:100、1:50、1:20，37°C下放置60分钟，然后室温下放置30分钟。在使用含血清的培养基时，每个6孔板放置一个半睾丸的细胞（约0.6x10^6个细胞）。在使用处理好的培养基时，每个6孔板播种一个睾丸的细胞（约1.2x10^6个细胞）。由于在血清基质培养基和处理好的培养基下细胞的扩增速率不同，所以在两种条件下播种的细胞量不同。细胞在34°C、5% CO2培养箱中培养，最多7天。每3-4天更换一次培养基。培养基配方见表S1。</p>
-<h4 id="类器官的生成和培养"><a href="#类器官的生成和培养" class="headerlink" title="类器官的生成和培养"></a><strong>类器官的生成和培养</strong></h4><p>将睾丸细胞接种在Transwell 0.4μm孔聚酯膜（Corning 3450 &#x2F; Greiner 657641）上，胚胎类器官每个类器官2-2.5x10^5 个细胞，新生儿和成人类器官每个类器官3.5x10^5 个细胞。将 7-9 个类器官作为颗粒接种在一个跨孔插入物上，类器官之间有间隙。在 34°C 下在 5% CO 2 培养箱中用指定的培养基（培养基组成见表 S1）培养类器官。每 3-4 天从 transwell 插入物下方更换培养基。对于过渡实验，将类器官在未成熟培养基（表S1）中培养10天，然后将培养基更换为成熟2培养基（表S1）再培养11天，总共持续时间为21天。</p>
-<h4 id="RNA分离、cDNA制备和qRT-PCR"><a href="#RNA分离、cDNA制备和qRT-PCR" class="headerlink" title="RNA分离、cDNA制备和qRT-PCR"></a><strong>RNA分离、cDNA制备和qRT-PCR</strong></h4><p>根据制造商的实验方案，使用 TRIzol™ 试剂 （Thermo Scientific， 15596026） 从小鼠睾丸或类器官中提取总 RNA。通常，RNA 样品使用 3-4 个类器官。使用 NanoDrop 分光光度计定量 RNA 产量，并用 RQ1 DNase （Promega M610A） 处理 1500 ng RNA，并使用 SuperScript™ III 逆转录酶 （Thermo Scientific 18080085） 合成 cDNA。使用 Power SYBR Green PCR 预混液 （Thermo Scientific 4367659） 和正向和反向引物各 140 nM 进行 qRT-PCR 反应，并在 QuantStudio 1 实时荧光定量 PCR 系统 （Thermo Scientific） 上进行分析。所用引物列于表S3中。</p>
-<h4 id="类器官成像和类器官大小的测量"><a href="#类器官成像和类器官大小的测量" class="headerlink" title="类器官成像和类器官大小的测量"></a><strong>类器官成像和类器官大小的测量</strong></h4><p>所有类器官的明场和荧光图像均使用尼康Eclipse Ts2R显微镜拍摄。对于类器官尺寸评估，在尼康Eclipse Ts2R显微镜上拍摄明场图像，并使用NIS-Elements D软件测量类器官面积（N&#x3D;3-14个类器官）。</p>
-<h4 id="冰冻切片和全片免疫染色"><a href="#冰冻切片和全片免疫染色" class="headerlink" title="冰冻切片和全片免疫染色"></a><strong>冰冻切片和全片免疫染色</strong></h4><p>睾丸被取出并在4°C下用4%的多聚甲醛固定过夜，同时旋转。然后，睾丸用含有0.1% Triton X-100的PBS（PBST）清洗三次，并在4°C下用20%的蔗糖孵育，直到嵌入OCT。嵌入的样本用冷冻切片机制成10微米厚的矢状切片。在65°C下使用DAKO的抗原恢复溶液进行抗原恢复30分钟。然后，样品在含有10%驴血清的PBST中封闭1小时，并在4°C下与一抗（稀释在含有1%驴血清的PBST中）孵育过夜。PBST中洗涤三次后，加入二抗和4’,6-二氨基-2-苯基吲哚（DAPI）室温下孵育1小时。最后，将载玻片洗涤、干燥并固定。</p>
-<p>对于整体免疫染色，类器官在室温下用4%的多聚甲醛固定20分钟。然后在含有5%驴血清的PBS + 0.3% Triton X-100溶液中进行封闭，室温下持续2-3小时。一抗在PBS + 0.3% Triton X-100溶液中补充10%驴血清，并在4°C下过夜孵化。PBS + 0.3% Triton X-100中洗涤六次后，类器官与二抗和DAPI在4°C下过夜孵化。接着，它们在PBS + 0.3% Triton X-100中洗涤，并转移到含有固定液的玻璃载玻片上。所有一抗和二抗的使用均列在表S4中。使用Leica Microsystems SP8共聚焦显微镜获得图像。</p>
-<hr>
-<h3 id="部分主要结果"><a href="#部分主要结果" class="headerlink" title="部分主要结果"></a>部分主要结果</h3><h4 id="使用基于血清或确定的培养基对原代睾丸细胞进行-2D-培养"><a href="#使用基于血清或确定的培养基对原代睾丸细胞进行-2D-培养" class="headerlink" title="使用基于血清或确定的培养基对原代睾丸细胞进行 2D 培养"></a><strong>使用基于血清或确定的培养基对原代睾丸细胞进行 2D 培养</strong></h4><p>我们的目标是寻找生成睾丸类器官的最佳培养条件和培养基。由于已知支持细胞在睾丸中负责协调性腺的特化和组织[1]，我们使用了两种带有特异性标记支持细胞荧光蛋白的报告小鼠株。这使得我们能够追踪支持细胞的状态，并监测类器官中Sox9的表达水平，Sox9是支持细胞的一个关键标志。第一种小鼠株是TESCO-CFP株，其中Sox9睾丸特异性增强子TESCO位于CFP报告基因的上游[24]。第二种小鼠株是Sox9-IRES-GFP株，其中IRES-GFP位于Sox9编码序列的下游[25]。两种报告小鼠株都在胚胎和成年性腺的支持细胞中表达CFP或GFP（补充图1）。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240310123256581.png" alt="image-20240310123256581" style="zoom:33%;">
-
-<p>[^补充图1. 用于睾丸采集的支持细胞特异性报告小鼠。]: 明场（BF）和荧光图像显示了来自Sox9-IRES-GFP或TESCO-CFP小鼠的E12.5-13.5胚胎或P6幼崽的睾丸。比例尺：500 μm。</p>
-<p>为了开发睾丸类器官，我们选择了P4-7日龄新生幼崽的睾丸，而不是胚胎或成年睾丸。之前的研究表明，成年睾丸无法形成类器官[21]，而且与新生幼崽睾丸相比，胚胎性腺的相对较小体积意味着睾丸细胞比理想的大型筛选所需的细胞要少。从Sox9-IRES-GFP或TESCO-CFP小鼠株的P4-P7幼崽中取出整个睾丸，将其分离成单细胞，并在不同的培养基组成的2D或3D培养设置上进行铺板。通过明场（BF）和荧光检查细胞或类器官，基因表达分析和免疫染色（图1A）评估了各种条件的结果。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/getimage%20(2).jpg" alt="Int J Biol Sci Image" style="zoom:40%;">
-
-<p>[^图1. transwell插入物上建立原发性新生儿睾丸类器官。]: （A）实验设计的示意图。将来自P4-P7 Sox9-IRES-GFP或TESCO-CFP幼崽的原代睾丸细胞解离成单细胞，并在各种培养方法和培养基组合物下重新组装。使用 BioRender 创建的方案。（B） 睾丸类器官的代表性明场 （BF） 和荧光图像，来自 Sox9-IRES-GFP 小鼠，在 transwell 插入物上培养 7、14 和 21 天。比例尺，100μm。（C） 在培养的前 4 天内形成的类器官的代表性 BF 和荧光图像。比例尺，100μm。（D）长时间培养的类器官的代表性BF图像。比例尺，500μm。（E） 类器官面积 （mm 2 ） 随培养时间的变化。数据以平均面积±SEM表示。将所有区域与 D7 类器官的区域进行比较。<em>P &lt; 0.05，<strong>P &lt; 0.01，</strong></em>P &lt; 0.001，****P &lt; 0.0001，ns - 不显著。N&#x3D;3-4。</p>
-<p>之前描述的用于在标准2D培养板中培养原代睾丸细胞的条件[11]被重新审视并用于基线比较。正如之前所证明的[11]，在含有2%胎牛血清的Ad-DMEM&#x2F;F12培养基中，将原代睾丸细胞种植在塑料明胶涂层的培养皿上并不是维持睾丸细胞的理想条件（补充图2）。这些细胞呈现出成纤维细胞样的形态，GFP或CFP的表达非常微弱，并且没有形成支持细胞的聚集特征（补充图2A）。在培养的第1天、第4天和第7天分析几个支持细胞标志物的表达水平，与未在体外培养的P4-P7原代细胞相比，发现诸如Amh、Cyp26b1、Ptgds等基因的表达急剧下降。其他基因在培养期间的表达不稳定，与新生儿睾丸的正常表达水平不同（补充图2B）。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240310123718640.png" alt="image-20240310123718640" style="zoom: 67%;">
-
-<p>[^补充图2. 在含血清的培养基中培养的睾丸细胞。]:  (A) 来自Sox9-IRES-GFP或TESCO-CFP幼崽的睾丸细胞的明场（BF）和荧光图像。这些细胞在含2% FBS的Ad-DMEM&#x2F;F12培养基中，在0.2%明胶涂层的培养皿上培养7天。比例尺：100 μm。 (B) TESCO-CFP小鼠睾丸细胞在含血清的培养基中培养1-7天的定量PCR（qPCR）分析。数据表示为平均2−ΔΔCt值±SEM，标准化到管家基因Hprt。 *P &lt; 0.05, **P &lt; 0.01, ***P &lt; 0.001, 和 ****P &lt; 0.0001，ns - 不显著。样本量N&#x3D;3。</p>
-<p>大多数类器官系统开发并不使用含血清的培养基，而是采用组织特异性的定制培养基，这种培养基不含血清，而是包含该组织通常存在的特定生长因子[15]。因此，我们的目标是开发一种“睾丸定制培养基”（以下简称“定义培养基”），其中包含根据文献研究通常存在于睾丸中的因子（详细培养基组成见补充表1）。这种培养基包含重组人促卵泡激素（rhFSH）[26]、成纤维细胞生长因子9（FGF9）[27]、前列腺素D2（PGD2）[28, 29]、睾酮[30]和激活素A[27, 31]，所有这些因子在睾丸中都有表达并发挥关键作用。有趣的是，在定义培养基中，原代睾丸细胞在明胶涂层的培养皿上培养，与上述使用的含血清培养基相比，细胞形态完全不同（补充图3A）。细胞形成了圆形聚集体，表达CFP&#x2F;GFP，因此可以被识别为支持细胞。在聚集体下方，有细胞附着在培养皿上，形成一个类似“饲养层”的层，聚集体附着在其上（补充图3A）。尽管细胞形态发生了显著变化，但许多支持细胞标志物的基因表达，如Amh、Cyp26b1、Dhh和Shbg，与原代细胞相比仍然显著降低。其他基因，如Sox9，则更为稳定（补充图3B）。这表明，仅改变培养基，尽管有影响，但还不足以实现原代睾丸细胞的有效且持续培养。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240310124412987.png" alt="image-20240310124412987" style="zoom:67%;">
-
-<p>[^补充图3. 在睾丸定义培养基中培养的睾丸细胞。]: (A) 来自Sox9-IRES-GFP或TESCO-CFP幼崽的睾丸细胞的明场（BF）和荧光图像。这些细胞在含睾丸生长因子的定义培养基中，在0.2%明胶涂层的培养皿上培养7天，详细信息见补充表1。比例尺：100 μm。 (B) TESCO-CFP小鼠睾丸细胞在定义培养基中培养1-7天的定量PCR（qPCR）分析。数据表示为平均2−ΔΔCt值±SEM，标准化到管家基因Hprt。</p>
-<p>许多类器官系统使用基质胶作为涂层或支架系统，以支持细胞的3D培养[15]。因此，我们尝试在各种稀释的<strong>基质胶</strong>上接种原代睾丸细胞，并将其与在涂有<strong>明胶</strong>的孔中生长的细胞进行比较（补充图4A）。明场和荧光显微镜显示，细胞无法形成聚集体，CFP表达非常微弱。qPCR分析显示许多Sertoli标志物的表达较低（补充图4）。因此，在基质胶上接种不能支持培养物中的睾丸细胞生长。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240310124639390.png" alt="image-20240310124639390" style="zoom:60%;">
-
-<p>[^补充图4. 在定义培养基中，使用Geltrex涂层培养睾丸细胞。]:  (A) TESCO-CFP幼崽的睾丸细胞在各种Geltrex稀释（1:100、1:50和1:20）或0.2%明胶（gel）涂层的孔中培养的明场（BF）和荧光图像。比例尺：100 μm。 (B) TESCO-CFP小鼠睾丸细胞在定义培养基上，使用Geltrex或明胶涂层培养1-7天的定量PCR（qPCR）分析。数据表示为平均2−ΔΔCt值±SEM，标准化到管家基因Hprt。</p>
-<h4 id="使用规定的培养基在transwell插入物上培养原代睾丸细胞"><a href="#使用规定的培养基在transwell插入物上培养原代睾丸细胞" class="headerlink" title="使用规定的培养基在transwell插入物上培养原代睾丸细胞"></a><strong>使用规定的培养基在transwell插入物上培养原代睾丸细胞</strong></h4><p>由于在不同的2D培养条件下，细胞形态都显得不太理想，我们寻求一个能够更好地支持睾丸类器官形成和维持的3D培养系统。包括肾脏、肺脏、肝脏和脑部类器官在内的几个类器官系统都使用了transwell插入物[32-37]。鉴于肾脏和性腺都起源于中胚层[38]，并且它们都具有管状结构，我们探索了使用transwell插入物来生成睾丸类器官（图1A）。为此，我们在transwell插入物上播种每类器官3.5x10^5个原代睾丸细胞，并向井底添加定义好的培养基（见补充表1）。当细胞在transwell插入物上培养时，它们会遇到来自底部的培养基和来自顶部的空气之间的气液界面。非常引人注目的是，细胞形成了清晰的管状结构和非常强烈的CFP或GFP表达，持续了21天（图1B和补充图5）。为了更好地评估类器官形成的早期阶段，在接种后立即接种并连续 4 天检查类器官。播种后一天，类器官就开始压实，到第2天，它们形成了明显压实的类器官。在第 3 天和第 4 天继续进行进一步的压实（图 1C）。这些类器官可以培养长达 9 周 （D63），同时仍保持具有清晰管状结构的致密类器官形态（图 1D）。然而，在培养 9 周后，它们开始崩溃。对类器官面积的测量表明，在整个9周的培养期间，它们的大小继续增长（图1E）。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240310131622204.png" alt="image-20240310131622204" style="zoom:67%;">
-
-<p>[^补充图5. 在transwell插入物上培养的睾丸新生儿类器官。]:  (A) 来自Sox9-IRES-GFP睾丸细胞的类器官的代表性明场（BF）和荧光图像，这些类器官在transwell插入物上培养最多21天。 (B) 来自TESCO-CFP睾丸细胞的类器官的代表性明场（BF）和荧光图像，这些类器官在transwell插入物上培养最多21天。 比例尺：100 μm。</p>
-<h4 id="在transwell插入物上培养的睾丸类器官组织成管状结构，让人联想到睾丸"><a href="#在transwell插入物上培养的睾丸类器官组织成管状结构，让人联想到睾丸" class="headerlink" title="在transwell插入物上培养的睾丸类器官组织成管状结构，让人联想到睾丸"></a><strong>在transwell插入物上培养的睾丸类器官组织成管状结构，让人联想到睾丸</strong></h4><p>睾丸由两个主要部分组成：睾丸索（后来成为生精小管）和间质区域。睾丸索包含支持细胞和生殖细胞，而间质区域主要由间质细胞和PM细胞组成[5, 39]。为了探究类器官中是否所有主要的睾丸细胞类型都存在，并确定它们的空间组织，我们对培养21天（D21）的类器官进行了免疫染色，使用了各种不同细胞类型的标记物（图3A）。对整个D21类器官进行SOX9、AMH、CLD11（支持细胞）、3ßHSD（间质细胞）、DDX4（生殖细胞）和α-SMA（PM细胞）的免疫染色表明，所有主要的睾丸细胞类型在培养的第21天都在类器官中存在（图3A）。由于类器官是球形的，我们获得了整个染色类器官的多个Z层图像，生成了这些类器官与各种共染色的电影（补充视频1-6）。令人惊讶的是，类器官呈现出与体内睾丸非常相似的空间组织。支持细胞形成了许多管状结构，DDX4阳性的细胞位于支持细胞旁边和管内。显然，生殖细胞倾向于定位在管的外侧，但靠近支持细胞（图3A a-d，补充视频1）。3ßHSD阳性的间质细胞位于SOX9阳性管外的区域，对应于间质区域（图3A e-h，补充视频2）。α-SMA阳性的PM细胞位于支持细胞附近，但不太清楚它们是否确实位于管外，因为它们通常应该位于管外（图3A i-l，补充视频3）。AMH和CLD11的表达强烈，表明存在由支持细胞组成的管状结构，其中包含DDX4阳性的生殖细胞（图3A m-p，补充视频4）。</p>
-<p>为了更好地分析睾丸类器官的空间组织，并与体内睾丸进行比较，我们进行了整个D21类器官的免疫染色，并与P28睾丸的免疫染色进行了比较（D21类器官对应于P28，因为它是在P7收获的，并在体外培养了21天）（图3B）。SOX9支持细胞标记物的染色清楚地显示了管状结构的形成，类似于睾丸的管状结构。由多个Z层组成的整个类器官染色电影确认了SOX9（补充视频5）和DAPI染色（补充视频6）的管状结构形成。标记生殖细胞的DDX4表达强烈，生殖细胞似乎聚集在一起。另一方面，3ßHSD免疫染色表明位于管外，与体内睾丸相似。然而，尽管在类器官中α-SMA强烈表达，但它并没有显示出特定的管外定位，正如预期的那样（图3B）。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/getimage%20(3).jpg" alt="Popup Image" style="zoom:67%;">
-
-<h4 id="从胚胎睾丸生成睾丸类器官"><a href="#从胚胎睾丸生成睾丸类器官" class="headerlink" title="从胚胎睾丸生成睾丸类器官"></a><strong>从胚胎睾丸生成睾丸类器官</strong></h4><p>尽管从新生幼崽中生成类器官比从胚胎中更为方便，因为不需要从定时怀孕的雌性动物中采集，得到的睾丸较小，细胞数量也较少，但新生幼崽的类器官存在限制，因为许多与睾丸发育和功能障碍相关的疾病发生在胚胎阶段（DSD）。因此，为了研究DSD，我们首选从胚胎中获得的类器官。因此，我们采用了之前为新生幼崽睾丸类器官建立的同一路径，用于从胚胎性腺生成睾丸类器官。我们收集了E12.5-E14.5胚胎的睾丸，将其分离成单细胞，并在定义好的培养基中播种在transwell插入物上。由胚胎来源的睾丸细胞形成的类器官具有非常明显和清晰的管状结构，这比使用新生幼崽睾丸观察到的要清楚得多。图4A展示了在培养14天后三个不同的胚胎睾丸类器官。右侧面板显示了来自Sox9-IRES-GFP株的类器官的GFP荧光。GFP存在于管状结构中，表明这些管状结构是由支持细胞形成的（图4A）。</p>
-<p>为了更好地了解在体外培养14天的胚胎睾丸类器官，我们整个D14类器官进行了免疫染色，以标记不同性腺细胞类型的标记物（图4B）。类器官对SOX9的染色非常强烈，这些SOX9阳性的细胞形成了管状结构。TRA98，用于标记生殖细胞，也被表达，表明生殖细胞的存在。此外，3ßHSD的表达明显，主要位于SOX9阳性管状结构的外部，在间质中，正如间质细胞预期的那样（图4B）。这些数据表明，transwell系统与定义好的培养基相结合，适合形成保持大多数性腺细胞类型的胚胎和新生幼崽睾丸类器官，这些类器官在长时间内高度类似于睾丸的组成部分和结构。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/getimage%20(4).jpg" alt="Int J Biol Sci Image" style="zoom:67%;">
-
-<p>[^图4.从胚胎睾丸建立类器官培养。]: （A） 从 E12.5-E14.5 胚胎睾丸中收获并培养 14 天的类器官的代表性 BF 和荧光图像。左边的两张图片（TESCO-CFP）在规定的培养基上培养，右边的两张图片（Sox9-IRES-GFP）在未成熟的培养基上培养。比例尺，500μm。（B） 对培养 14 天的胚胎类器官中主要类型睾丸细胞的标志物进行全安装免疫染色。SOX9（支持细胞）、TRA98（淋巴细胞）、3ßHSD（间质细胞）。比例尺，100μm。</p>
-<h4 id="开发培养基组合物以支持支持细胞的未成熟和成熟状态"><a href="#开发培养基组合物以支持支持细胞的未成熟和成熟状态" class="headerlink" title="开发培养基组合物以支持支持细胞的未成熟和成熟状态"></a><strong>开发培养基组合物以支持支持细胞的未成熟和成熟状态</strong></h4><p>我们已经证明了transwell系统可以支持胚胎和新生幼崽睾丸类器官的形成，因此我们试图在这个系统中培养成熟的睾丸，这将使我们能够研究成年睾丸的疾病，比如不育症。我们从90天大的成熟睾丸中获取睾丸细胞，并在transwell插入物上进行播种。与胚胎和新生幼崽睾丸不同，成年睾丸细胞无法形成类器官（补充图6）。这与之前在3D条件下培养成年睾丸类器官的失败尝试[21]一致。作为一种替代方法，我们尝试通过修改定义好的培养基来使新生幼崽睾丸类器官成熟到成年睾丸状态。<br>在胚胎阶段，睾丸由包含生殖细胞的睾丸索组成，周围环绕着未成熟的支持细胞和周管肌样细胞。未成熟的支持细胞具有自然的增殖能力（图5A）。在青春期，生殖细胞迁移到基底膜附近并转变为精原干细胞（SSC）。支持细胞经历成熟过程，这促进了它们的极化并建立了血睾屏障。大量极化的支持细胞与不同阶段的精细胞接触，后者经历减数分裂（图5A）。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/getimage.jpg" alt="Int J Biol Sci Image" style="zoom:50%;">
-
-<p>[^图5. 不同培养基组成中新生幼崽类器官的体外成熟。]:  (A) 青春期前（左侧面）和成人睾丸（右侧面）的示意图。青春期前睾丸的睾丸索被间质中的周管肌样细胞和间质细胞环绕。生殖细胞位于索的中心，被未成熟的支持细胞所包围。青春期后和成年，生精小管被周管肌样细胞和成熟的间质细胞所环绕。此时的生殖细胞被称为精原干细胞（SSC），位于管的基底侧，靠近基底膜。随着SSC分化并经历减数分裂，它们从管的基底侧迁移到管腔侧。使用BioRender创建的示意图。 (B) 实验设计的示意图。来自P4-P7 Sox9-IRES-GFP或TESCO-CFP小鼠的原代睾丸细胞被分离成单细胞，并在transwell插入物上重新组装，并在不成熟或成熟2号培养基中培养21天。还采用了一种“过渡”方案，其中类器官在前10天在不成熟培养基中培养，然后过渡到成熟2号培养基再培养11天，总共培养21天。使用BioRender创建的示意图。 © 使用不成熟、成熟2号或过渡方案培养21天的类器官的代表性明场图像。比例尺，500 μm。 (D) 使用不成熟、成熟2号或过渡方案培养21天的类器官的面积随时间变化。数据表示为平均面积±SEM。*P &lt; 0.05, ****P &lt; 0.0001, ns - 不显著。N&#x3D;9-14。 (E) 随着时间的推移，使用不成熟、成熟2号或过渡方案培养21天的类器官中支持细胞标记物的定量PCR分析，与P5、P20和P90体内睾丸比较。数据表示为平均2-ΔΔCt值±SEM，标准化到管家基因Hprt.*P &lt; 0.05,</p>
-<p>以往的研究已经鉴定出许多分泌分子、激素和信号通路，它们支持支持细胞的幼稚（增殖）状态或成熟状态，后者建立血睾屏障并促进精子发生。维持和增强幼稚状态的因素包括FSH、类胰岛素生长因子I（IGF-1）、激活素A和FGF9。促进成熟支持细胞状态的因素包括雄激素、甲状腺激素（TH）和视黄酸（RA）[40]。基于这些因素，我们开发了三种不同的培养基配方：一种支持维持幼稚支持细胞状态（幼稚培养基），两种替代培养基促进维持成熟支持细胞状态（成熟1号和成熟2号培养基）。各种培养基配方在基于B27或Knockout血清替代物（KSR）的培养基上进行了测试（补充图7A和补充表1）。选择B27，因为它是许多类型的类器官定义培养基的基本添加物[41]，选择KSR是因为它已经被添加到几种睾丸细胞培养基中[42, 43]。所有培养基配方都与研究中使用的原始定义培养基进行了比较（含有B27，详见补充表1）。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240310142303582.png" alt="image-20240310142303582" style="zoom:67%;">
-
-<p>[^补充图7. 优化睾丸类器官幼稚和成熟状态的培养基组成。]: (A) 基于B27或KSR的培养基组成的示意图。不变的添加物用灰色标记，每种培养基添加的生长因子用黑色标记。完整的培养基配方见补充表1。使用BioRender创建的示意图。 (B) 14天在基于B27的培养基中培养的类器官中支持细胞标记物的定量PCR分析，与体内P5、P20和P90睾丸比较。数据表示为平均2-ΔΔCt值±SEM，标准化到管家基因Hprt。 *P &lt; 0.05, **P &lt; 0.01, ***P &lt; 0.001, 和 ****P &lt; 0.0001，ns - 不显著。N&#x3D;4-5。 © 14天在基于KSR的培养基中培养的类器官中支持细胞标记物的定量PCR分析，与体内P5、P20和P90睾丸比较。数据表示为平均2-ΔΔCt值±SEM，标准化到管家基因Hprt。 *P &lt; 0.05, **P &lt; 0.01, ***P &lt; 0.001, 和 ****P &lt; 0.0001，ns - 不显著。N&#x3D;4-5。 (D) 在B27和KSR基础培养基上的类器官在第7天和第14天的面积。第7天的条形图是黑色的，第14天的条形图是累积的并且阴影为灰色。数据表示为平均面积±SEM。第7天培养的成熟1号和成熟2号与幼稚型培养基的统计显著性显示。 *P &lt; 0.05, ns - 不显著。N&#x3D;5-8。</p>
-<p>为了测试各种培养基配方促进幼稚与成熟支持细胞状态的能力，使用定量PCR（qPCR）测量了在幼稚和成熟状态下表达水平不同的支持细胞标记物的表达水平。为了验证测试的标记物实际上在一种状态下比另一种状态更高地表达，首先评估了P5、P20和P90整个睾丸的表达。Amh、Gata4和Cx43在P5睾丸中的表达显著高于成人睾丸，即标记幼稚支持细胞状态，而Gata1在成人睾丸中的表达更高，标记成熟支持细胞（补充图7B-C）。Sox9在这两种状态之间没有显著变化，作为对照。分析在定义的、幼稚的或两种成熟型培养基中培养14天的类器官中Amh、Gata4和Cx43的表达水平，所有三种幼稚状态标记物的表达水平均较高，而两种成熟型培养基导致显著较低的表达水平。相比之下，分析Gata1的表达结果在两种成熟型培养基中均高于幼稚型和定义型培养基，尽管这没有统计学意义。这表明含有B27的幼稚培养基能够促进幼稚支持细胞状态，而含有B27的成熟培养基更擅长促进成熟支持细胞状态（补充图7B）。</p>
-<p>对在特定培养基（含 B27）、仅 KSR（未添加生长因子）、含 KSR 的特定 KSR、未成熟和成熟培养基中生长 14 天的类器官进行了类似的分析。与基于 B27 的未成熟培养基和成熟培养基之间观察到的各种标记物表达的变化不同，当使用基于 KSR 的培养基的不同组合时，未观察到 Amh、Gata4、Cx43 和 Gata1 的表达发生显着变化（补充图 7C）。这表明，将KSR添加到培养基中掩盖了添加到培养基中以促进不同细胞状态的生长因子的作用。</p>
-<p>接下来，我们确定了使用各种B27基础和KSR基础培养基培养14天的类器官的大小。与qPCR观察到的结果一致，幼稚型的B27基础培养基能够促进幼稚状态，导致D7和D14时类器官显著增大，而两种成熟型的B27基础培养基导致D7和D14时类器官大小减小（补充图7D，左侧）。相比之下，当类器官在KSR基础培养基上培养时，无论是在D7还是D14，类器官的大小都没有明显变化（补充图7D，右侧）。基于这些结果，我们决定继续使用<strong>B27基础培养基</strong>。<br>在体内，睾丸保持幼稚状态直到大约P15，此后过渡到成熟的Sertoli状态并开始精子发生。我们因此开发了一个方案，其中P5新生幼崽的睾丸被收获，在幼稚型培养基中培养10天（模拟P15阶段），然后转移到成熟型培养基中再培养11天，总共培养21天（图5B，“过渡状态”）。作为对照，类器官仅在幼稚型或成熟型培养基中培养21天。<br>测量了培养D7、D14和D21时类器官的大小。仅在幼稚型培养基中培养的类器官从D7到D14，从D14到D21显著增长（图5C，D）。相比之下，仅在成熟2号培养基中培养的类器官在D7到D21之间没有显示出大小增长。有趣的是，处于过渡培养基中的类器官从D7到D14显著增长，当时它们主要在幼稚型培养基中培养，然后在D14到D21之间在成熟2号培养基中培养时，没有显示出显著的大小增长（图5C-D）。</p>
-<h4 id="睾丸类器官允许SSC进入减数分裂"><a href="#睾丸类器官允许SSC进入减数分裂" class="headerlink" title="睾丸类器官允许SSC进入减数分裂"></a><strong>睾丸类器官允许SSC进入减数分裂</strong></h4><p>睾丸的主要功能之一是支持精子生成和单倍体精子的产生。精子生成是一个漫长的过程，其中二倍体精原干细胞经历减数分裂形成单倍体圆形精子原细胞，这些细胞将经历精子生成过程，产生头部前部有顶体盖的成熟精子。减数分裂的一个标志是双链断裂（DSB）的形成和姐妹染色单体之间遗传物质的配对重组[45]。为了确定类器官是否支持精原干细胞进入减数分裂，首先在定义好的培养基上培养的D21类器官被共染色，使用减数分裂标记物γH2AX，它标记DSB，以及DDX4，它标记精原干细胞和精原细胞的所有阶段。γH2AX焦点通常存在于间变型和B型精原干细胞以及前孢子母细胞到合子细胞阶段。A型精原干细胞和圆形精子原细胞也着色于γH2AX，但为均匀的核着色[46, 47]。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/getimage%20(1).jpg" alt="Int J Biol Sci Image" style="zoom:50%;">
-
-<p>[^图6. SSC在体外类器官中进入减数分裂。]:  (A) 在定义的培养基中培养的D21类器官的整体免疫染色，用γH2AX（减数分裂细胞的标记）和DDX4（标记所有生殖细胞）进行染色。比例尺：100 μm。插入图是方框区域的放大视图。 (B) 随着时间的推移，在定义的培养基中培养的睾丸类器官中Acrozin的定量PCR分析，与体内P5、P28和P90睾丸比较。数据表示为平均2-ΔΔCt值±SEM，标准化到管家基因Hprt。 在过渡培养基上培养的D7和D42类器官的整体免疫染色，用γH2AX和DDX4进行染色。白色箭头表示γH2AX和DDX4的共染色。比例尺：100 μm。 (D) 5、28、90 dpp小鼠睾丸切片的免疫染色。切片用REC8（标记减数分裂细胞中的共价复合体亚基）和DDX4（标记所有生殖细胞）进行染色。REC8表达仅在28和90 dpp的特定生精小管中，由白色箭头指示。 (E) 在过渡培养基上培养的D7、D21和D42类器官的整体免疫染色，用REC8和DDX4进行染色。白色箭头表示REC8和DDX4的共染色。比例尺：100 μm。</p>
-<p>图6A表明，一些DDX4阳性细胞也是γH2AX阳性，提示细胞可能在类器官内体外进入减数分裂。减数分裂存在的另一个迹象来自Acrosin的表达分析，Acrosin是一种仅在成熟精子头部顶体中表达的基因。虽然P4-P7睾丸在任何阶段都不显示Acrosin表达，因为减数分裂尚未开始，但P28和P90睾丸显示出非常高的Acrosin表达水平（图6B）。有趣的是，体外睾丸类器官表现出低水平的Acrosin表达，主要在D21-D42阶段。虽然这种表达水平与体内睾丸相比非常低，但其时间依赖性的存在可能表明在类器官培养的后期阶段存在少量完全成熟的精子（图6B）。接下来，我们分析了是否D7和D42类器官，在过渡培养基上培养，也呈现DDX4和γH2AX的共染色。如图6C所示，尽管D7类器官中只有少数细胞呈现共染色，但在D42类器官中许多细胞呈现共染色。</p>
-<p>γH2AX可以标记精原细胞，但它也可以标记具有DSB的细胞，因此，为了验证类器官中的SSC确实进入了减数分裂，我们分析了REC8的存在，REC8是共价复合体的一个亚基，它在减数分裂期间发挥作用[48, 49]。我们首先用REC8和DDX4染色5、28和90天大的睾丸切片。如预期，5天大的睾丸切片中没有REC8表达，但在28和90天大的睾丸切片中的特定生精小管中可以看到大量的REC8，这确认了抗体的特异性（图6D）。接下来，我们在过渡培养基中培养的D7、D21和D42类器官上进行了整个染色，使用REC8和DDX4。虽然在D7类器官中没有重叠，但在D21和D42类器官中可以看到双阳性细胞。总的来说，这些发现表明体外类器官培养可以支持SSC进入减数分裂，其中一些甚至可能完成精子发生并形成含有ACROSIN的精子头。</p>
-<hr>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ol>
-<li><p>Wilhelm D, Palmer S, Koopman P. <strong>Sex determination and gonadal development in mammals</strong>. <em>Physiol Rev.</em> 2007;<strong>87</strong>:1-28</p>
-</li>
-<li><p>Rotgers E, Jorgensen A, Yao HH. <strong>At the Crossroads of Fate-Somatic Cell Lineage Specification in the Fetal Gonad</strong>. <em>Endocr Rev.</em> 2018;<strong>39</strong>:739-59</p>
-</li>
-<li><p>Nef S, Stevant I, Greenfield A. <strong>Characterizing the bipotential mammalian gonad</strong>. <em>Curr Top Dev Biol.</em> 2019;<strong>134</strong>:167-94</p>
-</li>
-<li><p>Gonen N, Lovell-Badge R. <strong>The regulation of Sox9 expression in the gonad</strong>. <em>Curr Top Dev Biol.</em> 2019;<strong>134</strong>:223-52</p>
-</li>
-<li><p>Maatouk DM, Capel B. <strong>Sexual development of the soma in the mouse</strong>. <em>Curr Top Dev Biol.</em> 2008;<strong>83</strong>:151-83</p>
-</li>
-<li><p>Fayomi AP, Orwig KE. <strong>Spermatogonial stem cells and spermatogenesis in mice, monkeys and men</strong>. <em>Stem Cell Res.</em> 2018;<strong>29</strong>:207-14</p>
-</li>
-<li><p>Bashamboo A, Eozenou C, Rojo S, McElreavey K. <strong>Anomalies in human sex determination provide unique insights into the complex genetic interactions of early gonad development</strong>. <em>Clin Genet.</em> 2017;<strong>91</strong>:143-56</p>
-</li>
-<li><p>Delot EC, Vilain E. <strong>Towards improved genetic diagnosis of human differences of sex development</strong>. <em>Nat Rev Genet.</em> 2021;<strong>22</strong>:588-602</p>
-</li>
-<li><p>Organization WH. <strong>Infertility prevalence estimates, 1990-2021</strong>. <em>Licence: CC BY-NC-SA 30 IGO.</em> 2023</p>
-</li>
-<li><p>Tuttelmann F, Ruckert C, Ropke A. <strong>Disorders of spermatogenesis: Perspectives for novel genetic diagnostics after 20 years of unchanged routine</strong>. <em>Med Genet.</em> 2018;<strong>30</strong>:12-20</p>
-</li>
-<li><p>Buganim Y, Itskovich E, Hu YC, Cheng AW, Ganz K, Sarkar S. <em>et al</em>. <strong>Direct reprogramming of fibroblasts into embryonic Sertoli-like cells by defined factors</strong>. <em>Cell Stem Cell.</em> 2012;<strong>11</strong>:373-86</p>
-</li>
-<li><p>Beverdam A, Wilhelm D, Koopman P. <strong>Molecular characterization of three gonad cell lines</strong>. <em>Cytogenet Genome Res.</em> 2003;<strong>101</strong>:242-9</p>
-</li>
-<li><p>Bashamboo A, Eozenou C, Jorgensen A, Bignon-Topalovic J, Siffroi JP, Hyon C. <em>et al</em>. <strong>Loss of Function of the Nuclear Receptor NR2F2, Encoding COUP-TF2, Causes Testis Development and Cardiac Defects in 46,XX Children</strong>. <em>Am J Hum Genet.</em> 2018;<strong>102</strong>:487-93</p>
-</li>
-<li><p>Miyado M, Inui M, Igarashi M, Katoh-Fukui Y, Takasawa K, Hakoda A. <em>et al</em>. <strong>The p.R92W variant of NR5A1&#x2F;Nr5a1 induces testicular development of 46,XX gonads in humans, but not in mice: phenotypic comparison of human patients and mutation-induced mice</strong>. <em>Biol Sex Differ.</em> 2016;<strong>7</strong>:56</p>
-</li>
-<li><p>Lancaster MA, Knoblich JA. <strong>Organogenesis in a dish: modeling development and disease using organoid technologies</strong>. <em>Science.</em> 2014;<strong>345</strong>:1247125</p>
-</li>
-<li><p>Lara N, Sakib S, Dobrinski I. <strong>Regulation of Cell Types Within Testicular Organoids</strong>. <em>Endocrinology.</em> 2021 162</p>
-</li>
-<li><p>Oliver E, Stukenborg JB. <strong>Rebuilding the human testis in vitro</strong>. <em>Andrology.</em> 2020;<strong>8</strong>:825-34</p>
-</li>
-<li><p>AbuMadighem A, Shuchat S, Lunenfeld E, Yossifon G, Huleihel M. <strong>Testis on a chip-a microfluidic three-dimensional culture system for the development of spermatogenesisin-vitro</strong>. <em>Biofabrication.</em> 2022 14</p>
-</li>
-<li><p>Alves-Lopes JP, Soder O, Stukenborg JB. <strong>Testicular organoid generation by a novel in vitro three-layer gradient system</strong>. <em>Biomaterials.</em> 2017;<strong>130</strong>:76-89</p>
-</li>
-<li><p>Baert Y, De Kock J, Alves-Lopes JP, Soder O, Stukenborg JB, Goossens E. <strong>Primary Human Testicular Cells Self-Organize into Organoids with Testicular Properties</strong>. <em>Stem Cell Reports.</em> 2017;<strong>8</strong>:30-8</p>
-</li>
-<li><p>Edmonds ME, Woodruff TK. <strong>Testicular organoid formation is a property of immature somatic cells, which self-assemble and exhibit long-term hormone-responsive endocrine function</strong>. <em>Biofabrication.</em> 2020;<strong>12</strong>:045002</p>
-</li>
-<li><p>Sakib S, Uchida A, Valenzuela-Leon P, Yu Y, Valli-Pulaski H, Orwig K. <em>et al</em>. <strong>Formation of organotypic testicular organoids in microwell culturedagger</strong>. <em>Biol Reprod.</em> 2019;<strong>100</strong>:1648-60</p>
-</li>
-<li><p>Rezaei Topraggaleh T, Rezazadeh Valojerdi M, Montazeri L, Baharvand H. <strong>A testis-derived macroporous 3D scaffold as a platform for the generation of mouse testicular organoids</strong>. <em>Biomater Sci.</em> 2019;<strong>7</strong>:1422-36</p>
-</li>
-<li><p>Sekido R, Lovell-Badge R. <strong>Sex determination involves synergistic action of SRY and SF1 on a specific Sox9 enhancer</strong>. <em>Nature.</em> 2008;<strong>453</strong>:930-4</p>
-</li>
-<li><p>Furuyama K, Kawaguchi Y, Akiyama H, Horiguchi M, Kodama S, Kuhara T. <em>et al</em>. <strong>Continuous cell supply from a Sox9-expressing progenitor zone in adult liver, exocrine pancreas and intestine</strong>. <em>Nat Genet.</em> 2011;<strong>43</strong>:34-41</p>
-</li>
-<li><p>Buzzard JJ, Wreford NG, Morrison JR. <strong>Marked extension of proliferation of rat Sertoli cells in culture using recombinant human FSH</strong>. <em>Reproduction.</em> 2002;<strong>124</strong>:633-41</p>
-</li>
-<li><p>Gustin SE, Stringer JM, Hogg K, Sinclair AH, Western PS. <strong>FGF9, activin and TGFbeta promote testicular characteristics in an XX gonad organ culture model</strong>. <em>Reproduction.</em> 2016;<strong>152</strong>:529-43</p>
-</li>
-<li><p>Wilhelm D, Martinson F, Bradford S, Wilson MJ, Combes AN, Beverdam A. <em>et al</em>. <strong>Sertoli cell differentiation is induced both cell-autonomously and through prostaglandin signaling during mammalian sex determination</strong>. <em>Dev Biol.</em> 2005;<strong>287</strong>:111-24</p>
-</li>
-<li><p>Malki S, Nef S, Notarnicola C, Thevenet L, Gasca S, Mejean C. <em>et al</em>. <strong>Prostaglandin D2 induces nuclear import of the sex-determining factor SOX9 via its cAMP-PKA phosphorylation</strong>. <em>EMBO J.</em> 2005;<strong>24</strong>:1798-809</p>
-</li>
-<li><p>Buzzard JJ, Wreford NG, Morrison JR. <strong>Thyroid hormone, retinoic acid, and testosterone suppress proliferation and induce markers of differentiation in cultured rat sertoli cells</strong>. <em>Endocrinology.</em> 2003;<strong>144</strong>:3722-31</p>
-</li>
-<li><p>Buzzard JJ, Farnworth PG, De Kretser DM, O’Connor AE, Wreford NG, Morrison JR. <strong>Proliferative phase sertoli cells display a developmentally regulated response to activin in vitro</strong>. <em>Endocrinology.</em> 2003;<strong>144</strong>:474-83</p>
-</li>
-<li><p>Takasato M, Er PX, Chiu HS, Little MH. <strong>Generation of kidney organoids from human pluripotent stem cells</strong>. <em>Nat Protoc.</em> 2016;<strong>11</strong>:1681-92</p>
-</li>
-<li><p>Takasato M, Er PX, Chiu HS, Maier B, Baillie GJ, Ferguson C. <em>et al</em>. <strong>Kidney organoids from human iPS cells contain multiple lineages and model human nephrogenesis</strong>. <em>Nature.</em> 2015;<strong>526</strong>:564-8</p>
-</li>
-<li><p>Sontheimer-Phelps A, Hassell BA, Ingber DE. <strong>Modelling cancer in microfluidic human organs-on-chips</strong>. <em>Nat Rev Cancer.</em> 2019;<strong>19</strong>:65-81</p>
-</li>
-<li><p>Fedele G, Cazzaniga A, Castiglioni S, Locatelli L, Tosoni A, Nebuloni M, Maier JAM. <strong>The presence of BBB hastens neuronal differentiation of cerebral organoids - The potential role of endothelial derived BDNF</strong>. <em>Biochem Biophys Res Commun.</em> 2022;<strong>626</strong>:30-7</p>
-</li>
-<li><p>Zhao F, Wang J, Wang Q, Hou Z, Zhang Y, Li X. <em>et al</em>. <strong>Organoid technology and lung injury mouse models evaluating effects of hydroxychloroquine on lung epithelial regeneration</strong>. <em>Exp Anim.</em> 2022;<strong>71</strong>:316-28</p>
-</li>
-<li><p>Li P, Li Y, Wang Y, Liu J, Lavrijsen M, Li Y. <em>et al</em>. <strong>Recapitulating hepatitis E virus-host interactions and facilitating antiviral drug discovery in human liver-derived organoids</strong>. <em>Sci Adv.</em> 2022;<strong>8</strong>:eabj5908</p>
-</li>
-<li><p>Capel B. <strong>The role of Sry in cellular events underlying mammalian sex determination</strong>. <em>Curr Top Dev Biol.</em> 1996;<strong>32</strong>:1-37</p>
-</li>
-<li><p>Stevant I, Nef S. <strong>Genetic Control of Gonadal Sex Determination and Development</strong>. <em>Trends Genet.</em> 2019;<strong>35</strong>:346-58</p>
-</li>
-<li><p>Meroni SB, Galardo MN, Rindone G, Gorga A, Riera MF, Cigorraga SB. <strong>Molecular Mechanisms and Signaling Pathways Involved in Sertoli Cell Proliferation</strong>. <em>Front Endocrinol (Lausanne).</em> 2019;<strong>10</strong>:224</p>
-</li>
-<li><p>Huch M, Dorrell C, Boj SF, van Es JH, Li VS, van de Wetering M. <em>et al</em>. <strong>In vitro expansion of single Lgr5+ liver stem cells induced by Wnt-driven regeneration</strong>. <em>Nature.</em> 2013;<strong>494</strong>:247-50</p>
-</li>
-<li><p>Fayaz MA, Honaramooz A. <strong>Culture media and supplements affect proliferation, colony-formation, and potency of porcine male germ cells</strong>. <em>Theriogenology.</em> 2022;<strong>187</strong>:227-37</p>
-</li>
-<li><p>Gholami K, Pourmand G, Koruji M, Sadighigilani M, Navid S, Izadyar F, Abbasi M. <strong>Efficiency of colony formation and differentiation of human spermatogenic cells in two different culture systems</strong>. <em>Reprod Biol.</em> 2018;<strong>18</strong>:397-403</p>
-</li>
-<li><p>Sararols P, Stevant I, Neirijnck Y, Rebourcet D, Darbey A, Curley MK. <em>et al</em>. <strong>Specific Transcriptomic Signatures and Dual Regulation of Steroidogenesis Between Fetal and Adult Mouse Leydig Cells</strong>. <em>Front Cell Dev Biol.</em> 2021;<strong>9</strong>:695546</p>
-</li>
-<li><p>Murakami H, Keeney S. <strong>Regulating the formation of DNA double-strand breaks in meiosis</strong>. <em>Genes Dev.</em> 2008;<strong>22</strong>:286-92</p>
-</li>
-<li><p>Hamer G, Roepers-Gajadien HL, van Duyn-Goedhart A, Gademan IS, Kal HB, van Buul PP, de Rooij DG. <strong>DNA double-strand breaks and gamma-H2AX signaling in the testis</strong>. <em>Biol Reprod.</em> 2003;<strong>68</strong>:628-34</p>
-</li>
-<li><p>Tadokoro Y, Yomogida K, Yagura Y, Yamada S, Okabe M, Nishimune Y. <strong>Characterization of histone H2A.X expression in testis and specific labeling of germ cells at the commitment stage of meiosis with histone H2A.X promoter-enhanced green fluorescent protein transgene</strong>. <em>Biol Reprod.</em> 2003;<strong>69</strong>:1325-9</p>
-</li>
-<li><p>Bannister LA, Reinholdt LG, Munroe RJ, Schimenti JC. <strong>Positional cloning and characterization of mouse mei8, a disrupted allelle of the meiotic cohesin Rec8</strong>. <em>Genesis.</em> 2004;<strong>40</strong>:184-94</p>
-</li>
-<li><p>Biswas U, Hempel K, Llano E, Pendas A, Jessberger R. <strong>Distinct Roles of Meiosis-Specific Cohesin Complexes in Mammalian Spermatogenesis</strong>. <em>PLoS Genet.</em> 2016;<strong>12</strong>:e1006389</p>
-</li>
-<li><p>Franca LR, Hess RA, Dufour JM, Hofmann MC, Griswold MD. <strong>The Sertoli cell: one hundred fifty years of beauty and plasticity</strong>. <em>Andrology.</em> 2016;<strong>4</strong>:189-212</p>
-</li>
-<li><p>Cool J, DeFalco TJ, Capel B. <strong>Vascular-mesenchymal cross-talk through Vegf and Pdgf drives organ patterning</strong>. <em>Proc Natl Acad Sci U S A.</em> 2011;<strong>108</strong>:167-72</p>
-</li>
-<li><p>Potter SJ, DeFalco T. <strong>Role of the testis interstitial compartment in spermatogonial stem cell function</strong>. <em>Reproduction.</em> 2017;<strong>153</strong>:R151-R62</p>
-</li>
-<li><p>Low JH, Li P, Chew EGY, Zhou B, Suzuki K, Zhang T. <em>et al</em>. <strong>Generation of Human PSC-Derived Kidney Organoids with Patterned Nephron Segments and a De Novo Vascular Network</strong>. <em>Cell Stem Cell.</em> 2019;<strong>25</strong>:373-87 e9</p>
-</li>
-<li><p>Pham MT, Pollock KM, Rose MD, Cary WA, Stewart HR, Zhou P. <em>et al</em>. <strong>Generation of human vascularized brain organoids</strong>. <em>Neuroreport.</em> 2018;<strong>29</strong>:588-93</p>
-</li>
-<li><p>Oakberg EF. <strong>Duration of spermatogenesis in the mouse and timing of stages of the cycle of the seminiferous epithelium</strong>. <em>Am J Anat.</em> 1956;<strong>99</strong>:507-16</p>
-</li>
-<li><p>Hogg K, Western PS. <strong>Differentiation of Fetal Male Germline and Gonadal Progenitor Cells Is Disrupted in Organ Cultures Containing Knockout Serum Replacement</strong>. <em>Stem Cells Dev.</em> 2015;<strong>24</strong>:2899-911</p>
-</li>
-<li><p>Clevers H. <strong>Modeling Development and Disease with Organoids</strong>. <em>Cell.</em> 2016;<strong>165</strong>:1586-97</p>
-</li>
-<li><p>Hayashi K, Ohta H, Kurimoto K, Aramaki S, Saitou M. <strong>Reconstitution of the mouse germ cell specification pathway in culture by pluripotent stem cells</strong>. <em>Cell.</em> 2011;<strong>146</strong>:519-32</p>
-</li>
-<li><p>Hayashi K, Saitou M. <strong>Generation of eggs from mouse embryonic stem cells and induced pluripotent stem cells</strong>. <em>Nat Protoc.</em> 2013;<strong>8</strong>:1513-24</p>
-</li>
-<li><p>Gonen N, Eozenou C, Mitter R, Elzaiat M, Stevant I, Aviram R. <em>et al</em>. <strong>In vitro cellular reprogramming to model gonad development and its disorders</strong>. <em>Sci Adv.</em> 2023;<strong>9</strong>:eabn9793</p>
-</li>
-<li><p>Knarston IM, Pachernegg S, Robevska G, Ghobrial I, Er PX, Georges E. <em>et al</em>. <strong>An In Vitro Differentiation Protocol for Human Embryonic Bipotential Gonad and Testis Cell Development</strong>. <em>Stem Cell Reports.</em> 2020;<strong>15</strong>:1377-91</p>
-</li>
-<li><p>Yoshino T, Suzuki T, Nagamatsu G, Yabukami H, Ikegaya M, Kishima M. <em>et al</em>. <strong>Generation of ovarian follicles from mouse pluripotent stem cells</strong>. <em>Science.</em> 2021;<strong>373</strong>:eabe0237</p>
-</li>
-<li><p>Mottram R, Feltbower R, Hayden C, Lane S, Mitchell R, Anderson R, Glaser A. <strong>Fertility and reproductive health after ovarian and testicular tissue storage: The United Kingdom Registry Study of young people (UKSTORE)</strong>. <em>Archives of Disease in Childhood.</em> 2023;<strong>108</strong>:A288-A9</p>
-</li>
-<li><p>Strange DP, Zarandi NP, Trivedi G, Atala A, Bishop CE, Sadri-Ardekani H, Verma S. <strong>Human testicular organoid system as a novel tool to study Zika virus pathogenesis</strong>. <em>Emerg Microbes Infect.</em> 2018;<strong>7</strong>:82</p>
-</li>
-<li><p>Saitou M, Miyauchi H. <strong>Gametogenesis from Pluripotent Stem Cells</strong>. <em>Cell Stem Cell.</em> 2016;<strong>18</strong>:721-35</p>
-</li>
-</ol>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Paper</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/03/10/%E8%BF%88%E5%90%91%E5%9F%B9%E5%85%BB%E7%9A%BF%E4%B8%AD%E7%9A%84%E7%9D%BE%E4%B8%B8%EF%BC%9A%E7%94%9F%E6%88%90%E6%A6%82%E6%8B%AC%E7%9D%BE%E4%B8%B8%E7%BB%93%E6%9E%84%E5%92%8C%E8%A1%A8%E8%BE%BE%E8%B0%B1%E7%9A%84%E5%B0%8F%E9%BC%A0%E7%9D%BE%E4%B8%B8%E7%B1%BB%E5%99%A8%E5%AE%98/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
