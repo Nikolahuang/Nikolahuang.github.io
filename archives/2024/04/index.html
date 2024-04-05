@@ -6,24 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://nikolahuang.github.io">
-  <title>组织特异性富集分析 | Anderson Blog</title>
+  <title>Archives: 2024/4 | Anderson Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="1.什么是基因的组织特异性富集分析? 几个核心的问题1.什么是基因的组织特异性富集分析? 2.如何定义组织特异性表达基因? 3.teEnrichment函数进行组织特异性表达富集分析 4.同源基因富集分析，即用人类基因在小鼠表达数据中做富集分析 5.teGeneRetrieval函数::鉴定组织特异性基因  1.什么是基因的组织特异性富集分析?假设你有一堆RNA-seq找到的差异基因，或者通过基因">
-<meta property="og:type" content="article">
-<meta property="og:title" content="组织特异性富集分析">
-<meta property="og:url" content="http://nikolahuang.github.io/2024/03/21/%E7%BB%84%E7%BB%87%E7%89%B9%E5%BC%82%E6%80%A7%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Anderson Blog">
+<meta property="og:url" content="http://nikolahuang.github.io/archives/2024/04/index.html">
 <meta property="og:site_name" content="Anderson Blog">
-<meta property="og:description" content="1.什么是基因的组织特异性富集分析? 几个核心的问题1.什么是基因的组织特异性富集分析? 2.如何定义组织特异性表达基因? 3.teEnrichment函数进行组织特异性表达富集分析 4.同源基因富集分析，即用人类基因在小鼠表达数据中做富集分析 5.teGeneRetrieval函数::鉴定组织特异性基因  1.什么是基因的组织特异性富集分析?假设你有一堆RNA-seq找到的差异基因，或者通过基因">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://nikolahuang.github.io/%E7%BB%84%E7%BB%87%E7%89%B9%E5%BC%82%E6%80%A7%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90.assets/image-20240322105833354.png">
-<meta property="article:published_time" content="2024-03-21T02:26:21.000Z">
-<meta property="article:modified_time" content="2024-03-23T10:50:56.844Z">
 <meta property="article:author" content="Anderson">
-<meta property="article:tag" content="BioInfo">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://nikolahuang.github.io/%E7%BB%84%E7%BB%87%E7%89%B9%E5%BC%82%E6%80%A7%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90.assets/image-20240322105833354.png">
   
     <link rel="alternative" href="/atom.xml" title="Anderson Blog" type="application/atom+xml">
   
@@ -226,283 +219,65 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-组织特异性富集分析" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
+            
+  
+  
     
-      <header class="article-header">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2024" class="archive-year">2024</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	
+<a href="/2024/04/05/%E4%BB%A3%E8%B0%A2%E7%BB%84%E5%AD%A6%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/" class="archive-article-date">
+        <time datetime="2024-04-05T15:17:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-04-05</time>
+</a>
+
+        </div>
+    	 
   
+    <h1 itemprop="name">
+	
+	  <a class="archive-article-title" href="/2024/04/05/%E4%BB%A3%E8%B0%A2%E7%BB%84%E5%AD%A6%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/" target="_blank">代谢组学数据分析基本知识</a>
   
-    <h1 class="article-title" itemprop="name">
-      组织特异性富集分析
     </h1>
   
 
 
-  
-  
-        
-        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
-              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
-        </span>
-
-<a href="/2024/03/21/%E7%BB%84%E7%BB%87%E7%89%B9%E5%BC%82%E6%80%A7%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/" class="archive-article-date">
-        <time datetime="2024-03-21T02:26:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-21</time>
-</a>
-
-  
-  
-    
-<div style="margin-top:10px;">
-  <span class="post-time">
-    <span class="post-meta-item-icon">
-      <!-- fonts.scss -->
-      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
-      <i class="icon-statistics"></i>
-      <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.1k字</span>
-    </span>
-  </span>
-
-  <span class="post-time">
-    &nbsp; | &nbsp;
-    <span class="post-meta-item-icon">
-      <i class="icon-book icon"></i>
-      <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">4分</span>
-    </span>
-  </span>
-</div>
-
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>1.什么是基因的组织特异性富集分析?</p>
-<h2 id="几个核心的问题"><a href="#几个核心的问题" class="headerlink" title="几个核心的问题"></a>几个核心的问题</h2><p>1.什么是基因的组织特异性富集分析?</p>
-<p>2.如何定义组织特异性表达基因?</p>
-<p>3.teEnrichment函数进行组织特异性表达富集分析</p>
-<p>4.同源基因富集分析，即用人类基因在小鼠表达数据中做富集分析</p>
-<p>5.teGeneRetrieval函数::鉴定组织特异性基因</p>
-<hr>
-<h3 id="1-什么是基因的组织特异性富集分析"><a href="#1-什么是基因的组织特异性富集分析" class="headerlink" title="1.什么是基因的组织特异性富集分析?"></a>1.什么是基因的组织特异性富集分析?</h3><p>假设你有一堆RNA-seq找到的差异基因，或者通过基因共表达模块找到一堆基因，或GWAS显著性位点附近的基因，想看这些基因是否在目标组织中特异性高表达，以此来解释自己数据的生物学意义，该怎么办呢?</p>
-<p>这里推荐一个R包: TissueEnrich package。这个R包收集了三大常用的表达数据库(the Human Protein Atlas(HPA)、 GTEx、mouse ENCODE)的表达数据，使用超几何分布对输入的基因进行富集分析，并提供富集分析后的图表，非常方便</p>
-<p>它主要有三个函数:<br><strong>teEnrichment:</strong> 输入基因集，使用组织特异性基因来计算组织特异性富集情况<br><strong>teGeneRetrieva1:</strong> 输入不同组织的基因表达量，使用HPA database的算法来寻找组织特异性基因<strong>teEnrichmentcustom:</strong> 自定义输入基因集和组织特异性基因，计算组织特异性富集情况</p>
-<p><strong>关于该包使用的表达数据库的简介:</strong><br>HPA Dataset: RNA-Seg data across 35 human tissues (Uhlén et al. 2015).GTEx Dataset: RNA-Seg data across 29 human tissues (Ardlie et al. 2015)Mouse ENCODE Dataset: RNA-Seg data across 17 mouse tissues (Shen et al. 2012)<br>在使用teEnrichment函数的时候，可以用数字指定使用的数据库:</p>
-<ol>
-<li>for “Human Protein Atlas”(default)</li>
-<li>for “GTEx”</li>
-<li>for “Mouse ENCODE”</li>
-</ol>
-<p><strong>注意:</strong><br>以E开头的组织都是胚胎期的数据，比如E14.5-Placenta表示从胚胎第14.5天分离出的胎盘组织<br>输入基因集可以包含 Ensembl ID(ENSEMBLIdentifier ()或 Gene Symbols (SymbolIdentifier ())(使用输GeneSet 对象中的 generIdType 参数指定)。</p>
-<hr>
-<h3 id="2-如何定义组织特异性表达基因"><a href="#2-如何定义组织特异性表达基因" class="headerlink" title="2.如何定义组织特异性表达基因?"></a>2.如何定义组织特异性表达基因?</h3><p>这个包定义组织特异性表达基因用的算法来自 HPA 数据库，具体定义如下: Tissue Enriched: 表达水平大于1(TPM 或 FPKM的值)的基因，与所有其他组织相比，在特定组织中的表达水平至少高出5倍。<br><strong>Group Enriched:</strong>   表达水平大于1 (TPM 或 FPKM)的基因，与所有其他组织相比，在2-7组织中具有至少5倍的高表达水平，并且不被认为是组织富集的。<br><strong>Tissue Enhanced:</strong>  表达水平大于1 (TPM 或 FPKM)的基因，与所有其他组织中的平均水平相比，其在特定组织中的表达水平也至少高出5倍，并且不被认为是组织富集或组集的。<br>teEnrichment函数中，可以设置参数tissueSpecificGeneType的值来选择模式:</p>
-<ol>
-<li>for “All”(default)</li>
-<li>for “Tissue-Enriched”</li>
-<li>for “Tissue-Enhanced’</li>
-<li>for “Group-Enriched”</li>
-</ol>
-<h3 id="3-teEnrichment函数进行组织特异性表达富集分析"><a href="#3-teEnrichment函数进行组织特异性表达富集分析" class="headerlink" title="3.teEnrichment函数进行组织特异性表达富集分析"></a>3.teEnrichment函数进行组织特异性表达富集分析</h3><p>首先运行下面的代码安装R包:</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">install.packages<span class="punctuation">(</span><span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;dplyr&quot;</span><span class="punctuation">,</span><span class="string">&quot;ensurer&quot;</span><span class="punctuation">,</span><span class="string">&quot;ggplot2&quot;</span><span class="punctuation">,</span><span class="string">&quot;tidyr&quot;</span><span class="punctuation">,</span><span class="string">&quot;devtools&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">BiocManager<span class="operator">::</span>install<span class="punctuation">(</span><span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;SummarizedExperiment&quot;</span><span class="punctuation">,</span><span class="string">&quot;GSEABase&quot;</span><span class="punctuation">)</span><span class="punctuation">,</span>force <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">devtools<span class="operator">::</span>install_github<span class="punctuation">(</span><span class="string">&quot;Tuteja-Lab/TissueEnrich&quot;</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">library<span class="punctuation">(</span>TissueEnrich<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p>这里我们输入的基因集来自单细胞 RNA-Seq(植入前发育的第5,6和7天对人囊胚进行单细胞测序)鉴定出的滋养外胚层(TE)特异性基因。使用差异基因表达分析发现了100个 TE 特异性基因。</p>
-<p>我们以这100个基因作为输入基因集，利用 HPA 数据集定义的组织特异性基因进行组织特异性基因富集。</p>
-<p>output输出的是list对象，list1是 SummarizedExperiment 对象，存储富集分析后的结果</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">genes<span class="operator">&lt;-</span>system.file<span class="punctuation">(</span><span class="string">&quot;extdata&quot;</span><span class="punctuation">,</span><span class="string">&quot;inputGenes.txt&quot;</span><span class="punctuation">,</span>package <span class="operator">=</span><span class="string">&quot;TissueEnrich&quot;</span><span class="punctuation">)</span></span><br><span class="line">inputGenes<span class="operator">&lt;-</span>scan<span class="punctuation">(</span>genes<span class="punctuation">,</span>character<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">dim</span><span class="punctuation">(</span>inputGenes<span class="punctuation">)</span>;head<span class="punctuation">(</span>inputGenes<span class="punctuation">)</span></span><br><span class="line">gs<span class="operator">&lt;-</span>GeneSet<span class="punctuation">(</span>geneIds<span class="operator">=</span>inputGenes<span class="punctuation">,</span></span><br><span class="line">            organism<span class="operator">=</span><span class="string">&quot;HomoSapiens&quot;</span><span class="punctuation">,</span></span><br><span class="line">            geneIdType<span class="operator">=</span>SymbolIdentifier<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">output<span class="operator">&lt;-</span>teEnrichment<span class="punctuation">(</span>inputGenes <span class="operator">=</span> gs<span class="punctuation">)</span></span><br><span class="line">seEnrichmentOutput<span class="operator">&lt;-</span>output<span class="punctuation">[[</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">]</span></span><br><span class="line">enrichmentOutput<span class="operator">&lt;-</span>setNames<span class="punctuation">(</span>data.frame<span class="punctuation">(</span>assay<span class="punctuation">(</span>seEnrichmentOutput<span class="punctuation">)</span><span class="punctuation">,</span>row.names <span class="operator">=</span>rowData<span class="punctuation">(</span>seEnrichmentOutput<span class="punctuation">)</span><span class="punctuation">[</span><span class="punctuation">,</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="punctuation">,</span>colData<span class="punctuation">(</span>seEnrichmentOutput<span class="punctuation">)</span><span class="punctuation">[</span><span class="punctuation">,</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">enrichmentOutput<span class="operator">$</span>Tissue<span class="operator">&lt;-</span>row.names<span class="punctuation">(</span>enrichmentOutput<span class="punctuation">)</span></span><br><span class="line">head<span class="punctuation">(</span>enrichmentOutput<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/%E7%BB%84%E7%BB%87%E7%89%B9%E5%BC%82%E6%80%A7%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90.assets/image-20240322105833354.png" alt="image-20240322105833354"></p>
-<p>柱形图展示组织特异性基因表达情况，用P值来衡量。</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>enrichmentOutput<span class="punctuation">,</span></span><br><span class="line">       aes<span class="punctuation">(</span>x<span class="operator">=</span>reorder<span class="punctuation">(</span>Tissue<span class="punctuation">,</span><span class="operator">-</span>Log10PValue<span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">           y<span class="operator">=</span>Log10PValue<span class="punctuation">,</span></span><br><span class="line">           Label <span class="operator">=</span>Tissue.Specific.Genes<span class="punctuation">,</span></span><br><span class="line">           fill <span class="operator">=</span>Tissue<span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">+</span>geom bar<span class="punctuation">(</span>stat<span class="operator">=</span><span class="string">&#x27;identity&#x27;</span><span class="punctuation">)</span><span class="operator">+</span>labs<span class="punctuation">(</span>x<span class="operator">=</span><span class="string">&#x27;&#x27;</span>，y<span class="operator">=</span><span class="string">&#x27;-L0G10(P-Adjusted)&#x27;</span><span class="punctuation">)</span><span class="operator">+</span></span><br><span class="line">theme_bw<span class="punctuation">(</span><span class="punctuation">)</span><span class="operator">+</span>theme<span class="punctuation">(</span>legend.position<span class="operator">=</span><span class="string">&quot;none&quot;</span><span class="punctuation">)</span><span class="operator">+</span>theme<span class="punctuation">(</span>plot.title <span class="operator">=</span>element text<span class="punctuation">(</span>hjust <span class="operator">=</span><span class="number">0.5</span><span class="punctuation">,</span>size <span class="operator">=</span> <span class="number">20</span><span class="punctuation">)</span><span class="punctuation">,</span>axis.title <span class="operator">=</span>element_text<span class="punctuation">(</span>size<span class="operator">=</span><span class="number">15</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">+</span></span><br><span class="line">theme<span class="punctuation">(</span>axis.text.x<span class="operator">=</span> element_text<span class="punctuation">(</span>angle <span class="operator">=</span> <span class="number">45</span><span class="punctuation">,</span>vjust <span class="operator">=</span> <span class="number">1</span><span class="punctuation">,</span>hjust <span class="operator">=</span> <span class="number">1</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">      panel.grid.majorelement_blank<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">      panel.grid.minor <span class="operator">=</span>element_blank<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">BioInfo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">多组学数据分析</a>
         		</li>
       		
 		</ul>
 	</div>
 
-    
+          
 
-    
-
-    
-    
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a> -->
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://nikolahuang.github.io/2024/03/21/%E7%BB%84%E7%BB%87%E7%89%B9%E5%BC%82%E6%80%A7%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/" alt="微信分享二维码"> -->
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-
-    
-    <div class="clearfix"></div>
-  </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-
-<nav id="article-nav">
-  
-    <a href="/2024/03/21/Protocols/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          E.Z.N.A.® Endo-Free Plasmid DNA Mini Kit Protocols(中文版)
-        
-      </div>
-    </a>
   
   
-    <a href="/2024/03/20/PCR%E5%8E%9F%E7%90%86%E5%92%8C%E5%8E%9F%E5%88%99/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">touch-down PCR原理和原则</div>
-      <i class="icon-circle-right"></i>
-    </a>
+    </div></section>
   
-</nav>
 
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-<div id="SOHUCS" sid="组织特异性富集分析" ></div> 
-<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
-<script type="text/javascript">
-    window.changyan.api.config({
-        appid: "true",
-        conf: "true"
-    });
-</script>
-</script>
-
-
-
-<section id="comments">
-  <div id="disqus_thread"></div>
-  <script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname =
-    'true'; // required: replace example with your forum shortname
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function () {
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-
-  </script>
-  <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by
-      Disqus.</a></noscript>
-</section>
-
-
-
-
-  <div id="giteement-ctn"></div>
-  
-    <link rel="stylesheet" href="/lib/default.css">
-    <script src="/lib/giteement.browser.js"></script>
-  
-  <script>
-  <!-- id: "组织特异性富集分析" -->
-  var giteement = new Giteement({
-    id: '20240321102621',
-    owner: 'anderson2',
-    repo: 'disque',
-    backcall_uri: '',
-    oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
-    oauth: {
-      client_id: 'b7bbbb81c70a80c54b67830b93347418a2add42a2a1f038b58e9f8c1a76754ba',
-      client_secret: '4ccab940fe3153435d3da5a5edbc5214d719cabfd6736c016135223adf4d7fbb'
-    },
-  })
-  giteement.render('giteement-ctn')
-  </script>
-
-
-
-
-
-
+    
 
 
           </div>
@@ -543,8 +318,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
@@ -660,6 +435,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Bio-News</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">多组学数据分析</a>
               </li>
             
             <div class="clearfix"></div>
