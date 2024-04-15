@@ -126,7 +126,7 @@
 			
 			
 			<div>
-				<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="240" height="86" src="//music.163.com/outchain/player?type=2&id=495626744&auto=1&height=66"></iframe>
+				<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="240" height="86" src="//music.163.com/outchain/player?type=2&id=32102950&auto=1&height=66"></iframe>
 			</div>
 			
 				
@@ -230,6 +230,583 @@
   <script>
     Oauthcallback();
   </script>
+
+
+  
+    <article id="post-WES数据分析流程-上" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/03/17/WES%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B-%E4%B8%8A/" target="_blank">WES数据分析流程(上)</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/03/17/WES%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B-%E4%B8%8A/" class="archive-article-date">
+        <time datetime="2024-03-17T05:09:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-17</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>[TOC]</p>
+<p>来源：<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/ma-pan-13-72">多啦A梦詹</a>；<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/432826287/answer/3080622038">菩年</a>;<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/380684876">Die Linke</a></p>
+<hr>
+<ol>
+<li>WES，WGS和WGRS的区别和联系是什么？</li>
+</ol>
+<ul>
+<li><strong>WES (whole exome sequencing, <a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%85%A8%E5%A4%96%E6%98%BE%E5%AD%90%E7%BB%84%E6%B5%8B%E5%BA%8F&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:%22380684876%22%7D">全外显子组测序</a>)</strong>: 是指利用序列捕获技术将【全基因组的外显子区域DNA】捕获富集后进行高通量测序，能够直接发现与蛋白质功能变异相关的遗传变异SNP(单核苷酸多态性)。以<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E4%BA%BA%E7%B1%BB%E5%9F%BA%E5%9B%A0%E7%BB%84&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:%22380684876%22%7D">人类基因组</a>为例，虽然外显子(蛋白质编码区)只占基因组的1%，但人类基因组85%的致病突变都在外显子区域，因此具有重要意义。</li>
+<li><strong>WGS (whole genome sequencing, 全基因组测序)</strong>: 是指对基因组整体进行<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E9%AB%98%E9%80%9A%E9%87%8F%E6%B5%8B%E5%BA%8F&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:%22380684876%22%7D">高通量测序</a>，分析不同个体间的差异，同时完成SNP及基因组结构注释。</li>
+<li><strong>WGRS (whole genome re-sequencing, <a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%85%A8%E5%9F%BA%E5%9B%A0%E7%BB%84%E9%87%8D%E6%B5%8B%E5%BA%8F&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:%22380684876%22%7D">全基因组重测序</a>)</strong>: 是指对已知参考基因组和注释的物种进行不同个体间的全基因组测序(WGS)<strong>，</strong>并在此基础上对个体或群体进行<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%B7%AE%E5%BC%82%E6%80%A7%E5%88%86%E6%9E%90&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:%22380684876%22%7D">差异性分析</a>，鉴定出与某类表型相关的SNP.</li>
+</ul>
+<p>通过比较可以发现，这三个测序技术<strong>其实都是在找基因组上的SNP(<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%8D%95%E6%A0%B8%E8%8B%B7%E9%85%B8%E5%A4%9A%E6%80%81%E6%80%A7&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:%22380684876%22%7D">单核苷酸多态性</a>)</strong>, SNP分为四种：</p>
+<ol>
+<li>SNV(单核苷酸变异)</li>
+<li>InDel(插入缺失)</li>
+<li>SV(结构变异)</li>
+<li>CNV(<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%8B%B7%E8%B4%9D%E6%95%B0%E5%8F%98%E5%BC%82&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:%22380684876%22%7D">拷贝数变异</a>)</li>
+</ol>
+<p>只是这三个技术的<strong>覆盖程度不同</strong>：</p>
+<ul>
+<li>WES：覆盖全基因组上的外显子区域</li>
+<li>WGS：覆盖全基因组</li>
+<li>WGRS：覆盖全基因组，是WGS在不同样本上的重复</li>
+</ul>
+<p>只要你掌握了其中一种的<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%B5%8B%E5%BA%8F%E5%88%86%E6%9E%90&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22article%22,%22sourceId%22:%22380684876%22%7D">测序分析</a>与可视化，剩下的两种其实是一样的，本文就以WES测序分析与可视化为例（原因是手头只有RNA-Seq的转录组数据，勉强可以用来做WES数据的替代品吧），进行WES&#x2F;WGS&#x2F;WGRS的分析教学。</p>
+<p>外显子是基因组中能够转录组出成熟RNA的部分。一个基因组中所有外显子的集合，即为<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%A4%96%E6%98%BE%E5%AD%90%E7%BB%84&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:%223080622038%22%7D">外显子组</a>。值得注意的是，通常所说的全外显子组测序，是指针对蛋白编码基因的外显子，很少涉及非编码基因。</p>
+<p>基因(gene)是DNA中含有特定遗传信息的一段<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%A0%B8%E8%8B%B7%E9%85%B8%E5%BA%8F%E5%88%97&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:%223080622038%22%7D">核苷酸序列</a>的总称，是具有遗传效应的DNA分子片段,是控制生物性状的基本遗传单位。人类基因区间的大小可从数百个bp至超过200万个bp不等。根据<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E4%BA%BA%E7%B1%BB%E5%9F%BA%E5%9B%A0%E7%BB%84%E8%AE%A1%E5%88%92&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:%223080622038%22%7D">人类基因组计划</a>(The Human Genome Project)估计，人类拥有20000-25000个蛋白编码基因。</p>
+<p>基因组(genome)指一个生物体所包含DNA的全部遗传信息。基因组由基因区域和非编码区域组成。**人类的基因组大小约为30亿个碱基对(bp)(3GB)**，其中非编码区域占到绝大多数，编码蛋白质的区域仅占约2%左右。</p>
+<p>外显子组(exome)是基因组中所有外显子的集合。人类拥有约18万个外显子，约占人类基因组的1%，即<strong>约3000万个bp(30MB)。</strong></p>
+<p><img src="https://pica.zhimg.com/80/v2-0aa2c0929b7fc072f415fb3e52f9321a_1440w.webp" alt="img"></p>
+<p>图：蛋白编码基因由内含子(非编码序列)和外显子(包括编码序列以及UTR区域)组成。要翻译有功能的蛋白，要进行以下步骤：基因从DNA转录为RNA前体，通过剪接形成成熟RNA，成熟RNA序列翻译成氨基酸链，以及蛋白质分子的翻译后修饰。</p>
+<p>关于外显子，需要注意的一个特殊情况是非翻译区(UTR)。在mRNA的两侧分别存在5’UTR(前导序列)和3’UTR(尾部序列)，它们的作用分别是调控翻译的启动和终止。它们由外显子序列构成，但不会被翻译成氨基酸。 所以，并非所有外显子序列都会被翻译成氨基酸。</p>
+<p><img src="https://pica.zhimg.com/80/v2-d72f78f1b03486e21ddc1bc10ccb5d68_1440w.webp" alt="img"></p>
+<p>图：信使RNA前体(pre-mRNA)中的外显子。外显子既包括编码氨基酸的序列(红色)，也包括不被翻译的序列(灰色)。</p>
+<p>对外显子组(基因组里的所有外显子)进行测序的方法，即为 全外显子组测序 (Whole-Exome Sequencing，WES)，也称为 外显子组测序、全<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%A4%96%E6%98%BE%E5%AD%90%E6%B5%8B%E5%BA%8F&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:%223080622038%22%7D">外显子测序</a>，全外测序 等。</p>
+<p>全基因组测序(Whole-Genome Sequencing, WGS)是对整个基因组进行测序。靶向测序(Targeted-sequencing，也称Panel sequencing)是对选定的基因进行测序，通常有几十个至一千个基因不等。因而，从覆盖基因组的范围来说，全基因组测序&gt;全外显子组测序&gt;靶向测序。</p>
+<p>全外测序可以视作一种特殊的靶向测序——它靶向的区域是基因组上的所有外显子。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-29a4d2c84fbc1e7621f1239b79b8f1ea_1440w.webp" alt="img"></p>
+<p>panel测序有两种技术原理：杂交捕获测序和多重扩增子测序。全外是基于序列杂交原理实现的</p>
+<p>需要特别说明的是对CNV的检测。使用全外检测CNV时，在杂交捕获过程中，由于各个外显子的杂交效率不同，故不同外显子的覆盖率差异会较大。当出现阳性结果时，无法判断是由于杂交未捕获到，还是由于缺失。 故使用全外检测CNV容易出现假阳性结果。一般情况下，全外测序不用于CNV的检测 ，但在癌症研究中，利用癌组织和癌旁组织对照，可以检测体细胞CNV。</p>
+<p>人类全外显子组所占基因组比例不超过2%，但它包含了约85%与疾病相关的变异，因此在研究编码基因变异层面，全外测序是比全基因组测序更为经济高效的替代方法。全外测序适用于<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%AD%9F%E5%BE%B7%E5%B0%94&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:%223080622038%22%7D">孟德尔</a>疾病、肿瘤、复杂疾病等多个研究领域。对于表现出异质性的疾病，或者患者表现出多个系统受累的复杂疾病症状时，尤为适合使用全外测序。</p>
+<p>例如在肿瘤临床检测中，寻求肺癌靶向治疗的患者通常会先做panel测序，因为与肺癌靶向治疗相关的基因是比较明确的，几十至一百多个基因的panel测序通常就可以满足需求。而对于寻求免疫治疗的患者，通常会使用全外或大panel测序，来评估肿瘤突变负荷(Tumor Mutational Burden, TMB)，TMB高的患者通常对免疫治疗有更好的响应。全外测序是业内公认的评估TMB的金标准。</p>
+<p>*<strong>WES检测流程*</strong></p>
+<p>一个WES测序的工作流程，大体可以分为这3个部分：文库制备，测序，生信分析。</p>
+<p>文库制备通常包含这些步骤：样本处理，DNA提取，定量，建库，杂交捕获，扩增，质控。</p>
+<p>测序，目前的仪器包括国外Illumina公司测序平台，以及<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%8D%8E%E5%A4%A7%E6%99%BA%E9%80%A0&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:%223080622038%22%7D">华大智造</a>国产测序平台等。</p>
+<p>生信分析的流程通常包含这些步骤：质控，拼接比对，去重和重排，变异检测，降噪和过滤，注释等。常用的软件有FastQC，BWA，GATK，ANNOVAR等。</p>
+<p>一个完整的全外显子组测序，从样本处理到完成数据分析，通常需要10天左右时间。</p>
+<p><em><strong>捕获探针性能的评估指标</strong></em></p>
+<p>市面上的厂商会提供现成的全外探针，我们可以根据自己的需要来选择，也可以定制更为符合自己需要的“全外+”探针。</p>
+<p>如果选择现成的探针产品，除了关注下面的探针评价指标外，也需要考虑探针大小、探针长度、探针设计等是否符合我们的样品和研究需求。</p>
+<p>如果选择定制的产品，则可以在现成的探针产品上加入自己感兴趣的区域，也可以完全自主设计。在设计探针时常用的参考数据库有RefSeq、CCDS、Ensembl、GENCODE和ClinVar等。除了设计捕获区域外，还可以要求对某些特别的区域增加探针密度以提高捕获效率。</p>
+<p><strong>中靶率</strong></p>
+<p>中靶率(On-target rate)是一个百分数，用来表示测序数据中有多少能够比对到目标区域上。</p>
+<p>在基因组上有许多与外显子有同源性的部分(比如内含子和<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E5%9F%BA%E5%9B%A0%E9%97%B4%E5%8C%BA&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:%223080622038%22%7D">基因间区</a>)，在实际工作中，这些并不属于目标(外显子)的部分在杂交过程中也会被捕获下来。这种探针捕获到非目标区域片段的情况称为脱靶(off target)。脱靶的数据是无效的，不能用于后续分析，即这部分测序数据被浪费了。</p>
+<p>同等情况下，中靶率越高，由于脱靶产生的浪费越少，这款探针越好。</p>
+<p><strong>覆盖度</strong></p>
+<p>覆盖度(coverage)经常是和深度一起出现的，比如“10X覆盖度”、“30X覆盖度”。比如，“10X覆盖度为90%”指测序数据比对到目标区域后，有90%的区域被覆盖了至少10次，或者说有90%的区域有至少10条reads覆盖。</p>
+<p>如果覆盖度没有和深度一起出现，则可以理解为“1X覆盖度”。比如“覆盖度为95%”，指95%的目标区域有至少1条reads覆盖到。换言之，有5%的目标区域连1条覆盖到的reads都没有，它们在这次测序中完全没被测到，被漏掉了。</p>
+<p>同等情况下，覆盖度越高，越少比例的目标区域被漏掉，这款探针越好。</p>
+<p><strong>均一性</strong></p>
+<p>目标区域内不同的位点被覆盖的情况是不同的。比如一次WES测序的平均深度是60X，很有可能有的位点深度为10X，有的为40X，有的为90X这样的情况。均一性(uniformity)越好，即这些位点各自的深度越接近平均深度。</p>
+<p>在实际工作中，我们根据期望达到的目标测序深度来分配数据量，即决定了这次测序的平均深度(平均深度&#x3D;数据量&#x2F;探针大小)。当某个区域的实际测序深度高于目标深度时，造成数据的浪费;而当某个区域的实际测序深度低于目标深度时，我们可能会认为这部分数据质量不好而丢弃它，导致这一区域无测序数据。均一性优良的探针可以帮助减少这两种情况的发生。</p>
+<p>Fold-80是用来评价均一性的指标。它的定义是，为确保80%的目标碱基达到平均深度所需的额外测序的倍数。Fold-80越低，捕获效率越高，测序浪费越少。理想情况下的Fold-80为1。</p>
+<p>Fold-80越低，均一性越好，越能节约测序成本，这款探针越好。</p>
+<p><strong>重复率</strong></p>
+<p>重复率(Dup rate)指的是<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E9%87%8D%E5%A4%8D%E5%BA%8F%E5%88%97&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:%223080622038%22%7D">重复序列</a>(Duplicate reads)在总测序序列中的占比。由于这些重复序列不能带来额外信息，相反会影响变异检测结果准确性，因此需要在下游生信分析中去除这些重复序列。Dup rate越高，数据利用率越低，浪费的测序成本也就越多。</p>
+<p>同等情况下，重复率越低，越能节省测序成本，这款探针越好</p>
+<p><strong>WES对于涉及<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%8B%B7%E8%B4%9D%E6%95%B0%E5%8F%98%E5%BC%82&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:%223080622038%22%7D">拷贝数变异</a>、非编码区变异和结构变异的疾病研究不适用。其次，在对目标区域进行捕获时, 存在捕获不均、捕获偏差等现象, 可以通过增加测序深度, 获得更多的序列信息进行统计分析, 以尽可能弥补这些偏差。</strong></p>
+<p>首先创建一个项目目录wes和存放每个步骤生成文件的子目录raw, clean, align, genome, hg19_VCF</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir &#123;raw,clean,align,genome,hg19_VCF&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此流程包含两个raw外显子测序文件：wes.1.fq.gz，wes.2.fq.gz；存放于raw目录</p>
+<h3 id="原始数据质控，用fastp"><a href="#原始数据质控，用fastp" class="headerlink" title="原始数据质控，用fastp"></a>原始数据质控，用fastp</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 项目主目录下运行，在clean目录下生成两个过滤的fq文件</span><br><span class="line">nohup fastp -i raw/wes.1.fq.gz -o clean/wes.1.clean.fq.gz -I raw/wes.2.fq.gz -O clean/wes.2.clean.fq.gz &amp;</span><br></pre></td></tr></table></figure>
+
+<h3 id="下载参考基因组（hg19）文件，存放于genome目录，并建立索引："><a href="#下载参考基因组（hg19）文件，存放于genome目录，并建立索引：" class="headerlink" title="下载参考基因组（hg19）文件，存放于genome目录，并建立索引："></a>下载参考基因组（hg19）文件，存放于genome目录，并建立索引：</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">for i in $(seq 1 22) X Y M;</span><br><span class="line">do </span><br><span class="line">nohup wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/chr$&#123;i&#125;.fa.gz &amp; </span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for i in $(seq 1 22) X Y M;</span><br><span class="line">do cat chr$&#123;i&#125;.fa &gt;&gt; hg19.fa;</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">nohup bwa index -a bwtsw -p hg19 hg19.fa  &amp;</span><br></pre></td></tr></table></figure>
+
+<h3 id="比对"><a href="#比对" class="headerlink" title="比对"></a>比对</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># clean目录下运行此命令，在align目录下生成sam文件</span><br><span class="line">nohup bwa mem -t 4 -M -R &quot;@RG\tID:lane1\tPL:illumina\tLB:library\tSM:wes&quot; ../genome/hg19  wes.1.clean.fq.gz  wes.2.clean.fq.gz &gt;../align/wes.sam 2&gt;wes.bwa.align.log &amp;</span><br><span class="line">-t，线程数；</span><br><span class="line">  -M , -M 将 shorter split hits 标记为次优，以兼容 Picard markDuplicates 软件;</span><br><span class="line">  -R 接的是 Read Group的字符串信息，它是用来将比对的read进行分组的，这个信息对于我们后续对比对数据进行错误率分析和Mark duplicate时非常重要。</span><br><span class="line">  (1) ID，这是Read Group的分组ID，一般设置为测序的lane ID</span><br><span class="line">  (2) PL，指的是所用的测序平台</span><br><span class="line">  (3) SM，样本ID</span><br><span class="line">  (4) LB，测序文库的名字</span><br><span class="line">这些信息设置好之后，在RG字符串中要用制表符（\t）将它们分开</span><br><span class="line">samtools view -b -S wes.sam &gt; wes.bam  #sam2bam,便于存储</span><br><span class="line">samtools sort wes.bam -o wes.sorted.bam    #有顺序的排序，便于后面的操作</span><br><span class="line">samtools flagstat wes.sorted.bam &gt; wes.sorted.bam.flagstat    #统计比对信息</span><br><span class="line">1. QC pass的reads的数量为5002344 ，未通过QC的reads数量为0，意味着一共有5002344条reads；</span><br><span class="line">2.标记为secondary的read</span><br><span class="line">3. 嵌合体reads</span><br><span class="line">4.PCR 重复引起的reads</span><br><span class="line">5.  比对到参考基因组上的reads数量；</span><br><span class="line">6.  paired reads数据数量；</span><br><span class="line">7.  read1的数量；</span><br><span class="line">8.  read2 的数量；</span><br><span class="line">9.  正确地匹配到参考序列的reads数量；</span><br><span class="line">10.  一对reads都比对到了参考序列上的数量，但是并不一定比对到同一条染色体上；</span><br><span class="line">11. 一对reads中只有一条与参考序列相匹配的数量； </span><br><span class="line">12.  一对reads比对到不同染色体的数量；</span><br><span class="line">13.  一对reads比对到不同染色体的且比对质量值大于5的数量。</span><br></pre></td></tr></table></figure>
+
+<h3 id="外显子区域覆盖度"><a href="#外显子区域覆盖度" class="headerlink" title="外显子区域覆盖度"></a>外显子区域覆盖度</h3><p>需要生成外显子interval文件，生成这个文件的前提又需要dict文件和外显子bed文件（此处用的是安捷伦外显子bed文件，也可以去UCSC下载）。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gatk CreateSequenceDictionary -R hg19.fa -O hg19.dict</span><br><span class="line">gatk BedToIntervalList -I S31285117_Regions.bed -O Exon.Interval.bed -SD ./genome/hg19.dict</span><br><span class="line">gatk CollectHsMetrics -BI Exon.Interval.bed -TI Exon.Interval.bed -I wes.sorted.bam -O wes.stat.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="标记PCR重复序列并建立索引"><a href="#标记PCR重复序列并建立索引" class="headerlink" title="标记PCR重复序列并建立索引"></a>标记PCR重复序列并建立索引</h3><p>以前用picard标记重复序列，现在这个工具全部整合到gatk中了</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nohup gatk --java-options &quot;-Xmx10G -Djava.io.tmpdir=./&quot; MarkDuplicates -I wes.sorted.bam -O wes.sorted.MarkDuplicates.bam -M wes.sorted.bam.metrics &gt; log.mark 2&gt;&amp;1 &amp;</span><br><span class="line">samtools view -f 1024 wes.sorted.MarkDuplicates.bam | less</span><br><span class="line">samtools index wes.sorted.MarkDuplicates.bam</span><br></pre></td></tr></table></figure>
+
+<p>wes.sorted.bam.metrics有统计信息 wes.sorted.MarkDuplicates.bam创建索引文件，他的作用能够让我们可以随机访问这个文件中的任意位置，而且后面的步骤也要求这个bam文件一定要有索引。</p>
+<h3 id="变异检测"><a href="#变异检测" class="headerlink" title="变异检测"></a>变异检测</h3><h3 id="重新校正碱基质量值（BQSR）"><a href="#重新校正碱基质量值（BQSR）" class="headerlink" title="重新校正碱基质量值（BQSR）"></a>重新校正碱基质量值（BQSR）</h3><p><strong>变异检测是一个极度依赖测序碱基质量值，因为这个质量值是衡量我们测序出来的这个碱基到底有多正确的重要指标</strong>。它来自于测序图像数据的base calling，因此，基本上是由测序仪和测序系统来决定的，计算出来的碱基质量值未必与真实结果统一。 BQSR（Base Quality Score Recalibration）这个步骤主要是通过机器学习的方法构建测序碱基的错误率模型，然后对这些碱基的质量值进行相应的调整。 这里包含了两个步骤： 第一步，BaseRecalibrator，这里计算出了所有需要进行重校正的read和特征值，然后把这些信息输出为一份校准表文件（wes.recal_data.table） 第二步，ApplyBQSR，这一步利用第一步得到的校准表文件（wes.recal_data.table）重新调整原来BAM文件中的碱基质量值，并使用这个新的质量值重新输出一份新的BAM文件。</p>
+<h3 id="首先下载变异注释文件"><a href="#首先下载变异注释文件" class="headerlink" title="首先下载变异注释文件"></a>首先下载变异注释文件</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">wget  -c -r -nd -np -k -L -p ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/hg19</span><br><span class="line">下载文件均为压缩文件，需要解压才能使用</span><br><span class="line">samtools faidx hg19.fa</span><br><span class="line">GENOME=./genome/hg19.fa</span><br><span class="line">hg19_VCF=./hg19_VCF/</span><br><span class="line">gatk --java-options &quot;-Xmx10G -Djava.io.tmpdir=./&quot; BaseRecalibrator \</span><br><span class="line">-R $GENOME -I ./align/wes.sorted.MarkDuplicates.bam \</span><br><span class="line">--known-sites $hg19_VCF/1000G_phase1.indels.hg19.sites.vcf \</span><br><span class="line">--known-sites $hg19_VCF/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf \</span><br><span class="line">--known-sites $hg19_VCF/dbsnp_138.hg19.vcf \</span><br><span class="line">-L S31285117_Regions.bed -O wes.recal_data.table</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">gatk --java-options &quot;-Xmx10G -Djava.io.tmpdir=./&quot; ApplyBQSR \</span><br><span class="line">-R $GENOME -I ./align/wes.sorted.MarkDuplicates.bam \</span><br><span class="line">-bqsr wes.recal_data.table -L S31285117_Regions.bed  \</span><br><span class="line">-O wes.sorted.MarkDuplicates.BQSR.bam</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># gatk AnalyzeCovariates -bqsr wes.recal_data.table -plots wes.recal_data.table.plot</span><br></pre></td></tr></table></figure>
+
+<h3 id="变异检测-1"><a href="#变异检测-1" class="headerlink" title="变异检测"></a>变异检测</h3><p>HaplotypeCaller的应用有两种做法，差别只在于要不要在中间生成一个gVCF： （1）直接进行HaplotypeCaller，这适合于单样本，或者那种固定样本数量的情况，也就是只执行一次HaplotypeCaller。如果增加一个样本就得重新运行这个HaplotypeCaller，而这个时候算法需要重新去读取所有人的BAM文件，浪费大量时间； （2）每个样本先各自生成gVCF，然后再进行群体joint-genotype。gVCF全称是genome VCF，是每个样本用于变异检测的中间文件，格式类似于VCF，它把joint-genotype过程中所需的所有信息都记录在这里面，文件无论是大小还是数据量都远远小于原来的BAM文件。这样一旦新增加样本也不需要再重新去读取所有人的BAM文件了，只需为新样本生成一份gVCF，然后重新执行这个joint-genotype就行了。</p>
+<p>推荐使用第二种，<strong>变异检测不是一个样本的事情，有越多的同类样本放在一起joint calling结果将会越准确，而如果样本足够多的话，在低测序深度的情况下也同样可以获得完整并且准确的结果。</strong></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">第一种方法</span><br><span class="line">gatk --java-options &quot;-Xmx8G -Djava.io.tmpdir=./&quot; HaplotypeCaller \</span><br><span class="line">-R $GENOME -I wes.sorted.MarkDuplicates.BQSR.bam \</span><br><span class="line">-D $hg19_VCF/dbsnp_138.hg19.vcf -L S31285117_Regions.bed \</span><br><span class="line">-O wes.raw1.vcf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">第二种方法</span><br><span class="line"># 1.生成中间文件gvcf</span><br><span class="line">gatk --java-options &quot;-Xmx8G -Djava.io.tmpdir=./&quot; HaplotypeCaller -R $GENOME \</span><br><span class="line">--emit-ref-confidence GVCF -I wes.sorted.MarkDuplicates.BQSR.bam \</span><br><span class="line">-D $hg19_VCF/dbsnp_138.hg19.vcf -L S31285117_Regions.bed  -O wes.gvcf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 2.通过gvcf检测变异</span><br><span class="line">gatk --java-options &quot;-Xmx8G -Djava.io.tmpdir=./&quot; GenotypeGVCFs \</span><br><span class="line">-R $GENOME -V wes.gvcf -L S31285117_Regions.bed  \</span><br><span class="line">-O wes.raw.vcf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">若有多个样本的gvcf文件，运行gatk CombineGVCFs  \</span><br><span class="line">-V 1.gvcf –V 2.gvcf ……  -O final.gvcf ，再用final.gvcf运行第二步</span><br></pre></td></tr></table></figure>
+
+<h3 id="变异质控与过滤"><a href="#变异质控与过滤" class="headerlink" title="变异质控与过滤"></a>变异质控与过滤</h3><p><strong>质控的含义和目的是指通过一定的标准，最大可能地剔除假阳性的结果，并尽可能地保留最多的正确数据。 第一种方法 GATK VQSR</strong>，它通过机器学习的方法利用多个不同的数据特征训练一个模型（高斯混合模型）对变异数据进行质控，使用VQSR需要具备以下两个条件： 第一，需要一个精心准备的已知变异集，它将作为训练质控模型的真集。比如，Hapmap、OMNI，1000G和dbsnp等这些国际性项目的数据，这些可以作为高质量的已知变异集。 第二，要求新检测的结果中有足够多的变异，不然VQSR在进行模型训练的时候会因为可用的变异位点数目不足而无法进行。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">gatk --java-options &quot;-Xmx8G -Djava.io.tmpdir=./&quot; VariantRecalibrator -R $GENOME -V wes.raw.vcf \</span><br><span class="line">-resource hapmap,known=false,training=true,truth=true,prior=15.0:$hg19_VCF/hapmap_3.3.hg19.sites.vcf \</span><br><span class="line">-resource omini,known=false,training=true,truth=false,prior=12.0:$hg19_VCF/1000G_omni2.5.hg19.sites.vcf \ </span><br><span class="line">-resource 1000G,known=false,training=true,truth=false,prior=10.0:$hg19_VCF/1000G_phase1.snps.high_confidence.hg19.sites.vcf \</span><br><span class="line">-resource dbsnp,known=true,training=false,truth=false,prior=6.0:$hg19_VCF/dbsnp_138.hg19.vcf \</span><br><span class="line">-an QD -an MQ -an MQRankSum -an ReadPosRankSum -an FS -an SOR -an DP -mode SNP \</span><br><span class="line">-O wes.snps.recal.vcf --tranches-file wes.snps.tranches --rscript-file wes.snps.plots.R &amp; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">gatk  ApplyRecalibration  -V wes.raw.vcf -O wes.VQSR.vcf --recal-file wes.snps.recal.vcf  \</span><br><span class="line">--tranches-file wes.snps.tranches  -mode SNP</span><br></pre></td></tr></table></figure>
+
+<p>此方法要求新检测的结果中有足够多的变异，不然VQSR在进行模型训练的时候会因为可用的变异位点数目不足而无法进行。可能很多非人的物种在完成变异检测之后没法使用GATK VQSR的方法进行质控，一些小panel、外显子测序，由于最后的变异位点不够，也无法使用VQSR。全基因组分析或多个样本的全外显子组分析适合用此方法。</p>
+<p><strong>第二种方法通过过滤指标过滤。</strong> QualByDepth（QD）：QD是变异质量值（Quality）除以覆盖深度（Depth）得到的比值。 FisherStrand (FS)：FS是一个通过Fisher检验的p-value转换而来的值，它要描述的是测序或者比对时对于只含有变异的read以及只含有参考序列碱基的read是否存在着明显的正负链特异性（Strand bias，或者说是差异性） StrandOddsRatio (SOR)：对链特异（Strand bias）的一种描述. RMSMappingQuality (MQ)：MQ这个值是所有比对至该位点上的read的比对质量值的均方根. MappingQualityRankSumTest (MQRankSum) ReadPosRankSumTest (ReadPosRankSum) <strong>通过过滤指标过滤</strong></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">使用SelectVariants，选出SNP</span><br><span class="line">gatk SelectVariants -select-type SNP -V wes.raw.vcf -O wes.snp.vcf</span><br><span class="line"># 为SNP作过滤</span><br><span class="line">gatk VariantFiltration -V wes.snp.vcf --filter-expression &quot;QD &lt; 2.0 || MQ &lt; 40.0 || FS &gt; 60.0 || SOR &gt; 3.0 || MQRankSum &lt; -12.5 || ReadPosRankSum &lt; -8.0&quot; --filter-name &quot;PASS&quot; -O wes.snp.filter.vcf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">使用SelectVariants，选出Indel</span><br><span class="line">gatk SelectVariants -select-type INDEL -V wes.raw.vcf -O wes.indel.vcf</span><br><span class="line"># 为Indel作过滤</span><br><span class="line">gatk VariantFiltration -V wes.indel.vcf --filter-expression &quot;QD &lt; 2.0 || FS &gt; 200.0 || SOR &gt; 10.0 || MQRankSum &lt; -12.5 || ReadPosRankSum &lt; -8.0&quot; --filter-name &quot;PASS&quot; -O wes.indel.filter.vcf</span><br></pre></td></tr></table></figure>
+
+<h3 id="突变注释"><a href="#突变注释" class="headerlink" title="突变注释"></a>突变注释</h3><p>ANNOVAR是一个perl编写的命令行工具，能在安装了perl解释器的多种操作系统上执行。允许多种输入文件格式，包括最常被使用的VCF格式。输出文件也有多种格式，包括注释过的VCF文件、用tab或者逗号分隔的txt文件，ANNOVAR能快速注释遗传变异并预测其功能。这个软件需要edu邮箱注册才能下载。 ANNOVAR website</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">数据库下载</span><br><span class="line">perl annotate_variation.pl -buildver hg19 -downdb -webfrom annovar refGene humandb/</span><br><span class="line"> # -buildver 表示version </span><br><span class="line"> # -downdb 下载数据库的指令</span><br><span class="line"> # -webfrom annovar 从annovar提供的镜像下载，不加此参数将寻找数据库本身的源</span><br><span class="line"> # humandb/ 存放于humandb/目录下</span><br><span class="line">其它数据库下载</span><br><span class="line">perl annotate_variation.pl --buildver hg19 --downdb gwascatalog humandb/ &amp;</span><br><span class="line">perl annotate_variation.pl --buildver hg19 --downdb ljb26_all --webfrom annovar humandb/ &amp;</span><br><span class="line">perl annotate_variation.pl --buildver hg19 --downdb esp6500siv2_ea --webfrom annovar humandb/ &amp;</span><br><span class="line">perl annotate_variation.pl --buildver hg19 --downdb esp6500siv2_all --webfrom annovar humandb/ &amp;</span><br><span class="line">perl annotate_variation.pl --buildver hg19 --downdb 1000g2014oct humandb/ &amp;</span><br><span class="line">perl annotate_variation.pl --buildver hg19 --downdb cytoBand humandb/ &amp;</span><br><span class="line">perl annotate_variation.pl --buildver hg19 --downdb avsift -webfrom annovar humandb/ &amp;</span><br><span class="line">perl annotate_variation.pl --buildver hg19 --downdb snp138 humandb/ &amp;</span><br><span class="line">perl annotate_variation.pl --buildver hg19 --downdb genomicSuperDups humandb/ &amp;</span><br><span class="line">perl annotate_variation.pl --buildver hg19 --downdb phastConsElements46way humandb/ &amp;</span><br><span class="line">perl annotate_variation.pl --buildver hg19 --downdb tfbs humandb/</span><br></pre></td></tr></table></figure>
+
+<h3 id="三种注释方式"><a href="#三种注释方式" class="headerlink" title="三种注释方式"></a>三种注释方式</h3><p>**Gene-based Annotation(基于基因的注释)**：基于基因的注释（gene-based annotation）揭示variant与已知基因直接的关系以及对其产生的功能性影响。 <strong>Region-based Annotation（基于区域的注释）</strong>：基于过滤的注释精确匹配查询变异与数据库中的记录：如果它们有相同的染色体，起始位置，结束位置，REF的等位基因和ALT的等位基因，才能认为匹配。基于区域的注释看起来更像一个区域的查询（这个区域也可以是一个单一的位点），在一个数据库中，它不在乎位置的精确匹配，它不在乎核苷酸的识别。基于区域的注释（region-based annotation）揭示variant与不同基因组特定段的关系。 <strong>Filter-based Annotation（基于过滤的注释）</strong>：filter-based和region-based主要的区别是，filter-based针对mutation（核苷酸的变化）而region-based针对染色体上的位置。如在全基因组数据中的变异频率，可使用1000g2015aug、kaviar_20150923等数据库；在全外显组数据中的变异频率，可使用exac03、esp6500siv2等；在孤立的或者低代表人群中的变异频率，可使用ajews等数据库。 <strong>用table_annovar.pl进行注释，可一次性完成三种类型的注释。</strong></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">convert2annovar.pl # 将多种格式转为.avinput的程序</span><br><span class="line">convert2annovar.pl -format vcf4   wes.snp.filter.vcf &gt;snp.avinput</span><br><span class="line">格式如下：</span><br><span class="line">chr1    69511   69511   A       G       hom     1736.03 53</span><br><span class="line">chr1    877831  877831  T       C       hom     85.10   4</span><br><span class="line">chr1    881627  881627  G       A       het     399.60  37</span><br><span class="line">chr1    887801  887801  A       G       hom     1623.03 39</span><br><span class="line">chr1    888639  888639  T       C       hom     3991.03 106</span><br><span class="line">chr1    888659  888659  T       C       hom     4114.03 109</span><br><span class="line">chr1    897325  897325  G       C       hom     3998.03 113</span><br><span class="line">chr1    898852  898852  C       T       het     647.60  38</span><br><span class="line">chr1    900505  900505  G       C       het     478.60  35</span><br><span class="line">chr1    906272  906272  A       C       het     540.60  30</span><br></pre></td></tr></table></figure>
+
+<p>avinput文件由tab分割，最重要的地方为前5列，分别是: 1. 染色体(Chromosome) 2. 起始位置(Start) 3. 结束位置(End) 4. 参考等位基因(Reference Allele) 5. 替代等位基因(Alternative Allele) ANNOVAR主要也是利用前五列信息对数据库进行比对，注释变异。</p>
+<h3 id="SNP注释："><a href="#SNP注释：" class="headerlink" title="SNP注释："></a>SNP注释：</h3><p><strong>用table_annovar.pl进行注释，可一次性完成三种类型的注释。</strong></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">table_annovar.pl snp.avinput $humandb -buildver hg19 -out snpanno \</span><br><span class="line">-remove -protocol refGene,cytoBand,genomicSuperDups,esp6500siv2_all \</span><br><span class="line">-operation g,r,r,f -nastring . -csvout</span><br></pre></td></tr></table></figure>
+
+<p>-buildver hg19 表示使用hg19版本 -out snpanno 表示输出文件的前缀为snpanno -remove 表示删除注释过程中的临时文件 -protocol 表示注释使用的数据库，用逗号隔开，且要注意顺序 -operation 表示对应顺序的数据库的类型（g代表gene-based、r代表region-based、f代表filter-based），用逗号隔开，注意顺序 -nastring . 表示用点号替代缺省的值 -csvout 表示最后输出.csv文件</p>
+<h3 id="Indel注释同上"><a href="#Indel注释同上" class="headerlink" title="Indel注释同上"></a>Indel注释同上</h3><p>测试数据：链接：<a href="https://link.zhihu.com/?target=https://pan.baidu.com/s/16tX5GrCLBAov9k_GjYYOyA">https://pan.baidu.com/s/16tX5GrCLBAov9k_GjYYOyA</a> 提取码：9pab</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">BioInfo</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/03/17/WES%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B-%E4%B8%8A/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-使用CRISPR-Cas9的人类B细胞基因组工程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/03/16/%E4%BD%BF%E7%94%A8CRISPR-Cas9%E7%9A%84%E4%BA%BA%E7%B1%BBB%E7%BB%86%E8%83%9E%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%B7%A5%E7%A8%8B/" target="_blank">使用CRISPR/Cas9的人类B细胞基因组工程</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/03/16/%E4%BD%BF%E7%94%A8CRISPR-Cas9%E7%9A%84%E4%BA%BA%E7%B1%BBB%E7%BB%86%E8%83%9E%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%B7%A5%E7%A8%8B/" class="archive-article-date">
+        <time datetime="2024-03-16T15:09:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-16</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>[TOC]</p>
+<p>First Published: November 3rd, 2020</p>
+<p>DOI:<a target="_blank" rel="noopener" href="https://dx.doi.org/10.3791/61855">10.3791&#x2F;61855</a></p>
+<iframe src="//player.bilibili.com/player.html?aid=1101771635&bvid=BV14w4m1o7fh&cid=1472242106&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<hr>
+<h2 id="MyNotes"><a href="#MyNotes" class="headerlink" title="MyNotes:"></a>MyNotes:</h2><p>本文作者的研究工作集中于运用CRISPR&#x2F;Cas9基因编辑技术在人类B细胞中进行基因敲除（KO）和敲入（KI）操作，以便深入研究B细胞中特定基因的功能，并将其应用于B细胞疗法的开发。这项研究创新性地优化了从<strong>外周血单核细胞</strong>（PBMCs）中分离、扩增B细胞的流程，同时改进了CRISPR&#x2F;Cas9系统的转染效率和安全性。</p>
+<p>实验过程中，作者首先采用了一套高效且标准化的步骤分离并大量扩增B细胞，使其能在7天内增加44倍，这对于后续基因编辑的成功至关重要。然后，利用<strong>电穿孔技术</strong>将CRISPR&#x2F;Cas9 mRNA与针对CD19基因的sgRNA导入B细胞，以实现CD19基因的精准敲除。实验结果显示，这种方法成功诱导了预期的双链断裂（DSB），并通过非同源末端连接（NHEJ）机制引起了<strong>CD19基因</strong>的失活，其有效性通过流式细胞术和TIDE（Tracking of Indels by Decomposition）分析得到验证，结果显示CD19蛋白的表达显著减少。</p>
+<p>此外，作者还展示了如何利用CRISPR&#x2F;Cas9与重组腺相关病毒（rAAV6）载体结合，将绿色荧光蛋白（EGFP）基因特异整合到AAVS1位点，实现了高效的基因敲入。实验结果显示，经过工程化的B细胞在12天后能稳定表达EGFP，并且通过PCR和流式细胞术证实了基因整合的发生。</p>
+<p>尽管如此，研究也指出CRISPR&#x2F;Cas9技术存在潜在的脱靶效应和染色体易位风险，因此作者强调了优化实验条件的重要性，比如选择合适的sgRNA以降低脱靶效应，并探讨了使用碱基编辑器作为更为精确的基因编辑手段的可能性。</p>
+<p>具体实验步骤流程概括可以如下：</p>
+<ol>
+<li><p><strong>B细胞分离与激活</strong>：</p>
+<ul>
+<li>从外周血单核细胞（PBMCs）中分离B细胞，通过密度梯度离心法和负选择试剂盒进行纯化。</li>
+<li>对分离出的B细胞进行体外扩增，每两天更换新鲜的激活因子，并严格控制细胞密度。</li>
+</ul>
+</li>
+<li><p><strong>CRISPR&#x2F;Cas9介导的基因敲除（KO）</strong>：</p>
+<ul>
+<li>设计并合成针对目标基因（如CD19）的sgRNA。</li>
+<li>制备CRISPR&#x2F;Cas9-sgRNA复合物，通过电穿孔技术将复合物导入B细胞。</li>
+<li>经过电穿孔后的细胞在特定时间内静置和恢复，随后进行细胞培养。</li>
+<li>在转染后的第5天，使用流式细胞术检测CD19表达水平，并通过TIDE分析确定DNA双链断裂后引发的Indel形成。</li>
+</ul>
+</li>
+<li><p><strong>基因敲入（KI）实验</strong>：</p>
+<ul>
+<li>使用重组腺相关病毒（rAAV6）载体携带目的基因（如EGFP）和同源臂。</li>
+<li>将CRISPR&#x2F;Cas9系统与rAAV6载体一同导入B细胞，诱导同源定向修复（HDR）介导的敲入。</li>
+<li>工程化后的第12天，通过流式细胞术和PCR分析评估EGFP基因是否成功整合及表达。</li>
+</ul>
+</li>
+</ol>
+<p>整个实验流程旨在通过精细调控B细胞的分离、激活和基因编辑过程，高效地实现对B细胞基因组的精准工程改造，进而研究基因功能及其在B细胞治疗中的应用潜力。同时，实验关注了优化细胞健康和基因编辑效率的关键步骤，以及对可能存在的脱靶效应和染色体易位等问题的考量。</p>
+<hr>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>在这里，我们为CRISPR&#x2F;Cas9基础基因组工程提供详细的分步协议，用于基因敲除（KO）和敲击（KI），以研究B细胞中基因的生物功能和B细胞治疗的开发。</p>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>B细胞是从造血干细胞中提取的淋巴细胞，是适应性免疫系统幽默手臂的关键组成部分。他们之所以成为细胞疗法的候选者，是因为它们容易与周围血液隔离，体外扩张能力，以及体内寿命。此外，它们的正常生物功能——产生大量的抗体——可以用来表达大量的治疗性蛋白质，如抗感染的重组抗体，或用于治疗酶病变的酶。在这里，我们提供详细的方法，将原人类B细胞从外周血单核细胞（PBMCs）中分离，并在体外激活&#x2F;扩大分离的B细胞。然后，我们演示了使用CRISPR&#x2F;Cas9系统在B细胞中针对内源基因的部位特定KO所涉及的步骤。这种方法可以有效地利用各种基因的KO，用于研究感兴趣的基因的生物功能。然后，我们演示了使用CRISPR&#x2F;Cas9系统以及重组的、与腺相关的病毒（rAAV）载体的步骤，以有效实现B细胞中转基因表达盒的现场特定集成。该协议共同提供了一个分步工程平台，可用于人类B细胞的初级研究基因的生物功能以及B细胞治疗的开发。</p>
+<hr>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>B细胞是来自造血干细胞的淋巴细胞系的子群。他们在适应性幽默免疫系统中发挥关键作用，产生大量的抗体来应对免疫挑战[1]。B细胞也是记忆B细胞和最终分化的长寿血浆细胞的前体，从而提供持久的幽默免疫力[2]。特别是等离子体细胞，在免疫细胞中独一无二，它们能够产生大量的特定抗体，同时存活多年或几十年。此外，从外周血液隔离的便利性使B细胞血统成为新细胞疗法[4]的极好候选者。</p>
+<p>以前，随机整合方法，如那些使用扁桃体载体或<em>睡美人</em>转子，已经被用来工程B细胞的转基因传递和表达[5，6，7，8]。然而，这些方法的非特异性使得研究B细胞中特定基因的生物功能变得困难，并具有在治疗环境中插入突变和可变转基因表达和&#x2F;或沉默的固有风险。</p>
+<p>CRISPR&#x2F;Cas9系统是一个强大的基因组工程工具，使研究人员能够精确编辑许多物种中各种细胞的基因组。最近，包括我们自己的两组已经成功地开发出了原始人类B细胞[9,10]的外活扩张和靶向基因组工程方法。我们将描述从白血病样本中净化原人类B细胞的过程。之后，我们将描述我们更新的 B 细胞扩展和激活孤立 B 细胞的协议。然后，我们将描述一个通过电波将CRISPR&#x2F;Cas9 mRNA与CD19 sgRNA一起引入激活的B细胞，从而敲除分化19（CD19）的簇、特定的B细胞受体和B细胞的标志的过程。</p>
+<p>Cas9 mRNA 被翻译并绑定到 CD19 sgRNA，以形成 CRISPR&#x2F;Cas9-sgRNA 核糖核蛋白复合物 （RNP）。随后，复合物中的sgRNA导致Cas9在基因exon2上的目标序列中产生双链断裂（DSB）。细胞将通过引入或删除核苷酸来修复DSB，导致帧移位突变并导致基因被消灭。然后，我们将用流细胞测量测量CD19的损失，并通过分解（TIDE）分析对英德尔的形成进行跟踪分析。</p>
+<hr>
+<h3 id="代表结果解读"><a href="#代表结果解读" class="headerlink" title="代表结果解读"></a>代表结果解读</h3><p>更新的扩增和激活协议能够在7天内将B细胞快速扩增至44倍（图1；n &#x3D; 3个捐赠者）。在KO实验中，使用 Trypan 蓝染色测定的B细胞计数显示，电穿孔后24小时，对照组和CD19 KO样本的存活率均超过80%，但细胞回收略有下降（图2A；p ≥ 0.05，n &#x3D; 3个捐赠者）。这一结果表明，电穿孔对B细胞的整体健康略有影响。在转染后的第5天收集B细胞进行流式细胞术和TIDE分析。对照组和KO样本的代表性散点图显示，分别为14%和95%的CD19阴性细胞（图2B）。流式细胞术图的定量分析显示，与对照组相比，KO样本的CD19表达显著降低（图2B；p ≤ 0.0001，n &#x3D; 3个捐赠者）。</p>
+<p>基因组测序的色谱图（见表3中的引物序列）在CD19 KO B细胞中显示双峰，表明在CRISPR&#x2F;Cas9介导的DSB后发生了核苷酸的插入&#x2F;缺失，而在对照组中观察到单峰，表明此样本中未发生DSB（图3A）。KO样本的Indel分析色谱图（使用一个免费的在线TIDE分析工具）在CD19位点上的Indel形成百分比很高（&gt;90%），这与流式细胞术检测到的CD19蛋白损失百分比一致（图3B；p ≥ 0.05，n &#x3D; 3个捐赠者）。这些结果表明，CRISPR&#x2F;Cas9有效地在B细胞中产生了CD19 KO。</p>
+<p>KI实验的B细胞在工程化后的第12天收集，用于流式细胞术和连接PCR分析（表4）。接收rAAV6载体的样本的散点图显示EGFP阳性细胞占64%（图4），而在对照组中没有观察到EGFP阳性细胞；仅接收AAV载体的样本中观察到最小的EGFP阳性（图5A）。连接PCR扩增（见表3中的引物序列）在KI样本中显示出1.5 Kbps的扩增子（图5B），而在对照组或仅接收载体的样本中没有观察到PCR产物。细胞计数显示，工程化过程对KI样本的细胞回收影响大于对照组或仅接收载体的样本（图5B）。然而，所有样本在工程化后的3天内迅速恢复（图5B）。这些结果表明，成功在AAVS1位点整合EGFP至少在工程化后的12天内能够稳定表达EGFP。</p>
+<hr>
+<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/61855fig01.jpg" alt="Figure 1" style="zoom:50%;">
+
+<p>[^图1：体外B细胞扩张]: B细胞在第0天（零）在1个×106 个细胞播种，密度为5×每mL105， 并在7天内扩大44倍（n&#x3D;3独立捐赠者）。</p>
+<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/61855fig02a.jpg" alt="Figure 2A" style="zoom:50%;">
+
+<p>[^图2A]: </p>
+<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/61855fig02b.jpg" alt="Figure 2B" style="zoom:50%;">
+
+<p>[^图2B]: </p>
+<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/61855fig02c.jpg" alt="Figure 2C" style="zoom:50%;">
+
+
+
+<p>[^图2C]: <strong>CRISPR&#x2F;Cas9介质CD19淘汰赛（KO）在B细胞中。</strong>（<strong>A</strong>） 条形图显示 &amp; gt;70% 细胞恢复（左面板）和 &gt;80% 的存活率 （右面板） 细胞在输电后 24 小时在控制和 CD19 KO 样本中观察到。（<strong>B</strong>） 活细胞CD19门控的代表流动图分别显示对照样本和CD19 KO样本中84.3%和3.43%的CD19阳性细胞。（<strong>C</strong>） 条形图显示 CRISPR&#x2F;Cas9 介控 CD19 KO 组 CD19 显著减少（p ≤ 0.0001）。</p>
+<p>然后，我们将描述使用CRISPR&#x2F;Cas9与重组AAV6载体（rAAV6，同源定向修复（HDR）的捐赠模板）一起，以调解在腺相关病毒集成站点1（AAVS1）基因中插入增强型绿色荧光蛋白<em>（EGFP）</em> 的现场特定插入过程。AAVS1基因是一种没有已知生物功能的活性球体，也是人类基因组上的AAV病毒整合站点：因此，它被认为是基因组工程的”安全港”。在这里，我们报告说，B细胞的膨胀和激活允许在7天的培养中扩大44倍（<strong>图1）。</strong>B细胞的电扩散显示，在24小时后，整体细胞健康（<strong>图2A）</strong>略有下降。对 CD19 标记（<strong>图 2B）</strong>的分散图分析显示编辑的单元块（<strong>图 2C）减少高达</strong>83%。</p>
+<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/61855fig03a.jpg" alt="Figure 3A" style="zoom:50%;">
+
+<p>[^图3A]: </p>
+<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/61855fig03b.jpg" alt="Figure 3B" style="zoom:50%;">
+
+<p>[^图3B]: <strong>CD19蛋白质损失与英德尔形成。</strong>（<strong>A</strong>） 色谱图描绘了控制和 CD19 淘汰 （KO） 样本的测序峰值。控制峰值上的灰色框突出显示 CD19 gRNA 的目标序列，并带有箭头指示的预测切割位置。CD19 KO 显示”双峰”测序围绕预测的切割点，指示在双链断裂后插入&#x2F;删除核苷酸。（<strong>B</strong>） 条形图显示 CD19 蛋白质损失百分比与 CD19 轨迹（p ≥ 0.05）的英德尔形成之间的一致结果。</p>
+<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/61855fig04.jpg" alt="Figure 4" style="zoom:50%;">
+
+<p>[^图4：rAAV6 AAVS1 MND-GFP矢量构造。]: ****表达盒包含一个强大的合成促进器 （MND） 序列，紧接着是增强的绿色荧光蛋白 （EGFP） 编码序列和聚腺素化 （Poly A） 序列。AAVS1 同源臂侧翼在 MND 发起器上游和聚 A 序列的下游。EGFP 将根据 MND 发起人的法规进行表达。在构造的每个组件上方指示序列长度。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/61855fig05a.jpg" alt="Figure 5A"></p>
+<p>[^图5A]: </p>
+<img src="/2024/03/16/%E4%BD%BF%E7%94%A8CRISPR-Cas9%E7%9A%84%E4%BA%BA%E7%B1%BBB%E7%BB%86%E8%83%9E%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%B7%A5%E7%A8%8B/61855fig05b.jpg" alt="Figure 5B" style="zoom:50%;">
+
+<p>[^图5B]: </p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/61855fig05c.jpg" alt="Figure 5C"></p>
+<p>[^图5C]: <strong>CRISPR&#x2F;Cas9-和rAAV6在工程后第12天将EGFP记者录音带在B单元中的具体集成。</strong>（<strong>A</strong>） 代表流图显示控制或仅矢量样本中无EGFP阳性 B 细胞，而敲击 （KI） 样本中 EGFP 阳性 B 细胞为 64.4%。（<strong>B</strong>） KI样品的交界聚合酶链反应显示预测的1.5 Kbps波段：在控制或仅矢量样本中未发现带。在 PCR 过程中，水用于确保无污染。（<strong>C</strong>） 条形图描绘了在工程后 3 天内控制、仅矢量和 EGFP-KI 样本的细胞生长。断线表示 1 × 106 单元输入。</p>
+<p>TIDE对色谱仪（<strong>图3A）</strong>的分析显示，英德尔的百分比与流动细胞仪（<strong>图3B）</strong>所导致的蛋白质损失相似。KI实验的流动细胞学分析表明，接受AAV载体（<strong>图4）</strong>的细胞与RNP一起表示高达64%的EGFP阳性细胞（<strong>图5A），</strong>随后通过结点聚合酶链反应（PCR）（<strong>图5B）</strong>显示成功整合。细胞计数显示，所有样本在工程后3天内迅速恢复（<strong>图5C）。</strong></p>
+<hr>
+<h3 id="protocol"><a href="#protocol" class="headerlink" title="protocol"></a><strong>protocol</strong></h3><p>从当地血库获得了健康捐赠者的白细胞分离样本。在此描述的所有实验均被明尼苏达大学的机构审查委员会（IRB）认定为研究豁免，并获得了机构生物安全委员会（IBC）的批准。<br>注意：所有实验均按照血源性病原体的通用预防措施进行，使用无菌&#x2F;无菌技术和适当的生物安全二级设备。</p>
+<ol>
+<li><h4 id="一、准备B细胞扩增培养基的补充剂"><a href="#一、准备B细胞扩增培养基的补充剂" class="headerlink" title="一、准备B细胞扩增培养基的补充剂"></a>一、准备B细胞扩增培养基的补充剂</h4></li>
+</ol>
+<p>  将CpG寡核苷酸复溶至1 mg&#x2F;mL的浓度。<br>  将CD40配体（CD40L）复溶至100 μg&#x2F;mL的浓度。<br>  将重组人IL-10（rhIL-10）复溶至50 μg&#x2F;mL的浓度。<br>  将重组人IL-15（rhIL-15）复溶至10 μg&#x2F;mL的浓度。<br>  注意：将每种补充剂分装成小份，在-20°C至-80°C下保存，最多可保存6个月。</p>
+<ol start="2">
+<li><h4 id="二、准备基础培养基"><a href="#二、准备基础培养基" class="headerlink" title="二、准备基础培养基"></a>二、准备基础培养基</h4></li>
+</ol>
+<p>  将B细胞基础培养基与5%（体积&#x2F;体积）的体外免疫细胞扩增培养基补充剂（例如，CTS免疫细胞SR）和1%（体积&#x2F;体积）的青霉素和链霉素混合。<br>  使用0.22 µm过滤器适配器对基础培养基进行过滤灭菌，装入已灭菌的瓶子中。<br>  将基础培养基在4°C下保存，最多可保存1个月。</p>
+<ol start="3">
+<li><h4 id="三、准备B细胞扩增培养基"><a href="#三、准备B细胞扩增培养基" class="headerlink" title="三、准备B细胞扩增培养基"></a>三、准备B细胞扩增培养基</h4></li>
+</ol>
+<p>  将所需量的基础培养基转移到无菌容器中，以5 × 10^5细胞&#x2F;mL的密度培养B细胞。<br>  用1 μg&#x2F;mL CpG、100 ng&#x2F;mL CD40L、50 ng&#x2F;mL rhIL-10和10 ng&#x2F;mL rhIL-15补充基础培养基。<br>  使用0.22 µm过滤器过滤B细胞扩增培养基。<br>  在使用前，将B细胞扩增培养基在37°C、5% CO2、湿度条件下在组织培养孵箱中平衡至少30分钟。<br>  注意：准备新鲜的B细胞扩增培养基以供当天使用。不要准备用于多天的B细胞扩增培养基。此培养基配方鼓励记忆B细胞和激活的原代人B细胞的增殖。</p>
+<ol start="4">
+<li><h4 id="四、人B细胞的纯化和扩增"><a href="#四、人B细胞的纯化和扩增" class="headerlink" title="四、人B细胞的纯化和扩增"></a>四、人B细胞的纯化和扩增</h4></li>
+</ol>
+<p>  注意：按照制造商的说明，在开始第4.1步之前，向温控冷冻容器中加入99-100%异丙醇，并将冷冻容器在4°C下冷却。</p>
+<ol>
+<li><h5 id="从白细胞分离样本中分离出外周血单核细胞（PBMC）"><a href="#从白细胞分离样本中分离出外周血单核细胞（PBMC）" class="headerlink" title="从白细胞分离样本中分离出外周血单核细胞（PBMC）"></a>从白细胞分离样本中分离出外周血单核细胞（PBMC）</h5><ol>
+<li>将大约8-10 mL的白细胞分离样本转移到无菌的50 mL锥形管中。</li>
+<li>用无菌的1x磷酸盐缓冲液（PBS）将体积补至35 mL。</li>
+<li>小心地将35 mL白细胞分离样本层叠在15 mL密度梯度介质上。</li>
+<li>在500 × g下离心25分钟，不使用制动，去除血浆层，不要扰动富含单核细胞的层（PBMC层），从界面收集PBMCs，并转移到新的无菌50 mL锥形管中。</li>
+<li>用1x PBS将PBMCs的体积补至50 mL。</li>
+<li>在500 × g下离心5分钟，不使用制动。去除上清液，不要扰动可能呈现红色的PBMC沉淀。</li>
+<li>加入7 mL的氯化铵-氯化钾溶胞缓冲液，用移液管轻轻吹打混合3次，并在室温（RT）下孵育3分钟。</li>
+<li>用1x PBS将体积补至50 mL。</li>
+<li>在400 × g、低阻力制动的条件下离心5分钟。去除上清液，不要扰动沉淀。沉淀应呈粉红色或白色。<br>注意：为了继续培养新鲜分离的B细胞，请在开始B细胞分离（第4.2步）之前准备B细胞扩增培养基。</li>
+</ol>
+</li>
+<li><h5 id="使用人原代B细胞负选试剂盒从PBMCs中分离B细胞"><a href="#使用人原代B细胞负选试剂盒从PBMCs中分离B细胞" class="headerlink" title="使用人原代B细胞负选试剂盒从PBMCs中分离B细胞"></a>使用人原代B细胞负选试剂盒从PBMCs中分离B细胞</h5><ol>
+<li>用隔离缓冲液将PBMCs重新悬浮至5 × 10^7细胞&#x2F;mL的浓度。<br>注意：如果PBMC总数少于5 × 10^7细胞，则减少隔离缓冲液的体积以保持5 × 107细胞&#x2F;mL。细胞悬浮液的最小和最大体积分别为0.25 mL和8 mL。</li>
+<li>将最多8 mL（5 × 10^7细胞&#x2F;mL）转移到带有盖子的无菌、聚丙烯、圆底试管中。</li>
+<li>向PBMCs中加入50 μL&#x2F;mL的Cocktail增强剂。</li>
+<li>向PBMCs中加入50 μL&#x2F;mL的隔离鸡尾酒，盖上试管盖，倒置2-3次以混合。</li>
+<li>在RT下孵育5分钟；在孵育的第4分钟，至少30秒涡旋磁性微球。</li>
+<li>每1 mL PBMCs转移50 μL磁性微球，盖上试管盖，倒置2-3次以混合。</li>
+<li>用隔离缓冲液补至10 mL，并轻轻上下吸液2-3次。</li>
+<li>将试管放在磁性站中，在RT下孵育3分钟。</li>
+<li>握住磁铁和试管，将磁铁和试管一起倒置，将细胞悬浮液倒入新试管中。丢弃旧试管。</li>
+<li>重复步骤4.2.8（将孵育时间减少至2分钟），并将B细胞悬浮液倒入干净的锥形管中。</li>
+<li>富集的B细胞准备使用。如果立即使用细胞，请继续第4.3节（人B细胞扩增）。通过流式细胞术（可选）检查分离的B细胞的纯度。如果在使用前需要冷冻细胞，请继续步骤4.2.12。</li>
+<li>为了冷冻B细胞，在400 × g下离心5分钟，去除上清液，不要扰动沉淀。</li>
+<li>用冷冻培养基以10^7细胞&#x2F;mL的浓度重新悬浮细胞，并分装到1 mL&#x2F;冻存管中。</li>
+<li>将冻存管放入冷却的冷冻容器中，在-80°C下储存过夜；然后，将冷冻的冻存管转移到液氮罐中；可保存冻结细胞长达1年。<br>注意：预计分离的B细胞产量为总PBMC的2%-8%，存活率为95%-99%。</li>
+</ol>
+</li>
+<li><h4 id="人B细胞扩增"><a href="#人B细胞扩增" class="headerlink" title="人B细胞扩增"></a>人B细胞扩增</h4><p>注意：如果使用新鲜分离的B细胞，请跳过步骤4.3.1-4.3.5。计数细胞，并将所需数量的细胞转移到无菌锥形管中，然后继续进行步骤4.3.6。</p>
+<ol>
+<li>在使用前，将胎牛血清（FBS）在温水浴中预温。准备20 mL的B细胞扩增培养基，转移到T25烧瓶中，并在使用前至少15分钟在组织培养孵箱中预平衡培养基（在37°C、5% CO2、湿度的条件下）。</li>
+<li>在37°C水浴中解冻B细胞。等待期间，将2 mL预热的FBS转移到无菌的15 mL锥形管中。</li>
+<li>B细胞完全解冻后，立即向样本中逐滴加入1 mL预热的FBS，并在RT下孵育1分钟。</li>
+<li>轻轻吸液以重新悬浮样本，并将整个体积逐滴转移到含有2 mL预热的FBS的锥形管中。</li>
+<li>用无菌的1x PBS将体积补至15 mL，盖上试管盖，轻轻倒置2-3次。</li>
+<li>在400 × g下离心5分钟。</li>
+<li>去除上清液，不要扰动细胞沉淀，用1 mL预平衡的B细胞扩增培养基重新悬浮细胞沉淀，并计数细胞。总细胞数应约为10^7细胞。</li>
+<li>将细胞转移到含有20 mL预平衡的B细胞扩增培养基的烧瓶中。细胞的最终浓度应约为5 × 10^5细胞&#x2F;mL。</li>
+<li>垂直将烧瓶放入组织培养孵箱中孵育。</li>
+<li>每2天通过将B细胞的全部体积转移到无菌锥形管中并重复步骤4.3.6-4.3.9来完全更换扩增培养基。<br>注意：T25烧瓶可以容纳10-20 mL的培养基；T75烧瓶可以容纳多达20-60 mL的培养基。</li>
+</ol>
+</li>
+<li><h4 id="五、人原代B细胞的工程化处理"><a href="#五、人原代B细胞的工程化处理" class="headerlink" title="五、人原代B细胞的工程化处理"></a>五、人原代B细胞的工程化处理</h4></li>
+</ol>
+<p>为了获得最佳结果，在扩增&#x2F;激活后的48 ± 2小时对B细胞进行工程化处理。准备B细胞扩增培养基，将1 mL培养基分装到48孔组织培养板中，并在使用前至少15分钟在组织培养孵箱中预平衡。<br>注意：在设计CRISPR&#x2F;Cas9 sgRNA进行基因编辑时，请遵循以下步骤。</p>
+<p>   1）使用在线工具设计sgRNAs。</p>
+<p>   2）在所有蛋白质变体的共有外显子上设计sgRNAs。</p>
+<p>   3）从信誉良好的公司订购化学修饰的sgRNA。</p>
+<p>  4）sgRNA通常以冻干形式提供；用无菌的DNase&#x2F;RNase-free Tris-EDTA（TE）缓冲液复溶sgRNA，浓度为1 μg&#x2F;μL。</p>
+<pre><code>1. 通过将每个转染反应中的1 μL（1 μg/μL）化学修饰的sgRNA与1.5 μL（1 μg/μL）化学修饰的链球菌Cas9（S.p. Cas9）核酸酶混合来准备CRISPR/Cas9转染底物。对于对照组，使用1 μL TE缓冲液代替sgRNA。
+ 注意：当使用CD19 sgRNA进行基因敲除（KO）实验时，请参阅图2的结果。当使用AAVS1 sgRNA进行基因敲入（KI）实验时，请参阅图5的结果。
+ **将所有组分保持在冰上。**
+2. 轻轻混合，并将每个反应的2.5 μL CRISPR/Cas9转染底物转移到0.2 mL 8管条的管中；在室温下放置备用。
+3. 打开核转染仪（电穿孔仪），并准备转染试剂，如表格1所示。
+ 注意：如果需要，这是一个暂停的好步骤，将所有试剂放在冰上。准备好继续实验时，从冰上取下所有试剂。使用S.p. Cas9蛋白时，研究者必须通过将1 μg sgRNA与5 μg SpCas9蛋白混合，避免产生气泡，并在使用前在室温下孵育至少20分钟以获得最佳结果。
+4. 计数并将每10^6个B细胞转移到无菌锥形管中进行转染反应。
+5. 用无菌的1x PBS将体积补至15 mL，并在400 × g下离心5分钟。等待时，准备主要细胞转染试剂（表格2）并在室温下放置备用。
+6. 去除上清液，不要扰动细胞沉淀。
+7. 用10 mL无菌的1x PBS重新悬浮细胞沉淀，并在400 × g下离心5分钟。
+8. 完全去除上清液，不要扰动细胞沉淀。
+9. 向每10^6个B细胞的细胞沉淀中转移0.5 μg化学修饰的GFP mRNA（作为转染报告物，可选）。
+10. 用每10^6个B细胞的20 μL主要细胞转染试剂重新悬浮细胞沉淀；轻轻通过吸液5-6次混合。将每个反应的20.5 μL转移到含有2.5 μL CRISPR/Cas9转染底物的0.2 mL管中。
+11. 上下吸液一次以混合，并将整个体积（23 μL）转移到转染槽中。盖上盖子，轻轻在台面上敲打试管，以确保液体覆盖槽的底部。
+12. 使用核转染仪的人原代B细胞协议进行转染。
+    注意：核转染仪（电穿孔仪）可以放在组织培养罩外使用。盖上盖子以确保无菌。
+13. 让电穿孔后的细胞在室温下静置15分钟。
+14. 从组织培养板中转移80 μL预平衡的B细胞扩增培养基到转染反应的试管中。将试管放入组织培养孵箱中孵育30分钟。
+15. 轻轻吸液几次以混合，并将试管中的样本整体转移到48孔组织培养板中适当孔内，含有1 mL B细胞扩增培养基的孔中。细胞的最终浓度应为10^6细胞/mL。
+16. 如果进行基因敲入实验，则在电穿孔后大约45分钟，将rAAV6载体以500,000感染复数转移到含有电穿孔细胞的适当孔中。请参阅图4A的rAAV6载体构建示例。
+    注意：例如：对照样本将不使用CRISPR/Cas9或rAAV6载体进行电穿孔。仅载体样本将不使用CRISPR/Cas9进行电穿孔，然后使用rAAV6载体进行转导。敲入（KI）样本将使用CRISPR/Cas9进行电穿孔，然后使用rAAV6载体进行转导。rAAV6必须在其靶向DSB位点上下游含有同源臂，以进行同源定向修复（HDR）。
+17. 将培养板放入37°C、5% CO2湿度的组织培养孵箱中。
+18. 在工程化处理后的第1天计数细胞并记录存活率。
+19. 每2天通过计数细胞并将细胞的全部体积转移到干净的1.5 mL微量离心管中，然后离心以400 ×g离心5分钟，去除上清液，不要扰动沉淀。用100 µL新鲜的B细胞扩增培养基重新悬浮细胞，并转移到24孔组织培养板的孔中。将培养基体积补至最终细胞浓度达到5 × 10^5细胞/mL。
+    注意：48孔板每孔最多可容纳1 mL培养基；24孔板每孔最多可容纳2 mL培养基；12孔板每孔最多可容纳4 mL培养基；6孔板每孔最多可容纳8 mL培养基。
+20. 在至少扩增5天后再进行下游分析，如流式细胞术分析、TIDE分析和连接PCR。
+</code></pre>
+<hr>
+<h3 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h3><p>直到最近，对原代人B细胞进行精确的基因组工程仍然是一个挑战。我们之前发表的协议使用了CRISPR&#x2F;Cas9来工程化原代人B细胞。在这里，我们概述了改进的B细胞分离、扩增和工程化协议，以实现对CD19的快速KO或对EGFP的敲入。</p>
+<p>我们证明，我们的扩增协议可以在7天内将B细胞快速扩增至44倍（图1）。这个协议的扩增速率比Johnson等人和Hung等人的报告更快。确保原代人B细胞健康快速扩增的关键步骤是每两天用新鲜的激活因子替换培养基，并确保培养中的总B细胞数不超过2 × 106细胞&#x2F;mL。</p>
+<p>我们还发现，我们改进的CRISPR&#x2F;Cas9转染协议对CD19 KO结果在效率上很高（图2和图3）。与之前的研究一样，我们观察到电穿孔后24小时细胞回收和存活率略有下降。这表明电穿孔会影响原代人B细胞的整体健康；然而，细胞最终在48小时内恢复（数据未显示）。</p>
+<p>使用这种电穿孔器协议的好处是，我们可以以更快的速度（16个反应在1分钟内完成），而之前的协议（9，10）完成16个反应大约需要10-12分钟。此外，这个转染系统消除了之前研究中观察到的电穿孔器可能产生的电弧（9，10）。此外，这个工程化方法可以扩大规模，用于更大数量的B细胞，使用更大型的、商业上可获得的槽（数据未显示）。</p>
+<p>为了确保最佳的细胞整体健康和KO效率，有几个关键步骤：首先，确保B细胞扩增培养基制备并预平衡至少15分钟后使用。其次，转染底物的总体积不应超过核转染试剂的20%（体积&#x2F;体积）。第三，必须扩增&#x2F;激活48 ± 2小时以获得最佳结果。第四，在将电穿孔槽放入电穿孔器之前，轻轻敲打电穿孔槽，以确保转染反应溶液覆盖槽底。第五，确保电穿孔后的细胞在电穿孔槽中仅静置15分钟；电穿孔后长时间留在核转染试剂中可能会损害整体细胞存活率。第六，确保将细胞与培养基在电穿孔槽中的孵育时间不超过30分钟。第七，将106个电穿孔细胞放入1 mL中，在最初的48小时内，这有助于细胞更快恢复，而不是在较低的密度下培养（数据未显示）。最后，使用Cas9 mRNA或Cas9蛋白将导致类似的编辑效率（数据未显示）；然而，我们为了方便和成本效益使用了Cas9 mRNA。</p>
+<p>在使用CRISPR&#x2F;Cas9时，有两个主要担忧：脱靶效应和染色体易位。由于sgRNA与目标序列不匹配的碱基对引起的脱靶效应，导致基因组上可能存在许多可能的结合位点，并产生多个不需要的基因KO。因此，应同时考虑预测的脱靶评分和on-target评分，以尽量减少这个问题。染色体易位可能由于脱靶效应或在敲除多个基因时发生。这可能在实验和临床上造成灾难性事件。碱基编辑器（12种：两种类型的胞嘧啶碱基编辑器和腺嘌呤碱基编辑器）改变一个核苷酸（破坏剪接元件、创建过早终止密码子或创建点突变），导致目标基因KO而不产生DSB（在其他地方详细回顾）。因此，碱基编辑方法可用于单基因或多基因KO，以规避染色体易位问题。</p>
+<p>我们还证明，CRISPR&#x2F;Cas9与rAAV6一起，可以用于高效介导特异性KI，并在AAVS1位点表达EGFP。我们在工程化后的至少12天内观察到EGFP表达。我们还观察到KI样本在第12天有两个EGFP阳性群体：一个高表达群体和一个中表达群体（图5A），而仅接收载体的样本显示出最小比例的细胞中存在中表达EGFP。我们推测这种“高和中表达群体”的现象是由于载体双等位基因整合造成的。进一步使用跨越PCR对中和高表达EGFP细胞进行调查可以确认这个假设。使用AAV作为载体的两个注意事项：首先，AAV载体具有有限的货物容量，高达4.7千字节，当敲入大基因时会引起问题。减少同源臂的大小将允许容纳更大的基因，从而降低KI效率（数据未显示）。或者，可以使用多个基因装载载体的同时或顺序整合。研究报道了在免疫健全的动物模型中AAV转导细胞会产生免疫反应并清除这些细胞。作为替代方案，可以探索非病毒基础的供体HDR模板，以规避这个问题。</p>
+<p>总之，我们已经证明了从分离、扩增到B细胞工程化的全面、分步过程，这些过程导致了高基因修改效率。这种工程化方法可以用于基因敲除，并研究B细胞中基因的功能。此外，这种方法可以用于工程化B细胞以表达重组抗体，用于对抗感染。最后，这种方法可以应用于工程化B细胞以表达和分泌治疗酶，这些酶可以作为自体细胞为基础的治疗方法，用于治疗酶病。</p>
+<p>在未来的研究中，我们可以进一步优化这些协议，提高基因编辑的效率和特异性，并探索新的方法来减少脱靶效应和染色体易位的风险。此外，我们还可以研究如何将这些工程化的B细胞用于临床应用，例如作为免疫治疗或基因治疗的工具。通过不断改进和探索新的技术，我们有望在不久的将来实现更高效、更安全的人B细胞基因组工程。</p>
+<hr>
+<table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>gRNA sequence</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CD19</td>
+<td>5’-GCTGTGCTGCAGTGCCTCAA-3’</td>
+</tr>
+<tr>
+<td>AAVS1</td>
+<td>5’-GTCACCAATCCTGTCCCTAG-3’</td>
+</tr>
+</tbody></table>
+<p><strong>Table 1: gRNA sequences.</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Reagents</strong></th>
+<th><strong>Volume per 1 reaction</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>P3 Primary Cell solution</td>
+<td>16.4 mL</td>
+</tr>
+<tr>
+<td>Supplement 1</td>
+<td>3.6 mL</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td>20 mL</td>
+</tr>
+</tbody></table>
+<p><strong>Table 2: Preparation of Nucleofection reagent mix.</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Description</strong></th>
+<th><strong>Sequence</strong></th>
+<th><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CD19 forward primers</td>
+<td>5’-AAATTCAGGAAAGGGTTGGAAG-3’</td>
+<td>Amplify the CD19 locus for Indel analysis</td>
+</tr>
+<tr>
+<td>CD19 Reverse primer</td>
+<td>5’-GCGGACCTCTTCTGTCCATG-3’</td>
+<td>Amplify the CD19 locus for Indel analysis</td>
+</tr>
+<tr>
+<td>Junction PCR forward primer</td>
+<td>5’-GGACGAGCTGTACAAGTAACG-3’</td>
+<td>Junction PCR</td>
+</tr>
+<tr>
+<td>Junction PCR Reverse primer</td>
+<td>5’-GAGACAGTGACCAACCATCC-3</td>
+<td>Junction PCR</td>
+</tr>
+</tbody></table>
+<p><strong>Table 3: Primers used.</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Description</strong></th>
+<th><strong>Fluorophore</strong></th>
+<th><strong>Clone</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Anti-human CD19</td>
+<td>PerCP</td>
+<td>HIB19</td>
+</tr>
+<tr>
+<td>Viability Dye</td>
+<td>eFlour 780</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<p><strong>Table 4: Flow cytometry antibody and viability dye.</strong></p>
+<hr>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ol>
+<li>LeBien, T. W., Thomas, T. F. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=B+lymphocytes:+how+they+develop+and+function.">B lymphocytes: how they develop and function.</a> <em>Blood</em>. <strong>112</strong> (5), 1570-1580 (2008).</li>
+<li>Nutt, S. L., Hodgkin, P. D., Tarlinton, D. M., Corcoran, L. M. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=The+generation+of+antibody-secreting+plasma+cells.">The generation of antibody-secreting plasma cells.</a> <em>Nature Reviews Immunology</em>. <strong>15</strong>, 160-171 (2015).</li>
+<li>Slifka, M. K., Antia, R., Whitmire, J. K., Ahmed, R. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Humoral+immunity+due+to+long-lived+plasma+cells.">Humoral immunity due to long-lived plasma cells.</a> <em>Immunity</em>. <strong>8</strong> (3), 363-372 (1998).</li>
+<li>Spriggs, M. K., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Recombinant+human+CD40+ligand+stimulates+B+cell+proliferation+and+immunoglobulin+E+secretion.">Recombinant human CD40 ligand stimulates B cell proliferation and immunoglobulin E secretion.</a> <em>Journal of Experimental Medicines</em>. <strong>176</strong> (6), 1543-1550 (1992).</li>
+<li>Fusil, F., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=A+lentiviral+vector+allowing+physiologically+regulated+membrane-anchored+and+secreted+antibody+expression+depending+on+B-cell+maturation+status.">A lentiviral vector allowing physiologically regulated membrane-anchored and secreted antibody expression depending on B-cell maturation status.</a> <em>Molecular Therapy</em>. <strong>23</strong> (11), 1734-1747 (2015).</li>
+<li>Luo, X. M., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Engineering+human+hematopoietic+stem/progenitor+cells+to+produce+a+broadly+neutralizing+anti-HIV+antibody+after+in+vitro+maturation+to+human+B+lymphocytes.">Engineering human hematopoietic stem&#x2F;progenitor cells to produce a broadly neutralizing anti-HIV antibody after in vitro maturation to human B lymphocytes.</a> <em>Blood</em>. <strong>113</strong> (7), 1422-1431 (2008).</li>
+<li>Mock, U., Thiele, R., Uhde, A., Fehse, B., Horn, S. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Efficient+lentiviral+transduction+and+transgene+expression+in+primary+human+B+cells.">Efficient lentiviral transduction and transgene expression in primary human B cells.</a> <em>Human Gene Therapy Methods</em>. <strong>23</strong> (6), 408-415 (2012).</li>
+<li>Heltemes-Harris, L. M., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Sleeping+Beauty+transposon+screen+identifies+signaling+modules+that+cooperate+with+STAT5+activation+to+induce+B-cell+acute+lymphoblastic+leukemia.">Sleeping Beauty transposon screen identifies signaling modules that cooperate with STAT5 activation to induce B-cell acute lymphoblastic leukemia.</a> <em>Oncogene</em>. <strong>35</strong> (26), 3454-3464 (2016).</li>
+<li>Johnson, M. J., Laoharawee, K., Lahr, W. S., Webber, B. R., Moriarity, B. S. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Engineering+of+primary+human+B+cells+with+CRISPR/Cas9+targeted+nuclease.">Engineering of primary human B cells with CRISPR&#x2F;Cas9 targeted nuclease.</a> <em>Scientific Reports</em>. <strong>8</strong>, 12144 (2018).</li>
+<li>Hung, K. L., et al. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Engineering+protein-secreting+plasma+cells+by+homology-directed+repair+in+primary+human+B+cells.">Engineering protein-secreting plasma cells by homology-directed repair in primary human B cells.</a> <em>Molecular Therapy</em>. <strong>26</strong> (2), 456-467 (2018).</li>
+<li>Cui, Y., Xu, J., Cheng, M., Liao, X., Peng, S. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Review+of+CRISPR/Cas9+sgRNA+design+tools.">Review of CRISPR&#x2F;Cas9 sgRNA design tools.</a> <em>Interdisciplinary Sciences</em>. <strong>10</strong> (2), 455-465 (2018).</li>
+<li>Rees, H. A., Liu, D. R. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Base+editing:+precision+chemistry+on+the+genome+and+transcriptome+of+living+cells.">Base editing: precision chemistry on the genome and transcriptome of living cells.</a> <em>Nature Reviews Genetics</em>. <strong>19</strong> (12), 770-788 (2018).</li>
+<li>Spiegel, A., Bachmann, M., Jurado Jiménez, G., Sarov, M. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=CRISPR/Cas9-based+knockout+pipeline+for+reverse+genetics+in+mammalian+cell+culture.">CRISPR&#x2F;Cas9-based knockout pipeline for reverse genetics in mammalian cell culture.</a> <em>Methods</em>. <strong>164-165</strong>, 49-58 (2019).</li>
+<li>Suzuki, T., Kazuki, Y., Oshimura, M., Hara, T. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=A+novel+system+for+simultaneous+or+sequential+integration+of+multiple+gene-loading+vectors+into+a+defined+site+of+a+human+artificial+chromosome.">A novel system for simultaneous or sequential integration of multiple gene-loading vectors into a defined site of a human artificial chromosome.</a> <em>PLoS One</em>. <strong>9</strong>, 110404 (2014).</li>
+<li>Bak, R. O., Porteus, M. H. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=CRISPR-mediated+integration+of+large+gene+cassettes+using+AAV+donor+vectors.">CRISPR-mediated integration of large gene cassettes using AAV donor vectors.</a> <em>Cell Reports</em>. <strong>20</strong> (3), 750-756 (2017).</li>
+<li>Shirley, J. L., de Jong, Y. P., Terhorst, C., Herzog, R. W. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Immune+responses+to+viral+gene+therapy+vectors.">Immune responses to viral gene therapy vectors.</a> <em>Molecular Therapy</em>. <strong>28</strong> (3), 709-722 (2020).</li>
+<li>Martino, A. T., Markusic, D. M. <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Search&doptcmdl=Citation&defaultField=Title+Word&term=Immune+response+mechanisms+against+AAV+vectors+in+animal+models.">Immune response mechanisms against AAV vectors in animal models.</a> <em>Molecular Therapy - Methods and Clinical Development</em>. <strong>17</strong>, 198-208 (2020).</li>
+</ol>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/03/16/%E4%BD%BF%E7%94%A8CRISPR-Cas9%E7%9A%84%E4%BA%BA%E7%B1%BBB%E7%BB%86%E8%83%9E%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%B7%A5%E7%A8%8B/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
 
 
   
@@ -1851,7 +2428,7 @@
 <table>
 <thead>
 <tr>
-<th><strong>供体数</strong></th>
+<th><strong>供体鼠</strong></th>
 <th><strong>注射卵母细胞数</strong></th>
 <th><strong>受精数</strong></th>
 <th><strong>受精率</strong></th>
@@ -2305,693 +2882,6 @@
 
 
   
-    <article id="post-三种加强CRISPR工作流程的Gibson组装方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/03/14/%E4%B8%89%E7%A7%8D%E5%8A%A0%E5%BC%BACRISPR%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E7%9A%84Gibson%E7%BB%84%E8%A3%85%E6%96%B9%E6%B3%95/" target="_blank">三种加强CRISPR工作流程的Gibson组装方法</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/03/14/%E4%B8%89%E7%A7%8D%E5%8A%A0%E5%BC%BACRISPR%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E7%9A%84Gibson%E7%BB%84%E8%A3%85%E6%96%B9%E6%B3%95/" class="archive-article-date">
-        <time datetime="2024-03-14T14:06:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-14</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>[TOC]</p>
-<p>In this article, you will learn how Gibson Assembly is streamlining the use of CRISPR in several research applications. Below, we discuss:</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.thermofisher.cn/cn/zh/home/brands/thermo-scientific/molecular-biology/molecular-biology-learning-center/molecular-biology-resource-library/spotlight-articles/gibson-assembly-in-crispr.html#power-of-crispr">Harness the power of CRISPR</a></li>
-<li>Gibson Assembly applications in the CRISPR workflow<ul>
-<li><a target="_blank" rel="noopener" href="https://www.thermofisher.cn/cn/zh/home/brands/thermo-scientific/molecular-biology/molecular-biology-learning-center/molecular-biology-resource-library/spotlight-articles/gibson-assembly-in-crispr.html#identifying">Identify novel tumor suppressors</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.thermofisher.cn/cn/zh/home/brands/thermo-scientific/molecular-biology/molecular-biology-learning-center/molecular-biology-resource-library/spotlight-articles/gibson-assembly-in-crispr.html#editing">Edit patient-derived xenografts</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.thermofisher.cn/cn/zh/home/brands/thermo-scientific/molecular-biology/molecular-biology-learning-center/molecular-biology-resource-library/spotlight-articles/gibson-assembly-in-crispr.html#cloning">Clone natural CRISPR arrays</a></li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://www.thermofisher.cn/cn/zh/home/brands/thermo-scientific/molecular-biology/molecular-biology-learning-center/molecular-biology-resource-library/spotlight-articles/gibson-assembly-in-crispr.html#getting-started">Get started with Gibson Assembly</a></li>
-</ul>
-<p>CRISPR-Cas systems are programmable endonucleases that, since their discovery, have rapidly reshaped the fields of genome editing and gene therapy. The Cas protein, in complex with a single guide RNA (sgRNA), can be directed to nearly any DNA sequence. This gives basic researchers and drug developers in almost every biological field the ability to knock out—through nucleotide insertion or deletion (indel) via non-homologous end-joining (NHEJ) DNA repair—or knock in—using donor DNA and cell-mediated homology-directed repair – nearly any gene (or genes) of interest [<a target="_blank" rel="noopener" href="https://www.thermofisher.cn/cn/zh/home/brands/thermo-scientific/molecular-biology/molecular-biology-learning-center/molecular-biology-resource-library/spotlight-articles/gibson-assembly-in-crispr.html#references">1,2</a>].</p>
-<h2 id="Harnessing-the-power-of-CRISPR-with-recombinant-DNA"><a href="#Harnessing-the-power-of-CRISPR-with-recombinant-DNA" class="headerlink" title="Harnessing the power of CRISPR with recombinant DNA"></a>Harnessing the power of CRISPR with recombinant DNA</h2><p>Wielding this technology, either for preclinical R&amp;D or therapeutics development, requires the ability to manipulate and test various Cas proteins, sgRNAs, and other genes common in molecular biology, including fluorescent or luminescent reporters, promoters of different strengths, transcriptional terminators, and more. Accomplishing this requires a modular approach to constructing recombinant DNA, a robust cloning workflow, and rapid access to custom PCR primers and ready-made vectors.</p>
-<p>These requirements can act as a major bottleneck to implementing CRISPR protocols in several model systems. Commonly, especially when implementing CRISPR-Cas expression in mammalian systems using lentiviruses, researchers can face problems with unstable inserts that undergo homologous recombination during the cloning process. One way around these difficulties is by using a purified ribonucleoprotein (RNP) complex, containing a <a target="_blank" rel="noopener" href="https://www.thermofisher.cn/cn/zh/home/life-science/genome-editing/cas9-nucleases/cas9-proteins.html">Cas protein</a> and sgRNA, for genome editing. Briefly, RNPs are assembled <em>in vitro</em> and transfected or electroporated into the desired cells. While this methodology presents significant advantages (i.e., circumventing expression or off-target editing complications), some experimental questions may require the use of reporter or selection markers, which necessitates the use of plasmid or virus-based systems, constructed using recombinant DNA technology.</p>
-<p>Reliance on conventional cloning workflows—which use restriction enzymes—can present additional hurdles for molecular biologists looking to harness the power of CRISPR-Cas systems in their research. Commonly used restriction enzymes cut inverted repeat palindromic hexanucleotide sequences and dependence on these restriction sites has limitations: They must be incorporated into DNA fragments before cloning which can introduce undesirable sequences (also called “scars”) into gene products. Restriction enzymes also have varying degrees of activity, which can lead to inefficiencies in DNA digestion. Finally, traditional restriction cloning of multiple fragments can be burdensome, requiring subsequent rounds of multi-day digestion and screening protocols to obtain the desired DNA construct.</p>
-<h2 id="Gibson-Assembly-enabling-rapid-CRISPR-based-genome-editing"><a href="#Gibson-Assembly-enabling-rapid-CRISPR-based-genome-editing" class="headerlink" title="Gibson Assembly: enabling rapid CRISPR-based genome editing"></a>Gibson Assembly: enabling rapid CRISPR-based genome editing</h2><p>While restriction enzyme-based cloning methods have their place in molecular biology, modern-day cloning workflows required for CRISPR research need to be streamlined and rapid.</p>
-<p>In 2009, a new cloning method—called Gibson Assembly—changed the way molecular cloning was done, largely solving many of the problems posed by conventional restriction enzyme-based methods and enabling seamless cloning, without the need for introducing restriction sites [<a target="_blank" rel="noopener" href="https://www.thermofisher.cn/cn/zh/home/brands/thermo-scientific/molecular-biology/molecular-biology-learning-center/molecular-biology-resource-library/spotlight-articles/gibson-assembly-in-crispr.html#references">3</a>].</p>
-<p>The <a target="_blank" rel="noopener" href="https://www.thermofisher.cn/cn/zh/home/life-science/cloning/seamless-cloning-and-genetic-assembly/gibson-assembly.html">reaction is a one-pot, isothermal reaction</a> that can stitch up to 15 DNA fragments—with short homology regions from 20 to 40 nucleotides—together in approximately an hour (<strong>Figure 1</strong>). While efficiency does drop with multiple fragments, success rates are fairly high and can be done in as little as three days. The technique is uniquely suited for the modular DNA shuffling required for CRISPR applications. Below, we review a few recent breakthrough applications of CRISPR&#x2F;Cas, all of which are powered by Gibson Assembly.</p>
-<p><a target="_blank" rel="noopener" href="https://assets.thermofisher.cn/TFS-Assets/BID/Reference-Materials/gibson-assembly-hifi-homology-oligonucleotide-stitching-white-paper.pdf"><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/1681230195657.png" alt="Effortlessly build clones with DNA fragments using Gibson Assembly Cloning kits and master mixes for an efficient cloning workflow."></a></p>
-<p><strong>Figure 1.</strong> Seamless assembly of four fragments (8 kb total insert size) in vector using the <a target="_blank" rel="noopener" href="https://assets.thermofisher.cn/TFS-Assets/BID/Reference-Materials/gibson-assembly-hifi-homology-oligonucleotide-stitching-white-paper.pdf">GeneArt Gibson Assembly HiFi Cloning Kit</a>.</p>
-<h3 id="Identifying-novel-tumor-suppressors-in-genetically-engineered-mouse-models-GEMMs"><a href="#Identifying-novel-tumor-suppressors-in-genetically-engineered-mouse-models-GEMMs" class="headerlink" title="Identifying novel tumor suppressors in genetically-engineered mouse models (GEMMs)"></a>Identifying novel tumor suppressors in genetically-engineered mouse models (GEMMs)</h3><p>Many GEMMs that mimic different clinical aspects of cancer have been developed, helping cancer researchers untangle the process of tumor evolution and metastasis. For instance, through conditional deletion of <em>Trp53</em> and <em>Rb1</em> in the lung epithelium, researchers have developed a robust mouse model for small cell lung cancer (mSCLC) [<a target="_blank" rel="noopener" href="https://www.thermofisher.cn/cn/zh/home/brands/thermo-scientific/molecular-biology/molecular-biology-learning-center/molecular-biology-resource-library/spotlight-articles/gibson-assembly-in-crispr.html#references">4</a>].</p>
-<p>But untangling the role of additional tumor suppressor or oncogenic drivers of mSCLC requires the introduction of germline or conditional alleles for candidate genes into pre-existing GEMMs, a technically challenging process that can take multiple months to years. To overcome this technical chasm, the Jacks lab at MIT used a Gibson Assembly-based modular assembly platform (GMAP; a technique used to generate a series of modular vectors for bacterial and mammalian gene expression) to construct a CRISPR-mediated system for testing candidate tumor suppressor genes in mSCLC [<a target="_blank" rel="noopener" href="https://www.thermofisher.cn/cn/zh/home/brands/thermo-scientific/molecular-biology/molecular-biology-learning-center/molecular-biology-resource-library/spotlight-articles/gibson-assembly-in-crispr.html#references">5,6</a>].GMAP enabled the team to construct a Cre-activated Cas9 and GFP reporter in the mSCLC model described above and an adenoviral vector, expressing a sgRNA targeting any tumor suppressor of interest and Cre recombinase.</p>
-<p>In this way, the group developed a system where CRISPR-Cas9 and Cre-activity can be delivered to the lungs to initiate tumor formation, with active genome editing only happening in initiated tumor cells <em>in vivo</em>. In addition, by swapping out sgRNA sequences in the adenoviral vector using Gibson Assembly, this system can be used to quickly and simply to validate any putative tumor suppressor.</p>
-<h3 id="Editing-patient-derived-xenografts-PDX"><a href="#Editing-patient-derived-xenografts-PDX" class="headerlink" title="Editing patient-derived xenografts (PDX)"></a>Editing patient-derived xenografts (PDX)</h3><p>Many tumor models rely on <em>in vitro</em> models (i.e., cell lines) or <em>in vivo</em> animal models (i.e., GEMMs) to mimic tumor progression. However, these models have significant drawbacks to replicating the nuances of tumors in humans. PDX models, where tumors taken from a patient are engrafted into an immunocompromised mouse, can often help researchers replicate genetic, gene expression, and epigenetic characteristics of the tumor seen in the clinic [<a target="_blank" rel="noopener" href="https://www.thermofisher.cn/cn/zh/home/brands/thermo-scientific/molecular-biology/molecular-biology-learning-center/molecular-biology-resource-library/spotlight-articles/gibson-assembly-in-crispr.html#references">7</a>].</p>
-<p>One major technological barrier to using these models is that genetic perturbations of PDX models are challenging. To circumvent this difficulty, a research group from Memorial Sloan Kettering Cancer Center and Weill Cornell Medicine used Gibson Assembly to develop a lentiviral vector, called pSpCTRE, that enables tightly controlled, Dox-inducible Cas9 expression and is within the packaging size allowed by lentiviruses (a common complication when working with large Cas genes and viral vectors), resulting in high viral titers [<a target="_blank" rel="noopener" href="https://www.thermofisher.cn/cn/zh/home/brands/thermo-scientific/molecular-biology/molecular-biology-learning-center/molecular-biology-resource-library/spotlight-articles/gibson-assembly-in-crispr.html#references">7</a>].</p>
-<p>Even with robust cloning methods such as Gibson Assembly, cloning into lentiviral vectors can present problems, due to homologous recombination between long terminal repeat (LTR) sequences, necessary for integration into the host genome. When constructing lentiviral vectors, be sure to use <a target="_blank" rel="noopener" href="https://www.thermofisher.cn/order/catalog/product/C737303">competent <em>E. coli</em> cells</a>, deficient in RecA activity (i.e., <em>recA1</em> or <em>recA13</em> alleles) to reduce the frequency of LTR recombination during cloning.</p>
-<p>The researchers found, when pSpCTRE was transduced along with a sgRNA, transduced tumor cells underwent robust editing. The vector also contains a reporter gene, a truncated CD4 protein, that acts as a marker for the transduced tumor cells and as a surrogate for Cas9 expression. This inventive vector enabled efficient transduction and editing of PDX models, allowing researchers to carry out functional genomics in a clinically relevant tumor model [<a target="_blank" rel="noopener" href="https://www.thermofisher.cn/cn/zh/home/brands/thermo-scientific/molecular-biology/molecular-biology-learning-center/molecular-biology-resource-library/spotlight-articles/gibson-assembly-in-crispr.html#references">7</a>].</p>
-<h3 id="Cloning-natural-CRISPR-arrays"><a href="#Cloning-natural-CRISPR-arrays" class="headerlink" title="Cloning natural CRISPR arrays"></a>Cloning natural CRISPR arrays</h3><p>CRISPR loci are ubiquitous across the eubacterial and archaeal kingdoms and were initially discovered for their role as an adaptive prokaryotic immune system for invading nucleic acids [<a target="_blank" rel="noopener" href="https://www.thermofisher.cn/cn/zh/home/brands/thermo-scientific/molecular-biology/molecular-biology-learning-center/molecular-biology-resource-library/spotlight-articles/gibson-assembly-in-crispr.html#references">8</a>]. Part of this locus, the CRISPR array, is made up of short repeat sequences with short, unique DNA spacers. The CRISPR array is transcribed in a bacteria or archaea into a long CRISPR RNA (crRNA) and processed into individual crRNAs, each of which contains a unique spacer, capable of targeting a complementary nucleic acid sequence when complexed with a Cas protein.</p>
-<p>CRISPR-Cas has been adapted by many labs to perform genome editing and multiplexed editing can be done by engineering in RNA processing sites [<a target="_blank" rel="noopener" href="https://www.thermofisher.cn/cn/zh/home/brands/thermo-scientific/molecular-biology/molecular-biology-learning-center/molecular-biology-resource-library/spotlight-articles/gibson-assembly-in-crispr.html#references">9</a>]. However, in principle, natural CRISPR arrays could be used for genome editing and has a number of advantages: they are more compact, can be easily applied to prokaryotes that express endogenous Cas proteins, and can result in more efficient editing.</p>
-<p>Yet, due to the presence of sequence repeats within CRISPR arrays, molecular biologists have struggled to clone and use CRISPR arrays for multiplexed editing. To address this issue, Cooper and Hasty, at UCSD, designed synthetic single-stranded oligonucleotides that bridged repeat and spacer junctions and could be efficiently annealed and ligated in the correct endogenous orientation as that found in a bacterium, <em>Acinetobacter baylyi</em> [<a target="_blank" rel="noopener" href="https://www.thermofisher.cn/cn/zh/home/brands/thermo-scientific/molecular-biology/molecular-biology-learning-center/molecular-biology-resource-library/spotlight-articles/gibson-assembly-in-crispr.html#references">10</a>]. Following ligation, the assembled array is amplified by PCR and cloned into your vector of choice using Gibson Assembly. This strategy can be broadly applied as a robust and low-cost cloning strategy for harnessing and utilizing natural CRISPR arrays for more widespread applications.</p>
-<h2 id="Getting-started-with-Gibson-Assembly"><a href="#Getting-started-with-Gibson-Assembly" class="headerlink" title="Getting started with Gibson Assembly"></a>Getting started with Gibson Assembly</h2><p>As we’ve seen above, Gibson Assembly is a powerful method for constructing CRISPR vectors. So, how can you get started using it in your research?</p>
-<p>The easiest way to get started with Gibson Assembly is to first search for, and identify, a vector that is suitable for your application. The best place to search for these, especially if you’ve spotted an attractive plasmid in a scientific publication, is on Addgene, a non-profit plasmid repository that can be accessed by other researchers. If your vector of interest hasn’t been deposited in Addgene, you can reach out to the corresponding author of a scientific publication and ask for the vectors used. There are also <a target="_blank" rel="noopener" href="https://www.thermofisher.cn/cn/zh/home/life-science/genome-editing/geneart-crispr/crispr-nuclease-vector.html">commercially-available <strong>CRISPR</strong> vectors</a> that can be used in a broad range of research applications or <a target="_blank" rel="noopener" href="https://www.thermofisher.cn/search/browse/category/us/en/90222167/dna+vectors">vector selection tools</a> that can help you figure out which are suitable for your application.</p>
-<p>The next preparatory step is to design your primers for PCR amplification of the DNA fragments you want to stitch together using Gibson Assembly. There are many DNA editing software platforms, such as the SnapGene platform, that can be used to construct your vector <em>in silico</em> and design primers that bridge the fragment junctions. When designing primers, be sure that regions of complementarity have melting temperatures (Tm) of 50℃, as that is the optimal reaction temperature for Gibson Assembly. You can <a target="_blank" rel="noopener" href="https://www.thermofisher.cn/cn/zh/home/brands/thermo-scientific/molecular-biology/molecular-biology-learning-center/molecular-biology-resource-library/thermo-scientific-web-tools/tm-calculator.html">use a Tm calculator</a> to check the annealing temperatures of your primers before ordering them. Following recommended protocol, PCR fragments with 20–40 nt overlapping areas are generated and mixed with Gibson Assembly reaction mix and linearized vector—for a simple one-step reaction. After incubation, reaction mix is transformed into competent <em>E. coli</em> cells and colonies and clones are selected and construct sequenced to confirm proper assembly.</p>
-<p>If you need more information on designing and performing Gibson Assembly, check out our pages on <a target="_blank" rel="noopener" href="https://www.thermofisher.cn/cn/zh/home/life-science/cloning/seamless-cloning-and-genetic-assembly/gibson-assembly.html">GeneArt Gibson Assembly Cloning</a> or our white paper on <a target="_blank" rel="noopener" href="https://assets.thermofisher.cn/TFS-Assets/BID/Reference-Materials/gibson-assembly-ex-cloning-large-complex-assemblies-white-paper.pdf"> building large and complex Gibson Assemblies</a>.</p>
-<p>And if you need a simple, five-step approach to developing your own CRISPR solution, see our <a target="_blank" rel="noopener" href="https://www.thermofisher.cn/cn/zh/home/life-science/genome-editing/geneart-crispr/crispr-nuclease-vector.html">customized gene editing products and services.</a></p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
-<li>[Jinek M, Chylinski K, Fonfara I, Hauer M, Doudna JA, Charpentier E. A programmable dual-RNA-guided DNA endonuclease in adaptive bacterial immunity. *Science*. 2012;337(6096):816-821. doi:10.1126&#x2F;science.1225829](<a target="_blank" rel="noopener" href="https://www.science.org/doi/10.1126/science.1225829?url_ver=Z39.88-2003&rfr_id=ori:rid:crossref.org&rfr_dat=cr_pub">https://www.science.org/doi/10.1126/science.1225829?url_ver=Z39.88-2003&amp;rfr_id=ori:rid:crossref.org&amp;rfr_dat=cr_pub</a>  0pubmed) </li>
-<li><a target="_blank" rel="noopener" href="https://www.cell.com/cell/fulltext/S0092-8674(16)31465-9?_returnURL=https://linkinghub.elsevier.com/retrieve/pii/S0092867416314659?showall=true">Komor AC, Badran AH, Liu DR. CRISPR-Based Technologies for the Manipulation of Eukaryotic Genomes. <em>Cell</em>. 2017;168(1-2):20-36. doi:10.1016&#x2F;j.cell.2016.10.044</a> </li>
-<li><a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/24274813_Enzymatic_assembly_of_DNA_molecules_up_to_several_hundred_kilobas1">Gibson DG, Young L, Chuang RY, Venter JC, Hutchison CA 3rd, Smith HO. Enzymatic assembly of DNA molecules up to several hundred kilobases. <em>Nat Methods</em>. 2009;6(5):343-345. doi:10.1038&#x2F;nmeth.1318</a> </li>
-<li><a target="_blank" rel="noopener" href="https://www.cell.com/cancer-cell/fulltext/S1535-6108(03)00220-4">Meuwissen R, Linn SC, Linnoila RI, Zevenhoven J, Mooi WJ, Berns A. Induction of small cell lung cancer by somatic inactivation of both Trp53 and Rb1 in a conditional mouse model. <em>Cancer Cell</em>. 2003;4(3):181-189. doi:10.1016&#x2F;s1535-6108(03)00220-4</a> </li>
-<li><a target="_blank" rel="noopener" href="https://www.nature.com/articles/srep16836">Akama-Garren EH, Joshi NS, Tammela T, et al. A Modular Assembly Platform for Rapid Generation of DNA Constructs. <em>Sci Rep</em>. 2016;6:16836. doi:10.1038&#x2F;srep16836</a> </li>
-<li><a target="_blank" rel="noopener" href="https://www.pnas.org/content/117/1/513">Ng SR, Rideout WM 3rd, Akama-Garren EH, et al. CRISPR-mediated modeling and functional validation of candidate tumor suppressor genes in small cell lung cancer. <em>Proc Natl Acad Sci U S A</em>. 2020;117(1):513-521. doi:10.1073&#x2F;pnas.1821893117</a> </li>
-<li><a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7745982/">Hulton CH, Costa EA, Shah NS, et al. Direct genome editing of patient-derived xenografts using CRISPR-Cas9 enables rapid in vivo functional genomics. <em>Nat Cancer</em>. 2020;1(3):359-369. doi:10.1038&#x2F;s43018-020-0040-8</a> </li>
-<li><a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5426118/">Makarova KS, Wolf YI, Alkhnbashi OS, et al. An updated evolutionary classification of CRISPR-Cas systems. <em>Nat Rev Microbiol</em>. 2015;13(11):722-736. doi:10.1038&#x2F;nrmicro3569</a> </li>
-<li><a target="_blank" rel="noopener" href="https://www.pnas.org/content/112/11/3570">Xie K, Minkenberg B, Yang Y. Boosting CRISPR&#x2F;Cas9 multiplex editing capability with the endogenous tRNA-processing system. <em>Proc Natl Acad Sci U S A</em>. 2015;112(11):3570-3575. doi:10.1073&#x2F;pnas.1420294112</a> </li>
-<li><a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8173669/">Cooper RM, Hasty J. One-Day Construction of Multiplex Arrays to Harness Natural CRISPR-Cas Systems. <em>ACS Synth Biol</em>. 2020;9:1129-1137</a></li>
-</ol>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioLearning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/03/14/%E4%B8%89%E7%A7%8D%E5%8A%A0%E5%BC%BACRISPR%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E7%9A%84Gibson%E7%BB%84%E8%A3%85%E6%96%B9%E6%B3%95/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-CRISPR-Cas9介导的人iPSC细胞系SNP精确编辑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/03/14/CRISPR-Cas9%E4%BB%8B%E5%AF%BC%E7%9A%84%E4%BA%BAiPSC%E7%BB%86%E8%83%9E%E7%B3%BBSNP%E7%B2%BE%E7%A1%AE%E7%BC%96%E8%BE%91/" target="_blank">CRISPR/Cas9介导的人iPSC细胞系SNP精确编辑</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/03/14/CRISPR-Cas9%E4%BB%8B%E5%AF%BC%E7%9A%84%E4%BA%BAiPSC%E7%BB%86%E8%83%9E%E7%B3%BBSNP%E7%B2%BE%E7%A1%AE%E7%BC%96%E8%BE%91/" class="archive-article-date">
-        <time datetime="2024-03-14T11:36:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-14</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>[TOC]</p>
-<p><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1282718">HZ Hanwen Zhang</a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1240656">SZ Siwei Zhang <img src="https://cdn.bio-protocol.org/forum/fe/static/icon_email.svg" alt="email"></a></p>
-<p>第一次发布: <a target="_blank" rel="noopener" href="https://bio-protocol.org/cn/archive?vol=11&issid=1266">2021年06月20日第11卷第12期 </a>DOI: <a target="_blank" rel="noopener" href="https://doi.org/10.21769/BioProtoc.4051">10.21769&#x2F;BioProtoc.4051</a> </p>
-<p>评审: <a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1029068">Jaira Ferreira de Vasconcellos</a><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1245680">Giovanna Piovani</a> 匿名评审</p>
-<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>人类诱导多能干细胞（hiPSCs）在发育生物学和疾病建模领域被广泛使用。在iPSC线中使用CRISPR&#x2F;Cas9基因编辑通常具有低频率，这阻碍了其在疾病相关单核苷酸多态性（SNPs）的精确等位基因编辑中的应用，尤其是在基因组非编码部分。在这里，我们介绍了一种独特的流程，通过SNP编辑将异源二倍体iPSC线转化为疾病风险等位基因或非风险等位基因的同源二倍体，使用一种临时且简单的基于转染的协议。此协议使我们能够在约4至5周内同时获得SNP位点所有三种可能基因型的纯合和克隆同源系。</p>
-<hr>
-<h3 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h3><p>将CRISPR&#x2F;Cas9基因编辑应用于iPSC细胞，在发育生物学、疾病建模和再生医学等领域提供了无与伦比的前景。然而，由于iPSCs对传统CRISPR&#x2F;Cas9基因编辑策略的适应性不强，编辑效率通常较低，尤其是对于通过同源定向修复（HDR）介导的单核苷酸多态性（SNPs）编辑。必须开发特殊的实验方法来克服这一限制；例如，同时使用CRISPR&#x2F;Cas9突变和iPSCs的重编程（Howden等，2015；Tidball等，2018），先进的细胞分选技术如FACS（Forsyth等，2006；Miyaoka等，2014），或通过靶向质粒中长同源臂的存在重组携带突变的载体（Hendel等，2014）。尽管这些高度专业化的iPSC线基因编辑协议在时间上和&#x2F;或资源上都是消耗性的，这仍然是通过CRISPR&#x2F;Cas9介导的精确SNP编辑生成同源iPSC线的一个关键限制因素。</p>
-<p>在这里，我们提出了一种经过验证的工作流程和详细程序，允许直接使用基于脂质体的CRISPR&#x2F;Cas9系统进行HDR编辑，通过抗生素选择富集编辑的iPSC，并通过单克隆选择获得所有三种可能基因型的纯合iPSC同源线。该方法改编自Ran等（2013）的工作，并在我们最近的出版物中得到了证明（Forrest等，2017；Zhang等，2018和2020）。值得注意的是，该协议对于从异源二倍体iPSC线到疾病风险等位基因或非风险等位基因的同源二倍体的独特CRISPR&#x2F;cas9 SNP编辑设计非常有效，这使得通过直接比较所有三种不同基因型的同源线，对编辑的SNP的功能解释更加可靠（Forrest等，2017；Zhang等，2018和2020）。</p>
-<hr>
-<h3 id="材料和试剂"><a href="#材料和试剂" class="headerlink" title="材料和试剂"></a>材料和试剂</h3><h4 id="A-材料"><a href="#A-材料" class="headerlink" title="A. 材料"></a>A. 材料</h4><ol>
-<li>1.5 ml Eppendorf管（VWR，货号：89000-028）</li>
-<li>4-w NunclonTM Delta多孔板（Thermo Scientific，货号：62407-068）</li>
-<li>6孔培养板（Thermo Fisher，货号：140675）</li>
-<li>96孔培养板（Corning，Falcon®，货号：353072）</li>
-<li>标准60 × 15 mm带通风孔的培养皿（Fisher Scientific，货号：12-565-95）</li>
-<li>15 ml离心管（VWR，货号：21008-216）</li>
-<li>2 ml带盖的冷冻管，聚丙烯（Corning®，货号：89089-764）</li>
-<li>10 μl排管，低保留率无菌（VWR，货号：10017-062）</li>
-<li>200 μl排管，低保留率无菌（VWR，货号：76322-150）</li>
-<li>1,000 μl低保留率排管（VWR，货号：10017-090）</li>
-<li>BioDot 96孔非裙边PCR板（Dot Scientific，货号：650-PCR）</li>
-</ol>
-<h4 id="B-试剂列表："><a href="#B-试剂列表：" class="headerlink" title="B. 试剂列表："></a>B. 试剂列表：</h4><ul>
-<li>mTeSR1（STEMCELL，目录号：85850）</li>
-<li>mFreSR 冷冻保存培养基（STEMCELL，目录号：05855）</li>
-<li>ReLeSR（STEMCELL，目录号：05872）</li>
-<li>Matrigel® hESC-Qualified Matrix（Corning®，目录号：354277）</li>
-<li>FuGENE® HD 转染试剂（Promega，目录号：E2311）</li>
-<li>Accutase（STEMCELL，目录号：07920）</li>
-<li>Primocin（Invitrogen，ant-pm-1）</li>
-<li>Y-27632 二氢氯酸盐（R&amp;D Systems，目录号：1254&#x2F;1）</li>
-<li>QIAprep Spin Miniprep Kit（250）（Qiagen，目录号：27106）</li>
-<li>Qiaprep EndoFree Plasmid Maxi Kit（10）（Qiagen，目录号：12362）</li>
-<li>BigDye Terminator v3.1 循环测序试剂盒（Thermo Fisher Scientific，目录号：4337455）</li>
-<li>DyeEx 2.0 试剂盒（Qiagen，目录号：63204）</li>
-<li>HotStarTaq DNA聚合酶（250 U）（Qiagen，目录号：203203）</li>
-<li>PlasmidSafe Exonuclease（Lucigen，目录号：E3101K）</li>
-<li>QuickExtractTM DNA提取溶液（VWR，目录号：76081-768）</li>
-<li>FastDigest BbsI（Thermo Fisher Scientific，目录号：ER1101）</li>
-<li>T7连接酶（NEB，目录号：M0318S）</li>
-<li>ATP溶液，100 mM（NEB，目录号：N0451）</li>
-<li>dNTP溶液混合物，10 mM（NEB，目录号：N0447S）</li>
-<li>Opti-MEM I，100 ml（Thermo Fisher Scientific，目录号：31985062）</li>
-<li>虾碱性磷酸酶（Thermo Fisher Scientific，目录号：783901000UN）</li>
-<li>PCRX Enhancer System（Thermo Fisher，目录号：11495017）</li>
-<li>异丙醇（Sigma-Aldrich，目录号：190764）</li>
-<li>核酸酶-free水，PCR级（Thermo Fisher Scientific，目录号：AM9937）</li>
-<li>Teknova DNA&#x2F;RNA Resuspension Buffer（TE缓冲液）（VWR，目录号：100216-886）</li>
-<li>Invitrogen One Shot® Stbl3TM 化学感受态大肠杆菌细胞（Thermo Fisher Scientific，目录号：C737303）</li>
-<li>1 kb DNA梯形标志物（Promega，目录号：G5711）</li>
-</ul>
-<hr>
-<h3 id="设备列表："><a href="#设备列表：" class="headerlink" title="设备列表："></a>设备列表：</h3><ul>
-<li>C1000 Touch 热循环仪（Bio-Rad，型号：1851197）</li>
-<li>Sorvall Legend XTR 离心机（Thermo Scientific，目录号：75217420）</li>
-<li>台式冷冻离心机 5430R（Eppendorf，目录号：022620601）</li>
-<li>Heracell 150i 组织培养孵育箱（Thermo Fisher Scientific，目录号：51026283）</li>
-<li>ABI 3730 DNA分析仪（Thermo Fisher Scientific，型号：3730S）</li>
-<li>Nalgene Mr. Frosty 冷冻容器（Sigma-Aldrich，目录号：C1562）<br>软件：</li>
-<li>ApE – A plasmid Editor（M Wayne Davis，<a target="_blank" rel="noopener" href="https://jorgensen.biology.utah.edu/wayned/ape/">https://jorgensen.biology.utah.edu/wayned/ape/</a>）</li>
-</ul>
-<hr>
-<h3 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h3><h4 id="A-实验规划"><a href="#A-实验规划" class="headerlink" title="A. 实验规划"></a>A. 实验规划</h4><ol>
-<li><h5 id="细胞系选择"><a href="#细胞系选择" class="headerlink" title="细胞系选择"></a>细胞系选择</h5><p>通常情况下，如果起始细胞线在要编辑的指定SNP位点为杂合子，实验将更为方便。这样，我们可以合成两种单链DNA寡核苷酸（ssODN），每种携带不同的基因型，并同时进行两个独立的SNP编辑实验，最终在实验结束时获得两个方向上均为纯合子的编辑细胞系（图1A）。在条件不允许高度自由选择时，例如使用来自临床诊断患者的细胞系，从纯合子细胞系开始也是可能的（图1B）。在这种情况下，增加在E和F部分挑选的克隆数量将有助于最大化发现阳性克隆的机会。尽管在第一轮CRISPR&#x2F;Cas9编辑中，杂合子或相反基因型的纯合子可能不会出现，但通常获得相反基因型的纯合子细胞系对于实验目的来说已经足够满意。或者，可以使用从第一轮编辑中获得杂合子细胞系，再用相同的ssODN进行一轮CRISPR&#x2F;Cas9编辑，以获得相反基因型的纯合子。在所有情况下，在继续进行B部分之前，需要确认起始细胞线在所需SNP位点的基因型。为了确认特定SNP位点的基因型，使用从起始细胞系提取的30 ng基因组DNA，并按照E4-E5步骤进行Sanger测序。另外，在线数据库、下一代测序结果或与细胞系相关的患者元数据也可能提供要编辑的SNP位点的基因型信息。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-11-12-4051-g001.jpg" alt="Large image" style="zoom:15%;">
-
-</li>
-<li><h5 id="技术要求"><a href="#技术要求" class="headerlink" title="技术要求"></a>技术要求</h5><p>整个实验包括三个主要部分：质粒克隆与准备；诱导多能干细胞（iPSC）的维护、转染和亚克隆；以及Sanger测序。虽然理想的情况是操作者熟悉所有这些技能，但本协议已被设计为几个成员的合作项目，每个成员都有自己的专长。</p>
-</li>
-</ol>
-<hr>
-<h4 id="B-gRNA设计与载体准备"><a href="#B-gRNA设计与载体准备" class="headerlink" title="B. gRNA设计与载体准备"></a>B. gRNA设计与载体准备</h4><ol>
-<li><h5 id="使用dbSNP（https-www-ncbi-nlm-nih-gov-snp-）或任何基因组浏览器获取目标SNP附近的DNA序列以进行gRNA设计。通常，序列将延伸目标SNP上下游各65个碱基，总共131个碱基。保存此序列，因为它将用于合成带有目标SNP位点两侧同源臂的ssODN。此序列还将在Benchling（https-www-benchling-com）等gRNA设计工具中使用，生成用于引入双链断裂（DSB）的gRNA序列（20个碱基）。选择效率评分最高的gRNA，同时保持合理的特异性评分。还发现，如果gRNA序列的切割位点靠近目标SNP位置，可能会获得更好的重组效率（见图2，展示了用于编辑SNP-rs2027349的gRNA和ssODN的Benchling示意图和输出示例）。同时，使用Primer3（http-primer3-ut-ee-）或类似在线工具设计一对覆盖目标SNP的PCR引物。PCR产物的大小应为400-600个碱基，且SNP至少距离产物任一端150个碱基。"><a href="#使用dbSNP（https-www-ncbi-nlm-nih-gov-snp-）或任何基因组浏览器获取目标SNP附近的DNA序列以进行gRNA设计。通常，序列将延伸目标SNP上下游各65个碱基，总共131个碱基。保存此序列，因为它将用于合成带有目标SNP位点两侧同源臂的ssODN。此序列还将在Benchling（https-www-benchling-com）等gRNA设计工具中使用，生成用于引入双链断裂（DSB）的gRNA序列（20个碱基）。选择效率评分最高的gRNA，同时保持合理的特异性评分。还发现，如果gRNA序列的切割位点靠近目标SNP位置，可能会获得更好的重组效率（见图2，展示了用于编辑SNP-rs2027349的gRNA和ssODN的Benchling示意图和输出示例）。同时，使用Primer3（http-primer3-ut-ee-）或类似在线工具设计一对覆盖目标SNP的PCR引物。PCR产物的大小应为400-600个碱基，且SNP至少距离产物任一端150个碱基。" class="headerlink" title="使用dbSNP（https://www.ncbi.nlm.nih.gov/snp/）或任何基因组浏览器获取目标SNP附近的DNA序列以进行gRNA设计。通常，序列将延伸目标SNP上下游各65个碱基，总共131个碱基。保存此序列，因为它将用于合成带有目标SNP位点两侧同源臂的ssODN。此序列还将在Benchling（https://www.benchling.com）等gRNA设计工具中使用，生成用于引入双链断裂（DSB）的gRNA序列（20个碱基）。选择效率评分最高的gRNA，同时保持合理的特异性评分。还发现，如果gRNA序列的切割位点靠近目标SNP位置，可能会获得更好的重组效率（见图2，展示了用于编辑SNP rs2027349的gRNA和ssODN的Benchling示意图和输出示例）。同时，使用Primer3（http://primer3.ut.ee/）或类似在线工具设计一对覆盖目标SNP的PCR引物。PCR产物的大小应为400-600个碱基，且SNP至少距离产物任一端150个碱基。"></a>使用dbSNP（<a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/snp/">https://www.ncbi.nlm.nih.gov/snp/</a>）或任何基因组浏览器获取目标SNP附近的DNA序列以进行gRNA设计。通常，序列将延伸目标SNP上下游各65个碱基，总共131个碱基。保存此序列，因为它将用于合成带有目标SNP位点两侧同源臂的ssODN。此序列还将在Benchling（<a target="_blank" rel="noopener" href="https://www.benchling.com/">https://www.benchling.com</a>）等gRNA设计工具中使用，生成用于引入双链断裂（DSB）的gRNA序列（20个碱基）。选择效率评分最高的gRNA，同时保持合理的特异性评分。还发现，如果gRNA序列的切割位点靠近目标SNP位置，可能会获得更好的重组效率（见图2，展示了用于编辑SNP rs2027349的gRNA和ssODN的Benchling示意图和输出示例）。同时，使用Primer3（<a target="_blank" rel="noopener" href="http://primer3.ut.ee/">http://primer3.ut.ee/</a>）或类似在线工具设计一对覆盖目标SNP的PCR引物。PCR产物的大小应为400-600个碱基，且SNP至少距离产物任一端150个碱基。</h5></li>
-</ol>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-11-12-4051-g002.jpg" alt="Large image" style="zoom:33%;">
-
-<p>[^图2展示了通过HDR（同源定向修复）介导的SNP编辑的示意图。]: A部分显示了gRNA引入的双链断裂事件。单向导RNA（sgRNA）与特定的基因组DNA序列结合，并在基因组DNA双链中引入双链断裂。图中平行显示了ssODN，以突出突变位点。B部分展示了使用ssODN作为模板的HDR介导的DNA修复事件。在创建双链断裂（虚线）后，HDR介导的DNA修复开始，在此过程中，某些细胞使用携带突变等位基因的ssODN作为最终修复产物的模板。C部分显示了使用ssODN作为模板修复后的最终产品，突出了突变点。D部分是从Benchling输出的样本gRNA候选列表，使用的是人类GRCh38基因组序列chr1:150,067,554-150,067,687。这里突出显示的项目包含SNP rs2027349，其序列为…AATA[A]CGCC…。E部分显示了从Benchling输出的样本ssODN窗口，使用的是上述相同的基因组序列，展示了SNP本身从A到G的转换（红色突出显示）。</p>
-<ol start="2">
-<li><h5 id="从供应商（如IDT或Sigma-Aldrich）订购以下寡核苷酸："><a href="#从供应商（如IDT或Sigma-Aldrich）订购以下寡核苷酸：" class="headerlink" title="从供应商（如IDT或Sigma-Aldrich）订购以下寡核苷酸："></a>从供应商（如IDT或Sigma-Aldrich）订购以下寡核苷酸：</h5></li>
-</ol>
-<ul>
-<li>ssODN，长度为131个核苷酸，单链，编辑等位基因的目标SNP位于碱基位置66。不要订购互补链。如果从杂合子细胞系开始，需要两种携带两种等位基因的ssODN；如果从纯合子细胞系开始，则需要一种携带相反等位基因的ssODN。如果从IDT订购，请订购4 nmol Ultramer Oligo干粉格式，标准脱盐。</li>
-<li>sgRNA-top：5’-[Phos]-CACCgNNNNNNNNNNNNNNNNNNNN；</li>
-<li>sgRNA-bottom：5’-[Phos]-AAACNNNNNNNNNNNNNNNNNNNNc；<br>其中N代表gRNA序列。注意sgRNA-bottom寡核苷酸末尾的c。sgRNA寡核苷酸中不要包含PAM序列。</li>
-<li>两个寡核苷酸都可以订购5′-磷酸化格式（推荐），以避免内部PNK磷酸化步骤（其效率不一）。如果从IDT订购，请订购25 nmol干DNA Oligo格式，标准脱盐，并在到达后用TE缓冲液重新溶解至100 μM，长期储存于-20°C。</li>
-<li>如上所述的测序引物。如果SNP离任一端不太近&#x2F;远，PCR引物可以用作测序引物。订购25 nmol干DNA Oligo格式，标准脱盐，并在到达后用TE缓冲液重新溶解至100 μM，长期储存于-20°C。</li>
-<li>U6-Forward引物（5’-gagggcctatttcccatgatt）用于测序最终质粒构建中的gRNA插入物。订购25 nmol干DNA Oligo格式，标准脱盐，并在到达后用TE缓冲液重新溶解至100 μM，长期储存于-20°C。</li>
-</ul>
-<ol start="3">
-<li><h5 id="组装pSpCas9-BB-2A-Puro-PX459-V2-0（Addgene，62988）构建体与定制gRNA插入物。"><a href="#组装pSpCas9-BB-2A-Puro-PX459-V2-0（Addgene，62988）构建体与定制gRNA插入物。" class="headerlink" title="组装pSpCas9(BB)-2A-Puro (PX459) V2.0（Addgene，62988）构建体与定制gRNA插入物。"></a>组装pSpCas9(BB)-2A-Puro (PX459) V2.0（Addgene，62988）构建体与定制gRNA插入物。</h5><p>a. 在室温下，将以下成分在带有盖子的PCR管中彻底混合。在整个实验过程中不要使用二乙基吡咯烷酮（DEPC）处理的水，因为它可能会抑制反应。<br>组件              	                    量（μl）<br>sgRNA top (100 μM)	             1<br>sgRNA bottom (100 μM)	      1<br>T4连接缓冲液，10×（NEB）   1<br>水，PCR级	                             7<br>总计	                                      10</p>
-<p>b. 使用带有加热盖的热循环器，并设置以下参数以退火寡核苷酸。以最小升温速率（例如，0.1°C&#x2F;s）降温。<br>步骤#               温度	       时间	       备注<br>1	               95°C	       5分钟	        最小升温速率<br>2	               25°C	       2分钟</p>
-<p>c. 稀释退火的寡核苷酸，方法是将1 μl加入到199 μl PCR级水中，彻底混合。</p>
-<p>d. 在PCR管中混合以下成分以进行切割连接反应。我们建议通过用水替换稀释的寡核苷酸来设置一个阴性对照实验，其功能将在后面介绍。<br>组件	                                                                           量（μl）<br>pSpCas9(BB)-2A-Puro (PX459) V2.0, 100 ng&#x2F;μl	        1<br>步骤A3c中稀释的退火寡核苷酸	                                   2<br>Tango缓冲液，10×	                                                       2<br>DTT，10 mM	                                                                 1<br>ATP，10 mM	                                                                 1<br>FastDigest BbsI	                                                             1<br>T7连接酶	                                                                       0.5<br>水，PCR级	                                                                  11.5<br>总计	                                                                               20</p>
-<p>然后设置热循环器的参数如下：<br>步骤#	                温度	        时间	        备注<br>1	                37°C	        5分钟	<br>2	                21°C	        5分钟	<br>3	                &#x2F;	        &#x2F;	         返回到步骤#1，6个循环</p>
-<p>e. 将连接产物和阴性对照与PlasmidSafe外切酶混合，以消化任何残留的线性化DNA。将以下成分在带有盖子的PCR管中组装并彻底混合。这个热灭活的反应如果无法立即使用，可以在-20°C下储存至少1周或在-80°C下无限期储存。<br>组件	                量（μl）<br>步骤A3d中的连接产物	                11<br>PlasmidSafe缓冲液，10×	                1.5<br>ATP，10 mM	                1.5<br>PlasmidSafe外切酶	                1<br>总计	                15</p>
-<p>然后设置热循环器如下：<br>步骤#	                温度	        时间	        备注<br>1	                37°C	        30分钟	<br>2	                70°C	        30分钟	<br>3	                4°C	           保持	</p>
-<p>f. 转化感受态细胞。我们建议使用RecA-的大肠杆菌菌株，如Invitrogen Stbl3（recA13）或NEB Stable（recA1），因为插入的gRNA及其相关的gRNA支架可能包含不稳定序列。作为指导，按照供应商的说明，每转化使用步骤A3e中的2 μl产物（包括阴性对照）。热冲击后，需要加入复苏培养基（如SOC或NEB 10-beta&#x2F;Stable Outgrowth Medium），在32°C下摇床培养1小时，然后铺在LB&#x2F;Amp+琼脂板上，因为初始DNA输入量较低。</p>
-<p>g. 在32°C下孵育16小时，并在第二天检查菌落。阴性对照板上大量菌落通常表明BbsI消化没有起作用。从加入退火寡核苷酸的平板上挑选4-6个菌落，并分别用每个菌落接种4 ml LB&#x2F;Amp+培养基。使用一个新的LB&#x2F;Amp+琼脂板记录所有接种的菌落及其相应的管号。在37°C过夜孵育。</p>
-<p>h. 使用如Qiagen QIAprep Spin Miniprep Kit的旋转柱子提取质粒DNA，并使用U6-Forward引物进行测序以鉴定阳性克隆。同时，将步骤A3g中的记录板保持在4°C，直到通过测序确认所有阳性克隆。</p>
-<p>i. 从记录板上的阳性克隆菌落接种250 ml LB&#x2F;Amp+，准备转染级别的质粒。按照制造商的说明培养并提取质粒，使用Qiagen EndoFree Plasmid Maxi Kit确保完全去除内毒素。将纯化的质粒稀释至1 μg&#x2F;μl或适当浓度，以50-μl分装在无内毒素的TE缓冲液（ maxi-prep试剂盒中提供）中，并在使用前储存在-20°C。</p>
-</li>
-</ol>
-<hr>
-<h4 id="C-人诱导多能干细胞的编辑"><a href="#C-人诱导多能干细胞的编辑" class="headerlink" title="C. 人诱导多能干细胞的编辑"></a>C. 人诱导多能干细胞的编辑</h4><ol>
-<li><p>在涂有Matrigel的6孔板中培养健康未分化的 人诱导多能干细胞。通常，每个6孔板使用2 ml mTeSR1培养基，每24小时更换一次。每天观察克隆的形态，并注意分化迹象。</p>
-</li>
-<li><p>当细胞密度达到60-70%（大约4-7天）时，传代培养的iPS细胞。根据技术手册，向每个旧板孔中加入1 ml ReLeSR，并在盖好板盖的情况下孵育3-5分钟。将解离的细胞团稀释，并将1&#x2F;10至1&#x2F;20的细胞转移到一个新的预先涂有Matrigel的2 ml mTeSR1的孔中。</p>
-<p>详细信息请参考StemCell Technologies提供的技术手册第3部分：在mTeSRTM1中维护人多能干细胞（<a target="_blank" rel="noopener" href="https://www.stemcell.com/media/files/manual/10000005505-Maintenance_of_Human_Pluripotent_Stem_Cells_mTeSR1.pdf%EF%BC%89%E3%80%82">https://www.stemcell.com/media/files/manual/10000005505-Maintenance_of_Human_Pluripotent_Stem_Cells_mTeSR1.pdf）。</a></p>
-</li>
-</ol>
-<hr>
-<h4 id="D-将含有gRNA的Cas9载体和ssODN转染人诱导多能干细胞进行精确基因编辑"><a href="#D-将含有gRNA的Cas9载体和ssODN转染人诱导多能干细胞进行精确基因编辑" class="headerlink" title="D. 将含有gRNA的Cas9载体和ssODN转染人诱导多能干细胞进行精确基因编辑"></a>D. 将含有gRNA的Cas9载体和ssODN转染人诱导多能干细胞进行精确基因编辑</h4><ol>
-<li><h5 id="在转染前，将诱导多能干细胞播种到60-mm的培养皿中。"><a href="#在转染前，将诱导多能干细胞播种到60-mm的培养皿中。" class="headerlink" title="在转染前，将诱导多能干细胞播种到60-mm的培养皿中。"></a>在转染前，将诱导多能干细胞播种到60-mm的培养皿中。</h5><p>a. 作为指导，每个6孔板（60-70%的细胞密度）大约有1 × 106个诱导多能干细胞。另一方面，每个60-mm培养皿需要播种4 × 105-5 × 105个诱导多能干细胞。为了补偿收集和计数过程中的损失，将播种的总诱导多能干细胞孔数乘以1.2。</p>
-<p>b. 为每个将要产生的克隆准备好足够数量的60-mm细胞培养级别的培养皿，并预先涂布Matrigel。通常，为每个克隆准备一个培养皿，再加上一个用于评估转染效率的培养皿。</p>
-<p>c. 当6孔板中的诱导多能干细胞达到60-70%的细胞密度时，计算转染所需的诱导多能干细胞数量。在消化细胞之前，通过立体显微镜检查细胞形态，并在显微镜下轻轻刮除任何分化的小团。不要使用超过20%的克隆显示出分化迹象的培养物。从培养皿中移除培养基，并添加1 ml Accutase per well。将培养皿放回培养箱中，等待10分钟以消化细胞。</p>
-<p>d. 10分钟后，向每个6孔板中的孔加入1 ml室温的mTeSR。轻敲培养板以轻轻地从底部脱落任何剩余的细胞，而不会溢出培养基。将所有孔中的培养基收集到15-ml无菌Falcon管中，使用常规1-ml尖头或玻璃滴管轻轻吹打5-7次，混合均匀并打散团块。</p>
-<p>e. 使用血细胞计数器或自动细胞计数器（如ThermoFisher Countess 3）确定细胞密度。此时的细胞密度应为大约3 × 105-6 × 105细胞&#x2F;ml。同时，将含有细胞的Falcon管保持在室温下；不要将细胞放在冰上。计算收集的细胞总数。</p>
-<p>f. 在室温下以200 × g的转速离心5分钟，沉淀细胞。小心移除所有培养基，并加入等体积的新鲜mTeSR1。使用宽口1-ml尖头或玻璃滴管重新悬浮细胞沉淀。再次在室温下以200 × g的转速离心5分钟。</p>
-<p>g. 计算用于播种诱导多能干细胞到60-mm培养皿（加一个转染对照培养皿）所需的mTeSR1的最终体积。每个培养皿需要4-5 × 105细胞悬浮在4 ml mTeSR1中。在培养基中加入ROCK抑制剂Y27632，使其最终浓度为5 μM，以提高重新种植后的细胞活力。如果需要进行多个转染（比如，多个培养皿），可能更方便地将部分重新悬浮的细胞转移到一个更大的50-ml Falcon管中，并在转移后添加更多的mTeSR1。从步骤D1f中移除所有培养基，并用含有Y27632的mTeSR1替换。将细胞稀释到所需浓度，并用完全重新悬浮的iPSCs填充每个60-mm培养皿，作为单细胞。在37°C、5% CO2下孵育至少12小时。</p>
-</li>
-<li><h5 id="转染诱导多能干细胞（iPSCs）与含有gRNA的Cas9载体和单链脱氧核糖核酸（ssODN）。"><a href="#转染诱导多能干细胞（iPSCs）与含有gRNA的Cas9载体和单链脱氧核糖核酸（ssODN）。" class="headerlink" title="转染诱导多能干细胞（iPSCs）与含有gRNA的Cas9载体和单链脱氧核糖核酸（ssODN）。"></a>转染诱导多能干细胞（iPSCs）与含有gRNA的Cas9载体和单链脱氧核糖核酸（ssODN）。</h5><p>a. 转染前1小时，检查细胞生长情况，并用4 ml无抗生素的mTeSR1替换培养基。</p>
-<p>b. 对于每个60-mm培养皿，在一个1.5-ml管中准备以下混合物。轻轻吹打混合均匀。对于对照培养皿，用pEGFP-N2质粒替换pSpCas9(BB)-2A-Puro构建体。</p>
-<p>组件              	      量（μl）<br>pSpCas9(BB)-2A-Puro (PX459) V2.0与gRNA插入物，<br>1 μg&#x2F;μl	              3</p>
-<p>单链脱氧核糖核酸（ssODN），1 μg&#x2F;μl	              3<br>Opti-MEM I 减少血清培养基	              473<br>总计	              479</p>
-<p>c. 将21 μl FuGene HD转染试剂（1:3.5 DNA:试剂比例，总共500 μl）加入步骤D2b中的混合物中，并短暂振荡（2-3秒）管子以混合。在室温下孵育最终混合物6分钟。</p>
-<p>d. 将DNA:FuGENE:Opti-MEM I混合物加入60-mm培养皿中，并轻轻摇动以混合。不要上下吹打，因为这会干扰转染过程。在37°C、5% CO2下孵育24小时。</p>
-</li>
-</ol>
-<hr>
-<h4 id="E-选择阳性克隆并用嘌呤霉素（puromycin）评估转染效率"><a href="#E-选择阳性克隆并用嘌呤霉素（puromycin）评估转染效率" class="headerlink" title="E. 选择阳性克隆并用嘌呤霉素（puromycin）评估转染效率"></a>E. 选择阳性克隆并用嘌呤霉素（puromycin）评估转染效率</h4><ol>
-<li><h5 id="选择阳性克隆"><a href="#选择阳性克隆" class="headerlink" title="选择阳性克隆"></a>选择阳性克隆</h5><p>注意：同时阅读步骤D2。</p>
-<p>a. 对于所有用pSpCas9(BB)-2A-Puro构建体转染的培养皿，每皿加入4 ml补充有0.5 μg&#x2F;μl嘌呤霉素的mTeSR1，以选择性地富集转染了带有嘌呤霉素抗性基因的pSpCas9(BB)-2A-Puro构建体的细胞。使用的嘌呤霉素浓度可能需要根据细胞系的特定情况进行优化，因为不同细胞系对嘌呤霉素的耐受水平可能差异很大（范围从0.3到0.7 μg&#x2F;μl）。在37°C、5% CO2下孵育培养皿24小时。</p>
-<p>b. 小心地从培养皿中移除培养基和任何死细胞或细胞碎片。向每皿加入4 ml补充有0.3 μg&#x2F;μl嘌呤霉素（或根据之前测定确定的浓度）的mTeSR1。在37°C、5% CO2下孵育培养皿另外24小时。</p>
-<p>c. 小心地从培养皿中移除培养基和任何死细胞或细胞碎片。从这一时刻起停止嘌呤霉素选择（转染后72小时）。每天向培养皿中加入4 ml mTeSR，并替换培养基。在37°C、5% CO2下孵育培养皿5-10天，直到iPSC克隆达到适合克隆选择的适当大小（直径1.5-2毫米，图3）。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-11-12-4051-g003.jpg" alt="Large image"></p>
-<p>[^]: 图3. 克隆选择的iPSC克隆示例</p>
-</li>
-<li><h5 id="通过EGFP表达评估转染效率。这一步骤应在步骤D1的同时进行。"><a href="#通过EGFP表达评估转染效率。这一步骤应在步骤D1的同时进行。" class="headerlink" title="通过EGFP表达评估转染效率。这一步骤应在步骤D1的同时进行。"></a>通过EGFP表达评估转染效率。这一步骤应在步骤D1的同时进行。</h5><p>a. 对于用pEGFP-N2质粒转染的培养皿，小心地用不含嘌呤霉素的4 ml新鲜mTeSR替换培养基。在37°C、5% CO2下孵育培养皿24小时。</p>
-<p>b. 用另外4 ml不含嘌呤霉素的mTeSR替换培养基。在37°C、5% CO2下孵育培养皿另外24小时。</p>
-<p>c. 计数几个视野以评估EGFP+细胞的百分比。通过EGFP+细胞的百分比计算的转染效率应至少为40-50%。</p>
-</li>
-<li><h5 id="分离个体iPSC克隆以鉴定阳性克隆的基因型。"><a href="#分离个体iPSC克隆以鉴定阳性克隆的基因型。" class="headerlink" title="分离个体iPSC克隆以鉴定阳性克隆的基因型。"></a>分离个体iPSC克隆以鉴定阳性克隆的基因型。</h5><p>a. 在克隆挑选的那天，准备一个涂有Matrigel的96孔板（称为板A）。在每个孔中加入80 μl含有10 μM ROCK抑制剂Y27632的mTeSR1。准备另一个未涂层的96孔板（称为板B，平面底部孔）。</p>
-<p>b. 用新鲜不含ROCK抑制剂的mTeSR1替换60-mm培养皿中的培养基。</p>
-<p>c. 将P100或P200移液器设置为50 μl。安装一个P200尖头，并用尖头刮取单个克隆。用移液器吸取刮下的克隆或其碎片（如果在过程中克隆破裂），并将所有内容（50 μl）转移到板A的相应孔中。轻轻吹打3次以打破细胞团。不更换尖头，从板A转移到板B的相应孔中（例如，A1孔到A1孔等）。重复此步骤，直到从60-mm培养皿上挑选出所有感兴趣的克隆。</p>
-<p>d. 在室温下，以200 × g的转速离心5分钟，盖好盖子。</p>
-<p>e. 将板A保持在37°C，5% CO2下孵育24小时，以使iPSC重新附着到孔中。继续孵育板，并每天更换培养基（每孔100 μl mTeSR1）。板A将在基因型鉴定后用于进一步的克隆扩增。</p>
-</li>
-<li><h5 id="使用板B进行DNA提取。"><a href="#使用板B进行DNA提取。" class="headerlink" title="使用板B进行DNA提取。"></a>使用板B进行DNA提取。</h5><p>a. 小心地从离心机中取出板B，不要摇晃，并将其放在冰上。使用移液器或多通道移液器（设置为200 μl）小心地从孔中移除培养基，不要打扰细胞沉淀。重复此步骤，从板上的所有孔中移除培养基。</p>
-<p>b. 在每个含有细胞沉淀的孔中加入16 μl快速DNA提取缓冲液（Lucigen&#x2F;VWR）。将P10或P50多通道移液器设置为10 μl。小心地吹打5次以混合；尽量减少气泡形成。这一步骤重悬细胞并执行细胞裂解，以便后续使用。</p>
-<p>c. 将所有（16 μl）混合的细胞悬液转移到96孔PCR板中，并使用条形盖或薄膜密封。标记板为“提取的DNA”，并注明姓名和日期。如果不在立即使用（1-2周），则应将此步骤的产品储存在-20°C，或者在长期储存的情况下储存在-80°C。设置热循环器如下，并丢弃板B。</p>
-<table>
-<thead>
-<tr>
-<th><strong>Step #</strong></th>
-<th><strong>Temperature</strong></th>
-<th><strong>Time</strong></th>
-<th><strong>Note</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>65°C</td>
-<td>15 min</td>
-<td></td>
-</tr>
-<tr>
-<td>2</td>
-<td>68°C</td>
-<td>15 min</td>
-<td></td>
-</tr>
-<tr>
-<td>3</td>
-<td>98°C</td>
-<td>10 min</td>
-<td></td>
-</tr>
-<tr>
-<td>4</td>
-<td>4°C</td>
-<td>hold</td>
-<td></td>
-</tr>
-</tbody></table>
-</li>
-<li><h5 id="为Sanger测序准备样本。"><a href="#为Sanger测序准备样本。" class="headerlink" title="为Sanger测序准备样本。"></a>为Sanger测序准备样本。</h5><p>a. 使用前一步骤中快速分离的DNA作为模板准备PCR反应混合物。根据以下图表在冰上组装反应，将每个成分乘以样品数量，再乘以1.1以补偿试剂转移过程中的潜在损失。</p>
-<table>
-<thead>
-<tr>
-<th><strong>Component</strong></th>
-<th><strong>Amount (μl)</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>10× PCR Buffer</td>
-<td>1</td>
-</tr>
-<tr>
-<td>10× PCR Enhancer</td>
-<td>1</td>
-</tr>
-<tr>
-<td>50 mM MgSO4</td>
-<td>0.3</td>
-</tr>
-<tr>
-<td>10 mM dNTP</td>
-<td>0.2</td>
-</tr>
-<tr>
-<td>Forward primer (10 μM)</td>
-<td>0.2</td>
-</tr>
-<tr>
-<td>Reverse primer (10 μM)</td>
-<td>0.2</td>
-</tr>
-<tr>
-<td>Qiagen HotStarTaq DNA polymerase</td>
-<td>0.1</td>
-</tr>
-<tr>
-<td>Water, PCR grade</td>
-<td>5.5</td>
-</tr>
-<tr>
-<td><strong>Total</strong></td>
-<td><strong>8.5</strong></td>
-</tr>
-</tbody></table>
-<p>b. 在冰上混合所有成分（不包括DNA模板）到一个1.5-ml管中。使用一个新的96孔PCR板，并在每个孔中分配8.5 μl反应混合物，直到所有所需的孔都已填满。随后，在每个孔中加入1.5 μl提取的DNA（总共10 μl）。使用设置为5 μl的P10移液器轻轻吹打，混合均匀，同时避免产生气泡。如果使用多通道移液器，此操作将更为方便。</p>
-<p>c. 用条形盖或薄膜密封PCR板的顶部，并标记板为“PCR产物”。设置热循环器如下。退火温度（3）和延伸时间（4）可能需要优化，由操作者根据需要确定。</p>
-<table>
-<thead>
-<tr>
-<th><strong>Step #</strong></th>
-<th><strong>Temperature</strong></th>
-<th><strong>Time</strong></th>
-<th><strong>Note</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>95°C</td>
-<td>10 min</td>
-<td>Taq activation</td>
-</tr>
-<tr>
-<td>2</td>
-<td>95°C</td>
-<td>30 s</td>
-<td></td>
-</tr>
-<tr>
-<td>3</td>
-<td>53°C</td>
-<td>90 s</td>
-<td>Or as appropriate</td>
-</tr>
-<tr>
-<td>4</td>
-<td>72°C</td>
-<td>60 s</td>
-<td>Or as appropriate</td>
-</tr>
-<tr>
-<td>5</td>
-<td>&#x2F;</td>
-<td>&#x2F;</td>
-<td>Go to 2, 40 cycles</td>
-</tr>
-<tr>
-<td>6</td>
-<td>72°C</td>
-<td>10 min</td>
-<td>Final extension</td>
-</tr>
-<tr>
-<td>7</td>
-<td>4°C</td>
-<td>hold</td>
-<td></td>
-</tr>
-</tbody></table>
-<p>d. 在PCR反应运行的同时，设置一个或多个1.25% TAE&#x2F;TBE琼脂糖凝胶，并准备足够的孔位以容纳至少20个样品的PCR效率检查。</p>
-<p>e. 根据以下图表在冰上组装虾碱性磷酸酶（SAP）反应混合物，以从PCR产物中去除单链DNA和dNTPs。将每个成分乘以样品数量，再乘以1.1以补偿试剂转移过程中的潜在损失。</p>
-<table>
-<thead>
-<tr>
-<th><strong>Component</strong></th>
-<th><strong>Amount (μl)</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>10× SAP buffer</td>
-<td>0.5</td>
-</tr>
-<tr>
-<td>Shrimp alkaline phosphatase (SAP)</td>
-<td>0.5</td>
-</tr>
-<tr>
-<td>Exonuclease I</td>
-<td>0.1</td>
-</tr>
-<tr>
-<td>Water, PCR grade</td>
-<td>3.9</td>
-</tr>
-<tr>
-<td><strong>Total</strong></td>
-<td><strong>5</strong></td>
-</tr>
-</tbody></table>
-<p>f. PCR反应完成后，使用一个新的96孔PCR板，并在每个孔中分配5 μl SAP混合物，直到所有所需的孔都已填满。然后，将标记为“PCR产物”的板上的5 μl（总体积的一半）产品转移到含有SAP混合物的96孔板中的相应孔中（总共10 μl）。轻轻吹打混合均匀，同时避免产生气泡。标记该板为“SAP产物”，并设置热循环器如下。</p>
-<table>
-<thead>
-<tr>
-<th><strong>Step #</strong></th>
-<th></th>
-<th><strong>Temperature</strong></th>
-<th><strong>Time</strong></th>
-<th><strong>Note</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td></td>
-<td>37°C</td>
-<td>50 min</td>
-<td></td>
-</tr>
-<tr>
-<td>2</td>
-<td></td>
-<td>95°C</td>
-<td>15 min</td>
-<td></td>
-</tr>
-<tr>
-<td>3</td>
-<td></td>
-<td>4°C</td>
-<td>hold</td>
-<td></td>
-</tr>
-</tbody></table>
-<p>g. 在SAP反应运行的同时，将1.5 μl 6×上样缓冲液加入“PCR产物”板的选定孔中，并将内容物加载到步骤E4g中准备的TAE&#x2F;TBE凝胶上。以100 V的电压运行凝胶，至少25分钟，并使用适当的大分子标记物。检查每个通道中的条带的形状、数量和清晰度。拍照并保留记录。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-11-12-4051-g004.jpg" alt="Large image" style="zoom:15%;">
-
-<p>[^图4. PCR产物的琼脂糖凝胶电泳结果示例。]: 第3个条带DNA量太少，无法接受。第2个条带尽管亮度降低，但DNA含量仍然可接受。M：分子标记，1 kb，Promega G5711。</p>
-<p>h. 在拍摄PCR反应的凝胶图像后，计算“良好”反应的数量（一个具有正确分子大小和足够DNA量的单条带，根据条带的亮度评估，见图4），并准备Sanger测序的混合物。根据以下表格在冰上组装Sanger反应混合物。仅将“良好”反应的数量乘以每个组分的体积，并将结果再乘以1.1，因为BigDye终止剂试剂很昂贵。</p>
-<table>
-<thead>
-<tr>
-<th><strong>Component</strong></th>
-<th><strong>Amount (μl)</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>BigDye Terminator V3.1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Sequencing primer (10 μM)</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Water, PCR grade</td>
-<td>3</td>
-</tr>
-<tr>
-<td>Total</td>
-<td><strong>5</strong></td>
-</tr>
-</tbody></table>
-<p>i. SAP反应完成后，使用一个新的96孔PCR板，并在每个孔中分配5 μl Sanger测序混合物，直到所有所需的孔都已填满。然后，将标记为“SAP产物”的板上的5 μl（总体积的一半）产品转移到含有Sanger测序混合物的96孔板中的相应孔中（总共10 μl）。轻轻吹打混合均匀，同时避免产生气泡。标记该板为“测序PCR产物”并设置热循环器如下。退火温度（3）可能需要优化，由操作者根据需要确定。</p>
-<table>
-<thead>
-<tr>
-<th><strong>Step #</strong></th>
-<th><strong>Temperature</strong></th>
-<th><strong>Time</strong></th>
-<th><strong>Note</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>96°C</td>
-<td>10 s</td>
-<td></td>
-</tr>
-<tr>
-<td>2</td>
-<td>55°C</td>
-<td>5 s</td>
-<td>Or as appropriate</td>
-</tr>
-<tr>
-<td>3</td>
-<td>60°C</td>
-<td>4 min</td>
-<td></td>
-</tr>
-<tr>
-<td>4</td>
-<td>&#x2F;</td>
-<td>&#x2F;</td>
-<td>Go to 2, 25 cycles</td>
-</tr>
-<tr>
-<td>5</td>
-<td>4°C</td>
-<td>hold</td>
-<td></td>
-</tr>
-</tbody></table>
-<p>j. 使用Qiagen DyeEx 2.0 Spin Kit（最适合≤ 16个样品）纯化测序PCR产物。如果DyeEx 2.0 Kit不可用或样品超过16个，跳过步骤E5j，继续执行步骤E5k。</p>
-<p>​       i.  松开顶盖并折断底部的封闭。将离心柱插入收集管中并 centrifuge at 750 × g for 3 min。<br>​      ii. 将离心柱转移到一个新的1.5-ml管中，标签上样品名称。从相应的孔中吸取测序PCR产物，并将反应产物缓慢地直接倒在倾斜的凝胶床表面中心。再次 centrifuge at 750 × g for 3 min。<br>​     iii. 丢弃离心柱，并将1.5-ml管放入离心真空设备（如SpeedVac）中，30-60分钟，直到所有液体蒸发。在真空过程中不要打开加热。干燥后，向管中加入15 μl测序级甲酰胺，并轻轻吹打10次以溶解DNA。继续执行步骤E5kvii。</p>
-<p>k. 通过异丙醇沉淀纯化测序PCR产物。<br>注意：此步骤至关重要，操作时应小心谨慎。</p>
-<p>​     i. 向每个孔中添加40 μl 75%的异丙醇，并轻轻吹打5次以混合。如果使用多通道移液器，此操作将更为方便。</p>
-<p>​     ii. 在室温下孵育20分钟，然后在室温（20°C）下的摇摆式离心机中以3,000 × g的转速离心30分钟。如果可能，开启离心机的冷却功能，因为离心机内的空气可能会迅速变热。</p>
-<p>​     iii. 小心地从离心机中取出板，不要摇晃。将板轻轻倒置在3-4层纸巾上，以倒出异丙醇。重复此过程一次，使用另一组新的3-4层纸巾，并保持板倒置10秒，以尽可能去除尽可能多的异丙醇。不要使用移液器或真空吸管从孔中移除任何残留的异丙醇。</p>
-<p>​     iv. 慢慢地将96孔板翻转回来，并向每个孔中加入150 μl 75%的异丙醇以洗涤沉淀。<br>重要：不要混合！如果使用多通道移液器，此操作将更为方便。再次以3,000 × g的转速离心10分钟。</p>
-<p>​      v.  小心地将板倒置在纸巾堆上，如步骤E5kiii中所述，以倒出异丙醇。保持板倒置(!)，小心地将它转移到新的纸巾堆上，并再次以300 × g(!)的转速离心1分钟，以消除残留的异丙醇。</p>
-<p>​      vi. 小心地从离心机中取出96孔板，并将其翻转回来。向每个孔中加入15 μl测序级甲酰胺，并轻轻吹打5次以混合。避免在井内形成气泡。</p>
-<p>​      vii.用粘合膜密封板，并在热循环器上于95°C变性2分钟。立即将板放在冰上，并孵育2分钟。</p>
-<p>​     viii. 以2,000 × g的转速离心1分钟。现在该板已准备好在  ABI 310&#x2F;3730&#x2F;3730xl&#x2F;3500测序仪上进行Sanger测序注射。</p>
-<hr>
-<h4 id="F-扩增具有所需基因型的阳性克隆。"><a href="#F-扩增具有所需基因型的阳性克隆。" class="headerlink" title="F. 扩增具有所需基因型的阳性克隆。"></a>F. 扩增具有所需基因型的阳性克隆。</h4><ol>
-<li><h5 id="使用ApE或ABI-GeneMapper检查测序光谱文件，以识别需要扩增的阳性候选克隆（见第A节，图1和图5）。扩增的iPSCs将用于进一步的单细胞亚克隆，以获得纯合子克隆。"><a href="#使用ApE或ABI-GeneMapper检查测序光谱文件，以识别需要扩增的阳性候选克隆（见第A节，图1和图5）。扩增的iPSCs将用于进一步的单细胞亚克隆，以获得纯合子克隆。" class="headerlink" title="使用ApE或ABI GeneMapper检查测序光谱文件，以识别需要扩增的阳性候选克隆（见第A节，图1和图5）。扩增的iPSCs将用于进一步的单细胞亚克隆，以获得纯合子克隆。"></a>使用ApE或ABI GeneMapper检查测序光谱文件，以识别需要扩增的阳性候选克隆（见第A节，图1和图5）。扩增的iPSCs将用于进一步的单细胞亚克隆，以获得纯合子克隆。</h5><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-11-12-4051-g005.jpg" alt="Large image" style="zoom:50%;">
-
-<p>[^]: 图5. 良好和质量差的Sanger测序光谱示例。</p>
-<p>a. 当 colonies 在 Plate A 中达到适当的大小（1.5-2毫米直径或60-70%的孔内覆盖率）（从步骤E3a），通过首先从每个孔中移除所有培养基来消化iPSC克隆。轻轻添加50 μl ReLeSR到每个孔中，快速抽吸，并在室温下站立5分钟。</p>
-<p>b. 向每个孔中添加100 μl mTeSR1，并小心地用常规P200移液器尖头从井底松动细胞团。将每个井的内容转移到一个涂有Matrigel的4孔或24孔板中的一个井中，并添加含5 μM ROCK抑制剂的mTeSR1，最终体积为500 μl。在培养箱中继续培养，37°C，5% CO2，每天更换mTeSR1，直到细胞在井内达到60-70%的覆盖率。</p>
-</li>
-<li><h5 id="单细胞亚克隆以获得纯合子细胞系。"><a href="#单细胞亚克隆以获得纯合子细胞系。" class="headerlink" title="单细胞亚克隆以获得纯合子细胞系。"></a>单细胞亚克隆以获得纯合子细胞系。</h5><p>a. 小心地从培养皿中移除培养基，然后向每个孔中加入400 μl Accutase，孵育10分钟以从底部分离细胞。使用P1000尖头轻轻吹打5次，制成单细胞悬液，然后加入另外400 μl mTeSR1以中和Accutase。取10 μl悬液使用台盼蓝法计数细胞密度，并将剩余的细胞以250 × g的转速离心5分钟。</p>
-<p>b. 移除上清液，并在1 ml含有5 μM ROCK抑制剂Y-27632的mTeSR1中重悬细胞。分离出相当于2000个活细胞的体积（根据前一步骤确定），并在含有5 μM ROCK抑制剂Y27632的4 ml mTeSR1中重新种植到60-mm Matrigel涂层的培养皿中。继续培养任何剩余的细胞作为备份，培养条件为37°C，5% CO2。</p>
-<p>c. 在重新种植后48小时，用ROCK抑制剂-free mTeSR1替换60-mm培养皿中一半的培养基。在培养箱中继续培养，37°C，5% CO2，每天更换mTeSR1，直到克隆大小达到1.5-2毫米。重复步骤E3中的克隆挑选程序。从每个60-mm培养皿中挑选约30个克隆。对选定的克隆重复步骤E4-E5中的基因型鉴定程序。</p>
-<p>d. 一旦通过Sanger测序识别出纯合子克隆，重复步骤F1，将每个克隆从96孔板转移到Matrigel涂层的4&#x2F;24孔板的2个（！）孔中，直到细胞密度达到60-70%。继续监测细胞生长，因为不同克隆在这个阶段的生长速度可能不同。</p>
-<p>e. 从培养皿中移除培养基，并向每个孔中加入400 μl ReLeSR。从孔中移除ReLeSR，并在室温下孵育5分钟。</p>
-<p>f. 预先涂布足够数量的6孔板Matrigel，并向每个孔中加入2 ml mTeSR1。向每个用ReLeSR处理的4&#x2F;24孔板的孔中加入300 μl mTeSR1，并使用宽口移液器尖头轻轻吹打5次以分离细胞团块。将100 μl细胞团块悬液分到6孔板（总共3个孔）的每个孔中，并轻轻摇动混合。为每个克隆准备4-6个孔。继续培养，直到细胞密度达到60-70%。</p>
-</li>
-<li><h5 id="冻存细胞系以进行冷冻保存。"><a href="#冻存细胞系以进行冷冻保存。" class="headerlink" title="冻存细胞系以进行冷冻保存。"></a>冻存细胞系以进行冷冻保存。</h5><p>a. 密切观察6孔板中的细胞生长，直到细胞密度达到60-70%。建议同一板上的所有孔在一次处理中完成。</p>
-<p>b. 向每个6孔板孔中加入1 ml ReLeSR。从孔中移除ReLeSR，并在37°C、5% CO2的培养箱中孵育3-5分钟。</p>
-<p>c. 向每个用ReLeSR处理的6孔板孔中加入1 ml室温mTeSR1，并通过坚定地轻敲培养板来松动细胞。将松动的细胞悬液转移到一个无菌的1.5-ml Eppendorf管中，并在室温下以200 × g的转速离心5分钟。</p>
-<p>d. 小心地尽可能多地移除上清液，同时不要触及底部的细胞沉淀。向Eppendorf管中加入1 ml室温mFreSR，并使用宽口移液器尖头小心地重新悬浮细胞沉淀，通过吹打5次来混合。将管中的内容物转移到一个预先标记的冷冻管中。确认管盖已牢固密封，并将其放入Mr Frosty冷冻容器中。通常，为每个克隆准备尽可能多的管（通常为4-6管，如步骤F2d-F2f中所确定）。重复此步骤，直到所有细胞都转移到冷冻管中。</p>
-<p>e. 将装有冷冻管的Mr Frosty冷冻容器放入-80°C的冷冻器中至少24小时（但不超过72小时）以冷冻内容物。将所有试管转移到液氮中进行长期保存。保持详细记录。</p>
-</li>
-</ol>
-</li>
-</ol>
-<hr>
-<h3 id="数据分析"><a href="#数据分析" class="headerlink" title="数据分析"></a>数据分析</h3><h4 id="Sanger测序结果的光谱分析"><a href="#Sanger测序结果的光谱分析" class="headerlink" title="Sanger测序结果的光谱分析"></a>Sanger测序结果的光谱分析</h4><ol>
-<li>成功识别和分离精确编辑的纯合子克隆，在很大程度上依赖于对Sanger测序结果的适当分析。作为指导，首先去除信号强度低、异常模式（例如，当连续序列中出现相同类型的核苷酸碱基时，合并成一个大峰而不是个体峰，见图5）。随后，通过检查所需SNP位点的基因型来识别阳性克隆。</li>
-<li>评估gRNA和ssODN的效率<br>由于ssODN的整合和随后的精确SNP编辑需要CRISPR&#x2F;Cas9介导的DNA切割优先发生，因此需要独立评估CRISPR&#x2F;Cas9介导的DNA切割和ssODN整合的效率。通常，由于大多数CRISPR&#x2F;Cas9介导的DNA断裂没有适当修复并产生插入缺失（indels），因此生成的包含indel的克隆百分比（见图1）可以作为实验中使用的gRNA序列效率的指标。包含indel的克隆百分比对于成功的gRNA序列设计约为60-80%。ssODN的整合相对稳定，大约占CRISPR&#x2F;Cas9介导的DNA切割事件的5%。如果阳性克隆的数量低，可以从Sanger测序结果中分别计算两个事件的可能性，以确定哪个寡核苷酸序列可能是原因并需要重新设计。</li>
-</ol>
-<hr>
-<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ol>
-<li>Forrest, M. P., Zhang, H., Moy, W., McGowan, H., Leites, C., Dionisio, L. E., Xu, Z., Shi, J., Sanders, A. R., Greenleaf, W. J., Cowan, C. A., Pang, Z. P., Gejman, P. V., Penzes, P. and Duan, J. (2017). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/28803920">Open Chromatin Profiling in hiPSC-Derived Neurons Prioritizes Functional Noncoding Psychiatric Risk Variants and Highlights Neurodevelopmental Loci.</a> <em>Cell Stem Cell</em> 21(3): 305-318 e308.</li>
-<li>Forsyth, N. R., Musio, A., Vezzoni, P., Simpson, A. H., Noble, B. S. and McWhir, J. (2006). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/16571074">Physiologic oxygen enhances human embryonic stem cell clonal recovery and reduces chromosomal abnormalities.</a> <em>Cloning Stem Cells</em> 8(1): 16-23.</li>
-<li>Hendel, A., Kildebeck, E. J., Fine, E. J., Clark, J., Punjya, N., Sebastiano, V., Bao, G. and Porteus, M. H. (2014). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/24685129">Quantifying genome-editing outcomes at endogenous loci with SMRT sequencing.</a> <em>Cell Rep</em> 7(1): 293-305.</li>
-<li>Howden, S. E., Maufort, J. P., Duffin, B. M., Elefanty, A. G., Stanley, E. G. and Thomson, J. A. (2015). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/26584543">Simultaneous Reprogramming and Gene Correction of Patient Fibroblasts.</a> <em>Stem Cell Reports</em> 5(6): 1109-1118.</li>
-<li>Miyaoka, Y., Chan, A. H., Judge, L. M., Yoo, J., Huang, M., Nguyen, T. D., Lizarraga, P. P., So, P. L. and Conklin, B. R. (2014). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/24509632">Isolation of single-base genome-edited human iPS cells without antibiotic selection.</a><em>Nat Methods</em> 11(3): 291-293.</li>
-<li>Ran, F. A., Hsu, P. D., Wright, J., Agarwala, V., Scott, D. A. and Zhang, F. (2013). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/24157548">Genome engineering using the CRISPR-Cas9 system.</a> <em>Nat Protoc</em> 8(11): 2281-2308.</li>
-<li>Tidball, A. M., Swaminathan, P., Dang, L. T. and Parent, J. M. (2018). <a target="_blank" rel="noopener" href="https://bio-protocol.org/cn/e2794">Generating Loss-of-function iPSC Lines with Combined CRISPR Indel Formation and Reprogramming from Human Fibroblasts.</a> <em>Bio-protoc**ol</em> 8(7): 2794.</li>
-<li>Zhang, S., Moy, W., Zhang, H., Leites, C., McGowan, H., Shi, J., Sanders, A. R., Pang, Z. P., Gejman, P. V. and Duan, J. (2018). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/29631039">Open chromatin dynamics reveals stage-specific transcriptional networks in hiPSC-based neurodevelopmental model.</a> <em>Stem Cell Res</em> 29: 88-98.</li>
-<li>Zhang, S., Zhang, H., Zhou, Y., Qiao, M., Zhao, S., Kozlova, A., Shi, J., Sanders, A. R., Wang, G., Luo, K., Sengupta, S., West, S., Qian, S., Streit, M., Avramopoulos, D., Cowan, C. A., Chen, M., Pang, Z. P., Gejman, P. V., He, X. and Duan, J. (2020). <a target="_blank" rel="noopener" href="https://science.sciencemag.org/content/369/6503/561">Allele-specific open chromatin in human iPSC neurons elucidates functional disease variants.</a><em>Science</em> 369(6503): 561-565.</li>
-</ol>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/03/14/CRISPR-Cas9%E4%BB%8B%E5%AF%BC%E7%9A%84%E4%BA%BAiPSC%E7%BB%86%E8%83%9E%E7%B3%BBSNP%E7%B2%BE%E7%A1%AE%E7%BC%96%E8%BE%91/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -3158,6 +3048,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">多组学数据分析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">类器官之纤毛</a>
               </li>
             
             <div class="clearfix"></div>

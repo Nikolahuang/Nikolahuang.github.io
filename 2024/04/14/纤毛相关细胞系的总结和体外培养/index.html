@@ -6,45 +6,34 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://nikolahuang.github.io">
-  <title>hexo+fluid搭建个人博客网站并部署到github | Anderson Blog</title>
+  <title>纤毛相关细胞系的总结和体外培养 | Anderson Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="环境准备需要预先安装node.js、npm、并添加到环境变量(path) 1.官网安装Nodejs(建议使用 Node.js 12.0 及以上版本)NodeJs是Hexo所必需的环境。 点击 NodeJs 官网，下载左边那个即可，下载好一直 next，选择一个文件夹位置在一直 next 即可完成。安装Node.js会包含环境变量及npm的安装。  验证安装完成cmd中输入命令： 12node -v">
+  <meta name="description" content="mEPC的诱导分离纯化和培养脑室的室管膜细胞表面存在许多动纤毛,它们 的协调摆动确保了脑脊液的正常流动 。    室管膜细胞缺陷可导致严重的神经系统疾病, 如脑积 水。 在发育过程中,室管膜细胞在小鼠出生后由室管膜祖细胞放射状胶质细胞( radial glia) 分化。 在这个分化过程中,中心粒由次胞质体在细胞顶端大量复制、聚集,而后迁移并固定在细胞质膜,在质膜上成熟成为基体。 动纤毛由九对在外周">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo+fluid搭建个人博客网站并部署到github">
-<meta property="og:url" content="http://nikolahuang.github.io/2024/03/19/hexo-fluid%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0github/index.html">
+<meta property="og:title" content="纤毛相关细胞系的总结和体外培养">
+<meta property="og:url" content="http://nikolahuang.github.io/2024/04/14/%E7%BA%A4%E6%AF%9B%E7%9B%B8%E5%85%B3%E7%BB%86%E8%83%9E%E7%B3%BB%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E4%BD%93%E5%A4%96%E5%9F%B9%E5%85%BB/index.html">
 <meta property="og:site_name" content="Anderson Blog">
-<meta property="og:description" content="环境准备需要预先安装node.js、npm、并添加到环境变量(path) 1.官网安装Nodejs(建议使用 Node.js 12.0 及以上版本)NodeJs是Hexo所必需的环境。 点击 NodeJs 官网，下载左边那个即可，下载好一直 next，选择一个文件夹位置在一直 next 即可完成。安装Node.js会包含环境变量及npm的安装。  验证安装完成cmd中输入命令： 12node -v">
+<meta property="og:description" content="mEPC的诱导分离纯化和培养脑室的室管膜细胞表面存在许多动纤毛,它们 的协调摆动确保了脑脊液的正常流动 。    室管膜细胞缺陷可导致严重的神经系统疾病, 如脑积 水。 在发育过程中,室管膜细胞在小鼠出生后由室管膜祖细胞放射状胶质细胞( radial glia) 分化。 在这个分化过程中,中心粒由次胞质体在细胞顶端大量复制、聚集,而后迁移并固定在细胞质膜,在质膜上成熟成为基体。 动纤毛由九对在外周">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/902f589b96784f8098d216e8e32637d7.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/3705169b5054b5c69bd374ad08fa97f5.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/0dff30cffe9cf89a53a611016f460fb2.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-17108599776039.webp">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-17108599724496.webp">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171085998395512.webp">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171085998869315.webp">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171085999733320.webp">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086000214523.webp">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086000704026.webp">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086001111729.webp">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086001497732.webp">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086002211535.webp">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086002974038.webp">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086003410441.webp">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086003899944.webp">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086004334947.webp">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086004676550.webp">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/70895669db2179fa65774c69fff62735.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/68e29340708fafdd1da425162b615b27.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/b032fffb71937ba1b5888640970d96b8.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/eafc90db32b9693697d254f08024ca58.png">
-<meta property="article:published_time" content="2024-03-19T14:59:09.000Z">
-<meta property="article:modified_time" content="2024-03-19T14:59:58.618Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240415001018943.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/cc9429803b24ad8dd907269aae122201.jpg">
+<meta property="og:image" content="http://nikolahuang.github.io/%E7%BA%A4%E6%AF%9B%E7%9B%B8%E5%85%B3%E7%BB%86%E8%83%9E%E7%B3%BB%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E4%BD%93%E5%A4%96%E5%9F%B9%E5%85%BB.assets/image-20240415152829579.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240415153012250.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240415153044755.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/20201208152828482848.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/20201208152954705470.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/20201208153041064106.png">
+<meta property="og:image" content="http://www.jiayuanbio.com/upload/image/2020/20201208153053575357.jpg">
+<meta property="og:image" content="http://nikolahuang.github.io/%E7%BA%A4%E6%AF%9B%E7%9B%B8%E5%85%B3%E7%BB%86%E8%83%9E%E7%B3%BB%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E4%BD%93%E5%A4%96%E5%9F%B9%E5%85%BB.assets/image-20240415194804124.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240415194817318.png">
+<meta property="article:published_time" content="2024-04-14T12:04:57.000Z">
+<meta property="article:modified_time" content="2024-04-15T16:14:13.955Z">
 <meta property="article:author" content="Anderson">
-<meta property="article:tag" content="计算机随笔">
+<meta property="article:tag" content="类器官之纤毛">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/902f589b96784f8098d216e8e32637d7.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240415001018943.png">
   
     <link rel="alternative" href="/atom.xml" title="Anderson Blog" type="application/atom+xml">
   
@@ -247,14 +236,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hexo-fluid搭建个人博客网站并部署到github" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-纤毛相关细胞系的总结和体外培养" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      hexo+fluid搭建个人博客网站并部署到github
+      纤毛相关细胞系的总结和体外培养
     </h1>
   
 
@@ -266,8 +255,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2024/03/19/hexo-fluid%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0github/" class="archive-article-date">
-        <time datetime="2024-03-19T14:59:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-19</time>
+<a href="/2024/04/14/%E7%BA%A4%E6%AF%9B%E7%9B%B8%E5%85%B3%E7%BB%86%E8%83%9E%E7%B3%BB%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E4%BD%93%E5%A4%96%E5%9F%B9%E5%85%BB/" class="archive-article-date">
+        <time datetime="2024-04-14T12:04:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-04-14</time>
 </a>
 
   
@@ -280,7 +269,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.9k字</span>
+      <span class="post-count">5.9k字</span>
     </span>
   </span>
 
@@ -289,7 +278,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">7分</span>
+      <span class="post-count">22分</span>
     </span>
   </span>
 </div>
@@ -300,110 +289,232 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><p>需要预先安装node.js、npm、并添加到环境变量(path)</p>
-<h4 id="1-官网安装Nodejs-建议使用-Node-js-12-0-及以上版本"><a href="#1-官网安装Nodejs-建议使用-Node-js-12-0-及以上版本" class="headerlink" title="1.官网安装Nodejs(建议使用 Node.js 12.0 及以上版本)"></a>1.官网安装Nodejs(建议使用 Node.js 12.0 及以上版本)</h4><p>NodeJs是Hexo所必需的环境。</p>
-<p>点击 <a target="_blank" rel="noopener" href="https://nodejs.org/en/">NodeJs 官网</a>，下载左边那个即可，下载好一直 next，选择一个文件夹位置在一直 next 即可完成。安装Node.js会包含环境变量及npm的安装。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/902f589b96784f8098d216e8e32637d7.png" alt="2"></p>
-<p>验证安装完成cmd中输入命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-
-<p>返回版本号代表安装完成。</p>
-<p>2.安装git<br>Git是开源的分布式版本控制系统，用于敏捷高效地处理项目。</p>
-<p>我们网站在本地搭建好了，需要使用Git同步到云服务器或者GitHub的代码库里。点击 git 官网，下载安装包。点击 next，选择文件夹位置，然后一直 next 到底就行了，选择默认配置就好，默认配置会将环境变量配置好的。安装成功右击鼠标如图所示：<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/3705169b5054b5c69bd374ad08fa97f5.png" alt="1"></p>
-<p>3.下载安装Hexo博客框架<br>Hexo 是一个快速、简洁且高效的博客框架。Hexo是有官方说明文档，想看最详细的教程可以移步到HEXO官网。前面git和nodejs安装好后，就可以安装hexo了，可以先创建一个文件夹HEXO，然后在这个文件夹下直接右键git bash打开，输入命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-<p>下载太慢可以换一下淘宝源，依旧用</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
-
-<p>查看一下版本，至此就全部安装完了。</p>
-<p>接下来初始化一下hexo，，在该文件夹下鼠标右键gitbash后输入命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
-
-<p>“blog”是你要生成博客的文件夹名称，可以根据自己的喜好来取名。生成的文件如图所示：<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/0dff30cffe9cf89a53a611016f460fb2.png" alt="image-20220515193739986"></p>
-<p>输入命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>完成后，打开浏览器输入地址：localhost:4000就可以看到你生成的博客了。使用ctrl+c可以把服务关掉。</p>
-<p>本地部署好之后，只能自己在本地查看博客，我们需要上传到云端的代码库（云服务器或者GitHub）来托管你的博客，这样其他人才能随时访问你的博客。</p>
-<h2 id="二、安装使用fluid-主题"><a href="#二、安装使用fluid-主题" class="headerlink" title="二、安装使用fluid 主题"></a>二、安装使用fluid 主题</h2><h3 id="获取最新版本"><a href="#获取最新版本" class="headerlink" title="获取最新版本"></a>获取最新版本</h3><p>主题下载：<a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid">https://github.com/fluid-dev/hexo-theme-fluid</a></p>
-<h3 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h3><p>Hexo 5.0.0 版本以上，推荐通过 npm 直接安装，进入博客目录执行命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-theme-fluid</span><br></pre></td></tr></table></figure>
-
-<p>然后在博客目录下创建 <code>_config.fluid.yml</code>，将主题的 <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/fluid-dev/hexo-theme-fluid/blob/master/_config.yml">_config.yml (opens new window)</a>内容复制过去（找到主题文件夹，一般在\blog\nikolahuang.github.io\node_modules\hexo-theme-fluid里面）。</p>
-<h3 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h3><p>下载 <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/fluid-dev/hexo-theme-fluid/releases">最新 release 版本 (opens new window)</a>解压到 themes 目录，并将解压出的文件夹重命名为 <code>fluid</code>。</p>
-<h3 id="指定主题"><a href="#指定主题" class="headerlink" title="指定主题"></a>指定主题</h3><p>如下修改 Hexo 博客目录中的 <code>_config.yml</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">theme: fluid  <span class="comment"># 指定主题</span></span><br><span class="line"></span><br><span class="line">language: zh-CN  <span class="comment"># 指定语言，会影响主题显示的语言，按需修改</span></span><br></pre></td></tr></table></figure>
-
-<p>在这，我使用的是第一种方式，主要步骤是</p>
-<h3 id="1、运行安装命令-npm-install-–save-hexo-theme-fluid"><a href="#1、运行安装命令-npm-install-–save-hexo-theme-fluid" class="headerlink" title="1、运行安装命令   npm install –save hexo-theme-fluid"></a>1、运行安装命令   npm install –save hexo-theme-fluid</h3><h3 id="2、在根目录下创建文件一个名为-config-fluid-yml的文件"><a href="#2、在根目录下创建文件一个名为-config-fluid-yml的文件" class="headerlink" title="2、在根目录下创建文件一个名为_config.fluid.yml的文件"></a>2、在根目录下创建文件一个名为_config.fluid.yml的文件</h3><h3 id="3、将node-modules里面hexo-theme-fluid文件夹里面的-config-yml的内容复制到新建的-config-fluid-yml文件中"><a href="#3、将node-modules里面hexo-theme-fluid文件夹里面的-config-yml的内容复制到新建的-config-fluid-yml文件中" class="headerlink" title="3、将node_modules里面hexo-theme-fluid文件夹里面的_config.yml的内容复制到新建的_config.fluid.yml文件中"></a>3、将node_modules里面hexo-theme-fluid文件夹里面的_config.yml的内容复制到新建的_config.fluid.yml文件中</h3><h3 id="4、如下图修改-config-fluid-yml文件中的内容-，注意空格位置什么的不要改"><a href="#4、如下图修改-config-fluid-yml文件中的内容-，注意空格位置什么的不要改" class="headerlink" title="4、如下图修改_config.fluid.yml文件中的内容 ，注意空格位置什么的不要改"></a>4、如下图修改_config.fluid.yml文件中的内容 ，注意空格位置什么的不要改</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">theme: fluid  <span class="comment"># 指定主题</span></span><br><span class="line"></span><br><span class="line">language: zh-CN  <span class="comment"># 指定语言，会影响主题显示的语言，按需修改</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="5、运行清除缓存命令-hexo-clean-再运行hexo-g-再运行hexo-s-然后预览页面。类似下图的页面"><a href="#5、运行清除缓存命令-hexo-clean-再运行hexo-g-再运行hexo-s-然后预览页面。类似下图的页面" class="headerlink" title="5、运行清除缓存命令  hexo clean  再运行hexo g  再运行hexo s ,然后预览页面。类似下图的页面"></a>5、运行清除缓存命令  hexo clean  再运行hexo g  再运行hexo s ,然后预览页面。类似下图的页面</h3><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-17108599776039.webp" alt="img"></p>
-<p>image.png</p>
-<h1 id="三、完善页面的功能插件"><a href="#三、完善页面的功能插件" class="headerlink" title="三、完善页面的功能插件"></a>三、完善页面的功能插件</h1><h3 id="1、中间的背景图的更换，如下图效果"><a href="#1、中间的背景图的更换，如下图效果" class="headerlink" title="1、中间的背景图的更换，如下图效果"></a>1、中间的背景图的更换，如下图效果</h3><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-17108599724496.webp" alt="img"></p>
-<p>image.png</p>
-<p>在_config.fluid.yml中找到上面的位置填写上图标记的代码(注意图片的路径位置)</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">banner_img</span>: <span class="regexp">/img/</span>bg.<span class="property">jpg</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171085998395512.webp" alt="img"></p>
-<p>image.png</p>
-<p>步骤：</p>
-<h3 id="2、添加随机打印机效果，如图我所标记的位置的效果"><a href="#2、添加随机打印机效果，如图我所标记的位置的效果" class="headerlink" title="2、添加随机打印机效果，如图我所标记的位置的效果"></a>2、添加随机打印机效果，如图我所标记的位置的效果</h3><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171085998869315.webp" alt="img"></p>
-<p>image.png</p>
-<p>步骤1、在_config.fluid.yml文件中找到下图位置修改，开启打印机插件：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171085999733320.webp" alt="img"></p>
-<p>image.png</p>
-<p>步骤2、在上述文件找到下图位置修改，调用接口</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086000214523.webp" alt="img"></p>
-<h3 id="3、添加统计数，我使用的是valiner插件。如下图效果"><a href="#3、添加统计数，我使用的是valiner插件。如下图效果" class="headerlink" title="3、添加统计数，我使用的是valiner插件。如下图效果"></a>3、添加统计数，我使用的是valiner插件。如下图效果</h3><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086000704026.webp" alt="img"></p>
-<p>步骤：在在上述文件找到下图位置修改，</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086001111729.webp" alt="img"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086001497732.webp" alt="img"></p>
-<h3 id="4、添加右上角的社交图标和链接，如下图效果"><a href="#4、添加右上角的社交图标和链接，如下图效果" class="headerlink" title="4、添加右上角的社交图标和链接，如下图效果"></a>4、添加右上角的社交图标和链接，如下图效果</h3><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086002211535.webp" alt="img"></p>
-<p> 步骤：点击<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/blog/273-github-ribbons">这里</a> 或者 <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=http://tholman.com/github-corners/">这里</a>挑选自己喜欢的样式，选择其中一个并复制其代码。 如下图</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086002974038.webp" alt="img"></p>
-<p> 在找到下图位置粘贴代码，如图绿色标记处</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086003410441.webp" alt="img"></p>
-<h1 id="四、部署到github的托管网站上，实现在线博客"><a href="#四、部署到github的托管网站上，实现在线博客" class="headerlink" title="四、部署到github的托管网站上，实现在线博客"></a>四、部署到github的托管网站上，实现在线博客</h1><p>步骤1：在github 创建好仓库，至于如何创建可以点击<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/11d6d8e7eb9a">这里</a>查看。<br> 步骤2：在_config.yml文件中找到下图位置修改内容</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086003899944.webp" alt="img"></p>
-<p> 步骤3：使用命令npm install hexo-deployer-git –save  安装部署插件<br> 步骤4：使用hexo clean 清除缓存 、使用hexo g 渲染页面 、使用hexo d 部署页面<br> 步骤5：此时，你远程仓库上，已经有文件了，也就是如下图public文件夹中的文件</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086004334947.webp" alt="img"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086004676550.webp" alt="img"></p>
-<p> 步骤6: 在浏览器地址栏输入https:&#x2F;&#x2F;仓库名<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=http://.github.io">.github.io</a>     就能看到你的线上博客网站了。</p>
+    <h2 id="mEPC的诱导分离纯化和培养"><a href="#mEPC的诱导分离纯化和培养" class="headerlink" title="mEPC的诱导分离纯化和培养"></a>mEPC的诱导分离纯化和培养</h2><p>脑室的室管膜细胞表面存在许多动纤毛,它们 的协调摆动确保了脑脊液的正常流动 。 </p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240415001018943.png" alt="image-20240415001018943"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/cc9429803b24ad8dd907269aae122201.jpg" alt="img"></p>
+<p>室管膜细胞缺陷可导致严重的神经系统疾病, 如脑积 水。 在发育过程中,室管膜细胞在小鼠出生后由<strong>室管膜祖细胞放射状胶质细胞</strong>( radial glia) 分化。 在这个分化过程中,<strong>中心粒</strong>由<strong>次胞质体</strong>在细胞顶端大量复制、聚集,而后迁移并固定在细胞质膜,在质膜上成熟成为基体。 动纤毛由九对在外周排列的微管束以及一组在中心的中央微管束(9+2)组成, 外周微管上由于动力蛋白的存在可以使纤 毛运动。 原代培养的室管膜细胞是研究脑部动 纤毛和相关疾病的重要体外模型。 通过免疫荧光染色的方法表征体外培养室管膜细胞分化及动纤毛形成不同时期的特点。 通过活细胞成像观察培养<strong>室管膜的纤毛运动</strong>, 为以 mEPC 为模型的研究奠定了基础。</p>
+<h3 id="该实验的方法和使用的材料、动物如下："><a href="#该实验的方法和使用的材料、动物如下：" class="headerlink" title="该实验的方法和使用的材料、动物如下："></a>该实验的方法和使用的材料、动物如下：</h3><h4 id="材料"><a href="#材料" class="headerlink" title="材料"></a>材料</h4><p>实验动物 1 ~ 3 只 SPF 级 C57BL &#x2F; 6 健康小鼠,新生1 d, 体重约 1. 5 g,雌雄比均衡,购于北京斯贝福生物技 术有限公司【 SCXK(京) 2019-0010】</p>
+<h4 id="主要试剂与仪器"><a href="#主要试剂与仪器" class="headerlink" title="主要试剂与仪器"></a>主要试剂与仪器</h4><p>DMEM 培养基( Corning,10013050)</p>
+<p>L15 培养基(Solarbio,LA9510)</p>
+<p>青霉素&#x2F;链霉素( Penicillin&#x2F;streptomycin, Solarbio, P1400 )</p>
+<p>胎 牛 血 清 ( FBS, Newzerum, FBS-S500 )</p>
+<p>磷酸盐缓冲液 ( D-PBS, Solarbio,D1040)</p>
+<p>平衡盐溶液(D-Hank’ s,Solarbio, H1045)</p>
+<p>木瓜蛋白酶( Papain,Solarbio,G8430)</p>
+<p>脱氧核糖核酸酶(DNasel,Solarbio, D8071)</p>
+<p>L-半胱氨酸( L-Cysteine, Solarbio, C0012)</p>
+<p>胰蛋白酶抑制剂 (Trypsin inhibitor,Solarbio,T8031)</p>
+<p>多聚 L-赖氨酸 (poly-L-Lysine,Solarbio,P8130)</p>
+<p>胰蛋白酶(TrypsinEDTA, Solarbio, T1320 )</p>
+<p>抗荧光淬灭封片液 ( Fluoromount-G, SouthernBiotech, K2820 )</p>
+<p>DAPI (Solarbio, ID2250)</p>
+<p>细胞培养小瓶 ( T25, Corning, 430639)</p>
+<h4 id="抗体"><a href="#抗体" class="headerlink" title="抗体:"></a>抗体:</h4><p>anti-acetylated tubulin(Sigma,T6793,1 ∶ 500)</p>
+<p>anti-γ-tubulin(Sigma,T6557,1∶500)</p>
+<p>anti-βcatenin(Proteintech,51067-2-AP,1 ∶ 500)</p>
+<p>用于免疫 荧光分析的二抗为与 Alexa Fluor 488 偶联的山羊抗鼠或 与 Alexa Fluor 568 偶 联 的 山 羊 抗 兔 抗 体 (Invitrogen,1 ∶ 750)。 倒置生物显微镜 ,超高分辨共聚焦显微镜,生物安全柜,二氧化碳培养箱.</p>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><h5 id="25-cm2-培养瓶和-14-mm-玻片包被"><a href="#25-cm2-培养瓶和-14-mm-玻片包被" class="headerlink" title="25 cm2 培养瓶和 14 mm 玻片包被"></a>25 cm2 培养瓶和 14 mm 玻片包被</h5><p>为了增加培养小瓶对细胞的粘附性,采用<strong>多聚赖氨酸</strong>将小瓶底部包被,多聚赖氨酸可以增加培养皿表面正电荷从而加强细胞的贴壁生长。 </p>
+<p>将多聚赖氨酸(poly-L-Lysine)粉末用无菌去离子水配制成 10 mg&#x2F;mL 的浓缩液,而后稀释成 0. 005%的工作液。 </p>
+<p>每个 25 cm 2 培养小瓶加入 <strong>3 mL 多聚赖氨酸</strong>溶液, 37℃包被 1 h 或室温过夜包被。 </p>
+<p>包被结束后吸出多聚赖氨酸工作液,用无菌去离子水冲洗 3 次并晾干。 </p>
+<p>包被好的培养瓶在 4℃条件下可存放 4 周左右。 </p>
+<h5 id="消化工作液及终止工作液的配置"><a href="#消化工作液及终止工作液的配置" class="headerlink" title="消化工作液及终止工作液的配置"></a>消化工作液及终止工作液的配置</h5><p>消化工作液的配制:   取 DMEM 培养基中加入木瓜蛋白酶(2 mg&#x2F;mL), DNaseI(0. 15 mg &#x2F; mL), L-半胱氨酸(0. 3 mg &#x2F; mL), 1%青霉素&#x2F;链霉素, 0. 22μm 微孔滤膜过滤后 4℃ 保存备用。 </p>
+<p>终止工作液的配制:   取 L15 培养基中加入胰蛋白酶抑制剂( 1mg&#x2F;mL),DNaseI(0. 2 mg &#x2F; mL),10%胎牛血清, 0. 22 μm 微孔滤膜过滤后 4℃保存备用。</p>
+<h4 id="小鼠室管膜细胞的分化培养"><a href="#小鼠室管膜细胞的分化培养" class="headerlink" title="小鼠室管膜细胞的分化培养"></a>小鼠室管膜细胞的分化培养</h4><p>以下操作步骤以 1 只小鼠为例：</p>
+<p>将新生小鼠颈椎脱位处死后,用剪刀剪取小鼠头部、镊子剥离小鼠头部皮肤；（首先取出生 1 ~ 3 d 内的小鼠端脑组织,此时的小鼠大脑 内的神经胶质细胞分化程度低,利用此阶段的端脑 提取诱导分化室管膜细胞可以获得较高的成功率）</p>
+<p>小心剔除头骨,并去除附着的组织与 血管；</p>
+<p>将分离的小鼠脑组织放入含有 1%青霉素&#x2F;链霉素的 Hank’ s 溶液中,置于冰上；（分离过程中保持在冰上且冰浴的缓冲溶液中进行,可以大大提高胶质细 胞的存活率。）</p>
+<p>用眼科剪剪去嗅球和小脑, 用 5 号镊子剥去端脑表面的脑膜,并用弹簧剪将其剪切成 0. 5 ~ 1 mm 大小的碎片；</p>
+<p>用1000 μL移液器将所有脑组织碎片连同 Hank’ s 溶液一同转移至15 mL无菌离心管中；</p>
+<p>800 r&#x2F;min 离心 1min;</p>
+<p>吸出上清液,加入配制好的<strong>消化工作液</strong> 1 mL 重悬细胞；</p>
+<p>37℃ 孵育 30 min；</p>
+<p>消化结束后以 800 r&#x2F; min 离心 1 min,吸出上清液,加入配制的终止工作液 2 mL 重悬细胞静置 2 min；</p>
+<p>800 r&#x2F; min 离心 1 min 后，吸出上清液，并以 2 mL L15 培养基重悬细胞，800 r&#x2F; min 离心 1 min;</p>
+<p>吸出上清液,用 1 mL L15 培养基重悬细胞，并用 1000 μL 移液枪吹打悬液5次；</p>
+<p>800 r&#x2F; min 离心 5 min 后;</p>
+<p>移除上清液,并加入3 mL 含有 10% FBS 和 1%青霉素&#x2F;链霉素的 DMEM 完全培养基重悬细胞；</p>
+<p>较少体积的重悬液是为了让细胞更好的吸附；</p>
+<p>将细胞悬液小心接种到包被了多聚赖氨酸的 25 cm培养瓶中, 放入 37℃ ,  5%  CO2 培养箱中培养, <strong>标记为d1</strong>；</p>
+<p>第 2 天(d2)吸弃旧培养基,加入 8 mL 新鲜37℃预热过的 DMEM 完全培养基,；</p>
+<p>随后每隔 2 d 更换 1 次培养基至**第 7 天(d7)**；</p>
+<p>第 7 天细胞铺满整个培养瓶底部，室温下将培养瓶放置在摇床上以 100 rpm 摇动培养 4 h 以去除粘附较差的神经元细胞；</p>
+<p>吸弃旧培养基，加入 3 mL DPBS 清洗 1 次,再加入 1 mL Trypsin-EDTA 于 37℃ 消化 6 min,然后加入 4 mL 的 DMEM 完全培养基终止消化；</p>
+<p>将细胞悬液收集至 15 mL 离心管中,于 800 r&#x2F; min 离心 5 min;</p>
+<p>吸出上清液，加入 500 μL 的 DMEM 完全培养基重悬细胞；</p>
+<p>1 只小鼠端脑大约可收集 200 ~ 300 万个细胞,以细胞计数板计数后,按照每孔 2 × 10^5 个细胞的数量滴加到玻片上;</p>
+<p>此时滴加的液滴应在玻片上形成球形水珠，放入培养箱 中培养30 min;</p>
+<p>待细胞粘附后，补加 DMEM 完全培养基;</p>
+<p>24 h 后吸弃旧培养基,更换为含有 1% 青霉素&#x2F;链霉素的 DMEM（无血清）；</p>
+<p>开始诱导细胞分化成室管膜细胞，记为 <strong>D0</strong>，每 <strong>3 ~ 4 d</strong> 更换培养基。（小鼠胶质细胞消化分离后均匀铺板,铺板后 (D2)换无血清培养基诱导分化,此时细胞进入分化阶段 D0）；</p>
+<p><img src="/%E7%BA%A4%E6%AF%9B%E7%9B%B8%E5%85%B3%E7%BB%86%E8%83%9E%E7%B3%BB%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E4%BD%93%E5%A4%96%E5%9F%B9%E5%85%BB.assets/image-20240415152829579.png" alt="image-20240415152829579"></p>
+<p>通过倒置相差显微镜观察细胞生长状况,细胞培养至 D3,细胞完全贴壁平铺在培养皿上,细胞形态变大变圆(图 2a) ; </p>
+<p>饥饿培养 D6 时,部分细胞开始进行纤毛发生,并有极少数细胞形成可快速摆动的纤毛(图 2b) ; </p>
+<p>D9 时细胞边界变得清晰可见,约有 1 &#x2F; 3 的细胞形成了多纤毛结 构( 图 2c) ; </p>
+<p>分化培养进行到 D12 后, 培养的mEPC 细胞基本成熟,可观察到 MPEC 快速摆动的多纤毛(图 2d) ；</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240415153012250.png" alt="image-20240415153012250"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240415153044755.png" alt="image-20240415153044755"></p>
+<p>当然也有商业化的产品：<a target="_blank" rel="noopener" href="https://www.eiaab.com.cn/product-general-cn-primary_cells/MIC-iCell-n021/">https://www.eiaab.com.cn/product-general-cn-primary_cells/MIC-iCell-n021/</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.51cells.cn/product/hanzhong_2763.html">汉中小鼠室管膜细胞（原代细胞）-武汉赛奥斯生物科技有限公司 (51cells.cn)</a></p>
 <hr>
-<p>上面的方法尝试之后不行的，可以继续下面这种办法：将博客托管到GitHub</p>
-<h4 id="1-GitHub生成代码库"><a href="#1-GitHub生成代码库" class="headerlink" title="1.GitHub生成代码库"></a>1.GitHub生成代码库</h4><p>首先，你先要有一个GitHub账户。点击+号，选择New repository，新建仓库：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/70895669db2179fa65774c69fff62735.png" alt="image-20220515194104048"></p>
-<p>创建一个和你用户名相同的仓库，后面加.github.io，只有这样，将来要部署到GitHub page的时候，才会被识别，也就是xxxx.github.io，其中xxx就是你注册GitHub的用户名，点击create repository。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/68e29340708fafdd1da425162b615b27.png" alt="image-20220515194255616"></p>
-<p>本地SSH生成密钥，将公钥复制到云端<br>回到本地主机git bash中，创建用户名和密码</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;GitHub用户名&quot;</span><br><span class="line">git config --global user.email &quot;GitHub注册邮箱&quot;</span><br><span class="line">git config --global user.password &quot;GitHub登录密码&quot;</span><br></pre></td></tr></table></figure>
-
-
-<p>创建SSH密钥，一路回车</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;GitHub注册邮箱&quot;</span><br></pre></td></tr></table></figure>
-
-<p>ssh，简单来讲，就是一个秘钥，其中，id_rsa是你这台电脑的私人秘钥，相当于钥匙，id_rsa.pub是公共秘钥，相当于锁。要把id_rsa.pub公共秘钥给GitHub，这样才能用自己的私人密钥去开这把锁。当能够相互匹配时，才能够顺利的通过git上传你的文件到GitHub上。</p>
-<p>将id_rsa.pub中的内容复制，而后在GitHub的setting中：<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/b032fffb71937ba1b5888640970d96b8.png" alt="image-20220515194631747"></p>
-<p>点击左侧SSH and GPG keys的设置选项，点击New SSH key，把你的id_rsa.pub里面的信息复制进去。title随便填，本地的公钥复制到key中。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/eafc90db32b9693697d254f08024ca58.png" alt="image-20220515195256471"></p>
-<p>在本地gitbash中检测GitHub公钥设置是否成功</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh git@github.com</span><br></pre></td></tr></table></figure>
-
-
-<p>第一次登录需要输入GitHub的登录用户名和密码。</p>
-<p>3.修改配置文件<br>下一步将我们的Hexo与GitHub关联起来，打开站博客根目录blog的配置文件_config.yml<br>翻到最后修改为：（注意后面三行缩进两格）</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span> </span><br><span class="line">  <span class="attr">repository:</span> <span class="string">https://github.com/lixinyiceline/lixinyiceline.github.io.git（改）</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
-
-<p>repository里的内容是GitHub代码仓库浏览器网址栏的网址，注意后面加上.git，保存站点配置文件。</p>
-<h4 id="4-本地上传到GitHub"><a href="#4-本地上传到GitHub" class="headerlink" title="4.本地上传到GitHub"></a>4.本地上传到GitHub</h4><p>本地gitbash安装Git部署插件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<p>然后输入下面三个命令就可搭建成功博客了</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g &amp;&amp; hexo d</span><br><span class="line">hexo new 你要新建的博客名称 #注：新建的博客markerdown文件存放在_post文件夹中，可以直接查看</span><br></pre></td></tr></table></figure>
-
-<p>云服务器的部署参考博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_50609661/article/details/125216866">https://blog.csdn.net/m0_50609661/article/details/125216866</a></p>
-<p>改自：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6d2614b28daf">随心了</a></p>
+<h2 id="人肺类器官2D-3D-培养"><a href="#人肺类器官2D-3D-培养" class="headerlink" title="人肺类器官2D &amp; 3D 培养"></a>人肺类器官2D &amp; 3D 培养</h2><p><strong>人支气管上皮</strong></p>
+<p>人呼吸道的支气管上皮层分为假复层（pseudostratified），纤毛（ciliated） 以及柱状（columnar）上皮。该区域主要有三种细胞类型：纤毛细胞 （ciliated cells），分泌细胞（secretory cells）（主要是分泌粘液的杯状细胞）和基底细胞（basal cells）。</p>
+<p>支气管上皮作为保护屏障，防御各种吸入性伤害，例如毒素，污染物和病原体。屏障功能的维持主要基于于上皮的三个关键特征：</p>
+<ol>
+<li><p>紧密连接蛋白（tight junction proteins）维持着上皮的完整性，并且对于其作为物理屏障的功能至关重要。</p>
+</li>
+<li><p>分泌细胞分泌的粘液会捕获颗粒物质和病原体，然后通过纤毛细胞的协同将这些颗粒物质和病原体通运出气道。</p>
+</li>
+<li><p>粘液中含有抗菌肽（antimicrobial peptides）和炎症因子（inflammatory mediators）等保护性介质，形成了对病原体和有毒物质的化学和免疫屏障。</p>
+</li>
+</ol>
+<p>呼吸道上皮的生理相关模型的需求正在日益增长，但其挑战仍在于如何在体外重现体内组织的复杂结构和功能。</p>
+<p><strong>2D</strong> <strong>气-液界面培养</strong></p>
+<p>多种细胞类型可用于人类呼吸系统的建模，包括永生化的呼吸细胞系（ 例如BEAS-2B细胞和16HBE14o-细胞）以及来自动物或人类供体的原代细胞。尽管使用永生化细胞系和动物原代细胞很普遍，但使用这些模型产生的数据并不直接适配于人类系统。传统培养人原代支气管上皮细胞的方法是将细胞浸没于培养基之下进行培养；但是，在该培养系统中的细胞无法进行粘膜纤毛分化。为了重现在体内观察到的伪分层粘膜纤毛表型（pseudostratified mucociliary phenotype），必须在气-液界面（AirLiquid Interface，ALI）上培养原代人支气管上皮细胞（primary human bronchial epithelial cells，HBEC）（图1）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/20201208152828482848.png" alt="img"></p>
+<p>气-液界面培养的主要特征是细胞的基底表面与液体培养基接触，而其顶端表面则暴露于空气中。常见的细胞接种方法是将细胞接种到细胞培养插件（cell culture insert）的可渗透膜上。在细胞培养初期，顶端和基底的腔室都需要添加培养基（图1A）。当细胞数量接近满板时，需要对细胞“airlift”，即吹干顶端腔室的培养基，并保留基底腔室的培养基（图1B）。该培养系统模拟了人气道中的情况，诱导细胞向粘膜纤毛表型分化。</p>
+<p><video src="../../../../Desktop/CFAP91文章投稿初步材料/Air-Liquid Interface (ALI) Culture of Bronchial Epithelial Cells with PneumaCult™-ALI Medium - YouTube (1).mp4"></video></p>
+<p><strong>气-液界面培养的生理相关性</strong></p>
+<p>原代HBEC的气-液培养近年来越来越被认为是与呼吸系统生理学高度相关的重要培养系统。在气-液上培养的HBEC经历了高度的粘膜纤毛分化，从而形成了代表体内气道的体外模型。H&amp;E（hematoxylin and eosin）和PAS（periodic acid-Schiff）染色显示气-液界面培养物（图2A和 2C），如同体内支气管上皮一样（图2B和2D），表现出伪分层的形态，以及异种细胞群的组成，包括纤毛和粘液分泌（PAS阳性）细胞。</p>
+<p>该模型的特征还在于体现出上皮的屏障功能，例如表达紧密连接蛋白和高细胞跨膜电阻（high transepithelial electrical resistance）。通过转录组分析与细胞对毒素、病原体等外源物质的生理反应实验，进一步证实了气-液界面培养物对气道建模的高度适用性。此外，对来自患有呼吸系统疾病（例如哮喘，囊性纤维化，慢性阻塞性肺病）供体的原代细胞进行气-液界面培养，可以重现体内疾病特征，从而建立可靠的体外研究模型。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/20201208152954705470.png" alt="img"></p>
+<p><strong>实验流程简图</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/20201208153041064106.png" alt="img"></p>
+<p><strong>3D成球培养</strong></p>
+<p><strong>实验流程及数据</strong></p>
+<p><img src="http://www.jiayuanbio.com/upload/image/2020/20201208153053575357.jpg" alt="img"></p>
+<p><strong>产品信息</strong></p>
+<table>
+<thead>
+<tr>
+<th>货号</th>
+<th>名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>05040</td>
+<td>PneumaCult™-Ex Plus Medium</td>
+</tr>
+<tr>
+<td>05001(2D)</td>
+<td>PneumaCult™-ALI Medium</td>
+</tr>
+<tr>
+<td>05021(2D)</td>
+<td>PneumaCult™-ALI Medium with 12 mm Transwell® Insert</td>
+</tr>
+<tr>
+<td>05022(2D)</td>
+<td>PneumaCult™-ALI Medium with 6.5 mm Transwell® Insert</td>
+</tr>
+<tr>
+<td>05050(2D)</td>
+<td>PneumaCult™-ALI-S Medium</td>
+</tr>
+<tr>
+<td>05060(3D)</td>
+<td>PneumaCult™ Airway Organoid Kit</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="小鼠-SVZ-The-Subventricular-Zone-细胞原代培养"><a href="#小鼠-SVZ-The-Subventricular-Zone-细胞原代培养" class="headerlink" title="小鼠 **SVZ(The Subventricular Zone)**细胞原代培养"></a>小鼠 **SVZ(The Subventricular Zone)**细胞原代培养</h2><p>——朱学良组 张伟</p>
+<p>①解剖前 <strong>24 - 4h</strong> 要预先用 Fibronectin or laminin包被培养 SVZ 细胞的Flask&#x2F; 培养板&#x2F;其它</p>
+<p>②解剖前新鲜配制 5ml 消化液，于 37℃水浴锅。等消化液从乳白色变成无色透</p>
+<p>明后，用注射器+小滤器过滤除菌，待用。（5ml消化液大约消化 10-15只小鼠的SVZ组织）</p>
+<p>③解剖前 1-2h，将手术工具、解剖显微镜、1ml 移液枪等置于超净台紫外杀菌。</p>
+<p>临解剖前，手术工具在酒精灯上灼烧（<em>除最精细的镊子，即下图中的镊子，请勿灼烧！！！！！！可在照紫外前用酒精棉球擦一遍。同时注意小心保护它的精细尖端</em>）。或直接将手术工具浸泡于 75%酒精中。</p>
+<p><strong>1.</strong> 取 <strong>10</strong> 只 <strong>P0</strong> 新生小鼠 <strong>SVZ</strong> 组织：</p>
+<p>详见解剖视频：<a target="_blank" rel="noopener" href="http://www.jove.com/details.stp?id=1938">http://www.jove.com/details.stp?id=1938</a>)<a target="_blank" rel="noopener" href="http://www.jove.com/details.stp?id=1938">http://www.jove.com/details.stp?id=1938</a></p>
+<p><strong>2.消化 SVZ组织：</strong></p>
+<p>取材后。用 1ml枪头（剪去尖端，并在酒精灯上烧圆前端）将 SVZ组织转移至已过滤的消化液中，于 37℃消化 15-18min。</p>
+<p><strong>3.终止消化：</strong></p>
+<p>消化完成后，吸去消化液。加入 5ml 10％FBS DMEM+GPS于 SVZ组织中作用 1-2min，终止消化。</p>
+<p><strong>4.打散细胞：</strong></p>
+<p>吸去终止液后。加 1ml 10％ FBS DMEM+GPS，用 1ml的 Axygene枪头轻轻吹打 15-20次，避免吹出气泡，然后加入 3ml 10% FBS DMEM+GPS, 静置 1-2min，这样单个细胞在上清中，沉淀为组织块。将上清转移到新的 15ml离心管。剩下的组织块中再加入 1ml 10％ FBS DMEM+GPS继续吹打，再沉淀，再转移。弃掉无法打散的沉淀。</p>
+<p><strong>5.将上清置于离心机中 1000-1500 rpm，离心 5min。</strong></p>
+<p>6.离心后，轻轻的吸取弃去上清。将细胞用含 10％ FBS DMEM+GPS 重悬，铺入到<strong>预先 24h用 Fibronectin包被的 Flask</strong>（<u>铺细胞前，Flask用 PBS轻轻洗 1-2遍）中，置37℃培养箱培养</u>。</p>
+<p>7.第二天，换液(10％ FBS DMEM+GPS)。同时用 <strong>37℃ 预热的PBS</strong> 轻轻的尽量洗去未贴壁的 Neuron，洗 1-2遍。</p>
+<p>8.第三天，用手掌，适度用力拍 Flask侧壁，拍除上层未贴壁的 neuron。 用 PBS洗一遍后，加入 10％ FBS DMEM+GPS。</p>
+<p>9.第四天，Flask 内细胞长到 90-95%时，将细胞用 Trypsin 消化，平均铺入<strong>预先 24h用 Fibronectin包被的 24孔培养板</strong>中。（10只小鼠的 SVZ细胞大约可铺入 8个 24孔板的孔，或 1.75个 6孔板的孔效果很好。新手亦可增大小鼠数量。</p>
+<p>此时 24孔板每个孔的细胞数目大约为 10-20万，尽量使细胞生长到第 5天晚上前，达到可以进行饥饿的密度。细胞也不宜铺得过分的密，<strong>如果此时部分区域细胞为上下两层，上层细胞会死亡后贴在活细胞上表面</strong>。）</p>
+<p>10.第五天，当 24孔板内细胞面积变小，紧密排列，几乎呈方格状，颜色较深，此时可用 PBS洗去一些死细胞后，再加入适量新鲜培液，培养至少半天左右。再用 37℃ PBS洗三遍后，加入 0.5-1ml<strong>不含 FBS</strong>的 DMEM+DAPT+GPS（DAPT效应不明显~），进行饥饿培养。</p>
+<p>[总之，就是要让一层干净的活细胞，排挤足够紧密，<strong>形成紧密连接和锚定连接后饥饿</strong>。否则饥饿后细胞变瘦变小，不够紧密的区域会产生空洞、无细胞斑块。<strong>饥饿前不除去死细胞，也会产生同样的状况</strong>。]</p>
+<p>每两三天用 DMEM+<strong>DAPT</strong>+GPS进行一次全换液。</p>
+<p>11.<strong>饥饿 5-7 天</strong>后（DMEM+<strong>DAPT</strong>+GPS），可进行固定，免疫荧光观察。（<em>一般饥饿3-4天后光镜观察可见纤毛</em>）</p>
+<h4 id="包被："><a href="#包被：" class="headerlink" title="包被："></a>包被：</h4><p>Fibronectin(Cat.#341631)，每瓶 5mg&#x2F;5ml 。4℃融化后，4ul和 10ul分装，-20℃保存。</p>
+<p>包被时，用 无菌PBS 1:100 稀释后使用。一个 Flask 用 4ml 稀释后的 Fibronectin包被，过夜包被后使用。</p>
+<p>24孔板每个孔用 250ul稀释后的 Fibronectin 包被，过夜</p>
+<p>后使用。</p>
+<h4 id="Dissection-Solution"><a href="#Dissection-Solution" class="headerlink" title="Dissection Solution:"></a>Dissection Solution:</h4><p>18.8g NaCl         161mM</p>
+<p>0.74g KCl           5mM</p>
+<p>0.26g MgSO<sub>4</sub>     1 mM</p>
+<p>0.86g CaCl         3.7mM</p>
+<p>2.4g Hepes          5mM</p>
+<p>2.0g Glucose       5.5mM</p>
+<p>0.004g Phenol Red （可以不加）</p>
+<p>配制好以后，定容到 2L，将 pH值调到 7.4，用 0.2um的灭菌过滤器过滤除菌，置于 4℃冰箱保存</p>
+<h4 id="Enzymatic-Solution"><a href="#Enzymatic-Solution" class="headerlink" title="Enzymatic Solution:"></a>Enzymatic Solution:</h4><p>5ml Dissection Solution</p>
+<p>1mg L-Cysteine ( SIGMA Cat .No 30089)</p>
+<p>50μl EDTA (50mM, pH 8.0)</p>
+<p>50μl CaCl<sub>2</sub> (100mM)</p>
+<p>7.5μl NaOH (1M)</p>
+<p><strong><u>? ul Papain（Worthington Bio Corp，Cat. No. LS003126）</u></strong></p>
+<h5 id="Papain量计算"><a href="#Papain量计算" class="headerlink" title="Papain量计算:"></a>Papain量计算:</h5><p><img src="/%E7%BA%A4%E6%AF%9B%E7%9B%B8%E5%85%B3%E7%BB%86%E8%83%9E%E7%B3%BB%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E4%BD%93%E5%A4%96%E5%9F%B9%E5%85%BB.assets/image-20240415194804124.png" alt="image-20240415194804124"></p>
+<p>必须在使用前配制，配制好以后在培养箱中温育至澄清透明，待用。</p>
+<p>附：SVZ培养细胞形态展示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240415194817318.png" alt="image-20240415194817318"></p>
+<hr>
+<h2 id="以小鼠肾小管-IMCD3-细胞株-探讨纤毛生成和上皮细胞极化的关系"><a href="#以小鼠肾小管-IMCD3-细胞株-探讨纤毛生成和上皮细胞极化的关系" class="headerlink" title="以小鼠肾小管 IMCD3 细胞株 探讨纤毛生成和上皮细胞极化的关系"></a>以小鼠肾小管 IMCD3 细胞株 探讨纤毛生成和上皮细胞极化的关系</h2><p>大多数的动物细胞具有纤毛。纤毛主要由外层的膜包覆中心的微管所组成，中心的微管称为轴丝，轴丝是由母 亲中心粒当作基体作为地基，向上构筑成双联体九排的微管，并环绕成圆柱形的构造，而基体上的远程附器和细胞膜结合，使纤毛向外长出细胞表面。</p>
+<p>纤毛发生病变可导致多种疾病，如<strong>原发性支气管炎</strong>、<strong>肝脏</strong>和<strong>肾脏的多囊性增生</strong>等， 由此可看出纤毛对于许多细胞的功能具有极大的影响力。</p>
+<p>纤毛的生成路径有 2 种：细胞<strong>内</strong>和细胞<strong>外</strong>路径。</p>
+<p>小鼠肾小管 <strong>IMCD3细胞 株</strong>的纤毛是借由<strong>细胞外</strong>路径生成，细胞外路径就是在<strong>一般二维培养</strong>的情况下， 可观察到母亲中心粒移动到细胞膜附近，再向外长出纤毛；</p>
+<p><strong>视网膜色素上皮细胞株</strong>和<strong>成纤维细胞株</strong>的纤毛则是借由 细胞内路径，在此路径中，母亲中心粒维持在细胞中心的位置就可直接长出纤毛。</p>
+<p>在极化的上皮细胞中，纤毛发育的过程起始于<strong>母亲中心粒</strong>，必须从细胞核附近移动到细胞顶端膜附近，再由远程附器结合在顶端膜上，作为基体向细胞顶端长出纤毛，凸出顶端膜表面以<strong>感测细胞外界讯号</strong>。</p>
+<p>然而，在细胞外路径中， 母亲中心粒是如何移动至顶端膜附近以及如何辨别细胞顶端和底端的方向性目前仍然不清楚。</p>
+<p>该篇文章作者以小鼠肾小管 IMCD3 细 胞 株， 在 去 血 清 的 刺 激 诱 导 下， 使 IMCD3 细胞长出纤毛，再以免疫荧光染色分析闭锁小带与生成纤毛的关系。 并利用克隆形成实验，将 <strong>IMCD3 细胞株分为 4 类形态</strong>，也进一步发现在三维培养中，<u>4 种细胞形态皆无法排列成空腔构造</u>。</p>
+<p>最后建立载体 DNA，以绿色荧光标示纤毛蛋白，在活细胞中追踪基体的移动及纤毛生成的过程。</p>
+<h4 id="结果部分的个人概述："><a href="#结果部分的个人概述：" class="headerlink" title="结果部分的个人概述："></a>结果部分的个人概述：</h4><ol>
+<li><strong>闭锁小带与纤毛生成的密切关系</strong>：<ul>
+<li>研究发现，在小鼠肾小管IMCD3细胞株中，具有完整闭锁小带结构的细胞更容易形成纤毛。</li>
+<li>这一发现揭示了闭锁小带的完整性可能是纤毛生成的一个重要条件，特别是在细胞外路径中，纤毛的生成与闭锁小带的结构密切相关。</li>
+<li>闭锁小带可能提供了必要的细胞结构支持，使得纤毛能够在正确的位置形成，从而保证细胞功能的正常进行。</li>
+</ul>
+</li>
+<li><strong>纤毛生长位置对细胞功能的影响</strong>：<ul>
+<li>纤毛的生长位置对细胞接收外界信号至关重要。在具有完整闭锁小带的细胞中，纤毛生长在细胞顶端，这有助于细胞有效地感测和响应外界环境。</li>
+<li>如果纤毛未能在细胞顶端正确生长，可能会导致细胞无法正常接收信号，进而影响细胞功能，甚至可能导致疾病的发生。</li>
+<li>因此，纤毛的正确位置对于细胞的正常生理功能至关重要。</li>
+</ul>
+</li>
+<li><strong>细胞极性、空腔构造形成与分裂方向性</strong>：<ul>
+<li>研究表明，具有完整闭锁小带的细胞不仅能形成立体的空腔构造，而且在细胞分裂时表现出正确的方向性。</li>
+<li>这种分裂方向性对于维持细胞群体的整体结构和功能至关重要。细胞分裂时沿着闭锁小带的切线方向进行，有助于保持细胞极性和组织结构的完整性。</li>
+<li>这一发现强调了闭锁小带在维持细胞极性和指导细胞分裂方向中的重要作用。</li>
+</ul>
+</li>
+<li><strong>细胞密度与闭锁小带完整性的独立性</strong>：<ul>
+<li>研究中观察到，即使在细胞密度增加的情况下，闭锁小带的完整性也不会因此而提高。</li>
+<li>这一结果表明，闭锁小带的完整性是由细胞本身的属性决定的，而不是由外部环境因素如细胞密度所影响。</li>
+<li>这进一步证实了IMCD3细胞株中存在不同特性的细胞群，而不是单一细胞类型在不同密度下的变化。</li>
+</ul>
+</li>
+<li><strong>母亲中心粒在纤毛生成中的核心作用</strong>：<ul>
+<li>通过使用荧光标记技术，研究明确显示了纤毛是以母亲中心粒为基底向外生长的。</li>
+<li>这一发现证实了母亲中心粒在纤毛生成过程中的核心作用，为理解纤毛的形成机制提供了重要线索。</li>
+<li>研究还指出，未来将进一步探究母亲中心体、高基氏体与纤毛形成的关系，这将有助于更深入地了解纤毛生成的详细路径和机制。</li>
+</ul>
+</li>
+<li><strong>磷脂酰肌醇在细胞极性和纤毛生成中的作用</strong>：<ul>
+<li>研究提出，闭锁小带可能通过限制磷脂酰肌醇（PIP2和PIP3）在细胞膜上的分布，从而影响细胞极性和纤毛的生成。</li>
+<li>在极性细胞中，顶端细胞膜富含PIP2，而底端细胞膜富含PIP3，这种分布有助于基体在顶端位置生成纤毛。</li>
+<li>缺乏闭锁小带的细胞可能无法正确区分顶端和底端的磷脂酰肌醇分布，导致基体无法在正确的位置生成纤毛。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h2><p>[1]张源,武慧渊.小鼠室管膜细胞体外培养及多纤毛形成过程分析[J].中国实验动物学报,2022,30(03):370-375.</p>
+<p>[2]Wang L, Wen X, Wang Z, et al. Ciliary transition zone proteins coordinate ciliary protein composition and ectosome shedding. <em>Nat Commun</em>. 2022;13(1):3997. Published 2022 Jul 9. doi:10.1038&#x2F;s41467-022-31751-0</p>
+<p>[3]Meng X, Xu C, Li J, Qiu B, Luo J, Hong Q, Tong Y, Fang C, Feng Y, Ma R, Shi X, Lin C, Pan C, Zhu X, Yan X, Cong Y. Multi-scale structures of the mammalian radial spoke and divergence of axonemal complexes in ependymal cilia. Nat Commun. 2024 Jan 8;15(1):362. doi: 10.1038&#x2F;s41467-023-44577-1. PMID: 38191553; PMCID: PMC10774353.</p>
 
     
 
@@ -420,7 +531,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">类器官之纤毛</a>
         		</li>
       		
 		</ul>
@@ -476,7 +587,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://nikolahuang.github.io/2024/03/19/hexo-fluid%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0github/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://nikolahuang.github.io/2024/04/14/%E7%BA%A4%E6%AF%9B%E7%9B%B8%E5%85%B3%E7%BB%86%E8%83%9E%E7%B3%BB%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E4%BD%93%E5%A4%96%E5%9F%B9%E5%85%BB/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -491,18 +602,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2024/03/20/PCR%E5%8E%9F%E7%90%86%E5%92%8C%E5%8E%9F%E5%88%99/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          touch-down PCR原理和原则
-        
-      </div>
-    </a>
   
-  
-    <a href="/2024/03/19/%E5%90%8C%E6%BA%90%E9%87%8D%E7%BB%84%E6%9E%84%E5%BB%BA%E8%B4%A8%E7%B2%92%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">同源重组构建质粒原理详解</div>
+    <a href="/2024/04/07/%E8%9B%8B%E7%99%BD%E4%BB%A3%E8%B0%A2%E5%A4%9A%E7%BB%84%E5%AD%A6%E7%A0%94%E7%A9%B6%E6%80%9D%E8%B7%AF%E5%92%8C%E6%96%B9%E6%B3%95%E9%9A%8F%E7%AC%94/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">蛋白代谢多组学研究思路和方法随笔</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -529,7 +631,7 @@
 
 
 
-<div id="SOHUCS" sid="hexo-fluid搭建个人博客网站并部署到github" ></div> 
+<div id="SOHUCS" sid="纤毛相关细胞系的总结和体外培养" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
@@ -571,9 +673,9 @@
     <script src="/lib/giteement.browser.js"></script>
   
   <script>
-  <!-- id: "hexo+fluid搭建个人博客网站并部署到github" -->
+  <!-- id: "纤毛相关细胞系的总结和体外培养" -->
   var giteement = new Giteement({
-    id: '20240319225909',
+    id: '20240414200457',
     owner: 'anderson2',
     repo: 'disque',
     backcall_uri: '',
