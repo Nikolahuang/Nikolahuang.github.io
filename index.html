@@ -603,7 +603,7 @@
 <hr>
 <p>此外，线性回归分析用于评估基因丰度与其他因素之间的关系，用于特征基因的筛选。线性，也就是可以用一个量化的解释变量来预测一个量化的响应变量； 回归则是通过历史数据进行预测。我们如果想要更好的了解基因集之间的一些潜在联系，可以考虑使用LASSO回归方法（least absolute shrinkage and selection operator）。</p>
 <p>LASSO(Least Absolute Shrinkage and Selection Operator)是最常用的方法之一，<strong>以缩小变量集为核心思想的压缩方法，使某些不重要变量的回归系数变为0，从而选择对因变量影响较大的自变量并计算出相应的回归系数</strong>，进行下游分析，交叉验证用于确证结果中的取值是否最佳。</p>
-<p><img src="/%E8%9B%8B%E7%99%BD%E4%BB%A3%E8%B0%A2%E5%A4%9A%E7%BB%84%E5%AD%A6%E7%A0%94%E7%A9%B6%E6%80%9D%E8%B7%AF%E5%92%8C%E6%96%B9%E6%B3%95%E9%9A%8F%E7%AC%94.assets/image-20240425225421625.png" alt="image-20240425225421625"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240425225421625.png" alt="image-20240425225421625"></p>
 <h4 id="1-2功能分析"><a href="#1-2功能分析" class="headerlink" title="1.2功能分析"></a>1.2功能分析</h4><p>功能分析旨在系统性地揭示显著表达变化基因的功能内涵及其在复杂生物过程中的作用机制，需要明白下面这些事情</p>
 <h5 id="1）-目标明确：基因功能与通路解析"><a href="#1）-目标明确：基因功能与通路解析" class="headerlink" title="1）. 目标明确：基因功能与通路解析"></a><strong>1）. 目标明确：基因功能与通路解析</strong></h5><p><strong>基因功能探索</strong>：</p>
 <ul>
@@ -671,20 +671,20 @@
 </li>
 </ul>
 <p>因此，功能分析是一项深入而细致的研究工作，它通过多维度数据整合、深度的生物信息学解析、严谨的生物学意义诠释和实验验证，全面揭示基因表达数据背后的生物学故事，解释相关的疾病致病机制和蛋白作用机制。</p>
-<p><img src="/%E8%9B%8B%E7%99%BD%E4%BB%A3%E8%B0%A2%E5%A4%9A%E7%BB%84%E5%AD%A6%E7%A0%94%E7%A9%B6%E6%80%9D%E8%B7%AF%E5%92%8C%E6%96%B9%E6%B3%95%E9%9A%8F%E7%AC%94.assets/image-20240425233416109.png" alt="image-20240425233416109"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240425233416109.png" alt="image-20240425233416109"></p>
 <hr>
 <h4 id="1-3-相关性分析"><a href="#1-3-相关性分析" class="headerlink" title="1.3 相关性分析"></a>1.3 相关性分析</h4><p>相关性分析是指对两个或以上的具有潜在相关性的变量进行的关联分析，根据变量的变化模式&#x2F;规律，利用得到的相关系数来评估两个或以上的变量元素的相关密切程度。相关系数一般介于-1~1之间，绝对值越靠近1，相关性越强，其中-1为完全负相关，1为完全正相关，0为不相关。</p>
 <p>1）<strong>Pearson相关系数</strong>（也称为皮尔逊积矩相关系数）基于协方差的概念，它是衡量两个随机变量间线性相关程度的统计量。其计算公式为：</p>
-<p><img src="/%E8%9B%8B%E7%99%BD%E4%BB%A3%E8%B0%A2%E5%A4%9A%E7%BB%84%E5%AD%A6%E7%A0%94%E7%A9%B6%E6%80%9D%E8%B7%AF%E5%92%8C%E6%96%B9%E6%B3%95%E9%9A%8F%E7%AC%94.assets/image-20240426003851803.png" alt="image-20240426003851803"></p>
-<img src="/2024/04/07/%E8%9B%8B%E7%99%BD%E4%BB%A3%E8%B0%A2%E5%A4%9A%E7%BB%84%E5%AD%A6%E7%A0%94%E7%A9%B6%E6%80%9D%E8%B7%AF%E5%92%8C%E6%96%B9%E6%B3%95%E9%9A%8F%E7%AC%94/image-20240426005207009.png" alt="image-20240426005207009" style="zoom:33%;">
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240426003851803.png" alt="image-20240426003851803"></p>
+<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240426005207009.png" alt="image-20240426005207009" style="zoom:33%;">
 
 <p>计算过程中，首先通过标准化处理消除量纲影响和数据尺度差异，然后计算变量间协方差与各自标准差的乘积，最终得到一个无量纲的系数。只有当数据满足正态分布且变量间存在线性关系时，Pearson相关系数才最具解释力。</p>
 <p>2）<strong>Spearman秩相关系数</strong>是一种非参数统计方法，它基于秩次统计而非原始数值进行计算。其基本思想是将每个变量的所有观测值按照大小排序，赋予相应的秩次，然后计算这两个秩序列间的相关性。计算公式为：</p>
-<img src="/2024/04/07/%E8%9B%8B%E7%99%BD%E4%BB%A3%E8%B0%A2%E5%A4%9A%E7%BB%84%E5%AD%A6%E7%A0%94%E7%A9%B6%E6%80%9D%E8%B7%AF%E5%92%8C%E6%96%B9%E6%B3%95%E9%9A%8F%E7%AC%94/image-20240426005526918.png" alt="image-20240426005526918" style="zoom:50%;">
+<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240426005526918.png" alt="image-20240426005526918" style="zoom:50%;">
 
 <p>由于其计算过程不涉及原始数值，而是关注变量间的排序关系，因此对数据分布类型和异常值不敏感，<strong>适用于非正态分布数据和等级数据的关联分析</strong>。它基于每个变量的排名值而非原始数据，使用单调函数来描述两个变量之间的关系程度，获取两个变量元素之间的变化趋势。那么当数据符合正态分布时，分析效率上Spearman与Pearson是等价的。Spearman相关系数同样取值于-1到1之间，性质与Pearson相关系数类似。</p>
 <p>常用可视化包括：热图、桑基图、线性散点图等。</p>
-<p><img src="/%E8%9B%8B%E7%99%BD%E4%BB%A3%E8%B0%A2%E5%A4%9A%E7%BB%84%E5%AD%A6%E7%A0%94%E7%A9%B6%E6%80%9D%E8%B7%AF%E5%92%8C%E6%96%B9%E6%B3%95%E9%9A%8F%E7%AC%94.assets/image-20240426005813429.png" alt="image-20240426005813429"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240426005813429.png" alt="image-20240426005813429"></p>
 <p><strong>应用场景与实例</strong></p>
 <p><strong>Pearson相关应用实例</strong>：在金融投资领域，研究者可能运用Pearson相关分析股票价格变动与宏观经济指标（如GDP增长率、失业率等）的关系。若发现两者间存在显著的正相关，投资者可能会据此调整投资策略，预期在经济向好时股票市场表现也将提升。</p>
 <p><strong>Spearman相关应用实例</strong>：在教育心理学研究中，为探究学生的学习动机与学习成绩之间的关联，但收集到的数据可能存在极端值或非正态分布，此时选择Spearman相关更为合适。即使某些学生的动机得分或成绩偏离常态，只要其相对排序保持一致，Spearman相关仍能有效捕捉动机与成绩间的单调递增或递减关系。</p>
