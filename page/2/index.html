@@ -236,6 +236,143 @@
 
 
   
+    <article id="post-同源重组构建质粒原理详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/03/19/%E5%90%8C%E6%BA%90%E9%87%8D%E7%BB%84%E6%9E%84%E5%BB%BA%E8%B4%A8%E7%B2%92%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3/" target="_blank">同源重组构建质粒原理详解</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/03/19/%E5%90%8C%E6%BA%90%E9%87%8D%E7%BB%84%E6%9E%84%E5%BB%BA%E8%B4%A8%E7%B2%92%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
+        <time datetime="2024-03-19T02:54:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-19</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>分子生物学研究中质粒构建是最常用的实验技术。原理依赖于限制性核酸内切酶，DNA 连接酶和其他修饰酶的作用，分别对目的基因和载体 DNA 进行适当切割和修饰后，将二者连接在一起，再导入宿主细胞，实现目的基因在宿主细胞内的正确表达。</p>
+<p>同源重组的基因克隆方法， 相比双酶切载体构建方法，该方法的构建过程有些不同，双酶切构建过程比较繁琐，同源重组构建过程相对简单，可以省去很多的时间和精力，但假阳性率略高。</p>
+<p><strong>同源重组法构建载体</strong></p>
+<p>首先，靶基因片段扩增引物有别于常规引物设计；</p>
+<p>其次，载体切割过程中只需要进行单酶切；</p>
+<p>第三，载体和目的基因片段的连接是基于同源重组而不是粘性末端互补。</p>
+<p><strong>采用同源重组法构建载体与常规双酶切构建载体方法不同。</strong></p>
+<p>首先，设计引物时上游引物5’端前面加的是酶切位点（如Hind III）及该酶切位点在pMIR reporter载体中对应前面的15个碱基载体片段，下游引物5’端前面加的是Hind III酶切位点及该酶切位点在pMIR reporter载体中对应后面的15个碱基载体片段，如此设计引物是为了保证目的片段插入载体时方向正确。</p>
+<p>其次，载体只需要单酶切，用Hind III酶切pMIR reporter，使得pMIR reporter成为两端都带着Hind III位点的线性载体。相比双酶切切割载体，单酶切可以保证酶切后的载体都是单一的线性片段，使得后续的重组连接更准确。</p>
+<p>第三，省去了TA克隆环节。因为PCR产物可以直接用于重组连接，不需要酶切产生粘性末端，而且重组酶的重组能力强于T4 DNA连接酶的连接能力，一般只需要一步即可重组连接成功，因此可以在重组反应之后进行测序鉴定。</p>
+<p><strong>详解：</strong></p>
+<p>基于同源基因重组原理，适用于向几乎任何载体在任何位点进行定向克隆，无需考虑插入片段自身携带的酶切位点可高效克隆 50 bp～10 kb 片段，同时构建时间也大大缩短。</p>
+<ol>
+<li><p>载体的制备一般推荐双酶切线性化，线性化完全，假阳性克隆低。酶切体系同上。</p>
+</li>
+<li><p>对于使用重组方式连接来说，PCR 要设计引物, 设计引物时要根据质粒载体和基因序列选择合适的同源序列，通过 PCR 扩增方式进行连接，PCR 的产物要纯化。</p>
+</li>
+</ol>
+<p><strong>引物设计原则简单总结一下：</strong></p>
+<p><strong>（1）前向引物：5’ 端–上游克隆载体末端同源序列+基因正向扩增引物–3’ 端</strong></p>
+<p><strong>（2）反向引物：3’ 端–基因反向扩增引物+下游克隆载体末端同源序列–5’ 端</strong></p>
+<p>如果设计的基因特异插入片段扩增产物长度较长，可以选择 PCR 方式进行目的引物的扩增。</p>
+<p><strong>[可选 PCR 扩增体系]</strong></p>
+<p>ddH2O            14 ul</p>
+<p>10 x Taq buffer      2 ul</p>
+<p>10 um DNTP       1 ul</p>
+<p>10 um primer F     0.5 ul</p>
+<p>10 um primer R     0.5 ul</p>
+<p>Vector            1 ul</p>
+<p>Taq 酶            1 ul</p>
+<p><strong>[可选 PCR 扩增条件]</strong></p>
+<p>(1)95℃：5min</p>
+<p>(2) 35cycle</p>
+<p>95℃：30s</p>
+<p>55℃：30s（退火温度可以根据目的引物TM值决定，一般退火温度根 据引物TM值降低5度）</p>
+<p>72℃：40s</p>
+<p>(3)72℃：10min</p>
+<p>(4)16℃：hold</p>
+<p>PCR 扩增后，通过胶回收方式获得纯化的 PCR 产物。纯化后的 PCR 产物不需要进行酶切，直接用于重组反应。</p>
+<p><strong>3. 目的引物与线性载体进行重组反应。</strong></p>
+<p><strong>[可选重组体系]</strong></p>
+<p>5 × CE II Buffer      4 μl</p>
+<p>线性化克隆载体     50～200 ng</p>
+<p>插入片段扩增产物   20～200 ng</p>
+<p>ExnaseII         2 μl</p>
+<p>ddH2O            x ul</p>
+<p>在冰水浴中配制，配制完成后，用移液器上下轻轻吹打几次混匀各组分，置于 37 ℃ 反应 30 min。待反应完成后，立即将反应管置于冰水浴中冷却 5 min。重组效率在反应 30 min 左右达到最高，反应时间不足或者太长都将会降低克隆效率，这样大大减少了连接时间。</p>
+<p><strong>4. 转化</strong></p>
+<p>将连接产物转化到受体菌中（一般为 DH5a），涂板，培养过夜。</p>
+<p><strong>5. 挑取单克隆，并鉴定</strong></p>
+<p>挑去平板上的单克隆培养，可以通过 PCR 或者酶切初步鉴定阳性克隆，对初步鉴定出来的阳性克隆进行测序。</p>
+<p><strong>最后，几个主要注意事项：</strong></p>
+<ol>
+<li><p>载体克隆位点选择尽量选择无重复序列，且 GC 含量比较均匀的区域进行克隆。当克隆位点上下游 20 bp 区域内 GC 含量均在 40%～60% 范围之内时， 克隆效率将达到最大.</p>
+</li>
+<li><p>最适克隆载体与插入片段摩尔比为 1:2，即最适插入片段使用量为 0.06 pmol。这些摩尔数对应的 DNA 质量可由以下公式粗略计算获得：</p>
+</li>
+</ol>
+<p>最适克隆载体使用量 &#x3D; [0.02 × 克隆载体碱基对数] ng（0.03 pmol）</p>
+<p>最适插入片段使用量 &#x3D; [0.04 × 插入片段碱基对数] ng（0.06 pmol）</p>
+<ol start="3">
+<li>双酶切 1 和 2，在设置酶切体系时要考虑酶切温度以及 Activity in NEBbuffer 的问题。</li>
+</ol>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/03/19/%E5%90%8C%E6%BA%90%E9%87%8D%E7%BB%84%E6%9E%84%E5%BB%BA%E8%B4%A8%E7%B2%92%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-表达载体的构建方法及步骤" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -2226,194 +2363,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2024/03/15/%E5%B0%8F%E9%BC%A0%E4%BD%93%E5%A4%96%E5%8F%97%E7%B2%BE/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-小鼠受精卵原核注射及胞浆注射" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/03/15/%E5%B0%8F%E9%BC%A0%E5%8F%97%E7%B2%BE%E5%8D%B5%E5%8E%9F%E6%A0%B8%E6%B3%A8%E5%B0%84%E5%8F%8A%E8%83%9E%E6%B5%86%E6%B3%A8%E5%B0%84/" target="_blank">小鼠受精卵原核注射及胞浆注射</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/03/15/%E5%B0%8F%E9%BC%A0%E5%8F%97%E7%B2%BE%E5%8D%B5%E5%8E%9F%E6%A0%B8%E6%B3%A8%E5%B0%84%E5%8F%8A%E8%83%9E%E6%B5%86%E6%B3%A8%E5%B0%84/" class="archive-article-date">
-        <time datetime="2024-03-14T16:04:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-15</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>[TOC]</p>
-<p><a href="javascript:;">唐蔚</a>，<a href="javascript:;">李周结</a>，<a href="javascript:;">俞骞</a>，<a href="javascript:;">陈子尘</a>，<a href="javascript:;">王倩雯</a>，<a href="javascript:;">陈国元</a>，<a href="javascript:;">丁一夫</a>，<a href="javascript:;">吴宝金 </a></p>
-<p>来源DOI:  <a target="_blank" rel="noopener" href="https://doi.org/10.21769/BioProtoc.1010948">10.21769&#x2F;BioProtoc.1010948</a></p>
-<p>第一次发表时间:  2022&#x2F;09&#x2F;20</p>
-<p><strong>摘要:</strong> 将外源基因DNA序列直接注射到原核期的受精卵雄性原核中，或将sgRNA及Cas9等基因打靶构建注入受精卵的胞浆内，经过显微注射的受精卵再移植到受体动物的输卵管或子宫内继续发育，进而可得到转基因&#x2F;基因敲除动物。</p>
-<h3 id="材料与试剂"><a href="#材料与试剂" class="headerlink" title="材料与试剂"></a>材料与试剂</h3><h4 id="（一）材料"><a href="#（一）材料" class="headerlink" title="（一）材料"></a>（一）材料</h4><ol>
-<li><h5 id="手术器械"><a href="#手术器械" class="headerlink" title="手术器械"></a>手术器械</h5><p>系线镊（协和, MR-F201A）<br>弯嘴眼科镊（施强, JYN1030）<br>小血管剪（金钟, JA2405）<br>止血夹（灵涛, LW0080）<br>缝合钳（三友, SY11Cr）<br>带线缝合针（双箭, YY0166-2002）</p>
-</li>
-<li><p>注射针（带芯毛细玻璃管，SUTTER INSTRUMENT BF100-78-10）</p>
-</li>
-<li><p>微量注射枪头（Eppendorf Microloader货号：5242956003）</p>
-</li>
-<li><p>固定针（无芯毛细玻璃管，SUTTER INSTRUMENT B100-75-10）</p>
-</li>
-<li><p>吸卵针（国产毛细管，规格0.9-1.1×120 mm）</p>
-</li>
-<li><p>培养皿（FALCON 353001、353002）</p>
-</li>
-</ol>
-<h4 id="（二）试剂"><a href="#（二）试剂" class="headerlink" title="（二）试剂"></a>（二）试剂</h4><ol>
-<li>FHM小鼠胚胎培养液（MILLIPORE公司，产品目录号：MR-025-D）</li>
-<li>KSOM小鼠胚胎培养液（MILLIPORE公司，产品目录号：MR-121-D）</li>
-<li>矿物油（SIGMA M8410）</li>
-<li>透明质酸酶（SIGMA H3506 ）</li>
-<li>孕马血清PMSG（宁波三生）</li>
-<li>人绒毛膜促性腺激素HCG（宁波三生）</li>
-<li>细胞松弛素CB（SIGMA C6762）</li>
-<li>二甲基亚砜细胞冻存液DMSO（SIGMA D2650）</li>
-<li>2,2,2-Tribromoethanol（SIGMA-ALDRICH T48402）</li>
-<li>2-Methyl-2-butanol（SIGMA 240486）</li>
-<li>ULTRA PURE WATER（MILLIPORE TMS-006-A）</li>
-<li>PMSG（见溶液配方）</li>
-<li>HCG（见溶液配方）</li>
-<li>2.5%阿佛丁麻醉剂（见溶液配方）</li>
-<li>CB-HCZB（见溶液配方）</li>
-</ol>
-<h4 id="（三）供受体小鼠"><a href="#（三）供受体小鼠" class="headerlink" title="（三）供受体小鼠"></a>（三）供受体小鼠</h4><ol>
-<li>供体雌鼠（C57BL&#x2F;6J、3-4周）</li>
-<li>供体雄鼠（C57BL&#x2F;6J、大于8周）</li>
-<li>假孕雌鼠（ICR、大于6周）</li>
-<li>结扎雄鼠（ICR、大于6周）</li>
-</ol>
-<h3 id="仪器设备"><a href="#仪器设备" class="headerlink" title="仪器设备"></a>仪器设备</h3><ol>
-<li>拉针仪（SUTTER INSTRUMENT P-97）</li>
-<li>煅针仪（NARISHIGE MF-900）</li>
-<li>实体镜（NIKON SMZ800N）</li>
-<li>倒置显微镜（OLYMPUS IX73）</li>
-<li>显微操作系统（NARISHIGE IM-9C）</li>
-<li>离心机（eppendorf 5430）</li>
-<li>CO2恒温培养箱（Thermo i160）</li>
-<li>超洁净工作台（万里 SW-CJ-2FX）</li>
-<li>热台</li>
-<li>磁力搅拌器（CORNING PC-420D）</li>
-</ol>
-<h3 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h3><h4 id="（一）实验动物的准备"><a href="#（一）实验动物的准备" class="headerlink" title="（一）实验动物的准备"></a>（一）实验动物的准备</h4><ol>
-<li>受精卵供应鼠：选用3到4周龄的C57BL&#x2F;6J雌鼠，或根据研究需要选择特定的品系。</li>
-<li>可育雄鼠：选用8周龄以上的C57BL&#x2F;6J雄鼠，最好有过交配记录，或根据研究需要选择特定的品系。</li>
-<li>结扎雄鼠（需提前一个月准备，见相关章节）。</li>
-<li>假孕雌鼠：由6周龄以上ICR雌鼠与结扎雄鼠交配所成，其性周期与受精卵供应鼠保持一致。</li>
-</ol>
-<h4 id="（二）受精卵的制备"><a href="#（二）受精卵的制备" class="headerlink" title="（二）受精卵的制备"></a>（二）受精卵的制备</h4><p>若选用C57BL&#x2F;6J背景鼠作为实验小鼠，选取10只3-4周龄的雌性小鼠，于下午19:00-20:00按5IU&#x2F;只腹腔注射孕马血清(PMSG)，46-48小时之后注射按5IU&#x2F;只腹腔注射人绒毛膜促性腺激素(HCG)，然后与可育雄鼠合笼交配，次日上午选出有阴道栓的雌鼠取受精卵。查栓当天10:00-12:00将有阴道栓的小鼠脱颈椎处死，打开腹腔后将完整的输卵管带一小段子宫剪下，置于FHM操作液中，在解剖镜下找到输卵管的膨大部，用1 ml注射器针头撕开，带有卵丘细胞的卵团自行流出。随后将卵团移入含有lmg&#x2F; ml透明质酸酶(Hyaluronidase)的FHM操作液内1 min，溶去卵丘细胞，立即用预先拉制的吸管将卵子吸至新鲜的FHM操作液中洗涤2-3次，然后再将受精卵吸至另外新鲜FHM操作液中，如此进行4-5次，直至清洗干净。最后将受精卵吸至含多个KSOM培养液滴的35 mm培养皿中，此KSOM培养皿需提前放入二氧化碳恒温培养箱内平衡超过10 min，并用矿物油覆盖。待卵原核发育清晰饱满后即可做显微注射。</p>
-<h4 id="（三）假孕雌鼠的制备（见相关章节）"><a href="#（三）假孕雌鼠的制备（见相关章节）" class="headerlink" title="（三）假孕雌鼠的制备（见相关章节）"></a>（三）假孕雌鼠的制备（见相关章节）</h4><p>在供卵鼠与可育雄鼠合笼当天，挑选处于发情期的ICR雌鼠与结扎雄鼠合笼，第二天早上检查交配情况，选择有阴栓的假孕雌鼠作为受体使用。</p>
-<h4 id="（四）显微注射系统的建立"><a href="#（四）显微注射系统的建立" class="headerlink" title="（四）显微注射系统的建立"></a>（四）显微注射系统的建立</h4><ol>
-<li><p>注射针的拉制<br>选用外径为1 mm，内径0.75 mm-0.8 mm带芯毛细玻璃管，装在水平拉针仪上，拧紧左右两侧的夹子，做好固定，并使其中间部位对准加热丝。设定好电流、拉力和时间。然后按开始键，等待毛细管被拉成两个所需的微注射针头。</p>
-</li>
-<li><p>持卵针（Holder）的拉制<br>选用外径为1 mm，内径0.75 mm无芯毛细玻璃管作为制作持卵针的材料，装在拉针仪上，拧紧左右两侧的夹子，做好固定，并使其中间部位对准加热丝。设定好电流、拉力和时间。按键拉出针坯，用细砂轮在直径为80-100 μm处将玻璃针切断，尽量使断面平齐，然后在煅针仪上处理断面，将断面烧圆。最后用煅针仪铂金丝在距针尖2-3 mm处，将针坯弯成20-30°。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/20221017015809_4598.jpg" alt="img"><br>注射针安装<br>左图：注射针角度过大；右图：注射针角度合适</p>
-</li>
-</ol>
-<h4 id="（五）原核注射操作过程"><a href="#（五）原核注射操作过程" class="headerlink" title="（五）原核注射操作过程"></a>（五）原核注射操作过程</h4><ol>
-<li>注射针头装液<br>将制备好的DNA溶液（浓度通常为20-40ng&#x2F;ul）12,000 rpm离心5 min，使用无菌的微量加样器从注射针头的后部加入0.5～1 μl的注射样品。</li>
-<li>将注射针和持卵针安装在显微操作臂上。</li>
-<li>原核注射的操作：<ol>
-<li>在100 mm的培养皿中央制作两排20 μl的CB-HCZB操作液，加入5ml矿物油覆盖。并将培养皿液滴调整到显微镜视野中央，然后吸取10-20枚细胞核清晰的受精卵吹到液滴中央，在吹卵过程中尽量不要吹出气泡以免影响视野。</li>
-<li>用低倍物镜对准受精卵调焦，轻轻的落下针尖，并将注射针尖推入视野中心，通过微操作系统的微调调整注射针位置，直到清晰见到针尖为止。用同样的方法调整持卵针的位置，使持卵针开口端正对注射针尖。</li>
-<li>使用持卵针吸取边缘清晰、形状饱满且细胞核明显的受精卵，调整受精卵的位置，使受精卵体积较大的雄性原核正对注射针尖且两者之间的距离最小。将放大倍数调至工作倍数（目镜20×—40×），进一步调整显微镜焦距和注射针及持卵针的位置，使细胞核和注射针尖均达到最佳清晰程度。推动操纵杆，小心进针，使注射针针尖进入细胞核。</li>
-<li>加大注射压，直到细胞核明显胀大为止。</li>
-<li>轻而迅速往外拔针头，直到离开细胞。</li>
-<li>移动显微镜载物台，找到下一颗受精卵，重复以上步骤。注射完毕，将受精卵放回KSOM培养液中，在恒温培养箱中继续培养，吸取下一批受精卵继续进行，直到注完为止。将注射过受精卵培养过夜。</li>
-<li>经一夜培养，选择发育良好的二细胞期的胚胎用于移植。</li>
-</ol>
-</li>
-</ol>
-<h4 id="（六）胞浆注射"><a href="#（六）胞浆注射" class="headerlink" title="（六）胞浆注射"></a>（六）胞浆注射</h4><ol>
-<li>将离心完的核酸或其他溶液上清通过配套的微量注射枪头经底部加入胞浆注射针（微量注射时，2 μl溶液就足以完成数小时的注射），将针头向下静置数分钟（也可以用胶带纸粘在实验台上），可以明显观察到针尖端的空气慢慢被液体替换，同时可能观察到微小气泡上浮。基因敲除时注射物的浓度一般是：sgRNA 12.5ng&#x2F;μl, Cas9 mRNA 25 ng&#x2F;μl；条件性基因敲除注射物的浓度通常是：sgRNA 5ng&#x2F;μl, Cas9 mRNA 10ng&#x2F;μl, Donor质粒10ng&#x2F;μl 。</li>
-<li>将持卵针与充分静置后的注射针安装上显微操作仪，注射针的角度应尽可能的平（因为胞浆注射针无法像其他显微操作的注射针一样弯折角度，为了确保注射后受精卵的存活率，应尽可能降低注射针与载物台的夹角，详情见图1）。</li>
-<li>在10厘米细胞培养皿盖或其他专用的注射皿上制作数个CB-HCZB液滴，其上覆盖以矿物油，用手持式移卵管转移适量的受精卵至CB-HCZB液滴中。一般情况下，可以明显的分辨出受精卵的两个原核，而未受精的卵母细胞只能观察到1个或无法观察到原核。</li>
-<li>持卵针和注射针调整到视野中心，将微量注射仪程序调至FUNC 4，即持续注射模式，初始压力值可以设置高一些，约在600左右，轻轻地将注射针的针头“撞”在持卵针上或在持卵针上拨动，将针头部封闭处开放。判断是否撞开的标准是，如果将针头靠近受精卵能观察到受精卵开始旋转，则证明针头已经开放。此时第一次调整注射压力，最适值是针头靠近受精卵，受精卵能缓缓的开始旋转，但不会发生剧烈的前后位移。</li>
-<li>在20倍镜下，先用一些状态差的受精卵测试压力，将注射针轻轻扎入卵胞质内，此时可根据情况第二次调整压力，合适的注射压力是根据针头的粗细与是否堵针决定的，理想的注射压力是受精卵被注射的局部区域出现明显膨胀，但受精卵本身又不能产生明显的膨胀。注射压力在10到1000之间都属正常，但针头越细越容易扎入卵胞质，但同时也越容易堵针，如果发现注射时受精卵膨胀的程度显著性降低或者完全没有膨胀，可以使用机器自带的Clean程序将注射针头以较高压力吹洗，如果多次冲洗仍然堵针，可重复4中撞针的步骤，将针头撞的更粗一些，如果针头粗到难以扎破受精卵，则需要重新装液换针。</li>
-<li>测试调整完压力后，就可以开始注射，为了最大化存活率，应尽可能的减少针停留在受精卵内部的时间，以避免受精卵无法封口导致死亡。重复操作直至所有受精卵注射完毕。</li>
-<li>将注射后的受精卵移回KSOM培养液中继续培养，刚注射完的受精卵会残留CB-HCZB，因此在过夜培养前需要反复洗涤几次。</li>
-</ol>
-<h4 id="（七）胚胎的移植"><a href="#（七）胚胎的移植" class="headerlink" title="（七）胚胎的移植"></a>（七）胚胎的移植</h4><p>将经过显微注射，发育到二细胞期的胚胎移植入0.5天的假孕雌鼠体内（具体操作见相关章节）。</p>
-<p>溶液配方</p>
-<ol>
-<li>PMSG配置<br>将PMSG 冻干粉溶于0.9%NaCl 无菌生理盐水,浓度50IU&#x2F;ml，根据实验需要的量分装到1.5 ml EP 管中。-20 °C至少可保存一个月。</li>
-<li>HCG配置<br>将冻干粉溶于0.9%NaCl 无菌生理盐水,浓度50IU&#x2F; ml，根据实验需要的量分装到1.5 ml EP 管中。-20 °C至少可保存一个月</li>
-<li>2.5%阿佛丁麻醉剂配制<br>称取10g 2,2,2-Tribromoethanol后加入10 ml 2-Methyl-2-butanol，240转&#x2F;25℃避光振荡至沉淀完全消失，配制成浓储液。使用时按照2.5%浓度将浓缩液加入相应的ULTRA PURE WATER（2.5 ml浓缩液：97.5 ml超纯水），280转&#x2F;25℃避光振荡至沉淀完全消失，0.25nm过滤器过滤后即为工作液。</li>
-<li>CB-HCZB 配制方法<br>CB先用2.5 ml DMSO充分溶解，配制成浓储液（每管100 μl分装）。使用时每管浓储加400 μl DMSO配成2mg&#x2F; ml的次级浓储液，再每管2.5 μl分装到Ep管中，使用时每管加入1 ml FHM即为工作液。</li>
-</ol>
-<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
-<li>1.Andras, N., Marina, G., Kristina, V. and Richard, B.(2003). Manipulating the Mouse Embryo. Cold Spring Harbor Laboratory Press. Cold Spring Harbor, New York.</li>
-</ol>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/03/15/%E5%B0%8F%E9%BC%A0%E5%8F%97%E7%B2%BE%E5%8D%B5%E5%8E%9F%E6%A0%B8%E6%B3%A8%E5%B0%84%E5%8F%8A%E8%83%9E%E6%B5%86%E6%B3%A8%E5%B0%84/">展开全文 >></a>
     </p>
     
 
