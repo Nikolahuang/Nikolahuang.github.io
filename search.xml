@@ -169,44 +169,6 @@
     
     
     <entry>
-      <title>E.Z.N.A.® Endo-Free Plasmid DNA Mini Kit Protocols(中文版)</title>
-      <link href="/2024/03/21/Protocols/"/>
-      <url>/2024/03/21/Protocols/</url>
-      
-        <content type="html"><![CDATA[<h3 id="Kit-I-Protocol"><a href="#Kit-I-Protocol" class="headerlink" title="Kit I Protocol"></a>Kit I Protocol</h3><h3 id="实验前准备"><a href="#实验前准备" class="headerlink" title="实验前准备"></a>实验前准备</h3><p>1.使用前 将RNase A全部加入SolutionI中并于4度保存。</p><p>2.按下表用无水乙醇稀释DNA Wash Buffer 并于室温保存。</p><p>D6942-00,D6943-00:加入8m无水乙醇</p><p>D6942-01,D6943-01:加入80ml无水乙醇</p><p>D6842-02,D6943-02:每瓶中加入80ml无水乙醇.</p><h3 id="离心操作方案"><a href="#离心操作方案" class="headerlink" title="离心操作方案"></a>离心操作方案</h3><ol><li><p>将带有质粒的E.coli 接种于5ml LB&#x2F;抗生素培养液中   37°C搖床培养12~16 h</p></li><li><p>取1.0~5.0ml的菌液 室温下10,000xg离心1min收集细菌。</p></li><li><p>倒弃培养基。加入250ulSolutionI&#x2F;RNaseA混和液 漩涡振荡使细胞完全悬浮。</p></li><li><p>往重悬混和液中加入250ul SolutionII 轻轻颠倒混匀4-6次。此操作避免剧烈混匀裂解液且裂解反应不要超过5 min。</p></li><li><p>加入350ulSolution III 温和颠倒数次至形成白色絮狀沉淀。</p></li><li><p>室温下 &gt;10,000xg离心10min。</p></li><li><p>转移上清液至套有2ml收集管的HiBind DNA结合柱中室温下 10,000xg离心1 min倒去收集管中的滤液。</p></li><li><p>把柱子重新装回收集管加入500ul HB Buffer 按上述条件离心弃去滤液</p></li><li><p>把柱子重新装回收集管 加入700ul DNA Wash Buffer 按上述条件离心 弃去滤液.<br>注意 浓缩的DNA Wash Buffer在使用之前必须按标签的提示用无水乙醇稀释。</p></li><li><p>(可选)弃去滤液 重复第9步骤一次。</p></li><li><p>弃去滤液 把柱子重新装回收集管 10,000xg离心空柱2min以甩干柱子基质。<br>注意 不要忽略此步 –这对去除柱子中残留的乙醇至关重要。</p></li><li><p>把柱子装在干净的1.5mI离心管上 加入30-50ul Elution Buffer(10mM Tris-HCI,PH8.5)或无菌水到柱子基质中 静置1-2min 10,000xg离心1min洗脱出DNA。</p></li></ol><p>快速流程图：<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240321114645886.png" alt="image-20240321114645886"></p><hr><h3 id="Kit-II-protocol"><a href="#Kit-II-protocol" class="headerlink" title="Kit II protocol"></a>Kit II protocol</h3><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240321115711235.png" alt="image-20240321115711235"></p><p>提取步骤： </p><ol><li>将带有质粒的E.coli 接种于50mL LB&#x2F;抗生素培养液中，37°C搖床培养12-16 h； </li><li>取10-15 mL的菌液，室温下，5,000xg离心10min收集细菌； </li><li>倒弃培养基，加入500µl Solution I&#x2F;RNase A混和液，漩涡振荡使细胞完全悬浮； Note：Solution I在使用前请按说明书正确添加RNase A混匀备用。 </li><li>将溶液转移到新的2mL离心管，加入500µl Solution II，轻轻颠倒混匀，将混合液 室温放置2~3min； Note：加入Solution II后裂解时间不应超过5min；密封保存。 </li><li>加入250µl 预冷的N3 Buffer，轻柔上下颠倒离心管数次至形成白色絮狀沉淀； </li><li>室温下，最大速度（≥13000xg）离心10min，转移上清液至新1.5mL离心管中； </li><li>加入上清液0.1倍体积的ETR Solution，上下颠倒10次混匀，冰浴10min； Note：加入ETR Solution后，溶液呈现浑浊，冰浴后变澄清。 </li><li>42℃孵育5min，溶液再次变浑浊； </li><li>25℃，12,000xg离心3min，将上层水相（含DNA）转移到新的1.5mL离心管中， 加入0.5倍体积的无水乙醇，上下颠倒混匀6-7次，室温静置1-2min； </li><li>转移混合液(一次最多转移700µl）至套有2mL收集管的HiBind ® DNA 结合柱中， 室温，10000xg离心1min，弃滤液。</li><li>重复步骤10，直至所有混合液转移过柱； </li><li>把柱子重新装回收集管，加入500µl HBC Buffer，最大速度离心1min，弃滤液； Note：HBC Buffer在使用前必须按照说明书加入异丙醇稀释。 </li><li>把柱子重新装回收集管，加入700µl DNA Wash Buffer，最大速度离心1min，弃 滤液； Note：DNA Wash Buffer使用前请按说明书正确添加无水乙醇稀释备用。 </li><li>重复步骤13； </li><li>把柱子重新装回收集管，≥13000xg离心空柱2min干燥柱子基质； </li><li>把柱子装在干净的1.5mL离心管上，加入80-100µl Elution Buffer到柱子基质中， 静置1min，最大速度离心1min洗脱DNA。 </li><li>弃除柱子，把DNA产物保存于-20℃。</li></ol>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> BioProtocol </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>touch-down PCR原理和原则</title>
-      <link href="/2024/03/20/PCR%E5%8E%9F%E7%90%86%E5%92%8C%E5%8E%9F%E5%88%99/"/>
-      <url>/2024/03/20/PCR%E5%8E%9F%E7%90%86%E5%92%8C%E5%8E%9F%E5%88%99/</url>
-      
-        <content type="html"><![CDATA[<p>一、Tounch down PCR原理</p><p>　　Touchdown PCR，即降落PCR。是指每隔一个循环降低1°C或者是0.5°C反应退火温度，直至达到“Touchdown”退火温度，然后以此退火温度进行10个左右的循环。只有同同源性高的目的模板会被扩增。这些产物在随后的循环中继续扩增，并会将扩增的非特异性产物排挤出去。</p><p>　　平时我们先用高温扩5<del>10个循环，再用低温扩增 15</del>25个循环，这样也是广义上的touchdown。原理就在于，温度的升高提高了PCR扩增的特异性，但也提高了引物结合的难度，降低了扩增的效率，因此一开始先用高温扩增，保证扩增的严谨性，待目的基因的丰度上升后，降低扩增的温度，提高扩增的效率(此时非特异的位点由于丰度低，无法和特异位点竞争)</p><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/1541403901719577.png" alt="科研实验图.png"></p><p>　　二、Tounch down PCR退火温度设计的原则</p><p>　　1、降落 PCR 是在同一个 pcr 管内进行 PCR，只是每个循环的温度不同 (如每个循环降 1 度)。一般兼并引物用这种方法多些。</p><p>　　2、设计多循环反应的程序， 以使相连循环的退火温度越来越低。 由于开始时的退火温度选择为高于估计的 Tm 值，随着循环的进行，退火温度逐渐降到 Tm 值，并终低于这个水平， 用于确保第一个引物—模板杂交事件发生在互补的反应物之间， 即那些产生目的扩增产物的反应物之间。 尽管退火温度终会降到非特异杂交的 Tm 值，但此时目的扩增产物已开始几何扩增，在剩下的循环中处于超过任何滞后 (非特异 )PCR 产物的地位。</p><p>　　3、由于目标是在较早的循环中避免低 Tm 值配对，在 TD —PCR 中好应用热启动技术。设计时，退火温度的范围应跨越 15℃左右，从高于估计 Tm 值至少几度到低于它 10℃。</p><p>　　4、例：一对没有简并的引物—模板的计算 Tm 值为 62℃。</p><p>　　则：从 65℃— &gt;50 ℃ (每 2cycles 降退火温度 1℃ )，再在 50℃退火温度下做 15 个循环。实验中如持续出现假象带 (杂带 )，则是因为起始退火温度太低，或目的扩增产物和非目的产物的 Tm 值相差无几，或非目的扩增物以更高的扩增效率扩增，可把退火温度每降低 1℃所需的循环数增加到 3 或 4。</p><p>　　5、 touchdown PCR 是为了增加反应的特异性，降低非特异产物的产生。在整个反应过程是一个温度由高到低的过程， 在温度降低的过程中， 会出现一个温度是上下游引物适的退火温度， 大量引物与模板结合，由此产生特异性产物;温度继续降低时， 未结合的引物已很少或没有，非特异性产物就很少或没有。</p><p>　　设置温度时，高温以 Tm 较高的引物为准，低温以 Tm 较低的引物为准。</p><p>　　我常用的程序是： 65C—-50C, 1C&#x2F;2s(2s 降低 1 度)</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> BioLearning </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>hexo+fluid搭建个人博客网站并部署到github</title>
       <link href="/2024/03/19/hexo-fluid%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0github/"/>
       <url>/2024/03/19/hexo-fluid%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0github/</url>
