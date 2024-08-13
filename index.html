@@ -252,6 +252,290 @@
 
 
   
+    <article id="post-从零开始训练一个神经网络之一：环境的搭建和准备" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/08/13/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%AE%AD%E7%BB%83%E4%B8%80%E4%B8%AA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B9%8B%E4%B8%80%EF%BC%9A%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA%E5%92%8C%E5%87%86%E5%A4%87/" target="_blank">从零开始训练一个神经网络之一：环境的搭建和准备</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/08/13/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%AE%AD%E7%BB%83%E4%B8%80%E4%B8%AA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B9%8B%E4%B8%80%EF%BC%9A%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA%E5%92%8C%E5%87%86%E5%A4%87/" class="archive-article-date">
+        <time datetime="2024-08-12T17:08:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-08-13</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="conda环境安装配置"><a href="#conda环境安装配置" class="headerlink" title="conda环境安装配置"></a>conda环境安装配置</h1><p>如果不使用图形化界面可以安装 miniconda ,要使用图形化UI界面可以安装完整的<strong>Anaconda</strong></p>
+<h1 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h1><ul>
+<li>官网地址下载</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://repo.anaconda.com/archive/Anaconda3-2024.06-1-Windows-x86_64.exe</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/QQ_1723552838073.png" alt="QQ_1723552838073"></p>
+<ul>
+<li>清华镜像下载</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/32133_0xg9_5051.png" alt="img"></p>
+<h2 id="安装如果完成，确认一下安装是否成功。-conda-–version"><a href="#安装如果完成，确认一下安装是否成功。-conda-–version" class="headerlink" title="安装如果完成，确认一下安装是否成功。 conda –version"></a>安装如果完成，确认一下安装是否成功。 conda –version</h2><ul>
+<li>如果能显示版本说明已经正确安装</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/32430_uahw_7479.png" alt="img"></p>
+<ul>
+<li><p>如果提示没有conda（手动配置一下环境变量）</p>
+<p>按照这样配置miniconda到环境变量 D:\pinokio\bin\miniconda\condabin</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/32708_bs9z_5057.png" alt="img"><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/32755_1msr_3398.png" alt="img"></p>
+<p>我这里项目里面有miniconda ，我就不重复安装了，直接配置一下环境变量就能使用。</p>
+</li>
+</ul>
+<h1 id="简单用法"><a href="#简单用法" class="headerlink" title="简单用法"></a>简单用法</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用conda创建虚拟环境、激活当前环境、安装项目依赖：</span></span><br><span class="line">conda create --prefix venv python=3.10</span><br><span class="line">conda activate .\venv</span><br><span class="line">pip install torch torchvision torchaudio xformers --index-url https://download.pytorch.org/whl/cu121</span><br><span class="line">pip install -r requirements.txt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">关闭虚拟环境</span></span><br><span class="line">deactivate</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">升级依赖包</span></span><br><span class="line">pip install --upgrade xxxxx  (如：pip install --upgrade openai)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">强制重新安装</span></span><br><span class="line">pip install --force-reinstall xxxxx (如：pip install --force-reinstall httpx==0.13.3 openai)</span><br></pre></td></tr></table></figure>
+
+<p>测试cuda、torch是否生效</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="built_in">print</span>(torch.__version__)</span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/33286_jbqt_5530.png" alt="img"></p>
+<p>进入Python环境执行以上三行代码就能测试cuda、torch是否生效，Ctrl + Z 可以返回到环境虚拟环境。</p>
+<h1 id="关于Windows系统使用torch总结"><a href="#关于Windows系统使用torch总结" class="headerlink" title="关于Windows系统使用torch总结"></a>关于Windows系统使用torch总结</h1><p>我发现项目中的依赖写的不够清晰，比如这个<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/33549_gz79_6639.png" alt="img"></p>
+<p>安装的时候，系统默认会安装CPU版本的，所以会找不到Cuda，环境安装会失败。</p>
+<p>一般情况我们不要去修改项目的requirements.txt</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 安装全部依赖  pip install -r requirements.txt 后，先试cuda是否生效，不生效卸载，按照下面的方式安装</span><br></pre></td></tr></table></figure>
+
+<h2 id="离线安装"><a href="#离线安装" class="headerlink" title="离线安装"></a>离线安装</h2><p><a target="_blank" rel="noopener" href="https://download.pytorch.org/whl/cu118">https://download.pytorch.org/whl/cu118</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/34035_0zce_1263.png" alt="img"></p>
+<p>从这里下载我们期望安装的版本，注意这个版本要和你们的Python版本一致才行。</p>
+<p>这里我推荐Windows用户使用Python3.10、CU118的组合。因为有的项目会使用 triton ，这个东西这里只有linux版本的，没有Windows版本，这个自己编译也很容易出错（也可能是我太菜，编译了好多次都没成功）。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/34245_jm5l_9321.png" alt="img"></p>
+<p>从网上找到一个编译好的，使用的Python3.10可以使用。这个分享给大家。</p>
+<p><a target="_blank" rel="noopener" href="https://www.hackyin.com/data/file/2024/02/17/34450_9iks_7793.whl"><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/unknown.svg" alt="unknown.svg">triton-2.0.0-cp310-cp310-win_amd64.whl</a></p>
+<p>依赖安装使用pip install XXXX 一般会安装新版本的，很有可能和我们的torch版本不匹配，有一个办法可以让它自动选择一样的版本。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda activate ./venv</span><br><span class="line">pip uninstall torch torchaudio torchvision xformers</span><br><span class="line">pip install G:\Python环境torch2.0.0\torch-2.0.0+cu118-cp310-cp310-win_amd64.whl torchaudio torchvision xformers</span><br></pre></td></tr></table></figure>
+
+<p>这里我把torch-2.0.0+cu118-cp310-cp310-win_amd64.whl下载到本地来安装。</p>
+<p>激活虚拟环境，先卸载可能不匹配的依赖项，我常遇到这几个 torch torchaudio torchvision xformers </p>
+<p>先全部卸载，限制会有提示，直接输入 y ，安装的时候，前面指定了torch-2.0.0+cu118-cp310-cp310-win_amd64.whl ，后面跟着torchaudio torchvision xformers，就会自动安装合适的版本了。</p>
+<p>全部安装完毕后，在测试一下cuda、torch是否生效。这样一通操作做可以解决项目环境的问题。</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">从零开始训练一个神经网络</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/08/13/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%AE%AD%E7%BB%83%E4%B8%80%E4%B8%AA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B9%8B%E4%B8%80%EF%BC%9A%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA%E5%92%8C%E5%87%86%E5%A4%87/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-从零开始训练一个神经网络之二：数据收集和准备" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/08/10/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%AE%AD%E7%BB%83%E4%B8%80%E4%B8%AA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B9%8B%E4%BA%8C%EF%BC%9A%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86%E5%92%8C%E5%87%86%E5%A4%87/" target="_blank">从零开始训练一个神经网络之数据收集和准备</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/08/10/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%AE%AD%E7%BB%83%E4%B8%80%E4%B8%AA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B9%8B%E4%BA%8C%EF%BC%9A%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86%E5%92%8C%E5%87%86%E5%A4%87/" class="archive-article-date">
+        <time datetime="2024-08-09T16:52:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-08-10</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="任务目标：金价数据的收集、预处理和准备"><a href="#任务目标：金价数据的收集、预处理和准备" class="headerlink" title="任务目标：金价数据的收集、预处理和准备"></a><strong>任务目标：金价数据的收集、预处理和准备</strong></h1><hr>
+<h3 id="1-数据收集"><a href="#1-数据收集" class="headerlink" title="1. 数据收集"></a>1. <strong>数据收集</strong></h3><p>1）使用<code>yfinance</code>库来获取历史金价数据。<code>yfinance</code> 是一个方便的库，可以从Yahoo Finance下载金融市场数据。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> yfinance <span class="keyword">as</span> yf</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取金价的历史数据，代码为 &#x27;GC=F&#x27; (Gold Futures)</span></span><br><span class="line">gold_data = yf.download(<span class="string">&#x27;GC=F&#x27;</span>, start=<span class="string">&#x27;2010-01-01&#x27;</span>, end=<span class="string">&#x27;2023-12-31&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看数据</span></span><br><span class="line"><span class="built_in">print</span>(gold_data.head())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存数据到本地文件</span></span><br><span class="line">gold_data.to_csv(<span class="string">&#x27;gold_price_data.csv&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;数据已成功收集并保存为 gold_price_data.csv 文件。&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/08/10/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%AE%AD%E7%BB%83%E4%B8%80%E4%B8%AA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B9%8B%E4%BA%8C%EF%BC%9A%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86%E5%92%8C%E5%87%86%E5%A4%87/Users\17769\AppData\Local\Temp\QQ_1723556751605.png" alt="QQ_1723556751605"></p>
+<p>似乎出现了一些问题…</p>
+<p>从错误信息来看，<code>yfinance</code>在尝试获取<code>GC=F</code>（Gold Futures，黄金期货）数据时遇到了连接超时的错误，并且下载失败了。这个问题可能是由网络连接问题或Yahoo Finance服务器的暂时性问题引起的。</p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ol>
+<li><strong>检查网络连接</strong>: 确保网络连接正常，尤其是在尝试访问外部API时。你可以尝试在不同的网络环境下再次运行代码。(我是OK的~)</li>
+<li><strong>尝试其他数据源</strong>: 如果<code>yfinance</code>一直无法正常工作，考虑使用其他数据源，比如Quandl，或者直接从金融数据网站下载数据。(这个换赛道其实也行，但是不解决当前问题内心当然会OB~)</li>
+<li><strong>增加超时时间</strong>: 可以尝试增加<code>yfinance</code>请求的超时时间，以防止连接超时问题。虽然这是一个临时解决方案，但有时可能有用。</li>
+<li><strong>直接从其他站点下载</strong>: 如果问题持续，那就简单粗暴一点，直接手动从一些网站（如Yahoo Finance：<a target="_blank" rel="noopener" href="https://finance.yahoo.com/quote/GOGL/%EF%BC%89%E7%9B%B4%E6%8E%A5%E4%B8%8B%E8%BD%BD%E6%95%B0%E6%8D%AE%EF%BC%8C%E5%B9%B6%E5%B0%86%E5%85%B6%E4%BF%9D%E5%AD%98%E4%B8%BACSV%E6%96%87%E4%BB%B6%EF%BC%8C%E7%84%B6%E5%90%8E%E7%BB%A7%E7%BB%AD%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E6%AD%A5%E9%AA%A4%EF%BC%8C%E6%AC%B8%E5%98%BF%EF%BC%8C%E4%B8%BB%E6%89%93%E4%B8%80%E4%B8%AA%E5%BC%AF%E9%81%93%E7%9B%B4%E8%BE%BE">https://finance.yahoo.com/quote/GOGL/）直接下载数据，并将其保存为CSV文件，然后继续数据预处理步骤，欸嘿，主打一个弯道直达</a>~</li>
+</ol>
+<p>首先，尝试使用以下代码增加超时时间：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> yfinance <span class="keyword">as</span> yf</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置超时时间为60秒</span></span><br><span class="line">gold_data = yf.download(<span class="string">&#x27;GC=F&#x27;</span>, start=<span class="string">&#x27;2010-01-01&#x27;</span>, end=<span class="string">&#x27;2023-12-31&#x27;</span>, timeout=<span class="number">60</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查数据是否为空</span></span><br><span class="line"><span class="keyword">if</span> gold_data.empty:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;未能成功获取数据。请检查网络连接或尝试其他数据源。&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="comment"># 保存数据到本地文件</span></span><br><span class="line">    gold_data.to_csv(<span class="string">&#x27;gold_price_data.csv&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;数据已成功收集并保存为 gold_price_data.csv 文件。&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>如果还是不行，那就试试简单粗暴的办法吧：</p>
+<h3 id="替代方法-1-手动下载数据"><a href="#替代方法-1-手动下载数据" class="headerlink" title="替代方法 1: 手动下载数据"></a>替代方法 1: 手动下载数据</h3><ol>
+<li><p><strong>访问Yahoo Finance</strong>:</p>
+<p>打开 <a target="_blank" rel="noopener" href="https://finance.yahoo.com/">Yahoo Finance</a>。</p>
+<p>搜索“Gold Futures”或直接搜索<code>GC=F</code>。</p>
+<p><img src="/2024/08/10/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%AE%AD%E7%BB%83%E4%B8%80%E4%B8%AA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B9%8B%E4%BA%8C%EF%BC%9A%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86%E5%92%8C%E5%87%86%E5%A4%87/Users\17769\AppData\Local\Temp\QQ_1723558894800.png" alt="QQ_1723558894800"></p>
+<p>在页面中找到历史数据，选择你需要的时间范围（比如2010年至今），然后下载为CSV文件。</p>
+<p>(找了半天没看到有download按键，而且网页还增加了反爬虫技术，tnnd<del>，那就直接把整个网页保存下来进行解析</del>简单粗暴)</p>
+<p>保存网页：</p>
+<p><img src="/2024/08/10/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%AE%AD%E7%BB%83%E4%B8%80%E4%B8%AA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B9%8B%E4%BA%8C%EF%BC%9A%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86%E5%92%8C%E5%87%86%E5%A4%87/Users\17769\AppData\Local\Temp\QQ_1723560528665.png" alt="QQ_1723560528665"></p>
+<p>在网页空白处右键选择“另存为”</p>
+<p><img src="/2024/08/10/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%AE%AD%E7%BB%83%E4%B8%80%E4%B8%AA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B9%8B%E4%BA%8C%EF%BC%9A%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86%E5%92%8C%E5%87%86%E5%A4%87/Users\17769\AppData\Local\Temp\QQ_1723560562289.png" alt="QQ_1723560562289"></p>
+<p>保存为html文件后；</p>
+<p>开始解析文件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取保存的HTML文件</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;/mnt/data/Micro Gold Futures,Dec-2024 (MGC=F) Stock Historical Prices &amp; Data - Yahoo Finance.html&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    soup = BeautifulSoup(file, <span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 尝试查找包含历史数据的表格</span></span><br><span class="line">table = soup.find(<span class="string">&#x27;table&#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> table <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;未找到数据表格，请检查HTML文件的结构。&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="comment"># 如果找到了表格，继续提取数据</span></span><br><span class="line">    headers = []</span><br><span class="line">    <span class="keyword">if</span> table.find(<span class="string">&#x27;thead&#x27;</span>):</span><br><span class="line">        headers = [th.text.strip() <span class="keyword">for</span> th <span class="keyword">in</span> table.find(<span class="string">&#x27;thead&#x27;</span>).find_all(<span class="string">&#x27;th&#x27;</span>)]</span><br><span class="line"></span><br><span class="line">    rows = []</span><br><span class="line">    <span class="keyword">for</span> tr <span class="keyword">in</span> table.find(<span class="string">&#x27;tbody&#x27;</span>).find_all(<span class="string">&#x27;tr&#x27;</span>):</span><br><span class="line">        cells = [td.text.strip() <span class="keyword">for</span> td <span class="keyword">in</span> tr.find_all(<span class="string">&#x27;td&#x27;</span>)]</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(cells) &gt; <span class="number">1</span>:  <span class="comment"># 过滤掉空行</span></span><br><span class="line">            rows.append(cells)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 检查是否成功提取数据</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> headers <span class="keyword">or</span> <span class="keyword">not</span> rows:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;未能提取到任何数据，请检查表格内容。&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 将数据转换为DataFrame</span></span><br><span class="line">        gold_data = pd.DataFrame(rows, columns=headers)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 保存为CSV文件</span></span><br><span class="line">        gold_data.to_csv(<span class="string">&#x27;gold_price_data_extracted.csv&#x27;</span>, index=<span class="literal">False</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;数据已成功提取并保存为 gold_price_data_extracted.csv 文件。&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/08/10/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%AE%AD%E7%BB%83%E4%B8%80%E4%B8%AA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B9%8B%E4%BA%8C%EF%BC%9A%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86%E5%92%8C%E5%87%86%E5%A4%87/Users\17769\AppData\Local\Temp\QQ_1723561257616.png" alt="QQ_1723561257616"></p>
+<p>数据提取完成！</p>
+<p><img src="/2024/08/10/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%AE%AD%E7%BB%83%E4%B8%80%E4%B8%AA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B9%8B%E4%BA%8C%EF%BC%9A%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86%E5%92%8C%E5%87%86%E5%A4%87/Users\17769\AppData\Local\Temp\QQ_1723561309162.png" alt="QQ_1723561309162"></p>
+<h3 id="2-数据预处理"><a href="#2-数据预处理" class="headerlink" title="2. 数据预处理"></a>2. <strong>数据预处理</strong></h3><p>数据收集完毕后，我们需要对数据进行一些预处理。</p>
+<h3 id="1-数据检查和清洗"><a href="#1-数据检查和清洗" class="headerlink" title="1.数据检查和清洗"></a>1.<strong>数据检查和清洗</strong></h3><ul>
+<li><strong>检查数据格式</strong>：确保日期列是<code>datetime</code>类型，价格数据是数值类型。</li>
+<li><strong>处理缺失值</strong>：检查并处理任何缺失数据。</li>
+<li><strong>删除无关列</strong>：如果有无关的列（如“交易量”等），可以选择删除。</li>
+</ul>
+<h3 id="2-特征工程"><a href="#2-特征工程" class="headerlink" title="2. 特征工程"></a>2. <strong>特征工程</strong></h3><ul>
+<li><strong>生成技术指标</strong>：添加一些常用的技术指标（如移动平均线、相对强弱指数RSI、MACD等）。</li>
+<li><strong>生成目标变量</strong>：创建模型的目标变量，即未来三天的金价变化。</li>
+</ul>
+<h3 id="3-数据标准化-归一化"><a href="#3-数据标准化-归一化" class="headerlink" title="3. 数据标准化&#x2F;归一化"></a>3. <strong>数据标准化&#x2F;归一化</strong></h3><ul>
+<li>对特征进行标准化或归一化处理，以提高模型训练的效果。</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取从网页提取并保存的CSV文件</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">load_data</span>(<span class="params">file_path</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    加载并初步检查数据。</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    data = pd.read_csv(file_path)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;原始数据预览:&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(data.head())</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清理数据列名并处理数据类型</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">clean_data</span>(<span class="params">data</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    清理列名，处理数据类型，并移除多余字符。</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># 清理列名：去除列名中的多余空白和说明</span></span><br><span class="line">    data.columns = data.columns.<span class="built_in">str</span>.strip().<span class="built_in">str</span>.split().<span class="built_in">str</span>[<span class="number">0</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 将日期列转换为datetime类型</span></span><br><span class="line">    data[<span class="string">&#x27;Date&#x27;</span>] = pd.to_datetime(data[<span class="string">&#x27;Date&#x27;</span>])</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 将&#x27;Close&#x27;, &#x27;High&#x27;, &#x27;Low&#x27;列中的字符串转换为浮点数，先移除逗号</span></span><br><span class="line">    data[<span class="string">&#x27;Close&#x27;</span>] = data[<span class="string">&#x27;Close&#x27;</span>].<span class="built_in">str</span>.replace(<span class="string">&#x27;,&#x27;</span>, <span class="string">&#x27;&#x27;</span>).astype(<span class="built_in">float</span>)</span><br><span class="line">    data[<span class="string">&#x27;High&#x27;</span>] = data[<span class="string">&#x27;High&#x27;</span>].<span class="built_in">str</span>.replace(<span class="string">&#x27;,&#x27;</span>, <span class="string">&#x27;&#x27;</span>).astype(<span class="built_in">float</span>)</span><br><span class="line">    data[<span class="string">&#x27;Low&#x27;</span>] = data[<span class="string">&#x27;Low&#x27;</span>].<span class="built_in">str</span>.replace(<span class="string">&#x27;,&#x27;</span>, <span class="string">&#x27;&#x27;</span>).astype(<span class="built_in">float</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 按日期升序排序</span></span><br><span class="line">    data = data.sort_values(<span class="string">&#x27;Date&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 检查数据缺失情况</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;\n数据缺失值统计:&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(data.isnull().<span class="built_in">sum</span>())</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 移除缺失值</span></span><br><span class="line">    data = data.dropna()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 特征工程：生成技术指标</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate_features</span>(<span class="params">data</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    生成多种技术指标，包括移动平均线、RSI、MACD、布林带、ATR等。</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># 移动平均线 (MA)</span></span><br><span class="line">    data[<span class="string">&#x27;MA_5&#x27;</span>] = data[<span class="string">&#x27;Close&#x27;</span>].rolling(window=<span class="number">5</span>).mean()</span><br><span class="line">    data[<span class="string">&#x27;MA_10&#x27;</span>] = data[<span class="string">&#x27;Close&#x27;</span>].rolling(window=<span class="number">10</span>).mean()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 相对强弱指数 (RSI)</span></span><br><span class="line">    data[<span class="string">&#x27;RSI_14&#x27;</span>] = compute_RSI(data[<span class="string">&#x27;Close&#x27;</span>], window=<span class="number">14</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># MACD (移动平均收敛散度指标)</span></span><br><span class="line">    short_ema = data[<span class="string">&#x27;Close&#x27;</span>].ewm(span=<span class="number">12</span>, adjust=<span class="literal">False</span>).mean()  <span class="comment"># 12日指数移动平均线</span></span><br><span class="line">    long_ema = data[<span class="string">&#x27;Close&#x27;</span>].ewm(span=<span class="number">26</span>, adjust=<span class="literal">False</span>).mean()   <span class="comment"># 26日指数移动平均线</span></span><br><span class="line">    data[<span class="string">&#x27;MACD&#x27;</span>] = short_ema - long_ema</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 布林带 (Bollinger Bands)</span></span><br><span class="line">    data[<span class="string">&#x27;BB_upper&#x27;</span>], data[<span class="string">&#x27;BB_lower&#x27;</span>] = compute_bollinger_bands(data[<span class="string">&#x27;Close&#x27;</span>], window=<span class="number">20</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 平均真实波动幅度 (ATR)</span></span><br><span class="line">    data[<span class="string">&#x27;ATR&#x27;</span>] = compute_atr(data, window=<span class="number">14</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 移除因滚动计算产生的NaN值</span></span><br><span class="line">    data = data.dropna()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建目标变量</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_target</span>(<span class="params">data, forward_days=<span class="number">3</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    生成目标变量，预测未来指定天数的收盘价变化。</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    data[<span class="string">&#x27;Target&#x27;</span>] = data[<span class="string">&#x27;Close&#x27;</span>].shift(-forward_days) - data[<span class="string">&#x27;Close&#x27;</span>]</span><br><span class="line">    data = data.dropna()  <span class="comment"># 移除最后几行因缺失目标而产生的NaN值</span></span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算相对强弱指数 (RSI)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">compute_RSI</span>(<span class="params">series, window=<span class="number">14</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    计算相对强弱指数 (RSI)。</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    diff = series.diff(<span class="number">1</span>).dropna()</span><br><span class="line">    gain = <span class="number">0.5</span> * (diff + <span class="built_in">abs</span>(diff))</span><br><span class="line">    loss = <span class="number">0.5</span> * (diff - <span class="built_in">abs</span>(diff))</span><br><span class="line">    avg_gain = gain.rolling(window=window, min_periods=<span class="number">1</span>).mean()</span><br><span class="line">    avg_loss = <span class="built_in">abs</span>(loss.rolling(window=window, min_periods=<span class="number">1</span>).mean())</span><br><span class="line">    rs = avg_gain / avg_loss</span><br><span class="line">    rsi = <span class="number">100</span> - (<span class="number">100</span> / (<span class="number">1</span> + rs))</span><br><span class="line">    <span class="keyword">return</span> rsi</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算布林带 (Bollinger Bands)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">compute_bollinger_bands</span>(<span class="params">series, window=<span class="number">20</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    计算布林带的上下轨道。</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    sma = series.rolling(window=window).mean()</span><br><span class="line">    std = series.rolling(window=window).std()</span><br><span class="line">    upper_band = sma + (std * <span class="number">2</span>)</span><br><span class="line">    lower_band = sma - (std * <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> upper_band, lower_band</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算平均真实波动幅度 (ATR)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">compute_atr</span>(<span class="params">data, window=<span class="number">14</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    计算平均真实波动幅度 (ATR)。</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    high_low = data[<span class="string">&#x27;High&#x27;</span>] - data[<span class="string">&#x27;Low&#x27;</span>]</span><br><span class="line">    high_close = np.<span class="built_in">abs</span>(data[<span class="string">&#x27;High&#x27;</span>] - data[<span class="string">&#x27;Close&#x27;</span>].shift())</span><br><span class="line">    low_close = np.<span class="built_in">abs</span>(data[<span class="string">&#x27;Low&#x27;</span>] - data[<span class="string">&#x27;Close&#x27;</span>].shift())</span><br><span class="line">    tr = high_low.combine(high_close, <span class="built_in">max</span>).combine(low_close, <span class="built_in">max</span>)</span><br><span class="line">    atr = tr.rolling(window=window, min_periods=<span class="number">1</span>).mean()</span><br><span class="line">    <span class="keyword">return</span> atr</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存数据到CSV文件</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">save_data</span>(<span class="params">data, file_path</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    保存处理后的数据到指定的CSV文件。</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    data.to_csv(file_path, index=<span class="literal">False</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;\n数据预处理完成并保存为 <span class="subst">&#123;file_path&#125;</span> 文件。&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 主流程</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment"># 1. 加载数据</span></span><br><span class="line">    gold_data = load_data(<span class="string">&#x27;gold_price_data_extracted.csv&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 2. 清理数据</span></span><br><span class="line">    gold_data = clean_data(gold_data)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 3. 生成技术指标</span></span><br><span class="line">    gold_data = generate_features(gold_data)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 4. 创建目标变量</span></span><br><span class="line">    gold_data = create_target(gold_data)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 5. 保存处理好的数据</span></span><br><span class="line">    save_data(gold_data, <span class="string">&#x27;processed_gold_data.csv&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>成功数据净化：</p>
+<img src="/2024/08/10/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%AE%AD%E7%BB%83%E4%B8%80%E4%B8%AA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B9%8B%E4%BA%8C%EF%BC%9A%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86%E5%92%8C%E5%87%86%E5%A4%87/Users\17769\AppData\Local\Temp\QQ_1723563959842.png" alt="QQ_1723563959842" style="zoom:50%;">
+
+<hr>
+<p>下期预告：</p>
+<h3 id="下一步：模型设计与训练"><a href="#下一步：模型设计与训练" class="headerlink" title="下一步：模型设计与训练"></a>下一步：模型设计与训练</h3><p>我们将从以下几个方面着手：</p>
+<ol>
+<li><strong>数据集划分</strong>：将数据分为训练集和测试集。</li>
+<li><strong>模型选择</strong>：设计一个合适的深度学习模型（例如LSTM或GRU）来处理时间序列数据。</li>
+<li><strong>模型训练</strong>：使用训练集对模型进行训练，并使用验证集进行超参数调优。</li>
+<li><strong>模型评估</strong>：在测试集上评估模型的性能，使用指标如均方误差（MSE）等。</li>
+</ol>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">从零开始训练一个神经网络</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/08/10/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%AE%AD%E7%BB%83%E4%B8%80%E4%B8%AA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B9%8B%E4%BA%8C%EF%BC%9A%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86%E5%92%8C%E5%87%86%E5%A4%87/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-噬菌体进化概述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1592,469 +1876,6 @@
 
 
   
-    <article id="post-代谢组学数据分析基本知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/04/05/%E4%BB%A3%E8%B0%A2%E7%BB%84%E5%AD%A6%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/" target="_blank">代谢组学数据分析基本知识</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/04/05/%E4%BB%A3%E8%B0%A2%E7%BB%84%E5%AD%A6%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-        <time datetime="2024-04-05T15:17:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-04-05</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>[TOC]</p>
-<p>代谢组学的数据分析包括：对检测到的原始数据进行数据预处理、数据质控、代谢物定量分析、生信数据挖掘等。</p>
-<h3 id="1-数据预处理"><a href="#1-数据预处理" class="headerlink" title="1.数据预处理"></a>1.数据预处理</h3><p>软件解析测序的色谱、质谱得到的图谱转变为可进行计算的数据文件，就得到了原始数据，一般的解析软件包括：Progenesis QI、<strong>MassProfiler Professional (MPP)<strong>、</strong>Sieve</strong>、<strong>MetaboAnalyst</strong>、<strong>Simca-p</strong>（代谢组学中最常用的统计分析软件）</p>
-<p>如何使用上述的软件这里就不一一赘述了，网上有很多教程。</p>
-<p>为了消除存在的外在因素干扰或人为实验因素影响，预处理数据可以增加数据的稳定性，常见的预处理数据步骤主要包括：</p>
-<ul>
-<li>降噪：通过<strong>匹配滤波</strong>和<strong>移动窗平均滤波</strong>等方法，去除掉数据中来自样品制备或仪器产生的背景噪音。</li>
-<li>基线校准：当没有物质时，获得的谱图强度应该为0，所有的测得的谱图强度都应以此为基准，因此需要调零校准，可以通过将同样一谱图的所有数据值减去最小值，来让基准线为0.</li>
-<li>解卷积：由于物质的保留时间太接近，或者峰的宽度过大，导致多个色谱的峰没有分离而共流出时，代表多个物质的峰就会重叠或交叉在一起。解卷积，就是利用数学计算方法将色谱中未能锋利的组分重新区分。</li>
-<li>峰对齐：为了校准由于仪器不稳定、样品pH和浓度等因素带来的时间偏移，需要进行峰的对齐，让所有样本中代表同一物质的谱峰保留时间一致。</li>
-<li>峰识别：确定峰的起点和终点。</li>
-<li>峰的特征提取：提取峰高或计算峰下的覆盖面积。</li>
-<li>归一化处理：为了使不同浓度的样品之间能够具有可比性，我们需要对数据进行峰面积的归一化处理，常用的处理方法有Ctr（Center scaling），UV（unit variance scaling）和Par（Pareto scaling）。  Ctr也叫<strong>中心化</strong>，将原始数据减去每列变量的均值；UV是数据Ctr化之后，除以列变量的标准差（SD）；Par是数据Ctr后处理列变量标准差的算术平方根。 Ctr将原始数据转化成离原点更近的新数据，可调节代谢物的高低浓度差异；UV的优势是所有的变量都拥有同样的权重，等同于相当的地位，缺点是某些检测误差可能会被放大；Par相比于UV则更接近院士测量数据，缺点是对变化倍数大的变量会更加敏感，容易造成不必要的变换结果。</li>
-</ul>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240401233909049.png" alt="image-20240401233909049" style="zoom:50%;">
-
-<h3 id="2-数据的质控（QC）"><a href="#2-数据的质控（QC）" class="headerlink" title="2.数据的质控（QC）"></a>2.数据的质控（QC）</h3><p>样品较多时，我们想要获得可靠且高质量的代谢组学数据，则需要在检测时利用QC样本进行质控；QC样本时所有待测样品等量的混合物，不过若是临床样本，由于数量较多，采样时间长，则可以挑选代表性样品制备合适的QC。每间隔一定样品，添加一组QC，这样就能提供数据重复性的有效评价标准。</p>
-<p>理论上所有的QC样本要都是相同的，不过在样品提取、监测分析过程会产生系统的误差，导致QC之间也会有差异，如果RSD&lt;30%的特征峰，比例能达到70%以上，则说明数据良好，差异越小说明方法稳定性越高，数据质量也就越好，这<strong>体现在PCA分析图上，也就是QC样本越密集，数据越可靠</strong>。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240401234526629.png" alt="image-20240401234526629" style="zoom:50%;">
-
-<h3 id="3-代谢物的定性和定量"><a href="#3-代谢物的定性和定量" class="headerlink" title="3.代谢物的定性和定量"></a>3.代谢物的定性和定量</h3><p><strong>代谢物的定性：</strong>GC-MS数据库成熟，数据量足够，一级质谱可定性，即了解化合物的分子量；二级谱图可以对化合物的结构进行分析。我们将GC质谱图与NIST、GMD数据库进行比对，将LC-MS的二级谱图与Metlin、HMDB、MzCloud等数据库或者实验室自建的数据库中的谱图进行匹配比对，就可以的搭配化合物具体的注释信息。</p>
-<p><strong>代谢物的定量：</strong>GC-MS他一般时通过化合物色谱峰面积来对物质进行定量的，当遇到分离度不好，色谱峰形不好，比如严重拖尾的时候，峰的面积测定就会引起很大的误差，此时可考虑使用峰高法进行定量。峰高法，顾名思义通过测量色谱图中某个组分峰的高度来对该组分进行定量。峰高法的基本原理是假设峰高（或峰面积）与组分的量成正比。具体来说，峰高法涉及以下步骤：</p>
-<ol>
-<li><strong>选择参考峰</strong>：首先，需要选择一个已知浓度的标准品作为参考峰。这个标准品应该是纯净的，并且浓度已知。</li>
-<li><strong>建立标准曲线</strong>：通过分析不同浓度的标准品，可以得到一系列峰高与浓度对应的数据。利用这些数据，可以绘制出标准曲线。标准曲线通常是一条直线，表明峰高（或峰面积）与浓度之间的关系是线性的。</li>
-<li><strong>测量样品峰高</strong>：在分析实际样品时，测量与标准品相对应的组分的峰高。</li>
-<li><strong>定量分析</strong>：将样品峰高与标准曲线进行比较，根据标准曲线可以确定样品中组分的浓度。</li>
-</ol>
-<p>峰高法的优点是操作简单，不需要复杂的仪器设备。但是，这种方法假设色谱峰的形状和宽度在分析过程中保持不变，这在实际操作中可能并不总是成立。此外，峰高法对基线的波动比较敏感，因此对于基线不稳定的色谱图，定量结果可能会有较大误差。</p>
-<p>LC-MS&#x2F;MS利用一级质谱得到的木例子峰面积进行定量。非靶通常选择内标法进行相对定量。将内标物质，定量的加到样品中，根据预测组分和内标峰的面积或者峰高的比值进行相对定量分析。</p>
-<h3 id="4-代谢组学的生信分析"><a href="#4-代谢组学的生信分析" class="headerlink" title="4.代谢组学的生信分析"></a>4.代谢组学的生信分析</h3><h4 id="4-1-聚类分析"><a href="#4-1-聚类分析" class="headerlink" title="4.1 聚类分析"></a>4.1 聚类分析</h4><p>聚类分析一般有两个作用，包括：通过全部代谢物的表达谱对样本进行聚类，分析样本重复性的好坏以及分组情况；或者把表达模式相近的代谢物进行聚类，去大致的观察<strong>代谢物丰度在各组中的变化规律</strong>，常用图形包括<strong>聚类树状图</strong>和<strong>热图</strong>。</p>
-<ol>
-<li><strong>主成分分析（PCA）</strong>: PCA是一种广泛使用的数据降维算法，它通过找出数据矩阵的方差最大方向作为第一主成分（PC1），然后在与PC1正交的平面中找出方差最大的方向作为第二主成分（PC2），以此类推。这样建立的低维平面或空间有助于分析和概览整个数据集，揭示数据集中的分组、趋势以及离群值  。</li>
-<li><strong>偏最小二乘判别分析（PLS-DA）</strong>: PLS-DA结合了降维和回归模型，通过多元线性回归技术找到数据集和类别数据集之间的最大协方差方向，建立两个独立数据集的潜在关联分析方法。</li>
-<li><strong>正交偏最小二乘判别分析（OPLS-DA）</strong>: OPLS-DA是PLS-DA的改进版本，它根据数据集Y的差异将数据集X的差异分为两个部分，一部分代表与Y相关的差异，另一部分代表与Y不相关的差异。OPLS-DA可以更好地区分组间差异，提高模型的有效性和解析能力。</li>
-<li><strong>差异倍数分析</strong>: 这是一种简单的分析方法，用于快速考察各个代谢物在不同组别之间的含量变化大小。它通过计算实验组与对照组的含量比值（Fold Change，FC）来实现。</li>
-<li><strong>显著性检验</strong>: 这包括t-test、方差分析（ANOVA）等方法，用于区分变量是否具有统计显著性。在代谢组学中，由于变量较多，常需要进行多重假设检验并对p值进行校正，以减少Ⅰ类错误和假阳性。</li>
-<li><strong>韦恩图</strong>: 也称文氏图，用于反映不同集合之间的交集和并集情况。在代谢组学中，韦恩图通常用于展示不同比较组之间的共有和独特的差异代谢物。</li>
-<li><strong>箱线图</strong>: 箱线图用于展示不同组间代谢物含量的分布情况。在R语言中，常用的包如ggplot2和ggpubr可用于绘制箱线图，并可以添加样本散点、坐标标题以及p值等统计信息 。</li>
-</ol>
-<p>数据集通常为一个<strong>N × K</strong>的矩阵（X矩阵），N表示N个样本数，每一行代表一个样品， K表示K个变量，每一列代表一个变量，在代谢组学中变量通常是指代谢物含量。最常用的分析方法如图所示：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/bb4be438cdaa02232c87ea6fc4a50eb5.png" alt="img"></p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240402234016514.png" alt="image-20240402234016514" style="zoom:33%;">
-
-<h4 id="4-2-多元统计分析"><a href="#4-2-多元统计分析" class="headerlink" title="4.2 多元统计分析"></a>4.2 多元统计分析</h4><p>代谢组学数据具有多为且某些变量间高度相关，运用传统的单变量分析无法快速、充分、准确地挖掘数据内潜在的信息。 因此对采集的多维数据，一般进行将为和归类分析（聚类），来挖掘和提炼最有用的信息。</p>
-<p>常用的方法包括：无监督学习的PCA分析，有监督的PLS-DA分析、在PLS-DA基础上，可以加入正交信号矫正的有监督性OPLS-DA分析。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240403230538945.png" alt="image-20240403230538945" style="zoom:33%;">
-
-<h4 id="4-3-差异分析"><a href="#4-3-差异分析" class="headerlink" title="4.3 差异分析"></a>4.3 差异分析</h4><p>代谢组学分析中，除了通常用到的Student’s t检验、ANOVA检验来获得P值筛选不同比较组间的差异代谢物，通常还结合多元统计分析PL-DA或者OPLS-DA的VIP值来进行筛选。也就是差异代谢物的阈值条件：OPLS-DA模型中 VIP≥1，且Student T test的P＜0.05. 常用的图形包括差异柱状图、火山图、VIP图、z-score、热图和ROC图等，进行必要的数据展示。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240403232839397.png" alt="image-20240403232839397"></p>
-<h4 id="4-4-差异KEGG富集分析"><a href="#4-4-差异KEGG富集分析" class="headerlink" title="4.4 差异KEGG富集分析"></a>4.4 差异KEGG富集分析</h4><p>在生物体内，不同的基因之间，相互协调来行使生物学功能，基于Pathway的分析有助于更进一步的了解基因的生物学功能和生物学研究的意义，甚至为临床的诊断和治疗提供一些思路、方法和理论基础。</p>
-<p>KEGG是有关pathway的主要数据库，pathway显著性富集分析，应用超几何检验分析，找出与整个背景（基因、蛋白谱、QC样本等）相比，在差异代谢物中显著富集的pathway，从而确定差异代谢物残余的最主要生化代谢途径和信号转导方式。</p>
-<p>常见的图形包括：富集柱状图、富集通路图、富集热图、富集圈图、富集差异气泡图等。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240404001039675.png" alt="image-20240404001039675" style="zoom:33%;">
-
-<p>传统的KEGG富集分析如果没有找到与研究相关的代谢通路，可以利用MSEA分析(Metabolite Set Enrichment Analysis)。 MSEA的QEA pattern类似于基因分析中的GSEA富集分析，主要利用The Small Molecule Pathway Database(<a target="_blank" rel="noopener" href="https://smpdb.ca/">SMPDB</a>)数据库来进行对所有样本中鉴定到的代谢物的确定，以及解释一些重要的生物学通路中，代谢物的变化模式。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240404095441803.png" alt="image-20240404095441803" style="zoom:33%;">
-
-<h4 id="4-5-趋势分析"><a href="#4-5-趋势分析" class="headerlink" title="4.5 趋势分析"></a>4.5 趋势分析</h4><p>趋势分析，是针对多个连续样本（至少三个）的特征（样本间包含特定的时间、空间或者处理剂量的大小顺序）来对代谢物的表达模式（多阶段中表达曲线的形状）进行聚类。通过趋势分析可以找到和可视化代谢物在连续变化的组中丰度的变化趋势。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240404101453551.png" alt="image-20240404101453551" style="zoom:33%;">
-
-<p>注：基于生信分析的组学数据挖掘思路，目前我了解的基本可以分成三步走，简单点就是<strong>俯瞰-拉近-聚焦</strong>，也就是整体到局部再到某个单一的点的过程。 以测序得到的海量数据作为起点，不断根据研究目标，引导和矫正数据挖掘的方向，最后确定对研究目标其重要调控的基因、蛋白、代谢物、小分子等。</p>
-<p>代谢组学，借助<strong>差异分析</strong>、<strong>趋势分析</strong>、<strong>WGCNA</strong>分析等等，完成海量数据挖掘的第一步，完成了俯瞰到拉近的转换，获得<strong>目标代谢物集合</strong>。需要思考的是，这些<strong>代谢物具备哪些调控功能</strong>？<strong>能影响哪些生物学途径（拉近到聚焦的过程）</strong>。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240404102823696.png" alt="image-20240404102823696" style="zoom:33%;">
-
-<h3 id="5-常见代谢组学富集分析"><a href="#5-常见代谢组学富集分析" class="headerlink" title="5.常见代谢组学富集分析"></a>5.常见代谢组学富集分析</h3><p>富集分析常见的就是<strong>KEGG、MetPA和MSEA</strong>了。</p>
-<p>三种分析策略都是以代谢物的定性定量表作为起始点，无论是自己平台还是公司的质谱检测，都可以得到这个数据表，表格中需要包含：代谢物名称、在不同样本中的风度信息等。 以此为基础借助富集分析和其他的一些分析手段找到目标代谢途径和目标代谢物。</p>
-<h4 id="5-1-KEGG富集"><a href="#5-1-KEGG富集" class="headerlink" title="5.1 KEGG富集"></a>5.1 KEGG富集</h4><p>特定实验背景下，代谢物的丰度变化并非随机，往往会为了响应实验处理呈现出特定的变化趋势。 例如，动物受疾病感染后，脂类代谢、氨基酸代谢、胆汁酸代谢过程失调； 植物生长、变色过程中，花青素、类胡萝卜素、类黄酮等有机物的合成过程中，相关代谢物会随着发育成熟逐渐上调累积。</p>
-<p>以此作为出发点，我们在特定的取样策略下，通过分析目标代谢物（包括差异代谢物、目标变化趋势代谢物、目标模块代谢物等）所在的pathway，来了解实验处理影响哪些代谢途径和内部的一些代谢物的调控方式，再结合研究目的锁定重要的代谢物。</p>
-<h5 id="5-1-1-KEGG分析原理"><a href="#5-1-1-KEGG分析原理" class="headerlink" title="5.1.1 KEGG分析原理"></a>5.1.1 KEGG分析原理</h5><p>借助**超几何检验(Hypergeometric test)**判断:  质谱检测的有KEGG注释信息的代谢物（背景代谢集）在某个pathway中的代谢物数目占背景代谢集的比例，是否显著大于目标代谢集中有KEGG注释信息的代谢物（前景代谢集)在某个pathway中的代谢物数目的比例。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405011808041.png" alt="image-20240405011808041" style="zoom:33%;">
-
-<p>简单来说，其实就是上图中判断20%是否显著大于5%，根据得到的P value和FDR value判断前景代谢集主要参与的代谢途径。<strong>当P value或FDR value小于0.05时，则为显著富集的代谢途径</strong>。说明相比于其它途径而言，显著富集的代谢途径更易响应实验处理，出现异常调控。<br>对于KEGG富集分析，除了要有质谱检测的全部代谢物外，还要先有一个前景代谢集(又称目标代谢集，如图右侧的差异代谢集)。前景代谢集可通过前面说到的差异分析、趋势分析、WGCNA分析获得。</p>
-<p>[^注]: 质谱检测得到的Name是代谢物的名称并非代谢物的KEGG注释结果，代谢物KEGG注释完成后用C_ID表示, 这个比较像基因的Symbol和ID号。代谢物开展KEGG富集分析时，需要先完成KEGG注释。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405012604262.png" alt="image-20240405012604262" style="zoom:33%;">
-
-<p>​                          超几何检验公式</p>
-<p>[^注]: 公式中N为质谱检测得到的所有代谢物中有KEGG注释的代谢物数目; n为N中差异代谢物数目;M为所有代谢物中注释为某特定pathway的代谢物数目;m为注释为某特定pathway的差异表达代谢物数目。</p>
-<h5 id="5-1-2-KEGG富集分析实现方法"><a href="#5-1-2-KEGG富集分析实现方法" class="headerlink" title="5.1.2 KEGG富集分析实现方法"></a>5.1.2 KEGG富集分析实现方法</h5><p>这里放一个基因和蛋白的富集方法，其他同理。<br>进入Metascape主页(<a target="_blank" rel="noopener" href="http://www.metascape.org),将候选基因直接复制粘贴到gene/">www.metascape.org)，将候选基因直接复制粘贴到gene</a> list输入框中(Step1)，点击Submit按钮上传基因列表。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405014823504.png" alt="image-20240405014823504" style="zoom:50%;">
-
-<p>MetaScape支持的GeneID主要有Symbol、RefSeq、Ensembvl、Unipro、UCSC五种类型，下面使用Symbol进行演示：</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405120718749.png" alt="image-20240405120718749" style="zoom:50%;">
-
-<p>然后，在step2中选择对应的物种，我们这里选择人(H.sapiens)，点击<strong>Custom Analysis</strong>进行自定义分析。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405120952724.png" alt="image-20240405120952724" style="zoom:50%;">
-
-<p>在弹出的页面中，直接选择第4个选项(Enrichment)，仅勾选KEGG Pathway，取消勾选其他的数据来源，如下，然后勾选“跳过蛋白互作分析”</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405121130255.png" alt="image-20240405121130255" style="zoom:50%;">
-
-<p>然后继续点击<strong>Enrichment Analysis</strong>蓝色按钮进行富集分析。</p>
-<p>分析完成之后，快速浏览富集的结果，之后点击<strong>Analysis Report Page</strong>，进入分析报告页面。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405121311431.png" alt="image-20240405121311431" style="zoom:50%;">
-
-<p>在分析报告页面中，点击<strong>Gene List Report Excel Sheets</strong>按钮，下载分析结果表格。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405124710592.png" alt="image-20240405124710592" style="zoom:50%;">
-
-<p>下载的分析结果表格如下，用于作图的数据主要在sheet2表格中。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405124909408.png" alt="image-20240405124909408" style="zoom:50%;">
-
-<p>完成KEGG富集分析之后，接下来我们使用ggplot2包对分析结果进行可视化！</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#载入相关的R包;</span></span><br><span class="line">library<span class="punctuation">(</span>readx1<span class="punctuation">)</span></span><br><span class="line">library<span class="punctuation">(</span>ggplot2<span class="punctuation">)</span></span><br><span class="line">library<span class="punctuation">(</span>tidyr<span class="punctuation">)</span></span><br><span class="line">library<span class="punctuation">(</span>dplyr<span class="punctuation">)</span></span><br><span class="line"><span class="comment">#读入Excel数据</span></span><br><span class="line">dt <span class="operator">&lt;-</span> read_excel<span class="punctuation">(</span><span class="string">&quot;metascape_result.tobcfo25h.xlsx&quot;</span><span class="punctuation">,</span>sheet <span class="operator">=</span> <span class="number">2</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#预览数据;</span></span><br><span class="line">head<span class="punctuation">(</span>dt<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405125240168.png" alt="image-20240405125240168" style="zoom:33%;">
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#提取用于作图的列;</span></span><br><span class="line">df <span class="operator">&lt;-</span> dt<span class="punctuation">[</span><span class="punctuation">,</span><span class="built_in">c</span><span class="punctuation">(</span><span class="number">3</span><span class="punctuation">,</span><span class="number">4</span><span class="punctuation">,</span><span class="number">5</span><span class="punctuation">,</span><span class="number">7</span><span class="punctuation">)</span><span class="punctuation">]</span></span><br><span class="line"><span class="comment">#对InTerm_InList列进行拆分;</span></span><br><span class="line">df <span class="operator">&lt;-</span> separate<span class="punctuation">(</span>df<span class="punctuation">,</span>InTerm_InList<span class="punctuation">,</span>sep <span class="operator">=</span> <span class="string">&quot;/&quot;</span><span class="punctuation">,</span> into <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;count&quot;</span><span class="punctuation">,</span><span class="string">&quot;InTerm&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#转换数据类型;</span></span><br><span class="line">df<span class="operator">$</span>Count <span class="operator">&lt;-</span> <span class="built_in">as.numeric</span><span class="punctuation">(</span>df<span class="operator">$</span>count<span class="punctuation">)</span></span><br><span class="line"><span class="comment">#根据Pvalue选择Top10的pathway进行绘制;</span></span><br><span class="line">fig_data<span class="operator">&lt;-</span> df <span class="operator">%&gt;%</span> top_n<span class="punctuation">(</span><span class="operator">-</span><span class="number">10</span><span class="punctuation">,</span>LogP<span class="punctuation">)</span> <span class="operator">%&gt;%</span> arrange<span class="punctuation">(</span>count<span class="punctuation">)</span></span><br><span class="line">fig_data</span><br></pre></td></tr></table></figure>
-
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405130456181.png" alt="image-20240405130456181" style="zoom:50%;">
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#转成因子，防止重新排序</span></span><br><span class="line">fig_data<span class="operator">$</span>Description <span class="operator">&lt;-</span> factor<span class="punctuation">(</span>fig_data<span class="operator">$</span>Description<span class="punctuation">,</span>levels <span class="operator">=</span> fig_data<span class="operator">$</span>Description<span class="punctuation">,</span>ordered <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#预览数据</span></span><br><span class="line">fig_data</span><br></pre></td></tr></table></figure>
-
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405133836309.png" alt="image-20240405133836309" style="zoom:50%;">
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#建立数据与图形或者点之间的映射关系，确定点的（x,y）坐标，绘制散点图</span></span><br><span class="line">p1 <span class="operator">&lt;-</span> ggplot2<span class="punctuation">(</span>fig_data<span class="punctuation">,</span>aes<span class="punctuation">(</span>Count<span class="punctuation">,</span>Description<span class="punctuation">)</span><span class="punctuation">)</span><span class="operator">+</span>geom_point<span class="punctuation">(</span>aes<span class="punctuation">(</span>size <span class="operator">=</span> Count<span class="punctuation">,</span>color <span class="operator">=</span> LogP<span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#隐藏坐标轴的标题</span></span><br><span class="line">p2 <span class="operator">&lt;-</span> p1<span class="operator">+</span>labs<span class="punctuation">(</span>y <span class="operator">=</span> <span class="string">&quot;&quot;</span><span class="punctuation">)</span></span><br><span class="line">p2</span><br></pre></td></tr></table></figure>
-
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405135402721.png" alt="image-20240405135402721" style="zoom:50%;">
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#自定义颜色渐变</span></span><br><span class="line">p3 <span class="operator">&lt;-</span> p2<span class="operator">+</span>scale_colour_gradient<span class="punctuation">(</span>low <span class="operator">=</span> <span class="string">&quot;red&quot;</span><span class="punctuation">,</span> high <span class="operator">=</span> <span class="string">&quot;yellow&quot;</span><span class="punctuation">)</span></span><br><span class="line">p3</span><br></pre></td></tr></table></figure>
-
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405135520786.png" alt="image-20240405135520786" style="zoom:50%;">
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置x轴范围，避免点溢出绘图区</span></span><br><span class="line">p4 <span class="operator">&lt;-</span> p3<span class="operator">+</span>scale_x_continuous<span class="punctuation">(</span>limits <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">5.5</span><span class="punctuation">,</span><span class="number">12.5</span><span class="punctuation">)</span><span class="punctuation">,</span>breaks <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">6</span><span class="punctuation">,</span><span class="number">8</span><span class="punctuation">,</span><span class="number">10</span><span class="punctuation">,</span><span class="number">12</span><span class="punctuation">)</span><span class="punctuation">,</span> label <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;6&quot;</span><span class="punctuation">,</span><span class="string">&quot;8&quot;</span><span class="punctuation">,</span><span class="string">&quot;10&quot;</span><span class="punctuation">,</span><span class="string">&quot;12&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">p4</span><br></pre></td></tr></table></figure>
-
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405141114664.png" alt="image-20240405141114664" style="zoom:50%;">
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#应用自带的主题</span></span><br><span class="line">p4<span class="operator">+</span>theme_light<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405141209923.png" alt="image-20240405141209923" style="zoom:50%;">
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#自定义图表主题，对图表做精细调整</span></span><br><span class="line">top.mar <span class="operator">=</span> <span class="number">0.2</span></span><br><span class="line">right.mar <span class="operator">=</span> <span class="number">0.2</span></span><br><span class="line">bottom.mar <span class="operator">=</span> <span class="number">0.2</span></span><br><span class="line">left.mar <span class="operator">=</span> <span class="number">0.2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#隐藏坐标轴，并对字体样式、颜色、刻度长度等进行限定，</span></span><br><span class="line">mytheme <span class="operator">&lt;-</span> theme light<span class="punctuation">(</span><span class="punctuation">)</span><span class="operator">+</span></span><br><span class="line">theme<span class="punctuation">(</span>axis.text <span class="operator">=</span> element_text<span class="punctuation">(</span>family<span class="operator">=</span><span class="string">&quot;sans&quot;</span><span class="punctuation">,</span>colour <span class="operator">=</span><span class="string">&quot;gray20&quot;</span><span class="punctuation">,</span>size <span class="operator">=</span> <span class="number">10</span><span class="punctuation">)</span><span class="punctuation">,</span>panel.grid <span class="operator">=</span> element_blank<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">,</span>axis.ticks <span class="operator">=</span> element_line<span class="punctuation">(</span>linewidth <span class="operator">=</span> <span class="number">0.6</span><span class="punctuation">,</span>colour<span class="operator">=</span><span class="string">&quot;gray20&quot;</span><span class="punctuation">)</span><span class="punctuation">,</span>axis.ticks.length <span class="operator">=</span>unit<span class="punctuation">(</span><span class="number">1.2</span><span class="punctuation">,</span>units <span class="operator">=</span>mm<span class="string">&quot;),plot.margin =unit(x=c(top.mar,right.mar,bottom.mar,left.mar),units=&quot;</span>inches<span class="string">&quot;))</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">p4+mytheme</span></span><br></pre></td></tr></table></figure>
-
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405143756258.png" alt="image-20240405143756258" style="zoom:50%;">
-
-<h4 id="5-2-MetPA富集-Pathway-topology-analysis"><a href="#5-2-MetPA富集-Pathway-topology-analysis" class="headerlink" title="5.2 MetPA富集(Pathway topology analysis)"></a>5.2 MetPA富集(Pathway topology analysis)</h4><p>除了挖掘代谢途径内部的代谢物调控机制，对于整个生物体而言，代谢途径间的相互作用形成的大的调控网络也具备重要的研究意义。代谢途径间的相互调控是维持整个内部环境稳态的重要基础。 <strong>经过KEGG富集分析后，我们可以发现表型差异是由多个代谢途径共同作用导致的，这些代谢途径之间是否又有位置上或者说地位上的优先级？</strong></p>
-<p>MetPA富集分析，又叫做拓扑分析，以代谢途径未单位，但与KEGG富集不同，KEGG重点在解析目标代谢集主要参与的代谢途径是什么，筛选出显著富集的代谢物。</p>
-<p>MetPA分析考虑生物体整体代谢网络，侧重突出在整个代谢网络中具备中药味点的代谢通路，结合统计分析检验核心代谢通路的显著性，再根据代谢途径内的信息，锁定重要的代谢物。  </p>
-<p>目前有在线的一些工具可以使用：<a target="_blank" rel="noopener" href="https://www.metaboanalyst.ca/">MetaboAnalyst5.0</a></p>
-<p>可以在线完成对人、小鼠、大鼠、奶牛、斑马、果蝇等15个物种的分析，使用目标代谢集上传分析（也就是之前提到的前景代谢集）</p>
-<h5 id="5-2-1-MetPA分析的原理"><a href="#5-2-1-MetPA分析的原理" class="headerlink" title="5.2.1 MetPA分析的原理"></a>5.2.1 MetPA分析的原理</h5><p>MetPA（Metabolic Pathway Analysis）是一种用于分析生物代谢网络中通路重要性的方法。在MetPA中，为了衡量或计算通路的位置信息，采用了两种中心性指标：Out-degree Centrality（出度中心性）和Relative-betweenness Centrality（相对中间中心性）。这些指标帮助研究者评估代谢通路在网络中的地位和作用。</p>
-<p>Out-degree Centrality是评估网络中节点对外连通性的一个指标，它通过计算一个通路影响其他通路的数量来衡量其重要性。在代谢网络中，一个通路的Out-degree Centrality越高，表明它在网络中的影响范围越广，可能承担更为关键的功能。例如，在下图中，如果D通路能够影响B、C、E、F四个通路，那么D通路的Out-degree Centrality就是4，表示它具有较高的连通性和重要性。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405155403159.png" alt="image-20240405155403159" style="zoom:50%;">
-
-<p>然而，Out-degree Centrality仅考虑了一个节点对其他节点的影响，而忽略了其他节点对该节点的影响。在代谢过程中，<strong>调控往往是双向的</strong>，即某些代谢物既可以作为反应的产物影响后续反应，也可以作为反应的底物被其他代谢物影响。因此，单独使用Out-degree Centrality可能无法全面评估一个通路在代谢网络中的真实地位。</p>
-<p>为了更全面地评估通路的重要性，MetPA还引入了Relative-betweenness Centrality这一指标。Relative-betweenness Centrality衡量的是一个通路在所有其他<strong>通路对</strong>之间的最短路径上的出现频率。一个通路的Relative-betweenness Centrality越高，表明它在网络中的信息传递和控制作用越强，可能是代谢网络中的关键“桥梁”。简单理解就是，网络中当两个通路不能直接调控时，就需要借助第三个v通路才能建立调控关系。因此，如果整个网络中有更多的通路需要借助第三方通路v才能建立调控关系，v通路就崛北极高的重要性，但是v的连通性并不一定是最高的，只是相对位置是最重要的。他的计算方式如下：</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405155641348.png" alt="image-20240405155641348" style="zoom:50%;">
-
-<p>[^注]: g(v):指v通路的betweenness centrality; ost(v): 指s通路到t通路之间经过v的最短路径数;  σst: 指s到t之间的所有最短路径数;</p>
-<p>最后借助Fishers’Exact test、Hypergeometric Test、Globaltest等检验方式来判断通路的显著性，可以重点关注显著富集的通路。<strong>相比Out-degree Centrality，Relative-betweenness Centrality的统计方式更能从全局出发描述整个网络种通路相对位置的重要性。Relative-betweenness Centrality也是开发者非常推荐的统计方式。</strong></p>
-<p>MetPA富集分析实现方法: MetaboAnalyst5.0(<a target="_blank" rel="noopener" href="https://www.metaboanalyst.ca/)%EF%BC%8C%E6%97%A0%E9%9C%80%E6%B3%A8%E5%86%8C%EF%BC%8C%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4%E5%A6%82%E4%B8%8B%EF%BC%9A">https://www.metaboanalyst.ca/)，无需注册，操作步骤如下：</a></p>
-<ol>
-<li><p>登录网站，点击“Chick here to start“开始分析;</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405160333149.png" alt="image-20240405160333149" style="zoom:50%;">
-</li>
-<li><p>分析模块选择Pathway Analysis；</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405195854139.png" alt="image-20240405195854139" style="zoom:50%;">
-</li>
-<li><p>选择分析模式，可以只使用<strong>代谢物名称</strong>或者<strong>代谢物名称+丰度的矩阵数据</strong>进行分析。如果只关注代谢物，不关注丰度变化可选择使用<strong>代谢物名称(3.1)分析</strong>。若<strong>代谢物</strong>和<strong>丰度</strong>都关注，则选择<strong>3.2分析</strong>。该步骤会影响后续通路显著性的统计方式。</p>
-<p>选择完成后点击“submit”</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405213549127.png" alt="image-20240405213549127" style="zoom:50%;">
-</li>
-<li><p>数据确认过程，可直接点击“Proceed”</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405214005702.png" alt="image-20240405214005702" style="zoom:50%;">
-</li>
-<li><p>代谢物丰度归一化方式(若使用3.1模式，则没有此步骤)，该步骤主要<strong>校正代谢物丰度数量级间的差异</strong>对富集结果的影响。可根据实际情况，选择是否需要归一化。(小Tips，实在纠结可以都试试，网页分析试错包容性强)  “Normalize”后，点击“Proceed“后即可。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405214725763.png" alt="image-20240405214725763" style="zoom:50%;">
-</li>
-<li><p>设置MetPA的富集方式。 这里使用默认参数（蓝色的圆圈）</p>
-</li>
-</ol>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405215019047.png" alt="image-20240405215019047" style="zoom:50%;">
-
-<ol start="7">
-<li>获取分析结果。 点击左侧导航栏的“Download”，将结果下载到本地。 右侧未数据可视化区域， <strong>Pathway Impact是通路的位置信息，该值越大通路也就越重要，纵坐标为通路的显著性，颜色越红（越深）越显著富集</strong>。点击图中的圆点，右侧可出现通路的名称和富集到的代谢物信息。</li>
-</ol>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405223654864.png" alt="image-20240405223654864" style="zoom:50%;">
-
-<p>5.3 MSEA富集分析（Metabolite Set Enrichment Analysis）</p>
-<p>生物体内的代谢调控是层层递进的，极少会有一蹴而就的情况，之前提到的KEGG富集、MetPA富集，都是探讨目标代谢集主要腹肌道德代谢途径，这些分析方式往往存在一定的缺失，因为阈值过滤可能会损失一部分具备重要意义的微效代谢物的挖掘或发现。</p>
-<p>例如下图中的pathway，可发现正是由于A的为上调，逐渐作用到下游代谢物，最终使E出现显著变化。 所以，该同类仍具备相当重要的生物学意义，如果根据差异倍数≥2，P＜0.05来筛选差异代谢集，最终只能获得一个代谢物E，然后再结合KEGG富集、MetPA富集，最后得到的结果显然该pathway是不显著的。</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240405225656108.png" alt="image-20240405225656108" style="zoom:50%;">
-
-<p>MSEA分析可弥补上述研究不足，<strong>重点挖掘代谢物丰度变化较低</strong>但仍<strong>对生物体调控具备主要意义的代谢物</strong>及其所在的<strong>代谢途径</strong>。其意义比较类似于<strong>转录组数据挖掘中的GSEA</strong>分析。</p>
-<p>可使用MetaboAnalyst5.0网页(<a target="_blank" rel="noopener" href="https://www.metaboanalyst.ca/)%E5%9C%A8%E7%BA%BF%E5%AE%8C%E6%88%90%E5%AF%B9%E4%BA%BA%E3%80%81%E5%B0%8F%E9%BC%A0%E3%80%81%E5%A4%A7%E9%BC%A0%E7%AD%89%E7%89%A9%E7%A7%8D%E7%9A%84%E5%88%86%E6%9E%90%EF%BC%8C%E5%88%86%E6%9E%90%E6%97%B6%E4%BD%BF%E7%94%A8%E6%AF%94%E8%BE%83%E7%BB%84%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E4%BB%A3%E8%B0%A2%E9%9B%86%E5%BC%80%E5%B1%95%EF%BC%8C%E5%A6%82A-vs-B%E5%BE%97%E5%88%B0%E7%9A%84%E4%B8%8D%E7%BB%8F%E9%98%88%E5%80%BC%E7%AD%9B%E9%80%89%E7%9A%84%E6%89%80%E6%9C%89%E4%BB%A3%E8%B0%A2%E7%89%A9%E3%80%82">https://www.metaboanalyst.ca/)在线完成对人、小鼠、大鼠等物种的分析，分析时使用比较组中的所有代谢集开展，如A-vs-B得到的不经阈值筛选的所有代谢物。</a></p>
-<p>5.3.1 MSEA分析的原理</p>
-<p>MSEA再挖掘代谢途径时，有三种统计方式：Over Representation Analysis(ORA)、Single Sample Proling（SSP）、Quantitative Enrichment Analysis（QEA）模式。 ORA分析时，只需要输入比较组中的代谢物名称，无需包含丰度信息。 这种方式没有结合丰度数据，因此不利于丰度变化微弱的数据挖掘。</p>
-<p>所以我跟推荐使用QEA模式开展分析。 QEA再分析通路时，借助广义线性模型计算每个代谢物浓度与样本的相关性，从而得到Q statistic，将pathway种每个代谢物Q statistic的平均值作为pathway的Q statistic，该值越高说明其与样本的相关性越强，对样本间的差异具有重要调控。 同时，软件还默认输出P值、Bonferroni校正后的P值和FDR值描述通路的显著性。</p>
-<p>MSEA富集分析方法的实现：MetaboAnalysis5.0（<a target="_blank" rel="noopener" href="https://www.metaboanalyst.ca/%EF%BC%89%EF%BC%8C%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4%E5%9C%A8%E7%BD%91%E4%B8%8A%E9%83%BD%E5%8F%AF%E6%9F%A5%E6%89%BE%E5%88%B0%E7%9B%B8%E5%85%B3%E6%95%99%E7%A8%8B%EF%BC%8C%E8%BF%99%E9%87%8C%E4%B8%8D%E5%86%8D%E8%B5%98%E8%BF%B0%E3%80%82">https://www.metaboanalyst.ca/），操作步骤在网上都可查找到相关教程，这里不再赘述。</a></p>
-<hr>
-<p>下期预告：蛋白代谢多组学研究思路</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">多组学数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/04/05/%E4%BB%A3%E8%B0%A2%E7%BB%84%E5%AD%A6%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hexo-fluid搭建个人博客网站并部署到github" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/03/19/hexo-fluid%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0github/" target="_blank">hexo+fluid搭建个人博客网站并部署到github</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/03/19/hexo-fluid%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0github/" class="archive-article-date">
-        <time datetime="2024-03-19T14:59:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-19</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><p>需要预先安装node.js、npm、并添加到环境变量(path)</p>
-<h4 id="1-官网安装Nodejs-建议使用-Node-js-12-0-及以上版本"><a href="#1-官网安装Nodejs-建议使用-Node-js-12-0-及以上版本" class="headerlink" title="1.官网安装Nodejs(建议使用 Node.js 12.0 及以上版本)"></a>1.官网安装Nodejs(建议使用 Node.js 12.0 及以上版本)</h4><p>NodeJs是Hexo所必需的环境。</p>
-<p>点击 <a target="_blank" rel="noopener" href="https://nodejs.org/en/">NodeJs 官网</a>，下载左边那个即可，下载好一直 next，选择一个文件夹位置在一直 next 即可完成。安装Node.js会包含环境变量及npm的安装。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/902f589b96784f8098d216e8e32637d7.png" alt="2"></p>
-<p>验证安装完成cmd中输入命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-
-<p>返回版本号代表安装完成。</p>
-<p>2.安装git<br>Git是开源的分布式版本控制系统，用于敏捷高效地处理项目。</p>
-<p>我们网站在本地搭建好了，需要使用Git同步到云服务器或者GitHub的代码库里。点击 git 官网，下载安装包。点击 next，选择文件夹位置，然后一直 next 到底就行了，选择默认配置就好，默认配置会将环境变量配置好的。安装成功右击鼠标如图所示：<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/3705169b5054b5c69bd374ad08fa97f5.png" alt="1"></p>
-<p>3.下载安装Hexo博客框架<br>Hexo 是一个快速、简洁且高效的博客框架。Hexo是有官方说明文档，想看最详细的教程可以移步到HEXO官网。前面git和nodejs安装好后，就可以安装hexo了，可以先创建一个文件夹HEXO，然后在这个文件夹下直接右键git bash打开，输入命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-<p>下载太慢可以换一下淘宝源，依旧用</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
-
-<p>查看一下版本，至此就全部安装完了。</p>
-<p>接下来初始化一下hexo，，在该文件夹下鼠标右键gitbash后输入命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
-
-<p>“blog”是你要生成博客的文件夹名称，可以根据自己的喜好来取名。生成的文件如图所示：<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/0dff30cffe9cf89a53a611016f460fb2.png" alt="image-20220515193739986"></p>
-<p>输入命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>完成后，打开浏览器输入地址：localhost:4000就可以看到你生成的博客了。使用ctrl+c可以把服务关掉。</p>
-<p>本地部署好之后，只能自己在本地查看博客，我们需要上传到云端的代码库（云服务器或者GitHub）来托管你的博客，这样其他人才能随时访问你的博客。</p>
-<h2 id="二、安装使用fluid-主题"><a href="#二、安装使用fluid-主题" class="headerlink" title="二、安装使用fluid 主题"></a>二、安装使用fluid 主题</h2><h3 id="获取最新版本"><a href="#获取最新版本" class="headerlink" title="获取最新版本"></a>获取最新版本</h3><p>主题下载：<a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid">https://github.com/fluid-dev/hexo-theme-fluid</a></p>
-<h3 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h3><p>Hexo 5.0.0 版本以上，推荐通过 npm 直接安装，进入博客目录执行命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-theme-fluid</span><br></pre></td></tr></table></figure>
-
-<p>然后在博客目录下创建 <code>_config.fluid.yml</code>，将主题的 <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/fluid-dev/hexo-theme-fluid/blob/master/_config.yml">_config.yml (opens new window)</a>内容复制过去（找到主题文件夹，一般在\blog\nikolahuang.github.io\node_modules\hexo-theme-fluid里面）。</p>
-<h3 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h3><p>下载 <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/fluid-dev/hexo-theme-fluid/releases">最新 release 版本 (opens new window)</a>解压到 themes 目录，并将解压出的文件夹重命名为 <code>fluid</code>。</p>
-<h3 id="指定主题"><a href="#指定主题" class="headerlink" title="指定主题"></a>指定主题</h3><p>如下修改 Hexo 博客目录中的 <code>_config.yml</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">theme: fluid  <span class="comment"># 指定主题</span></span><br><span class="line"></span><br><span class="line">language: zh-CN  <span class="comment"># 指定语言，会影响主题显示的语言，按需修改</span></span><br></pre></td></tr></table></figure>
-
-<p>在这，我使用的是第一种方式，主要步骤是</p>
-<h3 id="1、运行安装命令-npm-install-–save-hexo-theme-fluid"><a href="#1、运行安装命令-npm-install-–save-hexo-theme-fluid" class="headerlink" title="1、运行安装命令   npm install –save hexo-theme-fluid"></a>1、运行安装命令   npm install –save hexo-theme-fluid</h3><h3 id="2、在根目录下创建文件一个名为-config-fluid-yml的文件"><a href="#2、在根目录下创建文件一个名为-config-fluid-yml的文件" class="headerlink" title="2、在根目录下创建文件一个名为_config.fluid.yml的文件"></a>2、在根目录下创建文件一个名为_config.fluid.yml的文件</h3><h3 id="3、将node-modules里面hexo-theme-fluid文件夹里面的-config-yml的内容复制到新建的-config-fluid-yml文件中"><a href="#3、将node-modules里面hexo-theme-fluid文件夹里面的-config-yml的内容复制到新建的-config-fluid-yml文件中" class="headerlink" title="3、将node_modules里面hexo-theme-fluid文件夹里面的_config.yml的内容复制到新建的_config.fluid.yml文件中"></a>3、将node_modules里面hexo-theme-fluid文件夹里面的_config.yml的内容复制到新建的_config.fluid.yml文件中</h3><h3 id="4、如下图修改-config-fluid-yml文件中的内容-，注意空格位置什么的不要改"><a href="#4、如下图修改-config-fluid-yml文件中的内容-，注意空格位置什么的不要改" class="headerlink" title="4、如下图修改_config.fluid.yml文件中的内容 ，注意空格位置什么的不要改"></a>4、如下图修改_config.fluid.yml文件中的内容 ，注意空格位置什么的不要改</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">theme: fluid  <span class="comment"># 指定主题</span></span><br><span class="line"></span><br><span class="line">language: zh-CN  <span class="comment"># 指定语言，会影响主题显示的语言，按需修改</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="5、运行清除缓存命令-hexo-clean-再运行hexo-g-再运行hexo-s-然后预览页面。类似下图的页面"><a href="#5、运行清除缓存命令-hexo-clean-再运行hexo-g-再运行hexo-s-然后预览页面。类似下图的页面" class="headerlink" title="5、运行清除缓存命令  hexo clean  再运行hexo g  再运行hexo s ,然后预览页面。类似下图的页面"></a>5、运行清除缓存命令  hexo clean  再运行hexo g  再运行hexo s ,然后预览页面。类似下图的页面</h3><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-17108599776039.webp" alt="img"></p>
-<p>image.png</p>
-<h1 id="三、完善页面的功能插件"><a href="#三、完善页面的功能插件" class="headerlink" title="三、完善页面的功能插件"></a>三、完善页面的功能插件</h1><h3 id="1、中间的背景图的更换，如下图效果"><a href="#1、中间的背景图的更换，如下图效果" class="headerlink" title="1、中间的背景图的更换，如下图效果"></a>1、中间的背景图的更换，如下图效果</h3><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-17108599724496.webp" alt="img"></p>
-<p>image.png</p>
-<p>在_config.fluid.yml中找到上面的位置填写上图标记的代码(注意图片的路径位置)</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">banner_img</span>: <span class="regexp">/img/</span>bg.<span class="property">jpg</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171085998395512.webp" alt="img"></p>
-<p>image.png</p>
-<p>步骤：</p>
-<h3 id="2、添加随机打印机效果，如图我所标记的位置的效果"><a href="#2、添加随机打印机效果，如图我所标记的位置的效果" class="headerlink" title="2、添加随机打印机效果，如图我所标记的位置的效果"></a>2、添加随机打印机效果，如图我所标记的位置的效果</h3><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171085998869315.webp" alt="img"></p>
-<p>image.png</p>
-<p>步骤1、在_config.fluid.yml文件中找到下图位置修改，开启打印机插件：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171085999733320.webp" alt="img"></p>
-<p>image.png</p>
-<p>步骤2、在上述文件找到下图位置修改，调用接口</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086000214523.webp" alt="img"></p>
-<h3 id="3、添加统计数，我使用的是valiner插件。如下图效果"><a href="#3、添加统计数，我使用的是valiner插件。如下图效果" class="headerlink" title="3、添加统计数，我使用的是valiner插件。如下图效果"></a>3、添加统计数，我使用的是valiner插件。如下图效果</h3><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086000704026.webp" alt="img"></p>
-<p>步骤：在在上述文件找到下图位置修改，</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086001111729.webp" alt="img"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086001497732.webp" alt="img"></p>
-<h3 id="4、添加右上角的社交图标和链接，如下图效果"><a href="#4、添加右上角的社交图标和链接，如下图效果" class="headerlink" title="4、添加右上角的社交图标和链接，如下图效果"></a>4、添加右上角的社交图标和链接，如下图效果</h3><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086002211535.webp" alt="img"></p>
-<p> 步骤：点击<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/blog/273-github-ribbons">这里</a> 或者 <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=http://tholman.com/github-corners/">这里</a>挑选自己喜欢的样式，选择其中一个并复制其代码。 如下图</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086002974038.webp" alt="img"></p>
-<p> 在找到下图位置粘贴代码，如图绿色标记处</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086003410441.webp" alt="img"></p>
-<h1 id="四、部署到github的托管网站上，实现在线博客"><a href="#四、部署到github的托管网站上，实现在线博客" class="headerlink" title="四、部署到github的托管网站上，实现在线博客"></a>四、部署到github的托管网站上，实现在线博客</h1><p>步骤1：在github 创建好仓库，至于如何创建可以点击<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/11d6d8e7eb9a">这里</a>查看。<br> 步骤2：在_config.yml文件中找到下图位置修改内容</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086003899944.webp" alt="img"></p>
-<p> 步骤3：使用命令npm install hexo-deployer-git –save  安装部署插件<br> 步骤4：使用hexo clean 清除缓存 、使用hexo g 渲染页面 、使用hexo d 部署页面<br> 步骤5：此时，你远程仓库上，已经有文件了，也就是如下图public文件夹中的文件</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086004334947.webp" alt="img"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/webp-171086004676550.webp" alt="img"></p>
-<p> 步骤6: 在浏览器地址栏输入https:&#x2F;&#x2F;仓库名<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=http://.github.io">.github.io</a>     就能看到你的线上博客网站了。</p>
-<hr>
-<p>上面的方法尝试之后不行的，可以继续下面这种办法：将博客托管到GitHub</p>
-<h4 id="1-GitHub生成代码库"><a href="#1-GitHub生成代码库" class="headerlink" title="1.GitHub生成代码库"></a>1.GitHub生成代码库</h4><p>首先，你先要有一个GitHub账户。点击+号，选择New repository，新建仓库：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/70895669db2179fa65774c69fff62735.png" alt="image-20220515194104048"></p>
-<p>创建一个和你用户名相同的仓库，后面加.github.io，只有这样，将来要部署到GitHub page的时候，才会被识别，也就是xxxx.github.io，其中xxx就是你注册GitHub的用户名，点击create repository。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/68e29340708fafdd1da425162b615b27.png" alt="image-20220515194255616"></p>
-<p>本地SSH生成密钥，将公钥复制到云端<br>回到本地主机git bash中，创建用户名和密码</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;GitHub用户名&quot;</span><br><span class="line">git config --global user.email &quot;GitHub注册邮箱&quot;</span><br><span class="line">git config --global user.password &quot;GitHub登录密码&quot;</span><br></pre></td></tr></table></figure>
-
-
-<p>创建SSH密钥，一路回车</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;GitHub注册邮箱&quot;</span><br></pre></td></tr></table></figure>
-
-<p>ssh，简单来讲，就是一个秘钥，其中，id_rsa是你这台电脑的私人秘钥，相当于钥匙，id_rsa.pub是公共秘钥，相当于锁。要把id_rsa.pub公共秘钥给GitHub，这样才能用自己的私人密钥去开这把锁。当能够相互匹配时，才能够顺利的通过git上传你的文件到GitHub上。</p>
-<p>将id_rsa.pub中的内容复制，而后在GitHub的setting中：<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/b032fffb71937ba1b5888640970d96b8.png" alt="image-20220515194631747"></p>
-<p>点击左侧SSH and GPG keys的设置选项，点击New SSH key，把你的id_rsa.pub里面的信息复制进去。title随便填，本地的公钥复制到key中。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/eafc90db32b9693697d254f08024ca58.png" alt="image-20220515195256471"></p>
-<p>在本地gitbash中检测GitHub公钥设置是否成功</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh git@github.com</span><br></pre></td></tr></table></figure>
-
-
-<p>第一次登录需要输入GitHub的登录用户名和密码。</p>
-<p>3.修改配置文件<br>下一步将我们的Hexo与GitHub关联起来，打开站博客根目录blog的配置文件_config.yml<br>翻到最后修改为：（注意后面三行缩进两格）</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span> </span><br><span class="line">  <span class="attr">repository:</span> <span class="string">https://github.com/lixinyiceline/lixinyiceline.github.io.git（改）</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
-
-<p>repository里的内容是GitHub代码仓库浏览器网址栏的网址，注意后面加上.git，保存站点配置文件。</p>
-<h4 id="4-本地上传到GitHub"><a href="#4-本地上传到GitHub" class="headerlink" title="4.本地上传到GitHub"></a>4.本地上传到GitHub</h4><p>本地gitbash安装Git部署插件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<p>然后输入下面三个命令就可搭建成功博客了</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g &amp;&amp; hexo d</span><br><span class="line">hexo new 你要新建的博客名称 #注：新建的博客markerdown文件存放在_post文件夹中，可以直接查看</span><br></pre></td></tr></table></figure>
-
-<p>云服务器的部署参考博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_50609661/article/details/125216866">https://blog.csdn.net/m0_50609661/article/details/125216866</a></p>
-<p>改自：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6d2614b28daf">随心了</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/03/19/hexo-fluid%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E5%B9%B6%E9%83%A8%E7%BD%B2%E5%88%B0github/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -2192,10 +2013,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">BioLearning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">BioProtocol</a>
               </li>
              
@@ -2204,15 +2021,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">BioLearning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">BioInfo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">类器官之胚胎干细胞</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">类器官之胚胎干细胞</a>
+                <a href="javascript:void(0)" class="js-tag color3">从零开始训练一个神经网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机随笔</a>
               </li>
              
               <li class="article-tag-list-item">
