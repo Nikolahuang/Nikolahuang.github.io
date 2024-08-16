@@ -252,6 +252,167 @@
 
 
   
+    <article id="post-解决Github不能下载，下载速度慢的小妙招" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/03/15/%E8%A7%A3%E5%86%B3Github%E4%B8%8D%E8%83%BD%E4%B8%8B%E8%BD%BD%EF%BC%8C%E4%B8%8B%E8%BD%BD%E9%80%9F%E5%BA%A6%E6%85%A2%E7%9A%84%E5%B0%8F%E5%A6%99%E6%8B%9B/" target="_blank">解决Github不能下载，下载速度慢的小妙招（转载）</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/03/15/%E8%A7%A3%E5%86%B3Github%E4%B8%8D%E8%83%BD%E4%B8%8B%E8%BD%BD%EF%BC%8C%E4%B8%8B%E8%BD%BD%E9%80%9F%E5%BA%A6%E6%85%A2%E7%9A%84%E5%B0%8F%E5%A6%99%E6%8B%9B/" class="archive-article-date">
+        <time datetime="2024-03-15T10:19:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-15</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/888710">原文出处</a></p>
+<p><img src="https://ucc.alicdn.com/images/user-upload-01/11509f94c74d46b28a70b884265addf5.png" alt="img"></p>
+<h2 id="错误描述"><a href="#错误描述" class="headerlink" title="错误描述"></a>错误描述</h2><p>今天在github上使用 git clone 某个项目代码的时， git clone <a target="_blank" rel="noopener" href="https://github.com/XXXX/xxx-blog.git">https://github.com/XXXX/xxx-blog.git</a> 下载速度很慢，然后下载一段时间后，总是提示下面的错误信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">remote: Enumerating objects: 33, done.</span><br><span class="line">remote: Counting objects: 100% (33/33), done.</span><br><span class="line">remote: Compressing objects: 100% (8/8), done.</span><br><span class="line">error: RPC failed; curl 56 OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054</span><br><span class="line">fatal: the remote end hung up unexpectedly</span><br><span class="line">fatal: early EOF</span><br><span class="line">fatal: index-pack failed </span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a>错误原因</h2><p>由于Http协议错误，当 pull 或者 clone 的时候，或者是 github 某个CDN被屏蔽所致。</p>
+<h2 id="解决办法1"><a href="#解决办法1" class="headerlink" title="解决办法1"></a>解决办法1</h2><p>协议错误</p>
+<p>先执行下列命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.postBuffer 5242880000</span><br></pre></td></tr></table></figure>
+
+<p>再执行<code>git pull</code>或者 <code>git clone</code> 命令</p>
+<h2 id="解决办法2"><a href="#解决办法2" class="headerlink" title="解决办法2"></a>解决办法2</h2><h3 id="修改域名"><a href="#修改域名" class="headerlink" title="修改域名"></a>修改域名</h3><ul>
+<li>访问 <a target="_blank" rel="noopener" href="http://github.global.ssl.fastly.net.ipaddress.com/#ipinfo">http://github.global.ssl.fast…</a>获取cdn域名以及IP地址<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/5d9c3b2cb1099f4a27c94a53a9c04b8d.png" alt="img"></li>
+<li>访问 <a target="_blank" rel="noopener" href="https://github.com.ipaddress.com/#ipinfo">http://github.com.ipaddress.c…</a> 获取cdn域名以及IP地址<br><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/ab03c6248ee9ba8b0e1ac111bad32294.png" alt="img"></li>
+<li>或者直接访问<a target="_blank" rel="noopener" href="https://www.ipaddress.com/%E7%BD%91%E5%9D%80%E6%9F%A5%E8%AF%A2%E4%B8%8B%E9%9D%A2%E6%89%80%E9%9C%80%E7%9A%84%E5%9C%B0%E5%9D%80%E5%AF%B9%E5%BA%94%E7%9A%84IP">https://www.ipaddress.com/网址查询下面所需的地址对应的IP</a></li>
+</ul>
+<h3 id="修改hosts文件"><a href="#修改hosts文件" class="headerlink" title="修改hosts文件"></a>修改hosts文件</h3><p>将上述获取的IP地址添加到hosts文件中</p>
+<p>Mac在<code>/etc/hosts</code>中；</p>
+<p>windows在<code>C:\Windows\System32\drivers\etc\hosts</code>中；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># fix git clone github project failed</span><br><span class="line">140.82.113.3 github.com</span><br><span class="line">199.232.5.194 github.global.ssl.fastly.net</span><br><span class="line">192.30.253.120  codeload.github.com</span><br></pre></td></tr></table></figure>
+
+<h3 id="刷新DNS缓存"><a href="#刷新DNS缓存" class="headerlink" title="刷新DNS缓存"></a>刷新DNS缓存</h3><p>Mac刷新DNS缓存</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo killall -HUP mDNSResponder</span><br><span class="line">sudo dscacheutil -flushcache</span><br></pre></td></tr></table></figure>
+
+<p>Windows更新DNS缓存</p>
+<p>cmd命令窗口执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig /flushdns</span><br></pre></td></tr></table></figure>
+
+<p>使增加的映射生效。</p>
+<h2 id="解决办法3"><a href="#解决办法3" class="headerlink" title="解决办法3"></a>解决办法3</h2><p>使用chrome浏览器，安装一个插件【Github 加速器】</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/3c717bdc5fe69e4e44f121b7ceb2c36e.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/watermark%2Ctype_d3F5LXplbmhlaQ%2Cshadow_50%2Ctext_Q1NETiBA55Cm5b2m%2Csize_20%2Ccolor_FFFFFF%2Ct_70%2Cg_se%2Cx_16.png" alt="img"></p>
+<p>下载地址： <a target="_blank" rel="noopener" href="https://chrome.zzzmh.cn/info?token=mfnkflidjnladnkldfonnaicljppahpg">https://chrome.zzzmh.cn/info?token=mfnkflidjnladnkldfonnaicljppahpg</a></p>
+<p>安装后见crx文件拖到谷歌的扩展功能里面，然后安装成功。<strong>打开gihub会看到如下界面，多了几个加速地址</strong>.</p>
+<h2 id="解决办法4"><a href="#解决办法4" class="headerlink" title="解决办法4"></a>解决办法4</h2><p>利用socks5代理，配置好后明显加速。用下面两条命令配置好后，保持代理客户端开启就行了。</p>
+<p>设置代理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 可以参考以下配置，这里的127.0.0.1代表的就是你本机的IP地址，因为服务就在你本机上运行</span><br><span class="line"># 10809是代理的客户端本地端口,默认是1080</span><br><span class="line">git config --global https.proxy http://127.0.0.1:10800</span><br><span class="line">git config --global https.proxy http://127.0.0.1:10800</span><br><span class="line">git config --global http.proxy &#x27;socks5://127.0.0.1:10800&#x27;</span><br><span class="line">git config --global https.proxy &#x27;socks5://127.0.0.1:10800&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>上述方法挂了全局代理，但是如果要克隆码云、coding等国内仓库，速度就会很慢。更好的方法是<strong>只对github进行代理</strong>，不会影响国内仓库：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.https://github.com.proxy socks5://127.0.0.1:10800</span><br><span class="line">git config --global https.https://github.com.proxy socks5://127.0.0.1:10800</span><br></pre></td></tr></table></figure>
+
+<p>代理后git clone速度真的快了很多~我这边能到1MB&#x2F;s以上</p>
+<p>查看代理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global -l</span><br></pre></td></tr></table></figure>
+
+<p>取消代理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset http.proxy</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="其他异常问题"><a href="#其他异常问题" class="headerlink" title="其他异常问题"></a>其他异常问题</h1><h2 id="1-解决-curl-7-Failed-to-connect-to-raw-githubusercontent-com-port-443-Connection-refused"><a href="#1-解决-curl-7-Failed-to-connect-to-raw-githubusercontent-com-port-443-Connection-refused" class="headerlink" title="1. 解决 curl: (7) Failed to connect to raw.githubusercontent.com port 443: Connection refused"></a>1. 解决 curl: (7) Failed to connect to raw.githubusercontent.com port 443: Connection refused</h2><p>将下面的IP地址添加到hosts文件中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">199.232.68.133 raw.githubusercontent.com</span><br><span class="line">199.232.68.133 user-images.githubusercontent.com</span><br><span class="line">199.232.68.133 avatars2.githubusercontent.com</span><br><span class="line">199.232.68.133 avatars1.githubusercontent.com</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-解决curl-56-OpenSSL-SSL-read-Connection-was-reset-errno-10054"><a href="#2-解决curl-56-OpenSSL-SSL-read-Connection-was-reset-errno-10054" class="headerlink" title="2. 解决curl: (56) OpenSSL SSL_read: Connection was reset, errno 10054"></a>2. 解决curl: (56) OpenSSL SSL_read: Connection was reset, errno 10054</h2><p>一、问题：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error: RPC failed; curl 56 OpenSSL SSL_read: Connection was reset, errno 10054</span><br></pre></td></tr></table></figure>
+
+<p>如图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/d87dea031623518fcfe19791939dd606.png" alt="img"></p>
+<p>原因：远程仓库的文件过大，需要设置本地仓库大小**</p>
+<p><strong>二、解决步骤：</strong></p>
+<p>1、首先输入如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config http.sslVerify &quot;false&quot;</span><br></pre></td></tr></table></figure>
+
+<p>若出现下列错误：</p>
+<p><strong><code>git config http.sslVerify &quot;false&quot; fatal: not in a git directory</code></strong></p>
+<p>再继续执行 <strong><code>git config --globle http.sslVerify &quot;false&quot;</code></strong> 问题解决</p>
+<p>2、文件大小的上限设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.postBuffer 524288000</span><br></pre></td></tr></table></figure>
+
+<p>fatal: not in a git directory <code>**再继续执行**</code>git config –globle http.sslVerify “false”&#96;** 问题解决</p>
+<p>2、文件大小的上限设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.postBuffer 524288000</span><br></pre></td></tr></table></figure>
+
+<p>3、如果还是git代码还是下载失败，则需要继续修改git缓存的大小</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/03/15/%E8%A7%A3%E5%86%B3Github%E4%B8%8D%E8%83%BD%E4%B8%8B%E8%BD%BD%EF%BC%8C%E4%B8%8B%E8%BD%BD%E9%80%9F%E5%BA%A6%E6%85%A2%E7%9A%84%E5%B0%8F%E5%A6%99%E6%8B%9B/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-使用Github-picGo搭建图床，保姆级教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -3134,175 +3295,6 @@
 
 
   
-    <article id="post-用人外周血液中的非T淋巴细胞、B细胞诱导生成全能干细胞" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/03/14/%E7%94%A8%E4%BA%BA%E5%A4%96%E5%91%A8%E8%A1%80%E6%B6%B2%E4%B8%AD%E7%9A%84%E9%9D%9ET%E6%B7%8B%E5%B7%B4%E7%BB%86%E8%83%9E%E3%80%81B%E7%BB%86%E8%83%9E%E8%AF%B1%E5%AF%BC%E7%94%9F%E6%88%90%E5%85%A8%E8%83%BD%E5%B9%B2%E7%BB%86%E8%83%9E/" target="_blank">用人外周血液中的非T淋巴细胞、B细胞诱导生成全能干细胞</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/03/14/%E7%94%A8%E4%BA%BA%E5%A4%96%E5%91%A8%E8%A1%80%E6%B6%B2%E4%B8%AD%E7%9A%84%E9%9D%9ET%E6%B7%8B%E5%B7%B4%E7%BB%86%E8%83%9E%E3%80%81B%E7%BB%86%E8%83%9E%E8%AF%B1%E5%AF%BC%E7%94%9F%E6%88%90%E5%85%A8%E8%83%BD%E5%B9%B2%E7%BB%86%E8%83%9E/" class="archive-article-date">
-        <time datetime="2024-03-14T07:54:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-14</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1003619">KO Keisuke Okita <img src="https://cdn.bio-protocol.org/forum/fe/static/icon_email.svg" alt="email"></a></p>
-<p>第一次发布: <a target="_blank" rel="noopener" href="https://bio-protocol.org/cn/archive?vol=3&issid=81">2013年09月20日第3卷第18期 </a>DOI: <a target="_blank" rel="noopener" href="https://doi.org/10.21769/BioProtoc.907">10.21769&#x2F;BioProtoc.907</a> </p>
-<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>诱导多能干细胞（iPS细胞）的生成提供了一个使用患者特异性体细胞的机会，这些细胞是疾病建模和药物发现的重要资源。为了促进这些研究，从易于获取且侵入性较小的组织（如血液）中制备iPS细胞非常重要。在这里，我们描述了从成人外周血生成人iPS细胞的基本方法。在分离单核细胞之后，一组细胞因子的组合刺激了造血干细胞&#x2F;祖细胞群体的扩张，这是本协议的主要目标。细胞被转导了编码重编程因子的质粒混合物。在大多数情况下，质粒在建立iPS克隆的过程中丢失。</p>
-<hr>
-<h3 id="材料和试剂"><a href="#材料和试剂" class="headerlink" title="材料和试剂"></a><strong>材料和试剂</strong></h3><ul>
-<li>新鲜抗凝血（约10毫升）</li>
-<li>无钙镁PBS（Nacalai tesque，目录号：14249-95）</li>
-<li>Ficoll-paque Plus（GE Healthcare，目录号：17-1440-02）</li>
-<li>StemSpan H3000（STEMCELL Technologies，目录号：0 9800）</li>
-<li>重组人白细胞介素-6（100 μg&#x2F;ml）（PeproTech，目录号：AF-200-06）</li>
-<li>重组人干细胞因子（SCF）（300 μg&#x2F;ml）（PeproTech，目录号：AF-300-07）</li>
-<li>重组人血小板生成素（TPO）（300 μg&#x2F;ml）（PeproTech，目录号：AF-300-18）</li>
-<li>重组人Flt3配体（300 μg&#x2F;ml）（PeproTech，目录号：AF-300-19）</li>
-<li>重组人白细胞介素-3（10 μg&#x2F;ml）（PeproTech，目录号：AF-200-03）</li>
-<li>重组人碱性成纤维细胞生长因子（bFGF）（10 μg&#x2F;ml）（Wako，目录号：064-04541）</li>
-<li>Amaxa人类CD34+细胞核转染试剂盒（Lonza，目录号：VPA-1003）</li>
-<li>MEF饲养层（Repro Cell，目录号：RCHEFC003）</li>
-<li>Matrigel生长因子减少（BD Biosciences，目录号：356231）</li>
-<li>灵长类ES细胞培养基（Repro Cell，目录号：RCHEMD001）</li>
-<li>Essential 6（Life Technologies，目录号：A1516401）</li>
-<li>明胶（Sigma-Aldrich，目录号：G1890）</li>
-<li>Dulbecco改良Eagle培养基（DMEM）高糖含稳定L-谷氨酰胺（Nacalai tesque，目录号：08459-35）</li>
-<li>胎牛血清（FBS）（Life Technologies，目录号：10437-028）</li>
-<li>质粒套装2（Life Technologies，目录号：A15960）</li>
-<li>血液培养基（见配方）</li>
-<li>质粒混合物（见配方）</li>
-<li>转染混合物（见配方）</li>
-<li>iPS培养基1（见配方）</li>
-<li>iPS培养基2（见配方）</li>
-<li>0.1%明胶溶液（见配方）</li>
-<li>MEF培养基（见配方）</li>
-</ul>
-<hr>
-<h3 id="设备"><a href="#设备" class="headerlink" title="设备"></a><strong>设备</strong></h3><ul>
-<li>Nucleofector 2b（Lonza，目录号：AAB-1001）</li>
-<li>6孔组织培养板（BD Biosciences，Falcon®，目录号：353046）</li>
-<li>15毫升锥形管（BD Biosciences，Falcon®，目录号：352196）</li>
-<li>50毫升锥形管（BD Biosciences，Falcon®，目录号：352070）</li>
-<li>37 °C 5% CO2细胞培养箱</li>
-<li>显微镜</li>
-<li>离心机</li>
-</ul>
-<hr>
-<h3 id="实验步骤："><a href="#实验步骤：" class="headerlink" title="实验步骤："></a>实验步骤：</h3><p><strong>第0天</strong><br>培养基准备：<br>向6孔板的一个孔中加入含有细胞因子的2毫升血液培养基。<br>在板的其他孔中加入2毫升PBS，以防止培养基过度蒸发，并将板存放在37°C、5% CO2的环境中。<br>单核细胞纯化：<br>将10毫升抗凝血（EDTA）中加入10毫升PBS。<br>在两个15毫升管中，分别加入5毫升Ficoll-Paque，然后轻轻加入10毫升血+PBS。<br>在18°C下以400 x g离心30分钟，使用慢加速和慢刹车。<br>小心移除上清液（约2毫升）的上层部分，不要破坏界面处的单核细胞。<br>将界面处的细胞（1-2毫升）转移到一个15毫升管中，与12毫升PBS混合均匀。<br>在18°C下以200 x g离心10分钟（使用慢刹车）。<br>用3毫升H3000培养基重悬细胞，并计数细胞。<br>准备3 x 106细胞的1.5毫升管分装。<br>在18°C下以200 x g离心10分钟（使用慢刹车）。<br>弃去上清液。<br>铺板：<br>将细胞悬浮在步骤1中制备的培养基中。<br>将板存放在37°C、5% CO2的环境中，约6天。此培养期间不需要更换培养基。<br><strong>第5天</strong><br>明胶涂层：<br>向6孔板每个孔中加入1毫升0.1%明胶溶液。<br>在37°C下孵育至少半小时。<br>MEF饲养层细胞准备：<br>在37°C下解冻MEF饲养层细胞，并计数细胞数量。<br>弃去上述准备中多余的明胶溶液。<br>在MEF培养基中将MEF饲养层细胞以每孔3 x 105细胞播种。<br><strong>第6天</strong><br>培养基准备：<br>从MEF饲养层细胞中吸出培养基。<br>向板中每个孔中加入2毫升含有细胞因子的血液培养基。<br>收获培养细胞：<br>将细胞悬浮在培养基中并计数细胞。活细胞数量通常约为1 x 106。<br>将悬浮细胞收集到15毫升管中。<br>在18°C下以200 x g离心10分钟（使用慢刹车）。在离心过程中，准备转染混合物。<br>核转染：<br>用手持移液器完全吸出细胞的上清液。<br>加入转染混合物并悬浮细胞，小心不要产生气泡。<br>使用程序U-008进行核转染。<br>铺板，每孔105至104细胞：<br>在核转染后立即向电穿孔杯中加入800微升H3000，收获细胞。核转染溶液中的金属离子对细胞有毒！<br>将细胞铺到MEF饲养层板上，每孔从5 x 105细胞到5 x 104细胞不等。<br><strong>第8、10和12天</strong><br>每孔添加额外的1.5毫升iPS培养基1。不要吸出现有的培养基。<br><strong>第14天及以后</strong><br>用1.5毫升iPS培养基1替换培养基。* 培养基更换每2天进行一次。<br><strong>第25至35天</strong><br>挑选直径约2毫米的克隆。</p>
-<hr>
-<h3 id="Notes："><a href="#Notes：" class="headerlink" title="Notes："></a>Notes：</h3><p>可以使用冷冻的外周血单个核细胞（PBMC）与此协议配合使用。在第0天，直接在血液培养基中培养解冻的PBMC。<br>iPS细胞可以在无饲养层条件下建立，但效率较低。对于无饲养层条件，使用Matrigel涂层的板和iPS培养基2代替MEF饲养层和iPS培养基1。以下是制作Matrigel涂层板的步骤：<br>在4°C下解冻Matrigel，并将其稀释至在6毫升冷却的DMEM中相当于2毫克蛋白质的浓度。<br>将1毫升&#x2F;孔的溶液添加到6孔板中。<br>在室温下储存1小时。<br>在播种细胞之前，用PBS清洗板一次。</p>
-<hr>
-<p><strong>配方</strong><br><strong>血液培养基</strong><br>StemSpan H3000，包含以下细胞因子：</p>
-<ul>
-<li>10 ng&#x2F;ml IL-3</li>
-<li>100 ng&#x2F;ml IL-6</li>
-<li>300 ng&#x2F;ml SCF</li>
-<li>300 ng&#x2F;ml TPO</li>
-<li>300 ng&#x2F;ml Flt3配体</li>
-<li>使用后立即使用<br><strong>质粒混合物（Addgene，<a target="_blank" rel="noopener" href="http://www.addgene.org/Shinya_Yamanaka%EF%BC%89">http://www.addgene.org/Shinya_Yamanaka）</a></strong><br>使用以下质粒混合物。Set 1显示出更高的效率。在Set 2中，我们省略了WPRE序列，并用针对p53的shRNA替换了小鼠p53的显性负形式，该显性负形式存在于Set 1中。存放在-20°C。Set 2可以从Life Technologies购买。</li>
-</ul>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/image-20240314164718449.png" alt="image-20240314164718449" style="zoom: 50%;">
-**转染混合物**
-Amaxa CD34溶液
-81.8 μl
-补充剂
-18.2 μl
-质粒混合物（Set 1或2）
-3 μl（3 μg）
-使用后立即使用
-**iPS培养基1**
-灵长类ES细胞培养基，含4 ng/ml bFGF
-存放在4°C，暗处一周
-**iPS培养基2**
-Essential 6，含100 ng/ml bFGF
-存放在4°C，暗处一周
-**0.1%（w/v）明胶溶液**
-将1克明胶粉末溶解在100毫升去离子水中（1% w/v，10倍浓度），高压灭菌后存放在4°C。
-为了制备0.1%（1x）明胶溶液，将10倍明胶储备液在37°C下加热，然后将其中的50毫升加入到450毫升去离子水中。使用瓶盖过滤器（0.22 μm）过滤溶液，并存放在4°C。
-**MEF培养基**
-含10% FBS的DMEM
-请注意，这里的专业术语已经尽量翻译成对应的中文，但对于某些特定产品名称和型号，保留了原英文名称以确保准确性。
-
-<hr>
-<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ol>
-<li>Mack, A. A., Kroboth, S., Rajesh, D. and Wang, W. B. (2011). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/22132178">Generation of induced pluripotent stem cells from CD34+ cells across blood drawn from multiple donors with non-integrating episomal vectors</a>. <em>PLoS One</em> 6(11): e27956. </li>
-<li>Okita, K., Matsumura, Y., Sato, Y., Okada, A., Morizane, A., Okamoto, S., Hong, H., Nakagawa, M., Tanabe, K., Tezuka, K., Shibata, T., Kunisada, T., Takahashi, M., Takahashi, J., Saji, H. and Yamanaka, S. (2011). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/21460823">A more efficient method to generate integration-free human iPS cells</a>. <em>Nat Methods</em> 8(5): 409-412.</li>
-<li>Okita, K., Yamakawa, T., Matsumura, Y., Sato, Y., Amano, N., Watanabe, A., Goshima, N. and Yamanaka, S. (2013). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/23193063">An efficient nonviral method to generate integration‐free human‐induced pluripotent stem cells from cord blood and peripheral blood cells.</a> <em>Stem Cells</em> 31(3): 458-466.</li>
-</ol>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/03/14/%E7%94%A8%E4%BA%BA%E5%A4%96%E5%91%A8%E8%A1%80%E6%B6%B2%E4%B8%AD%E7%9A%84%E9%9D%9ET%E6%B7%8B%E5%B7%B4%E7%BB%86%E8%83%9E%E3%80%81B%E7%BB%86%E8%83%9E%E8%AF%B1%E5%AF%BC%E7%94%9F%E6%88%90%E5%85%A8%E8%83%BD%E5%B9%B2%E7%BB%86%E8%83%9E/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -3440,6 +3432,10 @@ Essential 6，含100 ng/ml bFGF
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">BioProtocol</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">转座子</a>
               </li>
              
@@ -3452,23 +3448,19 @@ Essential 6，含100 ng/ml bFGF
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">类器官之胚胎干细胞</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">BioProtocol</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Paper</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机随笔</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">从零开始训练一个神经网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Paper</a>
               </li>
              
               <li class="article-tag-list-item">

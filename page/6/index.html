@@ -252,6 +252,218 @@
 
 
   
+    <article id="post-榕树集-抗体研发过程中的计算以及AI手段" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/03/04/%E6%A6%95%E6%A0%91%E9%9B%86-%E6%8A%97%E4%BD%93%E7%A0%94%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E8%AE%A1%E7%AE%97%E4%BB%A5%E5%8F%8AAI%E6%89%8B%E6%AE%B5/" target="_blank">榕树集--抗体研发过程中的计算以及AI手段</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/03/04/%E6%A6%95%E6%A0%91%E9%9B%86-%E6%8A%97%E4%BD%93%E7%A0%94%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E8%AE%A1%E7%AE%97%E4%BB%A5%E5%8F%8AAI%E6%89%8B%E6%AE%B5/" class="archive-article-date">
+        <time datetime="2024-03-04T06:55:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-04</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>转载 DrugSCI</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>介绍一篇发表在CellPress上的关于抗体研发的综述。</p>
+<h2 id="亮点"><a href="#亮点" class="headerlink" title="亮点"></a>亮点</h2><ul>
+<li>基于计算&#x2F;人工智能（AI）的抗体研发方向取得了显著进展</li>
+<li>数据库中存储着海量的抗体序列，但结构数据有限；生物物理性质数据也是可用的。</li>
+<li>已经有了许多预测抗体不同生物物理和其他属性的工具。</li>
+<li>深度学习方法在不断的提高抗体结构预测的性能，包括CDRs，而de novo设计仍然是一个具有挑战性的问题。</li>
+<li>蛋白质语言模型在这方面显示出非常有吸引力的前景。</li>
+</ul>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>治疗性抗体目前是生物疗法中最大的类别，因为它们的靶点特异性较好和结合亲和力较高。传统的抗体开发过程是基于主要的经验性方法，虽然成熟稳健，但繁琐且有显著的缺陷。最近，计算和人工智能（AI）技术的进步开始克服这些限制，被越来越多地整合到抗体开发的流程中。本文提供了与抗体开发相关的AI方法的概述，包括数据库、抗体属性和结构的计算预测模型，以及机器学习（ML）模型为重点的计算抗体设计方法。特别是，重点介绍了对结合至关重要的抗体结构组分，如互补决定区（CDR）环的设计。</p>
+<h2 id="传统抗体工程方法的限制"><a href="#传统抗体工程方法的限制" class="headerlink" title="传统抗体工程方法的限制"></a>传统抗体工程方法的限制</h2><p>传统的抗体工程方法虽然可以通过免疫或定向进化等方法获得binder，但仍然存在着一些较大的局限性。其中一个是很难针对抗原上的特定表位进行靶向。因为大多数筛选活动只能获得与给定表位结合的抗体，达不到所需要的生物活性。另一个缺陷是只有少数抗体具有成为治疗药物可能性，而大多数筛选活动中获得的初始阳性结果，会在后续开发中面临很多困难。此外，一旦获得候选的抗体 binder，抗体&#x2F;抗原复合物的结构解析是非常有用的，但是需要通过X射线晶体学或核磁共振手段，通常耗时且通量较低。</p>
+<h2 id="抗体序列和结构数据库"><a href="#抗体序列和结构数据库" class="headerlink" title="抗体序列和结构数据库"></a>抗体序列和结构数据库</h2><p>在抗体研发过程中，抗原的靶向以及功能，包括：抗原亲和力，靶标特异性，表位分析展示出的生物学功效以及有待开发的其余属性（Fig 1）。以上的能力和性质均由抗体的序列和结构决定。因此，关于抗体序列，结构和相关性质的信息对设计新型抗体是非常重要的。已经有了很多的数据库（Table 1），并且这些数据库对深度学习模型的训练也非常重要。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/640.jpeg" alt="图片"></p>
+<p>Fig 1. 抗体工程中优化功效和功能</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OAS</td>
+<td>A sequence database containing 1.5 billion paired Fv and unpaired sequences from 80 studies</td>
+</tr>
+<tr>
+<td>PIRD</td>
+<td>A sequence database containing annotated T cell receptor and B cell receptor repertoire sequencing data</td>
+</tr>
+<tr>
+<td>AbDiver</td>
+<td>A bioinformation tool that employs the B cell receptor sequencing data and compared query sequences to natural repertories</td>
+</tr>
+<tr>
+<td>RAPID</td>
+<td>A bioinformation tool that allows users to process and analyze human HC repertoire sequencing data and a large antibody database</td>
+</tr>
+<tr>
+<td>AbDb</td>
+<td>A structure database containing Fv region structures extracted from the RCSB PDB and SACS dataset</td>
+</tr>
+<tr>
+<td>SAbDab</td>
+<td>A bioinformation resource containing all the publicly available antibody structures</td>
+</tr>
+<tr>
+<td>abYsis</td>
+<td>A bioinformation tool including an integrated database of antibody sequence and structure data</td>
+</tr>
+<tr>
+<td>Thera-SAbDab</td>
+<td>A structure database including all antibody- and nanobody-related therapeutics recognized by the World Health Organization (WHO)</td>
+</tr>
+<tr>
+<td>SKEMPI</td>
+<td>A structural database containing more than 3000 binding free energy changes upon mutation from published literature</td>
+</tr>
+<tr>
+<td>AB-Bind</td>
+<td>A database including a diverse set of antibody binding data with experimentally determined binding free energy</td>
+</tr>
+<tr>
+<td>Cov-AbDab</td>
+<td>A focused repository for antibodies targeting SARS-CoV-2, SARS-CoV-1, and MERS-CoV</td>
+</tr>
+<tr>
+<td>sdAb-DB</td>
+<td>A focused repository for single-domain antibodies and related classes of proteins</td>
+</tr>
+<tr>
+<td>TAP</td>
+<td>A comprehensive platform including tools for evaluating five properties of antibody</td>
+</tr>
+<tr>
+<td>Camsol</td>
+<td>A predictor of protein solubility and potential sites to be modified for improvement through sequence- and structure-based algorithm</td>
+</tr>
+<tr>
+<td>SOLart</td>
+<td>A predictor of protein solubility and aggregation through structure-based algorithm</td>
+</tr>
+<tr>
+<td>A3D</td>
+<td>A predictor of aggregation-prone regions through sequence- and structure-based algorithms</td>
+</tr>
+<tr>
+<td>IEDB-AR</td>
+<td>A comprehensive platform including tools for prediction and analysis of immune epitopes</td>
+</tr>
+<tr>
+<td>Hu-mAb</td>
+<td>A classifier that can distinguish between human and non-human antibody Fv sequences</td>
+</tr>
+<tr>
+<td>BioPhi</td>
+<td>A comprehensive platform for antibody design, humanization, and humanness evaluation</td>
+</tr>
+</tbody></table>
+<p>Table 1: 目前的对于抗体结构，序列，属性分析的一些数据库和工具</p>
+<h3 id="抗体序列数据库"><a href="#抗体序列数据库" class="headerlink" title="抗体序列数据库"></a>抗体序列数据库</h3><p>在人类免疫系统中，抗体由B细胞产生，估计约有10^13个独特序列。抗体由两种类型的蛋白链组成，称为重链（heavy chain，HC）和轻链（light chain，LC）。下一代测序（NGS）方法获得抗体库序列的大量信息，有海量的标准化的测试数据以及公开可用的数据库。Observed antibody space （OAS）汇总了可变片段（Fv）序列，包含了来自68个不同研究的近20亿个序列。一些DL模型用OAS的数据进行了训练，用于区分和生成人源的抗体序列。此外，一些新型工具利用这些数据集进行了抗体序列分析。例如，AbDiver是一个利用公开的B细胞受体NGS数据集的工具，可以将设计的序列与天然序列进行比较。该工具有助于庞大的抗体突变空间下进行理性设计研发。此外，开发人员发现它可以为742种治疗性抗体找到合适的配置。</p>
+<h3 id="抗体结构数据库"><a href="#抗体结构数据库" class="headerlink" title="抗体结构数据库"></a>抗体结构数据库</h3><p>抗体的Fv结构由CDRs、高度可变的序列和保守序列的框架组成。六个CDR loop，分别位于重链（VH）和轻链（VL）的可变结构域上，参与抗原的结合。因此，抗体的3D结构决定了它与抗原的相互作用方式。研究人员可以利用从抗体结构中获得的信息来增强结合亲和力，或者开发预测表位的方法。基于结构的方法仍然是抗体设计的最有前景的方向，因此结构数据库对于训练和基准测试至关重要。</p>
+<p>PDB中的抗体结构已经被整理分类为各种数据集。抗体结构数据库（AbDb）中使用来自抗体晶体结构概要（SACS）数据集的信息对Fv区域的注释进行了更新。类似地，结构抗体数据库（SAbDab）中的结构也来自于PDB数据库，这是一个共有12,367个Fv区域结构的数据库（截止于2022年6月），以及abYsis。此外，治疗性结构抗体数据库（Thera-SAbDab）是一个治疗性抗体结构数据库，其中包含的数据有抗体和纳米抗体相关的结构。同时有一些额外的数据库总结了抗体性质和结构的信息，包括一些突变的动力学和能量信息，如SKEMPI。这些数据库都可以直接用于或者其余数据集结合使用，来训练或者优化模型。</p>
+<h2 id="抗体属性的预测"><a href="#抗体属性的预测" class="headerlink" title="抗体属性的预测"></a>抗体属性的预测</h2><p>除了结合特异性和亲和力之外，可发展性（developability）对于开发新型抗体至关重要。可发展性属性影响了抗体候选能否进入临床应用阶段并且保持适当的疗效。可发展性的几个主要属性包括：固有免疫原性、聚集&#x2F;不溶性、粘度和半衰期。为了减少工业应用中的可发展性的相关问题，需要在早期开发阶段就开始考虑抗体的性质。最近，基于经典统计学或机器学习的计算工具或方法已经被开发出来，可以用于预测抗体的可发展性。</p>
+<p>总的来说，抗体的可发展性主要可以通过氨基酸序列的物理化学性质来预测，例如疏水性、静电荷以及拓扑结构中的相互作用。例如，治疗性抗体分析(TAP)模型给出了与可发展性差相关的五个指标的分布：CDR总长度、表面疏水性程度、CDR中的正电荷和负电荷以及重链和轻链表面电荷的不对称性。TAP还为每个指标提供了指导性的截止值，这些截止值被用于过滤具有较差可发展性的抗体。此外，还有一些机器学习模型可以使用抗体序列或结构来预测可发展性。例如，Chen等人建立了一个机器学习pipline，使用来自SAbDab数据库的2400个抗体序列数据集来预测抗体的可发展性。</p>
+<p><strong>聚集</strong>：</p>
+<p>亲水性与聚集倾向、溶解度、粘度、自身相互作用和蛋白稳定性相关。抗体药物的聚集可能导致沉淀，缩短存储期，以及体内聚集可能增加药物的免疫原性。为了预测蛋白质的溶解度和聚集倾向，已开发了几种预测工具，包括Camsol和SOLart等。此外，也有一些机器学习模型可以使用抗体序列或结构来预测聚集倾向，如AGGRESCAN 3D（A3D）。一些机器学习模型可以帮助指导抗体候选药物的工程，避免“可发展性陷阱”。</p>
+<p><strong>免疫原性</strong>：</p>
+<p>抗体药物常来源于非人类生物，因此可能会被免疫系统识别为外源抗原，从而引发免疫原性反应。免疫原性会降低治疗效果，并通过引发不良药物反应影响安全性。为了评估抗体药物的临床安全性和有效性，开发了预测免疫原性的方法。这些方法包括传统技术和基于人工智能的计算工具，可以识别抗体中的 B 和 T 细胞表位。一些研究团队利用机器学习模型对抗体序列进行分类，以预测其人类性和免疫原性风险。此外，还开发了一些工具来人类化抗体序列，以减少其免疫原性风险。</p>
+<p><strong>药代动力学:</strong></p>
+<p>药代动力学（PK）清除确定了抗体的半衰期，因此也确定了抗体药物在给药后在体内停留的时间长度。等电点（pI）、粘度、免疫原性、非特异性、聚集和稳定性是与临床 PK 清除率相关的因素。为了通过对这些因素进行全面评估来预测清除率，Grinshpun 等人收集了已获批准或处于二期和三期临床试验中的 64 种单克隆抗体（mAbs）及其已发表的PK数据，并训练了一个随机森林分类器来区分具有不同清除水平的抗体。他们发现等电点是区分快速和缓慢清除抗体的最关键特征。此外，Labute 等人报道了基于结构的电荷计算来预测 PK 清除率。</p>
+<h2 id="抗体的计算设计"><a href="#抗体的计算设计" class="headerlink" title="抗体的计算设计"></a>抗体的计算设计</h2><h3 id="经典的抗体设计技术"><a href="#经典的抗体设计技术" class="headerlink" title="经典的抗体设计技术"></a>经典的抗体设计技术</h3><p>经典抗体设计技术依赖于传统的采样和评分方法，其中两个典型的例子是RosettaAntibodyDesign（RAbD）和OptMAVEn。RAbD通过外环和内环设计算法循环来进行抗体设计，而OptMAVEn则采用三步工作流程，利用抗原-抗体复合物数据库的结构信息，选择潜在结合位置；将抗体分为6个组成部分，每个部分都有自己的结构参考库；随后根据每个部件的抗原结合能量，通过线性规划选择出最佳的组合。这些方法通常需要生成大量的候选物库（million）和大量的计算资源，采用了先前开发的高并行的筛选策略，并且受限于经典的评分函数的限制。</p>
+<p>然而，这些经典技术存在一些限制，如依赖已知结构的数据库、计算成本高、评分函数的限制等。随着深度学习技术的发展，越来越多的研究开始转向应用机器学习模型进行抗体设计，以克服这些限制。</p>
+<h3 id="基于ML的抗体结构建模"><a href="#基于ML的抗体结构建模" class="headerlink" title="基于ML的抗体结构建模"></a>基于ML的抗体结构建模</h3><p>抗体结构信息对于理解抗体的特性，如特异性和亲和力，至关重要。六个CDR（H1、H2、L1、L2和L3）中的五个，结构多样性有限，loop通常遵循规范的构象；这些环具有更多的结构约束，更容易预测。而 CDR-H3的构象非常多样，即便在序列相似性高的情况下。因此CDR-H3建模是一个约束较少、更困难的问题。</p>
+<p>许多实验性抗体设计技术产生了与结构无关的序列信息。在进行大规模筛选时，独立确定所有抗体 loop结构及其与抗原的界面是不切实际的。传统上，抗体结构的预测使用基于物理的建模（如分子动力学模拟），同源建模或组合方法（如 MODELLER）。</p>
+<p>相比之下，深度学习模型也被开发用于抗体结构建模。例如，ABodyBuilder是一个自动化的抗体同源建模流程，而ABlooper使用图神经网络预测CDR环的位置。此外，DeepAb从不变特征预测结构，并在预测精度方面取得了成功。然而，由于DeepAb依赖于Rosetta，其预测速度较慢，因此最近引入了更快的模型IgFold。另外，AlphaFold2被证明在从序列预测蛋白质结构方面具有革命性的作用，但由于其依赖同源序列的MSA，因此对于CDR-H3的建模不太适用。深度学习在抗体筛选方面也被证明是有用的，例如DLAB使用神经网络生成结合分数。总体而言，虽然这些方法取得了显著进展，但仍需要进一步研究以解决抗体&#x2F;抗原复合物结构的可靠建模问题，特别是针对CDR-H3的建模。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/640-17098164196172.png" alt="图片"></p>
+<p>Table 2 抗体结构模拟方法</p>
+<h3 id="基于结构的深度学习模型"><a href="#基于结构的深度学习模型" class="headerlink" title="基于结构的深度学习模型"></a>基于结构的深度学习模型</h3><p>最近的研究着重于利用深度学习（DL）技术在抗体设计领域的应用，特别是针对CDR-H3环的设计。这些努力主要分为两类：一类是通过生成3D坐标来设计CDR-H3的backbone，例如IG-VAE模型；另一类是利用学习蛋白质结构图嵌入的模型，预测特定突变引入后的ddG变化。然而，这些基于结构的模型仍然存在局限性，例如依赖外部工具进行序列设计，以及不能针对特定表位进行设计。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/640-17098164245474.png" alt="图片"></p>
+<p>Table 3 抗体设计深度学习模型</p>
+<h3 id="基于序列的深度学习模型"><a href="#基于序列的深度学习模型" class="headerlink" title="基于序列的深度学习模型"></a>基于序列的深度学习模型</h3><p>基于序列的深度学习（DL）模型可以分为两类：一类是试图仅从抗体序列中学习整体特征的DL模型；另一类是利用抗原特异性数据的序列方法。第一类模型通过学习抗体序列的相互依赖关系来设计，其中自回归或生成模型的出现使得可以生成类似于抗体的序列。Shin等人利用因果扩张卷积应用于自回归模型中，通过学习序列中的长程关系来生成纳米抗体库。随后，由于Transformer模型（如BERT）的发展，NLP取得了巨大进步，并将这些模型应用到蛋白质序列中，从而产生了ProtBERT和ESM-1b等模型。这些模型在捕获蛋白质序列的许多特性方面都取得了巨大成功。另一方面，另一种仅使用序列的方法则利用抗原特异性数据，例如Mason等人提出的方法可以训练卷积神经网络。未来的模型可能会结合语言模型的特征，并在实验数据上进行训练，以获得针对抗原结合进行优化的实际抗体。然而，目前纯粹基于序列的模型要么与抗原无关，要么需要外部实验数据，并且在生成过程中受益于结构信息的整合。</p>
+<h3 id="结构和序列信息是机器学习的抗体设计的未来"><a href="#结构和序列信息是机器学习的抗体设计的未来" class="headerlink" title="结构和序列信息是机器学习的抗体设计的未来"></a>结构和序列信息是机器学习的抗体设计的未来</h3><p>除了前述的经典工作之外，越来越多基于人工智能的方法开始被开发。例如，Jin等人开发了一个模型，以自回归方式生成CDR-H3环的序列和结构。下一个氨基酸的预测取决于抗体框架的粗粒化表示以及生成的loop中当前氨基酸的结构。他妈的结果展示了可能的针对SARS-CoV-1和SARS-CoV-2的抗体研发。尽管令人兴奋，但该模型并未对特定抗原表位进行调节，为进一步改进模型留下了空间。Kang等人采用了一种更简单的方法，其中抗体和抗原氨基酸被表示为图中的节点，通过界面残基节点之间的边捕获界面结构。尽管在某种程度上取得了成功，但该模型显示出对训练数据的显著的过拟合。未来的CDR-H3环的设计将在能够完全生成序列和结构的模型上，同时适当地对目标表位进行调节。</p>
+<h3 id="将AI设计方法纳入其中可能会改善抗体开发"><a href="#将AI设计方法纳入其中可能会改善抗体开发" class="headerlink" title="将AI设计方法纳入其中可能会改善抗体开发"></a>将AI设计方法纳入其中可能会改善抗体开发</h3><p>观察DL中一般蛋白质设计的发展，将其中成功的技术纳入到抗体设计的任务也很重要。最近，在将幻觉（hallucination）技术应用于一般蛋白质设计方面取得了成功。在这种方法中，随机选择蛋白质序列，然后使用现有的ML模型将其“折叠”成3D结构（通过骨架α-碳距离图预测），提供一个起点，然后通过蒙特卡洛过程引入突变。此外，扩散概率模型已经被成功应用于蛋白质骨架设计的生成。最近，基于打分的生成模型RFdiffusion和Chroma能够为新型蛋白质生成全原子坐标，其中Chroma能够创建含有数千个氨基酸的蛋白质。很明显，这些方法适用于CDR区域的设计，未来的工作有赖于它们。</p>
+<h2 id="总结以及未来展望"><a href="#总结以及未来展望" class="headerlink" title="总结以及未来展望"></a>总结以及未来展望</h2><p>该文总结了当前计算方法在治疗性抗体开发中的应用，包括结构、表位预测以及解决开发问题。这些方法不仅可以提高开发性能，还可以降低成本、减少劳动力。作者提到了AlphaFold2等工具在缩短时间方面的重要性。以新冠疫情为例，许多药物发现研究是通过计算方法进行的。作者强调了结构和序列设计中的DL方法的重要性，并展望了未来的发展方向，包括引入密码子优化和将各种进展整合成端到端的可微分流程。这些进展有望加速抗体开发，特别是在结合预测和结构搜索方面。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/640-17098164305196.jpeg" alt="图片"></p>
+<p>Figure 2 抗体设计的最新计算手段</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>1.<a target="_blank" rel="noopener" href="https://www.cell.com/trends/pharmacological-sciences/fulltext/S0165-6147(22)00279-6">https://www.cell.com/trends/pharmacological-sciences/fulltext/S0165-6147(22)00279-6</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">BioNews</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/03/04/%E6%A6%95%E6%A0%91%E9%9B%86-%E6%8A%97%E4%BD%93%E7%A0%94%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E8%AE%A1%E7%AE%97%E4%BB%A5%E5%8F%8AAI%E6%89%8B%E6%AE%B5/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Cell综述：CRISPR基因组编辑技术的过去、现在和未来" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -2229,112 +2441,6 @@
 
 
   
-    <article id="post-王皓毅和张勇团队合作开发新型TnpB微型基因编辑工具-md" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2023/07/04/%E7%8E%8B%E7%9A%93%E6%AF%85%E5%92%8C%E5%BC%A0%E5%8B%87%E5%9B%A2%E9%98%9F%E5%90%88%E4%BD%9C%E5%BC%80%E5%8F%91%E6%96%B0%E5%9E%8BTnpB%E5%BE%AE%E5%9E%8B%E5%9F%BA%E5%9B%A0%E7%BC%96%E8%BE%91%E5%B7%A5%E5%85%B7-md/" target="_blank">王皓毅和张勇团队合作开发新型TnpB微型基因编辑工具</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2023/07/04/%E7%8E%8B%E7%9A%93%E6%AF%85%E5%92%8C%E5%BC%A0%E5%8B%87%E5%9B%A2%E9%98%9F%E5%90%88%E4%BD%9C%E5%BC%80%E5%8F%91%E6%96%B0%E5%9E%8BTnpB%E5%BE%AE%E5%9E%8B%E5%9F%BA%E5%9B%A0%E7%BC%96%E8%BE%91%E5%B7%A5%E5%85%B7-md/" class="archive-article-date">
-        <time datetime="2023-07-04T03:13:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-04</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>转载</p>
-<hr>
-<h3 id="王皓毅和张勇团队合作开发新型TnpB微型基因编辑工具"><a href="#王皓毅和张勇团队合作开发新型TnpB微型基因编辑工具" class="headerlink" title="王皓毅和张勇团队合作开发新型TnpB微型基因编辑工具"></a>王皓毅和张勇团队合作开发新型TnpB微型基因编辑工具</h3><p>2023-07-03</p>
-<p>　　CRISPR-Cas技术促进了生物医学研究。除了广泛使用的Cas9系统之外1，其他CRISPR亚型也不断被发现并应用于基因编辑，例如能够装载进AAV病毒的SaCas9（1053 aa）2以及更小的微型CRISPR-Cas系统Cas12f（400~550 aa）3-6。已发表的工作重建了CRISPR-Cas系统的起源，发现原核转座子编码的IscB和TnpB蛋白分别是Cas9与Cas12核酸酶的祖先7。这些祖先蛋白尺寸较小，但其是否具备核酸酶活性缺乏证据；直到2021年，IscB和TnpB被发现在非编码RNA（omegaRNA或reRNA）引导下切割双链DNA，证实了其与CRISPR-Cas系统相似的工作机制8, 9。TnpB由IS200&#x2F;IS605等原核转座子家族编码，并被推测参与转座子的扩张9。TnpB的分布非常广泛，在目前已知的基因组存在超过百万的拷贝8；但此前的研究只发现了一种在人类细胞中具有活性的TnpB核酸酶（ISDra2），且效率不高9；因此，TnpB这一有潜力作为微型编辑工具的多样性宝库急需系统性的挖掘和研究。同时，由于可能推动转座子扩张，TnpB靶向切割DNA所依赖的关键元件（如reRNA）与转座子或存在关联，因而可以基于转座子信息进行预测，这将为工具的开发提供便利。</p>
-<p>　　2023年6月29日，中国科学院动物研究所&#x2F;北京干细胞与再生医学研究院王皓毅研究员、项光海博士和中国科学动物研究所张勇研究员团队合作在<em>Nature Biotechnology</em>杂志在线发表题为Evolutionary mining and functional characterization of TnpB nucleases identify efficient miniature genome editors的研究论文。<em>Nature Biotechnology</em>杂志同时发表了Research Briefing文章对该研究成果进行了总结和展望（Hypercompact genome editors are discovered by mining a transposon family）。该研究创新性地建立了对TnpB相关靶向基因编辑系统的大规模挖掘方法，并首次对多样性极其丰富的TnpB核酸酶进行了大规模挖掘，从而鉴定到了33个在原核系统具有靶向编辑活性的TnpB蛋白，其中5个在真核系统具有活性。</p>
-<p>　　研究团队首先对ISfinder原核转座子数据库中IS605编码的TnpB蛋白进行了全面的分析和挖掘，从64个候选项中鉴定出了25种在大肠杆菌中活跃的系统，其中3种在人类细胞中具有基因编辑活性。对于功能数据的进一步分析则揭示TnpB蛋白相关的reRNA骨架与IS200&#x2F;IS605转座子的RE序列具有完全重叠的3’末端；而TAM序列则与转座子上游的插入位点序列相同。该结果表明在TnpB系统中，与RNA介导的编辑器相关的三大要素（核酸酶、gRNA骨架和TAM序列）均可通过生物信息分析准确预测；这为大规模筛选高活性TnpB核酸酶奠定了基础。这一发现同时也进一步确定了TnpB在IS605中的功能，即作为归巢核酸酶切割转座之后的原位点，从而诱导重组修复实现转座子的拷贝数扩增。</p>
-<p>　　研究团队随后从4个方面对TnpB相关的reRNA骨架进行了分析，结果表明：1）reRNA骨架在120-300nt的长度范围内均能够有效发挥功能，而120-140nt的reRNA骨架活性最强；2）reRNA骨架在3’末端的碱基对其功能有重要影响，单一碱基的突变即会显著降低编辑活性；3）靶向序列的长度在16-20nt为最佳；4）靠近TAM端的12nt是TnpB编辑器的核心序列。研究者进一步整合分析了影响TnpB编辑器活性的潜在因素，发现来自细菌的、由多拷贝转座子编码的、具有完整蛋白结构域和保守氨基酸的TnpB编辑器更为活跃。</p>
-<p>　　最后，团队基于上述理解，建立了大规模挖掘全新TnpB基因编辑器的方法（下图），对部分未经转座子注释的原核基因组进行了从头注释和功能预测，并直接在人类细胞系中筛选获得了新的微型高活性TnpB编辑器ISAam1（369 aa）和ISYmu1（382 aa）。和其他微型Cas蛋白的平行比较发现，ISAam1和ISYmu1的活性与SaCas9相当，显著高于数种已报道的Cas12f蛋白及其变体。</p>
-<p>　　综上，该研究建立了适用于TnpB编辑器的大规模筛选体系，进一步证明了TnpB在转座子扩张中的功能，并对这一类编辑器进行了系统的功能解析，从而获得了目前最小的具备原创知识产权的微型基因编辑器。考虑到体内基因治疗和细胞治疗经常因Cas蛋白过大而递送受限，这一成果将推动相关方面的研究和临床应用。</p>
-<p>　　该研究由中国科学院动物研究所&#x2F;北京干细胞与再生医学研究院完成。北京干细胞与再生医学研究院&#x2F;中国科学院动物研究所王皓毅研究员、项光海博士和中国科学动物研究所张勇研究员为文章的共同通讯作者。项光海博士、研究生李源清、孙晶、霍雍元为文章的共同第一作者。王皓毅研究员长期致力于新型基因编辑工具的开发（Cell Discovery 2019）及CAR-T细胞治疗研究（<em>Cancer Cell</em> 2022）；张勇研究员则致力于转座子等机制介导的新重复基因的起源和进化研究（<em>Nature Ecology &amp; Evolution</em> 2022、<em>Nature Communications</em> 2021）。两个团队的合作推动了对TnpB的挖掘。该研究得到了科技部、中国科学院先导专项、农业农村部和国家自然科学基金委等项目的资助。</p>
-<p>　　<strong>参考文献：</strong></p>
-<p>　　1. Hsu, P.D., Lander, E.S. &amp; Zhang, F. Development and applications of CRISPR-Cas9 for genome engineering. Cell 157, 1262-1278 (2014).</p>
-<p>　　2. Ran, F.A. et al. In vivo genome editing using Staphylococcus aureus Cas9. Nature 520, 186-191 (2015).</p>
-<p>　　3. Bigelyte, G. et al. Miniature type V-F CRISPR-Cas nucleases enable targeted DNA modification in cells. Nat Commun 12, 6191 (2021).</p>
-<p>　　4. Xu, X. et al. Engineered miniature CRISPR-Cas system for mammalian genome regulation and editing. Mol Cell 81, 4333-4345 e4334 (2021).</p>
-<p>　　5. Wu, Z. et al. Programmed genome editing by a miniature CRISPR-Cas12f nuclease. Nat Chem Biol 17, 1132-1138 (2021).</p>
-<p>　　6. Kim, D.Y. et al. Efficient CRISPR editing with a hypercompact Cas12f1 and engineered guide RNAs delivered by adeno-associated virus. Nat Biotechnol 40, 94-102 (2022).</p>
-<p>　　7. Kapitonov, V.V., Makarova, K.S. &amp; Koonin, E.V. ISC, a Novel Group of Bacterial and Archaeal DNA Transposons That Encode Cas9 Homologs. J Bacteriol 198, 797-807 (2015).</p>
-<p>　　8. Altae-Tran, H. et al. The widespread IS200&#x2F;IS605 transposon family encodes diverse programmable RNA-guided endonucleases. Science 374, 57-65 (2021).</p>
-<p>　　9. Karvelis, T. et al. Transposon-associated TnpB is a programmable RNA-guided DNA endonuclease. Nature 599, 692-696 (2021).</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/W020230703345472092562.jpg" alt="230630-王皓毅1.jpg"></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">BioNews</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2023/07/04/%E7%8E%8B%E7%9A%93%E6%AF%85%E5%92%8C%E5%BC%A0%E5%8B%87%E5%9B%A2%E9%98%9F%E5%90%88%E4%BD%9C%E5%BC%80%E5%8F%91%E6%96%B0%E5%9E%8BTnpB%E5%BE%AE%E5%9E%8B%E5%9F%BA%E5%9B%A0%E7%BC%96%E8%BE%91%E5%B7%A5%E5%85%B7-md/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
@@ -2472,6 +2578,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">BioProtocol</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">转座子</a>
               </li>
              
@@ -2484,23 +2594,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">类器官之胚胎干细胞</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">BioProtocol</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Paper</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机随笔</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">从零开始训练一个神经网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Paper</a>
               </li>
              
               <li class="article-tag-list-item">
