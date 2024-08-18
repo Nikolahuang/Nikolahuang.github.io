@@ -252,6 +252,180 @@
 
 
   
+    <article id="post-从零开始训练一个神经网络之四：模型调优和部署" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/08/18/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%AE%AD%E7%BB%83%E4%B8%80%E4%B8%AA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B9%8B%E5%9B%9B%EF%BC%9A%E6%A8%A1%E5%9E%8B%E8%B0%83%E4%BC%98%E5%92%8C%E9%83%A8%E7%BD%B2/" target="_blank">从零开始训练一个神经网络之四：模型调优</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/08/18/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%AE%AD%E7%BB%83%E4%B8%80%E4%B8%AA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B9%8B%E5%9B%9B%EF%BC%9A%E6%A8%A1%E5%9E%8B%E8%B0%83%E4%BC%98%E5%92%8C%E9%83%A8%E7%BD%B2/" class="archive-article-date">
+        <time datetime="2024-08-18T14:21:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-08-18</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>在上期我们实现了多算法训练的不同的模型来对金价走势进行预测，可以看到LSTM得到的模型拟合的精度最高；</p>
+<p>我们后续提出了两个问题：</p>
+<ol>
+<li>如何实现多算法结合的混合模型？</li>
+<li>如何将得到的最佳模型进行部署和实战检验？</li>
+</ol>
+<hr>
+<h1 id="如何实现多算法结合的混合模型？"><a href="#如何实现多算法结合的混合模型？" class="headerlink" title="如何实现多算法结合的混合模型？"></a>如何实现多算法结合的混合模型？</h1><p>创建一个混合模型的思路是将多个模型的预测结果结合在一起，以期望获得比任何单一模型更好的性能。这通常通过以下几种方法来实现：</p>
+<ol>
+<li><strong>加权平均法</strong>：根据各个模型在验证集上的表现，对它们的预测结果进行加权平均。权重可以基于每个模型的均方误差（MSE）反向设置，MSE越低的模型权重越高。</li>
+<li><strong>堆叠（Stacking）</strong>：将多个模型的预测结果作为输入，使用一个元模型（如线性回归、决策树、SVM等）来学习如何最佳地组合这些预测。</li>
+<li><strong>投票法</strong>：对于分类任务，混合模型也可以通过多数投票的方法来确定最终预测。</li>
+</ol>
+<p>当前场景中，我们可以用加权平均法来构建一个混合模型。这是因为主要关注的目标“金价”是时间序列，且使用的模型都是回归模型。</p>
+<h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><ol>
+<li><strong>训练多个模型</strong>：分别训练LSTM、GRU、CNN、XGBoost、RandomForest、SVM、MLP等模型，并获取它们在验证集上的预测结果和对应的MSE。</li>
+<li><strong>计算加权平均</strong>：使用每个模型的MSE反向作为权重，对它们的预测结果进行加权平均。MSE越低的模型，其预测结果权重越高。</li>
+<li><strong>生成最终预测</strong>：对测试集进行加权平均预测，并计算最终的MSE。</li>
+</ol>
+<p>以下是代码的实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVR</span><br><span class="line"><span class="keyword">from</span> sklearn.neural_network <span class="keyword">import</span> MLPRegressor</span><br><span class="line"><span class="keyword">from</span> xgboost <span class="keyword">import</span> XGBRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras.layers <span class="keyword">import</span> LSTM, GRU, Conv1D, Dense, Dropout, Flatten</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> data_solve <span class="keyword">import</span> main <span class="keyword">as</span> data_preprocessing_main</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置Matplotlib使用中文字体，确保图表中的中文字符正常显示</span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>] = [<span class="string">&#x27;SimHei&#x27;</span>]  <span class="comment"># 使用黑体</span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;axes.unicode_minus&#x27;</span>] = <span class="literal">False</span>  <span class="comment"># 确保负号显示正常</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">build_model</span>(<span class="params">model_type, input_shape=<span class="literal">None</span>, units=<span class="number">50</span>, dropout_rate=<span class="number">0.2</span></span>):</span><br><span class="line">    <span class="keyword">if</span> model_type <span class="keyword">in</span> [<span class="string">&#x27;LSTM&#x27;</span>, <span class="string">&#x27;GRU&#x27;</span>, <span class="string">&#x27;CNN&#x27;</span>]:</span><br><span class="line">        model = Sequential()</span><br><span class="line">        <span class="keyword">if</span> model_type == <span class="string">&#x27;LSTM&#x27;</span>:</span><br><span class="line">            model.add(LSTM(units=units, return_sequences=<span class="literal">True</span>, input_shape=input_shape))</span><br><span class="line">            model.add(Dropout(dropout_rate))</span><br><span class="line">            model.add(LSTM(units=units, return_sequences=<span class="literal">False</span>))</span><br><span class="line">        <span class="keyword">elif</span> model_type == <span class="string">&#x27;GRU&#x27;</span>:</span><br><span class="line">            model.add(GRU(units=units, return_sequences=<span class="literal">True</span>, input_shape=input_shape))</span><br><span class="line">            model.add(Dropout(dropout_rate))</span><br><span class="line">            model.add(GRU(units=units, return_sequences=<span class="literal">False</span>))</span><br><span class="line">        <span class="keyword">elif</span> model_type == <span class="string">&#x27;CNN&#x27;</span>:</span><br><span class="line">            model.add(Conv1D(filters=<span class="number">64</span>, kernel_size=<span class="number">2</span>, activation=<span class="string">&#x27;relu&#x27;</span>, input_shape=input_shape))</span><br><span class="line">            model.add(Dropout(dropout_rate))</span><br><span class="line">            model.add(Flatten())</span><br><span class="line">        model.add(Dropout(dropout_rate))</span><br><span class="line">        model.add(Dense(units=<span class="number">3</span>))  <span class="comment"># 输出3个时间步的预测</span></span><br><span class="line">        model.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>, loss=<span class="string">&#x27;mean_squared_error&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> model</span><br><span class="line">    <span class="keyword">elif</span> model_type == <span class="string">&#x27;XGBoost&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> [XGBRegressor(objective=<span class="string">&#x27;reg:squarederror&#x27;</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>)]</span><br><span class="line">    <span class="keyword">elif</span> model_type == <span class="string">&#x27;RandomForest&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> [RandomForestRegressor(n_estimators=<span class="number">100</span>, random_state=<span class="number">42</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>)]</span><br><span class="line">    <span class="keyword">elif</span> model_type == <span class="string">&#x27;SVM&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> [SVR(kernel=<span class="string">&#x27;rbf&#x27;</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>)]</span><br><span class="line">    <span class="keyword">elif</span> model_type == <span class="string">&#x27;MLP&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> [MLPRegressor(hidden_layer_sizes=(units, units), max_iter=<span class="number">500</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>)]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">f&quot;未知的模型类型: <span class="subst">&#123;model_type&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">evaluate_model</span>(<span class="params">model, X_test, y_test, model_type</span>):</span><br><span class="line">    <span class="keyword">if</span> model_type <span class="keyword">in</span> [<span class="string">&#x27;LSTM&#x27;</span>, <span class="string">&#x27;GRU&#x27;</span>, <span class="string">&#x27;CNN&#x27;</span>]:</span><br><span class="line">        predictions = model.predict(X_test)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        X_test_flat = X_test.reshape(X_test.shape[<span class="number">0</span>], -<span class="number">1</span>)</span><br><span class="line">        predictions = np.zeros(y_test.shape)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">            predictions[:, i] = model[i].predict(X_test_flat)</span><br><span class="line"></span><br><span class="line">    mse = mean_squared_error(y_test, predictions)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;测试集上的均方误差: <span class="subst">&#123;mse&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    plt.figure(figsize=(<span class="number">14</span>, <span class="number">7</span>))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(predictions.shape[<span class="number">1</span>]):  <span class="comment"># 针对每个时间步绘制预测和真实值的对比图</span></span><br><span class="line">        plt.plot(y_test[:, i], label=<span class="string">f&#x27;真实值 - 时间步 <span class="subst">&#123;i + <span class="number">1</span>&#125;</span>&#x27;</span>)</span><br><span class="line">        plt.plot(predictions[:, i], label=<span class="string">f&#x27;预测值 - 时间步 <span class="subst">&#123;i + <span class="number">1</span>&#125;</span>&#x27;</span>)</span><br><span class="line">    plt.title(<span class="string">f&#x27;金价预测 vs 真实值 (<span class="subst">&#123;model_type&#125;</span>)&#x27;</span>)</span><br><span class="line">    plt.xlabel(<span class="string">&#x27;时间步&#x27;</span>)</span><br><span class="line">    plt.ylabel(<span class="string">&#x27;金价&#x27;</span>)</span><br><span class="line">    plt.legend()</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> mse, predictions</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">model_search</span>(<span class="params">X_train, y_train, X_val, y_val, X_test, y_test,</span></span><br><span class="line"><span class="params">                 model_types=[<span class="string">&#x27;LSTM&#x27;</span>, <span class="string">&#x27;GRU&#x27;</span>, <span class="string">&#x27;CNN&#x27;</span>, <span class="string">&#x27;XGBoost&#x27;</span>, <span class="string">&#x27;RandomForest&#x27;</span>, <span class="string">&#x27;SVM&#x27;</span>, <span class="string">&#x27;MLP&#x27;</span>], epochs=<span class="number">50</span>, batch_size=<span class="number">32</span></span>):</span><br><span class="line">    model_results = []</span><br><span class="line">    <span class="keyword">for</span> model_type <span class="keyword">in</span> model_types:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;训练模型: <span class="subst">&#123;model_type&#125;</span>&quot;</span>)</span><br><span class="line">        model = build_model(model_type, input_shape=(X_train.shape[<span class="number">1</span>], X_train.shape[<span class="number">2</span>]))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> model_type <span class="keyword">in</span> [<span class="string">&#x27;LSTM&#x27;</span>, <span class="string">&#x27;GRU&#x27;</span>, <span class="string">&#x27;CNN&#x27;</span>]:</span><br><span class="line">            model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=epochs, batch_size=batch_size, verbose=<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            X_train_flat = X_train.reshape(X_train.shape[<span class="number">0</span>], -<span class="number">1</span>)</span><br><span class="line">            X_val_flat = X_val.reshape(X_val.shape[<span class="number">0</span>], -<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):  <span class="comment"># 训练每个时间步的模型</span></span><br><span class="line">                model[i].fit(X_train_flat, y_train[:, i])</span><br><span class="line"></span><br><span class="line">        mse, predictions = evaluate_model(model, X_test, y_test, model_type)</span><br><span class="line">        model_results.append((model_type, model, mse))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> model_results</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">combine_models</span>(<span class="params">model_results, X_test</span>):</span><br><span class="line">    inv_mse_sum = <span class="built_in">sum</span>(<span class="number">1</span>/mse <span class="keyword">for</span> _, _, mse <span class="keyword">in</span> model_results)</span><br><span class="line">    combined_predictions = np.zeros_like(model_results[<span class="number">0</span>][<span class="number">1</span>].predict(X_test))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _, model, mse <span class="keyword">in</span> model_results:</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(model, <span class="built_in">list</span>):  <span class="comment"># 对于非神经网络模型</span></span><br><span class="line">            predictions = np.zeros((X_test.shape[<span class="number">0</span>], <span class="number">3</span>))</span><br><span class="line">            X_test_flat = X_test.reshape(X_test.shape[<span class="number">0</span>], -<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">                predictions[:, i] = model[i].predict(X_test_flat)</span><br><span class="line">        <span class="keyword">else</span>:  <span class="comment"># 对于神经网络模型</span></span><br><span class="line">            predictions = model.predict(X_test)</span><br><span class="line"></span><br><span class="line">        weight = (<span class="number">1</span>/mse) / inv_mse_sum</span><br><span class="line">        combined_predictions += weight * predictions</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> combined_predictions</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">evaluate_combined_model</span>(<span class="params">y_test, combined_predictions</span>):</span><br><span class="line">    mse = mean_squared_error(y_test, combined_predictions)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;混合模型的均方误差: <span class="subst">&#123;mse&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    plt.figure(figsize=(<span class="number">14</span>, <span class="number">7</span>))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(combined_predictions.shape[<span class="number">1</span>]):  <span class="comment"># 针对每个时间步绘制预测和真实值的对比图</span></span><br><span class="line">        plt.plot(y_test[:, i], label=<span class="string">f&#x27;真实值 - 时间步 <span class="subst">&#123;i + <span class="number">1</span>&#125;</span>&#x27;</span>)</span><br><span class="line">        plt.plot(combined_predictions[:, i], label=<span class="string">f&#x27;混合预测值 - 时间步 <span class="subst">&#123;i + <span class="number">1</span>&#125;</span>&#x27;</span>)</span><br><span class="line">    plt.title(<span class="string">&#x27;金价预测 vs 真实值 (混合模型)&#x27;</span>)</span><br><span class="line">    plt.xlabel(<span class="string">&#x27;时间步&#x27;</span>)</span><br><span class="line">    plt.ylabel(<span class="string">&#x27;金价&#x27;</span>)</span><br><span class="line">    plt.legend()</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 主函数</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    X_train, X_val, X_test, y_train, y_val, y_test = data_preprocessing_main(</span><br><span class="line">        file_path=<span class="string">&#x27;gold_price_data_extracted.csv&#x27;</span>,</span><br><span class="line">        window_size=<span class="number">10</span>,</span><br><span class="line">        prediction_horizon=<span class="number">3</span>,</span><br><span class="line">        normalization_method=<span class="string">&#x27;minmax&#x27;</span>,</span><br><span class="line">        train_size=<span class="number">0.7</span>,</span><br><span class="line">        validation_size=<span class="number">0.1</span>,</span><br><span class="line">        drop_columns=[<span class="string">&#x27;Adj&#x27;</span>, <span class="string">&#x27;Volume&#x27;</span>],</span><br><span class="line">        indicators=[<span class="string">&#x27;MA&#x27;</span>, <span class="string">&#x27;RSI&#x27;</span>, <span class="string">&#x27;MACD&#x27;</span>, <span class="string">&#x27;Bollinger&#x27;</span>, <span class="string">&#x27;ATR&#x27;</span>]</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    model_results = model_search(X_train, y_train, X_val, y_val, X_test, y_test)</span><br><span class="line"></span><br><span class="line">    combined_predictions = combine_models(model_results, X_test)</span><br><span class="line"></span><br><span class="line">    evaluate_combined_model(y_test, combined_predictions)</span><br><span class="line"></span><br><span class="line">    best_model_type, best_model, _ = <span class="built_in">min</span>(model_results, key=<span class="keyword">lambda</span> x: x[<span class="number">2</span>])</span><br><span class="line">    <span class="keyword">if</span> best_model_type <span class="keyword">in</span> [<span class="string">&#x27;LSTM&#x27;</span>, <span class="string">&#x27;GRU&#x27;</span>, <span class="string">&#x27;CNN&#x27;</span>]:</span><br><span class="line">        best_model.save(<span class="string">f&#x27;best_model_<span class="subst">&#123;best_model_type&#125;</span>.h5&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;最佳模型 <span class="subst">&#123;best_model_type&#125;</span> 已保存。&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>运行的结果如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">2024-08-18 22:45:34.472344: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.</span><br><span class="line">2024-08-18 22:45:34.999176: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.</span><br><span class="line">2024-08-18 22:45:36,762 - INFO - 数据加载完成</span><br><span class="line">2024-08-18 22:45:36,762 - INFO - 原始数据包含 3474 行，7 列</span><br><span class="line">2024-08-18 22:45:36,774 - INFO - 数据清理完成</span><br><span class="line">2024-08-18 22:45:36,774 - INFO - 清理后的数据包含 3474 行，5 列</span><br><span class="line">2024-08-18 22:45:36,776 - INFO - 数据预览:</span><br><span class="line">           Date    Open    High     Low   Close</span><br><span class="line">3473 2010-10-05  134.10  134.10  134.10  134.03</span><br><span class="line">3472 2010-10-06  134.10  135.00  134.10  134.77</span><br><span class="line">3471 2010-10-19  136.98  136.98  132.93  133.60</span><br><span class="line">3470 2010-10-20  133.43  134.70  133.38  134.42</span><br><span class="line">3469 2010-10-21  134.32  134.72  131.88  132.56</span><br><span class="line">2024-08-18 22:45:36,776 - INFO - 生成技术指标: [&#x27;MA&#x27;, &#x27;RSI&#x27;, &#x27;MACD&#x27;, &#x27;Bollinger&#x27;, &#x27;ATR&#x27;]</span><br><span class="line">2024-08-18 22:45:36,795 - INFO - 技术指标生成完成</span><br><span class="line">2024-08-18 22:45:36,798 - INFO - 数据归一化/标准化完成，方法: minmax</span><br><span class="line">2024-08-18 22:45:36,909 - INFO - 滑动窗口生成特征和标签，窗口大小: 10, 预测范围: 3</span><br><span class="line">2024-08-18 22:45:36,910 - INFO - 数据集划分完成: 训练集大小=(2407, 10, 11), 验证集大小=(343, 10, 11), 测试集大小=(689, 10, 11)</span><br><span class="line">2024-08-18 22:45:36,910 - INFO - 训练集大小: (2407, 10, 11), 验证集大小: (343, 10, 11), 测试集大小: (689, 10, 11)</span><br><span class="line">2024-08-18 22:45:36.913249: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.</span><br><span class="line">To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.</span><br><span class="line">训练模型: LSTM</span><br><span class="line">E:\ProgramData\anaconda3\envs\goldenpre\Lib\site-packages\keras\src\layers\rnn\rnn.py:204: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.</span><br><span class="line">  super().__init__(**kwargs)</span><br><span class="line">22/22 ━━━━━━━━━━━━━━━━━━━━ 0s 6ms/step</span><br><span class="line">测试集上的均方误差: 0.00027118924039005093</span><br><span class="line">训练模型: GRU</span><br><span class="line">E:\ProgramData\anaconda3\envs\goldenpre\Lib\site-packages\keras\src\layers\rnn\rnn.py:204: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.</span><br><span class="line">  super().__init__(**kwargs)</span><br><span class="line">22/22 ━━━━━━━━━━━━━━━━━━━━ 0s 8ms/step</span><br><span class="line">测试集上的均方误差: 0.0002801844536378178</span><br><span class="line">训练模型: CNN</span><br><span class="line">E:\ProgramData\anaconda3\envs\goldenpre\Lib\site-packages\keras\src\layers\convolutional\base_conv.py:107: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.</span><br><span class="line">  super().__init__(activity_regularizer=activity_regularizer, **kwargs)</span><br><span class="line">22/22 ━━━━━━━━━━━━━━━━━━━━ 0s 1ms/step </span><br><span class="line">测试集上的均方误差: 0.0003564422049939142</span><br><span class="line">训练模型: XGBoost</span><br><span class="line">测试集上的均方误差: 0.013671010934760258</span><br><span class="line">训练模型: RandomForest</span><br><span class="line">测试集上的均方误差: 0.013248586110257024</span><br><span class="line">训练模型: SVM</span><br><span class="line">测试集上的均方误差: 0.04974934214151624</span><br><span class="line">训练模型: MLP</span><br><span class="line">测试集上的均方误差: 0.0011011161628656963</span><br><span class="line">22/22 ━━━━━━━━━━━━━━━━━━━━ 0s 952us/step</span><br><span class="line">22/22 ━━━━━━━━━━━━━━━━━━━━ 0s 905us/step</span><br><span class="line">22/22 ━━━━━━━━━━━━━━━━━━━━ 0s 1000us/step</span><br><span class="line">22/22 ━━━━━━━━━━━━━━━━━━━━ 0s 524us/step</span><br><span class="line">混合模型的均方误差: 0.0003560467854642135</span><br><span class="line">2024-08-18 22:46:58,301 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save(&#x27;my_model.keras&#x27;)` or `keras.saving.save_model(model, &#x27;my_model.keras&#x27;)`. </span><br><span class="line">最佳模型 LSTM 已保存。</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240818230301007.png" alt="image-20240818230301007"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240818230317689.png" alt="image-20240818230317689"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240818230326067.png" alt="image-20240818230326067"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240818230333527.png" alt="image-20240818230333527"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240818230340772.png" alt="image-20240818230340772"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240818230347867.png" alt="image-20240818230347867"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240818230354945.png" alt="image-20240818230354945"></p>
+<p><u>我们可以注意到：</u></p>
+<ol>
+<li><u>运用LSTM设计的模型在测试集上的均方误差: 0.00027118924039005093，而我们最终的混合模型的均方误差: 0.0003560467854642135，反而比LSTM大；</u></li>
+<li><u>模型训练的结果波动幅度比较大(经过本人多次测试)；</u></li>
+</ol>
+<hr>
+<h3 id="解决上述问题的实现思路和方法："><a href="#解决上述问题的实现思路和方法：" class="headerlink" title="解决上述问题的实现思路和方法："></a>解决上述问题的实现思路和方法：</h3><p>混合模型的表现有时可能不如某个单独模型的原因可能包括以下几点：</p>
+<ol>
+<li><strong>权重分配</strong>：在混合模型中，模型的预测结果是基于每个模型的均方误差（MSE）进行加权的。如果一个模型的预测误差相对较小，它的权重就会更大。然而，如果这些模型的预测结果具有较大的方差，即使一个模型的MSE较小，整体的加权平均可能并不会显著提升预测精度。</li>
+<li><strong>模型之间的相似性</strong>：如果多个模型的预测结果非常相似，那么组合它们并不会显著提高性能。在这种情况下，混合模型的表现可能接近于最好的单个模型。</li>
+<li><strong>混合策略的局限性</strong>：当前的混合策略只是简单地基于MSE进行加权平均，没有考虑更复杂的混合策略，例如非线性组合、堆叠模型（stacking），这些更复杂的方法可能会捕捉到单个模型未能捕捉到的模式，从而提高整体模型的表现。</li>
+<li><strong>模型多样性不足</strong>：混合模型的效果依赖于不同模型之间的多样性。如果模型之间的多样性不足（即它们预测出的结果过于相似），混合模型的效果可能不会显著提升。</li>
+</ol>
+<h3 id="可能的解决方法"><a href="#可能的解决方法" class="headerlink" title="可能的解决方法"></a>可能的解决方法</h3><ol>
+<li><strong>尝试其他混合策略</strong>：除了简单的加权平均，你可以尝试其他混合方法，例如堆叠（stacking），其中一个元学习器（如线性回归、神经网络）学习如何组合不同模型的预测结果。</li>
+<li><strong>增加模型的多样性</strong>：通过加入更多不同类型的模型，或者调整现有模型的超参数，可以增加模型的多样性，从而提升混合模型的效果。</li>
+<li><strong>模型选择</strong>：有时，简单的选择表现最好的单一模型可能比混合所有模型效果更好。你可以通过更多的验证和交叉验证来决定是否需要混合模型。</li>
+<li><strong>手动调整权重</strong>：尝试对各个模型的权重进行手动调整，而不仅仅依赖于MSE来进行加权。手动权重调整可以基于经验或者通过优化方法找到最佳的权重组合。</li>
+</ol>
+<h4 id="尝试使用其他混合方法，例如堆叠（stacking），学习如何组合不同模型的预测结果、调整现有模型的超参数增加模型的多样性"><a href="#尝试使用其他混合方法，例如堆叠（stacking），学习如何组合不同模型的预测结果、调整现有模型的超参数增加模型的多样性" class="headerlink" title="尝试使用其他混合方法，例如堆叠（stacking），学习如何组合不同模型的预测结果、调整现有模型的超参数增加模型的多样性"></a>尝试使用其他混合方法，例如堆叠（stacking），学习如何组合不同模型的预测结果、调整现有模型的超参数增加模型的多样性</h4><ol>
+<li><strong>整体框架和模块设计</strong><ul>
+<li><strong>数据预处理模块</strong> (<code>data_preprocessing_main</code>): 这一部分代码从CSV文件中加载数据，并进行清洗、标准化、技术指标生成等处理，生成用于模型训练和测试的数据集（<code>X_train</code>, <code>X_val</code>, <code>X_test</code>, <code>y_train</code>, <code>y_val</code>, <code>y_test</code>）。</li>
+<li><strong>模型构建模块</strong> (<code>build_model</code>): 该函数根据传入的模型类型 (<code>model_type</code>) 构建不同类型的模型。支持的模型类型包括神经网络模型（<code>LSTM</code>, <code>GRU</code>, <code>CNN</code>）和传统机器学习模型（<code>XGBoost</code>, <code>RandomForest</code>, <code>SVM</code>, <code>MLP</code>）。对于神经网络模型，使用Keras框架进行构建，并返回编译好的模型；对于传统机器学习模型，返回的是模型实例列表，每个列表中的模型用于预测一个时间步。</li>
+<li><strong>模型评估模块</strong> (<code>evaluate_model</code>): 该函数评估训练好的模型在测试集上的表现，计算并打印均方误差（MSE），并绘制模型的预测结果与真实值的对比图。神经网络模型直接通过<code>model.predict</code>生成预测值，而传统机器学习模型则针对每个时间步分别进行预测并组合。</li>
+<li><strong>堆叠模型模块</strong> (<code>stack_models</code>): 此函数实现了使用堆叠方法来组合多个模型的预测结果。对于每个时间步，堆叠模型结合了来自不同基础模型的预测结果，并使用线性回归作为初级学习器，最后通过随机森林回归器作为终极学习器进行堆叠预测。</li>
+<li><strong>模型搜索与混合模块</strong> (<code>model_search</code>): 这是核心函数，负责搜索最优模型。函数遍历不同模型类型，分别训练并评估每种模型的性能。评估完所有模型后，调用<code>stack_models</code>函数对模型进行堆叠组合。最后输出最优单一模型及其均方误差，同时输出堆叠组合模型的均方误差。</li>
+</ul>
+</li>
+<li><strong>代码流程</strong><ul>
+<li><strong>数据生成</strong>: 通过<code>data_preprocessing_main</code>函数生成训练集、验证集和测试集的数据。</li>
+<li><strong>模型搜索与训练</strong>: <code>model_search</code>函数遍历所有指定的模型类型（包括神经网络模型和传统机器学习模型），为每种模型训练并评估其在测试集上的表现。</li>
+<li><strong>堆叠模型组合</strong>: 使用堆叠方法对所有模型进行组合预测，并计算组合模型的均方误差。</li>
+<li><strong>模型保存</strong>: 将最优的单一模型保存为HDF5格式，便于后续使用。</li>
+</ul>
+</li>
+<li><strong>模型混合策略</strong><ul>
+<li><strong>多模型训练</strong>: 每种模型都独立训练，并在测试集上进行评估。</li>
+<li><strong>堆叠策略</strong>: 对不同模型的预测结果进行堆叠，通过线性回归和随机森林等方法来学习如何最优地组合这些模型的预测，得到最终的组合模型预测结果。</li>
+</ul>
+</li>
+<li><strong>主要亮点</strong><ul>
+<li><strong>多样化的模型选择</strong>: 支持多种神经网络模型（LSTM、GRU、CNN）以及传统机器学习模型（XGBoost、RandomForest、SVM、MLP）。</li>
+<li><strong>堆叠方法的应用</strong>: 通过堆叠多种模型的预测结果，实现了不同模型的优势互补，旨在提高最终预测的准确性。</li>
+<li><strong>代码的灵活性和可扩展性</strong>: 使用统一的框架处理不同类型的模型，使得代码具有很高的可读性和可维护性，便于进一步扩展。</li>
+</ul>
+</li>
+</ol>
+<p>代码实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor, StackingRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVR</span><br><span class="line"><span class="keyword">from</span> sklearn.neural_network <span class="keyword">import</span> MLPRegressor</span><br><span class="line"><span class="keyword">from</span> xgboost <span class="keyword">import</span> XGBRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split, ParameterGrid</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras.layers <span class="keyword">import</span> LSTM, GRU, Conv1D, Dense, Dropout, Flatten</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> data_solve <span class="keyword">import</span> main <span class="keyword">as</span> data_preprocessing_main</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置Matplotlib使用中文字体，确保图表中的中文字符正常显示</span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>] = [<span class="string">&#x27;SimHei&#x27;</span>]  <span class="comment"># 使用黑体</span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;axes.unicode_minus&#x27;</span>] = <span class="literal">False</span>  <span class="comment"># 确保负号显示正常</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">build_model</span>(<span class="params">model_type, input_shape=<span class="literal">None</span>, units=<span class="number">50</span>, dropout_rate=<span class="number">0.2</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    构建并编译模型或实例化机器学习算法。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    参数:</span></span><br><span class="line"><span class="string">    - model_type: 模型类型 (&#x27;LSTM&#x27;, &#x27;GRU&#x27;, &#x27;CNN&#x27;, &#x27;XGBoost&#x27;, &#x27;RandomForest&#x27;, &#x27;SVM&#x27;, &#x27;MLP&#x27;)</span></span><br><span class="line"><span class="string">    - input_shape: 输入数据的形状 (time_steps, num_features)，仅适用于神经网络</span></span><br><span class="line"><span class="string">    - units: 神经元数量，适用于神经网络</span></span><br><span class="line"><span class="string">    - dropout_rate: Dropout层的比例，用于防止过拟合</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    返回:</span></span><br><span class="line"><span class="string">    - 编译好的模型或实例化好的机器学习算法</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> model_type <span class="keyword">in</span> [<span class="string">&#x27;LSTM&#x27;</span>, <span class="string">&#x27;GRU&#x27;</span>, <span class="string">&#x27;CNN&#x27;</span>]:</span><br><span class="line">        model = Sequential()</span><br><span class="line">        <span class="keyword">if</span> model_type == <span class="string">&#x27;LSTM&#x27;</span>:</span><br><span class="line">            model.add(LSTM(units=units, return_sequences=<span class="literal">True</span>, input_shape=input_shape))</span><br><span class="line">            model.add(Dropout(dropout_rate))</span><br><span class="line">            model.add(LSTM(units=units, return_sequences=<span class="literal">False</span>))</span><br><span class="line">        <span class="keyword">elif</span> model_type == <span class="string">&#x27;GRU&#x27;</span>:</span><br><span class="line">            model.add(GRU(units=units, return_sequences=<span class="literal">True</span>, input_shape=input_shape))</span><br><span class="line">            model.add(Dropout(dropout_rate))</span><br><span class="line">            model.add(GRU(units=units, return_sequences=<span class="literal">False</span>))</span><br><span class="line">        <span class="keyword">elif</span> model_type == <span class="string">&#x27;CNN&#x27;</span>:</span><br><span class="line">            model.add(Conv1D(filters=<span class="number">64</span>, kernel_size=<span class="number">2</span>, activation=<span class="string">&#x27;relu&#x27;</span>, input_shape=input_shape))</span><br><span class="line">            model.add(Dropout(dropout_rate))</span><br><span class="line">            model.add(Flatten())</span><br><span class="line">        model.add(Dropout(dropout_rate))</span><br><span class="line">        model.add(Dense(units=<span class="number">3</span>))  <span class="comment"># 输出3个时间步的预测</span></span><br><span class="line">        model.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>, loss=<span class="string">&#x27;mean_squared_error&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> model</span><br><span class="line">    <span class="keyword">elif</span> model_type == <span class="string">&#x27;XGBoost&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> [XGBRegressor(objective=<span class="string">&#x27;reg:squarederror&#x27;</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>)]</span><br><span class="line">    <span class="keyword">elif</span> model_type == <span class="string">&#x27;RandomForest&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> [RandomForestRegressor(n_estimators=<span class="number">100</span>, random_state=<span class="number">42</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>)]</span><br><span class="line">    <span class="keyword">elif</span> model_type == <span class="string">&#x27;SVM&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> [SVR(kernel=<span class="string">&#x27;rbf&#x27;</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>)]</span><br><span class="line">    <span class="keyword">elif</span> model_type == <span class="string">&#x27;MLP&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> [MLPRegressor(hidden_layer_sizes=(units, units), max_iter=<span class="number">500</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>)]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">f&quot;未知的模型类型: <span class="subst">&#123;model_type&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">evaluate_model</span>(<span class="params">model, X_test, y_test, model_type</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    评估模型在测试集上的表现，并绘制预测值与真实值的对比图。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    参数:</span></span><br><span class="line"><span class="string">    - model: 训练好的模型</span></span><br><span class="line"><span class="string">    - X_test, y_test: 测试数据及其标签</span></span><br><span class="line"><span class="string">    - model_type: 模型类型，决定如何处理数据输入</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    返回:</span></span><br><span class="line"><span class="string">    - 测试集上的均方误差 (MSE)</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> model_type <span class="keyword">in</span> [<span class="string">&#x27;LSTM&#x27;</span>, <span class="string">&#x27;GRU&#x27;</span>, <span class="string">&#x27;CNN&#x27;</span>]:</span><br><span class="line">        predictions = model.predict(X_test)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        X_test_flat = X_test.reshape(X_test.shape[<span class="number">0</span>], -<span class="number">1</span>)</span><br><span class="line">        predictions = np.zeros(y_test.shape)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">            predictions[:, i] = model[i].predict(X_test_flat)</span><br><span class="line"></span><br><span class="line">    mse = mean_squared_error(y_test, predictions)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;测试集上的均方误差: <span class="subst">&#123;mse&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    plt.figure(figsize=(<span class="number">14</span>, <span class="number">7</span>))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(predictions.shape[<span class="number">1</span>]):  <span class="comment"># 针对每个时间步绘制预测和真实值的对比图</span></span><br><span class="line">        plt.plot(y_test[:, i], label=<span class="string">f&#x27;真实值 - 时间步 <span class="subst">&#123;i + <span class="number">1</span>&#125;</span>&#x27;</span>)</span><br><span class="line">        plt.plot(predictions[:, i], label=<span class="string">f&#x27;预测值 - 时间步 <span class="subst">&#123;i + <span class="number">1</span>&#125;</span>&#x27;</span>)</span><br><span class="line">    plt.title(<span class="string">f&#x27;金价预测 vs 真实值 (<span class="subst">&#123;model_type&#125;</span>)&#x27;</span>)</span><br><span class="line">    plt.xlabel(<span class="string">&#x27;时间步&#x27;</span>)</span><br><span class="line">    plt.ylabel(<span class="string">&#x27;金价&#x27;</span>)</span><br><span class="line">    plt.legend()</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> mse</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">stack_models</span>(<span class="params">model_results, X_test, y_test</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    使用堆叠方法结合多个模型的预测结果。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    参数:</span></span><br><span class="line"><span class="string">    - model_results: 每个模型的结果，包括模型实例、类型等信息</span></span><br><span class="line"><span class="string">    - X_test: 测试数据特征</span></span><br><span class="line"><span class="string">    - y_test: 测试数据标签</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    返回:</span></span><br><span class="line"><span class="string">    - 堆叠后的模型均方误差</span></span><br><span class="line"><span class="string">    - 堆叠模型的预测结果</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    combined_predictions = np.zeros_like(y_test)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> <span class="built_in">range</span>(y_test.shape[<span class="number">1</span>]):  <span class="comment"># 针对每个时间步</span></span><br><span class="line">        stacked_predictions = np.column_stack([</span><br><span class="line">            np.mean([sub_model.predict(X_test.reshape(X_test.shape[<span class="number">0</span>], -<span class="number">1</span>)) <span class="keyword">for</span> sub_model <span class="keyword">in</span> model], axis=<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">isinstance</span>(model, <span class="built_in">list</span>) <span class="keyword">else</span> model.predict(X_test)[:, t]</span><br><span class="line">            <span class="keyword">for</span> model_type, model, mse, _ <span class="keyword">in</span> model_results</span><br><span class="line">        ])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 使用线性回归作为堆叠模型</span></span><br><span class="line">        stacker = StackingRegressor(</span><br><span class="line">            estimators=[(<span class="string">f&#x27;model_<span class="subst">&#123;i&#125;</span>&#x27;</span>, LinearRegression()) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(stacked_predictions.shape[<span class="number">1</span>])],</span><br><span class="line">            final_estimator=RandomForestRegressor(n_estimators=<span class="number">100</span>, random_state=<span class="number">42</span>)</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        stacker.fit(stacked_predictions, y_test[:, t])</span><br><span class="line">        combined_predictions[:, t] = stacker.predict(stacked_predictions)</span><br><span class="line"></span><br><span class="line">    mse = mean_squared_error(y_test, combined_predictions)</span><br><span class="line">    <span class="keyword">return</span> mse, combined_predictions</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">model_search</span>(<span class="params">X_train, y_train, X_val, y_val, X_test, y_test,</span></span><br><span class="line"><span class="params">                 model_types=[<span class="string">&#x27;LSTM&#x27;</span>, <span class="string">&#x27;GRU&#x27;</span>, <span class="string">&#x27;CNN&#x27;</span>, <span class="string">&#x27;XGBoost&#x27;</span>, <span class="string">&#x27;RandomForest&#x27;</span>, <span class="string">&#x27;SVM&#x27;</span>, <span class="string">&#x27;MLP&#x27;</span>], epochs=<span class="number">50</span>, batch_size=<span class="number">32</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    搜索最佳模型类型、训练步数，并评估模型性能。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    参数:</span></span><br><span class="line"><span class="string">    - X_train, y_train: 训练数据及其标签</span></span><br><span class="line"><span class="string">    - X_val, y_val: 验证数据及其标签</span></span><br><span class="line"><span class="string">    - X_test, y_test: 测试数据及其标签</span></span><br><span class="line"><span class="string">    - model_types: 模型类型列表 ([&#x27;LSTM&#x27;, &#x27;GRU&#x27;, &#x27;CNN&#x27;, &#x27;XGBoost&#x27;, &#x27;RandomForest&#x27;, &#x27;SVM&#x27;, &#x27;MLP&#x27;])</span></span><br><span class="line"><span class="string">    - epochs: 最大训练轮次</span></span><br><span class="line"><span class="string">    - batch_size: 批次大小</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    返回:</span></span><br><span class="line"><span class="string">    - 最佳模型类型和性能</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    best_model = <span class="literal">None</span></span><br><span class="line">    best_mse = <span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)</span><br><span class="line">    best_model_type = <span class="literal">None</span></span><br><span class="line">    model_results = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> model_type <span class="keyword">in</span> model_types:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;训练模型: <span class="subst">&#123;model_type&#125;</span>&quot;</span>)</span><br><span class="line">        model = build_model(model_type, input_shape=(X_train.shape[<span class="number">1</span>], X_train.shape[<span class="number">2</span>]))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> model_type <span class="keyword">in</span> [<span class="string">&#x27;LSTM&#x27;</span>, <span class="string">&#x27;GRU&#x27;</span>, <span class="string">&#x27;CNN&#x27;</span>]:</span><br><span class="line">            model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=epochs, batch_size=batch_size, verbose=<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            X_train_flat = X_train.reshape(X_train.shape[<span class="number">0</span>], -<span class="number">1</span>)</span><br><span class="line">            X_val_flat = X_val.reshape(X_val.shape[<span class="number">0</span>], -<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):  <span class="comment"># 训练每个时间步的模型</span></span><br><span class="line">                model[i].fit(X_train_flat, y_train[:, i])</span><br><span class="line"></span><br><span class="line">        mse = evaluate_model(model, X_test, y_test, model_type)</span><br><span class="line">        model_results.append((model_type, model, mse, model))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> mse &lt; best_mse:</span><br><span class="line">            best_mse = mse</span><br><span class="line">            best_model = model</span><br><span class="line">            best_model_type = model_type</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 使用堆叠方法结合模型</span></span><br><span class="line">    combined_mse, combined_predictions = stack_models(model_results, X_test, y_test)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;混合模型的均方误差: <span class="subst">&#123;combined_mse&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> best_model, best_model_type, best_mse, combined_mse</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 主函数</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment"># 生成数据 (你可以根据你的情况替换为实际的数据生成过程)</span></span><br><span class="line">    <span class="comment"># 数据生成部分需要根据你具体的数据情况进行替换</span></span><br><span class="line">    X_train, X_val, X_test, y_train, y_val, y_test = data_preprocessing_main(</span><br><span class="line">        file_path=<span class="string">&#x27;gold_price_data_extracted.csv&#x27;</span>,</span><br><span class="line">        window_size=<span class="number">10</span>,</span><br><span class="line">        prediction_horizon=<span class="number">3</span>,</span><br><span class="line">        normalization_method=<span class="string">&#x27;minmax&#x27;</span>,</span><br><span class="line">        train_size=<span class="number">0.7</span>,</span><br><span class="line">        validation_size=<span class="number">0.1</span>,</span><br><span class="line">        drop_columns=[<span class="string">&#x27;Adj&#x27;</span>, <span class="string">&#x27;Volume&#x27;</span>],</span><br><span class="line">        indicators=[<span class="string">&#x27;MA&#x27;</span>, <span class="string">&#x27;RSI&#x27;</span>, <span class="string">&#x27;MACD&#x27;</span>, <span class="string">&#x27;Bollinger&#x27;</span>, <span class="string">&#x27;ATR&#x27;</span>]</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 进行模型搜索</span></span><br><span class="line">    best_model, best_model_type, best_mse, combined_mse = model_search(X_train, y_train, X_val, y_val, X_test, y_test)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 保存最佳模型</span></span><br><span class="line">    <span class="keyword">if</span> best_model_type <span class="keyword">in</span> [<span class="string">&#x27;LSTM&#x27;</span>, <span class="string">&#x27;GRU&#x27;</span>, <span class="string">&#x27;CNN&#x27;</span>]:</span><br><span class="line">        best_model.save(<span class="string">f&#x27;best_model_<span class="subst">&#123;best_model_type&#125;</span>.h5&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;最佳模型 <span class="subst">&#123;best_model_type&#125;</span> 已保存。&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240819003754338.png" alt="image-20240819003754338"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">2024-08-19 00:32:57,653 - INFO - 数据加载完成</span><br><span class="line">2024-08-19 00:32:57,653 - INFO - 原始数据包含 3474 行，7 列</span><br><span class="line">2024-08-19 00:32:57,665 - INFO - 数据清理完成</span><br><span class="line">2024-08-19 00:32:57,665 - INFO - 清理后的数据包含 3474 行，5 列</span><br><span class="line">2024-08-19 00:32:57,668 - INFO - 数据预览:</span><br><span class="line">           Date    Open    High     Low   Close</span><br><span class="line">3473 2010-10-05  134.10  134.10  134.10  134.03</span><br><span class="line">3472 2010-10-06  134.10  135.00  134.10  134.77</span><br><span class="line">3471 2010-10-19  136.98  136.98  132.93  133.60</span><br><span class="line">3470 2010-10-20  133.43  134.70  133.38  134.42</span><br><span class="line">3469 2010-10-21  134.32  134.72  131.88  132.56</span><br><span class="line">2024-08-19 00:32:57,668 - INFO - 生成技术指标: [&#x27;MA&#x27;, &#x27;RSI&#x27;, &#x27;MACD&#x27;, &#x27;Bollinger&#x27;, &#x27;ATR&#x27;]</span><br><span class="line">2024-08-19 00:32:57,688 - INFO - 技术指标生成完成</span><br><span class="line">2024-08-19 00:32:57,691 - INFO - 数据归一化/标准化完成，方法: minmax</span><br><span class="line">2024-08-19 00:32:57,814 - INFO - 滑动窗口生成特征和标签，窗口大小: 10, 预测范围: 3</span><br><span class="line">2024-08-19 00:32:57,816 - INFO - 数据集划分完成: 训练集大小=(2407, 10, 11), 验证集大小=(343, 10, 11), 测试集大小=(689, 10, 11)</span><br><span class="line">2024-08-19 00:32:57,816 - INFO - 训练集大小: (2407, 10, 11), 验证集大小: (343, 10, 11), 测试集大小: (689, 10, 11)</span><br><span class="line">E:\ProgramData\anaconda3\envs\goldenpre\Lib\site-packages\keras\src\layers\rnn\rnn.py:204: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.</span><br><span class="line">  super().__init__(**kwargs)</span><br><span class="line">训练模型: LSTM</span><br><span class="line">22/22 ━━━━━━━━━━━━━━━━━━━━ 0s 7ms/step</span><br><span class="line">测试集上的均方误差: 0.0005383426715256204</span><br><span class="line">训练模型: GRU</span><br><span class="line">E:\ProgramData\anaconda3\envs\goldenpre\Lib\site-packages\keras\src\layers\rnn\rnn.py:204: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.</span><br><span class="line">  super().__init__(**kwargs)</span><br><span class="line">22/22 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step</span><br><span class="line">测试集上的均方误差: 0.0022094757470167074</span><br><span class="line">训练模型: CNN</span><br><span class="line">E:\ProgramData\anaconda3\envs\goldenpre\Lib\site-packages\keras\src\layers\convolutional\base_conv.py:107: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.</span><br><span class="line">  super().__init__(activity_regularizer=activity_regularizer, **kwargs)</span><br><span class="line">22/22 ━━━━━━━━━━━━━━━━━━━━ 0s 2ms/step </span><br><span class="line">测试集上的均方误差: 0.0009394372486201054</span><br><span class="line">训练模型: XGBoost</span><br><span class="line">测试集上的均方误差: 0.013671010934760258</span><br><span class="line">训练模型: RandomForest</span><br><span class="line">测试集上的均方误差: 0.013248586110257024</span><br><span class="line">训练模型: SVM</span><br><span class="line">测试集上的均方误差: 0.04974934214151624</span><br><span class="line">训练模型: MLP</span><br><span class="line">测试集上的均方误差: 0.0010740313068716674</span><br><span class="line">22/22 ━━━━━━━━━━━━━━━━━━━━ 0s 2ms/step </span><br><span class="line">22/22 ━━━━━━━━━━━━━━━━━━━━ 0s 2ms/step </span><br><span class="line">22/22 ━━━━━━━━━━━━━━━━━━━━ 0s 667us/step</span><br><span class="line">混合模型的均方误差: 1.7644727252183848e-05</span><br><span class="line">混合模型已保存为 stacked_model.joblib</span><br><span class="line">最佳模型类型: LSTM，测试集MSE: 0.0005383426715256204</span><br><span class="line">混合模型的测试集MSE: 1.7644727252183848e-05</span><br><span class="line">2024-08-19 00:34:38,340 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save(&#x27;my_model.keras&#x27;)` or `keras.saving.save_model(model, &#x27;my_model.keras&#x27;)`. </span><br><span class="line">最佳模型 LSTM 已保存。</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+
+<p>这样我们就得到了最佳拟合的混合模型stacked_model.joblib，基准测试显示精度非常高，与真实值几乎一致！！！</p>
+<hr>
+<h2 id="下一期内容："><a href="#下一期内容：" class="headerlink" title="下一期内容："></a>下一期内容：</h2><p>模型的部署和上线。</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">从零开始训练一个神经网络</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/08/18/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%AE%AD%E7%BB%83%E4%B8%80%E4%B8%AA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B9%8B%E5%9B%9B%EF%BC%9A%E6%A8%A1%E5%9E%8B%E8%B0%83%E4%BC%98%E5%92%8C%E9%83%A8%E7%BD%B2/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-从零开始训练一个神经网络之三：设计和训练预测金价走势的深度学习模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1606,319 +1780,9 @@
 
 
   
-    <article id="post-纤毛相关细胞系的总结和体外培养" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/04/14/%E7%BA%A4%E6%AF%9B%E7%9B%B8%E5%85%B3%E7%BB%86%E8%83%9E%E7%B3%BB%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E4%BD%93%E5%A4%96%E5%9F%B9%E5%85%BB/" target="_blank">纤毛相关细胞系的总结和体外培养</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/04/14/%E7%BA%A4%E6%AF%9B%E7%9B%B8%E5%85%B3%E7%BB%86%E8%83%9E%E7%B3%BB%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E4%BD%93%E5%A4%96%E5%9F%B9%E5%85%BB/" class="archive-article-date">
-        <time datetime="2024-04-14T12:04:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-04-14</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h2 id="mEPC的诱导分离纯化和培养"><a href="#mEPC的诱导分离纯化和培养" class="headerlink" title="mEPC的诱导分离纯化和培养"></a>mEPC的诱导分离纯化和培养</h2><p>脑室的室管膜细胞表面存在许多动纤毛,它们的协调摆动确保了脑脊液的正常流动 。 </p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240415001018943.png" alt="image-20240415001018943"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/cc9429803b24ad8dd907269aae122201.jpg" alt="img"></p>
-<p>室管膜细胞缺陷可导致严重的神经系统疾病, 如脑积 水。 在发育过程中,室管膜细胞在小鼠出生后由<strong>室管膜祖细胞放射状胶质细胞</strong>( radial glia) 分化。 在这个分化过程中,<strong>中心粒</strong>由<strong>次胞质体</strong>在细胞顶端大量复制、聚集,而后迁移并固定在细胞质膜,在质膜上成熟成为基体。 动纤毛由九对在外周排列的微管束以及一组在中心的中央微管束(9+2)组成, 外周微管上由于动力蛋白的存在可以使纤 毛运动。 原代培养的室管膜细胞是研究脑部动 纤毛和相关疾病的重要体外模型。 通过免疫荧光染色的方法表征体外培养室管膜细胞分化及动纤毛形成不同时期的特点。 通过活细胞成像观察培养<strong>室管膜的纤毛运动</strong>, 为以 mEPC 为模型的研究奠定了基础。</p>
-<h3 id="该实验的方法和使用的材料、动物如下："><a href="#该实验的方法和使用的材料、动物如下：" class="headerlink" title="该实验的方法和使用的材料、动物如下："></a>该实验的方法和使用的材料、动物如下：</h3><h4 id="材料"><a href="#材料" class="headerlink" title="材料"></a>材料</h4><p>实验动物 1 ~ 3 只 SPF 级 C57BL &#x2F; 6 健康小鼠,新生1 d, 体重约 1. 5 g,雌雄比均衡,购于北京斯贝福生物技 术有限公司【 SCXK(京) 2019-0010】</p>
-<h4 id="主要试剂与仪器"><a href="#主要试剂与仪器" class="headerlink" title="主要试剂与仪器"></a>主要试剂与仪器</h4><p>DMEM 培养基( Corning,10013050)</p>
-<p>L15 培养基(Solarbio,LA9510)</p>
-<p>青霉素&#x2F;链霉素( Penicillin&#x2F;streptomycin, Solarbio, P1400 )</p>
-<p>胎 牛 血 清 ( FBS, Newzerum, FBS-S500 )</p>
-<p>磷酸盐缓冲液 ( D-PBS, Solarbio,D1040)</p>
-<p>平衡盐溶液(D-Hank’ s,Solarbio, H1045)</p>
-<p>木瓜蛋白酶( Papain,Solarbio,G8430)</p>
-<p>脱氧核糖核酸酶(DNasel,Solarbio, D8071)</p>
-<p>L-半胱氨酸( L-Cysteine, Solarbio, C0012)</p>
-<p>胰蛋白酶抑制剂 (Trypsin inhibitor,Solarbio,T8031)</p>
-<p>多聚 L-赖氨酸 (poly-L-Lysine,Solarbio,P8130)</p>
-<p>胰蛋白酶(TrypsinEDTA, Solarbio, T1320 )</p>
-<p>抗荧光淬灭封片液 ( Fluoromount-G, SouthernBiotech, K2820 )</p>
-<p>DAPI (Solarbio, ID2250)</p>
-<p>细胞培养小瓶 ( T25, Corning, 430639)</p>
-<h4 id="抗体"><a href="#抗体" class="headerlink" title="抗体:"></a>抗体:</h4><p>anti-acetylated tubulin(Sigma,T6793,1 ∶ 500)</p>
-<p>anti-γ-tubulin(Sigma,T6557,1∶500)</p>
-<p>anti-βcatenin(Proteintech,51067-2-AP,1 ∶ 500)</p>
-<p>用于免疫 荧光分析的二抗为与 Alexa Fluor 488 偶联的山羊抗鼠或 与 Alexa Fluor 568 偶 联 的 山 羊 抗 兔 抗 体 (Invitrogen,1 ∶ 750)。 倒置生物显微镜 ,超高分辨共聚焦显微镜,生物安全柜,二氧化碳培养箱.</p>
-<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><h5 id="25-cm2-培养瓶和-14-mm-玻片包被"><a href="#25-cm2-培养瓶和-14-mm-玻片包被" class="headerlink" title="25 cm2 培养瓶和 14 mm 玻片包被"></a>25 cm2 培养瓶和 14 mm 玻片包被</h5><p>为了增加培养小瓶对细胞的粘附性,采用<strong>多聚赖氨酸</strong>将小瓶底部包被,多聚赖氨酸可以增加培养皿表面正电荷从而加强细胞的贴壁生长。 </p>
-<p>将多聚赖氨酸(poly-L-Lysine)粉末用无菌去离子水配制成 10 mg&#x2F;mL 的浓缩液,而后稀释成 0. 005%的工作液。 </p>
-<p>每个 25 cm 2 培养小瓶加入 <strong>3 mL 多聚赖氨酸</strong>溶液, 37℃包被 1 h 或室温过夜包被。 </p>
-<p>包被结束后吸出多聚赖氨酸工作液,用无菌去离子水冲洗 3 次并晾干。 </p>
-<p>包被好的培养瓶在 4℃条件下可存放 4 周左右。 </p>
-<h5 id="消化工作液及终止工作液的配置"><a href="#消化工作液及终止工作液的配置" class="headerlink" title="消化工作液及终止工作液的配置"></a>消化工作液及终止工作液的配置</h5><p>消化工作液的配制:   取 DMEM 培养基中加入木瓜蛋白酶(2 mg&#x2F;mL), DNaseI(0. 15 mg &#x2F; mL), L-半胱氨酸(0. 3 mg &#x2F; mL), 1%青霉素&#x2F;链霉素, 0. 22μm 微孔滤膜过滤后 4℃ 保存备用。 </p>
-<p>终止工作液的配制:   取 L15 培养基中加入胰蛋白酶抑制剂( 1mg&#x2F;mL),DNaseI(0. 2 mg &#x2F; mL),10%胎牛血清, 0. 22 μm 微孔滤膜过滤后 4℃保存备用。</p>
-<h4 id="小鼠室管膜细胞的分化培养"><a href="#小鼠室管膜细胞的分化培养" class="headerlink" title="小鼠室管膜细胞的分化培养"></a>小鼠室管膜细胞的分化培养</h4><p>以下操作步骤以 1 只小鼠为例：</p>
-<p>将新生小鼠颈椎脱位处死后,用剪刀剪取小鼠头部、镊子剥离小鼠头部皮肤；（首先取出生 1 ~ 3 d 内的小鼠端脑组织,此时的小鼠大脑 内的神经胶质细胞分化程度低,利用此阶段的端脑 提取诱导分化室管膜细胞可以获得较高的成功率）</p>
-<p>小心剔除头骨,并去除附着的组织与 血管；</p>
-<p>将分离的小鼠脑组织放入含有 1%青霉素&#x2F;链霉素的 Hank’ s 溶液中,置于冰上；（分离过程中保持在冰上且冰浴的缓冲溶液中进行,可以大大提高胶质细 胞的存活率。）</p>
-<p>用眼科剪剪去嗅球和小脑, 用 5 号镊子剥去端脑表面的脑膜,并用弹簧剪将其剪切成 0. 5 ~ 1 mm 大小的碎片；</p>
-<p>用1000 μL移液器将所有脑组织碎片连同 Hank’ s 溶液一同转移至15 mL无菌离心管中；</p>
-<p>800 r&#x2F;min 离心 1min;</p>
-<p>吸出上清液,加入配制好的<strong>消化工作液</strong> 1 mL 重悬细胞；</p>
-<p>37℃ 孵育 30 min；</p>
-<p>消化结束后以 800 r&#x2F; min 离心 1 min,吸出上清液,加入配制的终止工作液 2 mL 重悬细胞静置 2 min；</p>
-<p>800 r&#x2F; min 离心 1 min 后，吸出上清液，并以 2 mL L15 培养基重悬细胞，800 r&#x2F; min 离心 1 min;</p>
-<p>吸出上清液,用 1 mL L15 培养基重悬细胞，并用 1000 μL 移液枪吹打悬液5次；</p>
-<p>800 r&#x2F; min 离心 5 min 后;</p>
-<p>移除上清液,并加入3 mL 含有 10% FBS 和 1%青霉素&#x2F;链霉素的 DMEM 完全培养基重悬细胞；</p>
-<p>较少体积的重悬液是为了让细胞更好的吸附；</p>
-<p>将细胞悬液小心接种到包被了多聚赖氨酸的 25 cm培养瓶中, 放入 37℃ ,  5%  CO2 培养箱中培养, <strong>标记为d1</strong>；</p>
-<p>第 2 天(d2)吸弃旧培养基,加入 8 mL 新鲜37℃预热过的 DMEM 完全培养基,；</p>
-<p>随后每隔 2 d 更换 1 次培养基至**第 7 天(d7)**；</p>
-<p>第 7 天细胞铺满整个培养瓶底部，室温下将培养瓶放置在摇床上以 100 rpm 摇动培养 4 h 以去除粘附较差的神经元细胞；</p>
-<p>吸弃旧培养基，加入 3 mL DPBS 清洗 1 次,再加入 1 mL Trypsin-EDTA 于 37℃ 消化 6 min,然后加入 4 mL 的 DMEM 完全培养基终止消化；</p>
-<p>将细胞悬液收集至 15 mL 离心管中,于 800 r&#x2F; min 离心 5 min;</p>
-<p>吸出上清液，加入 500 μL 的 DMEM 完全培养基重悬细胞；</p>
-<p>1 只小鼠端脑大约可收集 200 ~ 300 万个细胞,以细胞计数板计数后,按照每孔 2 × 10^5 个细胞的数量滴加到玻片上;</p>
-<p>此时滴加的液滴应在玻片上形成球形水珠，放入培养箱 中培养30 min;</p>
-<p>待细胞粘附后，补加 DMEM 完全培养基;</p>
-<p>24 h 后吸弃旧培养基,更换为含有 1% 青霉素&#x2F;链霉素的 DMEM（无血清）；</p>
-<p>开始诱导细胞分化成室管膜细胞，记为 <strong>D0</strong>，每 <strong>3 ~ 4 d</strong> 更换培养基。（小鼠胶质细胞消化分离后均匀铺板,铺板后 (D2)换无血清培养基诱导分化,此时细胞进入分化阶段 D0）；</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240416101224017.png" alt="image-20240416101224017"></p>
-<p>通过倒置相差显微镜观察细胞生长状况,细胞培养至 D3,细胞完全贴壁平铺在培养皿上,细胞形态变大变圆(图 2a) ; </p>
-<p>饥饿培养 D6 时,部分细胞开始进行纤毛发生,并有极少数细胞形成可快速摆动的纤毛(图 2b) ; </p>
-<p>D9 时细胞边界变得清晰可见,约有 1 &#x2F; 3 的细胞形成了多纤毛结 构( 图 2c) ; </p>
-<p>分化培养进行到 D12 后, 培养的mEPC 细胞基本成熟,可观察到 MPEC 快速摆动的多纤毛(图 2d) ；</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240415153012250.png" alt="image-20240415153012250"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240415153044755.png" alt="image-20240415153044755"></p>
-<p>当然也有商业化的产品：<a target="_blank" rel="noopener" href="https://www.eiaab.com.cn/product-general-cn-primary_cells/MIC-iCell-n021/">https://www.eiaab.com.cn/product-general-cn-primary_cells/MIC-iCell-n021/</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.51cells.cn/product/hanzhong_2763.html">汉中小鼠室管膜细胞（原代细胞）-武汉赛奥斯生物科技有限公司 (51cells.cn)</a></p>
-<hr>
-<h2 id="人肺类器官2D-3D-培养"><a href="#人肺类器官2D-3D-培养" class="headerlink" title="人肺类器官2D &amp; 3D 培养"></a>人肺类器官2D &amp; 3D 培养</h2><p><strong>人支气管上皮</strong></p>
-<p>人呼吸道的支气管上皮层分为假复层（pseudostratified），纤毛（ciliated） 以及柱状（columnar）上皮。该区域主要有三种细胞类型：纤毛细胞 （ciliated cells），分泌细胞（secretory cells）（主要是分泌粘液的杯状细胞）和基底细胞（basal cells）。</p>
-<p>支气管上皮作为保护屏障，防御各种吸入性伤害，例如毒素，污染物和病原体。屏障功能的维持主要基于于上皮的三个关键特征：</p>
-<ol>
-<li><p>紧密连接蛋白（tight junction proteins）维持着上皮的完整性，并且对于其作为物理屏障的功能至关重要。</p>
-</li>
-<li><p>分泌细胞分泌的粘液会捕获颗粒物质和病原体，然后通过纤毛细胞的协同将这些颗粒物质和病原体通运出气道。</p>
-</li>
-<li><p>粘液中含有抗菌肽（antimicrobial peptides）和炎症因子（inflammatory mediators）等保护性介质，形成了对病原体和有毒物质的化学和免疫屏障。</p>
-</li>
-</ol>
-<p>呼吸道上皮的生理相关模型的需求正在日益增长，但其挑战仍在于如何在体外重现体内组织的复杂结构和功能。</p>
-<p><strong>2D</strong> <strong>气-液界面培养</strong></p>
-<p>多种细胞类型可用于人类呼吸系统的建模，包括永生化的呼吸细胞系（ 例如BEAS-2B细胞和16HBE14o-细胞）以及来自动物或人类供体的原代细胞。尽管使用永生化细胞系和动物原代细胞很普遍，但使用这些模型产生的数据并不直接适配于人类系统。传统培养人原代支气管上皮细胞的方法是将细胞浸没于培养基之下进行培养；但是，在该培养系统中的细胞无法进行粘膜纤毛分化。为了重现在体内观察到的伪分层粘膜纤毛表型（pseudostratified mucociliary phenotype），必须在气-液界面（AirLiquid Interface，ALI）上培养原代人支气管上皮细胞（primary human bronchial epithelial cells，HBEC）（图1）</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/20201208152828482848.png" alt="img"></p>
-<p>气-液界面培养的主要特征是细胞的基底表面与液体培养基接触，而其顶端表面则暴露于空气中。常见的细胞接种方法是将细胞接种到细胞培养插件（cell culture insert）的可渗透膜上。在细胞培养初期，顶端和基底的腔室都需要添加培养基（图1A）。当细胞数量接近满板时，需要对细胞“airlift”，即吹干顶端腔室的培养基，并保留基底腔室的培养基（图1B）。该培养系统模拟了人气道中的情况，诱导细胞向粘膜纤毛表型分化。</p>
-<p><video src="../../../../Desktop/CFAP91文章投稿初步材料/Air-Liquid Interface (ALI) Culture of Bronchial Epithelial Cells with PneumaCult™-ALI Medium - YouTube (1).mp4"></video></p>
-<p><strong>气-液界面培养的生理相关性</strong></p>
-<p>原代HBEC的气-液培养近年来越来越被认为是与呼吸系统生理学高度相关的重要培养系统。在气-液上培养的HBEC经历了高度的粘膜纤毛分化，从而形成了代表体内气道的体外模型。H&amp;E（hematoxylin and eosin）和PAS（periodic acid-Schiff）染色显示气-液界面培养物（图2A和 2C），如同体内支气管上皮一样（图2B和2D），表现出伪分层的形态，以及异种细胞群的组成，包括纤毛和粘液分泌（PAS阳性）细胞。</p>
-<p>该模型的特征还在于体现出上皮的屏障功能，例如表达紧密连接蛋白和高细胞跨膜电阻（high transepithelial electrical resistance）。通过转录组分析与细胞对毒素、病原体等外源物质的生理反应实验，进一步证实了气-液界面培养物对气道建模的高度适用性。此外，对来自患有呼吸系统疾病（例如哮喘，囊性纤维化，慢性阻塞性肺病）供体的原代细胞进行气-液界面培养，可以重现体内疾病特征，从而建立可靠的体外研究模型。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/20201208152954705470.png" alt="img"></p>
-<p><strong>实验流程简图</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/20201208153041064106.png" alt="img"></p>
-<p><strong>3D成球培养</strong></p>
-<p><strong>实验流程及数据</strong></p>
-<p><img src="http://www.jiayuanbio.com/upload/image/2020/20201208153053575357.jpg" alt="img"></p>
-<p><strong>产品信息</strong></p>
-<table>
-<thead>
-<tr>
-<th>货号</th>
-<th>名称</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>05040</td>
-<td>PneumaCult™-Ex Plus Medium</td>
-</tr>
-<tr>
-<td>05001(2D)</td>
-<td>PneumaCult™-ALI Medium</td>
-</tr>
-<tr>
-<td>05021(2D)</td>
-<td>PneumaCult™-ALI Medium with 12 mm Transwell® Insert</td>
-</tr>
-<tr>
-<td>05022(2D)</td>
-<td>PneumaCult™-ALI Medium with 6.5 mm Transwell® Insert</td>
-</tr>
-<tr>
-<td>05050(2D)</td>
-<td>PneumaCult™-ALI-S Medium</td>
-</tr>
-<tr>
-<td>05060(3D)</td>
-<td>PneumaCult™ Airway Organoid Kit</td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="小鼠-SVZ-The-Subventricular-Zone-细胞原代培养"><a href="#小鼠-SVZ-The-Subventricular-Zone-细胞原代培养" class="headerlink" title="小鼠 **SVZ(The Subventricular Zone)**细胞原代培养"></a>小鼠 **SVZ(The Subventricular Zone)**细胞原代培养</h2><p>——朱学良组 张伟</p>
-<p>①解剖前 <strong>24 - 4h</strong> 要预先用 Fibronectin or laminin包被培养 SVZ 细胞的Flask&#x2F; 培养板&#x2F;其它</p>
-<p>②解剖前新鲜配制 5ml 消化液，于 37℃水浴锅。等消化液从乳白色变成无色透</p>
-<p>明后，用注射器+小滤器过滤除菌，待用。（5ml消化液大约消化 10-15只小鼠的SVZ组织）</p>
-<p>③解剖前 1-2h，将手术工具、解剖显微镜、1ml 移液枪等置于超净台紫外杀菌。</p>
-<p>临解剖前，手术工具在酒精灯上灼烧（<em>除最精细的镊子，即下图中的镊子，请勿灼烧！！！！！！可在照紫外前用酒精棉球擦一遍。同时注意小心保护它的精细尖端</em>）。或直接将手术工具浸泡于 75%酒精中。</p>
-<p><strong>1.</strong> 取 <strong>10</strong> 只 <strong>P0</strong> 新生小鼠 <strong>SVZ</strong> 组织：</p>
-<p>详见解剖视频：<a target="_blank" rel="noopener" href="http://www.jove.com/details.stp?id=1938">http://www.jove.com/details.stp?id=1938</a>)<a target="_blank" rel="noopener" href="http://www.jove.com/details.stp?id=1938">http://www.jove.com/details.stp?id=1938</a></p>
-<p><strong>2.消化 SVZ组织：</strong></p>
-<p>取材后。用 1ml枪头（剪去尖端，并在酒精灯上烧圆前端）将 SVZ组织转移至已过滤的消化液中，于 37℃消化 15-18min。</p>
-<p><strong>3.终止消化：</strong></p>
-<p>消化完成后，吸去消化液。加入 5ml 10％FBS DMEM+GPS于 SVZ组织中作用 1-2min，终止消化。（GPS: 明胶磷酸盐琼脂）</p>
-<p><strong>4.打散细胞：</strong></p>
-<p>吸去终止液后。加 1mL 10％ FBS DMEM+GPS，用 1mL的 Axygene枪头轻轻吹打 15-20次，避免吹出气泡，然后加入 3ml 10% FBS DMEM+GPS, 静置 1-2min，这样单个细胞在上清中，沉淀为组织块。将上清转移到新的 15ml离心管。剩下的组织块中再加入 1ml 10％ FBS DMEM+GPS继续吹打，再沉淀，再转移。弃掉无法打散的沉淀。</p>
-<p><strong>5.将上清置于离心机中 1000-1500 rpm，离心 5min。</strong></p>
-<p>6.离心后，轻轻的吸取弃去上清。将细胞用含 10％ FBS DMEM+GPS 重悬，铺入到<strong>预先24h用 Fibronectin包被的 Flask</strong>（<u>铺细胞前，Flask用 PBS轻轻洗 1-2遍）中，置37℃培养箱培养</u>。</p>
-<p>7.第二天，换液(10％ FBS DMEM+GPS)。同时用 <strong>37℃ 预热的PBS</strong> 轻轻的尽量洗去未贴壁的 Neuron，洗 1-2遍。</p>
-<p>8.第三天，用手掌，适度用力拍 Flask侧壁，拍除上层未贴壁的 neuron。 用 PBS洗一遍后，加入 10％ FBS DMEM+GPS。</p>
-<p>9.第四天，Flask 内细胞长到 90-95%时，将细胞用 Trypsin 消化，平均铺入<strong>预先 24h 用 Fibronectin包被的 24孔培养板</strong>中。（10只小鼠的 <strong>SVZ细胞</strong>大约可铺入 8个 24孔板的孔，或 1.75个 6孔板的孔效果很好；新手亦可增大小鼠数量；此时 24孔板每个孔的细胞数目大约为 10-20万，尽量使细胞生长到第 5天晚上前，达到可以进行饥饿的密度。细胞也不宜铺得过分的密，<strong>如果此时部分区域细胞为上下两层，上层细胞会死亡后贴在活细胞上表面</strong>。）</p>
-<p>10.第五天，当 24孔板内细胞面积变小，紧密排列，几乎呈方格状，颜色较深，此时可用 PBS洗去一些死细胞后，再加入适量新鲜培液，培养至少半天左右。再用 37℃ PBS洗三遍后，加入 0.5-1ml<strong>不含 FBS</strong>的 DMEM+DAPT+GPS（DAPT效应不明显~），进行饥饿培养。</p>
-<p>[总之，就是要让一层干净的活细胞，排挤足够紧密，<strong>形成紧密连接和锚定连接后饥饿</strong>。否则饥饿后细胞变瘦变小，不够紧密的区域会产生空洞、无细胞斑块。<strong>饥饿前不除去死细胞，也会产生同样的状况</strong>。]</p>
-<p>每两三天用 DMEM+<strong>DAPT</strong>+GPS进行一次全换液。</p>
-<p>11.<strong>饥饿 5-7 天</strong>后（DMEM+<strong>DAPT</strong>+GPS），可进行固定，免疫荧光观察。（<em>一般饥饿3-4天后光镜观察可见纤毛</em>）</p>
-<h4 id="包被："><a href="#包被：" class="headerlink" title="包被："></a>包被：</h4><p>Fibronectin(Cat.#341631)，每瓶 5mg&#x2F;5ml 。4℃融化后，4ul和 10ul分装，-20℃保存。</p>
-<p>包被时，用 无菌PBS 1:100 稀释后使用。一个 Flask 用 4ml 稀释后的 Fibronectin包被，过夜包被后使用。</p>
-<p>24孔板每个孔用 250ul稀释后的 Fibronectin 包被，过夜</p>
-<p>后使用。</p>
-<h4 id="Dissection-Solution"><a href="#Dissection-Solution" class="headerlink" title="Dissection Solution:"></a>Dissection Solution:</h4><p>18.8g NaCl         161mM</p>
-<p>0.74g KCl           5mM</p>
-<p>0.26g MgSO<sub>4</sub>     1 mM</p>
-<p>0.86g CaCl         3.7mM</p>
-<p>2.4g Hepes          5mM</p>
-<p>2.0g Glucose       5.5mM</p>
-<p>0.004g Phenol Red （可以不加）</p>
-<p>配制好以后，定容到 2L，将 pH值调到 7.4，用 0.2um的灭菌过滤器过滤除菌，置于 4℃冰箱保存。</p>
-<h4 id="Enzymatic-Solution"><a href="#Enzymatic-Solution" class="headerlink" title="Enzymatic Solution:"></a>Enzymatic Solution:</h4><p>5ml Dissection Solution</p>
-<p>1mg L-Cysteine ( SIGMA Cat .No 30089)</p>
-<p>50μl EDTA (50mM, pH 8.0)</p>
-<p>50μl CaCl<sub>2</sub> (100mM)</p>
-<p>7.5μl NaOH (1M)</p>
-<p><strong><u>? ul Papain（Worthington Bio Corp，Cat. No. LS003126）</u></strong></p>
-<h5 id="Papain量计算"><a href="#Papain量计算" class="headerlink" title="Papain量计算:"></a>Papain量计算:</h5><p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240416004405285.png" alt="image-20240416004405285"></p>
-<p>必须在使用前配制，配制好以后在培养箱中温育至澄清透明，待用。</p>
-<p>附：SVZ培养细胞形态展示：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240415194817318.png" alt="image-20240415194817318"></p>
-<hr>
-<h2 id="以小鼠肾小管-IMCD3-细胞株-探讨纤毛生成和上皮细胞极化的关系"><a href="#以小鼠肾小管-IMCD3-细胞株-探讨纤毛生成和上皮细胞极化的关系" class="headerlink" title="以小鼠肾小管 IMCD3 细胞株 探讨纤毛生成和上皮细胞极化的关系"></a>以小鼠肾小管 IMCD3 细胞株 探讨纤毛生成和上皮细胞极化的关系</h2><p>大多数的动物细胞具有纤毛。纤毛主要由外层的膜包覆中心的微管所组成，中心的微管称为轴丝，轴丝是由母 亲中心粒当作基体作为地基，向上构筑成双联体九排的微管，并环绕成圆柱形的构造，而基体上的远程附器和细胞膜结合，使纤毛向外长出细胞表面。</p>
-<p>纤毛发生病变可导致多种疾病，如<strong>原发性支气管炎</strong>、<strong>肝脏</strong>和<strong>肾脏的多囊性增生</strong>等， 由此可看出纤毛对于许多细胞的功能具有极大的影响力。</p>
-<p>纤毛的生成路径有 2 种：细胞<strong>内</strong>和细胞<strong>外</strong>路径。</p>
-<p>小鼠肾小管 <strong>IMCD3细胞 株</strong>的纤毛是借由<strong>细胞外</strong>路径生成，细胞外路径就是在<strong>一般二维培养</strong>的情况下， 可观察到母亲中心粒移动到细胞膜附近，再向外长出纤毛；</p>
-<p><strong>视网膜色素上皮细胞株</strong>和<strong>成纤维细胞株</strong>的纤毛则是借由 细胞内路径，在此路径中，母亲中心粒维持在细胞中心的位置就可直接长出纤毛。</p>
-<p>在极化的上皮细胞中，纤毛发育的过程起始于<strong>母亲中心粒</strong>，必须从细胞核附近移动到细胞顶端膜附近，再由远程附器结合在顶端膜上，作为基体向细胞顶端长出纤毛，凸出顶端膜表面以<strong>感测细胞外界讯号</strong>。</p>
-<p>然而，在细胞外路径中， 母亲中心粒是如何移动至顶端膜附近以及如何辨别细胞顶端和底端的方向性目前仍然不清楚。</p>
-<p>该篇文章作者以小鼠肾小管 IMCD3 细 胞 株， 在 去 血 清 的 刺 激 诱 导 下， 使 IMCD3 细胞长出纤毛，再以免疫荧光染色分析闭锁小带与生成纤毛的关系。 并利用克隆形成实验，将 <strong>IMCD3 细胞株分为 4 类形态</strong>，也进一步发现在三维培养中，<u>4 种细胞形态皆无法排列成空腔构造</u>。</p>
-<p>最后建立载体 DNA，以绿色荧光标示纤毛蛋白，在活细胞中追踪基体的移动及纤毛生成的过程。</p>
-<h4 id="结果部分的个人概述："><a href="#结果部分的个人概述：" class="headerlink" title="结果部分的个人概述："></a>结果部分的个人概述：</h4><ol>
-<li><strong>闭锁小带与纤毛生成的密切关系</strong>：<ul>
-<li>研究发现，在小鼠肾小管IMCD3细胞株中，具有完整闭锁小带结构的细胞更容易形成纤毛。</li>
-<li>这一发现揭示了闭锁小带的完整性可能是纤毛生成的一个重要条件，特别是在细胞外路径中，纤毛的生成与闭锁小带的结构密切相关。</li>
-<li>闭锁小带可能提供了必要的细胞结构支持，使得纤毛能够在正确的位置形成，从而保证细胞功能的正常进行。</li>
-</ul>
-</li>
-<li><strong>纤毛生长位置对细胞功能的影响</strong>：<ul>
-<li>纤毛的生长位置对细胞接收外界信号至关重要。在具有完整闭锁小带的细胞中，纤毛生长在细胞顶端，这有助于细胞有效地感测和响应外界环境。</li>
-<li>如果纤毛未能在细胞顶端正确生长，可能会导致细胞无法正常接收信号，进而影响细胞功能，甚至可能导致疾病的发生。</li>
-<li>因此，纤毛的正确位置对于细胞的正常生理功能至关重要。</li>
-</ul>
-</li>
-<li><strong>细胞极性、空腔构造形成与分裂方向性</strong>：<ul>
-<li>研究表明，具有完整闭锁小带的细胞不仅能形成立体的空腔构造，而且在细胞分裂时表现出正确的方向性。</li>
-<li>这种分裂方向性对于维持细胞群体的整体结构和功能至关重要。细胞分裂时沿着闭锁小带的切线方向进行，有助于保持细胞极性和组织结构的完整性。</li>
-<li>这一发现强调了闭锁小带在维持细胞极性和指导细胞分裂方向中的重要作用。</li>
-</ul>
-</li>
-<li><strong>细胞密度与闭锁小带完整性的独立性</strong>：<ul>
-<li>研究中观察到，即使在细胞密度增加的情况下，闭锁小带的完整性也不会因此而提高。</li>
-<li>这一结果表明，闭锁小带的完整性是由细胞本身的属性决定的，而不是由外部环境因素如细胞密度所影响。</li>
-<li>这进一步证实了IMCD3细胞株中存在不同特性的细胞群，而不是单一细胞类型在不同密度下的变化。</li>
-</ul>
-</li>
-<li><strong>母亲中心粒在纤毛生成中的核心作用</strong>：<ul>
-<li>通过使用荧光标记技术，研究明确显示了纤毛是以母亲中心粒为基底向外生长的。</li>
-<li>这一发现证实了母亲中心粒在纤毛生成过程中的核心作用，为理解纤毛的形成机制提供了重要线索。</li>
-<li>研究还指出，未来将进一步探究母亲中心体、高基氏体与纤毛形成的关系，这将有助于更深入地了解纤毛生成的详细路径和机制。</li>
-</ul>
-</li>
-<li><strong>磷脂酰肌醇在细胞极性和纤毛生成中的作用</strong>：<ul>
-<li>研究提出，闭锁小带可能通过限制磷脂酰肌醇（PIP2和PIP3）在细胞膜上的分布，从而影响细胞极性和纤毛的生成。</li>
-<li>在极性细胞中，顶端细胞膜富含PIP2，而底端细胞膜富含PIP3，这种分布有助于基体在顶端位置生成纤毛。</li>
-<li>缺乏闭锁小带的细胞可能无法正确区分顶端和底端的磷脂酰肌醇分布，导致基体无法在正确的位置生成纤毛。</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h2 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h2><p>[1]张源,武慧渊.小鼠室管膜细胞体外培养及多纤毛形成过程分析[J].中国实验动物学报,2022,30(03):370-375.</p>
-<p>[2]Wang L, Wen X, Wang Z, et al. Ciliary transition zone proteins coordinate ciliary protein composition and ectosome shedding. <em>Nat Commun</em>. 2022;13(1):3997. Published 2022 Jul 9. doi:10.1038&#x2F;s41467-022-31751-0</p>
-<p>[3]Meng X, Xu C, Li J, Qiu B, Luo J, Hong Q, Tong Y, Fang C, Feng Y, Ma R, Shi X, Lin C, Pan C, Zhu X, Yan X, Cong Y. Multi-scale structures of the mammalian radial spoke and divergence of axonemal complexes in ependymal cilia. Nat Commun. 2024 Jan 8;15(1):362. doi: 10.1038&#x2F;s41467-023-44577-1. PMID: 38191553; PMCID: PMC10774353.</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">类器官之纤毛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/04/14/%E7%BA%A4%E6%AF%9B%E7%9B%B8%E5%85%B3%E7%BB%86%E8%83%9E%E7%B3%BB%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E4%BD%93%E5%A4%96%E5%9F%B9%E5%85%BB/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -2069,19 +1933,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">类器官之胚胎干细胞</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Paper</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机随笔</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">从零开始训练一个神经网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Paper</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2093,11 +1957,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">类器官之纤毛</a>
+                <a href="javascript:void(0)" class="js-tag color4">Bio-News</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Bio-News</a>
+                <a href="javascript:void(0)" class="js-tag color2">类器官之纤毛</a>
               </li>
              
               <li class="article-tag-list-item">
