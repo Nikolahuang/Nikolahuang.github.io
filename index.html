@@ -252,6 +252,579 @@
 
 
   
+    <article id="post-个人AI助手SurfSense" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/11/06/%E4%B8%AA%E4%BA%BAAI%E5%8A%A9%E6%89%8BSurfSense/" target="_blank">个人AI助手SurfSense</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/11/06/%E4%B8%AA%E4%BA%BAAI%E5%8A%A9%E6%89%8BSurfSense/" class="archive-article-date">
+        <time datetime="2024-11-05T16:41:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-11-06</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><p>嗯，当我浏览互联网时，我倾向于保存大量内容，但是还记得您保存的时间和内容吗？大脑彻底冻结！这就是 SurfSense 的用武之地。SurfSense 是一个个人人工智能助理，适用于您在万维网上看到的任何内容（社交媒体聊天、日历邀请、重要邮件、教程、食谱和任何内容）。现在，您将永远不会忘记任何浏览会话。使用易于使用的跨浏览器扩展程序轻松捕获您的网络浏览会话和所需的网页内容。然后，向您的个人知识库询问有关您保存的内容的任何信息，然后瞧——即时回忆！</p>
+<h2 id="主要特点"><a href="#主要特点" class="headerlink" title="主要特点"></a>主要特点</h2><ul>
+<li>💡想法：将您在互联网上看到的任何内容保存在您自己的个人知识库中。</li>
+<li>⚙️跨浏览器扩展：保存您最喜欢的浏览器中的内容。</li>
+<li>🔍强大的搜索：快速查找网络浏览会话中的任何内容。</li>
+<li>💬与您的网络历史记录聊天：以自然语言与您保存的网络浏览会话进行交互并获取引用的答案。</li>
+<li>🔔当地LLM支持：与 Ollama 当地LLMs完美合作。</li>
+<li>🏠自托管：开源且易于本地部署。</li>
+<li>📊高级 RAG 技术：利用高级 RAG 技术的力量。</li>
+<li>🔟钱包便宜：与 OpenAI gpt-4o-mini 模型和 Ollama 本地LLMs完美配合。</li>
+<li>🕸️无 WebScraping ：扩展直接从 DOM 中读取数据以获得准确的数据。</li>
+</ul>
+<h2 id="如何开始？"><a href="#如何开始？" class="headerlink" title="如何开始？"></a>如何开始？</h2><h3 id="Docker-支持"><a href="#Docker-支持" class="headerlink" title="Docker 支持"></a>Docker 支持</h3><ol>
+<li>设置<code>SurfSense-Frontend/.env</code>和<code>backend/.env</code></li>
+<li>运行 <code>docker-compose build --no-cache</code> 。</li>
+<li>构建镜像后运行<code>docker-compose up -d</code></li>
+<li>现在通过更新将扩展与 docker live 后端 url 连接起来 <code>ss-cross-browser-extension/.env</code> 并建造它。</li>
+</ol>
+<h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><p>出于身份验证目的，还需要在计算机上运行 PostgreSQL 实例。<br>现在让我们设置 SurfSense 后端</p>
+<ol>
+<li>克隆这个仓库。</li>
+<li>转到 .&#x2F;backend 子目录。</li>
+<li>设置Python虚拟环境</li>
+<li><code>运行``pip install -r requirements.txt</code> 安装所有必需的依赖项。</li>
+<li>在 .env 中更新&#x2F;创建所需的环境变量</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>ENV VARIABLE</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IS_LOCAL_SETUP</td>
+<td>Ollama milstra-nemo 为“true”，OpenAI gpt-4o-mini 为“false”</td>
+</tr>
+<tr>
+<td>POSTGRES_DATABASE_URL</td>
+<td>postgresql+psycopg2:&#x2F;&#x2F;user:pass@host:5432&#x2F;database</td>
+</tr>
+<tr>
+<td>API_SECRET_KEY</td>
+<td>可以是任何随机字符串值。请务必记住它，因为出于安全目的，您需要将其在用户注册请求中发送到后端。</td>
+</tr>
+</tbody></table>
+<ol>
+<li>后端是 FastAPI 后端，所以现在只需使用命令在 unicorn 上运行服务器 <code>uvicorn server:app --host 0.0.0.0 --port 8000</code></li>
+<li>如果一切正常，应该看到这样的屏幕。</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/640" alt="图片"></p>
+<h3 id><a href="#" class="headerlink" title></a></h3><h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><p>对于本地前端设置，只需填写前端的<code>.env</code>文件。</p>
+<table>
+<thead>
+<tr>
+<th>ENV VARIABLE</th>
+<th>DESCRIPTION</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NEXT_PUBLIC_API_SECRET_KEY</td>
+<td>您为后端设置的相同字符串值</td>
+</tr>
+<tr>
+<td>NEXT_PUBLIC_BACKEND_URL</td>
+<td>在此处提供托管后端 url。例如。 <code>http://127.0.0.1:8000</code></td>
+</tr>
+<tr>
+<td>NEXT_PUBLIC_RECAPTCHA_SITE_KEY</td>
+<td>Google Recaptcha v2 客户端密钥</td>
+</tr>
+<tr>
+<td>RECAPTCHA_SECRET_KEY</td>
+<td>Google Recaptcha v2 服务器密钥</td>
+</tr>
+</tbody></table>
+<p>并使用<code>pnpm run dev</code>运行它</p>
+<p>应该看到 Next.js 前端在<code>localhost:3000</code>上运行</p>
+<p>确保从前端注册一个帐户，以便您可以登录扩展程序。</p>
+<h2 id="项目链接"><a href="#项目链接" class="headerlink" title="项目链接"></a>项目链接</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="http://github.com/MODSetter/SurfSense">http://github.com/MODSetter/SurfSense</a></p>
+</blockquote>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Github精选</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/11/06/%E4%B8%AA%E4%BA%BAAI%E5%8A%A9%E6%89%8BSurfSense/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-一款虚拟试衣应用Virtual-Try-On-App" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/11/06/%E4%B8%80%E6%AC%BE%E8%99%9A%E6%8B%9F%E8%AF%95%E8%A1%A3%E5%BA%94%E7%94%A8Virtual-Try-On-App/" target="_blank">一款虚拟试衣应用Virtual_Try-On_App</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/11/06/%E4%B8%80%E6%AC%BE%E8%99%9A%E6%8B%9F%E8%AF%95%E8%A1%A3%E5%BA%94%E7%94%A8Virtual-Try-On-App/" class="archive-article-date">
+        <time datetime="2024-11-05T16:40:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-11-06</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><p>该存储库包含使用 Flask、Twilio 的 WhatsApp API 和带有 IDM-VTON 试戴模型的 Gradio 应用程序构建的虚拟试戴应用程序的代码。用户可以通过 WhatsApp 将图像发送到 Twilio，以虚拟方式试穿服装，然后将结果发送回给他们。</p>
+<h2 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h2><ul>
+<li>通过 WhatsApp 接收人和衣服的图像。</li>
+<li>使用 Gradio 的 API 生成虚拟试穿结果。</li>
+<li>通过 WhatsApp 将结果图像返回给用户。</li>
+<li>使用 Twilio Sandbox for WhatsApp 轻松进行原型设计和测试。</li>
+</ul>
+<h2 id="使用的技术"><a href="#使用的技术" class="headerlink" title="使用的技术"></a>使用的技术</h2><ul>
+<li>Flask ：后端服务器，用于处理请求并与 Twilio 和 Gradio 交互。</li>
+<li>Twilio API ：发送和接收 WhatsApp 消息和媒体。</li>
+<li>Gradio API ：用于与虚拟试穿 Gradio 应用程序进行交互，该应用程序在底层使用 IDM-VTON（改进真实虚拟试穿的扩散模型）模型来生成准确的服装试穿结果。</li>
+<li>Ngrok ：用于将本地服务器公开到互联网以进行 WhatsApp 交互。</li>
+</ul>
+<h2 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h2><p>在运行此项目之前，请确保您具备以下条件：</p>
+<ul>
+<li>具有 WhatsApp 沙箱设置的 Twilio 帐户。</li>
+<li>Hugging Face 帐户使用 Gradio API。</li>
+<li>您的计算机上安装了 Python 3.6+。</li>
+</ul>
+<h2 id="Twilio-设置"><a href="#Twilio-设置" class="headerlink" title="Twilio 设置"></a>Twilio 设置</h2><ol>
+<li>创建一个Twilio 帐户。</li>
+<li>激活WhatsApp 的 Twilio 沙箱：<ul>
+<li>在 Twilio 控制台中，导航到“消息传递”部分，然后选择WhatsApp沙箱下的“试用” 。</li>
+<li>按照说明通过向提供的 Twilio 号码发送 WhatsApp 消息来加入沙箱。</li>
+</ul>
+</li>
+<li>从 Twilio 控制台获取您的Twilio 帐户 SID和身份验证令牌：<ul>
+<li>转到 Twilio 控制台中的“设置”以查找这些凭据。</li>
+</ul>
+</li>
+<li>记下用于发送和接收 WhatsApp 消息的Twilio Sandbox 号码。</li>
+</ol>
+<p>设置沙盒后，您可以开始向 WhatsApp 沙盒号码接收和发送消息，以测试您的虚拟试戴应用程序。</p>
+<h2 id><a href="#" class="headerlink" title></a></h2><h2 id="Hugging-Face设置"><a href="#Hugging-Face设置" class="headerlink" title="Hugging Face设置"></a>Hugging Face设置</h2><ol>
+<li>创建一个Hugging Face a帐户。</li>
+<li>使用Nymbo 虚拟试穿模型作为 Hugging Face Spaces 上提供的 API：Nymbo 虚拟试穿。该 API 是使用 IDM-VTON（基于图像的虚拟试穿网络）模型构建的，该模型会拍摄两个人的图像以及一件可以产生真实试穿效果的服装。</li>
+</ol>
+<h2 id="项目链接"><a href="#项目链接" class="headerlink" title="项目链接"></a>项目链接</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/adarshb3/Virtual-Try-On-Application-using-Flask-Twilio-and-Gradio">https://github.com/adarshb3/Virtual-Try-On-Application-using-Flask-Twilio-and-Gradio</a></p>
+</blockquote>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Github精选</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/11/06/%E4%B8%80%E6%AC%BE%E8%99%9A%E6%8B%9F%E8%AF%95%E8%A1%A3%E5%BA%94%E7%94%A8Virtual-Try-On-App/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-wechat-article-exporter：微信文章批量下载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/11/06/wechat-article-exporter%EF%BC%9A%E5%BE%AE%E4%BF%A1%E6%96%87%E7%AB%A0%E6%89%B9%E9%87%8F%E4%B8%8B%E8%BD%BD/" target="_blank">wechat-article-exporter：微信文章批量下载</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/11/06/wechat-article-exporter%EF%BC%9A%E5%BE%AE%E4%BF%A1%E6%96%87%E7%AB%A0%E6%89%B9%E9%87%8F%E4%B8%8B%E8%BD%BD/" class="archive-article-date">
+        <time datetime="2024-11-05T16:37:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-11-06</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><p>在线批量导出微信公众号文章，支持内嵌的音视频导出，无需搭建任何环境，可100%还原文章样式，支持私有部署。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/640" alt="图片"></p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
+<li>搜索公众号，支持关键字和biz搜索</li>
+<li>搜索公众号内文章(根据文章标题搜索)</li>
+<li>导出 html 格式(打包了图片和样式文件，能够保证100%还原文章样式)</li>
+<li>批量导出 html 格式(zip打包)</li>
+<li>缓存文章列表数据，减少接口请求次数 (关键字搜索的文章不会进入缓存)</li>
+<li>支持文章过滤，包括作者、标题、发布时间、原创标识、所属合集等</li>
+<li>支持合集下载</li>
+<li>支持内嵌的音视频下载</li>
+<li>支持图片分享消息</li>
+<li>支持视频分享消息</li>
+<li>支持导出评论、阅读量等数据 (需要获取目标公众号的key)</li>
+<li>支持订阅机制，根据指定规则自动下载文章</li>
+</ul>
+<h2 id="🚀-私有部署"><a href="#🚀-私有部署" class="headerlink" title="🚀 私有部署"></a>🚀 私有部署</h2><p>Warning</p>
+<p>由于项目目前还没有进入稳定状态，所以如果进行了私有部署，请随时关注该项目的最新更新，特别是代理部分的变化，后续将会修改使用策略。</p>
+<p>或者你可以修改<code>config/index.ts</code>中的<code>AVAILABLE_PROXY_LIST</code>变量，完全使用自己搭建的节点。</p>
+<p>另外，目前只有部署到 Deno Deploy 的文档，如果需要部署到其他平台，请在 Issue 中说明。</p>
+<h2 id="💡-原理"><a href="#💡-原理" class="headerlink" title="💡 原理"></a>💡 原理</h2><p>在公众号后台写文章时支持搜索其他公众号的文章功能，以此来实现抓取指定公众号所有文章的目的。</p>
+<h2 id><a href="#" class="headerlink" title></a></h2><h2 id="🌎-关于代理池"><a href="#🌎-关于代理池" class="headerlink" title="🌎 关于代理池"></a>🌎 关于代理池</h2><p>数据的下载采用代理池的思路，以便解决跨域、防盗链、加速等一系列问题。</p>
+<p>目前有以下代理节点:</p>
+<p>- </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://vproxy-01.deno.devhttps://vproxy-02.deno.devhttps://vproxy-03.deno.dev (本月额度已用完，刷新时间: 2024-11-02 at 19:59:12)https://vproxy-04.deno.dev (本月额度已用完，刷新时间: 2024-11-02 at 19:59:12)https://vproxy-05.deno.dev (本月额度已用完，刷新时间: 2024-11-08 at 12:22:38)https://vproxy-06.deno.dev (本月额度已用完，刷新时间: 2024-11-08 at 12:22:38)https://vproxy-07.deno.devhttps://vproxy-08.deno.devhttps://vproxy-09.deno.devhttps://vproxy-10.deno.devhttps://vproxy-11.deno.devhttps://vproxy-12.deno.devhttps://vproxy-13.deno.devhttps://vproxy-14.deno.devhttps://vproxy-15.deno.devhttps://vproxy-16.deno.devhttps://vproxy-01.jooooock.workers.devhttps://vproxy-02.jooooock.workers.dev</span><br></pre></td></tr></table></figure>
+
+<p>以上节点都是部署在 Deno Deploy &#x2F; Cloudflare Workers 上面的免费账户中，算是白嫖了这些托管平台的流量。</p>
+<p>目前这些节点都是公开的，后续打算加入签名验证机制，防止被恶意盗刷。</p>
+<h2 id="关于导出其他格式"><a href="#关于导出其他格式" class="headerlink" title="关于导出其他格式"></a>关于导出其他格式</h2><p>本项目暂不支持除<code>html</code>格式之外的其他格式，很大一部分原因是样式很难保真。如果需要其他格式，可以寻找其他格式转换工具。</p>
+<blockquote>
+</blockquote>
+<h2 id="-1"><a href="#-1" class="headerlink" title></a></h2><h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>请参考 faq 文档，如果遇到其他使用问题，欢迎在 Issue 中说明。</p>
+<h2 id="-2"><a href="#-2" class="headerlink" title></a></h2><h2 id="❤️-感谢"><a href="#❤️-感谢" class="headerlink" title="❤️ 感谢"></a>❤️ 感谢</h2><ul>
+<li>感谢 Deno Deploy、Cloudflare Workers 提供免费托管服务</li>
+<li>感谢 WeChat_Article 项目提供原理思路</li>
+</ul>
+<h2 id="关于后续更新计划"><a href="#关于后续更新计划" class="headerlink" title="关于后续更新计划"></a>关于后续更新计划</h2><p>后续会区分出 免费版 和 Pro版，区别如下:</p>
+<h3 id="-3"><a href="#-3" class="headerlink" title></a></h3><h3 id="免费版"><a href="#免费版" class="headerlink" title="免费版"></a>免费版</h3><ul>
+<li>所有现有功能</li>
+<li>所有现有的代理节点</li>
+<li>现有功能的bug修复</li>
+</ul>
+<h3 id="Pro版"><a href="#Pro版" class="headerlink" title="Pro版"></a>Pro版</h3><ul>
+<li>阅读量、评论数据导出</li>
+<li>订阅自动下载服务</li>
+<li>更多专用代理节点</li>
+</ul>
+<blockquote>
+<p>目前只是有这个计划，并没有开始实施。对于之前有赞赏行为的用户，可提供优惠政策。</p>
+</blockquote>
+<h2 id="📝-许可"><a href="#📝-许可" class="headerlink" title="📝 许可"></a>📝 许可</h2><p>MIT</p>
+<h2 id="项目链接"><a href="#项目链接" class="headerlink" title="项目链接"></a>项目链接</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/jooooock/wechat-article-exporter">https://github.com/jooooock/wechat-article-exporter</a></p>
+</blockquote>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Github精选</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/11/06/wechat-article-exporter%EF%BC%9A%E5%BE%AE%E4%BF%A1%E6%96%87%E7%AB%A0%E6%89%B9%E9%87%8F%E4%B8%8B%E8%BD%BD/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-能在手机上实时运行的超轻量级虚拟人" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/11/06/%E8%83%BD%E5%9C%A8%E6%89%8B%E6%9C%BA%E4%B8%8A%E5%AE%9E%E6%97%B6%E8%BF%90%E8%A1%8C%E7%9A%84%E8%B6%85%E8%BD%BB%E9%87%8F%E7%BA%A7%E8%99%9A%E6%8B%9F%E4%BA%BA/" target="_blank">能在手机上实时运行的超轻量级虚拟人</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/11/06/%E8%83%BD%E5%9C%A8%E6%89%8B%E6%9C%BA%E4%B8%8A%E5%AE%9E%E6%97%B6%E8%BF%90%E8%A1%8C%E7%9A%84%E8%B6%85%E8%BD%BB%E9%87%8F%E7%BA%A7%E8%99%9A%E6%8B%9F%E4%BA%BA/" class="archive-article-date">
+        <time datetime="2024-11-05T16:31:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-11-06</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><p>一个能在移动设备上实时运行的数字人模型,据我所知，这应该是第一个开源的如此轻量级的数字人模型。</p>
+<h2 id="Train"><a href="#Train" class="headerlink" title="Train"></a>Train</h2><p>It’s so easy to train your own digital human.I will show you step by step.</p>
+<p>训练一个你自己的数字人非常简单，我将一步步向你展示。</p>
+<h3 id="install-pytorch-and-other-libs"><a href="#install-pytorch-and-other-libs" class="headerlink" title="install pytorch and other libs"></a>install pytorch and other libs</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create -n dh python=3.10conda activate dhconda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.7 -c pytorch -c nvidiaconda install mkl=2024.0pip install opencv-pythonpip install transformerspip install numpy==1.23.5pip install soundfilepip install librosapip install onnxruntime</span><br></pre></td></tr></table></figure>
+
+
+
+<p>I only ran on pytorch&#x3D;&#x3D;1.13.1, Other versions should also work.</p>
+<p>我是在1.13.1版本的pytorch跑的，其他版本的pytorch应该也可以。</p>
+<p>Download wenet encoder.onnx from <a target="_blank" rel="noopener" href="https://drive.google.com/file/d/1e4Z9zS053JEWl6Mj3W9Lbc9GDtzHIg6b/view?usp=drive_link">https://drive.google.com/file/d/1e4Z9zS053JEWl6Mj3W9Lbc9GDtzHIg6b/view?usp=drive_link</a></p>
+<p>and put it in data_utils&#x2F;</p>
+<h3 id="Data-preprocessing"><a href="#Data-preprocessing" class="headerlink" title="Data preprocessing"></a>Data preprocessing</h3><p>Prepare your video, 3~5min is good. Make sure that every frame of the video has the person’s full face exposed and the sound is clear without any noise, put it in a new folder.I will provide a demo video.</p>
+<p>准备好你的视频，3到5分钟的就可以，必须保证视频中每一帧都有整张脸露出来的人物，声音清晰没有杂音，把它放到一个新的文件夹里面。我会提供一个demo视频，来自康辉老师的口播，侵删。</p>
+<p>First of all, we need to extract audio feature.I’m using 2 different extractor from wenet and hubert, thank them for their great work.</p>
+<p>首先我们需要提取音频特征，我用了两个不同的特征提取起，分别是wenet和hubert，感谢他们。</p>
+<p>When you using wenet, you neet to ensure that your video frame rate is 20, and for hubert,your video frame rate should be 25.</p>
+<p>如果你选择使用wenet的话，你必须保证你视频的帧率是20fps，如果选择hubert，视频帧率必须是25fps。</p>
+<p>In my experiments, hubert performs better, but wenet is faster and can run in real time on mobile devices.</p>
+<p>在我的实验中，hubert的效果更好，但是wenet速度更快，可以在移动端上实时运行</p>
+<p>And other steps are in data_utils&#x2F;process.py, you just run it like this.</p>
+<p>其他步骤都写在data_utils&#x2F;process.py里面了，没什么特别要注意的。</p>
+<p>- </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> data_utilspython process.py YOUR_VIDEO_PATH --asr hubert</span><br></pre></td></tr></table></figure>
+
+<p>Then you wait.</p>
+<p>然后等它运行完就行了</p>
+<h3 id="train"><a href="#train" class="headerlink" title="train"></a>train</h3><p>After the preprocessing step, you can start training the model.</p>
+<p>上面步骤结束后，就可以开始训练模型了。</p>
+<p>Train a syncnet first for better results.</p>
+<p>先训练一个syncnet，效果会更好。</p>
+<p>- </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ..python syncnet.py --save_dir ./syncnet_ckpt/ --dataset_dir ./data_dir/ --asr hubert</span><br></pre></td></tr></table></figure>
+
+<p>Then find a best one（low loss） to train digital human model.</p>
+<p>然后找一个loss最低的checkpoint来训练数字人模型。</p>
+<p>- </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ..python train.py --dataset_dir ./data_dir/ --save_dir ./checkpoint/ --asr hubert --use_syncnet --syncnet_checkpoint syncnet_ckpt</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="inference"><a href="#inference" class="headerlink" title="inference"></a>inference</h2><p>Before run inference, you need to extract test audio feature(i will merge this step and inference step), run this</p>
+<p>在推理之前，需要先提取测试音频的特征（之后会把这步和推理合并到一起去），运行</p>
+<p>- </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python data_utils/hubert.py --wav your_test_audio.wav  <span class="comment"># when using hubert</span></span><br><span class="line">or</span><br><span class="line">python data_utils/python wenet_infer.py your_test_audio.wav  <span class="comment"># when using wenet</span></span><br></pre></td></tr></table></figure>
+
+<p>then you get your_test_audio_hu.npy or your_test_audio_wenet.npy</p>
+<p>then run</p>
+<p>- </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python inference.py --asr hubert --dataset ./your_data_dir/ --audio_feat your_test_audio_hu.npy --save_path xxx.mp4 --checkpoint your_trained_ckpt.pth</span><br></pre></td></tr></table></figure>
+
+<p>To merge the audio and the video, run</p>
+<p>- </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i xxx.mp4 -i your_audio.wav -c:v libx264 -c:a aac result_test.mp4</span><br></pre></td></tr></table></figure>
+
+<h2 id="项目链接"><a href="#项目链接" class="headerlink" title="项目链接"></a>项目链接</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="http://github.com/anliyuan/Ultralight-Digital-Human">http://github.com/anliyuan/Ultralight-Digital-Human</a></p>
+</blockquote>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Github精选</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/11/06/%E8%83%BD%E5%9C%A8%E6%89%8B%E6%9C%BA%E4%B8%8A%E5%AE%9E%E6%97%B6%E8%BF%90%E8%A1%8C%E7%9A%84%E8%B6%85%E8%BD%BB%E9%87%8F%E7%BA%A7%E8%99%9A%E6%8B%9F%E4%BA%BA/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-AMT-APC自动钢琴伴奏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1163,631 +1736,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2024/07/04/%E5%99%AC%E8%8F%8C%E4%BD%93%E8%BF%9B%E5%8C%96%E6%A6%82%E8%BF%B0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-单碱基编辑系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/06/11/%E5%8D%95%E7%A2%B1%E5%9F%BA%E7%BC%96%E8%BE%91%E7%B3%BB%E7%BB%9F/" target="_blank">单碱基编辑系统</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/06/11/%E5%8D%95%E7%A2%B1%E5%9F%BA%E7%BC%96%E8%BE%91%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
-        <time datetime="2024-06-10T16:41:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-06-11</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>全球有超过50000种人类相关的遗传疾病，其中大部分是由基因组的点突变引起的。而对于罕见病而言，80%是由基因缺陷引起的，同时这些基因缺陷中点突变又占了60%。比如多发性神经纤维瘤（Neurofibromatosis）则是由 Neurofibromin 1&#x2F;2基因发生碱基突变引起的。由此可以看出，对基因组点突变的研究不仅能揭示一些重要的生物学原理，更有利于人类疾病治疗手段的研发。</p>
-<p>CRISPR-Cas系统被誉为基因组编辑的魔术手术刀，特别是基于CRISPR-Cas系统和细胞同源重组修复机制（HDR）的基因编辑技术，在基因点突变遗传病方向展现出巨大的应用潜力。但是存在同源重组效率不高、更容易启动非同源重组机制产生不可预知的突变类型等问题，使得需要开发一种更为简便、高效和精准的技术。而单碱基编辑系统便是在这样背景下被开发出来的。</p>
-<p><strong>单碱基编辑系统包括胞嘧啶碱基编辑器（CBE）、腺嘌呤碱基编辑器（ABE）、鸟嘌呤编辑器（GBE）和先导编辑器（Prime Editor）。这些编辑器不会产生DNA双链断裂缺口（DSB），因此不会触发细胞的DNA双链修复机制。下面分别介绍上述四种编辑器。</strong></p>
-<p><strong>胞嘧啶编辑器</strong></p>
-<p>胞嘧啶编辑器（CBE）在CRISPR&#x2F;Cas系统的基础上被开发出来，包含sgRNA和融合蛋白两个部分。将Cas核酸酶的RucC和HNH两个功能域突变，产生突变型的dCas（dead Cas）或nCas（nickase nCas），然后将突变型Cas、胞嘧啶脱氨酶和尿嘧啶糖基化酶抑制子融合形成融合蛋白。胞嘧啶编辑器的工作原理是在sgRNA引导下，融合蛋白到特定的基因组位置上，然后胞嘧啶脱氨酶将C转变为U，然后U在DNA复制的过程中再转变为T（图1）。在这个过程中，尿嘧啶糖基化酶抑制子的作用是抑制中间体U的切除，提高T的转换率[1]。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/%25E5%259B%25BE1._CBE%25E7%259A%2584%25E5%25B7%25A5%25E4%25BD%259C%25E5%258E%259F%25E7%2590%2586.webp.jpg" alt="图1. CBE的工作原理"></p>
-<p>​                                                                      图1. CBE的工作原理[1]</p>
-<p>在第一代的胞嘧啶编辑器CBE1（rAPOBEC1-XTEN-dCas）中，融合蛋白由来源于大鼠的rAPOBEC1（大鼠胞嘧啶脱氨酶）和dCas组成[1]。其编辑活性窗口约为5个碱基，靶位点为第4－8位碱基。CBE1在体外具有较高的编辑效率，但是在哺乳动物体内的编辑效率则十分低下。经过研究人员的分析，这是可能由于DNA糖基化酶（Uracil DNA glycosylase, UDG）识别中间体UG，并通过碱基切除修复途径（BER）重新修复成CG。因此，抑制碱基切除修复途径能提高胞嘧啶编辑器的编辑效率。然后研究者们在rAPOBEC1-XTEN-dCas基础上将尿嘧啶DNA糖基化酶（UGI）也融合其中，研发出第二代胞嘧啶编辑器CBE2（rAPOBEC1-XTEN-dCas－UGI）[1]。CBE2展现出较高的编辑效率，最高可达到20%，比BE1高3倍。在实践的过程，由于CBE1与CBE2不会产生DSB，因此在基因组中发生非目标碱基插入、缺失和替换的概率极低。</p>
-<p>但研究者们依然希望提高编辑效率，于是将dCas替换成nCas（Cas nickase nCas D10A），构建出第三代胞嘧啶编辑器CBE3（rAPOBEC-XTEN-nCas（D10A）-UGI）[1]。nCas具有切割非编辑DNA链（G所在的DNA链）的活性，能形成DNA单链缺口。然后细胞会启动碱基错配修复途径（MMR），以编辑链（含有编辑后U的DNA链）为模板进行修复（图2）。CBE3具有极高的编辑效率，比CBE2高2－6倍，但是CBE3除了能将C转变成T以外，还可能将C转变为G或A，并且还可能触发非同源修复机制（NHEJ）产生Indel。</p>
-<p>为了进一步提高编辑效率，研发者在CBE3的基础上融合了第二个拷贝的UGI，同时优化rAPOBEC1、nCas和UGI之间的接头长度，构建出第四代胞嘧啶编辑器CBE4（rAPOBEC-XTEN-nCas（D10A）-2UGI）[2]。与CBE3相比，CBE4使得C到G和C到A基因编辑产物减少了2.3倍。并且在CBE4的基础上通过融合来源于噬菌体Mu的Gam蛋白或增加不同数量的核定位信号（NLS）以及使用不同公司优化的密码子序列等方法，降低NHEJ修复途径的发生，提高编辑效率。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/%25E5%259B%25BE2._CBE%25E7%259A%2584%25E5%258D%2587%25E7%25BA%25A7.webp.jpg" alt="图2. CBE的升级"></p>
-<p>​                                                                                 图2. CBE的升级[1]</p>
-<p><strong>腺嘌呤编辑器</strong></p>
-<p>腺嘌呤编辑器（ABE）与CBE类似，ABE的融合蛋白由nCas（D10A）和人为改造的腺嘌呤脱氨酶组成，且无需抑制烷基腺嘌呤DNA糖基化酶（AAG）的活性，就这样构建出ABE7.10（ecTadA-ecTadA*-nCas）[3]。其工作原理是在sgRNA的引导下，融合蛋白结合到靶序列区，并将一定区域的腺嘌呤（A）脱氨形成肌酐（I），然后I再转变成G，实现A到G的转换（图3）。为了进一步提高ABE的编辑效率，研究者于是在ABE7.10的基础上融合了NLS以及使用不同公司优化的密码子序列等方法，提高了A到G的转换效率[4]。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/%25E5%259B%25BE3.__ABE%25E7%259A%2584%25E5%25B7%25A5%25E4%25BD%259C%25E5%258E%259F%25E7%2590%2586.webp.jpg" alt="图3.  ABE的工作原理"></p>
-<p>图3. ABE的工作原理[3]</p>
-<p><strong>GBE</strong></p>
-<p>GBE技术是在CBE的基础上发展而来的。CBE在将C转变为U后，由于体内的UNG酶能将U碱基切除，形成无嘌呤无嘧啶的AP状态（apurinic&#x2F;apyrimidinic）。在AP态时，能够触发碱基切除修复机制，将U重新变回为C，但是也能被修复为其他三种碱基[5]。CBE是通过抑制UNG的活性，提高C到U再到T的转换效率。而GBE则是利用AP态向其他碱基转变的可能。研究者将UNG与nCas融合，发现在大肠杆菌中C变换成A是主要的编辑结果。但是在哺乳动物细胞HEK293T中则是以C转换成G为主要的编辑结果[6]（图4）。可以看出在AP状态下，细胞中存在着一种未知的修复机制使得AP态往不同的碱基进行修复。因此这项技术仍需继续完善。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/%25E5%259B%25BE4._GBE%25E5%259C%25A8%25E5%25A4%25A7%25E8%2582%25A0%25E6%259D%2586%25E8%258F%258C%25E6%2588%2596HEK293T%25E4%25B8%25AD%25E7%259A%2584%25E7%25BC%2596%25E8%25BE%2591%25E6%2595%2588%25E6%259E%259C-1.webp.jpg" alt="GBE在大肠杆菌中的编辑效果"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/%25E5%259B%25BE4._GBE%25E5%259C%25A8%25E5%25A4%25A7%25E8%2582%25A0%25E6%259D%2586%25E8%258F%258C%25E6%2588%2596HEK293T%25E4%25B8%25AD%25E7%259A%2584%25E7%25BC%2596%25E8%25BE%2591%25E6%2595%2588%25E6%259E%259C-2.webp.jpg" alt="GBE在HEK293T中的编辑效果"></p>
-<p>图4. GBE在大肠杆菌或HEK293T中的编辑效果[6]</p>
-<p>（A）GBE在大肠杆菌中的编辑效果。（B）GBE在HEK293T中的编辑效果</p>
-<p><strong>先导编辑器</strong></p>
-<p>虽然CBE和ABE能实现C到T和A到G的转换，但是其他不同碱基之间的转换仍然受限，于是研究者继续开发出能适应所有碱基转换的技术——先导编辑器（Prime Editor，PE）。PE除了能实现碱基的替换，还能有效实现多碱基的精准插入和删除[7]。PE也是以CRISPR&#x2F;Cas系统为基础，由改造的sgRNA（pegRNA）和融合蛋白组成。pegRNA是在原先sgRNA的基础上添加能互补断裂的靶DNA链3’末端的序列（PSB）和带有突变位点或插入缺失的目的序列（RT模板）。而融合蛋白是nCas（H840A）与逆转录酶融合而成。PE的工作原理是pegRNA引导融合蛋白到达靶序列区，然后nCas断裂被编辑的DNA，接着PSB结合上断裂的靶DNA，在逆转录酶和RT模板下逆转录出含有突变位点的目的序列。反应结束后会形成带有目标突变的3’flap结构的DNA链和无任何突变的5’flap结构的DNA链。细胞内5’flap结构易被结构特异性内切酶识别并切除，之后经DNA连接和修复便实现了精准的基因编辑（图4）。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/%25E5%259B%25BE5._PE%25E7%259A%2584%25E5%25B7%25A5%25E4%25BD%259C%25E5%258E%259F%25E7%2590%2586.webp.jpg" alt="图5. PE的工作原理"></p>
-<p>图5. PE的工作原理[8]</p>
-<p><strong>小结</strong></p>
-<p>现今，基于CRISPR-Cas系统和细胞同源重组修复机制的基因编辑技术发展已经较为成熟。通过CRISPR-Cas系统在特定的基因组位置上产生双链DNA缺口，启动细胞中的同源重组修复机制，以含有目的突变的高度同源的DNA序列进行修复，从而达到碱基转换的目的。这项技术已经应用于基因治疗和基因功能研究等领域上。但是也存在部分的缺点，如同源重组效率不高、容易启动NHEJ修复方式导致不可预估的突变等。而单碱基编辑系统在CRISPR&#x2F;Cas系统基础上，通过突变Cas核酸内切酶的切割活性，使得不会产生DNA双链缺口，降低引入Indel的风险。同时在突变型Cas中融合脱氨酶等其他功能蛋白，实现不同碱基的转换。其简便、高效、不容易引入Indel等特点是基因治疗领域所看重的，所以单碱基编辑系统将会在基因功能研究和基因治疗等领域提供强劲持续的动力。</p>
-<p><strong>参考文献：</strong></p>
-<p>[1] Komor, Alexis C., et al. “Programmable Editing of a Target Base in Genomic DNA without Double-Stranded DNA Cleavage.” Nature, vol. 533, no. 7603, 2016, pp. 420–424.</p>
-<p>[2] Komor, Alexis C., et al. “Improved Base Excision Repair Inhibition and Bacteriophage Mu Gam Protein Yields C:G-to-T:A Base Editors with Higher Efficiency and Product Purity.” Science Advances, vol. 3, no. 8, 2017.</p>
-<p>[3] Gaudelli, Nicole M., et al. “Programmable Base Editing of A•T to G•C in Genomic DNA without DNA Cleavage.” Nature, vol. 551, no. 7681, 2017, pp. 464–471.</p>
-<p>[4] Koblan, Luke W., et al. “Improving Cytidine and Adenine Base Editors by Expression Optimization and Ancestral Reconstruction.” Nature Biotechnology, vol. 36, no. 9, 2018, pp. 843–846.</p>
-<p>[5] Nishida, Keiji, et al. “Targeted Nucleotide Editing Using Hybrid Prokaryotic and Vertebrate Adaptive Immune Systems.” Science, vol. 353, no. 6305, 2016.</p>
-<p>[6] Zhao, Dongdong, et al. “Glycosylase Base Editors Enable C-to-A and C-to-G Base Changes.” Nature Biotechnology, vol. 39, no. 1, 2021, pp. 35–40.</p>
-<p>[7] Doman, Jordan L., et al. “Evaluation and Minimization of Cas-Independent off-Target DNA Editing by Cytosine Base Editors.” Nature Biotechnology, vol. 38, no. 5, 2020, pp. 620–628.</p>
-<p>[8] Anzalone, Andrew V., et al. “Search-and-Replace Genome Editing without Double-Strand Breaks or Donor DNA.” Nature, vol. 576, no. 7785, 2019, pp. 149–157.</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">BioNews</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/06/11/%E5%8D%95%E7%A2%B1%E5%9F%BA%E7%BC%96%E8%BE%91%E7%B3%BB%E7%BB%9F/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-CRISPR相关转座元件的研究" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/06/04/CRISPR%E7%9B%B8%E5%85%B3%E8%BD%AC%E5%BA%A7%E5%85%83%E4%BB%B6%E7%9A%84%E7%A0%94%E7%A9%B6/" target="_blank">CRISPR相关转座元件的研究.md</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/06/04/CRISPR%E7%9B%B8%E5%85%B3%E8%BD%AC%E5%BA%A7%E5%85%83%E4%BB%B6%E7%9A%84%E7%A0%94%E7%A9%B6/" class="archive-article-date">
-        <time datetime="2024-06-03T17:08:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-06-04</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="CRISPR相关转座元件的研究"><a href="#CRISPR相关转座元件的研究" class="headerlink" title="CRISPR相关转座元件的研究"></a>CRISPR相关转座元件的研究</h1><p>脑图：</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240604012325237.png" alt="image-20240604012325237" style="zoom:50%;">
-
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/image-20240604012234610.png" alt="image-20240604012234610" style="zoom:50%;">
-
-
-
-<h3 id="CRISPR相关转座元件的研究进展"><a href="#CRISPR相关转座元件的研究进展" class="headerlink" title="CRISPR相关转座元件的研究进展"></a>CRISPR相关转座元件的研究进展</h3><p>CRISPR相关转座元件是一类新兴的基因编辑工具，它们结合了CRISPR-Cas系统的精确切割能力和转座元件的移动特性。这些元件可以在不依赖同源重组的情况下，将指定的DNA片段定向插入到细胞染色体中，从而实现基因的定向整合。近年来，研究人员发现了具有转座机制的CRISPR相关转座元件，它们在基因编辑领域展现出了巨大的潜力和应用前景。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/clip_image002.jpg" alt="img"></p>
-<h4 id="研究方向和应用进展"><a href="#研究方向和应用进展" class="headerlink" title="研究方向和应用进展"></a>研究方向和应用进展</h4><p>CRISPR相关转座元件的研究主要集中在以下几个方面：</p>
-<p>\1.    <strong>基因编辑能力的提升</strong>：研究人员正在探索如何提高CRISPR相关转座元件的基因编辑效率，以便更有效地进行基因敲除、插入和修复等操作。</p>
-<p>\2.    <strong>基因簇重组和单碱基编辑</strong>：除了传统的基因编辑应用，CRISPR相关转座元件还被用于基因簇重组和单碱基编辑，这对于研究基因功能和疾病机制具有重要意义。</p>
-<p>\3.    <strong>基因转录调控</strong>：CRISPR相关转座元件可以作为基因转录调控的工具，通过改变基因表达水平来研究基因功能和疾病状态。</p>
-<p>\4.    <strong>人工融合的dCas9-transposase****系统</strong>：研究人员正在尝试将CRISPR-Cas系统与转座酶融合，创造出新的基因编辑工具，以提高编辑的灵活性和效率。</p>
-<h4 id="未来的应用前景和挑战"><a href="#未来的应用前景和挑战" class="headerlink" title="未来的应用前景和挑战"></a>未来的应用前景和挑战</h4><p>CRISPR相关转座元件的未来应用前景广阔，它们有望在基因疗法、农业生物技术和基础生物学研究等领域发挥重要作用。然而，这些技术的发展也面临着一系列挑战，包括提高编辑精度、减少脱靶效应、解决安全性问题以及克服技术实施的复杂性等。</p>
-<p>综上所述，CRISPR相关转座元件的研究正处于快速发展阶段，它们的应用潜力正在逐步被发掘，未来有望为基因编辑领域带来革命性的变革。</p>
-<h2 id="深入研究"><a href="#深入研究" class="headerlink" title="深入研究"></a>深入研究</h2><h3 id="CRISPR相关转座元素在基因组编辑中相比传统方法有哪些优势？"><a href="#CRISPR相关转座元素在基因组编辑中相比传统方法有哪些优势？" class="headerlink" title="CRISPR相关转座元素在基因组编辑中相比传统方法有哪些优势？"></a>CRISPR相关转座元素在基因组编辑中相比传统方法有哪些优势？</h3><h3 id="CRISPR相关转座元素在基因组编辑中的优势"><a href="#CRISPR相关转座元素在基因组编辑中的优势" class="headerlink" title="CRISPR相关转座元素在基因组编辑中的优势"></a>CRISPR相关转座元素在基因组编辑中的优势</h3><p>CRISPR相关转座元素（CRISPR-associated transposable elements）是一种新型的基因组编辑工具，它们在基因组编辑领域相对于传统方法具有显著的优势。以下是一些主要的优势：</p>
-<p>\1.    <strong>高效率</strong>：CRISPR相关转座元素能够快速准确地定位到基因组中的特定位置，并进行切割或插入操作，大大提高了基因组编辑的效率。</p>
-<p>\2.    <strong>高精度</strong>：由于CRISPR系统的指导RNA（gRNA）可以高度特异地识别目标DNA序列，因此CRISPR相关转座元素能够实现非常精确的基因组编辑，减少了非特异性切割的风险。</p>
-<p>\3.    <strong>易于操作</strong>：CRISPR相关转座元素的操作相对简单，只需要设计相应的gRNA和供体DNA片段，就可以在体外或体内进行基因组编辑实验，降低了技术门槛。</p>
-<p>\4.    <strong>广泛适用性</strong>：CRISPR相关转座元素不仅可以用于植物和动物的基因组编辑，还可以用于微生物和病毒的基因组改造，具有很广的应用范围。</p>
-<p>\5.    <strong>多重编辑能力</strong>：CRISPR相关转座元素可以同时对多个位点进行编辑，实现复杂的基因组改造，这对于研究基因之间的相互作用和功能网络具有重要意义。</p>
-<p>综上所述，CRISPR相关转座元素在基因组编辑中展现出了强大的优势，有望在未来的生命科学研究和生物技术应用中发挥更大的作用。</p>
-<h3 id="目前CRISPR相关转座元件在提高编辑精度方面存在哪些挑战？"><a href="#目前CRISPR相关转座元件在提高编辑精度方面存在哪些挑战？" class="headerlink" title="目前CRISPR相关转座元件在提高编辑精度方面存在哪些挑战？"></a>目前CRISPR相关转座元件在提高编辑精度方面存在哪些挑战？</h3><h3 id="CRISPR相关转座元件在提高编辑精度方面的挑战"><a href="#CRISPR相关转座元件在提高编辑精度方面的挑战" class="headerlink" title="CRISPR相关转座元件在提高编辑精度方面的挑战"></a>CRISPR相关转座元件在提高编辑精度方面的挑战</h3><p>CRISPR相关转座元件，尤其是CRISPR-Cas9系统，在基因组编辑中展现出了巨大的潜力和应用价值。然而，在提高编辑精度方面，该系统仍面临一些挑战：</p>
-<p>\1.    <strong>脱靶效应</strong>：CRISPR-Cas9系统虽然能够通过gRNA（指导RNA）精确地定位目标DNA序列，但也存在脱靶切割的风险，即在非目标位置切割DNA，导致意外的基因突变。这种脱靶效应可能会引起不可预测的生物学变化，甚至导致细胞死亡。</p>
-<p>\2.    <strong>gRNA****设计的复杂性</strong>：为了减少脱靶效应，需要精心设计gRNA以确保高特异性。然而，gRNA的设计涉及到对目标DNA序列的深入理解，以及对潜在脱靶位点的预测，这是一个复杂且耗时的过程。</p>
-<p>\3.    <strong>Cas9****蛋白的优化</strong>：Cas9蛋白的活性和特异性也是影响编辑精度的关键因素。尽管已经有多种Cas9变体被开发出来，以改善其在不同细胞类型中的编辑效率和减少脱靶效应，但找到最佳的Cas9变体仍然是一个挑战。</p>
-<p>\4.    <strong>细胞毒性</strong>：在某些情况下，CRISPR-Cas9系统可能会对宿主细胞产生毒性，这可能限制其在某些应用中的使用。</p>
-<p>\5.    <strong>免疫反应</strong>：在人体中使用CRISPR-Cas9系统可能会触发免疫反应，这对于其在临床治疗中的应用构成了障碍。</p>
-<p>\6.    <strong>伦理和法律问题</strong>：CRISPR-Cas9系统的使用还涉及到一系列伦理和法律问题，特别是在涉及人类胚胎编辑时，这些问题尤为敏感和复杂。</p>
-<p>综上所述，尽管CRISPR相关转座元件在提高编辑精度方面取得了显著进展，但仍需克服上述挑战，以便更好地应用于科学研究和临床治疗。</p>
-<h3 id="CRISPR相关转座元件在基因治疗领域的潜在应用有哪些？"><a href="#CRISPR相关转座元件在基因治疗领域的潜在应用有哪些？" class="headerlink" title="CRISPR相关转座元件在基因治疗领域的潜在应用有哪些？"></a>CRISPR相关转座元件在基因治疗领域的潜在应用有哪些？</h3><h3 id="CRISPR相关转座元件在基因治疗领域的潜在应用"><a href="#CRISPR相关转座元件在基因治疗领域的潜在应用" class="headerlink" title="CRISPR相关转座元件在基因治疗领域的潜在应用"></a>CRISPR相关转座元件在基因治疗领域的潜在应用</h3><p>CRISPR相关转座元件，特别是CRISPR&#x2F;Cas系统，已经成为基因治疗领域的重要工具。这些系统最初是细菌用来抵御病毒入侵的防御机制，但科学家们发现它们可以被改造用于精确地修改生物体的基因组。以下是CRISPR相关转座元件在基因治疗中的一些潜在应用：</p>
-<p>\1.    <strong>疾病模型建立</strong>：通过CRISPR&#x2F;Cas系统，研究人员可以在动物模型中模拟人类遗传疾病，从而更好地理解疾病的发病机理并测试新的治疗方法。</p>
-<p>\2.    <strong>基因修复</strong>：对于那些由于单个或几个基因突变导致的遗传病，CRISPR&#x2F;Cas系统可以被用来修复这些突变，恢复正常的基因功能。</p>
-<p>\3.    <strong>基因沉默</strong>：通过设计特定的向导RNA，CRISPR&#x2F;Cas系统可以靶向并沉默致病基因的表达，为某些无法通过传统药物治疗的疾病提供新的治疗策略。</p>
-<p>\4.    <strong>基因激活</strong>：除了沉默基因外，CRISPR&#x2F;Cas系统还可以被用来激活那些在疾病状态下被抑制的有益基因，增强机体的自我修复能力。</p>
-<p>\5.    <strong>基因插入</strong>：CRISPR&#x2F;Cas系统可以在基因组的特定位置插入新的基因片段，这为研究基因功能和开发新型疗法提供了可能。</p>
-<p>尽管CRISPR相关转座元件在基因治疗领域展现出巨大的潜力，但它们也面临着一些挑战，包括脱靶效应、免疫反应以及伦理和法律问题。因此，未来的研究将需要解决这些问题，以便这些强大的工具能够安全有效地应用于临床治疗。</p>
-<h3 id="CRISPR转座元件在基因治疗中的应用案例"><a href="#CRISPR转座元件在基因治疗中的应用案例" class="headerlink" title="CRISPR转座元件在基因治疗中的应用案例"></a>CRISPR转座元件在基因治疗中的应用案例</h3><p>CRISPR转座元件是一种新兴的基因编辑工具，它结合了CRISPR-Cas系统的精确切割能力和转座元件的移动特性。这些元件可以在不依赖同源重组的情况下，将指定的DNA片段定向插入到细胞染色体中，从而实现基因的定向整合。以下是一些CRISPR转座元件在基因治疗中的具体应用案例：</p>
-<p>\1.    <strong>HIV****抗性细胞的创建</strong>：研究人员利用CRISPR转座元件在造血干细胞中实现了HIV抗性细胞的创建。通过编辑干细胞的基因组，使得这些细胞能够抵抗HIV感染，为HIV患者提供了一种潜在的治疗方法。</p>
-<p>\2.    <strong>EGFP****基因定点整合表达</strong>：在另一个例子中，研究人员利用CRISPR转座元件在CHO细胞中实现了EGFP基因的定点整合和表达。这表明CRISPR转座元件可以用于建立基于CRISPR&#x2F;Cas9技术的外源基因定点整合和表达技术，为基因治疗提供了新的策略。</p>
-<p>\3.    <strong>植物基因组编辑</strong>：CRISPR转座元件在植物基因组编辑中也显示出了潜力。通过保留必要元件，研究者简化了CRISPR&#x2F;Cas9系统，使其在植物基因组编辑中更加高效和实用。</p>
-<p>\4.    <strong>造血干细胞移植中的应用</strong>：CRISPR转座元件在造血干细胞移植中的研究表明，该技术在自体移植和基因治疗方面具有良好的应用前景。这为血液疾病和遗传性疾病的治疗提供了新的可能性。</p>
-<p>这些案例展示了CRISPR转座元件在基因治疗中的多样性和潜力，它们为未来的基因治疗研究和临床应用提供了新的思路和工具。随着技术的不断发展和完善，预计CRISPR转座元件将在基因治疗领域发挥越来越重要的作用。</p>
-<h2 id="深入研究-1"><a href="#深入研究-1" class="headerlink" title="深入研究"></a>深入研究</h2><h3 id="CRISPR转座元件在造血干细胞移植中是如何提高效率的？"><a href="#CRISPR转座元件在造血干细胞移植中是如何提高效率的？" class="headerlink" title="CRISPR转座元件在造血干细胞移植中是如何提高效率的？"></a>CRISPR转座元件在造血干细胞移植中是如何提高效率的？</h3><h3 id="CRISPR转座元件在造血干细胞移植中的应用"><a href="#CRISPR转座元件在造血干细胞移植中的应用" class="headerlink" title="CRISPR转座元件在造血干细胞移植中的应用"></a>CRISPR转座元件在造血干细胞移植中的应用</h3><p>CRISPR转座元件是一种新型的基因编辑技术，它结合了CRISPR-Cas系统的精确切割能力和转座元件的移动特性，使得科学家能够在不依赖同源重组的情况下，将特定的DNA片段定向插入到细胞染色体中。这项技术在造血干细胞移植中的应用主要体现在提高基因编辑的效率和准确性。</p>
-<p>在造血干细胞移植中，CRISPR转座元件可以用来修复或修改患者自身的基因缺陷，或者引入新的基因以改善其功能。例如，通过CRISPR转座元件，可以在造血干细胞中敲除或修正导致血液疾病的基因突变，然后将这些经过编辑的干细胞移植回患者体内，以恢复正常的血液功能。</p>
-<p>CRISPR转座元件提高效率的关键在于其能够在基因组中精确地定位目标位置，并进行高效的基因编辑。相比于传统的基因编辑技术，如TALEN和ZFN，CRISPR转座元件的设计更为简洁，操作更为方便，因此在造血干细胞移植中具有更大的应用潜力。</p>
-<p>尽管CRISPR转座元件在理论上具有很大的优势，但在实际应用中仍面临一些挑战，如脱靶效应、基因编辑的稳定性和安全性等问题。因此，科学家们正在不断改进CRISPR转座元件的设计和应用策略，以提高其在造血干细胞移植中的应用效率和安全性。</p>
-<p>总的来说，CRISPR转座元件在造血干细胞移植中的应用前景非常广阔，它有望为治疗遗传性血液疾病和其他相关疾病提供新的策略和方法。随着科学技术的不断进步，相信未来CRISPR转座元件在这一领域的应用将会取得更多突破性的成果。</p>
-<h3 id="CRISPR转座元件与传统基因疗法相比有哪些优势？"><a href="#CRISPR转座元件与传统基因疗法相比有哪些优势？" class="headerlink" title="CRISPR转座元件与传统基因疗法相比有哪些优势？"></a>CRISPR转座元件与传统基因疗法相比有哪些优势？</h3><h3 id="CRISPR转座元件与传统基因疗法的优势比较"><a href="#CRISPR转座元件与传统基因疗法的优势比较" class="headerlink" title="CRISPR转座元件与传统基因疗法的优势比较"></a>CRISPR转座元件与传统基因疗法的优势比较</h3><p>CRISPR转座元件是一种新型的基因编辑技术，它结合了CRISPR-Cas系统的精确切割能力和转座元件的移动特性。与传统的基因疗法相比，CRISPR转座元件具有以下优势：</p>
-<p>\1.    <strong>高效率和简便性</strong>：CRISPR转座元件的设计和应用比传统的基因编辑工具如锌指核酸酶（ZFNs）和转录激活样效应物核酸酶（TALENs）更为简单高效。这使得科研人员能够更快地进行基因编辑实验，加速科学研究进程。</p>
-<p>\2.    <strong>成本低廉</strong>：由于CRISPR转座元件的设计相对简单，因此在材料和操作成本上较低，这使得更多的实验室能够负担得起这项技术，促进了基因编辑技术的普及。</p>
-<p>\3.    <strong>广泛的应用范围</strong>：CRISPR转座元件不仅可以用于基因的敲除和插入，还可以用于碱基编辑、转录调控、多基因编辑等多种功能的实现。这种多功能性使得CRISPR转座元件在基因治疗、农业生物技术和基础生物学研究等领域具有广泛的应用前景。</p>
-<p>\4.    <strong>精确性</strong>：CRISPR转座元件能够实现高度精确的基因编辑，减少了脱靶效应，这对于确保基因治疗的安全性和有效性至关重要。</p>
-<p>\5.    <strong>小型化</strong>：随着研究的深入，CRISPR-Cas系统正在向更小的尺寸发展，这有助于提高基因编辑的灵活性和适用性，尤其是在空间受限的细胞环境中。</p>
-<p>综上所述，CRISPR转座元件在效率、成本、应用范围、精确性和小型化等方面相对于传统基因疗法具有显著优势，这些优势使得CRISPR转座元件成为现代基因编辑领域的重要工具。</p>
-<h3 id="CRISPR转座元件在植物基因组编辑中的应用主要解决了哪些问题？"><a href="#CRISPR转座元件在植物基因组编辑中的应用主要解决了哪些问题？" class="headerlink" title="CRISPR转座元件在植物基因组编辑中的应用主要解决了哪些问题？"></a>CRISPR转座元件在植物基因组编辑中的应用主要解决了哪些问题？</h3><h3 id="CRISPR转座元件在植物基因组编辑中的应用"><a href="#CRISPR转座元件在植物基因组编辑中的应用" class="headerlink" title="CRISPR转座元件在植物基因组编辑中的应用"></a>CRISPR转座元件在植物基因组编辑中的应用</h3><p>CRISPR转座元件在植物基因组编辑中的应用主要解决了以下几个问题：</p>
-<p>\1.    <strong>提高编辑效率</strong>：传统的基因编辑技术如ZFN和TALEN在组装上存在挑战，而CRISPR转座元件通过短的gRNA引导Cas9蛋白进行DNA切割，简化了核酸内切酶的定制过程，提高了编辑效率。</p>
-<p>\2.    <strong>降低成本</strong>：相比于其他基因编辑技术，CRISPR转座元件的操作更加简便，不需要大量的蛋白质组装，从而降低了实验成本。</p>
-<p>\3.    <strong>扩大应用范围</strong>：CRISPR转座元件不仅可以用于基因敲除，还可以实现基因敲入和基因修复，这使得它在植物基因组编辑中的应用范围更加广泛。</p>
-<p>\4.    <strong>减少脱靶效应</strong>：CRISPR转座元件的设计可以减少脱靶效应，即错误地编辑基因组中的非目标位置，这对于确保编辑结果的准确性至关重要。</p>
-<p>\5.    <strong>促进植物育种</strong>：通过CRISPR转座元件，研究人员可以快速培育出具有特定性状的植物品种，加速植物育种进程。</p>
-<p>\6.    <strong>研究基因功能</strong>：CRISPR转座元件可以用来研究植物中特定基因的功能，帮助理解植物生长发育和适应环境的机制。</p>
-<p>综上所述，CRISPR转座元件在植物基因组编辑中的应用解决了传统技术的一些局限性，提高了编辑效率和准确性，同时也为植物育种和基因功能研究提供了新的工具。随着技术的不断完善，未来CRISPR转座元件在植物基因组编辑领域的应用前景非常广阔。</p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a target="_blank" rel="noopener" href="https://cjb.ijournals.cn/html/cjbcn/2022/12/gc22124371.htm">CRISPR相关转座元件的研究及应用进展</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.chinagene.cn/CN/abstract/abstract5784.shtml">转座元件, 表观遗传调控与细胞命运决定</a></p>
-<p><a target="_blank" rel="noopener" href="https://cjb.ijournals.cn/html/cjbcn/2023/7/gc23072566.htm">基于CRISPR&#x2F;Cas9的精准基因编辑技术研究进展</a></p>
-<p><a target="_blank" rel="noopener" href="https://zlxb.zafu.edu.cn/fileZJNLDXXB/journal/article/zjnldxxb/2021/3/PDF/2020-0338.pdf">转座子沉默与 DNA 甲基化</a></p>
-<p><a target="_blank" rel="noopener" href="https://synbioj.cip.com.cn/CN/abstract/abstract451.shtml">CRISPR-Cas系统的小型化研究进展</a></p>
-<p><a target="_blank" rel="noopener" href="https://manu60.magtech.com.cn/biotech/CN/Y2022/V42/I4/24">CRISPR&#x2F;Cas基因编辑技术在增强子功能分析及鉴定中的研究进展*</a></p>
-<p><a target="_blank" rel="noopener" href="https://synbioj.cip.com.cn/CN/abstract/abstract193.shtml">CRISPR&#x2F;Cas系统的挖掘、改造与功能拓展</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.chinagene.cn/CN/Y2020/V42/I5/435">基于 CRISPR&#x2F;Cas9 系统在全基因组范围内筛选功能基因及调控元件研究进展</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.plant-physiology.com/upload/file/201908271632146550.pdf">CRISPR&#x2F;Cas9 系统在植物基因功能研究中的应用进展</a></p>
-<p><a target="_blank" rel="noopener" href="https://synbioj.cip.com.cn/CN/abstract/abstract278.shtml">CRISPR&#x2F;Cas9 及其衍生编辑器在衰老研究中的应用进展</a></p>
-<p><a target="_blank" rel="noopener" href="https://lifescience.sinh.ac.cn/webadmin/upload/2015199.pdf">CRISPR&#x2F;Cas 系统及其在昆虫基因功能研究中的应用</a></p>
-<p><a target="_blank" rel="noopener" href="http://biotech.aiijournal.com/CN/Y2020/V36/I3/29">精准高效外源 DNA 整合技术研究进展</a></p>
-<p><a target="_blank" rel="noopener" href="http://journal05.magtech.org.cn/Jwk_ny/CN/article/downloadArticleFile.do?attachType=PDF&id=10339">CRISPR&#x2F;Cas 技术研究进展</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.chinagene.cn/CN/article/downloadArticleFile.do?attachType=PDF&id=4968">采用 DNA 片段编辑技术反转 CTCF 结合位点改变基因组拓扑结构和增强子与启动子功能</a></p>
-<p><a target="_blank" rel="noopener" href="https://cjb.ijournals.cn/html/cjbcn/2023/6/gc23062449.htm">基于CRISPR&#x2F;Cas系统的多重基因编辑与调控技术</a></p>
-<p><a target="_blank" rel="noopener" href="https://lifescience.sinh.ac.cn/webadmin/upload/2016101243.pdf">基因组编辑技术在水稻功能基因组和遗传改良中的应用</a></p>
-<p><a target="_blank" rel="noopener" href="https://biotech.aiijournal.com/CN/10.13560/j.cnki.biotech.bull.1985.2020-0068">CRISPR &#x2F;Cas9基因编辑技术在山羊和绵羊中的应用研究进展</a></p>
-<p><a target="_blank" rel="noopener" href="https://synbioj.cip.com.cn/CN/Y2023/V4/I6/1281">电活性微生物基因编辑与转录调控技术进展与应用</a></p>
-<p><a target="_blank" rel="noopener" href="https://zh-pdf.nature.com/pdf/nrrheum/2020/Nature-Reviews-Rheumatology-research-highlights-1.pdf#page=69">遗传学和表观遗传学在骨关节炎中的相互调控作用</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.chinagene.cn/EN/10.16288/j.yczz.20-301">细菌最小基因组研究进展</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.nature.shu.edu.cn/CN/article/downloadArticleFile.do?attachType=PDF&id=8231">从旁观者到生力军</a></p>
-<p><a target="_blank" rel="noopener" href="http://html.rhhz.net/SWJSTB/html/2016-5-47.htm">CRISPR&#x2F;Cas9技术的发展及在基因组编辑中的应用</a></p>
-<p><a target="_blank" rel="noopener" href="https://synbioj.cip.com.cn/CN/abstract/abstract344.shtml">CRISPR-Cas9 系统在肿瘤生物学中的应用及前景</a></p>
-<p><a target="_blank" rel="noopener" href="https://cjb.ijournals.cn/html/cjbcn/2017/3/gc17030331.htm">合成基因组学: 设计与合成的艺术</a></p>
-<p><a target="_blank" rel="noopener" href="https://synbioj.cip.com.cn/EN/abstract/abstract344.shtml">Application and prospect of CRISPR-Cas9 system in tumor biology</a></p>
-<p><a target="_blank" rel="noopener" href="https://books.google.com/books?hl=en&lr=&id=MwbWEAAAQBAJ&oi=fnd&pg=PA1&dq=%E7%9B%AE%E5%89%8DCRISPR%E7%9B%B8%E5%85%B3%E8%BD%AC%E5%BA%A7%E5%85%83%E4%BB%B6%E5%9C%A8%E6%8F%90%E9%AB%98%E7%BC%96%E8%BE%91%E7%B2%BE%E5%BA%A6%E6%96%B9%E9%9D%A2%E5%AD%98%E5%9C%A8%E5%93%AA%E4%BA%9B%E6%8C%91%E6%88%98%EF%BC%9F&ots=rfJlOCnVS0&sig=7Hs0ZiUd0TQq_p0TJqlMTgCWbCM">基因工程原理与技术研究</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.chinagene.cn/EN/abstract/abstract4975.shtml">CRISPR&#x2F;Cas9 基因组编辑技术及其在动物基因组定点修饰中的应用</a></p>
-<p><a target="_blank" rel="noopener" href="https://everestgene.wordpress.com/wp-content/uploads/2018/11/e59fbae59ba0e7b7a8e8bcaf.pdf#page=150">应用编辑核酸酶产生 HIV 抵抗细胞</a></p>
-<p><a target="_blank" rel="noopener" href="http://biomed.cnjournals.com/ch/reader/download_pdf.aspx?file_no=201819001&year_id=2018&quarter_id=19&falg=1">基于 CRISPR&#x2F;Cas9 基因编辑技术的 EGFP 基因定点整合表达</a></p>
-<p><a target="_blank" rel="noopener" href="https://xuebao.scau.edu.cn/zr/html/2019/5/20190506.htm">CRISPR&#x2F;Cas 植物基因组编辑技术研究进展</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.cjter.com/CN/Y2018/V22/I29/4713">CRISPR&#x2F;Cas9 在造血干细胞移植中的最新研究与进展</a></p>
-<p><a target="_blank" rel="noopener" href="https://cjb.ijournals.cn/html/cjbcn/2022/12/gc22124371.htm">CRISPR相关转座元件的研究及应用进展</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.cqvip.com/qk/90501x/1999003/3700140.html">动物基因免疫的原理与方法</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.chinagene.cn/CN/abstract/abstract5784.shtml">转座元件, 表观遗传调控与细胞命运决定</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.cqvip.com/qk/92751x/199206/764783.html">肿瘤基因治疗研究进展</a></p>
-<p><a target="_blank" rel="noopener" href="https://zlxb.zafu.edu.cn/fileZJNLDXXB/journal/article/zjnldxxb/2021/3/PDF/2020-0338.pdf">转座子沉默与 DNA 甲基化</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.ecsponline.com/yz/BF5DC6C2E06774FEBB83BC310DC2745D8000.pdf">基因治疗</a></p>
-<p><a target="_blank" rel="noopener" href="https://manu60.magtech.com.cn/biotech/CN/Y2022/V42/I4/24">CRISPR&#x2F;Cas基因编辑技术在增强子功能分析及鉴定中的研究进展*</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.cqvip.com/qk/83764x/200204/7066789.html">基因治疗与基因载体</a></p>
-<p><a target="_blank" rel="noopener" href="https://cjb.ijournals.cn/html/cjbcn/2022/2/gc22020478.htm">解脂耶氏酵母表达调控工具的开发及天然产物合成的研究进展</a></p>
-<p><a target="_blank" rel="noopener" href="http://biotech.aiijournal.com/CN/Y2020/V36/I3/29">精准高效外源 DNA 整合技术研究进展</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.cqvip.com/qk/95669x/199406/1357164.html">肿瘤基因治疗原理及在膀胱癌治疗中的应用前景</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.chinagene.cn/CN/10.16288/j.yczz.15-284">CRISPR&#x2F;Cas9基因组编辑技术在HIV-1感染治疗中的应用进展</a></p>
-<p>[诱导多能干细胞技术及其在疾病研究中的应用 <a target="_blank" rel="noopener" href="http://www.chinagene.cn/CN/Y2020/V42/I11/1042">已撤稿]</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8292649/">基因编辑治疗原发性免疫缺陷病 - PMC</a></p>
-<p><a target="_blank" rel="noopener" href="http://biotech.aiijournal.com/CN/Y2015/V31/I4/72">我国诱导多能干细胞研究进展</a></p>
-<p><a target="_blank" rel="noopener" href="http://html.rhhz.net/ZGSWGCZZ/html/20161214.htm">CRISPR&#x2F;Cas9介导的疾病模型构建与基因修复研究进展</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.chinagene.cn/EN/abstract/abstract4975.shtml">CRISPR&#x2F;Cas9 基因组编辑技术及其在动物基因组定点修饰中的应用</a></p>
-<p><a target="_blank" rel="noopener" href="https://synbioj.cip.com.cn/CN/abstract/abstract451.shtml">CRISPR-Cas系统的小型化研究进展</a></p>
-<p><a target="_blank" rel="noopener" href="https://synbioj.cip.com.cn/CN/Y2023/V4/I6/1281">电活性微生物基因编辑与转录调控技术进展与应用</a></p>
-<p><a target="_blank" rel="noopener" href="https://synbioj.cip.com.cn/CN/abstract/abstract193.shtml">CRISPR&#x2F;Cas系统的挖掘、改造与功能拓展</a></p>
-<p><a target="_blank" rel="noopener" href="https://huanglab.xmu.edu.cn/paper/6.pdf">增强子对基因表达的调控: 从新技术到新机制</a></p>
-<p><a target="_blank" rel="noopener" href="http://html.rhhz.net/SWJSTB/html/2016-5-47.htm">CRISPR&#x2F;Cas9技术的发展及在基因组编辑中的应用</a></p>
-<p><a target="_blank" rel="noopener" href="http://plant-physiology.com/upload/file/201601211049293010.pdf">基因组编辑新技术: CRISPR&#x2F;Cas 系统在生物基因组学中的研究进展</a></p>
-<p><a target="_blank" rel="noopener" href="https://synbioj.cip.com.cn/CN/abstract/abstract339.shtml">合成生物学在疾病信息记录与实时监测中的应用潜力</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.chinagene.cn/EN/abstract/abstract5998.shtml">表观遗传修饰影响花青苷合成研究进展</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">转座子</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/06/04/CRISPR%E7%9B%B8%E5%85%B3%E8%BD%AC%E5%BA%A7%E5%85%83%E4%BB%B6%E7%9A%84%E7%A0%94%E7%A9%B6/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Piggybac转座子载体小传" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/06/03/Piggybac%E8%BD%AC%E5%BA%A7%E5%AD%90%E8%BD%BD%E4%BD%93%E5%B0%8F%E4%BC%A0/" target="_blank">Piggybac转座子载体小传</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/06/03/Piggybac%E8%BD%AC%E5%BA%A7%E5%AD%90%E8%BD%BD%E4%BD%93%E5%B0%8F%E4%BC%A0/" class="archive-article-date">
-        <time datetime="2024-06-03T06:06:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-06-03</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>脑图：</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/PB-17174312159232.png" alt="PB" style="zoom:50%;">
-
-
-
-<p>在我们研究某种疾病的发病机制或者某种药物的作用靶点时，经常需要建立目的基因过表达或基因敲除的细胞模型，目前构建稳转细胞株及部分敲除细胞株最常用的方式之一是慢病毒法，慢病毒因其可以转染几乎所有种类的细胞，且在转染后可以整合到细胞的基因组而长期表达的优势，是目前较为主流的构建方法，但慢病毒构建的稳转细胞株相对于野生型没有生长优势；此外，慢病毒对目的基因的载量也有限。因此，寻找一种高效简便可替代慢病毒法的方法显得尤为重要。</p>
-<p>转座子的出现为构建基因编辑细胞株提供了一个全新的视野。转座子也被称为跳跃基因，由Barbara McClintock教授在上世纪50年代发现，并于1983年因此发现而获得诺贝尔医学奖，是指一段DNA序列由基因组的一个位置跳跃到另一个位置。转座子主要包含两种类型：</p>
-<p><strong>☑ 一类转座子：逆转座子（retrotransposons）</strong>，自身不表达转座酶，先转录为RNA，通过RNA的反转录获得cDNA，cDNA在整合酶的作用下转移到其他基因组位置。</p>
-<p><strong>☑ 二类转座子：DNA转座子（DNA transposons）</strong>，通过自身编码的转座酶直接切割转座子所在DNA序列，实现序列的转移。在脊椎动物中发现的转座子系统中，以睡美人转座子（SleepingBeauty）和piggyBac转座子等DNA转座子最为常见。</p>
-<p>睡美人转座子是由科学家Levis于1997年在脊椎动物中首个发现的转座子， 其通过生物信息学方法分析8种鲑鱼中12个Tc1类转座酶序列，找出了其中的保守序列，确定了已经灭绝的鲑鱼中具有活性的转座酶的基因序列，并称其为睡美人转座子。但睡美人转座子对宿主要求严格，且存在转座效率不稳定等情况，限制了其广泛应用，而piggyBac转座子则因其特异的整合位点、精密切割以及广泛存在的特性被大家所青睐。</p>
-<h3 id="PiggyBac转座子载体简介"><a href="#PiggyBac转座子载体简介" class="headerlink" title="PiggyBac转座子载体简介"></a>PiggyBac转座子载体简介</h3><p>PiggyBac转座子载体是一种常用于基因工程的工具，它属于DNA转座子的一种。PiggyBac转座子载体的特点在于其高效的转座能力和较低的宿主细胞毒性，使得它在基因克隆、基因表达调控、基因治疗等领域有着广泛的应用。</p>
-<h3 id="PiggyBac转座子载体的工作原理"><a href="#PiggyBac转座子载体的工作原理" class="headerlink" title="PiggyBac转座子载体的工作原理"></a>PiggyBac转座子载体的工作原理</h3><p>PiggyBac转座子载体的工作原理是通过转座酶的催化，将含有特定基因的DNA片段从一个位置转移到另一个位置。这个过程不需要依赖于同源重组，因此转座效率相对较高。PiggyBac转座子载体可以将目标基因插入到宿主细胞的基因组中，或者从基因组中移除特定的基因片段。</p>
-<h3 id="PiggyBac转座子载体的应用实例"><a href="#PiggyBac转座子载体的应用实例" class="headerlink" title="PiggyBac转座子载体的应用实例"></a>PiggyBac转座子载体的应用实例</h3><p>PiggyBac转座子载体在昆虫遗传学研究中有着重要的应用。例如，在苹果蠹蛾不育昆虫释放技术中，研究者们使用基于PiggyBac的质粒载体，插入显性条件致死基因以培育遗传性别品系，同时插入荧光蛋白等标记基因来显示转基因的效果。这种技术可以有效地控制苹果蠹蛾的种群数量，减少其对苹果树的危害。 <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='12'%20height='12'%20viewBox='0%200%2012%2012'%20fill='none'%3e%3cpath%20d='M1.98484%207.23472L5.73484%203.48472C5.76967%203.44986%205.81103%203.4222%205.85655%203.40333C5.90208%203.38445%205.95088%203.37474%206.00016%203.37474C6.04944%203.37474%206.09824%203.38445%206.14376%203.40333C6.18928%203.4222%206.23064%203.44986%206.26547%203.48472L10.0155%207.23472C10.0858%207.30509%2010.1254%207.40052%2010.1254%207.50004C10.1254%207.59955%2010.0858%207.69498%2010.0155%207.76535C9.9451%207.83571%209.84967%207.87524%209.75016%207.87524C9.65065%207.87524%209.55521%207.83571%209.48485%207.76535L6.00016%204.28019L2.51547%207.76535C2.48063%207.80019%202.43927%207.82783%202.39374%207.84668C2.34822%207.86554%202.29943%207.87524%202.25016%207.87524C2.20088%207.87524%202.15209%207.86554%202.10657%207.84668C2.06105%207.82783%202.01969%207.80019%201.98484%207.76535C1.95%207.73051%201.92237%207.68914%201.90351%207.64362C1.88465%207.5981%201.87495%207.54931%201.87495%207.50004C1.87495%207.45076%201.88465%207.40197%201.90351%207.35645C1.92237%207.31093%201.95%207.26956%201.98484%207.23472Z'%20fill='%230057FF'%20stroke='%230057FF'%20stroke-width='0.5'/%3e%3c/svg%3e" alt="img"></p>
-<h3 id="PiggyBac转座子载体的优势与局限性"><a href="#PiggyBac转座子载体的优势与局限性" class="headerlink" title="PiggyBac转座子载体的优势与局限性"></a>PiggyBac转座子载体的优势与局限性</h3><p>PiggyBac转座子载体的优势在于其高效的转座能力和较低的宿主细胞毒性，这使得它在基因工程中具有很高的实用价值。然而，PiggyBac转座子载体的局限性在于其转座范围相对较窄，可能不适用于所有类型的宿主细胞。此外，PiggyBac转座子载体的转座过程可能会导致宿主基因组的不稳定，因此在使用时需要谨慎考虑。</p>
-<p>综上所述，PiggyBac转座子载体是一种强大的基因工程工具，它在许多领域都有着重要的应用。然而，在使用时也需要注意其潜在的局限性和风险。</p>
-<h2 id="深入研究"><a href="#深入研究" class="headerlink" title="深入研究"></a><strong>深入研究</strong></h2><h3 id="PiggyBac转座子载体在昆虫遗传学研究中具体是如何被应用的？"><a href="#PiggyBac转座子载体在昆虫遗传学研究中具体是如何被应用的？" class="headerlink" title="PiggyBac转座子载体在昆虫遗传学研究中具体是如何被应用的？"></a><strong>PiggyBac转座子载体在昆虫遗传学研究中具体是如何被应用的？</strong></h3><p>PiggyBac转座子载体在昆虫遗传学研究中的应用主要体现在其作为一个高效的基因转移工具，用于在昆虫体内插入外源基因。这种转座子载体具有几个显著优点，包括较高的转座效率、低毒性以及能够在宿主基因组中保持稳定的整合状态。</p>
-<h3 id="转座子载体的基本原理"><a href="#转座子载体的基本原理" class="headerlink" title="转座子载体的基本原理"></a>转座子载体的基本原理</h3><p>PiggyBac转座子载体的工作原理是通过特定的酶介导，将包含目标基因的转座子从一个位置跳跃到另一个位置。这个过程通常涉及两个关键步骤：首先是转座子的切割和移动，其次是目标基因的整合到宿主基因组中。由于PiggyBac转座子载体不依赖于宿主细胞的修复机制，因此它可以在多种昆虫物种中有效工作，包括家蝇等模式昆虫。</p>
-<h3 id="在昆虫遗传学研究中的应用实例"><a href="#在昆虫遗传学研究中的应用实例" class="headerlink" title="在昆虫遗传学研究中的应用实例"></a>在昆虫遗传学研究中的应用实例</h3><p>在昆虫遗传学研究中，PiggyBac转座子载体被用来创建转基因昆虫模型，这些模型可以用于研究基因功能、疾病传播机制以及昆虫行为等方面。例如，研究人员可以通过将含有增强型绿色荧光蛋白（EGFP）基因的PiggyBac转座子载体注射到家蝇卵中，实现活体基因稳定表达，并对其进行验证，为开展家蝇基因功能的研究奠定基础。 <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='12'%20height='12'%20viewBox='0%200%2012%2012'%20fill='none'%3e%3cpath%20d='M1.98484%207.23472L5.73484%203.48472C5.76967%203.44986%205.81103%203.4222%205.85655%203.40333C5.90208%203.38445%205.95088%203.37474%206.00016%203.37474C6.04944%203.37474%206.09824%203.38445%206.14376%203.40333C6.18928%203.4222%206.23064%203.44986%206.26547%203.48472L10.0155%207.23472C10.0858%207.30509%2010.1254%207.40052%2010.1254%207.50004C10.1254%207.59955%2010.0858%207.69498%2010.0155%207.76535C9.9451%207.83571%209.84967%207.87524%209.75016%207.87524C9.65065%207.87524%209.55521%207.83571%209.48485%207.76535L6.00016%204.28019L2.51547%207.76535C2.48063%207.80019%202.43927%207.82783%202.39374%207.84668C2.34822%207.86554%202.29943%207.87524%202.25016%207.87524C2.20088%207.87524%202.15209%207.86554%202.10657%207.84668C2.06105%207.82783%202.01969%207.80019%201.98484%207.76535C1.95%207.73051%201.92237%207.68914%201.90351%207.64362C1.88465%207.5981%201.87495%207.54931%201.87495%207.50004C1.87495%207.45076%201.88465%207.40197%201.90351%207.35645C1.92237%207.31093%201.95%207.26956%201.98484%207.23472Z'%20fill='%230057FF'%20stroke='%230057FF'%20stroke-width='0.5'/%3e%3c/svg%3e" alt="img"></p>
-<h3 id="应用的优势和局限性"><a href="#应用的优势和局限性" class="headerlink" title="应用的优势和局限性"></a>应用的优势和局限性</h3><p>PiggyBac转座子载体的应用优势在于其操作简便、转座效率高，且不会引起宿主基因组的大范围重组。然而，它也有一些局限性，例如转座子的随机整合可能导致不可预测的基因表达变化，以及长期稳定性可能受到挑战。</p>
-<p>综上所述，PiggyBac转座子载体在昆虫遗传学研究中扮演着重要角色，它不仅提高了基因转移的效率，还为理解昆虫的复杂生物学特性提供了有力的工具。随着科学技术的不断进步，未来PiggyBac转座子载体的应用范围有望进一步扩大，为昆虫遗传学研究带来更多突破。</p>
-<h3 id="PiggyBac转座子载体相比其他DNA转座子有哪些独特的优点？"><a href="#PiggyBac转座子载体相比其他DNA转座子有哪些独特的优点？" class="headerlink" title="PiggyBac转座子载体相比其他DNA转座子有哪些独特的优点？"></a><strong>PiggyBac转座子载体相比其他DNA转座子有哪些独特的优点？</strong></h3><p>PiggyBac转座子载体具有一些独特的优点，使其在基因工程领域中成为一个重要工具。以下是一些主要优势：</p>
-<ol>
-<li><strong>低毒性</strong>：与许多其他类型的转座子载体相比，PiggyBac转座子载体对宿主细胞的毒性较低。这意味着它们可以在细胞中更安全地操作，减少对细胞的潜在损害。</li>
-<li><strong>高效的转座活性</strong>：PiggyBac转座子载体具有很高的转座效率，能够快速将基因片段插入到宿主基因组的多个位点。这种高效率使得研究人员能够迅速实现基因的敲入或敲除。</li>
-<li><strong>广泛的宿主范围</strong>：PiggyBac转座子载体可以在多种细胞类型中转座，包括哺乳动物细胞、昆虫细胞等。这为研究人员提供了更多的选择，以便在不同的生物模型中进行实验。</li>
-<li><strong>易于操作</strong>：PiggyBac转座子载体的操作相对简单，不需要复杂的步骤或特殊的设备。这降低了实验的难度，提高了实验的成功率。</li>
-<li><strong>可逆性</strong>：PiggyBac转座子载体的转座事件可以通过特定的方法逆转，恢复原始的基因组状态。这对于研究基因功能和疾病机制非常有用，因为它允许研究人员在实验结束后恢复正常的基因表达。</li>
-</ol>
-<p>这些优点使得PiggyBac转座子载体在基因克隆、基因治疗、基因功能研究等领域具有广泛的应用前景。</p>
-<h3 id="PiggyBac转座子载体在基因治疗领域的应用有哪些案例或潜力？"><a href="#PiggyBac转座子载体在基因治疗领域的应用有哪些案例或潜力？" class="headerlink" title="PiggyBac转座子载体在基因治疗领域的应用有哪些案例或潜力？"></a><strong>PiggyBac转座子载体在基因治疗领域的应用有哪些案例或潜力？</strong></h3><h3 id="PiggyBac转座子载体在基因治疗领域的应用案例"><a href="#PiggyBac转座子载体在基因治疗领域的应用案例" class="headerlink" title="PiggyBac转座子载体在基因治疗领域的应用案例"></a>PiggyBac转座子载体在基因治疗领域的应用案例</h3><p>PiggyBac转座子载体是一种高效的基因传递工具，它在基因治疗领域展现出了巨大的潜力。以下是一些具体的应用案例：</p>
-<ol>
-<li><strong>遗传疾病治疗</strong>：PiggyBac转座子载体被用于治疗一系列遗传性疾病，包括肌肉萎缩症、杜氏肌营养不良症等。通过将正常的基因序列插入患者细胞内，可以纠正突变基因导致的疾病症状[1]。</li>
-<li><strong>癌症治疗</strong>：在癌症治疗方面，PiggyBac转座子载体可以用来传递抗癌基因或者抑制肿瘤生长的因子。这种方法已经在某些类型的癌症治疗中显示出了积极的效果[2]。</li>
-<li><strong>免疫系统调节</strong>：PiggyBac转座子载体还被用于增强免疫系统的功能，例如通过传递特定的基因来提高T细胞的活性，从而增强对癌细胞的攻击能力[3]。</li>
-</ol>
-<h3 id="PiggyBac转座子载体的潜在应用"><a href="#PiggyBac转座子载体的潜在应用" class="headerlink" title="PiggyBac转座子载体的潜在应用"></a>PiggyBac转座子载体的潜在应用</h3><p>除了上述已知的应用外，PiggyBac转座子载体在基因治疗领域还有很大的发展空间：</p>
-<ol>
-<li><strong>个性化医疗</strong>：随着基因组学的发展，未来可能能够根据每个人的遗传信息设计个性化的PiggyBac转座子载体，以更精确地治疗各种遗传性疾病[4]。</li>
-<li><strong>多基因治疗</strong>：许多复杂的疾病涉及多个基因的异常。PiggyBac转座子载体可能能够同时修改多个相关基因，为这些疾病的治疗提供新的策略[5]。</li>
-<li><strong>长期稳定表达</strong>：PiggyBac转座子载体具有长期稳定表达所传递基因的潜力，这对于需要持续治疗的疾病来说是非常有价值的[6]。</li>
-</ol>
-<p>综上所述，PiggyBac转座子载体在基因治疗领域的应用前景广阔，不仅在现有的治疗方法上有所突破，而且在未来的研究中也有望带来更多创新的治疗策略。</p>
-<p><strong>PiggyBac转座子结构与机制</strong></p>
-<p>PiggyBac转座子（粉纹夜蛾）是一个2475bp长的可自主转移元件，两末端分别有一个由13bp和19bp的TIR序列组成的亚末端重复序列，两端TIR序列之间的间隔分别是3bp（5’端）和31bp（3’端），在两个亚末端重复序列之间，有一个1.8kb的开放阅读框，编码由594个氨基酸组成、分子量大小为64KD的PiggyBac转座酶。如下图所示：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/%25E5%259B%25BE1_6zosLdY.png" alt="PiggyBac转座子"></p>
-<p>PiggyBac属于II类转座子，通过“剪切-粘贴”机制移动，即从基因组一个位置转座到另一个位置，不留下序列本身（与I类启动子通过“复制-粘贴”的移动方式不同）。</p>
-<p>通过对PiggyBac超家族成员序列比对结果分析，发现PiggyBac转座酶保守的氨基酸位点为D268、D346和D447，与许多其它的转座酶和逆转录酶的保守结构域DDE类似，这三个位点参与了几乎所有的转座活动，包括DNA切割、发夹结构形成和目的序列的插入。具体的整合过程如下图所示：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/%25E5%259B%25BE2_W4z0VZU.png" alt="DNA切割、发夹结构形成和目的序列的插入"></p>
-<p>PiggyBac转座酶结合到转座子DNA序列两端，开始精确地切割每条DNA链转座子DNA的3’端，形成3’-OH结构；之后3’-OH攻击互补链5’末端TTAA与转座子间的磷酸二酯键，导致互补链DNA断裂，释放转座子，同时转座子两端形成发夹结构；找到新的TTAA四碱基整合位点后，转座酶伸展转座子的发夹结构，暴露3’-OH，同时3’-OH攻击TTAA整合位点的5’端，形成新的磷酸二酯键；互补链及转座子释放位点处的单链缺口的修复由宿主因子完成，转座完成。</p>
-<p><strong>PiggyBac转座子载体系统组成</strong></p>
-<p>PiggyBac转座子在发现后经过了一系列优化和改造的过程，如转座酶密码子优化，以及两端TIR序列的简化，最后形成了一套完整的PiggyBac载体系统。PiggyBac载体系统成员主要有：一个辅助质粒：编码转座酶；一个转座子质粒：含优化的两端亚末端反向重复序列，中间是被转座区域，可插入我们想转座到宿主基因组中的目的基因序列。</p>
-<p>实验时需同时将辅助质粒和转座子质粒共同转化靶细胞，辅助质粒编码的转座酶识别转座子质粒两端的TIR序列并切割，释放的被转座区被转座酶整合到宿主基因组中含TTAA序列的位点，并在被转座区两端出现TTAA重复序列。</p>
-<p>在不降低转座效率的情况下，两端优化后的TIR序列间可插入10kb左右的序列，研究表明，在小鼠中通过受精卵注射的方式，用PiggyBac转座子载体在基因组插入细菌人工染色体（BACs，150kb-300kb），转座效率最高的达到了45%（F0代中有45%的小鼠携带了BACs）。</p>
-<p><strong>应用</strong></p>
-<p><strong>1. 作为非病毒载体</strong></p>
-<p>与传统的病毒载体相比，PiggyBac具有以下几大优点：首先是安全性高、操作方便（可直接用质粒转化细胞）；其次是载体容量大（10kb-20kb），可实现多基因的共表达；第三是可通过调节转座子质粒和辅助质粒的比例，提高外源基因的整合效率，并且可通过反向PCR精确确定目的基因插入的位置；第四是再次转座后实现精确切离；第五是转座后不引起染色体重排等不稳定现象；最后是宿主范围广，转座效率高，较少依赖宿主因子。</p>
-<p><strong>2. 基因治疗</strong></p>
-<p>研究表明，PiggyBac转座系统在Hela、HEK293、CHO及H1299等细胞中高效转座，且携带的目的基因稳定表达，因而是很有吸引力的基因治疗候选载体之一。</p>
-<p><strong>3. 突变工具</strong></p>
-<p>PiggyBac再次转座偏向插入基因内部且插入位点分布较广，可用作基因插入突变的工具，这点为哺乳动物的基因组功能研究提供了较好的研究工具。</p>
-<h4 id="常用载体信息："><a href="#常用载体信息：" class="headerlink" title="常用载体信息："></a>常用载体信息：</h4><p><strong>Super PiggyBac Transposase (PB200PA-1)</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/8338a10df74e9b7a890af1ce80de184a.jpg" alt="img"></p>
-<p>基本信息</p>
-<p>质粒名称：Super PiggyBac Transposase (PB200PA-1)</p>
-<p>出品公司：SBI</p>
-<p>质粒别称：Super PiggyBac Transposase Expression Vector</p>
-<p>质粒类型：PiggyBac转座子系统</p>
-<p>启动子：rPolr2A</p>
-<p>载体抗性：Ampicillin (氨苄青霉素)</p>
-<p>载体介绍</p>
-<p>Super PiggyBac Transposase Expression Vector。</p>
-<p>Super PiggyBac Transposase (PB200PA-1)，需与PiggyBac Dual promoter (PB-CMV-MCS-EF1α-GreenPuro；PB513B-1) 配套使用。</p>
-<p>如下：</p>
-<p>Super PiggyBac Transposase (PB200PA1)转座酶表达质粒</p>
-<p>PiggyBac Dual Promoter PB513B-1插入基因的骨架质粒</p>
-<p>PB220PA-1(Excision only PiggyBac transposase)切除转座子质粒</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/ad91abf1fa6c4978b31a68c5aec4ead5.png" alt="img" style="zoom:50%;">
-
-<p>[^质粒信息]:                                             1-PB513B-1(PiggyBac Dual promoter) Map</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/34e8e45cba764422993f9f61a24cf2f6.png" alt="img" style="zoom:50%;">
-
-<p>[^质粒信息]:                                        2-Super PiggyBac Transposase (PB200PA-1) Map</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/f5cd3072bcfe47eead8c62c501d4c60d.png" alt="img" style="zoom:50%;">
-
-<p>[^质粒信息]:                                  3-PB220PA-1(Excision only PiggyBac transposase) Map</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/e3c763a8a4e4475382fc9a2e60b9642f.png" alt="img" style="zoom:50%;">
-
-<p>[^质粒信息]:                                                         pB-CAGGS-MCS-BSD Map</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/a71e04d29248476f954d4f6154665bd7.png" alt="img" style="zoom:50%;">
-
-<p>[^质粒信息]:                                      PB-TetOne-HA-FLAG-P2A-EGFP-puro Map</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/be48056e081f45fb9b0944ce76a1841b.png" alt="img" style="zoom:50%;">
-
-<p>[^质粒信息]:                                                        PB-TetOne-MCS-Hygro Map</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/ff7d90996e204ec8aa5b996774532530.png" alt="img" style="zoom:50%;">
-
-<p>[^质粒信息]:                                          PB-TetOne-MCS-P2A-EGFP-puro Map</p>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage2@main/img/1052e4dc635c49f897c510f70737dd70.png" alt="img" style="zoom:50%;">
-
-<p>[^质粒信息]:                                                  PB-TetOne-MCS-puro Map</p>
-<p><a target="_blank" rel="noopener" href="https://manu60.magtech.com.cn/biotech/CN/10.13523/j.cb.2203005#1">新颖研究</a></p>
-<p><strong><a target="_blank" rel="noopener" href="https://www.x-mol.com/paperRedirect/1431003974907707392">酶促生产的 piggyBac 转座子载体，用于高效非病毒制造 CD19 特异性 CAR T 细胞</a></strong></p>
-<p>piggyBac 转座子系统为经济高效且简单的嵌合抗原受体 (CAR) T 细胞生产提供了一种非病毒替代方案。临床级 CAR T 细胞的生成需要严格遵守当前的良好生产规范 (cGMP) 标准。不幸的是，常用慢病毒或逆转录病毒载体的高成本限制了许多非商业学术机构临床级 CAR T 细胞的制造。在这里，我们提出了一个制造平台，基于线性 DNA 转座子和编码 piggyBac 转座酶的 mRNA 的共电穿孔，高效生成 CD19 特异性 CAR T 细胞（CAR19 T 细胞）。转座子是<em>在体外</em>酶法制备的通过 PCR，包含侧翼为 piggyBac 3’ 和 5’ 臂的 CAR 转基因。mRNA 通过<em>体外</em>转录类似地制备。CAR19 T 细胞在细胞因子白介素 (IL)-4、IL-7 和 IL-21 的组合中扩增，以防止 CAR T 细胞的终末分化。载体拷贝数（VCN）的精确控制是通过降低转座子DNA的浓度来实现的，该程序每电穿孔1×10 7 个外周血单核细胞（PBMC）后可产生高达1×10 8 个CAR19 T细胞。<em>体外</em>21天文化。生产的细胞含有 &gt;60% 的 CAR+ 细胞，VCN &lt; 3。总而言之，所描述的制造平台实现了直接的 cGMP 认证，因为转座子和转座酶是通过酶合成<em>在体外非</em>生物产生的。适用于高实验性、早期阶段CAR T细胞产品的高性价比生产。</p>
-<h4 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h4><p>参考链接：</p>
-<ol>
-<li><a target="_blank" rel="noopener" href="https://search.ebscohost.com/login.aspx?direct=true&profile=ehost&scope=site&authtype=crawler&jrnl=20951353&AN=151532377&h=UZ6GuuaKaZeXu/3gjEhwhdum8C0c1JtVG+QTk3EMj2kH50klbJEqeprDDWYzsJqTr6UuTisnb1urgb4wA3/MrA==&crl=c">三种方法对草地贪夜蛾基因组转座子的注释</a></li>
-<li><a target="_blank" rel="noopener" href="https://cjb.ijournals.cn/html/cjbcn/2022/12/gc22124371.htm">CRISPR相关转座元件的研究及应用进展</a></li>
-<li><a target="_blank" rel="noopener" href="http://journal05.magtech.org.cn/Jwk_ny/CN/article/downloadArticleFile.do?attachType=PDF&id=8813">猪诱导多能干细胞 (iPS)嵌合胚胎的制备</a></li>
-<li><a target="_blank" rel="noopener" href="http://159.226.67.71/bitstream/000000/9047/1/%E8%BD%AC%E5%9F%BA%E5%9B%A0%E5%9C%A8%E8%8B%B9%E6%9E%9C%E8%A0%B9%E8%9B%BE%E4%B8%8D%E8%82%B2%E6%98%86%E8%99%AB%E9%87%8A%E6%94%BE%E6%8A%80%E6%9C%AF%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8.pdf">转基因在苹果蠹蛾不育昆虫释放技术中的应用</a></li>
-<li><a target="_blank" rel="noopener" href="http://html.rhhz.net/XMSYXB/html/2017/10/20171001.htm">piRNA的形成及其在雌性动物中生物学功能研究进展</a></li>
-<li><a target="_blank" rel="noopener" href="http://biotech.aiijournal.com/CN/Y2020/V36/I3/29">精准高效外源 DNA 整合技术研究进展</a></li>
-<li><a target="_blank" rel="noopener" href="http://apmes.magtechjournal.com/CN/PDF/10.3969/j.issn.1005-0507.2018.04.010">艾美耳球虫转基因技术研究进展</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.xml-data.org/XMSYXB/html/2022/9/1663916435532-501290390.htm">猪基因组结构变异研究进展</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.cxcybjb.com/CN/abstract/abstract4772.shtml">蚕桑特色课程教学改革的思考–以“蚕桑生物技术”为例</a></li>
-<li><a target="_blank" rel="noopener" href="http://zgbjyx.cnjournals.com/sydwybjyx/article/pdf/202005016">大动物多能干细胞建立研究进展</a></li>
-<li><a target="_blank" rel="noopener" href="http://journal11.magtechjournal.com/Jwk_jcyxylc/CN/10.16352/j.issn.1001-6325.2022.06.010">功能基因筛选和鉴定策略的研究进展及其优缺点</a></li>
-<li><a target="_blank" rel="noopener" href="https://cjb.ijournals.cn/html/cjbcn/2021/2/gc21020655.htm">显微注射法制备转基因家蝇技术的建立</a></li>
-<li><a target="_blank" rel="noopener" href="http://bitebo.com/uploads/soft/201112/1_05101159.pdf">抗原表位研究方法进展</a></li>
-<li><a target="_blank" rel="noopener" href="http://journal11.magtechjournal.com/Jwk_jcyxylc/EN/10.16352/j.issn.1001-6325.2022.06.010">Advantages, disadvantages and research progress on strategies for screening and identifying functional genes</a></li>
-</ol>
-<p>- </p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">转座子</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/06/03/Piggybac%E8%BD%AC%E5%BA%A7%E5%AD%90%E8%BD%BD%E4%BD%93%E5%B0%8F%E4%BC%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-mESCs建系" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/04/16/mESCs%E5%BB%BA%E7%B3%BB/" target="_blank">mESCs建系</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/04/16/mESCs%E5%BB%BA%E7%B3%BB/" class="archive-article-date">
-        <time datetime="2024-04-16T04:53:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-04-16</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="实验概要"><a href="#实验概要" class="headerlink" title="实验概要"></a>实验概要</h4><p><strong>mESCs建系</strong></p>
-<h4 id="主要试剂"><a href="#主要试剂" class="headerlink" title="主要试剂"></a>主要试剂</h4><p>细胞基础培养液、DPBS、0.25%<em>Trypsin</em>、0.1%明胶、兔抗鼠全血清原液、豚鼠补体、0.5%链蛋白酶、冲胚液、培养液A、mESCs培养液B</p>
-<h4 id="主要设备"><a href="#主要设备" class="headerlink" title="主要设备"></a>主要设备</h4><p>35 mm、60 mm、100 mm培养皿、15 mL离心管、50 mL离心管、体视镜、注射器、镊子、虹膜剪</p>
-<h4 id="实验材料"><a href="#实验材料" class="headerlink" title="实验材料"></a>实验材料</h4><p>小鼠（3.5 dpc），即见阴道栓后3.5天的怀孕小鼠</p>
-<h4 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h4><h5 id="（1）胚胎的获得"><a href="#（1）胚胎的获得" class="headerlink" title="（1）胚胎的获得"></a>（1）胚胎的获得</h5><p>①取怀孕3.5 dpc的孕鼠，用断颈法处死。<br>②用75%酒精消毒孕鼠，尽量喷湿全身。<br>③打开腹腔，用虹膜剪和镊子修剪去脂肪和系膜（用镊子将子宫轻轻拉起，使系膜和脂肪张开，然后用虹膜剪紧贴子宫将系膜与子宫分离），从输卵管根部及子宫下端分叉处剪下双侧子宫，将双角子宫于阴道处剪断。<br><em>！注意：**冲胚时选择合适大小的镊子、剪刀，直镊、直剪。</em><br>④注射器吸入冲胚液CZB，配以剪平头的4＃至6＃针头，用镊子（最好是直头镊子）轻轻从一端（细端，即连接卵巢的一端）插入子宫腔内2～3 mm（注意，针头尖端很锐利，不要将子宫壁戳破），用镊子轻轻夹紧，吹入冲胚液（最后一滴若不滴下，可轻轻贴一下平皿侧壁使液滴进入平皿），再从另一端（粗端，即连接阴道的一端）插入，吹入冲胚液。<br><em>！注意<strong>：</strong>冲胚的针应事先剪成平头，灭菌，因为尖针头端很锐利，容易将子宫壁戳破。</em><br>⑤将盛有冲胚液的培养皿置于解剖镜下，用口控吸管（直径1.1～1.2 mm，末端直径约100 µm）吸取少量（充满毛细管尖端细管部分即可）细胞基础培养液（防止胚胎粘在毛细管壁上，无法吹出），用口控吸管将胚吸出。如果是早期囊胚或桑椹胚应该先在细胞基础培养液中培养过夜至晚期囊胚再进行处理。</p>
-<h5 id="（2）mESCs的建系"><a href="#（2）mESCs的建系" class="headerlink" title="（2）mESCs的建系"></a>（2）mESCs的建系</h5><h6 id="1）内细胞团接种法建系"><a href="#1）内细胞团接种法建系" class="headerlink" title="1）内细胞团接种法建系"></a>1）内细胞团接种法建系</h6><p><strong><u>（1）免疫外科法分离内细胞团</u></strong><br>①去除透明带：将囊胚吹入0.5%链蛋白酶中，反复吹打囊胚，1-2分钟左右透明带逐渐变薄最终消失，立即将去除透明带的囊胚吸入冲胚液中，并反复吹洗。<br>②将胚胎移到CZB培养3 h，。<br>③将去除透明带的胚胎移入含兔抗小鼠IgG血清的DMEM培养液中（1:30），置于培养箱中处理30 min。<br>④将胚胎移入新鲜的豚鼠血清补体中处理胚胎10-15 min，溶解滋养层细胞。处理过程中，随时观察。当滋养层细胞膨大，呈透明空泡状即终止处理，用冲胚液洗涤3次，来回吹打去除滋养层细胞。<br><em>注意：将胚胎从兔抗鼠全血清原液移入豚鼠血清补体时，不用<strong>DPBS</strong>洗，直接放到补体中，处理效果较好；用<strong>DPBS</strong>洗后再放到补体中，处理效果不好。</em><br>⑤用冲胚液吹洗胚胎3次。<br>⑥将胚胎移回CZB滴中，培养24 h。<br>⑦如有需要重复第⑤～⑥步，重新用兔抗鼠抗体和豚鼠血清处理胚胎，去除残余的滋养层细胞。<br>⑧将去除滋养层细胞的内细胞团【受精卵发育为胚胎的过程中，随着细胞的分裂增殖依次经历卵裂期→桑椹胚→囊胚→原肠胚。细胞的分化则是从囊胚期开始的，在囊胚期，一部分个体较大的细胞聚集在胚胎（球形）一端，称为内细胞团，将来发育为胎儿的各种组织器官。】<br><strong><u>（2）接种内细胞团并建系</u></strong><br>（a）全内细胞团接种法<br>①将分离出来的内细胞团细胞移至mESCs培养液B培养液内，继续培养。<br>②培养48 h后，可见内细胞团生长，3～5天后内细胞团进一步增大，此时可以进行传代。<br>（b）消化接种法<br>①将内径0.5 mm，长100 mm玻璃管一端在火焰上灼烧、拉细，用砂轮将末端切断。准备末端口径比内细胞团稍大(约50µm)和稍小(约30µm)两种。<br>②用末端口径比内细胞团稍大的毛细管挑起内细胞团，吸至0.25%<em>Trypsin</em>消化液内，消化至3～4个细胞在一起的团块，加少许mESCs培养液B稀释0.25% <em>Trypsin</em>。<br>③将分散的内细胞团小块吸至准备好的饲养层上，在mESCs培养液B中培养。<br>④培养48 h后，可见胚胎干细胞小集落出现；3～4天，集落进一步增大；6～10天，可进行消化传代。</p>
-<h6 id="2）全胚接种法建系"><a href="#2）全胚接种法建系" class="headerlink" title="2）全胚接种法建系"></a>2）全胚接种法建系</h6><p>  ①冲胚过程见本章“胚胎的获得”部分<br>②将冲出的囊胚吹入提前一天接种了饲养层细胞的4孔培养板，换用mES培养液A或者B，每孔中放5～7个囊胚；<br><em>！注意<strong>：</strong>冲出的胚比较易于聚集在皿的边缘，需要小心</em><br>③放入培养箱中培养。囊胚逐渐长大，最后贴壁，滋胚层展开，ICM不断增殖。<br><em>！注意<strong>：胚胎接种到饲养层细胞上之后，前几天不要动</strong>4<strong>孔培养板，因为这个时候</strong>ICM**还没有完全贴壁。</em><br>④培养4～6天后，ICM成为一团圆柱形细胞团（近似垂直于培养皿表面），将ICM进行消化传代；一般要培养6～7天，ICM才成为一团圆柱形细胞团，此时可以用机械切割的方法或者<em>Trypsin</em>消化的方法进行传代。此时将细胞的代次记为P1（即Passage 1）。成功建立的mESC系之后可以进行常规的传代、培养和冻存。mESCs细胞核大，有一个或几个核仁，胞核中多为常染色质，胞浆少，结构简单，细胞排列紧密，呈集落状生长，如图3-3所示。<br><em>！注意**：机械切割传代时要彻底去掉杂细胞，尽可能少的带入滋养层细胞；一个圆柱形内细胞团放到一个孔里。</em><br>*如果克圆柱形内细胞团完全从透明带孵化出来，可以用<strong>0.25%<strong>Trypsin</strong>消化传代，最好用含有</strong>1%<strong>鸡血清的</strong>0.25%Trypsin进行消化，消化过程中可在显微镜下观察，当细胞变得松散时即可用细胞基础培养液终止消化。*</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">类器官之胚胎干细胞</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/04/16/mESCs%E5%BB%BA%E7%B3%BB/">展开全文 >></a>
     </p>
     
 
