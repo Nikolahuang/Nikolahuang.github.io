@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>AMT-APC自动钢琴伴奏</title>
+      <link href="/2024/11/05/AMT-APC%E8%87%AA%E5%8A%A8%E9%92%A2%E7%90%B4%E4%BC%B4%E5%A5%8F/"/>
+      <url>/2024/11/05/AMT-APC%E8%87%AA%E5%8A%A8%E9%92%A2%E7%90%B4%E4%BC%B4%E5%A5%8F/</url>
+      
+        <content type="html"><![CDATA[<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><p>MT-APC是一种通过微调AMT（自动音乐转录）模型来训练自动钢琴封面生成模型的方法。通过微调自动音乐转录模型来训练自动钢琴伴奏生成模型，让你的音乐创作更加智能和便捷</p><h2 id="用法（钢琴封面生成）"><a href="#用法（钢琴封面生成）" class="headerlink" title="用法（钢琴封面生成）"></a>用法（钢琴封面生成）</h2><p>Python版本：3.10</p><ol><li><p>Install dependencies 安装依赖项</p><p>- </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure></li></ol><p>或者，如果只需要运行推理代码，则可以仅安装必要的包。</p><ol><li>下载预训练模型</li></ol><p>- </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -P models/params/ https://github.com/misya11p/amt-apc/releases/download/beta/apc.pth</span><br></pre></td></tr></table></figure><ol><li>运行推理代码</li></ol><p>- </p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python infer <span class="built_in">input</span>.wav</span><br></pre></td></tr></table></figure><p>还可以输入视频的 URL（需要<code>yt-dlp</code> ）。</p><p>- </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python infer &#x27;https://www.youtube.com/watch?v=...&#x27;</span><br></pre></td></tr></table></figure><p>还可以指定样式（ <code>level1</code> 、 <code>level2</code> 、 <code>level3</code> ）。</p><p>- </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python infer input.wav --style level3</span><br></pre></td></tr></table></figure><h2 id="使用（训练和评估）"><a href="#使用（训练和评估）" class="headerlink" title="使用（训练和评估）"></a>使用（训练和评估）</h2><p>Python版本：3.10</p><ol><li>Install dependencies 安装依赖项</li></ol><p>- </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure><ol><li>下载预训练的 AMT 模型</li></ol><p>- </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -P models/params/ https://github.com/misya11p/amt-apc/releases/download/beta/amt.pth</span><br></pre></td></tr></table></figure><ol start="3"><li>下载数据集</li></ol><p>- </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python download.py</span><br></pre></td></tr></table></figure><ol><li>创建数据集</li></ol><p>- </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python data/sync.pypython data/transcribe.pypython data/sv/extract.pypython data/create_labels.pypython data/create_dataset.py</span><br></pre></td></tr></table></figure><ol><li>训练模型</li></ol><p>- </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python train --n_gpus 1</span><br></pre></td></tr></table></figure><ol start="6"><li>评估模型</li></ol><p> 计算 Qmax。</p><p>- </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/albincorreya/ChromaCoverId.git eval/ChromaCoverIdpython eval/cover.pypython eval/distance.py</span><br></pre></td></tr></table></figure><h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><p>详细的配置可以通过<code>config.json</code>或使用命令行选项来完成，这些选项通过 –help 进行解释。默认值是论文实验中使用的值。</p><h2 id="项目链接"><a href="#项目链接" class="headerlink" title="项目链接"></a>项目链接</h2><blockquote><p><a href="https://github.com/misya11p/amt-apc">https://github.com/misya11p/amt-apc</a></p></blockquote>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 计算机随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>从零开始训练一个神经网络之四：模型调优</title>
       <link href="/2024/08/18/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%AE%AD%E7%BB%83%E4%B8%80%E4%B8%AA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B9%8B%E5%9B%9B%EF%BC%9A%E6%A8%A1%E5%9E%8B%E8%B0%83%E4%BC%98%E5%92%8C%E9%83%A8%E7%BD%B2/"/>
       <url>/2024/08/18/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%AE%AD%E7%BB%83%E4%B8%80%E4%B8%AA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B9%8B%E5%9B%9B%EF%BC%9A%E6%A8%A1%E5%9E%8B%E8%B0%83%E4%BC%98%E5%92%8C%E9%83%A8%E7%BD%B2/</url>

@@ -252,6 +252,165 @@
 
 
   
+    <article id="post-AMT-APC自动钢琴伴奏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/11/05/AMT-APC%E8%87%AA%E5%8A%A8%E9%92%A2%E7%90%B4%E4%BC%B4%E5%A5%8F/" target="_blank">AMT-APC自动钢琴伴奏</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/11/05/AMT-APC%E8%87%AA%E5%8A%A8%E9%92%A2%E7%90%B4%E4%BC%B4%E5%A5%8F/" class="archive-article-date">
+        <time datetime="2024-11-05T14:55:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-11-05</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><p>MT-APC是一种通过微调AMT（自动音乐转录）模型来训练自动钢琴封面生成模型的方法。通过微调自动音乐转录模型来训练自动钢琴伴奏生成模型，让你的音乐创作更加智能和便捷</p>
+<h2 id="用法（钢琴封面生成）"><a href="#用法（钢琴封面生成）" class="headerlink" title="用法（钢琴封面生成）"></a>用法（钢琴封面生成）</h2><p>Python版本：3.10</p>
+<ol>
+<li><p>Install dependencies 安装依赖项</p>
+<p>- </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>或者，如果只需要运行推理代码，则可以仅安装必要的包。</p>
+<ol>
+<li>下载预训练模型</li>
+</ol>
+<p>- </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -P models/params/ https://github.com/misya11p/amt-apc/releases/download/beta/apc.pth</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>运行推理代码</li>
+</ol>
+<p>- </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python infer <span class="built_in">input</span>.wav</span><br></pre></td></tr></table></figure>
+
+<p>还可以输入视频的 URL（需要<code>yt-dlp</code> ）。</p>
+<p>- </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python infer &#x27;https://www.youtube.com/watch?v=...&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>还可以指定样式（ <code>level1</code> 、 <code>level2</code> 、 <code>level3</code> ）。</p>
+<p>- </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python infer input.wav --style level3</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="使用（训练和评估）"><a href="#使用（训练和评估）" class="headerlink" title="使用（训练和评估）"></a>使用（训练和评估）</h2><p>Python版本：3.10</p>
+<ol>
+<li>Install dependencies 安装依赖项</li>
+</ol>
+<p>- </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>下载预训练的 AMT 模型</li>
+</ol>
+<p>- </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -P models/params/ https://github.com/misya11p/amt-apc/releases/download/beta/amt.pth</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>下载数据集</li>
+</ol>
+<p>- </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python download.py</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>创建数据集</li>
+</ol>
+<p>- </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python data/sync.pypython data/transcribe.pypython data/sv/extract.pypython data/create_labels.pypython data/create_dataset.py</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>训练模型</li>
+</ol>
+<p>- </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python train --n_gpus 1</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>评估模型</li>
+</ol>
+<p> 计算 Qmax。</p>
+<p>- </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/albincorreya/ChromaCoverId.git eval/ChromaCoverIdpython eval/cover.pypython eval/distance.py</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><p>详细的配置可以通过<code>config.json</code>或使用命令行选项来完成，这些选项通过 –help 进行解释。默认值是论文实验中使用的值。</p>
+<h2 id="项目链接"><a href="#项目链接" class="headerlink" title="项目链接"></a>项目链接</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/misya11p/amt-apc">https://github.com/misya11p/amt-apc</a></p>
+</blockquote>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/11/05/AMT-APC%E8%87%AA%E5%8A%A8%E9%92%A2%E7%90%B4%E4%BC%B4%E5%A5%8F/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-从零开始训练一个神经网络之四：模型调优和部署" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1629,128 +1788,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2024/04/16/mESCs%E5%BB%BA%E7%B3%BB/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-小鼠肝细胞原代培养实验" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/04/16/%E5%B0%8F%E9%BC%A0%E8%82%9D%E7%BB%86%E8%83%9E%E5%8E%9F%E4%BB%A3%E5%9F%B9%E5%85%BB%E5%AE%9E%E9%AA%8C/" target="_blank">小鼠肝细胞原代培养实验</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/04/16/%E5%B0%8F%E9%BC%A0%E8%82%9D%E7%BB%86%E8%83%9E%E5%8E%9F%E4%BB%A3%E5%9F%B9%E5%85%BB%E5%AE%9E%E9%AA%8C/" class="archive-article-date">
-        <time datetime="2024-04-16T03:50:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-04-16</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="小鼠肝细胞原代培养实验"><a href="#小鼠肝细胞原代培养实验" class="headerlink" title="小鼠肝细胞原代培养实验"></a>小鼠肝细胞原代培养实验</h1><p>小鼠肝细胞原代培养可用于：（1）用于细胞保种；（2）用于分子生物学研究；（3）用于基因治疗研究。</p>
-<table>
-<thead>
-<tr>
-<th align="center">实验方法原理</th>
-<th>将<a target="_blank" rel="noopener" href="https://pro.biomart.cn/lab-web/exp/316nrkcgo4078/32s8l18go3dih.html">小鼠</a>的<a target="_blank" rel="noopener" href="https://pro.biomart.cn/lab-web/method/31ngch0go3bjr.html">肝细胞</a>从机体中取出，经胰酶、螯合剂（常用EDTA）处理，分散成单细胞，置合适的培养基中培养，使细胞得以生存、生长和繁殖。</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">实验材料</td>
-<td><a target="_blank" rel="noopener" href="https://www.biomart.cn/infosupply/99561839.htm">小鼠</a></td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th align="center">试剂、试剂盒</th>
-<th><a target="_blank" rel="noopener" href="https://www.biomart.cn/infosupply/40669817.htm">DMEM</a> <a target="_blank" rel="noopener" href="https://www.biomart.cn/infosupply/109665809.htm">无血清DMEM培养基</a> <a target="_blank" rel="noopener" href="https://www.biomart.cn/infosupply/53350585.htm">胰酶</a> <a target="_blank" rel="noopener" href="https://www.biomart.cn/infosupply/66240641.htm">PBS</a></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">仪器、耗材</td>
-<td><a target="_blank" rel="noopener" href="https://www.biomart.cn/product/s?wd=%E9%A5%AD%E7%9B%92&t=1">饭盒</a> <a target="_blank" rel="noopener" href="https://www.biomart.cn/product/s?wd=%E7%BA%B1%E5%B8%83&t=1">纱布</a> <a target="_blank" rel="noopener" href="https://www.biomart.cn/product/s?wd=%E5%89%AA%E5%AD%90&t=1">剪子</a> <a target="_blank" rel="noopener" href="https://www.biomart.cn/product/s?wd=%E9%95%8A%E5%AD%90&t=1">镊子</a> <a target="_blank" rel="noopener" href="https://www.biomart.cn/infosupply/21016911.htm">烧杯</a> <a target="_blank" rel="noopener" href="https://www.biomart.cn/product/s?wd=%E5%B9%B3%E7%9A%BF&t=1">平皿</a> <a target="_blank" rel="noopener" href="https://www.biomart.cn/infosupply/85114455.htm">研磨玻片</a> <a target="_blank" rel="noopener" href="https://www.biomart.cn/infosupply/106391333.htm">滤网</a> <a target="_blank" rel="noopener" href="https://www.biomart.cn/infosupply/81860291.htm">离心管</a> <a target="_blank" rel="noopener" href="https://www.biomart.cn/infosupply/6328900.htm">6孔培养板</a> <a target="_blank" rel="noopener" href="https://www.biomart.cn/infosupply/6285625.htm">吸管</a> <a target="_blank" rel="noopener" href="https://www.biomart.cn/infosupply/76904069.htm">移液管</a> <a target="_blank" rel="noopener" href="https://www.biomart.cn/infosupply/106413259.htm">手套</a> <a target="_blank" rel="noopener" href="https://www.biomart.cn/infosupply/52455293.htm">微量加样器</a></td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th align="center">实验步骤</th>
-<th>1. 将小鼠断颈致死，置75%酒精泡2-3秒钟，取肝脏，置于盛有PBS的平皿中。     2. 剔除脂肪、结缔组织、血液等杂物，转移到另一个盛有PBS液的平皿中。         3. 用手术剪将脏器剪成小块（大小约1mm2），玻片研磨，转到离心管，离心（1 000 rpm，5 min）。         4. 视组织或细胞量加入5-6倍（3-5 ml）胰酶，37℃中消化20分钟，每隔5分钟振荡一次，或用吸管吹打一次，使细胞分离。          5. 加入3-5 ml含血清的培养液以中止胰酶消化作用。           6. 用100目孔径滤网滤过，除去未消化的大组织块。          7. 再次离心5 min，弃上清液。          8. 加入无血清培养液5 ml，冲散细胞，再离心一次，弃上清液。          9. 加入含血清的培养液1-2 ml（视细胞量），血球计数板计数。         10. 将细胞调整到5×10^5&#x2F;ml左右，转移至6孔培养板中，37℃下培养。</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">注意事项</td>
-<td>1. 自取材开始，保持所有组织细胞处于无菌条件。细胞计数可在有菌环境中进行。 2. 在超净台中，组织细胞、培养液等不能暴露过久，以免溶液蒸发。 3. 凡在超净台外操作的步骤，各器皿需用盖子或橡皮塞盖住，以防止细菌落入。 4. 操作前要洗手，进入超净工作台后要用75％酒精或0.2％新洁尔灭擦拭手。试剂瓶口也要擦拭。 5. 点燃酒精灯，操作在火焰附近进行，耐热物品要经常在火焰上烧灼。金属器械烧灼时间不能太长，以免退火，且冷却后才能夹取组织。吸取过营养液的用具不能再烧灼，以免烧焦形成碳膜。 6. 操作动作要准确敏捷，但又不能太快，以防空气流动，增加污染机会。 7. 不能用手触及消毒器皿的工作部分，工作台面上的用品摆放要布局合理。 8. 瓶子开口后要尽量保持45°斜位。 9. 吸溶液的吸管等不能混用。</td>
-</tr>
-</tbody></table>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">类器官之肝脏</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/04/16/%E5%B0%8F%E9%BC%A0%E8%82%9D%E7%BB%86%E8%83%9E%E5%8E%9F%E4%BB%A3%E5%9F%B9%E5%85%BB%E5%AE%9E%E9%AA%8C/">展开全文 >></a>
     </p>
     
 

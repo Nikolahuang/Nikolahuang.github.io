@@ -252,6 +252,560 @@
 
 
   
+    <article id="post-CRISPR-Cas9介导的人iPSC细胞系SNP精确编辑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2024/03/14/CRISPR-Cas9%E4%BB%8B%E5%AF%BC%E7%9A%84%E4%BA%BAiPSC%E7%BB%86%E8%83%9E%E7%B3%BBSNP%E7%B2%BE%E7%A1%AE%E7%BC%96%E8%BE%91/" target="_blank">CRISPR/Cas9介导的人iPSC细胞系SNP精确编辑</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2024/03/14/CRISPR-Cas9%E4%BB%8B%E5%AF%BC%E7%9A%84%E4%BA%BAiPSC%E7%BB%86%E8%83%9E%E7%B3%BBSNP%E7%B2%BE%E7%A1%AE%E7%BC%96%E8%BE%91/" class="archive-article-date">
+        <time datetime="2024-03-14T11:36:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-14</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>[TOC]</p>
+<p><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1282718">HZ Hanwen Zhang</a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1240656">SZ Siwei Zhang <img src="https://cdn.bio-protocol.org/forum/fe/static/icon_email.svg" alt="email"></a></p>
+<p>第一次发布: <a target="_blank" rel="noopener" href="https://bio-protocol.org/cn/archive?vol=11&issid=1266">2021年06月20日第11卷第12期 </a>DOI: <a target="_blank" rel="noopener" href="https://doi.org/10.21769/BioProtoc.4051">10.21769&#x2F;BioProtoc.4051</a> </p>
+<p>评审: <a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1029068">Jaira Ferreira de Vasconcellos</a><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1245680">Giovanna Piovani</a> 匿名评审</p>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>人类诱导多能干细胞（hiPSCs）在发育生物学和疾病建模领域被广泛使用。在iPSC线中使用CRISPR&#x2F;Cas9基因编辑通常具有低频率，这阻碍了其在疾病相关单核苷酸多态性（SNPs）的精确等位基因编辑中的应用，尤其是在基因组非编码部分。在这里，我们介绍了一种独特的流程，通过SNP编辑将异源二倍体iPSC线转化为疾病风险等位基因或非风险等位基因的同源二倍体，使用一种临时且简单的基于转染的协议。此协议使我们能够在约4至5周内同时获得SNP位点所有三种可能基因型的纯合和克隆同源系。</p>
+<hr>
+<h3 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h3><p>将CRISPR&#x2F;Cas9基因编辑应用于iPSC细胞，在发育生物学、疾病建模和再生医学等领域提供了无与伦比的前景。然而，由于iPSCs对传统CRISPR&#x2F;Cas9基因编辑策略的适应性不强，编辑效率通常较低，尤其是对于通过同源定向修复（HDR）介导的单核苷酸多态性（SNPs）编辑。必须开发特殊的实验方法来克服这一限制；例如，同时使用CRISPR&#x2F;Cas9突变和iPSCs的重编程（Howden等，2015；Tidball等，2018），先进的细胞分选技术如FACS（Forsyth等，2006；Miyaoka等，2014），或通过靶向质粒中长同源臂的存在重组携带突变的载体（Hendel等，2014）。尽管这些高度专业化的iPSC线基因编辑协议在时间上和&#x2F;或资源上都是消耗性的，这仍然是通过CRISPR&#x2F;Cas9介导的精确SNP编辑生成同源iPSC线的一个关键限制因素。</p>
+<p>在这里，我们提出了一种经过验证的工作流程和详细程序，允许直接使用基于脂质体的CRISPR&#x2F;Cas9系统进行HDR编辑，通过抗生素选择富集编辑的iPSC，并通过单克隆选择获得所有三种可能基因型的纯合iPSC同源线。该方法改编自Ran等（2013）的工作，并在我们最近的出版物中得到了证明（Forrest等，2017；Zhang等，2018和2020）。值得注意的是，该协议对于从异源二倍体iPSC线到疾病风险等位基因或非风险等位基因的同源二倍体的独特CRISPR&#x2F;cas9 SNP编辑设计非常有效，这使得通过直接比较所有三种不同基因型的同源线，对编辑的SNP的功能解释更加可靠（Forrest等，2017；Zhang等，2018和2020）。</p>
+<hr>
+<h3 id="材料和试剂"><a href="#材料和试剂" class="headerlink" title="材料和试剂"></a>材料和试剂</h3><h4 id="A-材料"><a href="#A-材料" class="headerlink" title="A. 材料"></a>A. 材料</h4><ol>
+<li>1.5 ml Eppendorf管（VWR，货号：89000-028）</li>
+<li>4-w NunclonTM Delta多孔板（Thermo Scientific，货号：62407-068）</li>
+<li>6孔培养板（Thermo Fisher，货号：140675）</li>
+<li>96孔培养板（Corning，Falcon®，货号：353072）</li>
+<li>标准60 × 15 mm带通风孔的培养皿（Fisher Scientific，货号：12-565-95）</li>
+<li>15 ml离心管（VWR，货号：21008-216）</li>
+<li>2 ml带盖的冷冻管，聚丙烯（Corning®，货号：89089-764）</li>
+<li>10 μl排管，低保留率无菌（VWR，货号：10017-062）</li>
+<li>200 μl排管，低保留率无菌（VWR，货号：76322-150）</li>
+<li>1,000 μl低保留率排管（VWR，货号：10017-090）</li>
+<li>BioDot 96孔非裙边PCR板（Dot Scientific，货号：650-PCR）</li>
+</ol>
+<h4 id="B-试剂列表："><a href="#B-试剂列表：" class="headerlink" title="B. 试剂列表："></a>B. 试剂列表：</h4><ul>
+<li>mTeSR1（STEMCELL，目录号：85850）</li>
+<li>mFreSR 冷冻保存培养基（STEMCELL，目录号：05855）</li>
+<li>ReLeSR（STEMCELL，目录号：05872）</li>
+<li>Matrigel® hESC-Qualified Matrix（Corning®，目录号：354277）</li>
+<li>FuGENE® HD 转染试剂（Promega，目录号：E2311）</li>
+<li>Accutase（STEMCELL，目录号：07920）</li>
+<li>Primocin（Invitrogen，ant-pm-1）</li>
+<li>Y-27632 二氢氯酸盐（R&amp;D Systems，目录号：1254&#x2F;1）</li>
+<li>QIAprep Spin Miniprep Kit（250）（Qiagen，目录号：27106）</li>
+<li>Qiaprep EndoFree Plasmid Maxi Kit（10）（Qiagen，目录号：12362）</li>
+<li>BigDye Terminator v3.1 循环测序试剂盒（Thermo Fisher Scientific，目录号：4337455）</li>
+<li>DyeEx 2.0 试剂盒（Qiagen，目录号：63204）</li>
+<li>HotStarTaq DNA聚合酶（250 U）（Qiagen，目录号：203203）</li>
+<li>PlasmidSafe Exonuclease（Lucigen，目录号：E3101K）</li>
+<li>QuickExtractTM DNA提取溶液（VWR，目录号：76081-768）</li>
+<li>FastDigest BbsI（Thermo Fisher Scientific，目录号：ER1101）</li>
+<li>T7连接酶（NEB，目录号：M0318S）</li>
+<li>ATP溶液，100 mM（NEB，目录号：N0451）</li>
+<li>dNTP溶液混合物，10 mM（NEB，目录号：N0447S）</li>
+<li>Opti-MEM I，100 ml（Thermo Fisher Scientific，目录号：31985062）</li>
+<li>虾碱性磷酸酶（Thermo Fisher Scientific，目录号：783901000UN）</li>
+<li>PCRX Enhancer System（Thermo Fisher，目录号：11495017）</li>
+<li>异丙醇（Sigma-Aldrich，目录号：190764）</li>
+<li>核酸酶-free水，PCR级（Thermo Fisher Scientific，目录号：AM9937）</li>
+<li>Teknova DNA&#x2F;RNA Resuspension Buffer（TE缓冲液）（VWR，目录号：100216-886）</li>
+<li>Invitrogen One Shot® Stbl3TM 化学感受态大肠杆菌细胞（Thermo Fisher Scientific，目录号：C737303）</li>
+<li>1 kb DNA梯形标志物（Promega，目录号：G5711）</li>
+</ul>
+<hr>
+<h3 id="设备列表："><a href="#设备列表：" class="headerlink" title="设备列表："></a>设备列表：</h3><ul>
+<li>C1000 Touch 热循环仪（Bio-Rad，型号：1851197）</li>
+<li>Sorvall Legend XTR 离心机（Thermo Scientific，目录号：75217420）</li>
+<li>台式冷冻离心机 5430R（Eppendorf，目录号：022620601）</li>
+<li>Heracell 150i 组织培养孵育箱（Thermo Fisher Scientific，目录号：51026283）</li>
+<li>ABI 3730 DNA分析仪（Thermo Fisher Scientific，型号：3730S）</li>
+<li>Nalgene Mr. Frosty 冷冻容器（Sigma-Aldrich，目录号：C1562）<br>软件：</li>
+<li>ApE – A plasmid Editor（M Wayne Davis，<a target="_blank" rel="noopener" href="https://jorgensen.biology.utah.edu/wayned/ape/">https://jorgensen.biology.utah.edu/wayned/ape/</a>）</li>
+</ul>
+<hr>
+<h3 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h3><h4 id="A-实验规划"><a href="#A-实验规划" class="headerlink" title="A. 实验规划"></a>A. 实验规划</h4><ol>
+<li><h5 id="细胞系选择"><a href="#细胞系选择" class="headerlink" title="细胞系选择"></a>细胞系选择</h5><p>通常情况下，如果起始细胞线在要编辑的指定SNP位点为杂合子，实验将更为方便。这样，我们可以合成两种单链DNA寡核苷酸（ssODN），每种携带不同的基因型，并同时进行两个独立的SNP编辑实验，最终在实验结束时获得两个方向上均为纯合子的编辑细胞系（图1A）。在条件不允许高度自由选择时，例如使用来自临床诊断患者的细胞系，从纯合子细胞系开始也是可能的（图1B）。在这种情况下，增加在E和F部分挑选的克隆数量将有助于最大化发现阳性克隆的机会。尽管在第一轮CRISPR&#x2F;Cas9编辑中，杂合子或相反基因型的纯合子可能不会出现，但通常获得相反基因型的纯合子细胞系对于实验目的来说已经足够满意。或者，可以使用从第一轮编辑中获得杂合子细胞系，再用相同的ssODN进行一轮CRISPR&#x2F;Cas9编辑，以获得相反基因型的纯合子。在所有情况下，在继续进行B部分之前，需要确认起始细胞线在所需SNP位点的基因型。为了确认特定SNP位点的基因型，使用从起始细胞系提取的30 ng基因组DNA，并按照E4-E5步骤进行Sanger测序。另外，在线数据库、下一代测序结果或与细胞系相关的患者元数据也可能提供要编辑的SNP位点的基因型信息。</p>
+<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-11-12-4051-g001.jpg" alt="Large image" style="zoom:15%;">
+
+</li>
+<li><h5 id="技术要求"><a href="#技术要求" class="headerlink" title="技术要求"></a>技术要求</h5><p>整个实验包括三个主要部分：质粒克隆与准备；诱导多能干细胞（iPSC）的维护、转染和亚克隆；以及Sanger测序。虽然理想的情况是操作者熟悉所有这些技能，但本协议已被设计为几个成员的合作项目，每个成员都有自己的专长。</p>
+</li>
+</ol>
+<hr>
+<h4 id="B-gRNA设计与载体准备"><a href="#B-gRNA设计与载体准备" class="headerlink" title="B. gRNA设计与载体准备"></a>B. gRNA设计与载体准备</h4><ol>
+<li><h5 id="使用dbSNP（https-www-ncbi-nlm-nih-gov-snp-）或任何基因组浏览器获取目标SNP附近的DNA序列以进行gRNA设计。通常，序列将延伸目标SNP上下游各65个碱基，总共131个碱基。保存此序列，因为它将用于合成带有目标SNP位点两侧同源臂的ssODN。此序列还将在Benchling（https-www-benchling-com）等gRNA设计工具中使用，生成用于引入双链断裂（DSB）的gRNA序列（20个碱基）。选择效率评分最高的gRNA，同时保持合理的特异性评分。还发现，如果gRNA序列的切割位点靠近目标SNP位置，可能会获得更好的重组效率（见图2，展示了用于编辑SNP-rs2027349的gRNA和ssODN的Benchling示意图和输出示例）。同时，使用Primer3（http-primer3-ut-ee-）或类似在线工具设计一对覆盖目标SNP的PCR引物。PCR产物的大小应为400-600个碱基，且SNP至少距离产物任一端150个碱基。"><a href="#使用dbSNP（https-www-ncbi-nlm-nih-gov-snp-）或任何基因组浏览器获取目标SNP附近的DNA序列以进行gRNA设计。通常，序列将延伸目标SNP上下游各65个碱基，总共131个碱基。保存此序列，因为它将用于合成带有目标SNP位点两侧同源臂的ssODN。此序列还将在Benchling（https-www-benchling-com）等gRNA设计工具中使用，生成用于引入双链断裂（DSB）的gRNA序列（20个碱基）。选择效率评分最高的gRNA，同时保持合理的特异性评分。还发现，如果gRNA序列的切割位点靠近目标SNP位置，可能会获得更好的重组效率（见图2，展示了用于编辑SNP-rs2027349的gRNA和ssODN的Benchling示意图和输出示例）。同时，使用Primer3（http-primer3-ut-ee-）或类似在线工具设计一对覆盖目标SNP的PCR引物。PCR产物的大小应为400-600个碱基，且SNP至少距离产物任一端150个碱基。" class="headerlink" title="使用dbSNP（https://www.ncbi.nlm.nih.gov/snp/）或任何基因组浏览器获取目标SNP附近的DNA序列以进行gRNA设计。通常，序列将延伸目标SNP上下游各65个碱基，总共131个碱基。保存此序列，因为它将用于合成带有目标SNP位点两侧同源臂的ssODN。此序列还将在Benchling（https://www.benchling.com）等gRNA设计工具中使用，生成用于引入双链断裂（DSB）的gRNA序列（20个碱基）。选择效率评分最高的gRNA，同时保持合理的特异性评分。还发现，如果gRNA序列的切割位点靠近目标SNP位置，可能会获得更好的重组效率（见图2，展示了用于编辑SNP rs2027349的gRNA和ssODN的Benchling示意图和输出示例）。同时，使用Primer3（http://primer3.ut.ee/）或类似在线工具设计一对覆盖目标SNP的PCR引物。PCR产物的大小应为400-600个碱基，且SNP至少距离产物任一端150个碱基。"></a>使用dbSNP（<a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/snp/">https://www.ncbi.nlm.nih.gov/snp/</a>）或任何基因组浏览器获取目标SNP附近的DNA序列以进行gRNA设计。通常，序列将延伸目标SNP上下游各65个碱基，总共131个碱基。保存此序列，因为它将用于合成带有目标SNP位点两侧同源臂的ssODN。此序列还将在Benchling（<a target="_blank" rel="noopener" href="https://www.benchling.com/">https://www.benchling.com</a>）等gRNA设计工具中使用，生成用于引入双链断裂（DSB）的gRNA序列（20个碱基）。选择效率评分最高的gRNA，同时保持合理的特异性评分。还发现，如果gRNA序列的切割位点靠近目标SNP位置，可能会获得更好的重组效率（见图2，展示了用于编辑SNP rs2027349的gRNA和ssODN的Benchling示意图和输出示例）。同时，使用Primer3（<a target="_blank" rel="noopener" href="http://primer3.ut.ee/">http://primer3.ut.ee/</a>）或类似在线工具设计一对覆盖目标SNP的PCR引物。PCR产物的大小应为400-600个碱基，且SNP至少距离产物任一端150个碱基。</h5></li>
+</ol>
+<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-11-12-4051-g002.jpg" alt="Large image" style="zoom:33%;">
+
+<p>[^图2展示了通过HDR（同源定向修复）介导的SNP编辑的示意图。]: A部分显示了gRNA引入的双链断裂事件。单向导RNA（sgRNA）与特定的基因组DNA序列结合，并在基因组DNA双链中引入双链断裂。图中平行显示了ssODN，以突出突变位点。B部分展示了使用ssODN作为模板的HDR介导的DNA修复事件。在创建双链断裂（虚线）后，HDR介导的DNA修复开始，在此过程中，某些细胞使用携带突变等位基因的ssODN作为最终修复产物的模板。C部分显示了使用ssODN作为模板修复后的最终产品，突出了突变点。D部分是从Benchling输出的样本gRNA候选列表，使用的是人类GRCh38基因组序列chr1:150,067,554-150,067,687。这里突出显示的项目包含SNP rs2027349，其序列为…AATA[A]CGCC…。E部分显示了从Benchling输出的样本ssODN窗口，使用的是上述相同的基因组序列，展示了SNP本身从A到G的转换（红色突出显示）。</p>
+<ol start="2">
+<li><h5 id="从供应商（如IDT或Sigma-Aldrich）订购以下寡核苷酸："><a href="#从供应商（如IDT或Sigma-Aldrich）订购以下寡核苷酸：" class="headerlink" title="从供应商（如IDT或Sigma-Aldrich）订购以下寡核苷酸："></a>从供应商（如IDT或Sigma-Aldrich）订购以下寡核苷酸：</h5></li>
+</ol>
+<ul>
+<li>ssODN，长度为131个核苷酸，单链，编辑等位基因的目标SNP位于碱基位置66。不要订购互补链。如果从杂合子细胞系开始，需要两种携带两种等位基因的ssODN；如果从纯合子细胞系开始，则需要一种携带相反等位基因的ssODN。如果从IDT订购，请订购4 nmol Ultramer Oligo干粉格式，标准脱盐。</li>
+<li>sgRNA-top：5’-[Phos]-CACCgNNNNNNNNNNNNNNNNNNNN；</li>
+<li>sgRNA-bottom：5’-[Phos]-AAACNNNNNNNNNNNNNNNNNNNNc；<br>其中N代表gRNA序列。注意sgRNA-bottom寡核苷酸末尾的c。sgRNA寡核苷酸中不要包含PAM序列。</li>
+<li>两个寡核苷酸都可以订购5′-磷酸化格式（推荐），以避免内部PNK磷酸化步骤（其效率不一）。如果从IDT订购，请订购25 nmol干DNA Oligo格式，标准脱盐，并在到达后用TE缓冲液重新溶解至100 μM，长期储存于-20°C。</li>
+<li>如上所述的测序引物。如果SNP离任一端不太近&#x2F;远，PCR引物可以用作测序引物。订购25 nmol干DNA Oligo格式，标准脱盐，并在到达后用TE缓冲液重新溶解至100 μM，长期储存于-20°C。</li>
+<li>U6-Forward引物（5’-gagggcctatttcccatgatt）用于测序最终质粒构建中的gRNA插入物。订购25 nmol干DNA Oligo格式，标准脱盐，并在到达后用TE缓冲液重新溶解至100 μM，长期储存于-20°C。</li>
+</ul>
+<ol start="3">
+<li><h5 id="组装pSpCas9-BB-2A-Puro-PX459-V2-0（Addgene，62988）构建体与定制gRNA插入物。"><a href="#组装pSpCas9-BB-2A-Puro-PX459-V2-0（Addgene，62988）构建体与定制gRNA插入物。" class="headerlink" title="组装pSpCas9(BB)-2A-Puro (PX459) V2.0（Addgene，62988）构建体与定制gRNA插入物。"></a>组装pSpCas9(BB)-2A-Puro (PX459) V2.0（Addgene，62988）构建体与定制gRNA插入物。</h5><p>a. 在室温下，将以下成分在带有盖子的PCR管中彻底混合。在整个实验过程中不要使用二乙基吡咯烷酮（DEPC）处理的水，因为它可能会抑制反应。<br>组件              	                    量（μl）<br>sgRNA top (100 μM)	             1<br>sgRNA bottom (100 μM)	      1<br>T4连接缓冲液，10×（NEB）   1<br>水，PCR级	                             7<br>总计	                                      10</p>
+<p>b. 使用带有加热盖的热循环器，并设置以下参数以退火寡核苷酸。以最小升温速率（例如，0.1°C&#x2F;s）降温。<br>步骤#               温度	       时间	       备注<br>1	               95°C	       5分钟	        最小升温速率<br>2	               25°C	       2分钟</p>
+<p>c. 稀释退火的寡核苷酸，方法是将1 μl加入到199 μl PCR级水中，彻底混合。</p>
+<p>d. 在PCR管中混合以下成分以进行切割连接反应。我们建议通过用水替换稀释的寡核苷酸来设置一个阴性对照实验，其功能将在后面介绍。<br>组件	                                                                           量（μl）<br>pSpCas9(BB)-2A-Puro (PX459) V2.0, 100 ng&#x2F;μl	        1<br>步骤A3c中稀释的退火寡核苷酸	                                   2<br>Tango缓冲液，10×	                                                       2<br>DTT，10 mM	                                                                 1<br>ATP，10 mM	                                                                 1<br>FastDigest BbsI	                                                             1<br>T7连接酶	                                                                       0.5<br>水，PCR级	                                                                  11.5<br>总计	                                                                               20</p>
+<p>然后设置热循环器的参数如下：<br>步骤#	                温度	        时间	        备注<br>1	                37°C	        5分钟	<br>2	                21°C	        5分钟	<br>3	                &#x2F;	        &#x2F;	         返回到步骤#1，6个循环</p>
+<p>e. 将连接产物和阴性对照与PlasmidSafe外切酶混合，以消化任何残留的线性化DNA。将以下成分在带有盖子的PCR管中组装并彻底混合。这个热灭活的反应如果无法立即使用，可以在-20°C下储存至少1周或在-80°C下无限期储存。<br>组件	                量（μl）<br>步骤A3d中的连接产物	                11<br>PlasmidSafe缓冲液，10×	                1.5<br>ATP，10 mM	                1.5<br>PlasmidSafe外切酶	                1<br>总计	                15</p>
+<p>然后设置热循环器如下：<br>步骤#	                温度	        时间	        备注<br>1	                37°C	        30分钟	<br>2	                70°C	        30分钟	<br>3	                4°C	           保持	</p>
+<p>f. 转化感受态细胞。我们建议使用RecA-的大肠杆菌菌株，如Invitrogen Stbl3（recA13）或NEB Stable（recA1），因为插入的gRNA及其相关的gRNA支架可能包含不稳定序列。作为指导，按照供应商的说明，每转化使用步骤A3e中的2 μl产物（包括阴性对照）。热冲击后，需要加入复苏培养基（如SOC或NEB 10-beta&#x2F;Stable Outgrowth Medium），在32°C下摇床培养1小时，然后铺在LB&#x2F;Amp+琼脂板上，因为初始DNA输入量较低。</p>
+<p>g. 在32°C下孵育16小时，并在第二天检查菌落。阴性对照板上大量菌落通常表明BbsI消化没有起作用。从加入退火寡核苷酸的平板上挑选4-6个菌落，并分别用每个菌落接种4 ml LB&#x2F;Amp+培养基。使用一个新的LB&#x2F;Amp+琼脂板记录所有接种的菌落及其相应的管号。在37°C过夜孵育。</p>
+<p>h. 使用如Qiagen QIAprep Spin Miniprep Kit的旋转柱子提取质粒DNA，并使用U6-Forward引物进行测序以鉴定阳性克隆。同时，将步骤A3g中的记录板保持在4°C，直到通过测序确认所有阳性克隆。</p>
+<p>i. 从记录板上的阳性克隆菌落接种250 ml LB&#x2F;Amp+，准备转染级别的质粒。按照制造商的说明培养并提取质粒，使用Qiagen EndoFree Plasmid Maxi Kit确保完全去除内毒素。将纯化的质粒稀释至1 μg&#x2F;μl或适当浓度，以50-μl分装在无内毒素的TE缓冲液（ maxi-prep试剂盒中提供）中，并在使用前储存在-20°C。</p>
+</li>
+</ol>
+<hr>
+<h4 id="C-人诱导多能干细胞的编辑"><a href="#C-人诱导多能干细胞的编辑" class="headerlink" title="C. 人诱导多能干细胞的编辑"></a>C. 人诱导多能干细胞的编辑</h4><ol>
+<li><p>在涂有Matrigel的6孔板中培养健康未分化的 人诱导多能干细胞。通常，每个6孔板使用2 ml mTeSR1培养基，每24小时更换一次。每天观察克隆的形态，并注意分化迹象。</p>
+</li>
+<li><p>当细胞密度达到60-70%（大约4-7天）时，传代培养的iPS细胞。根据技术手册，向每个旧板孔中加入1 ml ReLeSR，并在盖好板盖的情况下孵育3-5分钟。将解离的细胞团稀释，并将1&#x2F;10至1&#x2F;20的细胞转移到一个新的预先涂有Matrigel的2 ml mTeSR1的孔中。</p>
+<p>详细信息请参考StemCell Technologies提供的技术手册第3部分：在mTeSRTM1中维护人多能干细胞（<a target="_blank" rel="noopener" href="https://www.stemcell.com/media/files/manual/10000005505-Maintenance_of_Human_Pluripotent_Stem_Cells_mTeSR1.pdf%EF%BC%89%E3%80%82">https://www.stemcell.com/media/files/manual/10000005505-Maintenance_of_Human_Pluripotent_Stem_Cells_mTeSR1.pdf）。</a></p>
+</li>
+</ol>
+<hr>
+<h4 id="D-将含有gRNA的Cas9载体和ssODN转染人诱导多能干细胞进行精确基因编辑"><a href="#D-将含有gRNA的Cas9载体和ssODN转染人诱导多能干细胞进行精确基因编辑" class="headerlink" title="D. 将含有gRNA的Cas9载体和ssODN转染人诱导多能干细胞进行精确基因编辑"></a>D. 将含有gRNA的Cas9载体和ssODN转染人诱导多能干细胞进行精确基因编辑</h4><ol>
+<li><h5 id="在转染前，将诱导多能干细胞播种到60-mm的培养皿中。"><a href="#在转染前，将诱导多能干细胞播种到60-mm的培养皿中。" class="headerlink" title="在转染前，将诱导多能干细胞播种到60-mm的培养皿中。"></a>在转染前，将诱导多能干细胞播种到60-mm的培养皿中。</h5><p>a. 作为指导，每个6孔板（60-70%的细胞密度）大约有1 × 106个诱导多能干细胞。另一方面，每个60-mm培养皿需要播种4 × 105-5 × 105个诱导多能干细胞。为了补偿收集和计数过程中的损失，将播种的总诱导多能干细胞孔数乘以1.2。</p>
+<p>b. 为每个将要产生的克隆准备好足够数量的60-mm细胞培养级别的培养皿，并预先涂布Matrigel。通常，为每个克隆准备一个培养皿，再加上一个用于评估转染效率的培养皿。</p>
+<p>c. 当6孔板中的诱导多能干细胞达到60-70%的细胞密度时，计算转染所需的诱导多能干细胞数量。在消化细胞之前，通过立体显微镜检查细胞形态，并在显微镜下轻轻刮除任何分化的小团。不要使用超过20%的克隆显示出分化迹象的培养物。从培养皿中移除培养基，并添加1 ml Accutase per well。将培养皿放回培养箱中，等待10分钟以消化细胞。</p>
+<p>d. 10分钟后，向每个6孔板中的孔加入1 ml室温的mTeSR。轻敲培养板以轻轻地从底部脱落任何剩余的细胞，而不会溢出培养基。将所有孔中的培养基收集到15-ml无菌Falcon管中，使用常规1-ml尖头或玻璃滴管轻轻吹打5-7次，混合均匀并打散团块。</p>
+<p>e. 使用血细胞计数器或自动细胞计数器（如ThermoFisher Countess 3）确定细胞密度。此时的细胞密度应为大约3 × 105-6 × 105细胞&#x2F;ml。同时，将含有细胞的Falcon管保持在室温下；不要将细胞放在冰上。计算收集的细胞总数。</p>
+<p>f. 在室温下以200 × g的转速离心5分钟，沉淀细胞。小心移除所有培养基，并加入等体积的新鲜mTeSR1。使用宽口1-ml尖头或玻璃滴管重新悬浮细胞沉淀。再次在室温下以200 × g的转速离心5分钟。</p>
+<p>g. 计算用于播种诱导多能干细胞到60-mm培养皿（加一个转染对照培养皿）所需的mTeSR1的最终体积。每个培养皿需要4-5 × 105细胞悬浮在4 ml mTeSR1中。在培养基中加入ROCK抑制剂Y27632，使其最终浓度为5 μM，以提高重新种植后的细胞活力。如果需要进行多个转染（比如，多个培养皿），可能更方便地将部分重新悬浮的细胞转移到一个更大的50-ml Falcon管中，并在转移后添加更多的mTeSR1。从步骤D1f中移除所有培养基，并用含有Y27632的mTeSR1替换。将细胞稀释到所需浓度，并用完全重新悬浮的iPSCs填充每个60-mm培养皿，作为单细胞。在37°C、5% CO2下孵育至少12小时。</p>
+</li>
+<li><h5 id="转染诱导多能干细胞（iPSCs）与含有gRNA的Cas9载体和单链脱氧核糖核酸（ssODN）。"><a href="#转染诱导多能干细胞（iPSCs）与含有gRNA的Cas9载体和单链脱氧核糖核酸（ssODN）。" class="headerlink" title="转染诱导多能干细胞（iPSCs）与含有gRNA的Cas9载体和单链脱氧核糖核酸（ssODN）。"></a>转染诱导多能干细胞（iPSCs）与含有gRNA的Cas9载体和单链脱氧核糖核酸（ssODN）。</h5><p>a. 转染前1小时，检查细胞生长情况，并用4 ml无抗生素的mTeSR1替换培养基。</p>
+<p>b. 对于每个60-mm培养皿，在一个1.5-ml管中准备以下混合物。轻轻吹打混合均匀。对于对照培养皿，用pEGFP-N2质粒替换pSpCas9(BB)-2A-Puro构建体。</p>
+<p>组件              	      量（μl）<br>pSpCas9(BB)-2A-Puro (PX459) V2.0与gRNA插入物，<br>1 μg&#x2F;μl	              3</p>
+<p>单链脱氧核糖核酸（ssODN），1 μg&#x2F;μl	              3<br>Opti-MEM I 减少血清培养基	              473<br>总计	              479</p>
+<p>c. 将21 μl FuGene HD转染试剂（1:3.5 DNA:试剂比例，总共500 μl）加入步骤D2b中的混合物中，并短暂振荡（2-3秒）管子以混合。在室温下孵育最终混合物6分钟。</p>
+<p>d. 将DNA:FuGENE:Opti-MEM I混合物加入60-mm培养皿中，并轻轻摇动以混合。不要上下吹打，因为这会干扰转染过程。在37°C、5% CO2下孵育24小时。</p>
+</li>
+</ol>
+<hr>
+<h4 id="E-选择阳性克隆并用嘌呤霉素（puromycin）评估转染效率"><a href="#E-选择阳性克隆并用嘌呤霉素（puromycin）评估转染效率" class="headerlink" title="E. 选择阳性克隆并用嘌呤霉素（puromycin）评估转染效率"></a>E. 选择阳性克隆并用嘌呤霉素（puromycin）评估转染效率</h4><ol>
+<li><h5 id="选择阳性克隆"><a href="#选择阳性克隆" class="headerlink" title="选择阳性克隆"></a>选择阳性克隆</h5><p>注意：同时阅读步骤D2。</p>
+<p>a. 对于所有用pSpCas9(BB)-2A-Puro构建体转染的培养皿，每皿加入4 ml补充有0.5 μg&#x2F;μl嘌呤霉素的mTeSR1，以选择性地富集转染了带有嘌呤霉素抗性基因的pSpCas9(BB)-2A-Puro构建体的细胞。使用的嘌呤霉素浓度可能需要根据细胞系的特定情况进行优化，因为不同细胞系对嘌呤霉素的耐受水平可能差异很大（范围从0.3到0.7 μg&#x2F;μl）。在37°C、5% CO2下孵育培养皿24小时。</p>
+<p>b. 小心地从培养皿中移除培养基和任何死细胞或细胞碎片。向每皿加入4 ml补充有0.3 μg&#x2F;μl嘌呤霉素（或根据之前测定确定的浓度）的mTeSR1。在37°C、5% CO2下孵育培养皿另外24小时。</p>
+<p>c. 小心地从培养皿中移除培养基和任何死细胞或细胞碎片。从这一时刻起停止嘌呤霉素选择（转染后72小时）。每天向培养皿中加入4 ml mTeSR，并替换培养基。在37°C、5% CO2下孵育培养皿5-10天，直到iPSC克隆达到适合克隆选择的适当大小（直径1.5-2毫米，图3）。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-11-12-4051-g003.jpg" alt="Large image"></p>
+<p>[^]: 图3. 克隆选择的iPSC克隆示例</p>
+</li>
+<li><h5 id="通过EGFP表达评估转染效率。这一步骤应在步骤D1的同时进行。"><a href="#通过EGFP表达评估转染效率。这一步骤应在步骤D1的同时进行。" class="headerlink" title="通过EGFP表达评估转染效率。这一步骤应在步骤D1的同时进行。"></a>通过EGFP表达评估转染效率。这一步骤应在步骤D1的同时进行。</h5><p>a. 对于用pEGFP-N2质粒转染的培养皿，小心地用不含嘌呤霉素的4 ml新鲜mTeSR替换培养基。在37°C、5% CO2下孵育培养皿24小时。</p>
+<p>b. 用另外4 ml不含嘌呤霉素的mTeSR替换培养基。在37°C、5% CO2下孵育培养皿另外24小时。</p>
+<p>c. 计数几个视野以评估EGFP+细胞的百分比。通过EGFP+细胞的百分比计算的转染效率应至少为40-50%。</p>
+</li>
+<li><h5 id="分离个体iPSC克隆以鉴定阳性克隆的基因型。"><a href="#分离个体iPSC克隆以鉴定阳性克隆的基因型。" class="headerlink" title="分离个体iPSC克隆以鉴定阳性克隆的基因型。"></a>分离个体iPSC克隆以鉴定阳性克隆的基因型。</h5><p>a. 在克隆挑选的那天，准备一个涂有Matrigel的96孔板（称为板A）。在每个孔中加入80 μl含有10 μM ROCK抑制剂Y27632的mTeSR1。准备另一个未涂层的96孔板（称为板B，平面底部孔）。</p>
+<p>b. 用新鲜不含ROCK抑制剂的mTeSR1替换60-mm培养皿中的培养基。</p>
+<p>c. 将P100或P200移液器设置为50 μl。安装一个P200尖头，并用尖头刮取单个克隆。用移液器吸取刮下的克隆或其碎片（如果在过程中克隆破裂），并将所有内容（50 μl）转移到板A的相应孔中。轻轻吹打3次以打破细胞团。不更换尖头，从板A转移到板B的相应孔中（例如，A1孔到A1孔等）。重复此步骤，直到从60-mm培养皿上挑选出所有感兴趣的克隆。</p>
+<p>d. 在室温下，以200 × g的转速离心5分钟，盖好盖子。</p>
+<p>e. 将板A保持在37°C，5% CO2下孵育24小时，以使iPSC重新附着到孔中。继续孵育板，并每天更换培养基（每孔100 μl mTeSR1）。板A将在基因型鉴定后用于进一步的克隆扩增。</p>
+</li>
+<li><h5 id="使用板B进行DNA提取。"><a href="#使用板B进行DNA提取。" class="headerlink" title="使用板B进行DNA提取。"></a>使用板B进行DNA提取。</h5><p>a. 小心地从离心机中取出板B，不要摇晃，并将其放在冰上。使用移液器或多通道移液器（设置为200 μl）小心地从孔中移除培养基，不要打扰细胞沉淀。重复此步骤，从板上的所有孔中移除培养基。</p>
+<p>b. 在每个含有细胞沉淀的孔中加入16 μl快速DNA提取缓冲液（Lucigen&#x2F;VWR）。将P10或P50多通道移液器设置为10 μl。小心地吹打5次以混合；尽量减少气泡形成。这一步骤重悬细胞并执行细胞裂解，以便后续使用。</p>
+<p>c. 将所有（16 μl）混合的细胞悬液转移到96孔PCR板中，并使用条形盖或薄膜密封。标记板为“提取的DNA”，并注明姓名和日期。如果不在立即使用（1-2周），则应将此步骤的产品储存在-20°C，或者在长期储存的情况下储存在-80°C。设置热循环器如下，并丢弃板B。</p>
+<table>
+<thead>
+<tr>
+<th><strong>Step #</strong></th>
+<th><strong>Temperature</strong></th>
+<th><strong>Time</strong></th>
+<th><strong>Note</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>65°C</td>
+<td>15 min</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>68°C</td>
+<td>15 min</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>98°C</td>
+<td>10 min</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>4°C</td>
+<td>hold</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><h5 id="为Sanger测序准备样本。"><a href="#为Sanger测序准备样本。" class="headerlink" title="为Sanger测序准备样本。"></a>为Sanger测序准备样本。</h5><p>a. 使用前一步骤中快速分离的DNA作为模板准备PCR反应混合物。根据以下图表在冰上组装反应，将每个成分乘以样品数量，再乘以1.1以补偿试剂转移过程中的潜在损失。</p>
+<table>
+<thead>
+<tr>
+<th><strong>Component</strong></th>
+<th><strong>Amount (μl)</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10× PCR Buffer</td>
+<td>1</td>
+</tr>
+<tr>
+<td>10× PCR Enhancer</td>
+<td>1</td>
+</tr>
+<tr>
+<td>50 mM MgSO4</td>
+<td>0.3</td>
+</tr>
+<tr>
+<td>10 mM dNTP</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>Forward primer (10 μM)</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>Reverse primer (10 μM)</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>Qiagen HotStarTaq DNA polymerase</td>
+<td>0.1</td>
+</tr>
+<tr>
+<td>Water, PCR grade</td>
+<td>5.5</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>8.5</strong></td>
+</tr>
+</tbody></table>
+<p>b. 在冰上混合所有成分（不包括DNA模板）到一个1.5-ml管中。使用一个新的96孔PCR板，并在每个孔中分配8.5 μl反应混合物，直到所有所需的孔都已填满。随后，在每个孔中加入1.5 μl提取的DNA（总共10 μl）。使用设置为5 μl的P10移液器轻轻吹打，混合均匀，同时避免产生气泡。如果使用多通道移液器，此操作将更为方便。</p>
+<p>c. 用条形盖或薄膜密封PCR板的顶部，并标记板为“PCR产物”。设置热循环器如下。退火温度（3）和延伸时间（4）可能需要优化，由操作者根据需要确定。</p>
+<table>
+<thead>
+<tr>
+<th><strong>Step #</strong></th>
+<th><strong>Temperature</strong></th>
+<th><strong>Time</strong></th>
+<th><strong>Note</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>95°C</td>
+<td>10 min</td>
+<td>Taq activation</td>
+</tr>
+<tr>
+<td>2</td>
+<td>95°C</td>
+<td>30 s</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>53°C</td>
+<td>90 s</td>
+<td>Or as appropriate</td>
+</tr>
+<tr>
+<td>4</td>
+<td>72°C</td>
+<td>60 s</td>
+<td>Or as appropriate</td>
+</tr>
+<tr>
+<td>5</td>
+<td>&#x2F;</td>
+<td>&#x2F;</td>
+<td>Go to 2, 40 cycles</td>
+</tr>
+<tr>
+<td>6</td>
+<td>72°C</td>
+<td>10 min</td>
+<td>Final extension</td>
+</tr>
+<tr>
+<td>7</td>
+<td>4°C</td>
+<td>hold</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>d. 在PCR反应运行的同时，设置一个或多个1.25% TAE&#x2F;TBE琼脂糖凝胶，并准备足够的孔位以容纳至少20个样品的PCR效率检查。</p>
+<p>e. 根据以下图表在冰上组装虾碱性磷酸酶（SAP）反应混合物，以从PCR产物中去除单链DNA和dNTPs。将每个成分乘以样品数量，再乘以1.1以补偿试剂转移过程中的潜在损失。</p>
+<table>
+<thead>
+<tr>
+<th><strong>Component</strong></th>
+<th><strong>Amount (μl)</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10× SAP buffer</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>Shrimp alkaline phosphatase (SAP)</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>Exonuclease I</td>
+<td>0.1</td>
+</tr>
+<tr>
+<td>Water, PCR grade</td>
+<td>3.9</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>5</strong></td>
+</tr>
+</tbody></table>
+<p>f. PCR反应完成后，使用一个新的96孔PCR板，并在每个孔中分配5 μl SAP混合物，直到所有所需的孔都已填满。然后，将标记为“PCR产物”的板上的5 μl（总体积的一半）产品转移到含有SAP混合物的96孔板中的相应孔中（总共10 μl）。轻轻吹打混合均匀，同时避免产生气泡。标记该板为“SAP产物”，并设置热循环器如下。</p>
+<table>
+<thead>
+<tr>
+<th><strong>Step #</strong></th>
+<th></th>
+<th><strong>Temperature</strong></th>
+<th><strong>Time</strong></th>
+<th><strong>Note</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td></td>
+<td>37°C</td>
+<td>50 min</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td>95°C</td>
+<td>15 min</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td>4°C</td>
+<td>hold</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>g. 在SAP反应运行的同时，将1.5 μl 6×上样缓冲液加入“PCR产物”板的选定孔中，并将内容物加载到步骤E4g中准备的TAE&#x2F;TBE凝胶上。以100 V的电压运行凝胶，至少25分钟，并使用适当的大分子标记物。检查每个通道中的条带的形状、数量和清晰度。拍照并保留记录。</p>
+<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-11-12-4051-g004.jpg" alt="Large image" style="zoom:15%;">
+
+<p>[^图4. PCR产物的琼脂糖凝胶电泳结果示例。]: 第3个条带DNA量太少，无法接受。第2个条带尽管亮度降低，但DNA含量仍然可接受。M：分子标记，1 kb，Promega G5711。</p>
+<p>h. 在拍摄PCR反应的凝胶图像后，计算“良好”反应的数量（一个具有正确分子大小和足够DNA量的单条带，根据条带的亮度评估，见图4），并准备Sanger测序的混合物。根据以下表格在冰上组装Sanger反应混合物。仅将“良好”反应的数量乘以每个组分的体积，并将结果再乘以1.1，因为BigDye终止剂试剂很昂贵。</p>
+<table>
+<thead>
+<tr>
+<th><strong>Component</strong></th>
+<th><strong>Amount (μl)</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BigDye Terminator V3.1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Sequencing primer (10 μM)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Water, PCR grade</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Total</td>
+<td><strong>5</strong></td>
+</tr>
+</tbody></table>
+<p>i. SAP反应完成后，使用一个新的96孔PCR板，并在每个孔中分配5 μl Sanger测序混合物，直到所有所需的孔都已填满。然后，将标记为“SAP产物”的板上的5 μl（总体积的一半）产品转移到含有Sanger测序混合物的96孔板中的相应孔中（总共10 μl）。轻轻吹打混合均匀，同时避免产生气泡。标记该板为“测序PCR产物”并设置热循环器如下。退火温度（3）可能需要优化，由操作者根据需要确定。</p>
+<table>
+<thead>
+<tr>
+<th><strong>Step #</strong></th>
+<th><strong>Temperature</strong></th>
+<th><strong>Time</strong></th>
+<th><strong>Note</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>96°C</td>
+<td>10 s</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>55°C</td>
+<td>5 s</td>
+<td>Or as appropriate</td>
+</tr>
+<tr>
+<td>3</td>
+<td>60°C</td>
+<td>4 min</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>&#x2F;</td>
+<td>&#x2F;</td>
+<td>Go to 2, 25 cycles</td>
+</tr>
+<tr>
+<td>5</td>
+<td>4°C</td>
+<td>hold</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>j. 使用Qiagen DyeEx 2.0 Spin Kit（最适合≤ 16个样品）纯化测序PCR产物。如果DyeEx 2.0 Kit不可用或样品超过16个，跳过步骤E5j，继续执行步骤E5k。</p>
+<p>​       i.  松开顶盖并折断底部的封闭。将离心柱插入收集管中并 centrifuge at 750 × g for 3 min。<br>​      ii. 将离心柱转移到一个新的1.5-ml管中，标签上样品名称。从相应的孔中吸取测序PCR产物，并将反应产物缓慢地直接倒在倾斜的凝胶床表面中心。再次 centrifuge at 750 × g for 3 min。<br>​     iii. 丢弃离心柱，并将1.5-ml管放入离心真空设备（如SpeedVac）中，30-60分钟，直到所有液体蒸发。在真空过程中不要打开加热。干燥后，向管中加入15 μl测序级甲酰胺，并轻轻吹打10次以溶解DNA。继续执行步骤E5kvii。</p>
+<p>k. 通过异丙醇沉淀纯化测序PCR产物。<br>注意：此步骤至关重要，操作时应小心谨慎。</p>
+<p>​     i. 向每个孔中添加40 μl 75%的异丙醇，并轻轻吹打5次以混合。如果使用多通道移液器，此操作将更为方便。</p>
+<p>​     ii. 在室温下孵育20分钟，然后在室温（20°C）下的摇摆式离心机中以3,000 × g的转速离心30分钟。如果可能，开启离心机的冷却功能，因为离心机内的空气可能会迅速变热。</p>
+<p>​     iii. 小心地从离心机中取出板，不要摇晃。将板轻轻倒置在3-4层纸巾上，以倒出异丙醇。重复此过程一次，使用另一组新的3-4层纸巾，并保持板倒置10秒，以尽可能去除尽可能多的异丙醇。不要使用移液器或真空吸管从孔中移除任何残留的异丙醇。</p>
+<p>​     iv. 慢慢地将96孔板翻转回来，并向每个孔中加入150 μl 75%的异丙醇以洗涤沉淀。<br>重要：不要混合！如果使用多通道移液器，此操作将更为方便。再次以3,000 × g的转速离心10分钟。</p>
+<p>​      v.  小心地将板倒置在纸巾堆上，如步骤E5kiii中所述，以倒出异丙醇。保持板倒置(!)，小心地将它转移到新的纸巾堆上，并再次以300 × g(!)的转速离心1分钟，以消除残留的异丙醇。</p>
+<p>​      vi. 小心地从离心机中取出96孔板，并将其翻转回来。向每个孔中加入15 μl测序级甲酰胺，并轻轻吹打5次以混合。避免在井内形成气泡。</p>
+<p>​      vii.用粘合膜密封板，并在热循环器上于95°C变性2分钟。立即将板放在冰上，并孵育2分钟。</p>
+<p>​     viii. 以2,000 × g的转速离心1分钟。现在该板已准备好在  ABI 310&#x2F;3730&#x2F;3730xl&#x2F;3500测序仪上进行Sanger测序注射。</p>
+<hr>
+<h4 id="F-扩增具有所需基因型的阳性克隆。"><a href="#F-扩增具有所需基因型的阳性克隆。" class="headerlink" title="F. 扩增具有所需基因型的阳性克隆。"></a>F. 扩增具有所需基因型的阳性克隆。</h4><ol>
+<li><h5 id="使用ApE或ABI-GeneMapper检查测序光谱文件，以识别需要扩增的阳性候选克隆（见第A节，图1和图5）。扩增的iPSCs将用于进一步的单细胞亚克隆，以获得纯合子克隆。"><a href="#使用ApE或ABI-GeneMapper检查测序光谱文件，以识别需要扩增的阳性候选克隆（见第A节，图1和图5）。扩增的iPSCs将用于进一步的单细胞亚克隆，以获得纯合子克隆。" class="headerlink" title="使用ApE或ABI GeneMapper检查测序光谱文件，以识别需要扩增的阳性候选克隆（见第A节，图1和图5）。扩增的iPSCs将用于进一步的单细胞亚克隆，以获得纯合子克隆。"></a>使用ApE或ABI GeneMapper检查测序光谱文件，以识别需要扩增的阳性候选克隆（见第A节，图1和图5）。扩增的iPSCs将用于进一步的单细胞亚克隆，以获得纯合子克隆。</h5><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-11-12-4051-g005.jpg" alt="Large image" style="zoom:50%;">
+
+<p>[^]: 图5. 良好和质量差的Sanger测序光谱示例。</p>
+<p>a. 当 colonies 在 Plate A 中达到适当的大小（1.5-2毫米直径或60-70%的孔内覆盖率）（从步骤E3a），通过首先从每个孔中移除所有培养基来消化iPSC克隆。轻轻添加50 μl ReLeSR到每个孔中，快速抽吸，并在室温下站立5分钟。</p>
+<p>b. 向每个孔中添加100 μl mTeSR1，并小心地用常规P200移液器尖头从井底松动细胞团。将每个井的内容转移到一个涂有Matrigel的4孔或24孔板中的一个井中，并添加含5 μM ROCK抑制剂的mTeSR1，最终体积为500 μl。在培养箱中继续培养，37°C，5% CO2，每天更换mTeSR1，直到细胞在井内达到60-70%的覆盖率。</p>
+</li>
+<li><h5 id="单细胞亚克隆以获得纯合子细胞系。"><a href="#单细胞亚克隆以获得纯合子细胞系。" class="headerlink" title="单细胞亚克隆以获得纯合子细胞系。"></a>单细胞亚克隆以获得纯合子细胞系。</h5><p>a. 小心地从培养皿中移除培养基，然后向每个孔中加入400 μl Accutase，孵育10分钟以从底部分离细胞。使用P1000尖头轻轻吹打5次，制成单细胞悬液，然后加入另外400 μl mTeSR1以中和Accutase。取10 μl悬液使用台盼蓝法计数细胞密度，并将剩余的细胞以250 × g的转速离心5分钟。</p>
+<p>b. 移除上清液，并在1 ml含有5 μM ROCK抑制剂Y-27632的mTeSR1中重悬细胞。分离出相当于2000个活细胞的体积（根据前一步骤确定），并在含有5 μM ROCK抑制剂Y27632的4 ml mTeSR1中重新种植到60-mm Matrigel涂层的培养皿中。继续培养任何剩余的细胞作为备份，培养条件为37°C，5% CO2。</p>
+<p>c. 在重新种植后48小时，用ROCK抑制剂-free mTeSR1替换60-mm培养皿中一半的培养基。在培养箱中继续培养，37°C，5% CO2，每天更换mTeSR1，直到克隆大小达到1.5-2毫米。重复步骤E3中的克隆挑选程序。从每个60-mm培养皿中挑选约30个克隆。对选定的克隆重复步骤E4-E5中的基因型鉴定程序。</p>
+<p>d. 一旦通过Sanger测序识别出纯合子克隆，重复步骤F1，将每个克隆从96孔板转移到Matrigel涂层的4&#x2F;24孔板的2个（！）孔中，直到细胞密度达到60-70%。继续监测细胞生长，因为不同克隆在这个阶段的生长速度可能不同。</p>
+<p>e. 从培养皿中移除培养基，并向每个孔中加入400 μl ReLeSR。从孔中移除ReLeSR，并在室温下孵育5分钟。</p>
+<p>f. 预先涂布足够数量的6孔板Matrigel，并向每个孔中加入2 ml mTeSR1。向每个用ReLeSR处理的4&#x2F;24孔板的孔中加入300 μl mTeSR1，并使用宽口移液器尖头轻轻吹打5次以分离细胞团块。将100 μl细胞团块悬液分到6孔板（总共3个孔）的每个孔中，并轻轻摇动混合。为每个克隆准备4-6个孔。继续培养，直到细胞密度达到60-70%。</p>
+</li>
+<li><h5 id="冻存细胞系以进行冷冻保存。"><a href="#冻存细胞系以进行冷冻保存。" class="headerlink" title="冻存细胞系以进行冷冻保存。"></a>冻存细胞系以进行冷冻保存。</h5><p>a. 密切观察6孔板中的细胞生长，直到细胞密度达到60-70%。建议同一板上的所有孔在一次处理中完成。</p>
+<p>b. 向每个6孔板孔中加入1 ml ReLeSR。从孔中移除ReLeSR，并在37°C、5% CO2的培养箱中孵育3-5分钟。</p>
+<p>c. 向每个用ReLeSR处理的6孔板孔中加入1 ml室温mTeSR1，并通过坚定地轻敲培养板来松动细胞。将松动的细胞悬液转移到一个无菌的1.5-ml Eppendorf管中，并在室温下以200 × g的转速离心5分钟。</p>
+<p>d. 小心地尽可能多地移除上清液，同时不要触及底部的细胞沉淀。向Eppendorf管中加入1 ml室温mFreSR，并使用宽口移液器尖头小心地重新悬浮细胞沉淀，通过吹打5次来混合。将管中的内容物转移到一个预先标记的冷冻管中。确认管盖已牢固密封，并将其放入Mr Frosty冷冻容器中。通常，为每个克隆准备尽可能多的管（通常为4-6管，如步骤F2d-F2f中所确定）。重复此步骤，直到所有细胞都转移到冷冻管中。</p>
+<p>e. 将装有冷冻管的Mr Frosty冷冻容器放入-80°C的冷冻器中至少24小时（但不超过72小时）以冷冻内容物。将所有试管转移到液氮中进行长期保存。保持详细记录。</p>
+</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h3 id="数据分析"><a href="#数据分析" class="headerlink" title="数据分析"></a>数据分析</h3><h4 id="Sanger测序结果的光谱分析"><a href="#Sanger测序结果的光谱分析" class="headerlink" title="Sanger测序结果的光谱分析"></a>Sanger测序结果的光谱分析</h4><ol>
+<li>成功识别和分离精确编辑的纯合子克隆，在很大程度上依赖于对Sanger测序结果的适当分析。作为指导，首先去除信号强度低、异常模式（例如，当连续序列中出现相同类型的核苷酸碱基时，合并成一个大峰而不是个体峰，见图5）。随后，通过检查所需SNP位点的基因型来识别阳性克隆。</li>
+<li>评估gRNA和ssODN的效率<br>由于ssODN的整合和随后的精确SNP编辑需要CRISPR&#x2F;Cas9介导的DNA切割优先发生，因此需要独立评估CRISPR&#x2F;Cas9介导的DNA切割和ssODN整合的效率。通常，由于大多数CRISPR&#x2F;Cas9介导的DNA断裂没有适当修复并产生插入缺失（indels），因此生成的包含indel的克隆百分比（见图1）可以作为实验中使用的gRNA序列效率的指标。包含indel的克隆百分比对于成功的gRNA序列设计约为60-80%。ssODN的整合相对稳定，大约占CRISPR&#x2F;Cas9介导的DNA切割事件的5%。如果阳性克隆的数量低，可以从Sanger测序结果中分别计算两个事件的可能性，以确定哪个寡核苷酸序列可能是原因并需要重新设计。</li>
+</ol>
+<hr>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ol>
+<li>Forrest, M. P., Zhang, H., Moy, W., McGowan, H., Leites, C., Dionisio, L. E., Xu, Z., Shi, J., Sanders, A. R., Greenleaf, W. J., Cowan, C. A., Pang, Z. P., Gejman, P. V., Penzes, P. and Duan, J. (2017). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/28803920">Open Chromatin Profiling in hiPSC-Derived Neurons Prioritizes Functional Noncoding Psychiatric Risk Variants and Highlights Neurodevelopmental Loci.</a> <em>Cell Stem Cell</em> 21(3): 305-318 e308.</li>
+<li>Forsyth, N. R., Musio, A., Vezzoni, P., Simpson, A. H., Noble, B. S. and McWhir, J. (2006). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/16571074">Physiologic oxygen enhances human embryonic stem cell clonal recovery and reduces chromosomal abnormalities.</a> <em>Cloning Stem Cells</em> 8(1): 16-23.</li>
+<li>Hendel, A., Kildebeck, E. J., Fine, E. J., Clark, J., Punjya, N., Sebastiano, V., Bao, G. and Porteus, M. H. (2014). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/24685129">Quantifying genome-editing outcomes at endogenous loci with SMRT sequencing.</a> <em>Cell Rep</em> 7(1): 293-305.</li>
+<li>Howden, S. E., Maufort, J. P., Duffin, B. M., Elefanty, A. G., Stanley, E. G. and Thomson, J. A. (2015). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/26584543">Simultaneous Reprogramming and Gene Correction of Patient Fibroblasts.</a> <em>Stem Cell Reports</em> 5(6): 1109-1118.</li>
+<li>Miyaoka, Y., Chan, A. H., Judge, L. M., Yoo, J., Huang, M., Nguyen, T. D., Lizarraga, P. P., So, P. L. and Conklin, B. R. (2014). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/24509632">Isolation of single-base genome-edited human iPS cells without antibiotic selection.</a><em>Nat Methods</em> 11(3): 291-293.</li>
+<li>Ran, F. A., Hsu, P. D., Wright, J., Agarwala, V., Scott, D. A. and Zhang, F. (2013). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/24157548">Genome engineering using the CRISPR-Cas9 system.</a> <em>Nat Protoc</em> 8(11): 2281-2308.</li>
+<li>Tidball, A. M., Swaminathan, P., Dang, L. T. and Parent, J. M. (2018). <a target="_blank" rel="noopener" href="https://bio-protocol.org/cn/e2794">Generating Loss-of-function iPSC Lines with Combined CRISPR Indel Formation and Reprogramming from Human Fibroblasts.</a> <em>Bio-protoc**ol</em> 8(7): 2794.</li>
+<li>Zhang, S., Moy, W., Zhang, H., Leites, C., McGowan, H., Shi, J., Sanders, A. R., Pang, Z. P., Gejman, P. V. and Duan, J. (2018). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/29631039">Open chromatin dynamics reveals stage-specific transcriptional networks in hiPSC-based neurodevelopmental model.</a> <em>Stem Cell Res</em> 29: 88-98.</li>
+<li>Zhang, S., Zhang, H., Zhou, Y., Qiao, M., Zhao, S., Kozlova, A., Shi, J., Sanders, A. R., Wang, G., Luo, K., Sengupta, S., West, S., Qian, S., Streit, M., Avramopoulos, D., Cowan, C. A., Chen, M., Pang, Z. P., Gejman, P. V., He, X. and Duan, J. (2020). <a target="_blank" rel="noopener" href="https://science.sciencemag.org/content/369/6503/561">Allele-specific open chromatin in human iPSC neurons elucidates functional disease variants.</a><em>Science</em> 369(6503): 561-565.</li>
+</ol>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BioProtocol</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2024/03/14/CRISPR-Cas9%E4%BB%8B%E5%AF%BC%E7%9A%84%E4%BA%BAiPSC%E7%BB%86%E8%83%9E%E7%B3%BBSNP%E7%B2%BE%E7%A1%AE%E7%BC%96%E8%BE%91/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-的免疫球蛋白位点工程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -6958,227 +7512,6 @@ Essential 6，含100 ng/ml bFGF
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2024/03/11/%E5%9C%A8%E5%93%BA%E4%B9%B3%E5%8A%A8%E7%89%A9%E7%BB%86%E8%83%9E%E4%B8%AD%E9%80%9A%E8%BF%87%E5%85%B7%E6%9C%89%203%E7%AA%81%E5%87%BA%E7%AB%AF%E7%9A%84%E9%95%BFdsDNA%E4%BB%8B%E5%AF%BC%E7%9A%84CRISPR%E6%95%B2%E5%85%A5(LOCK)%E5%AE%9E%E7%8E%B0%E9%AB%98%E6%95%88%E7%9A%84%E5%A4%A7DNA%E7%89%87%E6%AE%B5%E6%95%B2%E5%85%A5/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-小鼠卵母细胞的分离与体外培养" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/03/11/%E5%B0%8F%E9%BC%A0%E5%8D%B5%E6%AF%8D%E7%BB%86%E8%83%9E%E7%9A%84%E5%88%86%E7%A6%BB%E4%B8%8E%E4%BD%93%E5%A4%96%E5%9F%B9%E5%85%BB/" target="_blank">小鼠卵母细胞的分离与体外培养</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/03/11/%E5%B0%8F%E9%BC%A0%E5%8D%B5%E6%AF%8D%E7%BB%86%E8%83%9E%E7%9A%84%E5%88%86%E7%A6%BB%E4%B8%8E%E4%BD%93%E5%A4%96%E5%9F%B9%E5%85%BB/" class="archive-article-date">
-        <time datetime="2024-03-11T03:28:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-11</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1301513">JG Jessica Greaney *</a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1271482">GS Goutham Narayanan Subramanian *</a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1301514"> Yunan Ye *</a>，<a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1264253">HH Hayden Homer <img src="https://cdn.bio-protocol.org/forum/fe/static/icon_email.svg" alt="email"></a></p>
-<p> 第一次发布: <a target="_blank" rel="noopener" href="https://bio-protocol.org/cn/archive?vol=11&issid=1269">2021年08月05日第11卷第15期 </a>DOI: <a target="_blank" rel="noopener" href="https://doi.org/10.21769/BioProtoc.4104">10.21769&#x2F;BioProtoc.4104</a> </p>
-<p>评审: <a target="_blank" rel="noopener" href="https://cn.bio-protocol.org/userhome.aspx?id=1007049">Chiara Ambrogio</a> 匿名评审</p>
-<p>女性出生时拥有一定数量的卵细胞储备，但随着年龄的增长，这些卵细胞的数量和质量都会下降。理解调控卵细胞质量的分子机制对于提高辅助生殖技术中怀孕成功率至关重要。体外培养系统使研究人员能够分析卵细胞成熟和受精的重要分子和遗传调节因子。在此，研究人员详细描述了一种高度可重复的、用于分离和培养成熟小鼠卵细胞的技术。研究人员包括了在体外培养条件下降低有害影响所需的注意事项和预防措施。该技术为多种实验方法奠定了基础，如后转录基因沉默、免疫细胞化学、Western印迹、高分辨率4D时间推移成像和体外受精，这些方法对于剖析卵细胞质量的分子决定因素至关重要。因此，该协议为开始进行探究卵细胞重要分子因素实验的任何卵细胞研究者提供了一个有用、实用的指南。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/20210730001204_6394.jpg" alt="Large image"></p>
-<hr>
-<h3 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h3><p>卵细胞为胚胎提供了大部分细胞质构建块，并且必须经历两次无误的染色体分离，以确保正常的胚胎发育（Chaigne等人，2017；Greaney等人，2017）。这些分离中的第一次，即减数分裂I（MI），尤其容易出错，尤其是随着女性年龄的增长；实际上，卵细胞MI期间出现的错误导致了高达80-90%的人类非整倍体（Greaney等人，2017）。MI也是卵细胞进行对称性破坏的分裂过程，使其能够将一半的染色体排入一个非常小的子细胞（称为极体，PB），同时保留大部分细胞质以支持后续的胚胎发育（Chaigne等人，2017）。众所周知，卵细胞数量、排卵和卵细胞质量是决定生育能力和怀孕成功的三个卵细胞特异性参数（Homer，2020）。尽管有特定的生物标志物和诊断工具来测试卵细胞数量和排卵，但目前还没有确定卵细胞质量的诊断测试。尽管人类卵细胞是研究卵细胞质量的理想材料，但广泛的限制和伦理问题使它们几乎完全无法用于实验。因此，卵细胞质量的分子基础仍然知之甚少，将从深入研究关键方面如减数成熟、受精和胚胎发育等中受益。</p>
-<p>通过使用如小鼠这样的哺乳动物模型，研究了调节这些过程的基因的作用。小鼠已成为研究最广泛的模型。</p>
-<p>在理解MI染色体分离和不对称分裂的关键分子调节器以及卵细胞对衰老的脆弱性方面的突破性进展，依赖于在体外对卵细胞进行详细分析的能力。该协议的应用范围广泛，包括后转录基因沉默（例如，使用RNAi和morpholinos）、传统的生化分析如Western印迹，以及通过免疫细胞化学和时间推移显微镜对细胞内结构的深入视觉检查。研究人员的实验室在体外培养期间使用了所有这些技术，揭示了卵细胞调节的许多独特方面，如纺锤体组装检查点（SAC）对MI染色体分离的调节及其随衰老的下降（Homer等人，2005；Gui和Homer，2012；Riris等人，2014），独特的卵细胞DNA损伤反应（Subramanian等人，2020）以及对基于DNA损伤的过早卵巢衰老的新遗传见解（Subramanian等人，2021），G2-M边界调控的新方面（Homer等人，2009；Gui和Homer，2013），晚期后着丝点事件对不对称分裂的贡献（Wei等人，2018和2020），以及参与卵细胞衰老和潜在针对这些节点以逆转卵细胞质量差的疗法的关键代谢节点（Bertoldo等人，2020；Iljas和Homer，2020；Iljas等人，2020）。</p>
-<p>在研究卵细胞时，存在许多挑战。其中一个主要挑战是卵细胞不能像许多不朽细胞系那样在实验室中繁殖，而必须在每次需要用于实验时作为原代细胞分离。另一个挑战是MI的持续时间非常长，根据小鼠的品系，MI持续6-12小时（相对于几分钟的有丝分裂），需要长时间的实验。另一个挑战是卵细胞的体积很大（约是有体细胞的40倍），这使得识别小的细胞结构变得更加困难。因此，开发一致且可重复的卵细胞分离和培养技术至关重要。</p>
-<p>卵细胞培养方法最早在1930年代就已经开发出来（Moricard和de Fonbrune，1937）。后来，实验开发了一种简单的等渗溶液，能够维持卵细胞成熟（Donahue，1968和1970），这使得人们首次能够在MI期间观察卵细胞。随后开发了更复杂的培养介质（Chatot等人，1989），现在，卵细胞分离和培养协议构成了用于研究卵细胞生物学所有体外技术的基石。在这里，研究人员详细描述了一种涉及激素刺激和收集卵巢的方法，然后是卵细胞的分离和体外培养。</p>
-<p>在这个协议中，使用孕马血清促性腺激素（PMSG）来刺激腔前卵泡发育，从而增加从卵巢分离的卵细胞产量，并使每只小鼠能够根据品系和年龄获得<strong>30-100个卵细胞</strong>（Wei等人，2018和2020；Subramanian等人，2020和2021）。通过最小化光照和温度波动的暴露，这个方法减少了由体外培养造成的损伤以及由此产生的伪影。</p>
-<p>该协议描述了收集在MI前期的完全成熟卵细胞，其特征是存在一个完整的细胞核，在卵细胞中称为生殖泡（GV）。可以使用化学物质如3-异丁基-1-甲基黄嘌呤（IBMX）来实验性地维持减数分裂I期停滞，IBMX维持高环腺苷酸（cAMP）水平，从而阻止主要M期促进酶——周期蛋白依赖性激酶1（Cdk1）的激活（Zhao等人，2014）。相反，通过洗掉IBMX，可以轻松诱导减数分裂成熟的恢复，从而提供了一种可逆的方法来操纵M期进入。这种方法还允许定时引入小分子抑制剂，在细胞周期中的任何关键时间点干扰调节因子。<br>该协议的应用广泛，对于推进研究人员对MI调控的理解至关重要。</p>
-<hr>
-<h3 id="实验步骤、设备器具和试剂："><a href="#实验步骤、设备器具和试剂：" class="headerlink" title="实验步骤、设备器具和试剂："></a>实验步骤、设备器具和试剂：</h3><h4 id="实验步骤："><a href="#实验步骤：" class="headerlink" title="实验步骤："></a>实验步骤：</h4><h5 id="A-小鼠的激素刺激"><a href="#A-小鼠的激素刺激" class="headerlink" title="A. 小鼠的激素刺激"></a>A. 小鼠的激素刺激</h5><ol>
-<li>在生理盐水中制备20 IU&#x2F;ml的PMSG，并分装成1-ml的体积到1.6-ml微量离心管中。在需要之前储存在-80°C（储存的分装液稳定可达12个月）。</li>
-<li>在小鼠腹部左下方腹腔注射大约300 µl的PMSG，以达到5-7 IU的最终剂量。</li>
-<li>将小鼠安置在无菌过滤顶笼中，温度保持在25°C，持续46-48小时，并提供标准饮食和水。</li>
-</ol>
-<h5 id="B-准备口腔吸引器单元"><a href="#B-准备口腔吸引器单元" class="headerlink" title="B. 准备口腔吸引器单元"></a>B. 准备口腔吸引器单元</h5><ol>
-<li>点燃含有绝对乙醇的酒精灯。</li>
-<li>用拇指和食指握住一端的玻璃巴斯德吸管，将细端对准火焰，使其开始软化。</li>
-<li>从火焰中取出吸管，并迅速将两端拉开，以便拉伸软化的玻璃，目标是达到与卵细胞内部直径相似的大小（大约80 µm）。这可能需要多次尝试才能达到正确的直径，可以通过将拉制的尖端与分离后卵细胞的大小进行比较来确定。</li>
-<li>将吸管的细端切割或折断到适合操作的长度。</li>
-<li>要组装口腔吸引器单元，请将巴斯德吸管连接到1000-µl体积的移液管尖端，然后将尖端放入如图1Aii所示的口腔吸引管中。</li>
-</ol>
-<img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-11-15-4104-g001-17101388108514.jpg" alt="Large image" style="zoom:50%;">
-
-<p>[^图1展示了卵巢收集和卵细胞分离的工作流程。]:  (A) 准备解剖工作站。插图展示了用于分离、剥离和连续洗涤卵细胞的盘子（i）和口腔吸引器单元组装（ii）。 (B) 附加输卵管和子宫角的鼠标卵巢的放大明场图像。 (C) 在卵巢和输卵管之间的边界处（切割点）解剖卵巢。展示了一个被脂肪包围的卵巢的放大图像。 (D) 一个去除脂肪的卵巢示例，正在被分解以释放卵丘-卵细胞复合体（COCs）。 (E) 分离的COCs。 (F) 移除卵丘细胞后的剥离卵细胞。标尺：50 μm。</p>
-<h5 id="C-准备处理和培养介质"><a href="#C-准备处理和培养介质" class="headerlink" title="C. 准备处理和培养介质"></a>C. 准备处理和培养介质</h5><ol>
-<li>在收集卵巢的前一天，通过0.22-µm的注射器驱动过滤器过滤5 ml M16培养基到15-ml离心管中，并将其放入设置有5% CO2和37°C的培养箱中，松开管盖以允许CO2平衡（见注意1）。</li>
-<li>在收集卵巢的日子（PMSG注射后46-48小时），在35-mm培养皿中准备3-4个100-µl的CO2平衡M16液滴，并覆盖矿物油以防止蒸发。这个盘子将用于收集后卵细胞的过夜培养。</li>
-<li>将5 ml处理介质倒入15-ml离心管中，加入0.3% BSA w&#x2F;v（5 ml介质需要15 mg BSA）。</li>
-<li>将处理介质放在试管滚筒混合器上，紧闭管盖，让BSA溶解（大约15分钟）。</li>
-<li>通过0.22-µm的注射器驱动过滤器过滤处理介质，加入IBMX以达到最终浓度为100 µM（见注释2），并在干加热块上预热至37°C。</li>
-<li>按照图1A所示准备工作站和设备。</li>
-<li>按照图1A插图所示，在35-mm培养皿中准备覆盖矿物油的IBMX处理处理介质液滴。</li>
-<li>在1.6-ml微量离心管中准备1 ml IBMX处理处理介质，并在干加热块上预热至37°C。</li>
-</ol>
-<h5 id="D-卵巢收集"><a href="#D-卵巢收集" class="headerlink" title="D. 卵巢收集"></a>D. 卵巢收集</h5><ol>
-<li>通过颈椎脱位牺牲小鼠，并将其放置在仰卧位。用70%乙醇喷洒腹部以湿润毛发，防止其进入腹腔。</li>
-<li>用精细解剖剪在腹部下方做一个小切口，戴上手套，轻轻拉开腹部皮肤以暴露腹膜。</li>
-<li>用纸巾清洁剪刀上的任何毛发，然后切开腹膜以暴露腹腔。</li>
-<li>使用精细镊子定位子宫角。轻轻拉动子宫角，沿其头端至末端，找到位于肾脏下极下方的卵巢。</li>
-<li>使用精细解剖剪沿卵巢附近的子宫角部分进行横切，并从周围组织中解剖卵巢旁脂肪，如图1B和C所示。</li>
-<li>将卵巢放入在<strong>C部分中准备</strong>的含有1 ml预温暖的IBMX处理处理介质的试管中，并转移到实验室。</li>
-</ol>
-<h5 id="E-卵细胞分离"><a href="#E-卵细胞分离" class="headerlink" title="E. 卵细胞分离"></a>E. 卵细胞分离</h5><ol>
-<li>在实验室中，将卵巢转移到35-mm培养皿中。</li>
-<li>在立体显微镜下，使用精细镊子和连接到1-ml注射器的27 G针尖，小心去除卵巢周围的输卵管、子宫角和脂肪，确保卵巢不受损伤，如图1C和视频1所示。卵巢呈浅粉色，而脂肪和输卵管呈白色。</li>
-</ol>
-<iframe src="//player.bilibili.com/player.html?aid=1751744645&bvid=BV1hx421C7gv&cid=1466390231&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<ol start="3">
-<li>一旦卵巢去除了脂肪和其他组织，将它们转移到含有2 ml处理介质的另一个35-mm培养皿中。不要在这个介质上覆盖矿物油。</li>
-<li>用针反复穿刺卵巢以释放卵丘-卵细胞复合体（COCs），如图1D和视频1所示。</li>
-<li>使用B部分准备拉制的玻璃巴斯德吸管，从培养皿中选择COCs（图1E），并移动到覆盖有IBMX处理过的处理介质液滴的第二个35-mm培养皿中（图1Ai）。</li>
-<li>使用口腔控制的吸引器单元（口吸管），通过玻璃吸管的尖端反复抽吸和排出COCs，以去除周围的卵丘细胞，产生无卵丘的卵细胞，如图1F和视频1所示（见注意3）。</li>
-<li>用IBMX处理过的处理介质的连续液滴洗涤剥离的卵细胞，以去除任何残留的卵丘细胞。</li>
-</ol>
-<h5 id="F-卵细胞培养"><a href="#F-卵细胞培养" class="headerlink" title="F. 卵细胞培养"></a>F. 卵细胞培养</h5><ol>
-<li>为了诱导减数分裂的恢复，用5-6个100-µl的IBMX-free M16液滴在60-mm培养皿中（不覆盖矿物油）洗涤剥离的卵细胞。</li>
-<li>将卵细胞放入C部分准备的培养皿中（图2A），并将其放置在37°C和5% CO2的孵化器中进行过夜培养。</li>
-<li>为了分析生殖泡分解（GVBD）的速率，在从IBMX洗涤后2小时从孵化器中取出卵细胞，并在光学显微镜下通过检查生殖泡（GV）的消失来评分GVBD（如图2B所示）。</li>
-<li>极体排出（PBE）的速率可以在释放IBMX后大约8-10小时通过在光学显微镜下检查极体的存在来评分，如图2C所示。对于如图2D和E所示的时间序列数据，以30分钟为间隔评分GVBD和PBE（见注释4和5）。</li>
-</ol>
-<p><img src="https://cdn.jsdelivr.net/gh/nikolahuang/blogimage@main/img/bioprotoc-11-15-4104-g002.jpg" alt="Large image"></p>
-<p>[^图2展示了卵细胞体外成熟（IVM）的工作流程。]:  (A) 含有M16培养基液滴和矿物油覆盖层的用于IVM的培养皿在孵化器中的图像。 (B) 在IBMX-free M16培养基中培养的卵细胞的明场图像。注意，在2小时后，大多数卵细胞已经经历了GVBD。 (C) 在IBMX-free M16培养基中过夜培养后，大多数卵细胞已经排出一个小极体。 (D, E) 分别表示从IBMX释放后和GVBD后不同时间点GVBD和PBE的速率。误差条代表三个生物学重复的平均值±标准误。标尺：50 μm。</p>
-<h4 id="试剂配方等："><a href="#试剂配方等：" class="headerlink" title="试剂配方等："></a>试剂配方等：</h4><h5 id="配方"><a href="#配方" class="headerlink" title="配方"></a>配方</h5><h6 id="1-卵细胞处理介质"><a href="#1-卵细胞处理介质" class="headerlink" title="1.卵细胞处理介质"></a>1.卵细胞处理介质</h6><p>最终浓度：6 mM碳酸氢钠，10 mM HEPES（游离酸），10 mM HEPES（钠盐），100 pg&#x2F;ml硫酸庆大霉素。见注释7-9。<br>a. 在称量托盘上称取8.8 g -MEM粉末，并转移到1-L玻璃烧杯中。</p>
-<p>b. 向烧杯中加入900 ml MilliQ水，并在磁力搅拌器上搅拌。</p>
-<p>c. 向烧杯中加入504 mg碳酸氢钠，2,380 mg HEPES（游离酸）和2,600 mg HEPES（钠盐），搅拌至少15分钟，室温下。</p>
-<p>d. 一旦溶质完全溶解，在持续搅拌下检查处理介质的pH值。确保介质的pH值为7.2-7.5。</p>
-<p>e. 将介质体积调至1 L，过滤到无菌玻璃瓶中，标记，并在4°C下存储，不超过2个月。</p>
-<p>f. 在实验当天，将所需体积的处理介质倒入离心管中，并在开始实验前立即加入0.3% w&#x2F;v BSA和100 µM IBMX。例如，对于10 ml介质，加入30 mg BSA和5 µl IBMX（储备浓度：200 µM）。</p>
-<hr>
-<h5 id="实验室用品清单"><a href="#实验室用品清单" class="headerlink" title="实验室用品清单"></a>实验室用品清单</h5><ol>
-<li>细胞培养皿；35 × 10 mm 和 60 × 15 mm（Sigma-Aldrich，目录号：CLS430165, CLS 430166）</li>
-<li>注射器滤器单元；0.22-µm（Merck，目录号：SLGP033RS）</li>
-<li>微量离心管；0.6-ml 和 1.6-ml（Neptune，目录号：3735.X, 3745.X）</li>
-<li>离心管；15-ml 和 50-ml（Corning，目录号：352096, 352070）</li>
-<li>一次性超细针头（27 G × 1&#x2F;2”；Hanke Sass Wolf，目录号：4710004012）和1-ml注射器（Terumo，目录号：SS+01T 霍乱）</li>
-<li>玻璃巴斯德吸管（230 mm）（VWR，目录号：6121702）</li>
-<li>口腔吸引器管组件（Sigma-Aldrich，目录号：A5177）</li>
-<li>小鼠（&gt;4周龄雌性；使用的品系：B6CBF1）（昆士兰大学生物资源，澳大利亚昆士兰大学）</li>
-<li>PMSG（Prospec，目录号：HOR-272）</li>
-<li>牛血清白蛋白（BSA；Sigma-Aldrich，目录号：A7096）</li>
-<li>适合小鼠胚胎培养的轻质矿物油（Sigma-Aldrich，目录号：M5310）</li>
-<li>IBMX（Sigma-Aldrich，目录号：I5879）</li>
-<li>MilliQ水</li>
-<li>碳酸氢钠（Sigma-Aldrich，目录号：S5761）</li>
-<li>HEPES（游离酸）（Sigma-Aldrich，目录号：H3375）</li>
-<li>HEPES（盐）（Sigma-Aldrich，目录号：H7006）</li>
-<li>硫酸庆大霉素（Sigma-Aldrich，目录号：G1264）</li>
-<li>M16培养基（Sigma-Aldrich，目录号：M7292）用于体外培养</li>
-<li>α-最小必需培养基（MEM）粉末（Thermo Fisher Scientific，目录号：12000022）（见配方）</li>
-</ol>
-<h5 id="设备清单"><a href="#设备清单" class="headerlink" title="设备清单"></a>设备清单</h5><ol>
-<li>精细解剖剪（Met-App Scientific and Surgical Instruments，目录号：2235）</li>
-<li>精细镊子（Met-App Scientific and Surgical Instruments，目录号：2127）</li>
-<li>立体显微镜（Leica Microsystems，型号：M165C; Nikon Microscope Solutions，型号：SMZ800N）</li>
-<li>干加热块（Grant Instruments，型号：QBD4）</li>
-<li>CO2孵化器（Sanyo，型号：MCO-18AIC）</li>
-<li>酒精灯（LabTek，型号：LW15557-01）</li>
-<li>试管滚筒混合器（Ratek，型号：BTR10P-12V）</li>
-<li>磁力搅拌器（IKA，型号：RCT basic）</li>
-</ol>
-<hr>
-<h4 id="数据分析"><a href="#数据分析" class="headerlink" title="数据分析"></a>数据分析</h4><p>计算经历<strong>GVBD</strong>的卵细胞的比例，作为<strong>GVBD卵细胞数与总卵细胞数的比率</strong>（%）。同样，<strong>计算PBE率</strong>作为排出极体的卵细胞数与总卵细胞数的比率（%）。<br>在所需的时间间隔重复评分，总时间长度根据需要而定。例如，可以以0.5小时为间隔，在IBMX释放后总共4小时计算GVBD率，如图2D所示。可以在GVBD后6-12小时内以0.5小时为间隔计算PBE率，如图2E所示（见注释5和6）。<br>在获得≥3个生物学重复的数据后，使用GraphPad Prism（<a target="_blank" rel="noopener" href="http://www.graphpad.com)将平均百分比绘制在折线图上,时间间隔位于x轴,相应的百分比位于y轴./">www.graphpad.com）将平均百分比绘制在折线图上，时间间隔位于x轴，相应的百分比位于y轴。</a></p>
-<hr>
-<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><ol>
-<li><em><u>M16培养基在使用前需要进行CO2平衡。由于M16含有酚红pH指示剂，这可以提供是否适当平衡的指示。呈现橙红色的培养基是适当平衡的，但外观为粉红色的培养基没有平衡足够长的时间，不应用于卵细胞培养。</u></em></li>
-<li><em><u>IBMX在卵细胞分离和处理阶段被添加以抑制GVBD。IBMX也可以添加到M16培养基中，以使卵细胞在GV阶段保持更长时间。</u></em></li>
-<li><em><u>尽可能多地用暗盖覆盖处理和培养皿，以减少卵细胞的光照，如图1A所示。</u></em></li>
-<li><em><u>频繁从孵化器中取出培养皿可能会使卵细胞暴露于温度波动和过度的光照，这可能会影响成熟速率。</u></em></li>
-<li><em><u>卵细胞的产量和GVBD和PBE的时间可能因小鼠品系而异（Parker-Thornburg等人，2011；Polanski，1986和1997；Cheng等人，2012）。研究人员被鼓励首先评估几个品系，以确定最适合他们需求的品系（Luo等人，2011）。</u></em></li>
-<li><em><u>在研究人员的实验室中，使用了时间推移显微镜来自动捕获所需间隔的明场图像。如果在IVM后的第二天手动评分PBE，极体可能会降解且难以识别。</u></em></li>
-<li><em><u>制作处理介质时，只能使用干净和无菌的烧杯、量筒、称量托盘等。</u></em></li>
-<li><em><u>保持培养基的pH值在7.2和7.5之间非常重要。如果pH值不能稳定在这个范围内，应该重新制备培养基。</u></em></li>
-<li><em><u>在处理介质中添加HEPES允许在没有CO2孵化器的情况下使用，而不会引起显著的pH波动。</u></em></li>
-</ol>
-<hr>
-<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ol>
-<li>Bertoldo, M. J., Listijono, D. R., Ho, W. J., Riepsamen, A. H., Goss, D. M., Richani, D., Jin, X. L., Mahbub, S., Campbell, J. M., Habibalahi, A., Loh, W. N., Youngson, N. A., Maniam, J., Wong, A. S. A., Selesniemi, K., Bustamante, S., Li, C., Zhao, Y., Marinova, M. B., Kim, L. J., Lau, L., Wu, R. M., Mikolaizak, A. S., Araki, T., Le Couteur, D. G., Turner, N., Morris, M. J., Walters, K. A., Goldys, E., O’Neill, C., Gilchrist, R. B., Sinclair, D. A., Homer, H. A. and Wu, L. E. (2020). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/32049001">NAD+ Repletion Rescues Female Fertility during Reproductive Aging.</a> <em>Cell Rep</em> 30(6): 1670-1681 e1677.</li>
-<li>Chaigne, A., Terret, M. E. and Verlhac, M. H. (2017). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/28409310">Asymmetries and Symmetries in the Mouse Oocyte and Zygote.</a> <em>Results Probl Cell Differ</em> 61: 285-299.</li>
-<li>Chatot, C. L., Ziomek, C. A., Bavister, B. D., Lewis, J. L. and Torres, I. (1989). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/2760894">An improved culture medium supports development of random-bred 1-cell mouse embryos <em>in vitro</em>.</a> <em>J Reprod Fertil</em> 86(2): 679-688.</li>
-<li>Cheng, Y., Zhong, Z. and Latham, K. E. (2012). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/22584025">Strain-specific spontaneous activation during mouse oocyte maturation.</a> <em>Fertil Steril</em> 98(1): 200-206.</li>
-<li>Donahue, R. P. (1968). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/5750655">Maturation of the mouse oocyte <em>in vitro</em>. I. Sequence and timing of nuclear progression.</a> <em>J Exp Zool</em> 169(2): 237-249.</li>
-<li>Donahue, R. P. (1970). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/5461079">Maturation of the mouse oocyte <em>in vitro</em>. II. Anomalies of first polar body formation.</a> <em>Cytogenetics</em> 9(2): 106-115.</li>
-<li>Greaney, J., Wei, Z. and Homer, H. (2018). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/29244163">Regulation of chromosome segregation in oocytes and the cellular basis for female meiotic errors.</a> <em>Hum Reprod Update</em> 24(2): 135-161.</li>
-<li>Gui, L. and Homer, H. (2012). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/22513372">Spindle assembly checkpoint signalling is uncoupled from chromosomal position in mouse oocytes.</a> <em>Development</em> 139(11): 1941-1946.</li>
-<li>Gui, L. and Homer, H. (2013). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/23541922">Hec1-dependent cyclin B2 stabilization regulates the G2-M transition and early prometaphase in mouse oocytes.</a> <em>Dev Cell</em> 25(1): 43-54.</li>
-<li>Homer, H., Gui, L. and Carroll, J. (2009). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/19965510">A spindle assembly checkpoint protein functions in prophase I arrest and prometaphase progression.</a> <em>Science</em> 326(5955): 991-994.</li>
-<li>Homer, H. A. (2020). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/33232987">The Role of Oocyte Quality in Explaining “Unexplained” Infertility.</a> <em>Semin Reprod Med</em> 38(1): 21-28.</li>
-<li>Homer, H. A., McDougall, A., Levasseur, M., Yallop, K., Murdoch, A. P. and Herbert, M. (2005). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/15655110">Mad2 prevents aneuploidy and premature proteolysis of cyclin B and securin during meiosis I in mouse oocytes.</a> <em>Genes Dev</em> 19(2): 202-207.</li>
-<li>Iljas, J. D. and Homer, H. A. (2020). <a target="_blank" rel="noopener" href="https://europepmc.org/article/med/32212196">Sirt3 is dispensable for oocyte quality and female fertility in lean and obese mice.</a><em>FASEB J</em> 34(5): 6641-6653.</li>
-<li>Iljas, J. D., Wei, Z. and Homer, H. A. (2020). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/32729989">Sirt1 sustains female fertility by slowing age-related decline in oocyte quality required for post-fertilization embryo development.</a> <em>Aging Cell</em> 19(9): e13204.</li>
-<li>Luo, C., Zuniga, J., Edison, E., Palla, S., Dong, W. and Parker-Thornburg, J. (2011). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/21838974">Superovulation strategies for 6 commonly used mouse strains.</a> <em>J Am Assoc Lab Anim Sci</em> 50(4): 471-478.</li>
-<li>Moricard, R. and de Fonbrune, P. D. (1937). Nouvelles études expérimentales sur les mécanismes de la formation du premier globule polaire <em>in vitro</em> chez les mammifères. <em>Arch Anat Microscop</em> 33: 113-138.</li>
-<li>Polanski, Z. (1986). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/3761260"><em>In-vivo</em> and <em>in-vitro</em> maturation rate of oocytes from two strains of mice.</a> <em>J Reprod Fertil</em> 78(1): 103-109.</li>
-<li>Polanski, Z. (1997). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/9068421">Genetic background of the differences in timing of meiotic maturation in mouse oocytes: a study using recombinant inbred strains.</a> <em>J Reprod Fertil</em> 109(1): 109-114.</li>
-<li>Riris, S., Webster, P. and Homer, H. (2014). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/24444598">Digital multiplexed mRNA analysis of functionally important genes in single human oocytes and correlation of changes in transcript levels with oocyte protein expression.</a> <em>Fertil Steril</em> 101(3): 857-864.</li>
-<li>Subramanian, G. N., Greaney, J., Wei, Z., Becherel, O., Lavin, M. and Homer, H. A. (2020). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/32328643">Oocytes mount a noncanonical DNA damage response involving APC-Cdh1-mediated proteolysis.</a> <em>J Cell Biol</em> 219(4): e201907213.</li>
-<li>Subramanian, G. N., Lavin, M. and Homer, H. A. (2021). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/33337500">Premature ovarian ageing following heterozygous loss of Senataxin.</a> <em>Mol Hum Reprod</em> 27(2).</li>
-<li>Wei, Z., Greaney, J., Loh, W. N. and Homer, H. A. (2020). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/32636388">Nampt-mediated spindle sizing secures a post-anaphase increase in spindle speed required for extreme asymmetry.</a> <em>Nat Commun</em> 11(1): 3393.</li>
-<li>Wei, Z., Greaney, J., Zhou, C. and H, A. H. (2018). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/30279413">Cdk1 inactivation induces post-anaphase-onset spindle migration and membrane protrusion required for extreme asymmetry in mouse oocytes.</a> <em>Nat Commun</em> 9(1): 4029.</li>
-<li>Zhao, X., Yu, D., Feng, C., Deng, X., Wu, D., Jin, M., Wang, E., Wang, X. and Yu, B. (2014). <a target="_blank" rel="noopener" href="http://www.ncbi.nlm.nih.gov/pubmed/25472593">Role of Greatwall kinase in release of mouse oocytes from diplotene arrest.</a> <em>Dev Growth Differ</em> 56(9): 669-678.</li>
-</ol>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/03/11/%E5%B0%8F%E9%BC%A0%E5%8D%B5%E6%AF%8D%E7%BB%86%E8%83%9E%E7%9A%84%E5%88%86%E7%A6%BB%E4%B8%8E%E4%BD%93%E5%A4%96%E5%9F%B9%E5%85%BB/">展开全文 >></a>
     </p>
     
 
