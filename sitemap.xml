@@ -756,6 +756,13 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>http://nikolahuang.github.io/tags/Github%E7%B2%BE%E9%80%89/</loc>
+    <lastmod>2024-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
 </urlset>
